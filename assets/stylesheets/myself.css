@@ -1,0 +1,129 @@
+.pinkbluebg {
+    background-color: #feeeec;
+    background-image: linear-gradient(180deg, #feeeec 15%, #B5FFFC 100%);
+}
+.btn_school:hover {
+    padding-left: 0.5rem;
+    color: #515022;
+    background: #6C6A2D;
+    border-bottom: black;
+    border-bottom: 1px;
+}
+.social-icon:hover {
+    fill: #f4f4f4;
+}
+.msf-h1{
+    font-size: 3rem;
+}
+.msf-sh1{
+    font-size: 2rem;
+    line-height: 150%;
+}
+.productBlock {
+    margin-left: 0px !important;
+    margin-right: 8px !important;
+}
+
+.phoneRadius {
+    border-radius: 16px;
+    overflow: hidden;
+}
+.msf-info-s{
+    font-size: 18px;
+    line-height: 150%;
+}
+.msf-uiuxHeader{
+     background: linear-gradient(90deg, #465375 0%, #758AC2 100%); 
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+}
+
+.ml12 {
+    font-weight: 200;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+}
+
+.ml12 .letter {
+    display: inline-block;
+    line-height: 0.5em;
+}
+
+.msf-heightlight {
+    border-left: 2px solid black;
+    padding-left: 8px;
+}
+
+.msf-heightlight-w {
+    border-left: 2px solid white;
+    padding-left: 8px;
+}
+
+.notoFont {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.msNotiWord {
+    font-size: 5rem;
+}
+.btn {
+    -webkit-appearance: none;
+}
+
+.round25p {
+    border-radius: 25px !important;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin: 0px 0 8px 0;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 8px;
+    background: rgb(219, 219, 219);
+}
+
+.modal-dialog {
+    max-width: 1080px;
+}
+
+.modal-body {
+    height: 76vh;
+    overflow: auto;
+}
+
+.expPage .nav-pills .active {
+    background-color: #959bbd;
+}
+.bg-skyHeavyBlue {
+    background-color:#465375 !important;
+}
+.text-skyHeavyBlue {
+    color: #465375 !important;
+}
+.hoverShadow:hover{ 
+    box-shadow: 0px 0rem 0.75rem rgba(0, 0, 0, 0.25);
+}
+.ms-fixColor-primary:hover {
+    color: white !important ;
+}
+.toTopBtn {
+    transition: opacity 2s;
+}
+.tagLocationer{
+    margin-top: -5rem;
+    padding-top: 5rem;
+}
+.halfHightLightBg{
+    background: linear-gradient(to top, #f4f6ee 50%, transparent 50%);
+}
