@@ -1,1 +1,1 @@
-function toTop() {document.getElementById('nav').scrollIntoView({behavior:"smooth"})}
+function toTop() {window.scrollTo({top: 0, behavior: 'smooth'});}
