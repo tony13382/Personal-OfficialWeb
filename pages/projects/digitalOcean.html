@@ -32,27 +32,109 @@
 </head>
 
 <body class="">
-	<nav class="navbar navbar-expand-sm navbar-light bg-skyBgBlue" id="nav">
+	<style>
+		:root{
+			--themeColor: #9C8465;
+			--secondColor : #593A06;
+		}
+		.navbar{
+			background-color: var(--themeColor);
+		}
+		.navbar-nav .nav-item{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+		.navbar-nav .nav-div{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			color: white;
+		}
+		.navbar-nav .nav-item:hover{
+			background-color: var(--secondColor);
+		}
+		.navbar-nav .nav-item .nav-link{
+			color: white!important ;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+	</style>
+	<nav class="navbar navbar-expand-sm navbar-light shadow p-3" id="nav">
 		<div class="container-fluid">
-			<a class="navbar-brand fw-bold d-inline-flex" href="../../index.html">
-				<img src="https://tony13382.github.io/favicon.png" style="width: 30px; height: 30px;">
-				<p class="m-0 ps-2">呂亮進的作品</p>
+			<a class="navbar-brand fw-bold px-2 text-white" href="../../index.html">
+				<i class="bi bi-arrow-left"></i>
 			</a>
-			<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<i class="bi bi-list-nested"></i>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarContentLinks">
 				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="../../index.html">關於呂亮進</a>
+						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
 					</li>
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="../../pages/classes/index.html">知識交流計畫</a>
+						<a class="nav-link" href="../cowork/index.html">商業合作</a>
+					</li>
+					<li class="nav-div rounded-pill">
+						<a class="nav-link text-white-50">｜</a>
 					</li>
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">Linkedin</a>
+						<a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
 					</li>
 				</ul>
 			</div>
@@ -60,7 +142,7 @@
 	</nav>
 	<div class="fixed-bottom d-flex justify-content-end">
 		<a class="text-decoration-none" onclick="toTop()">
-			<div class="rounded-circle  bg-black d-inline-flex shadow-lg mb-3 me-3 rounded toTopBtn">
+			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
 				</div>
@@ -82,10 +164,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="container" style="margin-top: -2rem;">
-			<div class="row">
-				<div class="col-12">
-					<div class="card shadow p-3 mb-5 bg-body rounded">
+		<div class="container" style="margin-top: -80px; min-height: 100vh;">
+			<div class="row position-relative d-flex align-items-start">
+				<div class="col-lg-4 col-12 py-4 sticky-lg-top ">
+					<div class="card shadow p-3 bg-body rounded">
 						<div class="card-body">
 							<span class="badge bg-success rounded-pill mb-2 fs-5">專案執行中</span>
 							<p class="mb-2 notoFont msf-info-s">
@@ -94,39 +176,66 @@
 							<div class="fs-5 text-black">
 								<span class="badge bg-light text-dark rounded-pill">#數位內容</span>
 							</div>
-							<div class="d-grid gap-2 mt-2">
-								<a target="_blank" href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663?utm_source=GitHub" class="btn btn-outline-primary ms-fixColor-primary"
+							<div class="d-grid gap-2 mt-4">
+								<a target="_blank" href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663?utm_source=GitHub" class="btn btn-theme ms-fixColor-primary"
 									type="button">專案網址<i class="bi bi-arrow-up-right mt-n1"></i></a>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 justify-content-center d-flex">
-				<img src="../../assets/imgs/digitalOcean/cover.webp" class="img-fluid rounded mb-2" alt="...">
-			</div>
-		</div>
-	</div>
-	<div class="bg-skyBgBlue py-4">
-		<div class="container py-4">
-			<div class="row">
-				<h2 class="notoFont">個人專案</h2>
-				</div>
-				<div class="notoFont mt-2">
-					<div class="card d-inline-flex me-1 mt-1">
-						<div class="card-body d-inline-flex align-items-center">
-							<div class="d-inline-block">
-								<div style="width: 64px; height: 64px;" class="">
-									<img src="../../assets/imgs/appIcons/notion.png" class="img-fluid p-1" alt="Figma Icon">
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">個人負責</h2>
+							<hr>
+							<div class="card p-0">
+								<div class="card-body d-inline-flex align-items-center">
+									<div class="d-inline-block">
+										<div style="width: 64px; height: 64px;" class="">
+											<img src="../../assets/imgs/appIcons/notion.png" class="img-fluid p-1" alt="Figma Icon">
+										</div>
+									</div>
+									<div class="ps-2 d-inline-flex flex-column">
+										<p class="p-0 mb-2 fw-bold">Notion</p>
+										<p class="p-0 m-0">內容管理與發佈</p>
+									</div>
 								</div>
 							</div>
-							<div class="ps-2 d-inline-flex flex-column">
-								<p class="p-0 mb-2 fw-bold">Notion</p>
-								<p class="p-0 m-0">內容管理與發佈</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-12 py-4">
+					<div class="card shadow">
+						<div class="card-body">
+							<img src="../../assets/imgs/digitalOcean/cover.webp" class="img-fluid rounded mb-2" alt="...">
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">為何要開展計畫？</h2>
+							<hr>
+							<p class="m-0">
+								數位海洋專案源自於作者「ML」的個人知識庫，在大學期間由於有積累一些常用資源，因此常常會進行分享，但是由於分享資源越來越多且沒有一個系統性的統整，因此知識如同碎片一般，要找尋時不太容易，因此建立了這個計畫，將以往資訊打通，建立一個統一的方式分享資訊與蒐集到的資源。
+							</p>
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">這項計畫的知識從何而來？</h2>
+							<hr>
+							<p class="m-0">
+								這項計畫的知識目前有三個來源，第一個是網路上的網頁擷取，第二個是個人筆記，第三個則是投稿內容，觀看者可以利用投稿提供知識或資源給平台方審核，經審核後即可在網站中發現。由於許多的知識來源來自於網絡，因此本網站若從網路上收錄的資訊均會標示來源地址，而著作權歸屬也歸原網站，此網站只會整理資訊與精煉出重點，但個人筆記與心法之著作權歸作者所有，而投稿之文章也代表同意本平台方可以進行內容發佈
+							</p>
+							<div class="col-12 pt-2">
+								<div class="card mt-2">
+									<div
+										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+										<i class="fas fa-link fs-4 ps-2"></i>
+										<p class="m-0 ps-2 flex-fill">網站網址</p>
+										<a href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663" type="button" target="_blank"
+											class="btn btn-link ms-1 btn-lg">
+											<i class="bi bi-box-arrow-up-right"></i>
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -134,48 +243,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="py-4">
-		<div class="container pb-5 mb-5 notoFont">
-			<div class="row">
-				<div class="col-12 mt-4">
-					<p class="m-0 fs-1 fw-bold text-primary">
-						為何要開展計畫？
-					</p>
-				</div>
-				<div class="col-12">
-					<p class="m-0 fs-4">
-						數位海洋專案源自於作者「ML」的個人知識庫，在大學期間由於有積累一些常用資源，因此常常會進行分享，但是由於分享資源越來越多且沒有一個系統性的統整，因此知識如同碎片一般，要找尋時不太容易，因此建立了這個計畫，將以往資訊打通，建立一個統一的方式分享資訊與蒐集到的資源。
-					</p>
-				</div>
-				<div class="col-12 mt-4">
-					<p class="m-0 fs-1 fw-bold text-primary">
-						這項計畫的知識從何而來？
-					</p>
-				</div>
-				<div class="col-12">
-					<p class="m-0 fs-4">
-						這項計畫的知識目前有三個來源，第一個是網路上的網頁擷取，第二個是個人筆記，第三個則是投稿內容，觀看者可以利用投稿提供知識或資源給平台方審核，經審核後即可在網站中發現。由於許多的知識來源來自於網絡，因此本網站若從網路上收錄的資訊均會標示來源地址，而著作權歸屬也歸原網站，此網站只會整理資訊與精煉出重點，但個人筆記與心法之著作權歸作者所有，而投稿之文章也代表同意本平台方可以進行內容發佈
-					</p>
-				</div>
-				<div class="col-12">
-					<div class="card mt-2">
-						<div
-							class="card-body border-primary d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-							<i class="fas fa-link fs-4 ps-2"></i>
-							<p class="m-0 ps-2 flex-fill">網站網址</p>
-							<a href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663" type="button" target="_blank"
-								class="btn btn-link ms-1 btn-lg">
-								<i class="bi bi-box-arrow-up-right"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
-		</div>
-	</div>
-	<footer class="bg-skyHeavyBlue text-light">
+	<footer class="bg-theme text-light">
         <div class="container py-4">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
@@ -183,24 +251,24 @@
                         連結 Links
                     </h4>
                     <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         學習資源庫
                     </a><br>
                     <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         旗下知識帳號
                     </a><br>
                     
                     <a href="../../pages/cowork/index.html" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         合作表單
                     </a><br>
                     <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         Curator
                     </a><br>
-                    <a href="pages/classes/index.html"
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                    <a href="http://tony13382.github.io/pages/classes/index.html"
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         知識交流表單
                     </a> 
                 </div>
@@ -209,15 +277,15 @@
                         贊助 Donate
                     </h4>
                     <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         Buy Me A Coffee
                     </a><br>
                     <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         贊助系統（Portaly）
                     </a><br>
                     <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         可收款銀行（請預先通知本人）
                     </a>
                 </div>
@@ -226,19 +294,19 @@
                         聯絡 Connections
                     </h4>
                     <div class="d-flex" style="font-size: 1.2rem;">
-                        <a type="button" class="me-2 text-light"
+                        <a type="button" class="me-2 footer-link"
                             href="mailto://liangchinlu@gmail.com" target="_blank">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://www.facebook.com/tony13382/" target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
                             <i class="bi bi-info-square-fill"></i>
                         </a>
@@ -260,7 +328,7 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 	</script>
 	<script src="../../assets/script/scroll.js"></script>
-<script type="text/javascript" src="../../assets/script/lozad.min.js"></script>
+	<script type="text/javascript" src="../../assets/script/lozad.min.js"></script>
     <script>
 		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
 		observer.observe();
