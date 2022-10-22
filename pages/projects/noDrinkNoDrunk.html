@@ -32,27 +32,84 @@
 </head>
 
 <body class="">
-	<nav class="navbar navbar-expand-sm navbar-light bg-skyBgBlue" id="nav">
+	<style>
+		:root{
+			--themeColor: #a39487;
+			--secondColor : #57483f;
+		}
+		.navbar{
+			background-color: var(--themeColor);
+		}
+		.navbar-nav .nav-item{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+		.navbar-nav .nav-div{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			color: white;
+		}
+		.navbar-nav .nav-item:hover{
+			background-color: var(--secondColor);
+		}
+		.navbar-nav .nav-item .nav-link{
+			color: white!important ;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+	</style>
+	<nav class="navbar navbar-expand-sm navbar-light shadow p-3" id="nav">
 		<div class="container-fluid">
-			<a class="navbar-brand fw-bold d-inline-flex" href="../../index.html">
-				<img src="https://tony13382.github.io/favicon.png" style="width: 30px; height: 30px;">
-				<p class="m-0 ps-2">呂亮進的作品</p>
+			<a class="navbar-brand fw-bold px-2 text-white" href="../../index.html">
+				<i class="bi bi-arrow-left"></i>
 			</a>
-			<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<i class="bi bi-list-nested"></i>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarContentLinks">
 				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="../../index.html">關於呂亮進</a>
+						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
 					</li>
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="../../pages/classes/index.html">知識交流計畫</a>
+						<a class="nav-link" href="../cowork/index.html">商業合作</a>
+					</li>
+					<li class="nav-div rounded-pill">
+						<a class="nav-link text-white-50">｜</a>
 					</li>
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">Linkedin</a>
+						<a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
 					</li>
 				</ul>
 			</div>
@@ -60,7 +117,7 @@
 	</nav>
 	<div class="fixed-bottom d-flex justify-content-end">
 		<a class="text-decoration-none" onclick="toTop()">
-			<div class="rounded-circle  bg-black d-inline-flex shadow-lg mb-3 me-3 rounded toTopBtn">
+			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
 				</div>
@@ -82,10 +139,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="container" style="margin-top: -2rem;">
-			<div class="row">
-				<div class="col-12">
-					<div class="card shadow p-3 mb-5 bg-body rounded">
+		<div class="container" style="margin-top: -80px; min-height: 100vh;">
+			<div class="row position-relative d-flex align-items-start">
+				<div class="col-lg-4 col-12 py-4 sticky-lg-top ">
+					<div class="card shadow p-3 bg-body rounded">
 						<div class="card-body">
 							<span class="badge bg-secondary rounded-pill mb-2 fs-5">專案關閉</span>
 							<p class="mb-2 notoFont msf-info-s">
@@ -94,102 +151,101 @@
 							<div class="fs-5 text-black">
 								<span class="badge bg-light text-dark rounded-pill">#程式開發</span>
 							</div>
-							<div class="d-grid gap-2 mt-2">
+							<div class="d-grid gap-2 mt-4">
 								<a target="_blank" href="https://tony13382.github.io/2020_final_no_drink_no_drunk_show/pages/products.html"
-									class="btn btn-outline-primary ms-fixColor-primary"
+									class="btn btn-theme ms-fixColor-primary"
 									type="button">專案網址<i class="bi bi-arrow-up-right mt-n1"></i></a>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="bg-skyBgBlue py-4">
-		<div class="container py-4">
-			<div class="row">
-				<h2 class="notoFont">我在其中負責</h2>
-				<p class="notoFont fs-5 m-0">
-					前端開發設計
-				</p>
-				<div class="">
-					<a href="https://github.com/ziyihong/ziyihong.github.io" type="button" target="_blank"
-						class="btn btn-outline-dark mt-2 rounded-pill"><i class="fab fa-github me-1"></i></i>GitHub 代碼</a>
-				</div>
-				<div class="notoFont mt-2">
-					<div class="card d-inline-flex me-1 mt-1">
-						<div class="card-body d-inline-flex align-items-center">
-							<div class="d-inline-block">
-								<div style="width: 64px; height: 64px;" class="">
-									<img src="../../assets/imgs/appIcons/figma.png" class="img-fluid p-1" alt="Figma Icon">
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="notoFont fs-4">我在其中負責</h2>
+							<hr>
+							<p class="notoFont fs-5 m-0">
+								前端開發設計
+							</p>
+							<div class="d-grid">
+								<a href="https://github.com/ziyihong/ziyihong.github.io" type="button" target="_blank"
+									class="btn btn-outline-dark mt-2 rounded-pill"><i class="fab fa-github me-1"></i></i>GitHub 代碼</a>
+							</div>
+							<div class="notoFont mt-4">
+								<div class="card  m-2">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../../assets/imgs/appIcons/figma.png" class="img-fluid p-1" alt="Figma Icon">
+											</div>
+										</div>
+										<div class="ps-2 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">Figma</p>
+											<p class="p-0 m-0">UI Design</p>
+										</div>
+									</div>
+								</div>
+								<div class="card  m-2">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../../assets/imgs/appIcons/html.png" class="img-fluid p-1" alt="Figma Icon">
+											</div>
+										</div>
+										<div class="ps-2 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">HTML5 & CSS3</p>
+											<p class="p-0 m-0">前端</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="ps-2 d-inline-flex flex-column">
-								<p class="p-0 mb-2 fw-bold">Figma</p>
-								<p class="p-0 m-0">UI Design</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-12 py-4">
+					<div class="card shadow">
+						<div class="card-body">
+							<h4>系統介面</h4>
+							<hr>
+							<div class="col-12 mb-2">
+								<img src="../../assets/imgs/noDrinkNoDrunk/cover.png" class="img-fluid p-1" alt="Figma Icon">
+								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>首頁</p>
+							</div>
+							<div class="col-12 mb-2">
+								<img src="../../assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid p-1" alt="Figma Icon">
+								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>商品頁面</p>
+							</div>
+							<div class="col-12 mb-2">
+								<img src="../../assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid p-1" alt="Figma Icon">
+								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>訂單頁面</p>
+							</div>
+							<div class="col-12 mb-2">
+								<img src="../../assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid p-1" alt="Figma Icon">
+								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>紅酒小知識</p>
 							</div>
 						</div>
 					</div>
-					<div class="card d-inline-flex me-1 mt-1">
-						<div class="card-body d-inline-flex align-items-center">
-							<div class="d-inline-block">
-								<div style="width: 64px; height: 64px;" class="">
-									<img src="../../assets/imgs/appIcons/html.png" class="img-fluid p-1" alt="Figma Icon">
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h4>合作後版本</h4>
+							<hr>
+							<div class="col-12">
+								<div class="card mt-0">
+									<div class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+										<i class="bi bi-github fs-4 ps-2 pb-1"></i>
+										<p class="m-0 ps-2 flex-fill">JSP 版本</p>
+										<a href="https://github.com/tony13382/2020_no_drink_no_drunk_withJSP" type="button" target="_blank"
+											class="btn btn-link ms-1 btn-lg">
+											<i class="bi bi-box-arrow-up-right"></i>
+										</a>
+									</div>
 								</div>
 							</div>
-							<div class="ps-2 d-inline-flex flex-column">
-								<p class="p-0 mb-2 fw-bold">HTML5 & CSS3</p>
-								<p class="p-0 m-0">前端</p>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="py-4">
-		<div class="container">
-			<div class="row notoFont">
-				<div class="col-12 mb-2">
-					<img src="../../assets/imgs/noDrinkNoDrunk/cover.png" class="img-fluid p-1" alt="Figma Icon">
-					<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>首頁</p>
-				</div>
-				<div class="col-12 mb-2">
-					<img src="../../assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid p-1" alt="Figma Icon">
-					<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>商品頁面</p>
-				</div>
-				<div class="col-12 mb-2">
-					<img src="../../assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid p-1" alt="Figma Icon">
-					<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>訂單頁面</p>
-				</div>
-				<div class="col-12 mb-2">
-					<img src="../../assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid p-1" alt="Figma Icon">
-					<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>紅酒小知識</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 pt-4 pb-2">
-					<p class="notoFont fs-1 m-0">
-						合作後版本
-					</p>
-				</div>
-				<div class="col-12">
-					<div class="card mt-0">
-						<div class="card-body border-primary d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-							<i class="bi bi-github fs-4 ps-2 pb-1"></i>
-							<p class="m-0 ps-2 flex-fill">JSP 版本</p>
-							<a href="https://github.com/tony13382/2020_no_drink_no_drunk_withJSP" type="button" target="_blank"
-								class="btn btn-link ms-1 btn-lg">
-								<i class="bi bi-box-arrow-up-right"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<footer class="bg-skyHeavyBlue text-light">
+	<footer class="bg-theme text-light">
         <div class="container py-4">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
@@ -197,24 +253,24 @@
                         連結 Links
                     </h4>
                     <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         學習資源庫
                     </a><br>
                     <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         旗下知識帳號
                     </a><br>
                     
                     <a href="../../pages/cowork/index.html" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         合作表單
                     </a><br>
                     <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         Curator
                     </a><br>
-                    <a href="pages/classes/index.html"
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                    <a href="http://tony13382.github.io/pages/classes/index.html"
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         知識交流表單
                     </a> 
                 </div>
@@ -223,15 +279,15 @@
                         贊助 Donate
                     </h4>
                     <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         Buy Me A Coffee
                     </a><br>
                     <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         贊助系統（Portaly）
                     </a><br>
                     <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
                         可收款銀行（請預先通知本人）
                     </a>
                 </div>
@@ -240,19 +296,19 @@
                         聯絡 Connections
                     </h4>
                     <div class="d-flex" style="font-size: 1.2rem;">
-                        <a type="button" class="me-2 text-light"
+                        <a type="button" class="me-2 footer-link"
                             href="mailto://liangchinlu@gmail.com" target="_blank">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://www.facebook.com/tony13382/" target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="mx-2 footer-link"
                             href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
                             <i class="bi bi-info-square-fill"></i>
                         </a>

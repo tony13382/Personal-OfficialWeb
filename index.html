@@ -42,6 +42,124 @@
 </head>
 
 <body>
+    <style>
+		:root{
+			--themeColor: #465375;
+			--secondColor : #141929;
+		}
+		.navbar{
+			background-color: var(--themeColor);
+		}
+		.navbar-nav .nav-item{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+		.navbar-nav .nav-div{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			color: white;
+		}
+		.navbar-nav .nav-item:hover{
+			background-color: var(--secondColor);
+		}
+		.navbar-nav .nav-item .nav-link{
+			color: white!important ;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+	</style>
+    <nav class="navbar navbar-expand-sm navbar-light shadow p-3" id="nav">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center text-white" href="#">
+                <img src="favicon.png" class="me-3" alt="Icon" width="24px" height="24px">
+                呂亮進
+            </a>
+			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="bi bi-list-nested"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarContentLinks">
+				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+					<li class="nav-item rounded-pill d-none">
+						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" href="../cowork/index.html">商業合作</a>
+					</li>
+					<li class="nav-div rounded-pill">
+						<a class="nav-link text-white-50">｜</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+    <div class="fixed-bottom d-flex justify-content-end">
+		<a class="text-decoration-none" onclick="toTop()">
+			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
+				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
+					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
+				</div>
+			</div>
+		</a>
+	</div>
     <div style="padding-bottom: 80px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
         <div class="" style="padding: 5rem 2rem;">
             <div class="container">
@@ -751,7 +869,7 @@
                     <a href="pages/projects/songlaMusicCreater.html" class="text-decoration-none">
                         <div class="card hoverShadow h-100">
                             <img src="assets/imgs/songla/coverLoading.png" class="card-img-top lozad" alt="..."
-                                data-src="assets/imgs/songla/songlaCover.png">
+                                data-src="assets/imgs/songla/songlaInpageCover.png">
                             <div class="card-body">
                                 <h5 class="card-title text-dark">
                                     Songla 音樂智慧創作小幫手
@@ -1055,23 +1173,23 @@
                         連結 Links
                     </h4>
                     <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         學習資源庫
                     </a><br>
                     <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         旗下知識帳號
                     </a><br>
                     <a href="pages/cowork/index.html" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         合作表單
                     </a><br>
                     <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         Curator
                     </a><br>
-                    <a href="pages/classes/index.html"
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                    <a href="http://tony13382.github.iopages/classes/index.html"
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         知識交流表單
                     </a> 
                 </div>
@@ -1080,15 +1198,15 @@
                         贊助 Donate
                     </h4>
                     <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         Buy Me A Coffee
                     </a><br>
                     <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         贊助系統（Portaly）
                     </a><br>
                     <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link text-decoration-none">
                         可收款銀行（請預先通知本人）
                     </a>
                 </div>
@@ -1097,19 +1215,19 @@
                         聯絡 Connections
                     </h4>
                     <div class="d-flex" style="font-size: 1.2rem;">
-                        <a type="button" class="me-2 text-light"
+                        <a type="button" class="footer-link me-2 text-light"
                             href="mailto://liangchinlu@gmail.com" target="_blank">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://www.facebook.com/tony13382/" target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
                             <i class="bi bi-info-square-fill"></i>
                         </a>
@@ -1130,6 +1248,7 @@
         </script>-->
     <script src="assets/script/bootstrap.bundle.min.js"></script>
     <script src="/node_modules/bootstrap/js/src/popover.js"></script>
+	<script src="assets/script/scroll.js"></script>
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {

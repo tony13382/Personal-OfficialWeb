@@ -31,43 +31,98 @@
 </head>
 
 <body class="">
-    <nav class="navbar navbar-expand-sm navbar-light bg-skyBgBlue" id="nav">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold d-inline-flex" href="../../index.html">
-                <img src="https://tony13382.github.io/favicon.png" style="width: 30px; height: 30px;">
-                <p class="m-0 ps-2">呂亮進的作品</p>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="bi bi-list-nested"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
-                    <li class="nav-item rounded-pill">
-                        <a class="nav-link" aria-current="page" href="../../index.html">關於呂亮進</a>
-                    </li>
-                    <li class="nav-item rounded-pill">
-                        <a class="nav-link" aria-current="page" href="../../pages/classes/index.html">知識交流計畫</a>
-                    </li>
-                    <li class="nav-item rounded-pill">
-                        <a class="nav-link" target="_blank"
-                            href="https://www.linkedin.com/in/liang-chin-lu/">Linkedin</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="fixed-bottom d-flex justify-content-end">
-        <a class="text-decoration-none" onclick="toTop()">
-            <div class="rounded-circle  bg-black d-inline-flex shadow-lg mb-3 me-3 rounded toTopBtn">
-                <div class="fs-2 d-flex align-items-center justify-content-center text-white"
-                    style="width: 48px; height: 48px;">
-                    <i class="fas fa-angle-up text-decoration-none d-flex"></i>
-                </div>
-            </div>
-        </a>
-    </div>
+    <style>
+		:root{
+			--themeColor: #8b9599;
+			--secondColor : #3e474d;
+		}
+		.navbar{
+			background-color: var(--themeColor);
+		}
+		.navbar-nav .nav-item{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+		.navbar-nav .nav-div{
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			color: white;
+		}
+		.navbar-nav .nav-item:hover{
+			background-color: var(--secondColor);
+		}
+		.navbar-nav .nav-item .nav-link{
+			color: white!important ;
+		}
+		.bg-theme{
+			background-color: var(--themeColor);
+		}
+		.btn-theme{
+			color: var(--themeColor);
+    		border-color: var(--themeColor);
+		}
+		.btn-theme:hover{
+			color: white;
+    		background-color: var(--themeColor);
+		}
+		.footer-link{
+			color: rgba(255, 255, 255, 0.6) !important;
+		}
+		.footer-link:hover{
+			color: white !important;
+			background-color: var(--secondColor);
+			font-weight: bold;
+			margin-left: 0.5rem;
+			padding: 0.25rem 0.5rem;
+			border-radius: 999px;
+		}
+		.border-theme{
+			border-color: var(--themeColor) !important;
+		}
+	</style>
+	<nav class="navbar navbar-expand-sm navbar-light shadow p-3" id="nav">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold px-2 text-white" href="../../index.html">
+				<i class="bi bi-arrow-left"></i>
+			</a>
+			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="bi bi-list-nested"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarContentLinks">
+				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" href="../cowork/index.html">商業合作</a>
+					</li>
+					<li class="nav-div rounded-pill">
+						<a class="nav-link text-white-50">｜</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="fixed-bottom d-flex justify-content-end">
+		<a class="text-decoration-none" onclick="toTop()">
+			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
+				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
+					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
+				</div>
+			</div>
+		</a>
+	</div>
     <div>
         <div class="" style="width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
 			0.7)),url(../../assets/imgs/techlife/cover.webp); background-repeat:no-repeat;background-size:cover;
@@ -82,10 +137,10 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="margin-top: -2rem;">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card shadow p-3 mb-5 bg-body rounded">
+        <div class="container" style="margin-top: -80px; min-height: 100vh;">
+			<div class="row position-relative d-flex align-items-start">
+				<div class="col-lg-4 col-12 py-4 sticky-lg-top ">
+					<div class="card shadow p-3 bg-body rounded">
                         <div class="card-body">
                             <span class="badge bg-secondary rounded-pill mb-2 fs-5">專案關閉</span>
                             <p class="mb-2 notoFont msf-info-s">
@@ -95,165 +150,141 @@
                                 <span class="badge bg-light text-dark rounded-pill">#PowerPoint 設計</span>
                                 <span class="badge bg-light text-dark rounded-pill">#教案設計</span>
                             </div>
-                            <div class="d-grid gap-2 mt-2">
+                            <div class="d-grid gap-2 mt-4">
                                 <a target="_blank" href="https://github.com/tony13382/2020SA_VMI"
-                                    class="btn btn-outline-primary ms-fixColor-primary" type="button">專案網址<i
+                                    class="btn btn-theme ms-fixColor-primary" type="button">專案網址<i
                                         class="bi bi-arrow-up-right mt-n1"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 justify-content-center d-flex">
-                <img src="../../assets/imgs/techlife/cover.webp" class="img-fluid rounded mb-2" alt="...">
-            </div>
-            <div class="col-12 notoFont fs-4">
-                方案名稱：TechLife 讓科技充滿生活<br>團隊名稱：中原資管總動員<br>服務日期：2021年6月11-12日<br>預計服務地點及對象：台東縣延平鄉桃源國小15-20位小朋友
-            </div>
-            <div class="col-12">
-                <hr>
-            </div>
-        </div>
-    </div>
-    <div class="container my-4">
-        <div class="row notoFont">
-            <div class="col-12">
-                <h2 class="notoFont">
-                    專案成就
-                </h2>
-            </div>
-        </div>
-        <div class="row notoFont">
-            <div class="col-12 col-md-6 p-2">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="m-0 fs-4">1092中原大學資管系資訊管理競賽</p>
-                        <p class="m-0 pt-1 fw-bold fs-2 text-primary">第一名</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bg-skyBgBlue py-4">
-        <div class="container py-4">
-            <div class="row">
-                <h2 class="notoFont">團隊專案</h2>
-                <p class="notoFont fs-5 m-0">
-                    課程規劃、設計講師
-                </p>
-                <div class="notoFont mt-2">
-                    <div class="card d-inline-flex me-1 mt-1">
-                        <div class="card-body d-inline-flex align-items-center">
-                            <div class="d-inline-block">
-                                <div style="width: 64px; height: 64px;" class="">
-                                    <img src="../../assets/imgs/appIcons/photopea.png" class="img-fluid p-1"
-                                        alt="photopea Icon">
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">課程規劃、設計講師</h2>
+							<div class="notoFont mt-3">
+                                <div class="card my-2">
+                                    <div class="card-body d-inline-flex align-items-center">
+                                        <div class="d-inline-block">
+                                            <div style="width: 64px; height: 64px;" class="">
+                                                <img src="../../assets/imgs/appIcons/photopea.png" class="img-fluid p-1"
+                                                    alt="photopea Icon">
+                                            </div>
+                                        </div>
+                                        <div class="ps-2 d-inline-flex flex-column">
+                                            <p class="p-0 mb-2 fw-bold">Photopea</p>
+                                            <p class="p-0 m-0">修圖</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card my-2">
+                                    <div class="card-body d-inline-flex align-items-center">
+                                        <div class="d-inline-block">
+                                            <div style="width: 64px; height: 64px;" class="">
+                                                <img src="../../assets/imgs/appIcons/powerpoint.png" class="img-fluid p-1" alt="photopea Icon">
+                                            </div>
+                                        </div>
+                                        <div class="ps-2 d-inline-flex flex-column">
+                                            <p class="p-0 mb-2 fw-bold">Powerpoint</p>
+                                            <p class="p-0 m-0">教案設計</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="ps-2 d-inline-flex flex-column">
-                                <p class="p-0 mb-2 fw-bold">Photopea</p>
-                                <p class="p-0 m-0">修圖</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-12 py-4">
+					<div class="card shadow">
+						<div class="card-body">
+							<img src="../../assets/imgs/techlife/cover.webp" class="img-fluid rounded mb-2" alt="...">
+                            <div class="col-12 notoFont">
+                                方案名稱：TechLife 讓科技充滿生活<br>團隊名稱：中原資管總動員<br>服務日期：2021年6月11-12日<br>預計服務地點及對象：台東縣延平鄉桃源國小15-20位小朋友
                             </div>
-                        </div>
-                    </div>
-                    <div class="card d-inline-flex me-1 mt-1">
-                        <div class="card-body d-inline-flex align-items-center">
-                            <div class="d-inline-block">
-                                <div style="width: 64px; height: 64px;" class="">
-                                    <img src="../../assets/imgs/appIcons/powerpoint.png" class="img-fluid p-1" alt="photopea Icon">
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">專案成就</h2>
+							<div class="row notoFont">
+                                <div class="col-12 col-md-6 p-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="m-0 fs-4">1092中原大學資管系資訊管理競賽</p>
+                                            <p class="m-0 pt-1 fw-bold fs-2 text-primary">第一名</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="ps-2 d-inline-flex flex-column">
-                                <p class="p-0 mb-2 fw-bold">Powerpoint</p>
-                                <p class="p-0 m-0">教案設計</p>
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+                            <h2 class="notoFont fs-4">教案影片</h2>
+                            <hr>
+                            <div class="col-12 p-2">
+                                <div class="ratio ratio-16x9 rounded overflow-hidden">
+                                    <iframe src="https://www.youtube.com/embed/mOWnXJHIqIY" title="YouTube video player"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <div class="col-12 p-2">
+                                <div class="ratio ratio-16x9 rounded overflow-hidden">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/R_vsL1NFWN8" title="YouTube video player"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+						</div>
+					</div>
+                    <div class="card shadow mt-4">
+						<div class="card-body">
+                            <h2 class="notoFont fs-4">教案文件</h2>
+                            <hr>
+                            <div class="col-12">
+                                <div class="card mt-2">
+                                    <div
+                                        class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+                                        <i class="bi bi-cloud-download-fill fs-4 ps-2 pb-1"></i>
+                                        <p class="m-0 ps-2 flex-fill">教案文件</p>
+                                        <a href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing" type="button" target="_blank"
+                                            class="btn btn-link ms-1 btn-lg">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card mt-2">
+                                    <div
+                                        class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+                                        <i class="fas fa-file-powerpoint fs-4 ps-2 pe-1"></i>
+                                        <p class="m-0 ps-2 flex-fill">[PPT 教案] 圖像創作不設限</p>
+                                        <a href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true" type="button" target="_blank"
+                                            class="btn btn-link ms-1 btn-lg">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card mt-2">
+                                    <div class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+                                        <i class="fas fa-file-powerpoint fs-4 ps-2 pe-1"></i>
+                                        <p class="m-0 ps-2 flex-fill">[PPT 教案] 快樂農場​</p>
+                                        <a href="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true"
+                                            type="button" target="_blank" class="btn btn-link ms-1 btn-lg">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
-    <div style="background-color: #C3CCCD;">
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-12 mt-2">
-                    <p class="m-0 fs-1 text-center notoFont">
-                        教案影片
-                    </p>
-                </div>
-                <div class="col-12 col-lg-6 p-2">
-                    <div class="ratio ratio-16x9 rounded overflow-hidden">
-                        <iframe src="https://www.youtube.com/embed/mOWnXJHIqIY" title="YouTube video player"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 p-2">
-                    <div class="ratio ratio-16x9 rounded overflow-hidden">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/R_vsL1NFWN8" title="YouTube video player"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="py-4">
-        <div class="container pb-5 mb-5">
-            <div class="row">
-                <div class="col-12 mt-4">
-                    <p class="m-0 fs-1 text-center notoFont">
-                        教案文件
-                    </p>
-                </div>
-                <div class="col-12">
-                    <div class="card mt-2">
-                        <div
-                            class="card-body border-primary d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-                            <i class="bi bi-cloud-download-fill fs-4 ps-2 pb-1"></i>
-                            <p class="m-0 ps-2 flex-fill">教案文件</p>
-                            <a href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing" type="button" target="_blank"
-                                class="btn btn-link ms-1 btn-lg">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card mt-2">
-                        <div
-                            class="card-body border-primary d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-                            <i class="fas fa-file-powerpoint fs-4 ps-2 pe-1"></i>
-                            <p class="m-0 ps-2 flex-fill">[PPT 教案] 圖像創作不設限</p>
-                            <a href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true" type="button" target="_blank"
-                                class="btn btn-link ms-1 btn-lg">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card mt-2">
-                        <div class="card-body border-primary d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-                            <i class="fas fa-file-powerpoint fs-4 ps-2 pe-1"></i>
-                            <p class="m-0 ps-2 flex-fill">[PPT 教案] 快樂農場​</p>
-                            <a href="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true"
-                                type="button" target="_blank" class="btn btn-link ms-1 btn-lg">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <footer class="bg-skyHeavyBlue text-light">
+    <footer class="bg-theme text-light">
         <div class="container py-4">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
@@ -261,24 +292,24 @@
                         連結 Links
                     </h4>
                     <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         學習資源庫
                     </a><br>
                     <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         旗下知識帳號
                     </a><br>
                     
                     <a href="../../pages/cowork/index.html" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         合作表單
                     </a><br>
                     <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         Curator
                     </a><br>
-                    <a href="pages/classes/index.html"
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                    <a href="http://tony13382.github.iopages/classes/index.html"
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         知識交流表單
                     </a>   
                 </div>
@@ -287,15 +318,15 @@
                         贊助 Donate
                     </h4>
                     <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         Buy Me A Coffee
                     </a><br>
                     <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         贊助系統（Portaly）
                     </a><br>
                     <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
-                        rel="noopener noreferrer" class="text-white-50 text-decoration-none">
+                        rel="noopener noreferrer" class="footer-link  text-decoration-none">
                         可收款銀行（請預先通知本人）
                     </a>
                 </div>
@@ -304,19 +335,19 @@
                         聯絡 Connections
                     </h4>
                     <div class="d-flex" style="font-size: 1.2rem;">
-                        <a type="button" class="me-2 text-light"
+                        <a type="button" class="footer-link me-2 text-light"
                             href="mailto://liangchinlu@gmail.com" target="_blank">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://www.facebook.com/tony13382/" target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a type="button" class="mx-2 text-light"
+                        <a type="button" class="footer-link mx-2 text-light"
                             href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
                             <i class="bi bi-info-square-fill"></i>
                         </a>
