@@ -114,8 +114,8 @@
 			</div>
 		</div>
 	</nav>
-	<div class="fixed-bottom d-flex justify-content-end">
-		<a class="text-decoration-none" onclick="toTop()">
+	<div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
+		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
 			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
@@ -123,21 +123,22 @@
 			</div>
 		</a>
 	</div>
-<script src="../../assets/script/scroll.js"></script>
+	<script src="../../assets/script/scroll.js"></script>
     <div>
-        <div class="" style="width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
+        <div class=""
+			style="padding: 80px 0px;width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
 			0.7)),url(../../assets/imgs/techlife/cover.webp); background-repeat:no-repeat;background-size:cover;
 			background-attachment: fixed;">
-            <div class="d-flex align-items-center pb-2"
-                style="backdrop-filter: blur(1px); width: 100%;min-height: 240px;">
-                <div class="container">
-                    <div class="col-12">
-                        <h1 class="text-center fw-bold text-white notoFont">TechLife 讓科技充滿生活</h1>
-                        <p class="text-center fw-bold text-white m-0 notoFont">2020/10</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+			<div class="d-flex align-items-center pb-2"
+				style="backdrop-filter: blur(1px); width: 100%;min-height: 240px;">
+				<div class="container">
+					<div class="col-12">
+						<h1 class="text-center fw-bold text-white notoFont">TechLife 讓科技充滿生活</h1>
+						<p class="text-center fw-bold text-white m-0 notoFont">2020/10</p>
+					</div>
+				</div>
+			</div>
+		</div>
         <div class="container" style="margin-top: -160px; min-height: 100vh;">
 			<div class="row position-relative d-flex align-items-start">
 				<div class="col-lg-4 col-12 pb-4 sticky-lg-top " style="padding-top: 80px;">
@@ -152,7 +153,7 @@
                                 <span class="badge bg-light text-dark rounded-pill">#教案設計</span>
                             </div>
                             <div class="d-grid gap-2 mt-4">
-                                <a target="_blank" href="https://github.com/tony13382/2020SA_VMI"
+                                <a target="_blank" href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view"
                                     class="btn btn-theme ms-fixColor-primary" type="button">專案網址<i
                                         class="bi bi-arrow-up-right mt-n1"></i></a>
                             </div>
@@ -207,7 +208,7 @@
 						<div class="card-body">
 							<h2 class="fs-4 text-SkyHeavyBlue">專案成就</h2>
 							<div class="row notoFont">
-                                <div class="col-12 col-md-6 p-2">
+                                <div class="col-12 p-2">
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="m-0 fs-4">1092中原大學資管系資訊管理競賽</p>
@@ -222,14 +223,15 @@
 						<div class="card-body">
                             <h2 class="notoFont fs-4">教案影片</h2>
                             <hr>
-                            <div class="col-12 p-2">
+                            <div class="col-12">
                                 <div class="ratio ratio-16x9 rounded overflow-hidden">
                                     <iframe src="https://www.youtube.com/embed/mOWnXJHIqIY" title="YouTube video player"
                                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>
-                            <div class="col-12 p-2">
+                            <hr>
+                            <div class="col-12">
                                 <div class="ratio ratio-16x9 rounded overflow-hidden">
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/R_vsL1NFWN8" title="YouTube video player"
                                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

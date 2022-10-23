@@ -115,8 +115,8 @@
 			</div>
 		</div>
 	</nav>
-	<div class="fixed-bottom d-flex justify-content-end">
-		<a class="text-decoration-none" onclick="toTop()">
+	<div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
+		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
 			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
@@ -124,7 +124,7 @@
 			</div>
 		</a>
 	</div>
-<script src="../../assets/script/scroll.js"></script>
+	<script src="../../assets/script/scroll.js"></script>
 	<div>
 		<div class=""
 			style="padding: 80px 0px;width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
@@ -161,13 +161,13 @@
 					</div>
 					<div class="card shadow mt-4">
 						<div class="card-body">
-							<h2 class="notoFont fs-4">我在其中負責</h2>
+							<h2 class="notoFont fs-4">網站設計師</h2>
 							<hr>
-							<p class="notoFont fs-5 m-0">
-								前端開發設計
+							<p class="notoFont m-0">
+								網站介面設計、前端開發、RWD 實作
 							</p>
-							<div class="d-grid">
-								<a href="https://github.com/ziyihong/ziyihong.github.io" type="button" target="_blank"
+							<div class="d-grid mt-3">
+								<a href="https://github.com/tony13382/2020_final_no_drink_no_drunk_show" type="button" target="_blank"
 									class="btn btn-outline-dark mt-2 rounded-pill"><i class="fab fa-github me-1"></i></i>GitHub 代碼</a>
 							</div>
 							<div class="notoFont mt-4">
@@ -208,20 +208,23 @@
 							<h4>系統介面</h4>
 							<hr>
 							<div class="col-12 mb-2">
-								<img src="../../assets/imgs/noDrinkNoDrunk/cover.png" class="img-fluid p-1" alt="Figma Icon">
-								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>首頁</p>
+								<img src="../../assets/imgs/noDrinkNoDrunk/cover.png" class="img-fluid rounded" alt="Figma Icon">
+								<p class="mb-0 mt-2 text-center"><i class="fas fa-caret-up me-1"></i>首頁</p>
 							</div>
+							<hr>
 							<div class="col-12 mb-2">
-								<img src="../../assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid p-1" alt="Figma Icon">
-								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>商品頁面</p>
+								<img src="../../assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid rounded" alt="Figma Icon">
+								<p class="mb-0 mt-2 text-center"><i class="fas fa-caret-up me-1"></i>商品頁面</p>
 							</div>
+							<hr>
 							<div class="col-12 mb-2">
-								<img src="../../assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid p-1" alt="Figma Icon">
-								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>訂單頁面</p>
+								<img src="../../assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid rounded" alt="Figma Icon">
+								<p class="mb-0 mt-2 text-center"><i class="fas fa-caret-up me-1"></i>訂單頁面</p>
 							</div>
+							<hr>
 							<div class="col-12 mb-2">
-								<img src="../../assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid p-1" alt="Figma Icon">
-								<p class="m-0 text-center"><i class="fas fa-caret-up me-1"></i>紅酒小知識</p>
+								<img src="../../assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid rounded" alt="Figma Icon">
+								<p class="mb-0 mt-2 text-center"><i class="fas fa-caret-up me-1"></i>紅酒小知識</p>
 							</div>
 						</div>
 					</div>
@@ -233,7 +236,7 @@
 								<div class="card mt-0">
 									<div class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
 										<i class="bi bi-github fs-4 ps-2 pb-1"></i>
-										<p class="m-0 ps-2 flex-fill">JSP 版本</p>
+										<p class="m-0 ps-2 flex-fill">JSP 版本（包含後端處理核心）</p>
 										<a href="https://github.com/tony13382/2020_no_drink_no_drunk_withJSP" type="button" target="_blank"
 											class="btn btn-link ms-1 btn-lg">
 											<i class="bi bi-box-arrow-up-right"></i>

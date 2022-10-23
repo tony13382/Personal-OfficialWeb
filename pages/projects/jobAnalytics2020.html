@@ -115,8 +115,8 @@
 			</div>
 		</div>
 	</nav>
-	<div class="fixed-bottom d-flex justify-content-end">
-		<a class="text-decoration-none" onclick="toTop()">
+	<div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
+		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
 			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
@@ -124,7 +124,7 @@
 			</div>
 		</a>
 	</div>
-<script src="../../assets/script/scroll.js"></script>
+	<script src="../../assets/script/scroll.js"></script>
 	<div>
 		<div class=""
 			style="padding: 80px 0px;width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
@@ -205,6 +205,34 @@
 							<img src="../../assets/imgs/jobAnalytics2020/cover.webp" class="img-fluid rounded mb-2" alt="...">
 						</div>
 					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h4>系統資訊</h4>
+							<hr>
+							<div class="col-12">
+								<div class="card mt-2">
+									<div
+										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
+										<i class="fas fa-link fs-4 ps-2"></i>
+										<p class="m-0 ps-2 flex-fill">網站網址</p>
+										<a href="https://datastudio.google.com/s/rcRR2G3x4VI" type="button" target="_blank"
+											class="btn btn-link ms-1 btn-lg">
+											<i class="bi bi-box-arrow-up-right"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 mt-3">
+								<p class="my-2">
+									數據來源：政府資料開放平台中的受雇員工人數、每人每月薪資，總共有17個獨立工作表，是依照職業類別區分，包含醫療保健業、金融與保險業等，都包含在我們這次分析範圍內。
+								</p>
+								<hr>
+								<p class="my-2">
+									資料的欄位：年度、職類別、行業別、受僱員工人數、總薪資、經常性薪資、非經常性薪資，總共 7 個欄位。而這次總資料筆數達到了 13,644 筆
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row mb-4">
@@ -221,25 +249,6 @@
 								<div class="ratio ratio-4x3">
 									<iframe src="https://datastudio.google.com/embed/reporting/48a45ac6-cf4f-4016-aed5-7680e097c616/page/JfGqC" frameborder="0" style="border:0" allowfullscreen></iframe>
 								</div>
-							</div>
-							<div class="col-12">
-								<div class="card mt-2">
-									<div
-										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-										<i class="fas fa-link fs-4 ps-2"></i>
-										<p class="m-0 ps-2 flex-fill">網站網址</p>
-										<a href="https://datastudio.google.com/s/rcRR2G3x4VI" type="button" target="_blank"
-											class="btn btn-link ms-1 btn-lg">
-											<i class="bi bi-box-arrow-up-right"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-12">
-								<p class="my-2">
-									數據來源：政府資料開放平台中的受雇員工人數、每人每月薪資，總共有17個獨立工作表，是依照職業類別區分，包含醫療保健業、金融與保險業等，都包含在我們這次分析範圍內。
-									<br>資料的欄位，有年度、職類別、行業別、受僱員工人數、總薪資、經常性薪資、非經常性薪資，總共7個欄位。而這次總資料筆數達到了一萬三千六百四十四筆，
-								</p>
 							</div>
 						</div>
 					</div>

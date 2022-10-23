@@ -115,8 +115,8 @@
 			</div>
 		</div>
 	</nav>
-	<div class="fixed-bottom d-flex justify-content-end">
-		<a class="text-decoration-none" onclick="toTop()">
+	<div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
+		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
 			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
 				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
 					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
@@ -124,7 +124,7 @@
 			</div>
 		</a>
 	</div>
-<script src="../../assets/script/scroll.js"></script>
+	<script src="../../assets/script/scroll.js"></script>
 	<div>
 		<div class=""
 			style="padding: 80px 0px;width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
@@ -163,20 +163,20 @@
 					</div>
 					<div class="card shadow mt-4">
 						<div class="card-body">
-							<h2 class="fs-4 text-SkyHeavyBlue">我在其中負責</h2>
+							<h2 class="fs-4 text-SkyHeavyBlue">產品設計師</h2>
 							<hr>
-							<p class="notoFont fs-5 m-0">
+							<p class="notoFont m-0">
 								產品介面設計、行銷企劃
 							</p>
-							<div class="notoFont mt-2">
+							<div class="notoFont mt-3">
 								<div class="card my-2">
 									<div class="card-body d-inline-flex align-items-center">
 										<div class="d-inline-block">
-											<div style="width: 64px; height: 64px;" class="">
+											<div style="width: 64px; height: 64px;" class="p-1">
 												<img src="../../assets/imgs/appIcons//figma.png" class="img-fluid" alt="Figma Icon">
 											</div>
 										</div>
-										<div class="ps-2 d-inline-flex flex-column">
+										<div class="ps-3 d-inline-flex flex-column">
 											<p class="p-0 mb-2 fw-bold">Figma</p>
 											<p class="p-0 m-0">UI Design</p>
 										</div>
@@ -185,11 +185,11 @@
 								<div class="card my-2">
 									<div class="card-body d-inline-flex align-items-center">
 										<div class="d-inline-block">
-											<div style="width: 64px; height: 64px;" class="">
+											<div style="width: 64px; height: 64px;" class="p-1">
 												<img src="../../assets/imgs/appIcons/word.png" class="img-fluid" alt="firebase Icon">
 											</div>
 										</div>
-										<div class="ps-2 d-inline-flex flex-column">
+										<div class="ps-3 d-inline-flex flex-column">
 											<p class="p-0 mb-2 fw-bold">Word</p>
 											<p class="p-0 m-0 text-gray">企劃書撰寫</p>
 										</div>
@@ -228,15 +228,11 @@
 					<div class="card shadow">
 						<div class="card-body">
 							<img src="../../assets/imgs/foodome/cover.webp" class="img-fluid rounded mb-2" alt="...">
-						</div>
-					</div>
-					<div class="card shadow mt-4">
-						<div class="card-body">
 							<p class="notoFont lh-lg">
-								Foodome是一款提供異國食材與食譜的線上平台，因此在首頁設計時，我是仿造Uber
-								Eats的首頁模式，提供精美的商品煮完的實品照，讓消費者選擇感興趣的實品，點入後會提供食材清單，消費者可以在平台上訂購全部食譜上的材料，又或者觀察家中的食材，並選購缺少食材的部分，這樣也能避免選購過多食材造成浪費，消費者訂購後平台方將依據顧客設定送出食材，而此時食譜也會開放觀看權限給已購買客戶，但食譜中的醬料為品牌方獨門秘方，因此並不提供調製過程。
-								<br><br>除了主力的食材運送服務也打造了如愛食記的社交服務，並允許用戶發布動態與影片，讓用戶分享創意食譜，並且平台方也會關注平台社群IP，並與之合作提供更多特色食譜，讓創意進入料理，讓料理簡單又充滿樂趣。
-								<br><br>在企劃書部分，我負責研究行銷相關的資料，除了製作STP與行銷4P等基本行銷資料，我們也針對競爭市場下去分析，以確保我們產品在市場具有獨特性，有足夠機會能在市場上存活，並穩健發展。
+								Foodome 是一款提供異國食材與食譜的線上平台，因此在首頁設計時，我是仿造 Uber
+								Eats 的首頁模式，提供精美的商品煮完的實品照，讓消費者選擇感興趣的實品，點入後會提供食材清單，消費者可以在平台上訂購全部食譜上的材料，又或者觀察家中的食材，並選購缺少食材的部分，這樣也能避免選購過多食材造成浪費，消費者訂購後平台方將依據顧客設定送出食材，而此時食譜也會開放觀看權限給已購買客戶，但食譜中的醬料為品牌方獨門秘方，因此並不提供調製過程。
+								<br><br>除了主力的食材運送服務也打造了如愛食記的社交服務，並允許用戶發布動態與影片，讓用戶分享創意食譜，並且平台方也會關注平台社群 IP，並與之合作提供更多特色食譜，讓創意進入料理，讓料理簡單又充滿樂趣。
+								<br><br>在企劃書部分，我負責研究行銷相關的資料，除了製作 STP 與行銷 4P 等基本行銷資料，我們也針對競爭市場下去分析，以確保我們產品在市場具有獨特性，有足夠機會能在市場上存活，並穩健發展。
 							</p>
 						</div>
 					</div>
@@ -248,7 +244,7 @@
 										<img src="../../assets/imgs/foodome/ui01.png" class="img-fluid round25p border-5 border border-dark" alt="firebase Icon">
 									</div>
 									<div class="col-12 col-md-6 col-xl-8 d-flex justify-content-center align-items-center">
-										<p class="fs-4 notoFont">
+										<p class="notoFont">
 											快速的提供用戶食譜的教學可以減輕煮菜的徬徨，並且吸引用戶，增加購買食材意願，因此觀賞食譜在這項軟體中佔有極高的優先級，於是我們設計在標準的導航欄上方放置了觀賞食譜的按鈕，而客戶除了使用觀賞食譜的按鈕以外也可以進行客服一對一問答，快速解決客人的問題。
 										</p>
 									</div>
@@ -260,7 +256,7 @@
 											alt="firebase Icon">
 									</div>
 									<div class="col-12 col-md-6 col-xl-8 d-flex justify-content-center align-items-center">
-										<p class="fs-4 notoFont">
+										<p class="notoFont">
 											在商品詳細頁的時候，除了會提供普通的商品說明，還會提供產品圖增加購買慾，並且在底下一方塊來提供所用到的食材，方便讓消費者了解說會購買到哪些食材。
 										</p>
 									</div>
@@ -272,7 +268,7 @@
 											alt="firebase Icon">
 									</div>
 									<div class="col-12 col-md-6 col-xl-8 d-flex justify-content-center align-items-center">
-										<p class="fs-4 notoFont">
+										<p class="notoFont">
 											在運送詳情頁的時候，除了會附上你所購買的食材明細之外，還會有即時路況讓你看看你現在的食材運輸到那裡，以方便使用者進行規劃。
 										</p>
 									</div>
@@ -284,7 +280,7 @@
 											alt="firebase Icon">
 									</div>
 									<div class="col-12 col-md-6 col-xl-8 d-flex justify-content-center align-items-center">
-										<p class="fs-4 notoFont">
+										<p class="notoFont">
 											在食材影片教學的影片下方，會提供快速大綱以供選擇，只要點選文字就會自動的將影片跳轉到文字所標註的時間點，讓使用者可以快速依照文字找到所需要的部分進行觀看。
 										</p>
 									</div>
