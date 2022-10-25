@@ -130,6 +130,24 @@
 			border-color: var(--themeColor) !important;
 		}
 	</style>
+    <!--Nav Style-->
+    <style>
+        .nav .nav-item .nav-link{
+            color: gray;
+            font-size: calc(1.275rem);
+        }
+        .nav .nav-item .nav-link:hover{
+            color: var(--themeColor);
+        }
+        .nav .nav-item .active{
+            font-weight: bolder;
+            background: linear-gradient(180deg, rgba(239, 244, 248, 0) 75.00%, #92969c 75.01%);
+            text-decoration: none;
+            color: #141929;
+            font-size: calc(1.275rem + 0.3vw);
+            letter-spacing: 0.05em;
+        }
+    </style>
     <nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
 		<div class="container-fluid">
 			<a class="navbar-brand d-flex align-items-center text-white" href="#">
@@ -267,11 +285,12 @@
                 </div>
             </div>
             <div class="col-lg-8 col-12 pb-4">
-					<div style="height: 80px;" class="d-none d-lg-block"></div>
+                <div style="height: 80px;" class="d-none d-lg-block"></div>
+                
                 <!--工作-->
                 <div class="card shadow">
                     <div class="card-body">
-                        <h2 class="fs-4 text-SkyHeavyBlue">校園與工作經歷</h2>
+                        <h2 class="fs-4 text-SkyHeavyBlue" id="expJobs" style="margin-top: -80px;padding-top: 80px;">校園與工作經歷</h2>
                         <hr>
                         <style>.logo{width: 100%;}</style>
                         <div class="row repeater repeater-work-experience-5">
@@ -335,126 +354,598 @@
                         </div>
                     </div>
                 </div>
-                <!--學歷-->
+                <!--學歷|資格認證|競賽經驗-->
                 <div class="card shadow mt-4">
                     <div class="card-body">
-                        <h2 class="fs-4 text-SkyHeavyBlue">學歷</h2>
-                        <hr>
-                        <div class="row repeater repeater-education-3">
-                            <div class="col-sm-9">
-                                <h3 class="fs-5">國立清華大學</h3>
-                                <h4 class="fs-6 m-0">學習科學與科技研究所</h4>
-                            </div>
-                            <div class="col-sm-3">
-                                <p style="text-align: right;"><span style="color: #888;">2022 - 在學中</span></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row repeater repeater-education-3 repeater-end">
-                            <div class="col-sm-9">
-                                <h3 class="fs-5">中原大學 Chung Yuan Christian University</h3>
-                                <h4 class="fs-6 m-0">資訊管理學</h4>
-                            </div>
-                            <div class="col-sm-3">
-                                <p style="text-align: right"><span style="color: #888;">2019 - 2022</span></p>
+                        <div class="row ms-navbar fs-4">
+                            <div class="col-12">
+                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
+                                    <li class="nav-item me-3">
+                                        <a class="nav-link px-1 py-0 text-nowrap active" id="exp-race-tab" data-bs-toggle="pill" data-bs-target="#exp-race" type="button" role="tab" aria-controls="exp-race" aria-selected="true">產品參賽經驗</a>
+                                    </li>
+                                    <li class="nav-item me-3">
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-edu-tab" data-bs-toggle="pill" data-bs-target="#exp-edu" type="button" role="tab" aria-controls="exp-edu" aria-selected="false">學歷</a>
+                                    </li>
+                                    <li class="nav-item me-3 ">
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-certi-tab" data-bs-toggle="pill" data-bs-target="#exp-certi" type="button" role="tab" aria-controls="exp-certi" aria-selected="false">資格認證</a>
+                                    </li>
+                                    </ul>
                             </div>
                         </div>
+                        <hr>
+                        <div class="tab-content" id="pills-tabContent">
+                            <!--競賽-->
+                            <div class="tab-pane fade show active" id="exp-race" role="tabpanel" aria-labelledby="exp-race-tab" tabindex="0">
+                                <div class="row repeater repeater-certification-1">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">即時行樂 SongLa 音樂創作 APP（2021~2022）</h3>
+                                        <p class="mb-2" style="color: #888;">擔任技術與設計負責人：產品介面設計、技術開發顧問、行銷顧問</p>
+                                        <ul style="list-style-type: none;" class="ps-0 mb-1">
+                                            <li><span class="badge bg-primary me-2">全國</span>通過教育部青年署 U-start 創新創業第一階段計畫 · 取得50萬資金</li>
+                                            <li><span class="badge bg-primary me-2">全國</span>2021 全國大專校院智慧創新暨跨域整合創作競賽 · 佳作</li>
+                                            <li><span class="badge bg-primary me-2">全國</span>2021 桃園新創之星-創天下實作競賽 · 佳作</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-certification-1">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">MindReader 即時轉譯軟體（2020~2021）</h3>
+                                        <p class="mb-2" style="color: #888;">擔任技術負責人：全端開發、技術顧問、Azure 模型訓練</p>
+                                        <ul style="list-style-type: none;" class="ps-0 mb-1">
+                                            <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 Azure 組 · 第三名</li>
+                                            <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 資訊應用組 · 佳作</li>
+                                            <li><span class="badge bg-primary me-2">校內</span>中原大學資管系 110 學年度資訊管理畢業專題競賽 · 第一名</li>
+                                            <li><span class="badge bg-primary me-2">校內</span>109 學年度中原大學資管系資訊管理專題初賽 · 第二名</li>
+                                            <li><span class="badge bg-primary me-2">校內</span>110 年中原大學高教深耕學生解決企業問題研究團隊計畫賽 · 佳作</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-certification-1">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">華新麗華線上會議管理系統（2020）</h3>
+                                        <p class="mb-2" style="color: #888;">擔任技術負責人：軟體架構設計與開發、介面設計、技術研發與管理</p>
+                                        <ul style="list-style-type: none;" class="ps-0 mb-1">
+                                            <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統製作競賽 · 第一名</li>
+                                            <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華 VIM 員工教育系統實作競賽 · 第一名</li>
+                                            <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統介面設計競賽 · 佳作</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--學歷-->
+                            <div class="tab-pane fade" id="exp-edu" role="tabpanel" aria-labelledby="exp-edu-tab" tabindex="0">
+                                <div class="row repeater repeater-education-3">
+                                    <div class="col-sm-9">
+                                        <h3 class="fs-5">國立清華大學</h3>
+                                        <h4 class="fs-6 m-0">學習科學與科技研究所</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p style="text-align: right;"><span style="color: #888;">2022 - 在學中</span></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-education-3 repeater-end">
+                                    <div class="col-sm-9">
+                                        <h3 class="fs-5">中原大學 Chung Yuan Christian University</h3>
+                                        <h4 class="fs-6 m-0">資訊管理學</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p style="text-align: right"><span style="color: #888;">2019 - 2022</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--資格認證-->
+                            <div class="tab-pane fade" id="exp-certi" role="tabpanel" aria-labelledby="exp-certi-tab" tabindex="0">
+                                <div class="row repeater repeater-certification-1">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">Google Data Analytics Professional Certificate</h3>
+                                        <h4 class="fs-6">Coursera</h4>
+                                        <p class="m-0"><span style="color: #888;">發照日期 十二月 2021 · 永久有效</span></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-certification-1">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">IBM Data Visualization &amp; Dashboard Essentials</h3>
+                                        <h4 class="fs-6">Coursera</h4>
+                                        <p class="m-0"><span style="color: #888;">發照日期 十一月 2021 · 永久有效</span></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-certification-1 d-none">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">Google Ads 影音廣告認證</h3>
+                                        <h4 class="fs-6">Google</h4>
+                                        <p class="m-0"><span style="color: #888;">88994729</span><br><span style="color: #888;">九月 2022 到期</span></p>
+                                    </div>
+                                </div>
+                                <hr class="d-none">
+                                <div class="row repeater repeater-certification-1 d-none">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">Google Ads 搜尋廣告認證</h3>
+                                        <h4 class="fs-6">Google</h4>
+                                        <p class="m-0"><span style="color: #888;">88868602</span><br><span style="color: #888;">九月 2022 到期</span></p>
+                                    </div>
+                                </div>
+                                <hr class="d-none">
+                                <div class="row repeater repeater-certification-1 repeater-end">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">Google Analytics (分析) 個人認證</h3>
+                                        <h4 class="fs-6">Google</h4>
+                                        <p class="m-0"><span style="color: #888;">89004337</span><br><span style="color: #888;">發照日期 九月 2021 · 永久有效</span></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row repeater repeater-certification-1 repeater-end">
+                                    <div class="col-12">
+                                        <h3 class="fs-5">Google 基礎行銷資格認證</h3>
+                                        <h4 class="fs-6">Google</h4>
+                                        <p class="m-0"><span style="color: #888;">49X VTB N46</span><br><span style="color: #888;">發照日期 八月 2021 · 永久有效</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-                <!--資格認證-->
                 <div class="card shadow mt-4">
                     <div class="card-body">
-                        <h2 class="fs-4 text-SkyHeavyBlue">資格認證</h2>
-                        <hr>
-                        <div class="row repeater repeater-certification-1">
+                        <div class="row ms-navbar fs-4">
                             <div class="col-12">
-                                <h3 class="fs-5">Google Data Analytics Professional Certificate</h3>
-                                <h4 class="fs-6">Coursera</h4>
-                                <p class="m-0"><span style="color: #888;">發照日期 十二月 2021 · 永久有效</span></p>
+                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
+                                    <li class="nav-item me-3">
+                                      <a class="nav-link px-1 py-0 text-nowrap active" id="skill-dataScience-tab" data-bs-toggle="pill" data-bs-target="#skill-dataScience" type="button" role="tab" aria-controls="skill-dataScience" aria-selected="true">數據分析技能</a>
+                                    </li>
+                                    <li class="nav-item me-3">
+                                      <a class="nav-link px-1 py-0 text-nowrap" id="skill-design-tab" data-bs-toggle="pill" data-bs-target="#skill-design" type="button" role="tab" aria-controls="skill-design" aria-selected="false">設計相關技能</a>
+                                    </li>
+                                    <li class="nav-item me-3 ">
+                                      <a class="nav-link px-1 py-0 text-nowrap" id="skill-develope-tab" data-bs-toggle="pill" data-bs-target="#skill-develope" type="button" role="tab" aria-controls="skill-develope" aria-selected="false">開發技能</a>
+                                    </li>
+                                    <li class="nav-item me-3 ">
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-other-tab" data-bs-toggle="pill" data-bs-target="#skill-other" type="button" role="tab" aria-controls="skill-develope" aria-selected="false">其他技能</a>
+                                      </li>
+                                  </ul>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row repeater repeater-certification-1">
-                            <div class="col-12">
-                                <h3 class="fs-5">IBM Data Visualization &amp; Dashboard Essentials</h3>
-                                <h4 class="fs-6">Coursera</h4>
-                                <p class="m-0"><span style="color: #888;">發照日期 十一月 2021 · 永久有效</span></p>
+                        <div class="tab-content" id="pills-tabContent">
+                            <!--數據分析技能-->
+                            <div class="tab-pane fade show active" id="skill-dataScience" role="tabpanel" aria-labelledby="skill-dataScience-tab" tabindex="0">
+                                <p class="mb-1 mt-2 notoFont lh-lg">
+                                    可協助資料清理與自動化爬蟲取得所需資料，並熟悉利用各式工具將結構化的資料進行視覺化，在非結構化的資料則專注於 
+                                    <span class="halfHightLightBg">文字探勘</span>
+                                    領域，藉由各式分析讓非結構化文字也能對企業帶來新洞察與效益。
+                                </p>
+                                <hr class="my-3">
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            資料前處理
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/mysql.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">MySQL</p>
+                                                    <p class="p-0 m-0">SQL語法 / 關聯資料表設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/firebase.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Firebase</p>
+                                                    <p class="p-0 m-0">資料檔查詢</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/excel.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Excel</p>
+                                                    <p class="p-0 m-0">數據分析/清理/視覺化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-3">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            資料視覺化
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/data_studio.svg"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Google Data Studio</p>
+                                                    <p class="p-0 m-0">數據視覺化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/powerBi.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Poewr BI</p>
+                                                    <p class="p-0 m-0">數據視覺化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/rStudio.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">R</p>
+                                                    <p class="p-0 m-0">Tidyverse 資料清理、視覺化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/pyhon.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Python</p>
+                                                    <p class="p-0 m-0">pandas / Firebase 交互</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row repeater repeater-certification-1 d-none">
-                            <div class="col-12">
-                                <h3 class="fs-5">Google Ads 影音廣告認證</h3>
-                                <h4 class="fs-6">Google</h4>
-                                <p class="m-0"><span style="color: #888;">88994729</span><br><span style="color: #888;">九月 2022 到期</span></p>
+                            <!--UI/UX Design, 設計相關技能-->
+                            <div class="tab-pane fade" id="skill-design" role="tabpanel" aria-labelledby="skill-design-tab" tabindex="0">
+                                <p class="mb-1 mt-2 notoFont lh-lg">
+                                    專注於 <span class="halfHightLightBg">UI&UX 產品設計</span>，藉由設計的方式將產品概念轉化成可想像的實際產品。<br>
+                                    除此之外，在剪輯方面也略有設略，可協助企業創作影片傳達訊息。
+                                </p>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <hr class="my-3">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            產品設計
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/figma.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Figma</p>
+                                                    <p class="p-0 m-0">UI Design / 平面設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-3">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            資訊傳達
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/powerpoint.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">PowerPoint</p>
+                                                    <p class="p-0 m-0">簡報設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/canva.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Canva</p>
+                                                    <p class="p-0 m-0">簡報設計、平面設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/photoshop.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Photoshop</p>
+                                                    <p class="p-0 m-0">圖片設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/premiere.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Premiere</p>
+                                                    <p class="p-0 m-0">影片剪輯</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <hr class="d-none">
-                        <div class="row repeater repeater-certification-1 d-none">
-                            <div class="col-12">
-                                <h3 class="fs-5">Google Ads 搜尋廣告認證</h3>
-                                <h4 class="fs-6">Google</h4>
-                                <p class="m-0"><span style="color: #888;">88868602</span><br><span style="color: #888;">九月 2022 到期</span></p>
+                            <!--開發技能-->
+                            <div class="tab-pane fade" id="skill-develope" role="tabpanel" aria-labelledby="skill-develope-tab" tabindex="0">
+                                <p class="mb-1 mt-2 notoFont lh-lg">
+                                    全端皆可開發，主要發力於 <span class="halfHightLightBg">網站領域</span>，對於 APIs 串接已有相關實務經驗，能整合各式套件協助企業完成產品開發。
+                                </p>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <hr class="my-3">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            前端
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/javascript.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">JavaScript</p>
+                                                    <p class="p-0 m-0">物件變化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/bootstrapV5.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Bootstrap</p>
+                                                    <p class="p-0 m-0">網頁切版</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/flutter.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Flutter</p>
+                                                    <p class="p-0 m-0">APP 開發</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/wordpress.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Wordpress</p>
+                                                    <p class="p-0 m-0">網頁架設與管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-3">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            後端
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/pyhon.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Python</p>
+                                                    <p class="p-0 m-0">Flask APIs / Packages 應用</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/apacheTomcat.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Java Page</p>
+                                                    <p class="p-0 m-0">Tomcat 後端程式 / MySQL 交互</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/java.png"
+                                                            class="img-fluid p-1" alt="Java Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Java</p>
+                                                    <p class="p-0 m-0">程式設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <hr class="d-none">
-                        <div class="row repeater repeater-certification-1 repeater-end">
-                            <div class="col-12">
-                                <h3 class="fs-5">Google Analytics (分析) 個人認證</h3>
-                                <h4 class="fs-6">Google</h4>
-                                <p class="m-0"><span style="color: #888;">89004337</span><br><span style="color: #888;">發照日期 九月 2021 · 永久有效</span></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row repeater repeater-certification-1 repeater-end">
-                            <div class="col-12">
-                                <h3 class="fs-5">Google 基礎行銷資格認證</h3>
-                                <h4 class="fs-6">Google</h4>
-                                <p class="m-0"><span style="color: #888;">49X VTB N46</span><br><span style="color: #888;">發照日期 八月 2021 · 永久有效</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--競賽-->
-                <div class="card shadow mt-4">
-                    <div class="card-body">
-                        <h2 class="fs-4 text-SkyHeavyBlue">競賽經驗</h2>
-                        <hr>
-                        <div class="row repeater repeater-certification-1">
-                            <div class="col-12">
-                                <h3 class="fs-5">即時行樂 SongLa 音樂創作 APP（2021~2022）</h3>
-                                <p class="mb-2" style="color: #888;">擔任技術與設計負責人：產品介面設計、技術開發顧問、行銷顧問</p>
-                                <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                    <li><span class="badge bg-primary me-2">全國</span>通過教育部青年署 U-start 創新創業第一階段計畫 · 取得50萬資金</li>
-                                    <li><span class="badge bg-primary me-2">全國</span>2021 全國大專校院智慧創新暨跨域整合創作競賽 · 佳作</li>
-                                    <li><span class="badge bg-primary me-2">全國</span>2021 桃園新創之星-創天下實作競賽 · 佳作</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row repeater repeater-certification-1">
-                            <div class="col-12">
-                                <h3 class="fs-5">MindReader 即時轉譯軟體（2020~2021）</h3>
-                                <p class="mb-2" style="color: #888;">擔任技術負責人：全端開發、技術顧問、Azure 模型訓練</p>
-                                <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                    <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 Azure 組 · 第三名</li>
-                                    <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 資訊應用組 · 佳作</li>
-                                    <li><span class="badge bg-primary me-2">校內</span>中原大學資管系 110 學年度資訊管理畢業專題競賽 · 第一名</li>
-                                    <li><span class="badge bg-primary me-2">校內</span>109 學年度中原大學資管系資訊管理專題初賽 · 第二名</li>
-                                    <li><span class="badge bg-primary me-2">校內</span>110 年中原大學高教深耕學生解決企業問題研究團隊計畫賽 · 佳作</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row repeater repeater-certification-1">
-                            <div class="col-12">
-                                <h3 class="fs-5">華新麗華線上會議管理系統（2020）</h3>
-                                <p class="mb-2" style="color: #888;">擔任技術負責人：軟體架構設計與開發、介面設計、技術研發與管理</p>
-                                <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                    <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統製作競賽 · 第一名</li>
-                                    <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華 VIM 員工教育系統實作競賽 · 第一名</li>
-                                    <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統介面設計競賽 · 佳作</li>
-                                </ul>
+                            <!--其他技能-->
+                            <div class="tab-pane fade" id="skill-other" role="tabpanel" aria-labelledby="skill-other-tab" tabindex="0">
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/obs.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">OBS</p>
+                                                    <p class="p-0 m-0">直播架設與設定操作</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/thinkFlow.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">資訊設計</p>
+                                                    <p class="p-0 m-0">整理資訊並傳遞給受眾</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/googleAds.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Google Ads</p>
+                                                    <p class="p-0 m-0">廣告操作</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6  p-1 d-flex align-items-stretch">
+                                        <div class="card d-flex  mt-1 flex-fill ">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="assets/imgs/appIcons/social.png"
+                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">社群行銷</p>
+                                                    <p class="p-0 m-0">社群經營與維護</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -462,7 +953,7 @@
             </div>
         </div>
     </div>
-    <div class="py-4" style="background-color: #EFF4F8; ">
+    <div class="py-4 d-none">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -898,23 +1389,10 @@
             </div>
         </div>
     </div>
-    <div style="margin-top: -80px; padding-top: 80px;" id="myWorks">
-        <style>
-            .nav .nav-item .nav-link{
-                color: gray;
-                font-size: calc(1.275rem);
-            }
-            .nav .nav-item .active{
-                font-weight: bolder;
-                background: linear-gradient(180deg, rgba(239, 244, 248, 0) 75.00%, #92969c 75.01%);
-                text-decoration: none;
-                color: #141929;
-                font-size: calc(1.275rem + 0.3vw);
-            }
-        </style>
+    <div style="background-color: #f7fbfd; padding-top: 2rem;" id="myWorks">
         <div class="container py-4">
-            <div class="row ms-navbar">
-                <div class="col-12">
+            <div class="row ms-navbar sticky-top" style="padding-top: 80px; margin-top: -80px; background-color: #f7fbfd">
+                <div class="col-12" style="margin-top: -80px; padding-top: 80px;">
                     <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
                         <li class="nav-item me-3">
                           <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab" data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab" aria-controls="products-all" aria-selected="true">所有個人作品</a>
@@ -1493,7 +1971,7 @@
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
             
         </div>
     </div>
