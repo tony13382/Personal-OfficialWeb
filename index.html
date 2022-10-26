@@ -35,7 +35,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-007VY8R3PZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-007VY8R3PZ');
     </script>
@@ -43,107 +43,130 @@
 
 <body>
     <style>
-		:root{
-			--themeColor: #465375;
-			--secondColor : #141929;
-		}
-		.navbar{
-			background-color: var(--themeColor);
-		}
-		.navbar-nav .nav-item{
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.navbar-nav .nav-div{
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-			color: white;
-		}
-		.navbar-nav .nav-item:hover{
-			background-color: var(--secondColor);
-		}
-		.navbar-nav .nav-item .nav-link{
-			color: white!important ;
-		}
-		.bg-theme{
-			background-color: var(--themeColor);
-		}
-		.btn-theme{
-			color: var(--themeColor);
-    		border-color: var(--themeColor);
-		}
-		.btn-theme:hover{
-			color: white;
-    		background-color: var(--themeColor);
-		}
-		.footer-link{
-			color: rgba(255, 255, 255, 0.6) !important;
-		}
-		.footer-link:hover{
-			color: white !important;
-			background-color: var(--secondColor);
-			font-weight: bold;
-			margin-left: 0.05rem;
-			padding: 0.25rem 0.5rem;
-			border-radius: 999px;
-		}
-		.border-theme{
-			border-color: var(--themeColor) !important;
-		}
-		.bg-theme{
-			background-color: var(--themeColor);
-		}
-		.btn-theme{
-			color: white;
-    		background-color: var(--themeColor);
-		}
-		.btn-theme:hover{
-			color: white;
-    		background-color: var(--secondColor);
-		}
-		.btn-outline-theme{
-			color: var(--themeColor);
-    		border-color: var(--themeColor);
-		}
-		.btn-outline-theme:hover{
-			color: white;
-    		background-color: var(--themeColor);
-		}
-		.btn-text-theme{
-			color: #1f1f1f;
-		}
-		.btn-text-theme:hover{
-    		background-color: #f0f0f0;
-		}
-		.footer-link{
-			color: rgba(255, 255, 255, 0.6) !important;
-		}
-		.footer-link:hover{
-			color: white !important;
-			background-color: var(--secondColor);
-			font-weight: bold;
-			margin-left: 0.05rem;
-			padding: 0.25rem 0.5rem;
-			border-radius: 999px;
-		}
-		.border-theme{
-			border-color: var(--themeColor) !important;
-		}
-	</style>
+        :root {
+            --themeColor: #465375;
+            --secondColor: #141929;
+        }
+
+        .navbar {
+            background-color: var(--themeColor);
+        }
+
+        .navbar-nav .nav-item {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .navbar-nav .nav-div {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            color: white;
+        }
+
+        .navbar-nav .nav-item:hover {
+            background-color: var(--secondColor);
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: white !important;
+        }
+
+        .bg-theme {
+            background-color: var(--themeColor);
+        }
+
+        .btn-theme {
+            color: var(--themeColor);
+            border-color: var(--themeColor);
+        }
+
+        .btn-theme:hover {
+            color: white;
+            background-color: var(--themeColor);
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .footer-link:hover {
+            color: white !important;
+            background-color: var(--secondColor);
+            font-weight: bold;
+            margin-left: 0.05rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .border-theme {
+            border-color: var(--themeColor) !important;
+        }
+
+        .bg-theme {
+            background-color: var(--themeColor);
+        }
+
+        .btn-theme {
+            color: white;
+            background-color: var(--themeColor);
+        }
+
+        .btn-theme:hover {
+            color: white;
+            background-color: var(--secondColor);
+        }
+
+        .btn-outline-theme {
+            color: var(--themeColor);
+            border-color: var(--themeColor);
+        }
+
+        .btn-outline-theme:hover {
+            color: white;
+            background-color: var(--themeColor);
+        }
+
+        .btn-text-theme {
+            color: #1f1f1f;
+        }
+
+        .btn-text-theme:hover {
+            background-color: #f0f0f0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .footer-link:hover {
+            color: white !important;
+            background-color: var(--secondColor);
+            font-weight: bold;
+            margin-left: 0.05rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .border-theme {
+            border-color: var(--themeColor) !important;
+        }
+    </style>
     <!--Nav Style-->
     <style>
-        .nav .nav-item .nav-link{
+        .nav .nav-item .nav-link {
             color: gray;
             font-size: calc(1.275rem);
         }
-        .nav .nav-item .nav-link:hover{
+
+        .nav .nav-item .nav-link:hover {
             color: var(--themeColor);
         }
-        .nav .nav-item .active{
+
+        .nav .nav-item .active {
             font-weight: bolder;
             border-width: 6px;
             border-bottom: var(--secondColor);
-            border-bottom-style:solid;
+            border-bottom-style: solid;
             text-decoration: none;
             color: #141929;
             font-size: calc(1.275rem + 0.3vw);
@@ -151,54 +174,58 @@
         }
     </style>
     <nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
-		<div class="container-fluid">
-			<a class="navbar-brand d-flex align-items-center text-white" href="#">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-white" href="#">
                 <img src="assets/file/iconDesignFile/logo.svg" class="me-3" alt="Icon" width="24px" height="24px">
                 呂亮進
             </a>
-			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<i class="bi bi-list-nested"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarContentLinks">
-				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
-					<li class="nav-item rounded-pill d-none">
-						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
-					</li>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list-nested"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContentLinks">
+                <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+                    <li class="nav-item rounded-pill d-none">
+                        <a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
+                    </li>
                     <li class="nav-item rounded-pill">
-						<a class="nav-link" href="#myWorks">我的作品</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" href="pages/cowork/index.html">商業合作</a>
-					</li>
-					<li class="nav-div rounded-pill">
-						<a class="nav-link text-white-50">｜</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+                        <a class="nav-link" href="#myWorks">我的作品</a>
+                    </li>
+                    <li class="nav-item rounded-pill">
+                        <a class="nav-link" href="pages/cowork/index.html">商業合作</a>
+                    </li>
+                    <li class="nav-div rounded-pill">
+                        <a class="nav-link text-white-50">｜</a>
+                    </li>
+                    <li class="nav-item rounded-pill">
+                        <a class="nav-link" target="_blank" href="mailto://liangchinlu@gmail.com">Email</a>
+                    </li>
+                    <li class="nav-item rounded-pill">
+                        <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                    </li>
+                    <li class="nav-item rounded-pill">
+                        <a class="nav-link" target="_blank"
+                            href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
-		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
-			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
-				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
-					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
-				</div>
-			</div>
-		</a>
-	</div>
-	<script src="assets/script/scroll.js"></script>
-    <div style="padding: 80px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
+        <a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
+            <div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn"
+                style="background-color: var(--themeColor);">
+                <div class="fs-2 d-flex align-items-center justify-content-center text-white"
+                    style="width: 48px; height: 48px;">
+                    <i class="fas fa-angle-up text-decoration-none d-flex"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <script src="assets/script/scroll.js"></script>
+    <div
+        style="padding: 80px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
         <div class="" style="padding: 5rem 2rem;">
             <div class="container">
                 <h1 style="letter-spacing: 0.4em; color: #FFFFFF;" class="text-center">一位多領域背景的 產品創造者</h1>
@@ -216,60 +243,61 @@
                         <h2 class="fs-5 text-center">呂亮進 Liang Chin Lu </h2>
                         <p class="text-center m-0">創業家 & 軟體開發 & 資料分析師</p>
                         <div class="d-flex flex-wrap justify-content-center py-3" style="font-size: 1.2rem;">
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="mailto://liangchinlu@gmail.com" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Email" data-bs-placement="bottom">
+                            <a type="button" class="mx-2 text-dark d-inline-block" href="mailto://liangchinlu@gmail.com"
+                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-content="Email" data-bs-placement="bottom">
                                 <i class="bi bi-envelope-fill"></i>
                             </a>
                             <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://www.instagram.com/liang_chin_ml/" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="instagram" data-bs-placement="bottom">
+                                href="https://www.instagram.com/liang_chin_ml/" target="_blank" data-bs-toggle="popover"
+                                data-bs-trigger="hover focus" data-bs-content="instagram" data-bs-placement="bottom">
                                 <i class="bi bi-instagram"></i>
                             </a>
                             <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://www.facebook.com/tony13382/" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Facebook" data-bs-placement="bottom">
+                                href="https://www.facebook.com/tony13382/" target="_blank" data-bs-toggle="popover"
+                                data-bs-trigger="hover focus" data-bs-content="Facebook" data-bs-placement="bottom">
                                 <i class="bi bi-facebook"></i>
                             </a>
                             <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://twitter.com/liang_chin_ml" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Twitter" data-bs-placement="bottom">
+                                href="https://twitter.com/liang_chin_ml" target="_blank" data-bs-toggle="popover"
+                                data-bs-trigger="hover focus" data-bs-content="Twitter" data-bs-placement="bottom">
                                 <i class="bi bi-twitter"></i>
                             </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://github.com/tony13382" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Github" data-bs-placement="bottom">
+                            <a type="button" class="mx-2 text-dark d-inline-block" href="https://github.com/tony13382"
+                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-content="Github" data-bs-placement="bottom">
                                 <i class="bi bi-github"></i>
                             </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://shopee.tw/tony13382sp" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Shopee" data-bs-placement="bottom">
+                            <a type="button" class="mx-2 text-dark d-inline-block" href="https://shopee.tw/tony13382sp"
+                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-content="Shopee" data-bs-placement="bottom">
                                 <i class="bi bi-bag-fill"></i>
                             </a>
                             <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://meowlu.notion.site/Liang-Chin-ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Notion 知識站" data-bs-placement="bottom">
+                                href="https://meowlu.notion.site/Liang-Chin-ML-12e7c67f7f2d47249f0111882d932663"
+                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-content="Notion 知識站" data-bs-placement="bottom">
                                 <i class="bi bi-archive-fill"></i>
                             </a>
                             <!-- Button trigger modal -->
-                            <a type="button" class="mx-2 text-dark"
-                                data-bs-toggle="modal" data-bs-target="#shareModel"
-                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="QR Code" data-bs-placement="bottom">
+                            <a type="button" class="mx-2 text-dark" data-bs-toggle="modal" data-bs-target="#shareModel"
+                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="QR Code"
+                                data-bs-placement="bottom">
                                 <i class="bi bi-qr-code"></i>
                             </a>
                         </div>
-                        <p class="card-text">橫跨多領域技能，經手多項專案，具有豐沛實戰經驗，尤其熱衷於 <span class="halfHightLightBg">產品設計與數據分析</span>。
+                        <p class="card-text">橫跨多領域技能，經手多項專案，具有豐沛實戰經驗，尤其熱衷於 <span
+                                class="halfHightLightBg">產品設計與數據分析</span>。
                             <br><br>
                             資管系的經驗讓我能快速分析產品資訊，利用數據進行調整與規劃產品，並且快速完成MVP，而在新創公司進行產品開發時，也幫助我累績了更多許多實作經驗與設計心法。
                         </p>
                         <div class="d-grid gap-2 mt-3">
-                            <a class="btn btn-outline-dark d-none" type="button"
-                                href="pages/cowork/index.html">展開合作</a>
+                            <a class="btn btn-outline-dark d-none" type="button" href="pages/cowork/index.html">展開合作</a>
                             <a class="btn btn-outline-dark" type="button" target="_blank"
                                 href="https://www.linkedin.com/in/liang-chin-lu">LinkedIn</a>
                             <a class="btn btn-outline-dark" type="button" target="_blank"
                                 href="https://www.cakeresume.com/s--AsROsvhfxTq62cybqp4Apw--/liang-chin-lu">CakeResume</a>
-                                <a class="btn btn-outline-dark" type="button" target="_blank"
+                            <a class="btn btn-outline-dark" type="button" target="_blank"
                                 href="https://drive.google.com/drive/folders/16MSo4kz3eYPEugCCT8GC5Jc58xMZeIjz?usp=sharing">下載履歷</a>
                             <a class="btn btn-dark" type="button" target="_blank"
                                 href="http://portaly.cc/liang_chin_ml">更多資訊</a>
@@ -279,8 +307,8 @@
                 <div class="alert alert-dark mt-4 mb-0 d-flex" role="alert">
                     <div>
                         <span class="me-2 fst-italic">特惠！</span>便宜二手書現正銷售中<br>
-                        <a href="https://shopee.tw/tony13382sp" target="_blank" 
-                            rel="noopener noreferrer" class="text-dark">
+                        <a href="https://shopee.tw/tony13382sp" target="_blank" rel="noopener noreferrer"
+                            class="text-dark">
                             前往賣場
                         </a>
                     </div>
@@ -288,17 +316,24 @@
             </div>
             <div class="col-lg-8 col-12 pb-4">
                 <div style="height: 80px;" class="d-none d-lg-block"></div>
-                
+
                 <!--工作-->
                 <div class="card shadow">
                     <div class="card-body">
-                        <h2 class="fs-4 text-SkyHeavyBlue" id="expJobs" style="margin-top: -80px;padding-top: 80px;">校園與工作經歷</h2>
+                        <h2 class="fs-4 text-SkyHeavyBlue" id="expJobs" style="margin-top: -80px;padding-top: 80px;">
+                            校園與工作經歷</h2>
                         <hr>
-                        <style>.logo{width: 100%;}</style>
+                        <style>
+                            .logo {
+                                width: 100%;
+                            }
+                        </style>
                         <div class="row repeater repeater-work-experience-5">
                             <div class="col-sm-12">
-                                <div data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false" aria-controls="collapseJobSongla">
-                                    <h3 class="fs-5">產品設計師 / 技術總管<span class="theme-main-color" style="font-size: 18.37px;">&nbsp; • &nbsp;即時行樂新創公司</span></h3>
+                                <div data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false"
+                                    aria-controls="collapseJobSongla">
+                                    <h3 class="fs-5">產品設計師 / 技術總管<span class="theme-main-color"
+                                            style="font-size: 18.37px;">&nbsp; • &nbsp;即時行樂新創公司</span></h3>
                                     <p><span style="color: #888;">一月 2021 - Present</span></p>
                                     <p class="m-0">
                                         CTO技術總長、UI/UX設計師、系統設計師、美術總監
@@ -319,8 +354,11 @@
                         <hr>
                         <div class="row repeater repeater-work-experience-5">
                             <div class="col-sm-12">
-                                <div data-bs-toggle="collapse" data-bs-target="#collapseYilanService" aria-expanded="false" aria-controls="collapseYilanService">
-                                    <h3 class="fs-5">櫃檯服務人員<span style="font-size: 18.37px" class="theme-main-color">&nbsp;&nbsp;•&nbsp;&nbsp;宜蘭縣服務處</span></h3><p><span style="color: #888;">七月 2021 - 八月 2021</span></p>
+                                <div data-bs-toggle="collapse" data-bs-target="#collapseYilanService"
+                                    aria-expanded="false" aria-controls="collapseYilanService">
+                                    <h3 class="fs-5">櫃檯服務人員<span style="font-size: 18.37px"
+                                            class="theme-main-color">&nbsp;&nbsp;•&nbsp;&nbsp;宜蘭縣服務處</span></h3>
+                                    <p><span style="color: #888;">七月 2021 - 八月 2021</span></p>
                                     <p class="m-0">駐點服務、秩序引導、文書處理、場地攝影</p>
                                 </div>
                                 <div class="collapse" id="collapseYilanService">
@@ -338,8 +376,11 @@
                         <hr>
                         <div class="row repeater repeater-work-experience-5 repeater-end">
                             <div class="col-sm-12">
-                                <div data-bs-toggle="collapse" data-bs-target="#collapseJobFunTwo" aria-expanded="false" aria-controls="collapseJobFunTwo">
-                                    <h3 class="fs-5">展場服務生<span style="font-size: 18.37px" class="theme-main-color">&nbsp;&nbsp;•&nbsp;&nbsp;方兔工作室</span></h3><p><span style="color: #888;">七月 2020 - 八月 2020</span></p>
+                                <div data-bs-toggle="collapse" data-bs-target="#collapseJobFunTwo" aria-expanded="false"
+                                    aria-controls="collapseJobFunTwo">
+                                    <h3 class="fs-5">展場服務生<span style="font-size: 18.37px"
+                                            class="theme-main-color">&nbsp;&nbsp;•&nbsp;&nbsp;方兔工作室</span></h3>
+                                    <p><span style="color: #888;">七月 2020 - 八月 2020</span></p>
                                     <p class="m-0">駐點童玩節 VR 館服務、機器維修與保養、秩序引導</p>
                                 </div>
                                 <div class="collapse" id="collapseJobFunTwo">
@@ -361,70 +402,90 @@
                     <div class="card-body pb-0">
                         <div class="row ms-navbar fs-4">
                             <div class="col-12">
-                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
+                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs"
+                                    role="tablist" style="margin-left: -0.25rem;">
                                     <li class="nav-item me-3">
-                                        <a class="nav-link px-1 py-0 text-nowrap active" id="exp-race-tab" data-bs-toggle="pill" data-bs-target="#exp-race" type="button" role="tab" aria-controls="exp-race" aria-selected="true">產品參賽經驗</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap active" id="exp-race-tab"
+                                            data-bs-toggle="pill" data-bs-target="#exp-race" type="button" role="tab"
+                                            aria-controls="exp-race" aria-selected="true">產品參賽經驗</a>
                                     </li>
                                     <li class="nav-item me-3">
-                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-edu-tab" data-bs-toggle="pill" data-bs-target="#exp-edu" type="button" role="tab" aria-controls="exp-edu" aria-selected="false">學歷</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-edu-tab" data-bs-toggle="pill"
+                                            data-bs-target="#exp-edu" type="button" role="tab" aria-controls="exp-edu"
+                                            aria-selected="false">學歷</a>
                                     </li>
                                     <li class="nav-item me-3 ">
-                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-certi-tab" data-bs-toggle="pill" data-bs-target="#exp-certi" type="button" role="tab" aria-controls="exp-certi" aria-selected="false">資格認證</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="exp-certi-tab"
+                                            data-bs-toggle="pill" data-bs-target="#exp-certi" type="button" role="tab"
+                                            aria-controls="exp-certi" aria-selected="false">資格認證</a>
                                     </li>
-                                    </ul>
+                                </ul>
                             </div>
                         </div>
                         <div class="tab-content" id="pills-tabContent">
                             <!--競賽-->
-                            <div class="tab-pane fade show active" id="exp-race" role="tabpanel" aria-labelledby="exp-race-tab" tabindex="0">
-                                <hr class="mb-0 mt-2">
+                            <div class="tab-pane fade show active" id="exp-race" role="tabpanel"
+                                aria-labelledby="exp-race-tab" tabindex="0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
                                     <a href="pages/projects/songlaMusicCreater.html" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">即時行樂 SongLa 音樂創作 APP（2021~2022）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術與設計負責人：產品介面設計、技術開發顧問、行銷顧問</p>
                                             <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                                <li><span class="badge bg-primary me-2">全國</span>通過教育部青年署 U-start 創新創業第一階段計畫 · 取得50萬資金</li>
-                                                <li><span class="badge bg-primary me-2">全國</span>2021 全國大專校院智慧創新暨跨域整合創作競賽 · 佳作</li>
-                                                <li><span class="badge bg-primary me-2">全國</span>2021 桃園新創之星-創天下實作競賽 · 佳作</li>
+                                                <li><span class="badge bg-primary me-2">全國</span>通過教育部青年署 U-start
+                                                    創新創業第一階段計畫 · 取得50萬資金</li>
+                                                <li><span class="badge bg-primary me-2">全國</span>2021
+                                                    全國大專校院智慧創新暨跨域整合創作競賽 · 佳作</li>
+                                                <li><span class="badge bg-primary me-2">全國</span>2021 桃園新創之星-創天下實作競賽 ·
+                                                    佳作</li>
                                             </ul>
                                         </div>
                                     </a>
                                 </div>
-                                <hr class="m-0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
                                     <a href="pages/projects/mindReader.html" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">MindReader 即時轉譯軟體（2020~2021）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術負責人：全端開發、技術顧問、Azure 模型訓練</p>
                                             <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                                <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 Azure 組 · 第三名</li>
-                                                <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽 資訊應用組 · 佳作</li>
-                                                <li><span class="badge bg-primary me-2">校內</span>中原大學資管系 110 學年度資訊管理畢業專題競賽 · 第一名</li>
-                                                <li><span class="badge bg-primary me-2">校內</span>109 學年度中原大學資管系資訊管理專題初賽 · 第二名</li>
-                                                <li><span class="badge bg-primary me-2">校內</span>110 年中原大學高教深耕學生解決企業問題研究團隊計畫賽 · 佳作</li>
+                                                <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽
+                                                    Azure 組 · 第三名</li>
+                                                <li><span class="badge bg-primary me-2">全國</span>2021 大專校院資訊應用服務創新競賽
+                                                    資訊應用組 · 佳作</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>中原大學資管系 110
+                                                    學年度資訊管理畢業專題競賽 · 第一名</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>109 學年度中原大學資管系資訊管理專題初賽
+                                                    · 第二名</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>110
+                                                    年中原大學高教深耕學生解決企業問題研究團隊計畫賽 · 佳作</li>
                                             </ul>
                                         </div>
                                     </a>
                                 </div>
-                                <hr class="m-0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
                                     <a href="pages/projects/hsCloudMeetingManage.html" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">華新麗華線上會議管理系統（2020）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術負責人：軟體架構設計與開發、介面設計、技術研發與管理</p>
                                             <ul style="list-style-type: none;" class="ps-0 mb-1">
-                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統製作競賽 · 第一名</li>
-                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華 VIM 員工教育系統實作競賽 · 第一名</li>
-                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統介面設計競賽 · 佳作</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統製作競賽 ·
+                                                    第一名</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華 VIM
+                                                    員工教育系統實作競賽 · 第一名</li>
+                                                <li><span class="badge bg-primary me-2">校內</span>2020 年華新麗華會議管理系統介面設計競賽
+                                                    · 佳作</li>
                                             </ul>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                             <!--學歷-->
-                            <div class="tab-pane fade pb-3" id="exp-edu" role="tabpanel" aria-labelledby="exp-edu-tab" tabindex="0">
-                                <hr class="mt-1">
+                            <div class="tab-pane fade pb-3" id="exp-edu" role="tabpanel" aria-labelledby="exp-edu-tab"
+                                tabindex="0">
+                                <hr class="mt-1" style="opacity: 0.10;">
                                 <div class="row repeater repeater-education-3">
                                     <div class="col-sm-9">
                                         <h3 class="fs-5">國立清華大學</h3>
@@ -434,7 +495,7 @@
                                         <p style="text-align: right;"><span style="color: #888;">2022 - 在學中</span></p>
                                     </div>
                                 </div>
-                                <hr>
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row repeater repeater-education-3 repeater-end">
                                     <div class="col-sm-9">
                                         <h3 class="fs-5">中原大學 Chung Yuan Christian University</h3>
@@ -446,21 +507,24 @@
                                 </div>
                             </div>
                             <!--資格認證-->
-                            <div class="tab-pane fade" id="exp-certi" role="tabpanel" aria-labelledby="exp-certi-tab" tabindex="0">
+                            <div class="tab-pane fade" id="exp-certi" role="tabpanel" aria-labelledby="exp-certi-tab"
+                                tabindex="0">
                                 <style>
-                                    .blockCerit{
+                                    .blockCerit {
                                         text-decoration: none;
                                         color: #1f1f1f;
                                     }
-                                    .blockCerit:hover{
+
+                                    .blockCerit:hover {
                                         text-decoration: none;
                                         color: #1f1f1f;
                                         background-color: #fafafa;
                                     }
                                 </style>
-                                <hr class="mb-0 mt-1">
+                                <hr class="mb-0 mt-1" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
-                                    <a href="https://www.credly.com/badges/a6edfde9-6c3a-442b-8d3f-ef5859e08a62" target="_blank" class="blockCerit my-2 rounded">
+                                    <a href="https://www.credly.com/badges/a6edfde9-6c3a-442b-8d3f-ef5859e08a62"
+                                        target="_blank" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google Data Analytics Professional Certificate</h3>
                                             <h4 class="fs-6">Coursera</h4>
@@ -468,9 +532,10 @@
                                         </div>
                                     </a>
                                 </div>
-                                <hr class="m-0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
-                                    <a href="https://www.credly.com/badges/b1cf3e2a-9dd5-47ff-9b60-dc90883d96cc" target="_blank" class="blockCerit my-2 rounded">
+                                    <a href="https://www.credly.com/badges/b1cf3e2a-9dd5-47ff-9b60-dc90883d96cc"
+                                        target="_blank" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">IBM Data Visualization &amp; Dashboard Essentials</h3>
                                             <h4 class="fs-6">Coursera</h4>
@@ -478,29 +543,32 @@
                                         </div>
                                     </a>
                                 </div>
-                                <hr class="m-0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1 repeater-end">
-                                    <a href="https://skillshop.exceedlms.com/student/award/33eD88rNaJzynmvdRk4yWhwP" target="_blank" class="blockCerit my-2 rounded">
+                                    <a href="https://skillshop.exceedlms.com/student/award/33eD88rNaJzynmvdRk4yWhwP"
+                                        target="_blank" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google Analytics (分析) 個人認證</h3>
                                             <h4 class="fs-6">Google</h4>
-                                            <p class="m-0"><span style="color: #888;">89004337</span><br><span style="color: #888;">發照日期 九月 2021 · 永久有效</span></p>
+                                            <p class="m-0"><span style="color: #888;">89004337</span><br><span
+                                                    style="color: #888;">發照日期 九月 2021 · 永久有效</span></p>
                                         </div>
                                     </a>
                                 </div>
-                                <hr class="m-0">
+                                <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1 repeater-end">
-                                    <a href="https://learndigital.withgoogle.com/digitalgarage-tw/validate-certificate-code" target="_blank" class="blockCerit my-2 rounded">
+                                    <a href="https://learndigital.withgoogle.com/digitalgarage-tw/validate-certificate-code"
+                                        target="_blank" class="blockCerit my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google 基礎行銷資格認證</h3>
                                             <h4 class="fs-6">Google</h4>
-                                            <p class="m-0"><span style="color: #888;">49X VTB N46</span><br><span style="color: #888;">發照日期 八月 2021 · 永久有效</span></p>
+                                            <p class="m-0"><span style="color: #888;">49X VTB N46</span><br><span
+                                                    style="color: #888;">發照日期 八月 2021 · 永久有效</span></p>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 <!--技能組-->
@@ -508,31 +576,41 @@
                     <div class="card-body">
                         <div class="row ms-navbar fs-4">
                             <div class="col-12">
-                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
+                                <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs"
+                                    role="tablist" style="margin-left: -0.25rem;">
                                     <li class="nav-item me-3">
-                                      <a class="nav-link px-1 py-0 text-nowrap active" id="skill-dataScience-tab" data-bs-toggle="pill" data-bs-target="#skill-dataScience" type="button" role="tab" aria-controls="skill-dataScience" aria-selected="true">數據分析技能</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap active" id="skill-dataScience-tab"
+                                            data-bs-toggle="pill" data-bs-target="#skill-dataScience" type="button"
+                                            role="tab" aria-controls="skill-dataScience" aria-selected="true">數據分析技能</a>
                                     </li>
                                     <li class="nav-item me-3">
-                                      <a class="nav-link px-1 py-0 text-nowrap" id="skill-design-tab" data-bs-toggle="pill" data-bs-target="#skill-design" type="button" role="tab" aria-controls="skill-design" aria-selected="false">設計相關技能</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-design-tab"
+                                            data-bs-toggle="pill" data-bs-target="#skill-design" type="button"
+                                            role="tab" aria-controls="skill-design" aria-selected="false">設計相關技能</a>
                                     </li>
                                     <li class="nav-item me-3 ">
-                                      <a class="nav-link px-1 py-0 text-nowrap" id="skill-develope-tab" data-bs-toggle="pill" data-bs-target="#skill-develope" type="button" role="tab" aria-controls="skill-develope" aria-selected="false">開發技能</a>
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-develope-tab"
+                                            data-bs-toggle="pill" data-bs-target="#skill-develope" type="button"
+                                            role="tab" aria-controls="skill-develope" aria-selected="false">開發技能</a>
                                     </li>
                                     <li class="nav-item me-3 ">
-                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-other-tab" data-bs-toggle="pill" data-bs-target="#skill-other" type="button" role="tab" aria-controls="skill-develope" aria-selected="false">其他技能</a>
-                                      </li>
-                                  </ul>
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-other-tab"
+                                            data-bs-toggle="pill" data-bs-target="#skill-other" type="button" role="tab"
+                                            aria-controls="skill-develope" aria-selected="false">其他技能</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="tab-content" id="pills-tabContent">
                             <!--數據分析技能-->
-                            <div class="tab-pane fade show active" id="skill-dataScience" role="tabpanel" aria-labelledby="skill-dataScience-tab" tabindex="0">
+                            <div class="tab-pane fade show active" id="skill-dataScience" role="tabpanel"
+                                aria-labelledby="skill-dataScience-tab" tabindex="0">
                                 <p class="mb-1 mt-2 notoFont lh-lg">
-                                    可協助資料清理與自動化爬蟲取得所需資料，並熟悉利用各式工具將結構化的資料進行視覺化，在非結構化的資料則專注於 
+                                    可協助資料清理與自動化爬蟲取得所需資料，並熟悉利用各式工具將結構化的資料進行視覺化，在非結構化的資料則專注於
                                     <span class="halfHightLightBg">文字探勘</span>
                                     領域，藉由各式分析讓非結構化文字也能對企業帶來新洞察與效益。
                                 </p>
-                                <hr class="my-3">
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -544,8 +622,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/mysql.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/mysql.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -576,8 +654,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/excel.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/excel.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -592,8 +670,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/pyhon.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/pyhon.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -603,8 +681,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
-                                <hr class="my-3">
+                                </div>
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -664,8 +742,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/pyhon.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/pyhon.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -678,12 +756,13 @@
                                 </div>
                             </div>
                             <!--設計相關技能-->
-                            <div class="tab-pane fade" id="skill-design" role="tabpanel" aria-labelledby="skill-design-tab" tabindex="0">
+                            <div class="tab-pane fade" id="skill-design" role="tabpanel"
+                                aria-labelledby="skill-design-tab" tabindex="0">
                                 <p class="mb-1 mt-2 notoFont lh-lg">
                                     專注於 <span class="halfHightLightBg">UI&UX 產品設計</span>，藉由設計的方式將產品概念轉化成可想像的實際產品。<br>
                                     除此之外，在剪輯方面也略有設略，可協助企業創作影片傳達訊息。
                                 </p>
-                                <hr class="my-3">
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -695,8 +774,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/figma.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/figma.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -711,8 +790,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/xd.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/xd.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -723,7 +802,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="my-3">
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -767,8 +846,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/canva.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/canva.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -813,11 +892,13 @@
                                 </div>
                             </div>
                             <!--開發技能-->
-                            <div class="tab-pane fade" id="skill-develope" role="tabpanel" aria-labelledby="skill-develope-tab" tabindex="0">
+                            <div class="tab-pane fade" id="skill-develope" role="tabpanel"
+                                aria-labelledby="skill-develope-tab" tabindex="0">
                                 <p class="mb-1 mt-2 notoFont lh-lg">
-                                    全端皆可開發，主要發力於 <span class="halfHightLightBg">網站領域</span>，對於 APIs 串接與架設皆已有相關實務經驗，能整合各式套件協助企業完成產品開發。
+                                    全端皆可開發，主要發力於 <span class="halfHightLightBg">網站領域</span>，對於 APIs
+                                    串接與架設皆已有相關實務經驗，能整合各式套件協助企業完成產品開發。
                                 </p>
-                                <hr class="my-3">
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -889,7 +970,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="my-3">
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -901,8 +982,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/pyhon.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/pyhon.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -933,8 +1014,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/nodejs.png"
-                                                            class="img-fluid p-1" alt="NodeJs Icon">
+                                                        <img src="assets/imgs/appIcons/nodejs.png" class="img-fluid p-1"
+                                                            alt="NodeJs Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -949,8 +1030,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/java.png"
-                                                            class="img-fluid p-1" alt="Java Icon">
+                                                        <img src="assets/imgs/appIcons/java.png" class="img-fluid p-1"
+                                                            alt="Java Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -963,12 +1044,13 @@
                                 </div>
                             </div>
                             <!--其他技能-->
-                            <div class="tab-pane fade" id="skill-other" role="tabpanel" aria-labelledby="skill-other-tab" tabindex="0">
+                            <div class="tab-pane fade" id="skill-other" role="tabpanel"
+                                aria-labelledby="skill-other-tab" tabindex="0">
                                 <p class="mb-1 mt-2 notoFont lh-lg">
                                     其他技能能輔助產品製作與發展、技能組橫跨
                                     <span class="halfHightLightBg">行銷、商業思維</span> 。
                                 </p>
-                                <hr>
+                                <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
@@ -980,13 +1062,13 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/obs.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/obs.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
                                                     <p class="p-0 mb-2 fw-bold">OBS</p>
-                                                    <p class="p-0 m-0">直播架設與實務操作</p>
+                                                    <p class="p-0 m-0">直播架設與實務操作（FB & Youtube）</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1012,8 +1094,8 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="assets/imgs/appIcons/social.png"
-                                                            class="img-fluid p-1" alt="Figma Icon">
+                                                        <img src="assets/imgs/appIcons/social.png" class="img-fluid p-1"
+                                                            alt="Figma Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
@@ -1046,9 +1128,9 @@
                             <div class="accordion accordion-flush" id="skillAccordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="skillDataAnaHeader">
-                                        <button class="accordion-button fs-5" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#skillDataAna"
-                                            aria-expanded="false" aria-controls="skillDataAna">
+                                        <button class="accordion-button fs-5" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#skillDataAna" aria-expanded="false"
+                                            aria-controls="skillDataAna">
                                             數據分析技能
                                         </button>
                                     </h2>
@@ -1174,8 +1256,8 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="skillDesignHeader">
-                                        <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#skillDesign" aria-expanded="true"
+                                        <button class="accordion-button fs-5 collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#skillDesign" aria-expanded="true"
                                             aria-controls="skillDesign">
                                             UI/UX Design, 設計相關技能
                                         </button>
@@ -1403,7 +1485,7 @@
                                                             </div>
                                                             <div class="ps-3 d-inline-flex flex-column">
                                                                 <p class="p-0 mb-2 fw-bold">OBS</p>
-                                                                <p class="p-0 m-0">直播架設與設定操作</p>
+                                                                <p class="p-0 m-0">直播架設與設定操作（FB & Youtube）</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1467,7 +1549,8 @@
             </div>
         </div>
     </div>
-    <div style="padding: 40px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;background-attachment: fixed">
+    <div
+        style="padding: 40px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;background-attachment: fixed">
         <div class="" style="padding: 3rem 2rem;">
             <div class="container">
                 <h1 style="letter-spacing: 0.4em; color: #FFFFFF;" class="text-center">我的作品</h1>
@@ -1479,17 +1562,24 @@
             <div class="container">
                 <div class="row ms-navbar">
                     <div class="col-12">
-                        <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist" style="margin-left: -0.25rem;">
+                        <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist"
+                            style="margin-left: -0.25rem;">
                             <li class="nav-item me-3">
-                              <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab" data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab" aria-controls="products-all" aria-selected="true">所有個人作品</a>
+                                <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab"
+                                    aria-controls="products-all" aria-selected="true">所有個人作品</a>
                             </li>
                             <li class="nav-item me-3">
-                              <a class="nav-link px-1 py-0 text-nowrap" id="products-race-tab" data-bs-toggle="pill" data-bs-target="#products-race" type="button" role="tab" aria-controls="products-race" aria-selected="false">競賽作品</a>
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-race-tab" data-bs-toggle="pill"
+                                    data-bs-target="#products-race" type="button" role="tab"
+                                    aria-controls="products-race" aria-selected="false">競賽作品</a>
                             </li>
                             <li class="nav-item me-3 ">
-                              <a class="nav-link px-1 py-0 text-nowrap" id="products-sideproject-tab" data-bs-toggle="pill" data-bs-target="#products-sideproject" type="button" role="tab" aria-controls="products-sideproject" aria-selected="false">偏向練習/實驗用專案</a>
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-sideproject-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-sideproject" type="button"
+                                    role="tab" aria-controls="products-sideproject" aria-selected="false">偏向練習/實驗用專案</a>
                             </li>
-                          </ul>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1498,7 +1588,8 @@
     <div class="pb-4 bg-light">
         <div class="container">
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="products-all" role="tabpanel" aria-labelledby="products-all-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="products-all" role="tabpanel"
+                    aria-labelledby="products-all-tab" tabindex="0">
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/songlaMusicCreater.html" class="text-decoration-none">
@@ -1526,8 +1617,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/mindReader.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/mindReader/cover.webp">
+                                    <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/mindReader/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             MindReader
@@ -1549,14 +1640,16 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/hsCloudMeetingManage.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png" class="card-img-top lozad" alt="..."
+                                    <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png"
+                                        class="card-img-top lozad" alt="..."
                                         data-src="assets/imgs/hsCloudMeetingManage/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             華新雲會議管理系統
                                         </h5>
                                         <p class="card-text text-dark">
-                                            大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+                                            大學系統分析專案，利用 mongodb 與 jisti
+                                            提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
@@ -1615,8 +1708,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/meowluStockCalc.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/meowluStockCalc/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/meowluStockCalc/cover.webp">
+                                    <img src="assets/imgs/meowluStockCalc/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/meowluStockCalc/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             MeowLu Stock - 股票試算小工具
@@ -1638,8 +1731,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/noDrinkNoDrunk.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/noDrinkNoDrunk/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/noDrinkNoDrunk/linkCover.webp">
+                                    <img src="assets/imgs/noDrinkNoDrunk/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/noDrinkNoDrunk/linkCover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             No Drink No Drunk
@@ -1659,8 +1752,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/oneDayLover.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/oneDayLover/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/oneDayLover/cover.webp">
+                                    <img src="assets/imgs/oneDayLover/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/oneDayLover/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             一日情人後端
@@ -1680,8 +1773,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/jobAnalytics2020.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/jobAnalytics2020/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/jobAnalytics2020/cover.webp">
+                                    <img src="assets/imgs/jobAnalytics2020/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/jobAnalytics2020/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             2020年台灣各行業別員工薪資統計分析
@@ -1703,8 +1796,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/digitalOcean.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/digitalOcean/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/digitalOcean/cover.webp">
+                                    <img src="assets/imgs/digitalOcean/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/digitalOcean/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             數位海洋知識專案 執行者
@@ -1731,7 +1824,9 @@
                                             自架站科技/遊戲Blog - Techjoy
                                         </h5>
                                         <p class="card-text text-dark">
-                                            約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用 Red Hat 的OpenShift 方案與 Byethost Free 方案，但後來因課業壓力與營運成本，於16年關閉 Tecjoy，於18年正式放棄mcblog營運工作。
+                                            約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用
+                                            Red Hat 的OpenShift 方案與 Byethost Free 方案，但後來因課業壓力與營運成本，於16年關閉
+                                            Tecjoy，於18年正式放棄mcblog營運工作。
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
@@ -1746,8 +1841,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/techlife.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/techlife/cover.webp">
+                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/techlife/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             TechLife 讓科技充滿生活
@@ -1767,7 +1862,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="products-race" role="tabpanel" aria-labelledby="products-race-tab" tabindex="0">
+                <div class="tab-pane fade" id="products-race" role="tabpanel" aria-labelledby="products-race-tab"
+                    tabindex="0">
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/songlaMusicCreater.html" class="text-decoration-none">
@@ -1795,8 +1891,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/mindReader.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/mindReader/cover.webp">
+                                    <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/mindReader/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             MindReader
@@ -1818,14 +1914,16 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/hsCloudMeetingManage.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png" class="card-img-top lozad" alt="..."
+                                    <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png"
+                                        class="card-img-top lozad" alt="..."
                                         data-src="assets/imgs/hsCloudMeetingManage/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             華新雲會議管理系統
                                         </h5>
                                         <p class="card-text text-dark">
-                                            大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+                                            大學系統分析專案，利用 mongodb 與 jisti
+                                            提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
@@ -1862,8 +1960,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/techlife.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/techlife/cover.webp">
+                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/techlife/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             TechLife 讓科技充滿生活
@@ -1883,7 +1981,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="products-sideproject" role="tabpanel" aria-labelledby="products-sideproject-tab" tabindex="0">
+                <div class="tab-pane fade" id="products-sideproject" role="tabpanel"
+                    aria-labelledby="products-sideproject-tab" tabindex="0">
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/foodome.html" class="text-decoration-none">
@@ -1910,8 +2009,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/meowluStockCalc.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/meowluStockCalc/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/meowluStockCalc/cover.webp">
+                                    <img src="assets/imgs/meowluStockCalc/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/meowluStockCalc/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             MeowLu Stock - 股票試算小工具
@@ -1933,8 +2032,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/noDrinkNoDrunk.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/noDrinkNoDrunk/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/noDrinkNoDrunk/linkCover.webp">
+                                    <img src="assets/imgs/noDrinkNoDrunk/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/noDrinkNoDrunk/linkCover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             No Drink No Drunk
@@ -1954,8 +2053,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/oneDayLover.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/oneDayLover/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/oneDayLover/cover.webp">
+                                    <img src="assets/imgs/oneDayLover/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/oneDayLover/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             一日情人後端
@@ -1975,8 +2074,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/jobAnalytics2020.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/jobAnalytics2020/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/jobAnalytics2020/cover.webp">
+                                    <img src="assets/imgs/jobAnalytics2020/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/jobAnalytics2020/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             2020年台灣各行業別員工薪資統計分析
@@ -1998,8 +2097,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/digitalOcean.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/digitalOcean/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/digitalOcean/cover.webp">
+                                    <img src="assets/imgs/digitalOcean/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/digitalOcean/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             數位海洋知識專案 執行者
@@ -2026,7 +2125,9 @@
                                             自架站科技/遊戲Blog - Techjoy
                                         </h5>
                                         <p class="card-text text-dark">
-                                            約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用 Red Hat 的OpenShift 方案與 Byethost Free 方案，但後來因課業壓力與營運成本，於16年關閉 Tecjoy，於18年正式放棄mcblog營運工作。
+                                            約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用
+                                            Red Hat 的OpenShift 方案與 Byethost Free 方案，但後來因課業壓力與營運成本，於16年關閉
+                                            Tecjoy，於18年正式放棄mcblog營運工作。
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
@@ -2041,8 +2142,8 @@
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/techlife.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/techlife/cover.webp">
+                                    <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/techlife/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
                                             TechLife 讓科技充滿生活
@@ -2063,37 +2164,38 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="shareModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="shareModelLabel" aria-hidden="true">
+    <div class="modal fade" id="shareModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="shareModelLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="shareModelLabel">Share It!</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body h-auto">
-                <img src="assets/imgs/index/qr-code.png" class="img-fluid" alt="QR Code">
-                <p class="text-center ">
-                    <a href="https://tony13382.github.io/index.html" class="text-dark text-decoration-none">
-                        https://tony13382.github.io/index.html
-                    </a>
-                </p>
-                <div class="alert alert-primary text-center" role="alert">
-                    <a href="https://pse.is/myweb" class="text-reset text-decoration-none">
-                        https://pse.is/myweb
-                    </a>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="shareModelLabel">Share It!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body h-auto">
+                    <img src="assets/imgs/index/qr-code.png" class="img-fluid" alt="QR Code">
+                    <p class="text-center ">
+                        <a href="https://tony13382.github.io/index.html" class="text-dark text-decoration-none">
+                            https://tony13382.github.io/index.html
+                        </a>
+                    </p>
+                    <div class="alert alert-primary text-center" role="alert">
+                        <a href="https://pse.is/myweb" class="text-reset text-decoration-none">
+                            https://pse.is/myweb
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex ">
+                    <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-footer d-flex ">
-            <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
         </div>
     </div>
-    
+
     <footer class="bg-skyHeavyBlue text-light">
         <div class="container pb-4">
             <div class="row">
@@ -2105,40 +2207,40 @@
                     <h4 class="fs-5">
                         連結 Links
                     </h4>
-                    <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
+                    <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
                         rel="noopener noreferrer" class="footer-link text-decoration-none">
                         學習資源庫
                     </a><br>
-                    <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         旗下知識帳號
                     </a><br>
-                    <a href="pages/cowork/index.html" target="_blank" 
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="pages/cowork/index.html" target="_blank" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         合作表單
                     </a><br>
-                    <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="https://www.curator.bio/liang_chin_ml" target="_blank" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         Curator
                     </a><br>
-                    <a href="http://tony13382.github.io/pages/classes/index.html"
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="http://tony13382.github.io/pages/classes/index.html" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         知識交流表單
-                    </a> 
+                    </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 my-4">
                     <h4 class="fs-5">
                         贊助 Donate
                     </h4>
-                    <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         Buy Me A Coffee
                     </a><br>
-                    <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
-                        rel="noopener noreferrer" class="footer-link text-decoration-none">
+                    <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
+                        class="footer-link text-decoration-none">
                         贊助系統（Portaly）
                     </a><br>
-                    <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
+                    <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank"
                         rel="noopener noreferrer" class="footer-link text-decoration-none">
                         可收款銀行（請預先通知本人）
                     </a>
@@ -2148,16 +2250,16 @@
                         聯絡 Connections
                     </h4>
                     <div class="d-flex" style="font-size: 1.2rem;">
-                        <a type="button" class="footer-link me-2 text-light"
-                            href="mailto://liangchinlu@gmail.com" target="_blank">
+                        <a type="button" class="footer-link me-2 text-light" href="mailto://liangchinlu@gmail.com"
+                            target="_blank">
                             <i class="bi bi-envelope-fill"></i>
                         </a>
                         <a type="button" class="footer-link mx-2 text-light"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a type="button" class="footer-link mx-2 text-light"
-                            href="https://www.facebook.com/tony13382/" target="_blank">
+                        <a type="button" class="footer-link mx-2 text-light" href="https://www.facebook.com/tony13382/"
+                            target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
                         <a type="button" class="footer-link mx-2 text-light"
