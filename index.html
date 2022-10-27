@@ -172,7 +172,19 @@
             font-size: calc(1.275rem + 0.3vw);
             letter-spacing: 0.05em;
         }
+    
+        .grayBlockHover {
+            text-decoration: none;
+            color: #1f1f1f;
+        }
+
+        .grayBlockHover:hover {
+            text-decoration: none;
+            color: #1f1f1f;
+            background-color: #f0f0f0;
+        }
     </style>
+    
     <nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center text-white" href="#">
@@ -322,14 +334,14 @@
                     <div class="card-body">
                         <h2 class="fs-4 text-SkyHeavyBlue" id="expJobs" style="margin-top: -80px;padding-top: 80px;">
                             校園與工作經歷</h2>
-                        <hr>
+                        <hr class="mb-1 mt-2">
                         <style>
                             .logo {
                                 width: 100%;
                             }
                         </style>
                         <div class="row repeater repeater-work-experience-5">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 py-2 grayBlockHover rounded">
                                 <div data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false"
                                     aria-controls="collapseJobSongla">
                                     <h3 class="fs-5">產品設計師 / 技術總管<span class="theme-main-color"
@@ -351,9 +363,9 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <hr class="my-1">
                         <div class="row repeater repeater-work-experience-5">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 py-2 grayBlockHover rounded">
                                 <div data-bs-toggle="collapse" data-bs-target="#collapseYilanService"
                                     aria-expanded="false" aria-controls="collapseYilanService">
                                     <h3 class="fs-5">櫃檯服務人員<span style="font-size: 18.37px"
@@ -373,9 +385,9 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <hr class="my-1">
                         <div class="row repeater repeater-work-experience-5 repeater-end">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 py-2 grayBlockHover rounded">
                                 <div data-bs-toggle="collapse" data-bs-target="#collapseJobFunTwo" aria-expanded="false"
                                     aria-controls="collapseJobFunTwo">
                                     <h3 class="fs-5">展場服務生<span style="font-size: 18.37px"
@@ -428,7 +440,7 @@
                                 aria-labelledby="exp-race-tab" tabindex="0">
                                 <hr class="mb-0 mt-2" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
-                                    <a href="pages/projects/songlaMusicCreater.html" class="blockCerit my-2 rounded">
+                                    <a href="pages/projects/songlaMusicCreater.html" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">即時行樂 SongLa 音樂創作 APP（2021~2022）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術與設計負責人：產品介面設計、技術開發顧問、行銷顧問</p>
@@ -445,7 +457,7 @@
                                 </div>
                                 <hr class="mb-0 mt-0" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
-                                    <a href="pages/projects/mindReader.html" class="blockCerit my-2 rounded">
+                                    <a href="pages/projects/mindReader.html" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">MindReader 即時轉譯軟體（2020~2021）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術負責人：全端開發、技術顧問、Azure 模型訓練</p>
@@ -466,7 +478,7 @@
                                 </div>
                                 <hr class="mb-0 mt-0" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
-                                    <a href="pages/projects/hsCloudMeetingManage.html" class="blockCerit my-2 rounded">
+                                    <a href="pages/projects/hsCloudMeetingManage.html" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">華新麗華線上會議管理系統（2020）</h3>
                                             <p class="mb-2" style="color: #888;">擔任技術負責人：軟體架構設計與開發、介面設計、技術研發與管理</p>
@@ -509,22 +521,10 @@
                             <!--資格認證-->
                             <div class="tab-pane fade" id="exp-certi" role="tabpanel" aria-labelledby="exp-certi-tab"
                                 tabindex="0">
-                                <style>
-                                    .blockCerit {
-                                        text-decoration: none;
-                                        color: #1f1f1f;
-                                    }
-
-                                    .blockCerit:hover {
-                                        text-decoration: none;
-                                        color: #1f1f1f;
-                                        background-color: #fafafa;
-                                    }
-                                </style>
                                 <hr class="mb-0 mt-1" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
                                     <a href="https://www.credly.com/badges/a6edfde9-6c3a-442b-8d3f-ef5859e08a62"
-                                        target="_blank" class="blockCerit my-2 rounded">
+                                        target="_blank" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google Data Analytics Professional Certificate</h3>
                                             <h4 class="fs-6">Coursera</h4>
@@ -535,7 +535,7 @@
                                 <hr class="mb-0 mt-0" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1">
                                     <a href="https://www.credly.com/badges/b1cf3e2a-9dd5-47ff-9b60-dc90883d96cc"
-                                        target="_blank" class="blockCerit my-2 rounded">
+                                        target="_blank" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">IBM Data Visualization &amp; Dashboard Essentials</h3>
                                             <h4 class="fs-6">Coursera</h4>
@@ -546,7 +546,7 @@
                                 <hr class="mb-0 mt-0" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1 repeater-end">
                                     <a href="https://skillshop.exceedlms.com/student/award/33eD88rNaJzynmvdRk4yWhwP"
-                                        target="_blank" class="blockCerit my-2 rounded">
+                                        target="_blank" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google Analytics (分析) 個人認證</h3>
                                             <h4 class="fs-6">Google</h4>
@@ -558,7 +558,7 @@
                                 <hr class="mb-0 mt-0" style="opacity: 0.10;">
                                 <div class="row repeater repeater-certification-1 repeater-end">
                                     <a href="https://learndigital.withgoogle.com/digitalgarage-tw/validate-certificate-code"
-                                        target="_blank" class="blockCerit my-2 rounded">
+                                        target="_blank" class="grayBlockHover my-2 rounded">
                                         <div class="col-12 py-2">
                                             <h3 class="fs-5">Google 基礎行銷資格認證</h3>
                                             <h4 class="fs-6">Google</h4>

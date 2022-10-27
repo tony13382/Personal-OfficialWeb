@@ -1,17 +1,3 @@
-.pinkbluebg {
-    background-color: #feeeec;
-    background-image: linear-gradient(180deg, #feeeec 15%, #B5FFFC 100%);
-}
-.btn_school:hover {
-    padding-left: 0.5rem;
-    color: #515022;
-    background: #6C6A2D;
-    border-bottom: black;
-    border-bottom: 1px;
-}
-.social-icon:hover {
-    fill: #f4f4f4;
-}
 .msf-h1{
     font-size: 3rem;
 }
