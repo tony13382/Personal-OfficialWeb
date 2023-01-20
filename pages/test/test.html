@@ -28,79 +28,80 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+		<style>
+			:root{
+				--themeColor: #9C8465;
+				--secondColor : #593A06;
+			}
+			.navbar{
+				background-color: var(--themeColor);
+			}
+			.navbar-nav .nav-item{
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+			.navbar-nav .nav-div{
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+				color: white;
+			}
+			.navbar-nav .nav-item:hover{
+				background-color: var(--secondColor);
+			}
+			.navbar-nav .nav-item .nav-link{
+				color: white!important ;
+			}
+			.bg-theme{
+				background-color: var(--themeColor);
+			}
+			.btn-theme{
+				color: white;
+				background-color: var(--themeColor);
+			}
+			.btn-theme:hover{
+				color: white;
+				background-color: var(--secondColor);
+			}
+			.btn-outline-theme{
+				color: var(--themeColor);
+				border-color: var(--themeColor);
+			}
+			.btn-outline-theme:hover{
+				color: white;
+				background-color: var(--themeColor);
+			}
+			.btn-text-theme{
+				color: #1f1f1f;
+			}
+			.btn-text-theme:hover{
+				background-color: #f0f0f0;
+			}
+			.btn-text-theme{
+				color: #1f1f1f;
+			}
+			.btn-text-theme:hover{
+				background-color: #f0f0f0;
+			}
+			.footer_item{
+				color: rgba(255, 255, 255, 0.6) !important;
+				margin: 4px 0px;
+			}
+			.footer_item:hover{
+				color: white !important;
+				background-color: var(--secondColor);
+				font-weight: bold;
+				margin-left: 0.05rem;
+				padding: 0.25rem 0.75rem;
+				border-radius: 999px;
+			}
+			.border-theme{
+				border-color: var(--themeColor) !important;
+			}
+		</style>
 
 </head>
 
 <body class="">
-	<style>
-		:root{
-			--themeColor: #9C8465;
-			--secondColor : #593A06;
-		}
-		.navbar{
-			background-color: var(--themeColor);
-		}
-		.navbar-nav .nav-item{
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.navbar-nav .nav-div{
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-			color: white;
-		}
-		.navbar-nav .nav-item:hover{
-			background-color: var(--secondColor);
-		}
-		.navbar-nav .nav-item .nav-link{
-			color: white!important ;
-		}
-		.bg-theme{
-			background-color: var(--themeColor);
-		}
-		.btn-theme{
-			color: white;
-    		background-color: var(--themeColor);
-		}
-		.btn-theme:hover{
-			color: white;
-    		background-color: var(--secondColor);
-		}
-		.btn-outline-theme{
-			color: var(--themeColor);
-    		border-color: var(--themeColor);
-		}
-		.btn-outline-theme:hover{
-			color: white;
-    		background-color: var(--themeColor);
-		}
-		.btn-text-theme{
-			color: #1f1f1f;
-		}
-		.btn-text-theme:hover{
-    		background-color: #f0f0f0;
-		}
-		.btn-text-theme{
-			color: #1f1f1f;
-		}
-		.btn-text-theme:hover{
-    		background-color: #f0f0f0;
-		}
-		.footer-link{
-			color: rgba(255, 255, 255, 0.6) !important;
-		}
-		.footer-link:hover{
-			color: white !important;
-			background-color: var(--secondColor);
-			font-weight: bold;
-			margin-left: 0.05rem;
-			padding: 0.25rem 0.5rem;
-			border-radius: 999px;
-		}
-		.border-theme{
-			border-color: var(--themeColor) !important;
-		}
-	</style>
 	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
 		<div class="container-fluid">
 			<a class="navbar-brand fw-bold px-2 text-white" href="../../test.html">
@@ -1127,24 +1128,23 @@
                     </h4>
                     <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        學習資源庫
-                    </a><br>
+						<p class="footer_item">學習資源庫</p>
+                    </a>
                     <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        旗下知識帳號
-                    </a><br>
-                    
+                        <p class="footer_item">旗下知識帳號</p>
+                    </a>
                     <a href="../../pages/cowork/test.html" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        合作表單
-                    </a><br>
+                        <p class="footer_item">合作表單</p>
+                    </a>
                     <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        Curator
-                    </a><br>
+                        <p class="footer_item">Curator</p>
+                    </a>
                     <a href="http://tony13382.github.io/pages/classes/test.html"
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        知識交流表單
+                        <p class="footer_item">知識交流表單</p>
                     </a> 
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 my-4">
@@ -1153,15 +1153,15 @@
                     </h4>
                     <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        Buy Me A Coffee
-                    </a><br>
+                        <p class="footer_item">Buy Me A Coffee</p>
+                    </a>
                     <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        贊助系統（Portaly）
-                    </a><br>
+                        <p class="footer_item">贊助系統（Portaly）</p>
+                    </a>
                     <a href="https://meowlu.notion.site/2208e70d98c7489ea488d91b941f231f" target="_blank" 
                         rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        可收款銀行（請預先通知本人）
+                        <p class="footer_item">可收款銀行（請預先通知本人）</p>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 my-4">
@@ -1171,25 +1171,25 @@
                     <div class="d-flex" style="font-size: 1.2rem;">
                         <a type="button" class="me-2 footer-link"
                             href="mailto://liangchinlu@gmail.com" target="_blank">
-                            <i class="bi bi-envelope-fill"></i>
+                            <p class="footer_item"><i class="bi bi-envelope-fill"></i></p>
                         </a>
                         <a type="button" class="mx-2 footer-link"
                             href="https://www.instagram.com/liang_chin_ml/" target="_blank">
-                            <i class="bi bi-instagram"></i>
+                            <p class="footer_item"><i class="bi bi-instagram"></i></p>
                         </a>
                         <a type="button" class="mx-2 footer-link"
                             href="https://www.facebook.com/tony13382/" target="_blank">
-                            <i class="bi bi-facebook"></i>
+                            <p class="footer_item"><i class="bi bi-facebook"></i></p>
                         </a>
                         <a type="button" class="mx-2 footer-link"
                             href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
-                            <i class="bi bi-info-square-fill"></i>
+                            <p class="footer_item"><i class="bi bi-info-square-fill"></i></p>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <p class="text-lightpink text-center py-2">
-                    Copyright © 2021 LU LIANG CHIN 版權所有
+                    Copyright © 2023 Liang-Chin, Lu 版權所有
                 </p>
             </div>
         </div>

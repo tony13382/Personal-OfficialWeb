@@ -115,3 +115,6 @@
     background: linear-gradient(to top, #bae7ff 40%, transparent 40%);
     padding: 0px 2px;
 }
+.footer_item{
+    margin: 0px;
+}
