@@ -32,8 +32,8 @@
 <body class="">
 	<style>
 		:root{
-			--themeColor: #805c65;
-			--secondColor : #593f47;
+			--themeColor: #804C4C;
+			--secondColor : #503030;
 		}
 		.navbar{
 			background-color: var(--themeColor);
@@ -226,64 +226,30 @@
 							<img src="../../assets/imgs/meowluStockCalc/cover.webp" class="img-fluid rounded mb-2" alt="...">
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="card shadow mb-4">
-				<div class="card-body pb-0" style="background-color: #FEDFE1;">
-					<div class="row">
-						<div class="col-12 notoFont">
-							<h4>MeowLu Stock - 股票試算小工具 可以做到</h4>
-						</div>
-					</div>
-					<hr>
-					<div class="row my-2 p-1">
-						<div class="col-12 col-md-4 p-2 notoFont" onclick="activeSelectFunc(1)">
-							<div class="card">
-								<div class="card-body border-bottom border-success border-4 " id="selectFunc1">
-									<p class="m-0 fs-1 text-success"><i class="fas fa-calculator"></i></p>
-									<p class="m-0 fs-4">試算交易手續費</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-md-4 p-2 notoFont" onclick="activeSelectFunc(2)">
-							<div class="card">
-								<div class="card-body" id="selectFunc2">
-									<p class="m-0 fs-1 text-danger"><i class="fas fa-dollar-sign"></i></p>
-									<p class="m-0 fs-4">預估漲跌目標股價</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-md-4 p-2 notoFont" onclick="activeSelectFunc(3)">
-							<div class="card">
-								<div class="card-body" id="selectFunc3">
-									<p class="m-0 fs-1 text-warning"><i class="fas fa-plus"></i></p>
-									<p class="m-0 fs-4">簡易加減計算</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div style="background-color: #FEDFE1;" class="px-4 pb-4" id="funcArea">
-					<div class="container">
-						<div class="row">
-							<div class="col-auto d-flex align-items-center" onclick="changeDiv(-1)">
-								<p class="fs-1 m-0">
-									<i class="fas fa-angle-left"></i>
-								</p>
-							</div>
-							<div class="col d-flex align-items-center justify-content-center" id="selectFuncShow1">
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">試算交易手續費</h2>
+							<hr>
+							<div style="background-color: #f3dadb;" class="p-2">
 								<img src="../../assets/imgs/meowluStockCalc/priceCalc.png" class="img-fluid rounded mb-2" alt="...">
 							</div>
-							<div class="col d-flex align-items-center justify-content-center d-none" id="selectFuncShow2">
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">預估漲跌目標股價</h2>
+							<hr>
+							<div style="background-color: #f3dadb;" class="p-2">
 								<img src="../../assets/imgs/meowluStockCalc/trendCalc.png" class="img-fluid rounded mb-2" alt="...">
 							</div>
-							<div class="col d-flex align-items-center justify-content-center d-none" id="selectFuncShow3">
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">簡易加減計算</h2>
+							<hr>
+							<div style="background-color: #f3dadb;" class="p-2">
 								<img src="../../assets/imgs/meowluStockCalc/quickCalc.png" class="img-fluid rounded mb-2" alt="...">
-							</div>
-							<div class="col-auto d-flex align-items-center" onclick="changeDiv(1)">
-								<p class="fs-1 m-0">
-									<i class="fas fa-angle-right"></i>
-								</p>
 							</div>
 						</div>
 					</div>
