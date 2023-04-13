@@ -223,7 +223,7 @@
         style="padding: 80px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
         <div class="" style="padding: 5rem 2rem;">
             <div class="container">
-                <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="text-center">一位多領域背景的 產品創造者</h1>
+                <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="text-center">具多領域能力的網頁全端工程師</h1>
             </div>
         </div>
     </div>
@@ -281,10 +281,17 @@
                                 <i class="bi bi-qr-code"></i>
                             </a>
                         </div>
-                        <p class="card-text">橫跨多領域技能，經手多項專案，具有豐沛實戰經驗，尤其熱衷於 <span
+                        <p class="card-text">
+                            <!--
+                                橫跨多領域技能，經手多項專案，具有豐沛實戰經驗，尤其熱衷於 <span
                                 class="halfHightLightBg">產品設計與數據分析</span>。
                             <br><br>
-                            資管系的經驗讓我能快速分析產品資訊，利用數據進行調整與規劃產品，並且快速完成MVP，而在新創公司進行產品開發時，也幫助我累績了更多許多實作經驗與設計心法。
+                            資管系的經驗讓我能快速分析產品資訊，利用數據進行調整與規劃產品，並且快速完成MVP，而在新創公司進行產品開發時，也幫助我累績了更多許多實作經驗與設計心法。-->
+                            我是一個全端開發的跨領域工程師，在大學期間曾參與多項競賽與專案，
+                            <span class="halfHightLightBg">擁有豐沛的實戰經驗與作品</span>
+                            並且在多次實戰中培養了商業規劃與專案管理的能力，能夠有效率的管理時間並確保進程順利。
+                            <br><br>
+                            此外，我也擁有多次的產品介面設計經驗，結合上述的經驗能使得在設計產品介面時可兼顧產品商業化發展、實作開發與視覺設計三維度，此外，我也擅長資訊設計在基於設計思考的框架下將複雜的資料以直覺有效的精準傳達給受眾。
                         </p>
                         <div class="d-grid gap-2 mt-3">
                             <a class="btn btn-outline-dark d-none" type="button" href="pages/cowork/index.html">展開合作</a>
@@ -299,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-dark mt-4 mb-0 d-flex" role="alert">
+                <div class="alert alert-dark mt-4 mb-0 d-none" role="alert">
                     <div>
                         <span class="me-2 fst-italic">特惠！</span>便宜二手書現正銷售中<br>
                         <a href="https://shopee.tw/tony13382sp" target="_blank" rel="noopener noreferrer"
@@ -1582,17 +1589,22 @@
                             <li class="nav-item me-3">
                                 <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab"
                                     data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab"
-                                    aria-controls="products-all" aria-selected="true">所有個人作品</a>
-                            </li>
-                            <li class="nav-item me-3">
-                                <a class="nav-link px-1 py-0 text-nowrap" id="products-race-tab" data-bs-toggle="pill"
-                                    data-bs-target="#products-race" type="button" role="tab"
-                                    aria-controls="products-race" aria-selected="false">競賽作品</a>
+                                    aria-controls="products-all" aria-selected="true">所有作品</a>
                             </li>
                             <li class="nav-item me-3 ">
-                                <a class="nav-link px-1 py-0 text-nowrap" id="products-sideproject-tab"
-                                    data-bs-toggle="pill" data-bs-target="#products-sideproject" type="button"
-                                    role="tab" aria-controls="products-sideproject" aria-selected="false">偏向練習/實驗用專案</a>
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-dev-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-dev" type="button"
+                                    role="tab" aria-controls="products-dev" aria-selected="false">開發專案</a>
+                            </li>
+                            <li class="nav-item me-3 ">
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-design-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-design" type="button"
+                                    role="tab" aria-controls="products-design" aria-selected="false">設計專案</a>
+                            </li>
+                            <li class="nav-item me-3 ">
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-other-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-other" type="button"
+                                    role="tab" aria-controls="products-other" aria-selected="false">其他專案</a>
                             </li>
                         </ul>
                     </div>
@@ -1996,26 +2008,73 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="products-sideproject" role="tabpanel"
-                    aria-labelledby="products-sideproject-tab" tabindex="0">
+                <div class="tab-pane fade" id="products-dev" role="tabpanel"
+                    aria-labelledby="products-dev-tab" tabindex="0">
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2">
-                            <a href="pages/projects/foodome.html" class="text-decoration-none">
+                            <a href="pages/projects/mindReader.html" class="text-decoration-none">
                                 <div class="card hoverShadow h-100">
-                                    <img src="assets/imgs/foodome/coverLoading.png" class="card-img-top lozad" alt="..."
-                                        data-src="assets/imgs/foodome/cover.webp">
+                                    <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad"
+                                        alt="..." data-src="assets/imgs/mindReader/cover.webp">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">
-                                            食材外送專家 - Foodome
+                                            MindReader
                                         </h5>
                                         <p class="card-text text-dark">
-                                            本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。
+                                            Mind Reader 與你心譯相通，精準的表達出文字中所包含的情感和意思，減少生活上的誤會。
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
                                             <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                            <span class="badge bg-light text-dark rounded-pill">#企劃書製作</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 p-2">
+                            <a href="pages/projects/hsCloudMeetingManage.html" class="text-decoration-none">
+                                <div class="card hoverShadow h-100">
+                                    <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png"
+                                        class="card-img-top lozad" alt="..."
+                                        data-src="assets/imgs/hsCloudMeetingManage/cover.webp">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            華新雲會議管理系統
+                                        </h5>
+                                        <p class="card-text text-dark">
+                                            大學系統分析專案，利用 mongodb 與 jisti
+                                            提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black">
+                                            <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 p-2">
+                            <a href="pages/projects/hsVmi.html" class="text-decoration-none">
+                                <div class="card hoverShadow h-100">
+                                    <img src="assets/imgs/hsVmi/coverLoading.png" class="card-img-top lozad" alt="..."
+                                        data-src="assets/imgs/hsVmi/cover.webp">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            華新 VMI 庫存管理遊戲
+                                        </h5>
+                                        <p class="card-text text-dark">
+                                            大學系統分析專案，利用歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，以此進行員工銷售策畫訓練。
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black">
+                                            <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
                                         </div>
                                     </div>
                                 </div>
@@ -2081,6 +2140,83 @@
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
                                             <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="products-design" role="tabpanel"
+                    aria-labelledby="products-design-tab" tabindex="0">
+                    <div class="row d-flex align-items-stretch">
+                        <div class="col-12 col-md-6 col-lg-4 p-2">
+                            <a href="pages/projects/songlaMusicCreater.html" class="text-decoration-none">
+                                <div class="card hoverShadow h-100">
+                                    <img src="assets/imgs/songla/coverLoading.png" class="card-img-top lozad" alt="..."
+                                        data-src="assets/imgs/songla/songlaInpageCover.png">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            Songla 音樂智慧創作小幫手
+                                        </h5>
+                                        <p class="card-text text-dark">
+                                            哼唱即可作曲，讓創作音樂不再是遙不可及的夢想。
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black">
+                                            <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#UX優化</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 p-2">
+                            <a href="pages/projects/foodome.html" class="text-decoration-none">
+                                <div class="card hoverShadow h-100">
+                                    <img src="assets/imgs/foodome/coverLoading.png" class="card-img-top lozad" alt="..."
+                                        data-src="assets/imgs/foodome/cover.webp">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            食材外送專家 - Foodome
+                                        </h5>
+                                        <p class="card-text text-dark">
+                                            本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black">
+                                            <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#企劃書製作</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="products-other" role="tabpanel"
+                    aria-labelledby="products-other-tab" tabindex="0">
+                    <div class="row d-flex align-items-stretch">
+                        <div class="col-12 col-md-6 col-lg-4 p-2">
+                            <a href="pages/projects/foodome.html" class="text-decoration-none">
+                                <div class="card hoverShadow h-100">
+                                    <img src="assets/imgs/foodome/coverLoading.png" class="card-img-top lozad" alt="..."
+                                        data-src="assets/imgs/foodome/cover.webp">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            食材外送專家 - Foodome
+                                        </h5>
+                                        <p class="card-text text-dark">
+                                            本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black">
+                                            <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
+                                            <span class="badge bg-light text-dark rounded-pill">#企劃書製作</span>
                                         </div>
                                     </div>
                                 </div>
@@ -2377,8 +2513,8 @@
                 delay: (el, i) => 500 + 30 * i
             })
     </script>
+
     <script type="text/javascript" src="assets/script/lozad.min.js"></script>
-    <!--<script type="text/javascript" src="../../assets/script/lozad.min.js"></script>-->
     <script>
         const observer = lozad(); // lazy loads elements with default selector as '.lozad'
         observer.observe();
