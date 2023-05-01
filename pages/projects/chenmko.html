@@ -313,6 +313,135 @@
 							</div>
 						</div>
 					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<div class="col-12">
+								<h2 class="fs-4 text-SkyHeavyBlue">後端功能設計</h2>
+							</div>
+							<div class="col-12 pt-2">
+								<style>
+									.nav .nav-link:hover{
+										color: #FFFFFF;
+										background-color: var(--themeColor);
+									}
+									.nav .active{
+										color: #FFFFFF;
+										background-color: var(--secondColor) !important;
+									}
+								</style>
+								<div class="nav nav-pills me-3 mb-3 d-flex flex-nowrap overflow-auto" id="v-pills-tab" role="tablist">
+									<button class="nav-link active rounded-pill text-nowrap" id="banner_manage-tab" data-bs-toggle="pill" data-bs-target="#banner_manage" type="button" role="tab" aria-controls="banner_manage" aria-selected="true">Banner 圖片管理</button>
+									<button class="nav-link rounded-pill text-nowrap" id="comp_info-tab" data-bs-toggle="pill" data-bs-target="#comp_info" type="button" role="tab" aria-controls="comp_info" aria-selected="false">公司資訊管理</button>
+									<button class="nav-link rounded-pill text-nowrap" id="comp_history-tab" data-bs-toggle="pill" data-bs-target="#comp_history" type="button" role="tab" aria-controls="comp_history" aria-selected="false">公司沿革資訊管理</button>
+									<button class="nav-link rounded-pill text-nowrap" id="cate-col-manage-tab" data-bs-toggle="pill" data-bs-target="#cate-col-manage" type="button" role="tab" aria-controls="cate-col-manage" aria-selected="false">分類表格欄位管理</button>
+									<button class="nav-link rounded-pill text-nowrap" id="product-manage-tab" data-bs-toggle="pill" data-bs-target="#product-manage" type="button" role="tab" aria-controls="product-manage" aria-selected="false">產品管理</button>
+								</div>
+								<div class="tab-content" id="v-pills-tabContent">
+									<div class="tab-pane fade show active" id="banner_manage" role="tabpanel" aria-labelledby="banner_manage-tab" tabindex="0">
+										<div class="row">
+											<div class="col-12">
+												<div id="carousel_banner_manage" class="carousel slide" data-bs-ride="carousel">
+													<div class="carousel-inner">
+													  	<div class="carousel-item active">
+															<img src="../../assets/imgs/chenmko/banner_manage_1.webp" class="d-block w-100" alt="...">
+													 	</div>
+														<div class="carousel-item">
+															<img src="../../assets/imgs/chenmko/banner_manage_2.webp" class="d-block w-100" alt="...">
+														</div>
+													</div>
+													<button class="carousel-control-prev" type="button" data-bs-target="#carousel_banner_manage" data-bs-slide="prev">
+														<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+														<span class="visually-hidden">Previous</span>
+													</button>
+													<button class="carousel-control-next" type="button" data-bs-target="#carousel_banner_manage" data-bs-slide="next">
+														<span class="carousel-control-next-icon" aria-hidden="true"></span>
+														<span class="visually-hidden">Next</span>
+													</button>
+												</div>
+											</div>
+											<div class="col-12">
+												<p class="px-2 pt-4">
+													這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="comp_info" role="tabpanel" aria-labelledby="comp_info-tab" tabindex="0">
+										<div class="row">
+											<div class="col-12 m-auto">
+												<img src="../../assets/imgs/chenmko/comp_manage.webp" class="img-fluid rounded mb-2" alt="...">
+											</div>
+											<div class="col-12">
+												<p class="px-2 pt-4">
+													提供了管理企業相關資訊的功能，例如企業基本資料、聯絡方式。透過這個系統，企業可以方便地管理自己的資訊，同時也可以提供更多的資訊給客戶與潛在客戶。
+													<br><br>
+													除了基本的企業資訊管理功能外，這個解決方案還結合了 Bootstrap 的 Switches 功能，讓企業可以直觀選擇是否在聯絡我們頁面與 footer 顯示相關資訊。這個自定義顯示開關功能可以提供更多彈性，讓企業可以更好地控制自己的資訊展示。
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="comp_history" role="tabpanel" aria-labelledby="comp_history-tab" tabindex="0">
+										<div class="row">
+											<div class="col-12 m-auto">
+												<img src="../../assets/imgs/chenmko/comp_history.webp" class="img-fluid rounded mb-2" alt="...">
+											</div>
+											<div class="col-12">
+												<p class="px-2 pt-4">
+													對於企業內容管理者來說，擁有一個易於使用且功能強大的編輯界面是非常重要的。為滿足此需求，我選擇 ckeditor 工具來滿足此需求。
+													<br><br>
+													使用 ckeditor，企業內容管理者可以輕鬆地創建、編輯和格式化網站上的內容，而不需要具備任何編程技能。ckeditor 的簡潔而直觀的界面使得它易於使用，即使是初學者也能夠快速上手。
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="cate-col-manage" role="tabpanel" aria-labelledby="cate-col-manage-tab" tabindex="0">
+										<div class="row">
+											<div class="col-12 m-auto">
+												<img src="../../assets/imgs/chenmko/table_cols.webp" class="img-fluid rounded mb-2" alt="...">
+											</div>
+											<div class="col-12">
+												<p class="px-2 pt-4">
+													系統採用開關功能，以讓管理者輕鬆地自訂產品欄位，讓產品展示更具彈性和效果。因為不同產品分類可能需要不同的欄位，而此設計能讓您直覺地開關欄位，以確保只有相關屬性會顯示出來。
+													<br><br>
+													此設計只顯示您需要的欄位。使得產品顯示更專注，更直觀，更容易讓客戶了解。
+													<br><br>
+													在此設計中，您可以在不同的產品分類之間進行快速的欄位切換。我們的開關功能會自動隱藏不需要的欄位，以確保您只看到與您的產品分類相關的欄位。
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="product-manage" role="tabpanel" aria-labelledby="product-manage-tab" tabindex="0">
+										<div class="row">
+											<div class="col-12 m-auto">
+												<img src="../../assets/imgs/chenmko/products_edit_1.webp" class="img-fluid rounded mb-2" alt="...">
+											</div>
+											<div class="col-12">
+												<p class="px-2 pt-2 pb-3 m-0">
+													為協助內容管理者更快速便捷地編輯類別產品和欄位。在側邊提供快速切換功能，使管理者可以輕鬆地切換並管理不同的內容。此工具可有效節省時間和提高工作效率。
+													<br><br>
+													使用此工具，內容管理者可以輕鬆地編輯產品和欄位，而不必花費過多的時間在繁瑣的切換操作上。
+												</p>
+											</div>
+											<div class="col-12 m-auto">
+												<img src="../../assets/imgs/chenmko/products_edit_2.webp" class="img-fluid rounded mb-2" alt="...">
+											</div>
+											<div class="col-12">
+												<p class=" pt-2 pb-3 m-0">
+													根據所屬分類動態調整顯示欄位，讓內容管理者在填寫內容時不會被非顯示的欄位干擾。
+													<br><br>
+													這個內容管理系統的設計是為了讓內容管理者更加輕鬆地填寫內容，不顯示該類別關閉的欄位選項，讓內容管理者能夠更加專注於內容本身。
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex align-items-start">
+									
+								  </div>
+								  
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
