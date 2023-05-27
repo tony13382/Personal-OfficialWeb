@@ -112,7 +112,7 @@
     padding-top: 5rem;
 }
 .halfHightLightBg{
-    background: linear-gradient(to top, #bae7ff 40%, transparent 40%);
+    background: linear-gradient(to top, #f2ebd0 40%, transparent 40%);
     padding: 0px 2px;
 }
 
@@ -165,10 +165,6 @@
     border-color: var(--themeColor) !important;
 }
 
-
-.footer_item{
-    margin: 0px;
-}
 
 .footer_item{
     color: rgba(255, 255, 255, 0.6) !important;
