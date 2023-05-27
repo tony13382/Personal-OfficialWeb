@@ -47,90 +47,6 @@
             --themeColor: #3e3e41;
             --secondColor: #1b1b1c;
         }
-
-        .navbar {
-            background-color: var(--themeColor);
-        }
-
-        .navbar-nav .nav-item {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-
-        .navbar-nav .nav-div {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-            color: white;
-        }
-
-        .navbar-nav .nav-item:hover {
-            background-color: var(--secondColor);
-        }
-
-        .navbar-nav .nav-item .nav-link {
-            color: white !important;
-        }
-
-        .border-theme {
-            border-color: var(--themeColor) !important;
-        }
-
-        .bg-theme {
-            background-color: var(--themeColor);
-        }
-
-        .btn-theme {
-            color: white;
-            background-color: var(--themeColor);
-        }
-
-        .btn-theme:hover {
-            color: white;
-            background-color: var(--secondColor);
-        }
-
-        .btn-outline-theme {
-            color: var(--themeColor);
-            border-color: var(--themeColor);
-        }
-
-        .btn-outline-theme:hover {
-            color: white;
-            background-color: var(--themeColor);
-        }
-
-        .btn-text-theme {
-            color: #1f1f1f;
-        }
-
-        .btn-text-theme:hover {
-            background-color: #f0f0f0;
-        }
-
-        .footer_item{
-			color: rgba(255, 255, 255, 0.6) !important;
-			margin: 4px 0px;
-		}
-		.footer_item:hover{
-			color: white !important;
-			background-color: var(--secondColor);
-			font-weight: bold;
-			margin-left: 0.05rem;
-			padding: 0.25rem 0.75rem;
-			border-radius: 999px;
-		}
-		.footer_item i{
-			margin-right: 0.25rem;
-			display: none;
-		}
-		.footer_item:hover i{
-			margin-right: 0.25rem;
-			display: inline-block;
-		}
-
-        .border-theme {
-            border-color: var(--themeColor) !important;
-        }
     </style>
     <!--Nav Style-->
     <style>
@@ -208,22 +124,59 @@
         </div>
     </nav>
     <div class="fixed-bottom d-flex justify-content-end" style="z-index: 1000;">
-        <a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
-            <div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn"
-                style="background-color: var(--themeColor);">
-                <div class="fs-2 d-flex align-items-center justify-content-center text-white"
-                    style="width: 48px; height: 48px;">
-                    <i class="fas fa-angle-up text-decoration-none d-flex"></i>
-                </div>
-            </div>
-        </a>
-    </div>
+		<a class="text-decoration-none" onclick="toTop()" id="toTopBtn" style="display: none;">
+			<div class="rounded-circle d-inline-flex shadow-lg mb-5 me-4 p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
+				<div class="fs-2 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
+					<i class="fas fa-angle-up text-decoration-none d-flex"></i>
+				</div>
+			</div>
+		</a>
+	</div>
     <script src="assets/script/scroll.js"></script>
     <div
-        style="padding: 80px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
-        <div class="" style="padding: 5rem 2rem;">
+        style="padding: 80px 0px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(assets/imgs/index/homeCover.jpg); background-size: cover;">
+        <div class="text-white" style="padding: 5rem 2rem;">
             <div class="container">
-                <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="text-center">具多領域能力的網頁全端工程師</h1>
+                <div class="row">
+                    <div class="col-12 d-grid gap-4">
+                        <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="">
+                            具多領域能力的網頁全端工程師
+                        </h1>
+                        <div class="d-flex align-items-stretch">
+                            <div class="d-flex bg-primary rounded-pill" style="width: 4px;"></div>
+                            <div class="d-flex flex-column flex-grow-1 pt-1 pb-2">
+                                <p class="fs-3 px-3 mb-0 text-primary">
+                                    設計
+                                </p>
+                                <p class="px-3 mt-2 mb-0 text-white" style="letter-spacing: 0.1rem;">
+                                    曾擔任新創企業的產品設計師，熟悉 UI / UX 設計，能使用 Figma 製作設計原型
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-stretch">
+                            <div class="d-flex bg-info rounded-pill" style="width: 4px;"></div>
+                            <div class="d-flex flex-column pt-1 pb-2">
+                                <p class="fs-3 px-3 mb-0 text-info">
+                                    開發
+                                </p>
+                                <p class="px-3 mt-2 mb-0 text-white" style="letter-spacing: 0.1rem;">
+                                    專精於網頁領域全端開發，熟悉 JSP, NodeJs, Python Flask, php，能建立完整架構的前後端網頁
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-stretch">
+                            <div class="d-flex bg-warning rounded-pill" style="width: 4px;"></div>
+                            <div class="d-flex flex-column pt-1 pb-2">
+                                <p class="fs-3 px-3 mb-0 text-warning">
+                                    行銷
+                                </p>
+                                <p class="px-3 mt-2 mb-0 text-white" style="letter-spacing: 0.1rem;">
+                                    熟悉社群行銷與 SEO 規劃，具 Google Analytics 相關證書
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -237,55 +190,64 @@
                     <div class="card-body">
                         <h2 class="fs-5 text-center">呂亮進 Liang Chin Lu </h2>
                         <p class="text-center m-0">商業規劃 × 介面設計 × 軟體開發 × 數據分析</p>
-                        <div class="d-flex flex-wrap justify-content-center py-3" style="font-size: 1.2rem;">
-                            <a type="button" class="mx-2 text-dark d-inline-block" href="mailto:liangchinlu@gmail.com"
-                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                                data-bs-content="Email" data-bs-placement="bottom">
+                        <style>
+                            .sideLinkBtn{
+                                display: inline-flex;
+                                width: 42px;
+                                overflow: hidden;
+                            }
+                            .sideLinkBtn p{
+                                margin: 0px -160px 0px 0px;
+                                width: 0px;
+                                height: 0px;
+                                opacity: 0;
+                            }
+                            .sideLinkBtn:hover{
+                                width: auto;
+                            }
+                            .sideLinkBtn:hover p{
+                                transition: width 3s ease ;
+                                margin: 0px 0px 0px 4px;
+                                opacity: 1;
+                                width: auto;
+                                height: auto;
+                            }
+                            
+                        </style>
+
+                        <div class="d-flex flex-wrap gap-2 justify-content-center py-3" style="font-size: 1.2rem;">
+                            <a class="sideLinkBtn btn btn-outline-dark rounded-pill" 
+                                href="mailto:liangchinlu@gmail.com"
+                                target="_blank">
                                 <i class="bi bi-envelope-fill"></i>
+                                <p>Email</p>
                             </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://www.instagram.com/liang_chin_ml/" target="_blank" data-bs-toggle="popover"
-                                data-bs-trigger="hover focus" data-bs-content="instagram" data-bs-placement="bottom">
+                            <a type="button" class="sideLinkBtn btn btn-outline-dark rounded-pill" 
+                                href="https://www.instagram.com/liang_chin_ml/"
+                                target="_blank">
                                 <i class="bi bi-instagram"></i>
+                                <p>IG</p>
                             </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://www.facebook.com/tony13382/" target="_blank" data-bs-toggle="popover"
-                                data-bs-trigger="hover focus" data-bs-content="Facebook" data-bs-placement="bottom">
+                            <a type="button" class="sideLinkBtn btn btn-outline-dark rounded-pill" 
+                                href="https://www.facebook.com/tony13382/"
+                                target="_blank">
                                 <i class="bi bi-facebook"></i>
+                                <p>FB</p>
                             </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://twitter.com/liang_chin_ml" target="_blank" data-bs-toggle="popover"
-                                data-bs-trigger="hover focus" data-bs-content="Twitter" data-bs-placement="bottom">
-                                <i class="bi bi-twitter"></i>
-                            </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block" href="https://github.com/tony13382"
-                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                                data-bs-content="Github" data-bs-placement="bottom">
+                            <a type="button" class="sideLinkBtn btn btn-outline-dark rounded-pill" 
+                                href="https://github.com/tony13382"
+                                target="_blank">
                                 <i class="bi bi-github"></i>
-                            </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block" href="https://shopee.tw/tony13382sp"
-                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                                data-bs-content="Shopee" data-bs-placement="bottom">
-                                <i class="bi bi-bag-fill"></i>
-                            </a>
-                            <a type="button" class="mx-2 text-dark d-inline-block"
-                                href="https://meowlu.notion.site/Liang-Chin-ML-12e7c67f7f2d47249f0111882d932663"
-                                target="_blank" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                                data-bs-content="Notion 知識站" data-bs-placement="bottom">
-                                <i class="bi bi-archive-fill"></i>
+                                <p>GitHub</p>
                             </a>
                             <!-- Button trigger modal -->
-                            <a type="button" class="mx-2 text-dark" data-bs-toggle="modal" data-bs-target="#shareModel"
+                            <a type="button" class="sideLinkBtn btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#shareModel"
                                 data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="QR Code"
                                 data-bs-placement="bottom">
-                                <i class="bi bi-qr-code"></i>
+                                <i class="bi bi-three-dots"></i>
+                                <p>More</p>
                             </a>
                         </div>
-                        <p class="card-text">
-                            作為一名全端開發的跨領域工程師，我擁有豐富的實戰經驗和作品，<span class="halfHightLightBg">曾參與多項競賽和專案</span>。這些經驗不僅讓我擁有扎實的技術功底，也培養了我的商業規劃和專案管理能力。在實戰中，我能夠高效地管理時間，確保專案進程順利。
-                            <br><br>
-                            除此之外，我還有豐富的產品介面設計經驗。結合我的開發和管理能力，我能夠<span class="halfHightLightBg">設計出兼顧產品商業化發展、實作開發和視覺設計三維度的產品介面</span>。我也擅長運用資訊設計，以設計思考的框架將複雜的資料以直覺有效的方式傳達給受眾。這些能力使我在專案開發中能夠快速地理解需求，提出創新的解決方案，並有效地將想法轉化為可行的產品。
-                        </p>
                         <div class="d-grid gap-2 mt-3">
                             <a class="btn btn-outline-dark d-none" type="button" href="pages/cowork/index.html">展開合作</a>
                             <a class="btn btn-outline-dark" type="button" target="_blank"
@@ -299,21 +261,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-dark mt-4 mb-0 d-none" role="alert">
-                    <div>
-                        <span class="me-2 fst-italic">特惠！</span>便宜二手書現正銷售中<br>
-                        <a href="https://shopee.tw/tony13382sp" target="_blank" rel="noopener noreferrer"
-                            class="text-dark">
-                            前往賣場
-                        </a>
-                    </div>
-                </div>
             </div>
             <div class="col-lg-8 col-12 pb-4">
                 <div style="height: 80px;" class="d-none d-lg-block"></div>
-
-                <!--工作-->
                 <div class="card shadow">
+                    <div class="card-body lh-lg">
+                        <p class="card-text">
+                            我是一位對產品開發充滿熱情且擁有設計開發與行銷經驗的專業人士。我享受挑戰和開發新產品的過程，擁有將商業設計與開發相結合的能力，並具備參與多項專案的經驗。
+                            <br><br>我喜歡不斷挑戰自己並參與新產品的開發。從商業設計到開發的一條龍產品規劃經驗讓我能夠全方位地理解並滿足用戶需求。我注重細節，能夠平衡創新和實用性，並致力於創造出優質的產品。我具有良好的問題解決能力和分析能力，在高壓環境下能夠保持冷靜並迅速找到解決方案。
+                        </p>
+                        <p class="m-0">
+                            教育背景：
+                        </p>
+                        <ul class="mt-2">
+                            <li>中原大學：<span class="halfHightLightBg">資訊管理系</span>，學士學位</li>
+                            <li>清華大學：學習科學與科技研究所，研究專注於<span class="halfHightLightBg">文字探勘</span>領域</li>
+                        </ul>
+                        <p class="m-0">
+                            專業技能：
+                        </p>
+                        <ul class="mt-2">
+                            <li>軟體開發：<br>精通多種程式語言，包括Java、Python、JavaScript、TypeScript 和 R，能夠進行全端開發。</li>
+                            <li>介面設計：<br>熟練使用Figma進行介面設計，能夠創建出符合用戶體驗的界面。</li>
+                            <li>資料視覺化：<br>熟悉Looker Studio和Power BI等資料視覺化工具，能夠將複雜的數據以直觀的方式呈現。</li>
+                            <li>團隊合作：<br>具備良好的團隊合作能力，能夠有效溝通和協調，與團隊成員共同達成目標。</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--工作-->
+                <div class="card shadow mt-4">
                     <div class="card-body">
                         <h2 class="fs-4 text-SkyHeavyBlue" id="expJobs" style="margin-top: -80px;padding-top: 80px;">
                             校園與工作經歷</h2>
@@ -2286,19 +2262,28 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="shareModelLabel">Share It!</h1>
+                    <h1 class="modal-title fs-5" id="shareModelLabel">More!</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body h-auto">
-                    <img src="assets/imgs/index/qr-code.png" class="img-fluid" alt="QR Code">
-                    <p class="text-center ">
-                        <a href="https://tony13382.github.io/index.html" class="text-dark text-decoration-none">
-                            https://tony13382.github.io/index.html
+                    <p class="m-0 fw-bold text-center">QR Code</p>
+                    <div class="d-flex justify-content-center">
+                        <img src="assets/imgs/index/qr-code.png" class="img-fluid" alt="QR Code" style="max-width: 320px;">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a type="button" class="btn btn-outline-dark rounded-pill"
+                            href="https://twitter.com/liang_chin_ml">
+                            <i class="bi bi-twitter me-2"></i>Twitter
                         </a>
-                    </p>
-                    <div class="alert alert-primary text-center" role="alert">
-                        <a href="https://pse.is/myweb" class="text-reset text-decoration-none">
-                            https://pse.is/myweb
+                        <a type="button" class="btn btn-outline-dark rounded-pill"
+                            href="https://meowlu.notion.site/Liang-Chin-ML-12e7c67f7f2d47249f0111882d932663"
+                            target="_blank">
+                            <i class="bi bi-archive-fill me-2"></i>Notion 知識站
+                        </a>
+                        <a type="button" class="btn btn-outline-dark rounded-pill" 
+                            href="https://shopee.tw/tony13382sp"
+                            target="_blank">
+                            <i class="bi bi-bag me-2"></i>Shopee
                         </a>
                     </div>
                 </div>
