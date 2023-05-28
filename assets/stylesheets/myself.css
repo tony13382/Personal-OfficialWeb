@@ -114,6 +114,11 @@
 .halfHightLightBg{
     background: linear-gradient(to top, #A3CF94 40%, transparent 40%);
     padding: 0px 2px;
+    transition: background 1s ease;
+}
+.halfHightLightBg:hover{
+    background: linear-gradient(to top, #A3CF94 20%, transparent 20%);
+    padding: 0px 2px;
 }
 
 
