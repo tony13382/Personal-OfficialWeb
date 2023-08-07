@@ -1371,7 +1371,7 @@
             </style>
             <div class="row mb-4">
                 <div class="col-12 col-lg-3 mt-3">
-                    <div class="nav flex-column nav-pills job_nav_bar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="nav flex-column nav-pills job_nav_bar" id="job-tab" role="tablist" aria-orientation="vertical">
                         <button class="nav-link active" id="slide-jobhistory-ircenter-tab" data-bs-toggle="pill" data-bs-target="#slide-jobhistory-ircenter" type="button" role="tab" aria-controls="slide-jobhistory-ircenter" aria-selected="true">
                             <p class="text-start mb-0 fs-5">研究實習生</p>
                             <p class="text-start mb-0 fs-6">清華大學校務研究中心</p>
@@ -1394,84 +1394,153 @@
                         </button>
                     </div>
                 </div>
+                <script>
+                    function switch_job_nav(active_id){
+                        nav_btn_name_list = ["slide-jobhistory-ircenter","slide-jobhistory-kaotrello","slide-jobhistory-tiic","slide-jobhistory-songla"];
+                        for (let i = 0; i < nav_btn_name_list.length; i++) {
+                            document.getElementById(nav_btn_name_list[i]+"-tab").classList.remove("active");
+                            document.getElementById(nav_btn_name_list[i]).classList.remove("active");
+                            document.getElementById(nav_btn_name_list[i]).classList.remove("show");
+                        }
+                        document.getElementById(active_id+"-tab").classList.add("active");
+                        document.getElementById(active_id).classList.add("active");
+                        document.getElementById(active_id).classList.add("show");
+                    }
+                </script>
                 <div class="col-12 col-lg mt-3 lh-lg">
                     <div class="card shadow h-100">
                         <div class="card-body tab-content">
-                            <div class="tab-pane fade show active" id="slide-jobhistory-ircenter" role="tabpanel" aria-labelledby="slide-jobhistory-ircenter-tab" tabindex="0">
-                                <p class="m-0"><b>
-                                    非結構化文本分析
-                                </b></p>
-                                <ul>
-                                    <li>在校務研究中心運用先進的文本處理技術，從各種校園相關資料源中擷取、清理和整理大量的文本資料，確保資料品質以及適合後續的分析。</li>
-                                    <li>處理文本資料時，我使用了SBERT（Sentence-BERT）模型來進行文本向量化。這有助於將課程資訊轉換為數值表示，使其更易於進行相關的量化分析。</li>
-                                    <li>利用我對文本分析技術的熟悉，我能夠分析和評估校園內不同領域的能力表現，幫助決策者了解哪些領域能力優勢以及可能需要進一步發展的領域。</li>
-                                    <li>維運 Milvus 向量資料庫。確保資料搜索準確性和高效查詢。</li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade" id="slide-jobhistory-kaotrello" role="tabpanel" aria-labelledby="slide-jobhistory-kaotrello-tab" tabindex="0">
-                                <p class="m-0">
-                                    <b>模糊文本搜尋算法</b>
-                                </p>
-                                <ul>
-                                    <li>使用 Sentence-BERT (SBERT) 技術進行文本向量化方面具有豐富經驗。透過 SBERT 技術，我能夠將文本轉換為密集的向量表示，進而實現更精確的相似性計算和文本匹配。</li>
-                                    <li>在多個專案中負責維運 Milvus 向量資料庫。我能夠靈活地配置、調整和優化 Milvus，以確保系統在處理大規模向量資料時的穩定性和高效性。</li>
-                                    <li>善於將自然語言處理 (NLP) 技術與搜尋算法相結合，以提供更精確和全面的搜索結果，從而提高系統的用戶體驗。</li>
-                                </ul>
-                                <p class="m-0">
-                                    <b>Flask API 製作</b>
-                                </p>
-                                <ul>
-                                    <li>設計和實現了基於 Flask 框架的 API，為計劃案發系統提供了穩定且靈活的後端服務。</li>
-                                    <li>透過遵循最佳實踐和優化代碼結構，我確保 API 的可擴展性和易於維護。</li>
-                                    <li>撰寫原子測試與技術相關文件，確保系統可以妥善的交接。</li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade" id="slide-jobhistory-tiic" role="tabpanel" aria-labelledby="slide-jobhistory-tiic-tab" tabindex="0">
-                                <p class="m-0"><b>DC 社群管理與用戶體驗優化</b></p>
-                                <ul>
-                                    <li>深入了解 Discord 社群成員的需求、偏好和痛點，並從中收集寶貴的反饋。</li>
-                                    <li>分析前代 Discord 用戶旅程，並從中分析出可以優化的部分並執行。</li>
-                                    <li>與不同部門和團隊的協作，針對內部部門需求訂做 Discord 功能</li>
-                                    <li>擔任 Discord 社群管理者，負責招募、培訓和指導社群志願者，確保社群運營順利且高效。</li>
-                                </ul>
-                                <p class="m-0"><b>提升用戶留存</b></p>
-                                <ul>
-                                    <li>開發並執行社群策略，包括吸引新用戶、留住現有用戶和促進用戶參與。</li>
-                                    <li>制定並實施用戶激勵計劃，以增加用戶參與度和忠誠度。</li>
-                                </ul>
-                                <div class="px-2">
-                                    <div class="row">
-                                        <div class="col-12 col-md-6 p-2">
-                                            <img src="./assets/imgs/index/jobs/tiic1.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                            <div class="tab-pane fade show active h-100" id="slide-jobhistory-ircenter" role="tabpanel" aria-labelledby="slide-jobhistory-ircenter-tab" tabindex="0">
+                                <div class="d-flex flex-column h-100">
+                                    <p class="m-0"><b>
+                                        非結構化文本分析
+                                    </b></p>
+                                    <ul class="">
+                                        <li>在校務研究中心運用先進的文本處理技術，從各種校園相關資料源中擷取、清理和整理大量的文本資料，確保資料品質以及適合後續的分析。</li>
+                                        <li>處理文本資料時，我使用了SBERT（Sentence-BERT）模型來進行文本向量化。這有助於將課程資訊轉換為數值表示，使其更易於進行相關的量化分析。</li>
+                                        <li>利用我對文本分析技術的熟悉，我能夠分析和評估校園內不同領域的能力表現，幫助決策者了解哪些領域能力優勢以及可能需要進一步發展的領域。</li>
+                                        <li>維運 Milvus 向量資料庫。確保資料搜索準確性和高效查詢。</li>
+                                    </ul>
+                                    <div class="row mt-auto">
+                                        <div class="col-12 col-md-6 p-2 d-grid">
+                                            <button type="button" class="btn btn-light" disabled>
+                                                上一筆
+                                            </button>
                                         </div>
-                                        <div class="col-12 col-md-6 p-2">
-                                            <img src="./assets/imgs/index/jobs/tiic2.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                        <div class="col-12 col-md-6 p-2 d-grid">
+                                            <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-kaotrello')">
+                                                下一筆
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="slide-jobhistory-kaotrello" role="tabpanel" aria-labelledby="slide-jobhistory-kaotrello-tab" tabindex="0">
+                                <div class="d-flex flex-column h-100">
+                                    <p class="m-0">
+                                        <b>模糊文本搜尋算法</b>
+                                    </p>
+                                    <ul>
+                                        <li>使用 Sentence-BERT (SBERT) 技術進行文本向量化方面具有豐富經驗。透過 SBERT 技術，我能夠將文本轉換為密集的向量表示，進而實現更精確的相似性計算和文本匹配。</li>
+                                        <li>在多個專案中負責維運 Milvus 向量資料庫。我能夠靈活地配置、調整和優化 Milvus，以確保系統在處理大規模向量資料時的穩定性和高效性。</li>
+                                        <li>善於將自然語言處理 (NLP) 技術與搜尋算法相結合，以提供更精確和全面的搜索結果，從而提高系統的用戶體驗。</li>
+                                    </ul>
+                                    <p class="m-0">
+                                        <b>Flask API 製作</b>
+                                    </p>
+                                    <ul>
+                                        <li>設計和實現了基於 Flask 框架的 API，為計劃案發系統提供了穩定且靈活的後端服務。</li>
+                                        <li>透過遵循最佳實踐和優化代碼結構，我確保 API 的可擴展性和易於維護。</li>
+                                        <li>撰寫原子測試與技術相關文件，確保系統可以妥善的交接。</li>
+                                    </ul>
+                                    <div class="row mt-auto">
+                                        <div class="col-12 col-md-6 p-2 d-grid">
+                                            <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-ircenter')">
+                                                上一筆
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-md-6 p-2 d-grid">
+                                            <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-tiic')">
+                                                下一筆
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="slide-jobhistory-tiic" role="tabpanel" aria-labelledby="slide-jobhistory-tiic-tab" tabindex="0">
+                                <div class="d-flex flex-column h-100">
+                                    <p class="m-0"><b>DC 社群管理與用戶體驗優化</b></p>
+                                    <ul>
+                                        <li>深入了解 Discord 社群成員的需求、偏好和痛點，並從中收集寶貴的反饋。</li>
+                                        <li>分析前代 Discord 用戶旅程，並從中分析出可以優化的部分並執行。</li>
+                                        <li>與不同部門和團隊的協作，針對內部部門需求訂做 Discord 功能</li>
+                                        <li>擔任 Discord 社群管理者，負責招募、培訓和指導社群志願者，確保社群運營順利且高效。</li>
+                                    </ul>
+                                    <p class="m-0"><b>提升用戶留存</b></p>
+                                    <ul>
+                                        <li>開發並執行社群策略，包括吸引新用戶、留住現有用戶和促進用戶參與。</li>
+                                        <li>制定並實施用戶激勵計劃，以增加用戶參與度和忠誠度。</li>
+                                    </ul>
+                                    <div class="px-2">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 p-2">
+                                                <img src="./assets/imgs/index/jobs/tiic1.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                            </div>
+                                            <div class="col-12 col-md-6 p-2">
+                                                <img src="./assets/imgs/index/jobs/tiic2.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-auto">
+                                    <div class="col-12 col-md-6 p-2 d-grid">
+                                        <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-kaotrello')">
+                                            上一筆
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6 p-2 d-grid">
+                                        <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-songla')">
+                                            下一筆
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="slide-jobhistory-songla" role="tabpanel" aria-labelledby="slide-jobhistory-songla-tab" tabindex="0">
-                                <p class="m-0"><b>軟體介面設計</b></p>
-                                <ul>
-                                    <li>使用 Figma 這一優秀的設計工具來創建高品質、交互式的軟體原型。這使得整個設計過程更具有靈活性，能夠輕鬆地與團隊進行協作和討論，同時也能更好地呈現我對產品界面的想法。</li>
-                                    <li>我深度參與制定商業目標以及軟體功能需求。這讓我能夠將設計融合進整個產品生態系統中，確保用戶體驗與公司的整體戰略目標保持一致。</li>
-                                    <li>我非常重視使用者的反饋，並將其視為優化產品的關鍵因素。通過與用戶進行緊密的合作、測試和反思，我能夠設計出更符合他們期望和需求的界面，從而提高產品的可用性和滿意度。</li>
-                                </ul>
-                                <p class="m-0"><b>軟體規劃、設計、開發</b></p>
-                                <ul>
-                                    <li>建立企業形象網頁。我使用了現代化的設計風格、符合最佳用戶體驗的介面設計和直觀的導航結構，以確保網站能夠有效地展示公司的核心價值和產品特色。</li>
-                                    <li>深入研究音樂理論和人工智能相關技術，協助設計了一個優秀的音樂生成系統。這個系統能夠根據用戶哼唱的旋律，自動生成與之匹配的音樂內容</li>
-                                </ul>
-                                <p class="m-0"><b>簡報設計</b></p>
-                                <ul>
-                                    <li>我深信言簡意賅的原則。我會針對聽眾選擇最重要的資料和信息，以清晰簡明的方式呈現，避免信息過於冗長或混淆。</li>
-                                    <li>我精通使用各種視覺化工具和技巧，將不同資料轉化為生動有趣且易於理解的圖表和圖形。這有助於觀眾迅速抓住重要信息，從而更好地理解我所呈現的內容。</li>
-                                    <li>為了確保簡報的一致性和專業性，我替公司設計視覺識別指南，使用統一的字體、色彩和排版風格。這有助於確保我所設計的每一份簡報都代表著公司的形象和價值觀。</li>
-                                </ul>
+                                <div class="d-flex flex-column h-100">
+                                    <p class="m-0"><b>軟體介面設計</b></p>
+                                    <ul>
+                                        <li>使用 Figma 這一優秀的設計工具來創建高品質、交互式的軟體原型。這使得整個設計過程更具有靈活性，能夠輕鬆地與團隊進行協作和討論，同時也能更好地呈現我對產品界面的想法。</li>
+                                        <li>我深度參與制定商業目標以及軟體功能需求。這讓我能夠將設計融合進整個產品生態系統中，確保用戶體驗與公司的整體戰略目標保持一致。</li>
+                                        <li>我非常重視使用者的反饋，並將其視為優化產品的關鍵因素。通過與用戶進行緊密的合作、測試和反思，我能夠設計出更符合他們期望和需求的界面，從而提高產品的可用性和滿意度。</li>
+                                    </ul>
+                                    <p class="m-0"><b>軟體規劃、設計、開發</b></p>
+                                    <ul>
+                                        <li>建立企業形象網頁。我使用了現代化的設計風格、符合最佳用戶體驗的介面設計和直觀的導航結構，以確保網站能夠有效地展示公司的核心價值和產品特色。</li>
+                                        <li>深入研究音樂理論和人工智能相關技術，協助設計了一個優秀的音樂生成系統。這個系統能夠根據用戶哼唱的旋律，自動生成與之匹配的音樂內容</li>
+                                    </ul>
+                                    <p class="m-0"><b>簡報設計</b></p>
+                                    <ul>
+                                        <li>我深信言簡意賅的原則。我會針對聽眾選擇最重要的資料和信息，以清晰簡明的方式呈現，避免信息過於冗長或混淆。</li>
+                                        <li>我精通使用各種視覺化工具和技巧，將不同資料轉化為生動有趣且易於理解的圖表和圖形。這有助於觀眾迅速抓住重要信息，從而更好地理解我所呈現的內容。</li>
+                                        <li>為了確保簡報的一致性和專業性，我替公司設計視覺識別指南，使用統一的字體、色彩和排版風格。這有助於確保我所設計的每一份簡報都代表著公司的形象和價值觀。</li>
+                                    </ul>
+                                </div>
+                                <div class="row mt-auto">
+                                    <div class="col-12 col-md-6 p-2 d-grid">
+                                        <button type="button" class="btn btn-light" onclick="switch_job_nav('slide-jobhistory-tiic')">
+                                            上一筆
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-6 p-2 d-grid">
+                                        <button type="button" class="btn btn-light" disabled>
+                                            下一筆
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>               
             </div>
         </div>
     </div>
