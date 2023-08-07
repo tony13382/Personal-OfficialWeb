@@ -10,7 +10,7 @@
     margin-right: 8px !important;
 }
 
-.phoneRadius {
+.photoRadius {
     border-radius: 16px;
     overflow: hidden;
 }
@@ -112,12 +112,11 @@
     padding-top: 5rem;
 }
 .halfHightLightBg{
-    background: linear-gradient(to top, #A3CF94 40%, transparent 40%);
+    background: linear-gradient(to top, #ffd6e7 40%, transparent 40%);
     padding: 0px 2px;
-    transition: background 1s ease;
 }
 .halfHightLightBg:hover{
-    background: linear-gradient(to top, #A3CF94 20%, transparent 20%);
+    background: linear-gradient(to top, #ffd6e7 20%, transparent 20%);
     padding: 0px 2px;
 }
 
