@@ -113,6 +113,8 @@
 }
 .halfHightLightBg{
     background: linear-gradient(to top, #ffd6e7 40%, transparent 40%);
+    font-weight: bold;
+    color: #664557;
     padding: 0px 2px;
 }
 .halfHightLightBg:hover{
