@@ -200,6 +200,12 @@
 			--themeColor: #78685b;
 			--secondColor : #52463d;
 		}
+        body {
+            background-color: #faf2ef !important;
+        }
+        .bg-mywork {
+            background-color: #f3f9ff !important;
+        }
     </style>
     <!--Nav Style-->
     <style>
@@ -234,6 +240,24 @@
             text-decoration: none;
             color: #1f1f1f;
             background-color: #f0f0f0;
+        }
+
+        .btn-myprimary {
+            background-color: var(--themeColor);
+            color: #ffffff;
+        }
+        .btn-myprimary:hover {
+            background-color: var(--secondColor);
+            color: #ffffff;
+        }
+
+        .btn-outline-myprimary {
+            border-color: var(--themeColor);
+            color: var(--themeColor);
+        }
+        .btn-outline-myprimary:hover {
+            background-color: var(--secondColor);
+            color: #ffffff;
         }
     </style>
 
@@ -356,11 +380,11 @@
                             <p class="text-center text-black-50">覆蓋產品發展鏈的熱情開發者</p>
                         </div>
                         <div class="d-grid gap-2">
-                            <a target="_blank" type="button" class="btn btn-light "
+                            <a target="_blank" type="button" class="btn btn-myprimary "
                                 href="https://tony13382.github.io/assets/file/rv/RV(Data_Science).pdf">
                                 我的履歷
                             </a>
-                            <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#shareModel"
+                            <a type="button" class="btn btn-outline-myprimary" data-bs-toggle="modal" data-bs-target="#shareModel"
                                 data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="QR Code"
                                 data-bs-placement="bottom">聯絡我
                             </a>
@@ -689,7 +713,7 @@
         </div>
     </div>
     <!--技能組-->
-    <div class="container">
+    <div class="container pb-5">
         <div class="row">
             <div class="col-12">
                 <!--技能組-->
@@ -1276,7 +1300,7 @@
     </div>
     <!-- 作品集 -->
     <div id="myWorks" class="" style="padding-top: 80px; margin-top: -80px;">
-        <div class="pt-3 bg-light">
+        <div class="pt-3 bg-mywork">
             <div class="container">
                 <div class="row ms-navbar">
                     <div class="col-12">
@@ -1286,7 +1310,7 @@
             </div>
         </div>
     </div>
-    <div class="pb-4 bg-light">
+    <div class="pb-4 bg-mywork">
         <div class="container" id="project_board">
             <div class="row">
                 <div class="col-12">
