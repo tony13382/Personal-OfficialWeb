@@ -43,7 +43,7 @@
     <!-- Add: Vue.js Suppot-->
     <script type="importmap">
         {"imports": {
-            "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            "vue": "/assets/script/vue.esm-browser.js"
         }}
     </script>
     
@@ -76,7 +76,7 @@
             {
                 name: "Trello 知識小幫手 2.0",
                 cover: "assets/imgs/trelloFinder/cover.webp",
-                beforeLoadingCover : "assets/imgs/trelloFinder/coverLoading.png",
+                beforeLoadingCover : "assets/imgs/trelloFinder/coverLoading.webp",
                 link: "pages/projects/trelloFinder.html",
                 tags: ["#APIs 設計", "#文本探勘", "#佇列系統", "#文本搜尋算法"],
                 description: "清華大學學習科學與科技研究所區國良老師研究室計劃案，透過 Trello 協助學生進行學習資源搜索與互動",
@@ -1380,6 +1380,7 @@
                             </a>
                         </div>
                     </div>
+                    <!--
                     <div class="row d-none align-items-stretch ">
                         <div class="col-12 col-md-6 col-lg-4 p-2">
                             <a href="pages/projects/chenmko.html" class="text-decoration-none">
@@ -1675,6 +1676,7 @@
                             </a>
                         </div>
                     </div>
+                    -->
                 </div>
                 
                 <div class="tab-pane fade" v-for="typetag of type_list" v-bind:id="'products-' + typetag.id" v-bind:aria-labelledby="'products-' + typetag.id + '-tab'" role="tabpanel" tabindex="0">
@@ -1697,366 +1699,35 @@
                         </div>
                     </div>
                 </div>
-                
-                <!--開發作品
-                    <div class="tab-pane fade" id="products-dev" role="tabpanel"
-                        aria-labelledby="products-dev-tab" tabindex="0">
-                        <div class="row d-flex align-items-stretch">
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/chenmko.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/chenmko/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/chenmko/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                Chenmko 全端網頁開發內容
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                CHENMKO 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#網站架設</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#資料庫設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#前端開發</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#後端開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/mindReader.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/mindReader/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/mindReader/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                MindReader
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                Mind Reader 與你心譯相通，精準的表達出文字中所包含的情感和意思，減少生活上的誤會。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/hsCloudMeetingManage.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/hsCloudMeetingManage/coverLoading.png"
-                                            class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/hsCloudMeetingManage/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                華新雲會議管理系統
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                大學系統分析專案，利用 mongodb 與 jisti
-                                                提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/hsVmi.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/hsVmi/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/hsVmi/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                華新 VMI 庫存管理遊戲
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                大學系統分析專案，利用歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，以此進行員工銷售策畫訓練。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/meowluStockCalc.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/meowluStockCalc/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/meowluStockCalc/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                MeowLu Stock - 股票試算小工具
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                提供股票交易款計算小工具，也能依據設定漲跌幅度來計算期望股價。適合作為新手小白的工具。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/noDrinkNoDrunk.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/noDrinkNoDrunk/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/noDrinkNoDrunk/linkCover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                No Drink No Drunk
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/oneDayLover.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/oneDayLover/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/oneDayLover/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                一日情人後端
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                大學開發專案，利用 JSP 製作商城後端（純資料庫交互，無金流，具備後台）
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#程式開發</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    設計作品
-                    <div class="tab-pane fade" id="products-design" role="tabpanel"
-                        aria-labelledby="products-design-tab" tabindex="0">
-                        <div class="row d-flex align-items-stretch">
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/songlaMusicCreater.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/songla/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/songla/songlaInpageCover.png">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                Songla 音樂智慧創作小幫手
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                哼唱即可作曲，讓創作音樂不再是遙不可及的夢想。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#產品規劃</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#UX優化</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/foodome.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/foodome/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/foodome/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                食材外送專家 - Foodome
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#企劃書製作</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    其他作品
-                    <div class="tab-pane fade" id="products-other" role="tabpanel"
-                        aria-labelledby="products-other-tab" tabindex="0">
-                        <div class="row d-flex align-items-stretch">
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/foodome.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/foodome/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/foodome/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                食材外送專家 - Foodome
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#介面設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#企劃書製作</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/jobAnalytics2020.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/jobAnalytics2020/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/jobAnalytics2020/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                2020年台灣各行業別員工薪資統計分析
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                利用政府公開資訊分析職場，提供學子未來工作的預期薪資的參考資訊。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#資料清理</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#資料視覺化</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#簡報設計</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/digitalOcean.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/digitalOcean/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/digitalOcean/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                數位海洋知識專案 執行者
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                「ML 亮進」的個人知識庫資訊統整並線上公開，高效分享資訊與蒐集到的資源。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#數位內容</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/wpWeb.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/wpWeb/coverLoading.png" class="card-img-top lozad" alt="..."
-                                            data-src="assets/imgs/wpWeb/linkCover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                自架站科技/遊戲Blog - Techjoy
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用
-                                                Red Hat 的OpenShift 方案與 Byethost Free 方案，但後來因課業壓力與營運成本，於16年關閉
-                                                Tecjoy，於18年正式放棄mcblog營運工作。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#數位內容</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#網站架設</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 p-2">
-                                <a href="pages/projects/techlife.html" class="text-decoration-none">
-                                    <div class="card hoverShadow hoverBigger h-100">
-                                        <img src="assets/imgs/techlife/coverLoading.png" class="card-img-top lozad"
-                                            alt="..." data-src="assets/imgs/techlife/cover.webp">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                TechLife 讓科技充滿生活
-                                            </h5>
-                                            <p class="card-text text-dark">
-                                                適逢網際網路活躍發展的世代，我們認為擁有基本的資訊素養是非常重要的，除了瞭解資訊相關知識以外，學會使用資訊科技亦是如今不可或缺的能力。而年紀尚幼的孩子們可塑性強、學習力高，非常適合慢慢地開始接觸資訊這個領域，提早學習一定能夠替未來發展創造出更多的機會。
-                                            </p>
-                                        </div>
-                                        <div class="card-footer bg-transparent border-0 pb-3">
-                                            <div class="fs-5 text-black">
-                                                <span class="badge bg-light text-dark rounded-pill">#PowerPoint 設計</span>
-                                                <span class="badge bg-light text-dark rounded-pill">#教案設計</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                -->
             </div>
 
         </div>
         <script type="module">
             import { createApp, ref } from 'vue';
+        
             createApp({
                 setup() {
-                    const projects_list = ref(set_projects); // 假設 set_projects 是您項目數據的初始化值
-                    const type_list = ref(set_type); // 假設 set_type 是您類型數據的初始化值
-            
+                    const projects_list = ref(set_projects); // 初始化項目列表
+                    const type_list = ref(set_type); // 初始化類型列表
+        
                     // 定義過濾項目的函數
                     const filteredProjects = (typeId) => {
                         return projects_list.value.filter(project => project.projectType.includes(typeId));
                     };
-            
-                    // 返回所有需要在模板中使用的響應式數據和函數
+        
                     return {
                         projects_list,
                         type_list,
-                        filteredProjects, // 確保這個函數可以在模板中被調用
+                        filteredProjects,
                     };
                 },
             }).mount('#project_board');
-            await run_lazad();
-        </script>            
+        
+            // 當 document 準備好後執行 run_lazad
+            document.addEventListener('DOMContentLoaded', () => {
+                run_lazad()
+            });
+        </script>
         
     </div>
     <!-- Modal -->
@@ -2271,6 +1942,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>-->
     <script src="assets/script/bootstrap.bundle.min.js"></script>
+    <!--
     <script src="/node_modules/bootstrap/js/src/popover.js"></script>
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -2278,7 +1950,7 @@
             return new bootstrap.Popover(popoverTriggerEl)
         })
     </script>
-
+    -->
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
