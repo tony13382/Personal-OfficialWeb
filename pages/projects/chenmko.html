@@ -112,6 +112,27 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="col-lg-8 col-12 pb-4">
+					<div style="height: 80px;" class="d-none d-lg-block"></div>
+					<div class="card shadow">
+						<div class="card-body">
+							<div class="col-12">
+								<img src="../../assets/imgs/chenmko/cover.webp" class="img-fluid rounded mb-2" alt="...">
+							</div>
+							<div class="col-12 pt-2">
+								<p class="m-0">
+									根據企業的設計圖打造官網和後台系統管理產品。
+									<ul class="py-2 ps-4 lh-lg">
+										<li>技術前端採用bootstrap打造出響應式(RWD)網頁，確保網站在不同設備上能夠良好地顯示。</li>
+										<li>後端採用php語言打造，以便後續系統交接「企業要求」。</li>
+										<li>網站內容採用英語、日語與繁體中文，確保企業的目標受眾能夠理解網站的內容。</li>
+									</ul>
+									總之，專案的目標是為企業打造一個高效、易用、且能夠展示企業資訊的官網和後台系統便於管理產品與資訊。
+								</p>
+							</div>
+						</div>
+					</div>
 					<div class="card shadow mt-4">
 						<div class="card-body">
 							<h2 class="fs-4 text-SkyHeavyBlue">委託專案</h2>
@@ -126,6 +147,19 @@
 										<div class="ps-3 d-inline-flex flex-column">
 											<p class="p-0 mb-2 fw-bold">php</p>
 											<p class="p-0 m-0">開發所採用程式語言</p>
+										</div>
+									</div>
+								</div>
+								<div class="card my-2">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../../assets/imgs/appIcons/mysql.png" class="img-fluid p-1" alt="SQL Icon">
+											</div>
+										</div>
+										<div class="ps-3 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">MySQL</p>
+											<p class="p-0 m-0">資料庫設計與管理</p>
 										</div>
 									</div>
 								</div>
@@ -158,92 +192,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-8 col-12 pb-4">
-					<div style="height: 80px;" class="d-none d-lg-block"></div>
-					<div class="card shadow">
-						<div class="card-body">
-							<div class="col-12">
-								<img src="../../assets/imgs/chenmko/cover.webp" class="img-fluid rounded mb-2" alt="...">
-							</div>
-							<div class="col-12 pt-2">
-								<p class="m-0">
-									根據企業的設計圖打造官網和後台系統管理產品。
-									<ul class="py-2 ps-4 lh-lg">
-										<li>技術前端採用bootstrap打造出響應式(RWD)網頁，確保網站在不同設備上能夠良好地顯示。</li>
-										<li>後端採用php語言打造，以便後續系統交接「企業要求」。</li>
-										<li>網站內容採用英語、日語與繁體中文，確保企業的目標受眾能夠理解網站的內容。</li>
-									</ul>
-									總之，專案的目標是為企業打造一個高效、易用、且能夠展示企業資訊的官網和後台系統便於管理產品與資訊。
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4">
-						<div class="card-body">
-							<h2 class="fs-4 text-SkyHeavyBlue">資料架構設計（ER-Model）</h2>
-							<hr>
-							<div class="col-12">
-								<img src="../../assets/imgs/chenmko/db_ErModel.png" class="img-fluid rounded mb-2 p-1" alt="...">
-							</div>
-							<div class="col-12">
-								<p class="m-0 pt-2">
-									<b>關聯資料表設計思路：</b>
-									<p class="mt-2 mb-0">
-										在一個網站的開發中，遇到了一個困難：不同分類的產品需要不同的欄位進行描述，而這些欄位的數量和內容是不同的，因此無法在單一的產品資料表中完成描述。為了解決這個問題，採用了一個新的設計方法。
-									</p>
-									<p class="mt-2 mb-0">
-										我設計了三個資料表： <span class="badge bg-secondary">cols_html</span>、<span class="badge bg-secondary">products</span>和<span class="badge bg-secondary">category</span>。<br>
-										<span class="badge bg-secondary">cols_html</span> 用來存放欄位資料，
-										<span class="badge bg-secondary">products</span> 用來存放產品資料，
-										<span class="badge bg-secondary">category</span> 用來存放產品分類資料。
-										
-									</p>
-									<p class="mt-2 mb-0">
-										此外，團隊還設計了兩個關聯資料表：<span class="badge bg-secondary">products_col_link</span>和<span class="badge bg-secondary">cols_congfigs</span>。
-										<br>其中，<span class="badge bg-secondary">products_col_link</span> 用來關聯產品和欄位，
-										<span class="badge bg-secondary">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
-									</p>
-									<p class="mt-2 mb-0">
-										當用戶需要查詢某個分類的產品時，系統會根據分類檢索產品和欄位資料。接著，系統會動態生成SQL語句，根據所需欄位進行查詢。最終，系統會將查詢結果呈現在前端頁面上。
-									</p>
-									<p class="mt-2 mb-0">
-										通過這種設計方法，團隊成功地解決了不同分類產品欄位描述的問題。這種方法不僅提高了系統的可擴展性和可維護性，還能夠有效地處理複雜的查詢需求。在實際的應用中，這個設計還能夠進一步擴展，滿足更多複雜的需求。
-									</p>
-									<hr class="border-opacity-10">
-									<p class="mt-2 mb-0">需求：</p>
-									<ul class="py-2 ps-4 lh-lg mb-0">
-										<li>各個分類會有不一樣的資料表欄位</li>
-										<li>每個分類會對應多樣商品</li>
-										<li>單頁最多呈現 50 樣商品（需分頁）</li>
-										<li>可根據資訊排序所有商品</li>
-										<li>欄位資料為數字與文字混合（需要進行數字大小排序）</li>
-										<li>跨分類資料檢索</li>
-									</ul>
-									<p class="mt-2 mb-0">執行：</p>
-									<ul class="py-2 ps-4 lh-lg">
-										<li>設計三個資料表存放
-											欄位 <span class="badge bg-secondary">cols_html</span>
-											、產品 <span class="badge bg-secondary">products</span>
-											、分類 <span class="badge bg-secondary">category</span>
-										</li>
-										<li>設計 <span class="badge bg-secondary">products_col_link</span> ：存放欄位資料、
-											<span class="badge bg-secondary">cols_congfigs</span>：每個分類所需要啟用的欄位 </li>
-										<li>
-											透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING / ORDER(排序)彙整成一張產品資料表
-										</li>
-									</ul>
-									<b>獨立資料表：</b>
-									<ul class="py-2 ps-4 lh-lg">
-										<li>company：企業資訊紀錄</li>
-										<li>banner：首頁 banner 圖片管理</li>
-										<li>backend_psw_config：後台加密後密碼驗證</li>
-										<li>company_history：企業沿革資訊管理</li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
 					<div class="card shadow mt-4">
 						<div class="card-body">
 							<div class="col-12">
@@ -273,9 +221,9 @@
 											<div class="col-12">
 												<div id="carousel_banner_manage" class="carousel slide" data-bs-ride="carousel">
 													<div class="carousel-inner">
-													  	<div class="carousel-item active">
+														<div class="carousel-item active">
 															<img src="../../assets/imgs/chenmko/banner_manage_1.webp" class="d-block w-100" alt="...">
-													 	</div>
+														</div>
 														<div class="carousel-item">
 															<img src="../../assets/imgs/chenmko/banner_manage_2.webp" class="d-block w-100" alt="...">
 														</div>
@@ -366,10 +314,71 @@
 										</div>
 									</div>
 								</div>
-								<div class="d-flex align-items-start">
-									
-								  </div>
-								  
+							</div>
+						</div>
+					</div>
+					<div class="card shadow mt-4">
+						<div class="card-body">
+							<h2 class="fs-4 text-SkyHeavyBlue">資料架構設計（ER-Model）</h2>
+							<hr>
+							<div class="col-12">
+								<img src="../../assets/imgs/chenmko/db_ErModel.png" class="img-fluid rounded mb-2 p-1" alt="...">
+							</div>
+							<div class="col-12">
+								<p class="m-0 pt-2">
+									<b>關聯資料表設計思路：</b>
+									<p class="mt-2 mb-0">
+										在一個網站的開發中，遇到了一個困難：不同分類的產品需要不同的欄位進行描述，而這些欄位的數量和內容是不同的，因此無法在單一的產品資料表中完成描述。為了解決這個問題，採用了一個新的設計方法。
+									</p>
+									<p class="mt-2 mb-0">
+										我設計了三個資料表： <span class="badge bg-secondary">cols_html</span>、<span class="badge bg-secondary">products</span>和<span class="badge bg-secondary">category</span>。<br>
+										<span class="badge bg-secondary">cols_html</span> 用來存放欄位資料，
+										<span class="badge bg-secondary">products</span> 用來存放產品資料，
+										<span class="badge bg-secondary">category</span> 用來存放產品分類資料。
+										
+									</p>
+									<p class="mt-2 mb-0">
+										此外，團隊還設計了兩個關聯資料表：<span class="badge bg-secondary">products_col_link</span>和<span class="badge bg-secondary">cols_congfigs</span>。
+										<br>其中，<span class="badge bg-secondary">products_col_link</span> 用來關聯產品和欄位，
+										<span class="badge bg-secondary">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
+									</p>
+									<p class="mt-2 mb-0">
+										當用戶需要查詢某個分類的產品時，系統會根據分類檢索產品和欄位資料。接著，系統會動態生成SQL語句，根據所需欄位進行查詢。最終，系統會將查詢結果呈現在前端頁面上。
+									</p>
+									<p class="mt-2 mb-0">
+										通過這種設計方法，團隊成功地解決了不同分類產品欄位描述的問題。這種方法不僅提高了系統的可擴展性和可維護性，還能夠有效地處理複雜的查詢需求。在實際的應用中，這個設計還能夠進一步擴展，滿足更多複雜的需求。
+									</p>
+									<hr class="border-opacity-10">
+									<p class="mt-2 mb-0">需求：</p>
+									<ul class="py-2 ps-4 lh-lg mb-0">
+										<li>各個分類會有不一樣的資料表欄位</li>
+										<li>每個分類會對應多樣商品</li>
+										<li>單頁最多呈現 50 樣商品（需分頁）</li>
+										<li>可根據資訊排序所有商品</li>
+										<li>欄位資料為數字與文字混合（需要進行數字大小排序）</li>
+										<li>跨分類資料檢索</li>
+									</ul>
+									<p class="mt-2 mb-0">執行：</p>
+									<ul class="py-2 ps-4 lh-lg">
+										<li>設計三個資料表存放
+											欄位 <span class="badge bg-secondary">cols_html</span>
+											、產品 <span class="badge bg-secondary">products</span>
+											、分類 <span class="badge bg-secondary">category</span>
+										</li>
+										<li>設計 <span class="badge bg-secondary">products_col_link</span> ：存放欄位資料、
+											<span class="badge bg-secondary">cols_congfigs</span>：每個分類所需要啟用的欄位 </li>
+										<li>
+											透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING / ORDER(排序)彙整成一張產品資料表
+										</li>
+									</ul>
+									<b>獨立資料表：</b>
+									<ul class="py-2 ps-4 lh-lg">
+										<li>company：企業資訊紀錄</li>
+										<li>banner：首頁 banner 圖片管理</li>
+										<li>backend_psw_config：後台加密後密碼驗證</li>
+										<li>company_history：企業沿革資訊管理</li>
+									</ul>
+								</p>
 							</div>
 						</div>
 					</div>
