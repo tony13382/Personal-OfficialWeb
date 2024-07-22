@@ -35,7 +35,24 @@
 			--themeColor: #804C4C;
 			--secondColor : #503030;
 		}
-		
+		.bg-mytheme{
+            color: var(--secondColor);
+            position: relative;
+            letter-spacing: 0.02rem;
+            z-index: 10;
+        }
+        .bg-mytheme::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 999rem;
+            background: var(--themeColor);
+            opacity: 0.2;
+            z-index: -1;
+        }
 	</style>
 	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
 		<div class="container-fluid">
