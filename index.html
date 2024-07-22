@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -219,6 +218,15 @@
         .bg-mywork {
             background-color: #f3f9ff !important;
         }
+        .bg-mytheme-1{
+            background-color: var(--themeColor);
+            color: #FFFFFF;
+        }
+        .bg-mytheme{
+            background-color: rgba(120, 105, 91, 0.3);
+            color: #000000;
+            letter-spacing: 0.04rem;
+        }
     </style>
     <!--Nav Style-->
     <style>
@@ -294,7 +302,7 @@
                         <a class="nav-link" href="#myWorks">我的作品</a>
                     </li>
                     <li class="nav-item rounded-pill">
-                        <a class="nav-link" href="pages/awards.html">相關榮譽</a>
+                        <a class="nav-link" href="pages/awards.html">我的獎項</a>
                     </li>
                     <li class="nav-div rounded-pill">
                         <a class="nav-link text-white-50">｜</a>
@@ -425,9 +433,9 @@
                                         <b>中原大學</b>
                                         <p class="mb-0">資訊管理系</p>
                                         <p class="mb-0">
-                                            <span class="badge rounded-pill text-dark">#開發</span>
-                                            <span class="badge rounded-pill text-dark">#資料庫</span>
-                                            <span class="badge rounded-pill text-dark">#數據分析</span>
+                                            <span class="badge rounded-pill bg-mytheme">#開發</span>
+                                            <span class="badge rounded-pill bg-mytheme">#資料庫</span>
+                                            <span class="badge rounded-pill bg-mytheme">#數據分析</span>
                                         </p>
                                     </div>
                                 </div>
@@ -436,9 +444,9 @@
                                         <b>國立清華大學</b>
                                         <p class="mb-0">學習科學與科技研究所</p>
                                         <p class="mb-0">
-                                            <span class="badge rounded-pill text-dark">#教育</span>
-                                            <span class="badge rounded-pill text-dark">#科技</span>
-                                            <span class="badge rounded-pill text-dark">#自然語言分析</span>
+                                            <span class="badge rounded-pill bg-mytheme">#教育</span>
+                                            <span class="badge rounded-pill bg-mytheme">#科技</span>
+                                            <span class="badge rounded-pill bg-mytheme">#自然語言分析</span>
                                         </p>
                                     </div>
                                 </div>
@@ -553,11 +561,11 @@
                                         </div>
                                         <p class="text-start mb-0 fs-6">國立清華大學</p>
                                         <div class="mb-3">
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># LLM 應用</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 文本探勘</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 資訊佇列系統</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># Webhook 串接</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># API 建立</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># LLM 應用</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 文本探勘</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊佇列系統</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># Webhook 串接</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># API 建立</span>
                                         </div>
                                         <ul class="ps-4 mb-0">
                                             <li>使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="halfHightLightBg">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>。</li>
@@ -599,10 +607,10 @@
                                         </div>
                                         <p class="text-start mb-0 fs-6">清華大學校務研究中心</p>
                                         <div class="mb-3">
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 資訊設計</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 提案</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># UI 設計</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 系統規劃</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊設計</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 提案</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># UI 設計</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 系統規劃</span>
                                         </div>
                                         <ul class="ps-4 mb-0">
                                             <li>利用 Gephi、Excel、Python 處理<span class="halfHightLightBg">約 3000 筆</span>資料建立課程圖譜，找出不同課程與系所的連結程度。</li>
@@ -630,8 +638,8 @@
                                         </div>
                                         <p class="text-start mb-0 fs-6">TIIC 台灣實習影響力社群（TYCIA 臺灣青年職涯創新協會）</p>
                                         <div class="mb-3">
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 領導</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 行銷規劃</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 領導</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 行銷規劃</span>
                                         </div>
                                         <ul class="ps-4 mb-0">
                                             <li>建立團隊社群策略，帶領 3 位夥伴執行企劃，<span class="halfHightLightBg">吸引 280 人加入社群</span>。</li>
@@ -689,10 +697,10 @@
                                         </div>
                                         <p class="text-start mb-0 fs-6">即時行樂有限公司（新創）</p>
                                         <div class="mb-3">
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 資訊設計</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 提案</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># UI 設計</span>
-                                            <span class="badge rounded-pill bg-light text-dark p-2 my-1 me-1"># 系統規劃</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊設計</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 提案</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># UI 設計</span>
+                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 系統規劃</span>
                                         </div>
                                         <ul class="ps-4 mb-0">
                                             <li>設計提案簡報協助企業向政府與投資者精準傳達企業資訊，最終團隊<span class="halfHightLightBg">通過教育部青年署 U-start 創新創業第一階段計畫</span>。</li>
@@ -1607,7 +1615,7 @@
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
-                                            <span class="badge bg-light text-dark rounded-pill" v-for="tag in project.tags">{{tag}}</span>
+                                            <span class="badge bg-mytheme me-1 rounded-pill" v-for="tag in project.tags">{{tag}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1628,7 +1636,7 @@
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
-                                            <span class="badge bg-light text-dark rounded-pill" v-for="tag in project.tags">{{ tag }}</span>
+                                            <span class="badge bg-mytheme me-1 rounded-pill" v-for="tag in project.tags">{{ tag }}</span>
                                         </div>
                                     </div>
                                 </div>
