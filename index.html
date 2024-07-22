@@ -38,6 +38,10 @@
         gtag('js', new Date());
         gtag('config', 'G-007VY8R3PZ');
     </script>
+    <!-- Google Font - Nav Logo-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap" rel="stylesheet">
     
     <!-- Add: Vue.js Suppot-->
     <script type="importmap">
@@ -209,8 +213,8 @@
 <body>
     <style>
         :root{
-			--themeColor: #78685b;
-			--secondColor : #52463d;
+			--themeColor: #78695B;
+			--secondColor : #52463D;
 		}
         body {
             background-color: #faf2ef !important;
@@ -218,15 +222,13 @@
         .bg-mywork {
             background-color: #f3f9ff !important;
         }
-        .bg-mytheme-1{
-            background-color: var(--themeColor);
-            color: #FFFFFF;
+        .navlogofont {
+            font-family: "Playwrite HR Lijeva", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
         }
-        .bg-mytheme{
-            background-color: rgba(120, 105, 91, 0.3);
-            color: #000000;
-            letter-spacing: 0.04rem;
-        }
+
     </style>
     <!--Nav Style-->
     <style>
@@ -282,11 +284,11 @@
         }
     </style>
 
-    <nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center text-white" href="#">
                 <img src="assets/file/iconDesignFile/logo.svg" class="me-3" alt="Icon" width="24px" height="24px">
-                呂亮進
+                呂亮進・<span class="navlogofont" style="font-size: 1rem;">Liang Chin Lu</span>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
@@ -294,6 +296,7 @@
                 <i class="bi bi-list-nested"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarContentLinks">
+                <hr class="d-block d-lg-none bg-light">
                 <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
                     <li class="nav-item rounded-pill d-none">
                         <a class="nav-link" aria-current="page" href="index.html">首頁</a>
@@ -433,9 +436,9 @@
                                         <b>中原大學</b>
                                         <p class="mb-0">資訊管理系</p>
                                         <p class="mb-0">
-                                            <span class="badge rounded-pill bg-mytheme">#開發</span>
-                                            <span class="badge rounded-pill bg-mytheme">#資料庫</span>
-                                            <span class="badge rounded-pill bg-mytheme">#數據分析</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#開發</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#資料庫</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#數據分析</span>
                                         </p>
                                     </div>
                                 </div>
@@ -444,9 +447,9 @@
                                         <b>國立清華大學</b>
                                         <p class="mb-0">學習科學與科技研究所</p>
                                         <p class="mb-0">
-                                            <span class="badge rounded-pill bg-mytheme">#教育</span>
-                                            <span class="badge rounded-pill bg-mytheme">#科技</span>
-                                            <span class="badge rounded-pill bg-mytheme">#自然語言分析</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#教育</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#科技</span>
+                                            <span class="badge rounded-pill bg-mytheme text-black">#自然語言分析</span>
                                         </p>
                                     </div>
                                 </div>
@@ -554,19 +557,12 @@
                             </div>
                             <div class="col-12 bordre-1">
                                 <div class="card my-2 pb-2">
-                                    <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseJobNthuResearch" aria-expanded="false" aria-controls="collapseJobNthuResearch">
+                                    <div class="card-body pb-1" data-bs-toggle="collapse" data-bs-target="#collapseJobNthuResearch" aria-expanded="false" aria-controls="collapseJobNthuResearch">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 fs-5 flex-fill fw-bold">系統設計與開發</p>
                                             <p class="mb-0 opacity-50 ">七月 2023 - Present</p>
                                         </div>
                                         <p class="text-start mb-0 fs-6">國立清華大學</p>
-                                        <div class="mb-3">
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># LLM 應用</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 文本探勘</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊佇列系統</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># Webhook 串接</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># API 建立</span>
-                                        </div>
                                         <ul class="ps-4 mb-0">
                                             <li>使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="halfHightLightBg">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>。</li>
                                             <li>使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度 <span class="halfHightLightBg">1分鐘→ 50毫秒</span>。</li>
@@ -597,21 +593,26 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div>
+                                            <a href="./pages/projects/trelloFinder.html" class="text-decoration-none">
+                                                <span class="badge rounded-pill btn-myprimary p-2 my-1 me-1">相關專案</span>
+                                            </a>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># LLM 應用</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 文本探勘</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 資訊佇列系統</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># Webhook 串接</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># API 建立</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card my-2 pb-2">
-                                    <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseJobNthuIR" aria-expanded="false" aria-controls="collapseJobNthuIR">
+                                    <div class="card-body pb-1" data-bs-toggle="collapse" data-bs-target="#collapseJobNthuIR" aria-expanded="false" aria-controls="collapseJobNthuIR">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 fs-5 flex-fill fw-bold">研究實習生</p>
                                             <p class="mb-0 opacity-50 ">九月 2022 - 一月 2023</p>
                                         </div>
                                         <p class="text-start mb-0 fs-6">清華大學校務研究中心</p>
-                                        <div class="mb-3">
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊設計</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 提案</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># UI 設計</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 系統規劃</span>
-                                        </div>
                                         <ul class="ps-4 mb-0">
                                             <li>利用 Gephi、Excel、Python 處理<span class="halfHightLightBg">約 3000 筆</span>資料建立課程圖譜，找出不同課程與系所的連結程度。</li>
                                             <li>使用 SBERT 模型進行文本向量化分析校園內不同領域的課程相似度，整理並利用校園課綱資料進行<span class="halfHightLightBg">分群分析</span>。</li>
@@ -628,19 +629,22 @@
                                                 <li>維運 Milvus 向量資料庫。確保資料搜索準確性和高效查詢。</li>
                                             </ul>
                                         </div>
+                                        <hr>
+                                        <div>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 資訊設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 提案</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># UI 設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 系統規劃</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card my-2 pb-2">
-                                    <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseJobTiic" aria-expanded="false" aria-controls="collapseJobTiic">
+                                    <div class="card-body pb-1" data-bs-toggle="collapse" data-bs-target="#collapseJobTiic" aria-expanded="false" aria-controls="collapseJobTiic">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 fs-5 flex-fill fw-bold">行銷部組長/行銷部 CRM 組幹部</p>
                                             <p class="mb-0 opacity-50 ">三月 2023 - 二月 2024</p>
                                         </div>
                                         <p class="text-start mb-0 fs-6">TIIC 台灣實習影響力社群（TYCIA 臺灣青年職涯創新協會）</p>
-                                        <div class="mb-3">
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 領導</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 行銷規劃</span>
-                                        </div>
                                         <ul class="ps-4 mb-0">
                                             <li>建立團隊社群策略，帶領 3 位夥伴執行企劃，<span class="halfHightLightBg">吸引 280 人加入社群</span>。</li>
                                             <li><span class="halfHightLightBg">管理 13 位學員</span>的培訓進度，帶領學員進行內部培訓。</li>
@@ -687,21 +691,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <div>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 領導</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 行銷規劃</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card my-2 pb-2">
-                                    <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false" aria-controls="collapseJobSongla">
+                                    <div class="card-body pb-1" data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false" aria-controls="collapseJobSongla">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 fs-5 flex-fill fw-bold">產品設計師／技術總管</p>
                                             <p class="mb-0 opacity-50 ">ㄧ月 2022 - 九月 2023</p>
                                         </div>
                                         <p class="text-start mb-0 fs-6">即時行樂有限公司（新創）</p>
-                                        <div class="mb-3">
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 資訊設計</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 提案</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># UI 設計</span>
-                                            <span class="badge rounded-pill bg-mytheme p-2 my-1 me-1"># 系統規劃</span>
-                                        </div>
                                         <ul class="ps-4 mb-0">
                                             <li>設計提案簡報協助企業向政府與投資者精準傳達企業資訊，最終團隊<span class="halfHightLightBg">通過教育部青年署 U-start 創新創業第一階段計畫</span>。</li>
                                             <li>利用資訊設計能力設計 UI，透過訪談 5名用戶需求於 Figma 進行產品設計，<span class="halfHightLightBg">建立企業原子設計系統設計並完成初步的產品 MVP</span>。</li>
@@ -732,6 +735,16 @@
                                                     </div>
                                                 </a>
                                             </div>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <a href="./pages/projects/songlaMusicCreater.html" class="text-decoration-none">
+                                                <span class="badge rounded-pill btn-myprimary p-2 my-1 me-1">相關專案</span>
+                                            </a>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 資訊設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 提案</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># UI 設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 my-1 me-1"># 系統規劃</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1615,7 +1628,7 @@
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
-                                            <span class="badge bg-mytheme me-1 rounded-pill" v-for="tag in project.tags">{{tag}}</span>
+                                            <span class="badge bg-mytheme text-black me-1 rounded-pill" v-for="tag in project.tags">{{tag}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1636,7 +1649,7 @@
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black">
-                                            <span class="badge bg-mytheme me-1 rounded-pill" v-for="tag in project.tags">{{ tag }}</span>
+                                            <span class="badge bg-mytheme text-black me-1 rounded-pill" v-for="tag in project.tags">{{ tag }}</span>
                                         </div>
                                     </div>
                                 </div>
