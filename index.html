@@ -29,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap" rel="stylesheet">
     <!--GA Ana-->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-007VY8R3PZ"></script>
@@ -75,7 +76,7 @@
             },
             {
                 id: "other",
-                title: "📂 其他",
+                title: "🗃️ 其他",
             }
         ]
 
@@ -228,7 +229,12 @@
             font-weight: 400;
             font-style: normal;
         }
-
+        .font-noto-emoji {
+            font-family: "Noto Emoji", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
     </style>
     <!--Nav Style-->
     <style>
@@ -1605,12 +1611,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="col-12">
-                        <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist"
+                        <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto font-noto-emoji" id="products-tabs" role="tablist"
                             style="margin-left: -0.25rem;">
                             <li class="nav-item me-3">
                                 <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab"
                                     data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab"
-                                    aria-controls="products-all" aria-selected="true">所有作品</a>
+                                    aria-controls="products-all" aria-selected="true">🍱 所有作品</a>
                             </li>
                             <li class="nav-item me-3" v-for="typetag of type_list">
                                 <a class="nav-link px-1 py-0 text-nowrap"
