@@ -420,18 +420,19 @@
     <div class="container" style="margin-top: -160px;">
         <div class="row position-relative d-flex align-items-start">
             <div class="col-lg-3 col-12 pb-4 sticky-lg-top " style="padding-top: 92px; z-index: 999;">
-                <div class="card p-2 pt-0 shadow rounded-basic">
-                    <div class="card-body">
+                <div class="card shadow rounded-basic">
+                    <div class="card-body p-4">
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
                                 <img src="assets/imgs/index/myHead.webp"
-                                    alt="my personal picture" width="160px"
-                                    class="bordre-1 rounded-circle p-3">
+                                    alt="my personal picture" width="120px"
+                                    class="bordre-1 rounded-circle">
                             </div>
                             <h2 class="fs-4 text-SkyHeavyBlue text-center mt-2">
                                 呂亮進
                             </h2>
-                            <p class="text-center text-black-50">覆蓋產品發展鏈的熱情開發者</p>
+                            <p class="text-center text-black-50 mb-1">Full-End Website Engineer</p>
+                            <p class="text-center text-black-50">NLP Analytics</p>
                         </div>
                         <div class="d-grid gap-2">
                             <a target="_blank" type="button" class="btn btn-myprimary rounded-pill"
@@ -449,34 +450,35 @@
             <div class="col-lg-9 col-12 pb-4">
                 <div style="height: 92px;" class="d-none d-lg-block"></div>
                 <!--自介-->
-                <div class="card shadow rounded-basic">
-                    <div class="card-body lh-lg" id="about" style="margin-top: -92px;padding-top: 92px;">
+                <div class="card shadow rounded-basic border-0">
+                    <img src="assets/imgs/index/profile_cover.jpg" class="card-img-top" alt="...">
+                    <div class="card-body lh-lg pe-3 pb-3 ps-3" id="about" style="margin-top: -92px;padding-top: 92px;">
                         <div class="row my-auto">
                             <div class="col-12 my-auto">
-                                <p class="card-text py-3">
+                                <p class="card-text py-4 px-2">
                                     我是一位對<span class="halfHightLightBg">產品開發充滿熱情</span>且擁有設計開發與行銷經驗的專業人士。我享受挑戰和開發新產品的過程，擁有將商業設計與開發相結合的能力，並具備參與多項專案的經驗。
                                     <br><br>我喜歡不斷挑戰自己並參與新產品的開發。從商業設計到開發的一條龍產品規劃經驗讓我能夠全方位地理解並滿足用戶需求。我注重細節，能夠平衡創新和實用性，並致力於創造出優質的產品。我具有良好的問題解決能力和分析能力，在高壓環境下能夠保持冷靜並迅速找到解決方案。
                                 </p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-md-6 p-2 align-content-stretch d-flex flex-column">
-                                <div class="card flex-grow-1">
-                                    <div class="card-body">
+                            <div class="col-12 col-md-6 align-content-stretch d-flex flex-column">
+                                <div class="card flex-grow-1" style="margin: 12px 0px;">
+                                    <div class="card-body pb-2">
                                         <b>中原大學</b>
                                         <p class="mb-0">資訊管理系</p>
-                                        <p class="mb-0">
+                                        <p class="mt-1 mb-0">
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 開發</span>
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 資料庫</span>
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 數據分析</span>
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card flex-grow-1 mt-2">
-                                    <div class="card-body">
+                                <div class="card flex-grow-1" style="margin: 12px 0px;">
+                                    <div class="card-body pb-2">
                                         <b>國立清華大學</b>
                                         <p class="mb-0">學習科學與科技研究所</p>
-                                        <p class="mb-0">
+                                        <p class="mt-1 mb-0">
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 教育</span>
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 科技</span>
                                             <span class="badge rounded-pill bg-mytheme text-black over overflow-hidden"># 自然語言分析</span>
@@ -484,8 +486,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 p-2">
-                                <div class="card h-100">
+                            <div class="col-12 col-md-6 align-items-stretch d-flex flex-column">
+                                <div class="card h-100" style="margin: 12px 0px;">
                                     <div class="card-body">
                                         <p class="m-0">
                                             資格認證：
@@ -587,57 +589,51 @@
                             </div>
                             <div class="col-12 bordre-1">
                                 <div class="card my-2 pb-2">
-                                    <div class="card-body pb-1" data-bs-toggle="collapse" data-bs-target="#collapseJobNthuResearch" aria-expanded="false" aria-controls="collapseJobNthuResearch">
+                                    <div class="card-body pb-1">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 fs-5 flex-fill fw-bold">系統設計與開發</p>
                                             <p class="mb-0 opacity-50 ">七月 2023 - Present</p>
                                         </div>
-                                        <p class="text-start mb-0 fs-6">國立清華大學</p>
-                                        <hr style="opacity: 0.1;">
-                                        <ul class="ps-4 mb-0">
-                                            <li>使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="halfHightLightBg">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>。</li>
-                                            <li>使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度 <span class="halfHightLightBg">1分鐘→ 50毫秒</span>。</li>
-                                        </ul>
-                                        <div class="collapse" id="collapseJobNthuResearch">
+                                        <div class="d-flex align-items-center">
+                                            <p class="d-inline-flex mb-0 pe-2">國立清華大學
+                                            </p>
+                                            <span class="d-inline-flex">
+                                                <a href="./pages/projects/trelloFinder.html" class="text-decoration-none">［ Trello 知識小幫手 2.0 ］</a>
+                                            </span>
+                                        </div>
+                                        <div data-bs-toggle="collapse" data-bs-target="#collapseJobNthuResearch" aria-expanded="false" aria-controls="collapseJobNthuResearch">
                                             <hr style="opacity: 0.1;">
-                                            <p class="m-0">
-                                                <b>模糊文本搜尋算法</b>
-                                            </p>
-                                            <ul class="ps-4">
-                                                <li>使用 Sentence-BERT (SBERT) 技術進行文本向量化方面具有豐富經驗。透過 SBERT 技術，我能夠將文本轉換為密集的向量表示，進而實現更精確的相似性計算和文本匹配。</li>
-                                                <li>在多個專案中負責維運 Milvus 向量資料庫。我能夠靈活地配置、調整和優化 Milvus，以確保系統在處理大規模向量資料時的穩定性和高效性。</li>
-                                                <li>善於將自然語言處理 (NLP) 技術與搜尋算法相結合，以提供更精確和全面的搜索結果，從而提高系統的用戶體驗。</li>
+                                            <ul class="ps-4 mb-0">
+                                                <li>使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="halfHightLightBg">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>。</li>
+                                                <li>使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度 <span class="halfHightLightBg">1分鐘→ 50毫秒</span>。</li>
                                             </ul>
-                                            <p class="m-0">
-                                                <b>Flask API 製作</b>
-                                            </p>
-                                            <ul class="ps-4">
-                                                <li>設計和實現了基於 Flask 框架的 API，為計劃案發系統提供了穩定且靈活的後端服務。</li>
-                                                <li>透過遵循最佳實踐和優化代碼結構，我確保 API 的可擴展性和易於維護。</li>
-                                                <li>撰寫原子測試與技術相關文件，確保系統可以妥善的交接。</li>
-                                            </ul>
-                                            <div class="d-grid my-2">
-                                                <a class="" href="./pages/projects/trelloFinder.html">
-                                                    <div class="">
-                                                        <img src="assets/imgs/trelloFinder/cover.png" class="card-img-top lozad" alt="..." data-src="assets/imgs/trelloFinder/cover.png" data-loaded="true">
-                                                    </div>
-                                                </a>
+                                            <div class="collapse" id="collapseJobNthuResearch">
+                                                <hr style="opacity: 0.1;">
+                                                <p class="m-0">
+                                                    <b>模糊文本搜尋算法</b>
+                                                </p>
+                                                <ul class="ps-4">
+                                                    <li>使用 Sentence-BERT (SBERT) 技術進行文本向量化方面具有豐富經驗。透過 SBERT 技術，我能夠將文本轉換為密集的向量表示，進而實現更精確的相似性計算和文本匹配。</li>
+                                                    <li>在多個專案中負責維運 Milvus 向量資料庫。我能夠靈活地配置、調整和優化 Milvus，以確保系統在處理大規模向量資料時的穩定性和高效性。</li>
+                                                    <li>善於將自然語言處理 (NLP) 技術與搜尋算法相結合，以提供更精確和全面的搜索結果，從而提高系統的用戶體驗。</li>
+                                                </ul>
+                                                <p class="m-0">
+                                                    <b>Flask API 製作</b>
+                                                </p>
+                                                <ul class="ps-4">
+                                                    <li>設計和實現了基於 Flask 框架的 API，為計劃案發系統提供了穩定且靈活的後端服務。</li>
+                                                    <li>透過遵循最佳實踐和優化代碼結構，我確保 API 的可擴展性和易於維護。</li>
+                                                    <li>撰寫原子測試與技術相關文件，確保系統可以妥善的交接。</li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <hr style="opacity: 0.1;">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <a href="./pages/projects/trelloFinder.html" class="badge btn-myprimary p-2 rounded-pill text-decoration-none">
-                                                    相關專案
-                                                </a>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># LLM 應用</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 文本探勘</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 資訊佇列系統</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># Webhook 串接</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># API 建立</span>
-                                            </div>
+                                        <div>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># LLM 應用</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 文本探勘</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 資訊佇列系統</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># Webhook 串接</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># API 建立</span>
                                         </div>
                                     </div>
                                 </div>
@@ -741,58 +737,52 @@
                                 </div>
                                 <div class="card my-2 pb-2">
                                     <div class="card-body pb-1">
-                                        <div  data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false" aria-controls="collapseJobSongla">
+                                        <div>
                                             <div class="d-flex align-items-center">
                                                 <p class="mb-0 fs-5 flex-fill fw-bold">產品設計師／技術總管</p>
                                                 <p class="mb-0 opacity-50 ">ㄧ月 2022 - 九月 2023</p>
                                             </div>
-                                            <p class="text-start mb-0 fs-6">即時行樂有限公司（新創）</p>
-                                            <hr style="opacity: 0.1;">
-                                            <ul class="ps-4 mb-0">
-                                                <li>設計提案簡報協助企業向政府與投資者精準傳達企業資訊，最終團隊<span class="halfHightLightBg">通過教育部青年署 U-start 創新創業第一階段計畫</span>。</li>
-                                                <li>利用資訊設計能力設計 UI，透過訪談 5名用戶需求於 Figma 進行產品設計，<span class="halfHightLightBg">建立企業原子設計系統設計並完成初步的產品 MVP</span>。</li>
-                                            </ul>
-                                            <div class="collapse" id="collapseJobSongla">
+                                            <div class="d-flex align-items-center">
+                                                <p class="d-inline-flex mb-0 pe-2">即時行樂有限公司（新創）
+                                                </p>
+                                                <span class="d-inline-flex">
+                                                    <a href="./pages/projects/songlaMusicCreater.html" class="text-decoration-none">［ Songla 音樂智慧創作小幫手 ］</a>
+                                                </span>
+                                            </div>
+                                            <div data-bs-toggle="collapse" data-bs-target="#collapseJobSongla" aria-expanded="false" aria-controls="collapseJobSongla">
                                                 <hr style="opacity: 0.1;">
-                                                <p class="m-0"><b>軟體介面設計</b></p>
-                                                <ul class="ps-4">
-                                                    <li>使用 Figma 這一優秀的設計工具來創建高品質、交互式的軟體原型。這使得整個設計過程更具有靈活性，能夠輕鬆地與團隊進行協作和討論，同時也能更好地呈現我對產品界面的想法。</li>
-                                                    <li>我深度參與制定商業目標以及軟體功能需求。這讓我能夠將設計融合進整個產品生態系統中，確保用戶體驗與公司的整體戰略目標保持一致。</li>
-                                                    <li>我非常重視使用者的反饋，並將其視為優化產品的關鍵因素。通過與用戶進行緊密的合作、測試和反思，我能夠設計出更符合他們期望和需求的界面，從而提高產品的可用性和滿意度。</li>
+                                                <ul class="ps-4 mb-0">
+                                                    <li>設計提案簡報協助企業向政府與投資者精準傳達企業資訊，最終團隊<span class="halfHightLightBg">通過教育部青年署 U-start 創新創業第一階段計畫</span>。</li>
+                                                    <li>利用資訊設計能力設計 UI，透過訪談 5名用戶需求於 Figma 進行產品設計，<span class="halfHightLightBg">建立企業原子設計系統設計並完成初步的產品 MVP</span>。</li>
                                                 </ul>
-                                                <p class="m-0"><b>軟體規劃、設計、開發</b></p>
-                                                <ul class="ps-4">
-                                                    <li>建立企業形象網頁。我使用了現代化的設計風格、符合最佳用戶體驗的介面設計和直觀的導航結構，以確保網站能夠有效地展示公司的核心價值和產品特色。</li>
-                                                    <li>深入研究音樂理論和人工智能相關技術，協助設計了一個優秀的音樂生成系統。這個系統能夠根據用戶哼唱的旋律，自動生成與之匹配的音樂內容</li>
-                                                </ul>
-                                                <p class="m-0"><b>簡報設計</b></p>
-                                                <ul class="ps-4">
-                                                    <li>我深信言簡意賅的原則。我會針對聽眾選擇最重要的資料和信息，以清晰簡明的方式呈現，避免信息過於冗長或混淆。</li>
-                                                    <li>我精通使用各種視覺化工具和技巧，將不同資料轉化為生動有趣且易於理解的圖表和圖形。這有助於觀眾迅速抓住重要信息，從而更好地理解我所呈現的內容。</li>
-                                                    <li>為了確保簡報的一致性和專業性，我替公司設計視覺識別指南，使用統一的字體、色彩和排版風格。這有助於確保我所設計的每一份簡報都代表著公司的形象和價值觀。</li>
-                                                </ul>
-                                                <div class="d-grid my-2">
-                                                    <a class="" href="./pages/projects/songlaMusicCreater.html">
-                                                        <div class="">
-                                                            <img src="assets/imgs/songla/cover.png" class="card-img-top lozad" alt="..." data-src="assets/imgs/trelloFinder/cover.png" data-loaded="true">
-                                                        </div>
-                                                    </a>
+                                                <div class="collapse" id="collapseJobSongla">
+                                                    <hr style="opacity: 0.1;">
+                                                    <p class="m-0"><b>軟體介面設計</b></p>
+                                                    <ul class="ps-4">
+                                                        <li>使用 Figma 這一優秀的設計工具來創建高品質、交互式的軟體原型。這使得整個設計過程更具有靈活性，能夠輕鬆地與團隊進行協作和討論，同時也能更好地呈現我對產品界面的想法。</li>
+                                                        <li>我深度參與制定商業目標以及軟體功能需求。這讓我能夠將設計融合進整個產品生態系統中，確保用戶體驗與公司的整體戰略目標保持一致。</li>
+                                                        <li>我非常重視使用者的反饋，並將其視為優化產品的關鍵因素。通過與用戶進行緊密的合作、測試和反思，我能夠設計出更符合他們期望和需求的界面，從而提高產品的可用性和滿意度。</li>
+                                                    </ul>
+                                                    <p class="m-0"><b>軟體規劃、設計、開發</b></p>
+                                                    <ul class="ps-4">
+                                                        <li>建立企業形象網頁。我使用了現代化的設計風格、符合最佳用戶體驗的介面設計和直觀的導航結構，以確保網站能夠有效地展示公司的核心價值和產品特色。</li>
+                                                        <li>深入研究音樂理論和人工智能相關技術，協助設計了一個優秀的音樂生成系統。這個系統能夠根據用戶哼唱的旋律，自動生成與之匹配的音樂內容</li>
+                                                    </ul>
+                                                    <p class="m-0"><b>簡報設計</b></p>
+                                                    <ul class="ps-4">
+                                                        <li>我深信言簡意賅的原則。我會針對聽眾選擇最重要的資料和信息，以清晰簡明的方式呈現，避免信息過於冗長或混淆。</li>
+                                                        <li>我精通使用各種視覺化工具和技巧，將不同資料轉化為生動有趣且易於理解的圖表和圖形。這有助於觀眾迅速抓住重要信息，從而更好地理解我所呈現的內容。</li>
+                                                        <li>為了確保簡報的一致性和專業性，我替公司設計視覺識別指南，使用統一的字體、色彩和排版風格。這有助於確保我所設計的每一份簡報都代表著公司的形象和價值觀。</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr style="opacity: 0.1;">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <a href="./pages/projects/songlaMusicCreater.html" class="badge btn-myprimary p-2 rounded-pill text-decoration-none">
-                                                    相關專案
-                                                </a>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 資訊設計</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 提案</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># UI 設計</span>
-                                                <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 系統規劃</span>
-                                            </div>
+                                        <div>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 資訊設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 提案</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># UI 設計</span>
+                                            <span class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden"># 系統規劃</span>
                                         </div>
                                     </div>
                                 </div>
