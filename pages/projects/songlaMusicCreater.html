@@ -27,6 +27,14 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<!-- Fancyapp (Image Box)-->
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css"/>
+	<!-- JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
+	<!-- Fancyapp (Image Carousel)-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/carousel.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/carousel.umd.js"></script>
 
 </head>
 
@@ -231,13 +239,15 @@
 							<h4>產品架構「公開版」</h4>
 							<hr>
 							<div class="col-12 align-items-center">
-								<img data-src="../../assets/imgs/songla/systemFrame2.png" class="img-fluid rounded mb-2 lozad"
-									alt="songle's system design">
+								<a href="../../assets/imgs/songla/systemFrame2.png" data-fancybox="gallery">
+									<img src="../../assets/imgs/songla/systemFrame2.png" class="img-fluid mb-2"  alt="songle's system design">
+								</a>
 							</div>
 							<hr>
 							<div class="col-12">
-								<img data-src="../../assets/imgs/songla/systemFrame.png" class="img-fluid rounded mb-2 lozad"
-									alt="songle's system design">
+								<a href="../../assets/imgs/songla/systemFrame.png" data-fancybox="gallery">
+									<img src="../../assets/imgs/songla/systemFrame.png" class="img-fluid mb-2"  alt="songle's system design">
+								</a>
 							</div>
 						</div>
 					</div>
@@ -246,78 +256,23 @@
 							<h4>介面原型</h4>
 							<hr>
 							<div class="col-12 align-items-center">
-								<div class="d-block d-lg-none">
-									<div id="carouselUISlide-sm" class="carousel slide">
-										<div class="carousel-indicators">
-											<button type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-											<button type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide-to="1" aria-label="Slide 2"></button>
-											<button type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide-to="2" aria-label="Slide 3"></button>
-											<button type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide-to="3" aria-label="Slide 4"></button>
-										</div>
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<img src="../../assets/imgs/songla/UI01.png" class="d-block w-100" alt="...">
-											</div>
-											<div class="carousel-item">
-												<img src="../../assets/imgs/songla/UI02.png" class="d-block w-100" alt="...">
-											</div>
-											<div class="carousel-item">
-												<img src="../../assets/imgs/songla/UI03.png" class="d-block w-100" alt="...">
-											</div>
-											<div class="carousel-item">
-												<img src="../../assets/imgs/songla/UI04.png" class="d-block w-100" alt="...">
-											</div>
-										</div>
-										<button class="carousel-control-prev" type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide="prev">
-											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Previous</span>
-										</button>
-										<button class="carousel-control-next" type="button" data-bs-target="#carouselUISlide-sm" data-bs-slide="next">
-											<span class="carousel-control-next-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Next</span>
-										</button>
-									</div>
+								<div id="myCarousel" class="carousel">
+									<div class="carousel__slide"><img data-lazy-src="../../assets/imgs/songla/UI01.png" data-fancybox="../../assets/imgs/songla/UI01.png" class="d-block w-100" alt="../../assets/imgs/songla/UI01"></div>
+									<div class="carousel__slide"><img data-lazy-src="../../assets/imgs/songla/UI02.png" data-fancybox="../../assets/imgs/songla/UI02.png" class="d-block w-100" alt="../../assets/imgs/songla/UI02"></div>
+									<div class="carousel__slide"><img data-lazy-src="../../assets/imgs/songla/UI03.png" data-fancybox="../../assets/imgs/songla/UI03.png" class="d-block w-100" alt="../../assets/imgs/songla/UI03"></div>
+									<div class="carousel__slide"><img data-lazy-src="../../assets/imgs/songla/UI04.png" data-fancybox="../../assets/imgs/songla/UI04.png" class="d-block w-100" alt="../../assets/imgs/songla/UI0ˋ"></div>
+									<!-- 更多的圖片 -->
 								</div>
-								<div class="d-none d-lg-block">
-									<div id="carouselUISlide-lg" class="carousel slide">
-										<div class="carousel-indicators">
-											<button type="button" data-bs-target="#carouselUISlide-lg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-											<button type="button" data-bs-target="#carouselUISlide-lg" data-bs-slide-to="1" aria-label="Slide 2"></button>
-										</div>
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<div class="row">
-													<div class="col-12 col-md-6">
-														<img src="../../assets/imgs/songla/UI01.png" class="d-block w-100" alt="...">
-													</div>
-													<div class="col-12 col-md-6">
-														<img src="../../assets/imgs/songla/UI02.png" class="d-block w-100" alt="...">
-													</div>
-												</div>
-											</div>
-											<div class="carousel-item">
-												<div class="row">
-													<div class="col-12 col-md-6">
-														<img src="../../assets/imgs/songla/UI03.png" class="d-block w-100" alt="...">
-													</div>
-													<div class="col-12 col-md-6">
-														<img src="../../assets/imgs/songla/UI04.png" class="d-block w-100" alt="...">
-													</div>
-												</div>
-											</div>
-										</div>
-										<button class="carousel-control-prev" type="button" data-bs-target="#carouselUISlide-lg" data-bs-slide="prev">
-											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Previous</span>
-										</button>
-										<button class="carousel-control-next" type="button" data-bs-target="#carouselUISlide-lg" data-bs-slide="next">
-											<span class="carousel-control-next-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Next</span>
-										</button>
-									</div>
-								</div>
+								<script>
+									const myCarousel = new Carousel(document.querySelector("#myCarousel"), {
+										// 配置選項
+										autoplay: true,
+    									autoplaySpeed: 3000, // 每張圖片展示 3000 毫秒，即 3 秒
+										infinite: true
+									});
+								</script>
 							</div>
-							<div class="col-12">
+							<div class="col-12 pt-3">
 								<div class="card mt-2">
 									<div
 										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
