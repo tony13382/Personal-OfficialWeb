@@ -7,7 +7,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    myToTopButton.style.display = "flex";
+    myToTopButton.style.display = "inline-flex";
   } else {
     myToTopButton.style.display = "none";
   }

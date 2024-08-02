@@ -30,6 +30,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap" rel="stylesheet">
+    <!-- Google Font - Nav Logo-->
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap" rel="stylesheet">
+
     <!--GA Ana-->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-007VY8R3PZ"></script>
@@ -39,10 +42,6 @@
         gtag('js', new Date());
         gtag('config', 'G-007VY8R3PZ');
     </script>
-    <!-- Google Font - Nav Logo-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap" rel="stylesheet">
     
     <!-- Add: Vue.js Suppot-->
     <script type="importmap">
@@ -421,7 +420,7 @@
     <div class="container" style="margin-top: -160px;">
         <div class="row position-relative d-flex align-items-start">
             <div class="col-lg-3 col-12 pb-4 sticky-lg-top " style="padding-top: 92px; z-index: 999;">
-                <div class="card p-2 pt-0 shadow">
+                <div class="card p-2 pt-0 shadow rounded-basic">
                     <div class="card-body">
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
@@ -435,11 +434,11 @@
                             <p class="text-center text-black-50">覆蓋產品發展鏈的熱情開發者</p>
                         </div>
                         <div class="d-grid gap-2">
-                            <a target="_blank" type="button" class="btn btn-myprimary "
+                            <a target="_blank" type="button" class="btn btn-myprimary rounded-pill"
                                 href="https://tony13382.github.io/assets/file/rv/RV(Data_Science).pdf">
                                 我的履歷
                             </a>
-                            <a type="button" class="btn btn-outline-myprimary" data-bs-toggle="modal" data-bs-target="#shareModel"
+                            <a type="button" class="btn btn-outline-myprimary rounded-pill" data-bs-toggle="modal" data-bs-target="#shareModel"
                                 data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="QR Code"
                                 data-bs-placement="bottom">聯絡我
                             </a>
@@ -450,7 +449,7 @@
             <div class="col-lg-9 col-12 pb-4">
                 <div style="height: 92px;" class="d-none d-lg-block"></div>
                 <!--自介-->
-                <div class="card shadow">
+                <div class="card shadow rounded-basic">
                     <div class="card-body lh-lg" id="about" style="margin-top: -92px;padding-top: 92px;">
                         <div class="row my-auto">
                             <div class="col-12 my-auto">
@@ -503,7 +502,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow my-4">
+                <div class="card shadow my-4 rounded-basic">
                     <div class="card-body lh-lg" id="about">
                         <div class="row">
                             <!-- 工作優勢 -->
@@ -579,7 +578,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow mt-4">
+                <div class="card shadow mt-4 rounded-basic">
                     <div class="card-body lh-lg" id="about">
                         <div class="row">
                             <!-- 工作經歷 -->
@@ -809,7 +808,7 @@
         <div class="row">
             <div class="col-12">
                 <!--技能組-->
-                <div class="card shadow my-4">
+                <div class="card shadow my-4 rounded-basic">
                     <div class="card-body">
                         <div class="row ms-navbar fs-4" id="skills" style="margin-top: -92px;padding-top: 92px;">
                             <div class="col-12">
@@ -1667,7 +1666,7 @@
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project of projects_list">
                             <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100">
+                                <div class="card hoverShadow hoverBigger h-100 rounded-basic">
                                     <img v-bind:src="project.beforeLoadingCover" class="card-img-top lozad" alt="..."
                                         v-bind:data-src="project.cover">
                                     <div class="card-body">
@@ -1679,7 +1678,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
-                                        <div class="fs-5 text-black">
+                                        <div class="fs-5 text-black pt-3">
                                             <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden" v-for="tag in project.tags">{{tag}}</span>
                                         </div>
                                     </div>
@@ -1693,14 +1692,14 @@
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project in filteredProjects(typetag.id)">
                             <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100">
+                                <div class="card hoverShadow hoverBigger h-100 rounded-basic">
                                     <img :src="project.beforeLoadingCover" class="card-img-top lozad" alt="..." :data-src="project.cover">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">{{ project.name }}</h5>
                                         <p class="card-text text-dark">{{ project.description }}</p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 pb-3">
-                                        <div class="fs-5 text-black">
+                                        <div class="fs-5 text-black pt-3">
                                             <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden" v-for="tag in project.tags">{{ tag }}</span>
                                         </div>
                                     </div>
