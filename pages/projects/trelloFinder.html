@@ -138,8 +138,10 @@
 						</div>
 					</div>
 					<div class="card shadow mt-4 px-3 py-2 rounded-basic">
-						<div class="card-body">
-							<h2 class="fs-4">專案成就</h2>
+						<div class="card-body pb-0">
+							<div class="col-12">
+								<h2 class="fs-4 mb-0">專案成就</h2>
+							</div>
 							<div class="col-12">
 								<div class="row notoFont px-1">
 									<div class="col-12 p-2">
@@ -180,33 +182,46 @@
 								<span class="badge bg-mytheme text-dark rounded-pill mb-3 overflow-hidden">搜尋模組</span><br> 
 								使用自然語言技術建構自主學習資源推薦系統
 							</h2>
-							<p class="mt-2">
-								基於 BM25、TF-IDF、SBERT Embeding 技術
+							<p class="mt-2 lh-md">
+								融合 BM25（詞頻）、TF-IDF、SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
 							</p>
-							<hr>
 							<div class="col-12">
-								<div class="card mt-2">
-									<div
-										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-										<i class="bi bi-file-earmark-ppt fs-3 px-2 py-2"></i>
-										<p class="m-0 ms-1 ps-2 flex-fill">研究會議簡報連結</p>
-										<a href="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view" type="button" target="_blank"
-											class="btn btn-link ms-1 btn-lg">
-											<i class="bi bi-box-arrow-up-right"></i>
-										</a>
+								<div class="card my-2 rounded-inline-basic">
+									<div class="card-body d-flex p-2 align-items-center">
+										<div class="col-auto">
+											<div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+												<i class="bi bi-file-earmark-ppt"></i>
+											</div>
+										</div>
+										<div class="col">
+											<p class="m-0 px-3">研究會議簡報連結</p>
+										</div>
+										<div class="col-auto">
+											<a href="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view" type="button" target="_blank"
+											class="btn btn-link fs-5">
+												<i class="bi bi-box-arrow-up-right"></i>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-12">
-								<div class="card mt-2">
-									<div
-										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-										<i class="bi bi-file-earmark-arrow-down fs-3 px-2 py-2"></i>
-										<p class="m-0 ms-1 ps-2 flex-fill">研討會論文文件</p>
-										<a href="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk" type="button" target="_blank"
-											class="btn btn-link ms-1 btn-lg">
-											<i class="bi bi-box-arrow-up-right"></i>
-										</a>
+								<div class="card my-2 rounded-inline-basic">
+									<div class="card-body d-flex p-2 align-items-center">
+										<div class="col-auto">
+											<div class="d-flex align-items-center justify-content-center fs-3 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+												<i class="bi bi-file-earmark-arrow-down"></i>
+											</div>
+										</div>
+										<div class="col">
+											<p class="m-0 px-3">研討會論文文件</p>
+										</div>
+										<div class="col-auto">
+											<a href="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk" type="button" target="_blank"
+											class="btn btn-link fs-5">
+												<i class="bi bi-box-arrow-up-right"></i>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -218,7 +233,9 @@
 							
 							<div class="collapse" id="collapseCeti">
 								<div class="col-12">
-									<img src="../../assets/imgs/trelloFinder/證書.webp" class="img-fluid rounded-basic mt-2" alt="...">
+									<a href="../../assets/imgs/trelloFinder/證書.webp" data-fancybox="gallery">
+										<img src="../../assets/imgs/trelloFinder/證書.webp" class="img-fluid"  alt="Image description">
+									</a>
 								</div>
 							</div>
 						</div>
@@ -233,30 +250,46 @@
 							<h2 class="notoFont m-0 fs-4">
 								<span class="badge bg-mytheme text-dark rounded-pill mb-3 overflow-hidden">生成模組</span><br> 在自主學習環境比較不同提示策略對大型語言模型回應的影響
 							</h2>
-							<hr>
+							<p class="mt-2 lh-md">
+								基於 RAG 與鏈式提示策略，進行大型語言模型回應的生成模組，並進行實驗比較不同提示策略對回應的影響。
+							</p>
 							<div class="col-12">
-								<div class="card mt-2">
-									<div
-										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-										<i class="bi bi-file-earmark-ppt fs-3 px-2 py-2"></i>
-										<p class="m-0 ms-1 ps-2 flex-fill">簡報連結</p>
-										<a href="https://drive.google.com/file/d/1xoYvRgNZ3Li3kEbwFW5QEBuK-JOLogfz/view?usp=sharing" type="button" target="_blank"
-											class="btn btn-link ms-1 btn-lg">
-											<i class="bi bi-box-arrow-up-right"></i>
-										</a>
+								<div class="card my-2 rounded-inline-basic">
+									<div class="card-body d-flex p-2 align-items-center">
+										<div class="col-auto">
+											<div class="d-flex align-items-center justify-content-center fs-3 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+												<i class="bi bi-file-earmark-ppt"></i>
+											</div>
+										</div>
+										<div class="col">
+											<p class="m-0 px-3">簡報連結</p>
+										</div>
+										<div class="col-auto">
+											<a href="https://drive.google.com/file/d/1xoYvRgNZ3Li3kEbwFW5QEBuK-JOLogfz/view?usp=sharing" type="button" target="_blank"
+											class="btn btn-link fs-5">
+												<i class="bi bi-box-arrow-up-right"></i>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-12">
-								<div class="card mt-2">
-									<div
-										class="card-body border-theme d-flex align-items-center px-2 py-1 border-5 rounded-start border-start">
-										<i class="bi bi-file-earmark-arrow-down fs-3 px-2 py-2"></i>
-										<p class="m-0 ms-1 ps-2 flex-fill">論文文件</p>
-										<a href="https://drive.google.com/file/d/1y7yCt21CVPbaPbOCFheRRoO3R98cCWuP/view?usp=sharing" type="button" target="_blank"
-											class="btn btn-link ms-1 btn-lg">
-											<i class="bi bi-box-arrow-up-right"></i>
-										</a>
+								<div class="card my-2 rounded-inline-basic">
+									<div class="card-body d-flex p-2 align-items-center">
+										<div class="col-auto">
+											<div class="d-flex align-items-center justify-content-center fs-3 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+												<i class="bi bi-file-earmark-arrow-down"></i>
+											</div>
+										</div>
+										<div class="col">
+											<p class="m-0 px-3">論文文件</p>
+										</div>
+										<div class="col-auto">
+											<a href="https://drive.google.com/file/d/1y7yCt21CVPbaPbOCFheRRoO3R98cCWuP/view?usp=sharing" type="button" target="_blank"
+											class="btn btn-link fs-5">
+												<i class="bi bi-box-arrow-up-right"></i>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
