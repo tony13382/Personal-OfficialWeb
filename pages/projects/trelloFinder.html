@@ -27,13 +27,14 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
 	<!-- Fancyapp (Image Box)-->
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css"/>
 	<!-- JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
-
+	<!-- Fancyapp (Image Carousel)-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/carousel.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/carousel.umd.js"></script>
 </head>
 
 <body class="bg-mytheme">
@@ -175,6 +176,123 @@
 						</div>
 					</div>
 					<div class="card shadow mt-4 rounded-basic">
+						<div class="card-body">
+							<h4 class="mt-2 mb-0">技術採用</h4>
+							<div class="row">
+								<div class="col-12 overflow-hidden" id="tech-list" style="height: 300px; border-bottom: 1px rgba(0, 0, 0, 0.125) solid;">
+									<div class="notoFont">
+										<div class="card d-flex mt-3 rounded-inline-basic">
+											<div class="card-body d-inline-flex align-items-center">
+												<div class="d-inline-block">
+													<div style="width: 64px; height: 64px;" class="">
+														<img src="../../assets/imgs/appIcons/pythonPackage/flask.png" class="img-fluid"
+															alt="Flask Icon">
+													</div>
+												</div>
+												<div class="ps-3 d-inline-flex flex-column">
+													<p class="p-0 mb-2 fw-bold">Flask</p>
+													<p class="p-0 m-0">Webhook APIs 建立</p>
+												</div>
+											</div>
+										</div>
+										<div class="card d-flex mt-3 rounded-inline-basic">
+											<div class="card-body d-inline-flex align-items-center">
+												<div class="d-inline-block">
+													<div style="width: 64px; height: 64px;" class="">
+														<img src="../../assets/imgs/appIcons/rabbit_mq.png" class="img-fluid"
+															alt="rabbit_mq Icon">
+													</div>
+												</div>
+												<div class="ps-3 d-inline-flex flex-column">
+													<p class="p-0 mb-2 fw-bold">RabbitMQ</p>
+													<p class="p-0 m-0 text-gray">建立任務佇列處理系統</p>
+												</div>
+											</div>
+										</div>
+										<div class="card d-flex mt-3 rounded-inline-basic">
+											<div class="card-body d-inline-flex align-items-center">
+												<div class="d-inline-block">
+													<div style="width: 64px; height: 64px;" class="">
+														<img src="../../assets/imgs/appIcons/mongodb.png" class="img-fluid"
+															alt="MongoDB Icon">
+													</div>
+												</div>
+												<div class="ps-3 d-inline-flex flex-column">
+													<p class="p-0 mb-2 fw-bold">MongoDB</p>
+													<p class="p-0 m-0 text-gray">資料庫儲存</p>
+												</div>
+											</div>
+										</div>
+										<div class="card d-flex mt-3 rounded-inline-basic">
+											<div class="card-body d-inline-flex align-items-center">
+												<div class="d-inline-block">
+													<div style="width: 64px; height: 64px;" class="">
+														<img src="../../assets/imgs/appIcons/milvus.png" class="img-fluid p-1"
+															alt="Milvus Icon">
+													</div>
+												</div>
+												<div class="ps-3 d-inline-flex flex-column">
+													<p class="p-0 mb-2 fw-bold">Milvus</p>
+													<p class="p-0 m-0">向量資料庫</p>
+												</div>
+											</div>
+										</div>
+										<div class="card d-flex mt-3 rounded-inline-basic">
+											<div class="card-body d-inline-flex align-items-center">
+												<div class="d-inline-block">
+													<div style="width: 64px; height: 64px;" class="">
+														<img src="../../assets/imgs/appIcons/sbert.png" class="img-fluid"
+															alt="SBERT Icon">
+													</div>
+												</div>
+												<div class="ps-3 d-inline-flex flex-column">
+													<p class="p-0 mb-2 fw-bold">Sentence-BERT</p>
+													<p class="p-0 m-0 text-gray">文本向量化技術、模型訓練與微調</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 mt-3" id="tech-list-lookmore" style="display: grid;">
+									<button type="button" onclick="lookMore()" class="btn btn-outline-theme rounded-pill">Look More</button>
+								</div>
+								<script>
+									function lookMore(){
+										document.getElementById("tech-list").style.height = "auto";
+										document.getElementById("tech-list").style.border = "none";
+										document.getElementById("tech-list-lookmore").style.display = "none";
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow mt-4 rounded-basic">
+						<a href="../../assets/imgs/trelloFinder/workflow-search.png" data-fancybox="gallery">
+							<img src="../../assets/imgs/trelloFinder/workflow-search.png" class="img-fluid"  alt="Image description">
+						</a>
+						<div class="card-body">
+							<h2 class="notoFont m-0 mb-3 fs-4">
+								搜索架構
+							</h2>
+							<p>
+								融合 BM25（詞頻）、TF-IDF、共現分析 與 SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
+							</p>
+						</div>
+					</div>
+					<div class="card shadow mt-4 rounded-basic">
+						<a href="../../assets/imgs/trelloFinder/workflow-request.png" data-fancybox="gallery">
+							<img src="../../assets/imgs/trelloFinder/workflow-request.png" class="img-fluid"  alt="Image description">
+						</a>
+						<div class="card-body">
+							<h2 class="notoFont m-0 mb-3 fs-4">
+								回應架構
+							</h2>
+							<p>
+								基於 RAG 與鏈式提示策略設計，使用大型語言模型（GPT-4 Turbo）生成適切的回應與延伸提問。
+							</p>
+						</div>
+					</div>
+					<div class="card shadow mt-4 rounded-basic">
 						<div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0em; margin-bottom: 0.9em; overflow: hidden; will-change: transform;">
 							<iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
 								src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
@@ -300,87 +418,6 @@
 					</div>
 					<div class="card shadow mt-4 rounded-basic">
 						<div class="card-body">
-							<h4 class="mt-2 mb-0">技術採用</h4>
-							<div class="row">
-								<div class="col-12">
-									<div class="notoFont">
-										<div class="card d-flex mt-3 rounded-inline-basic">
-											<div class="card-body d-inline-flex align-items-center">
-												<div class="d-inline-block">
-													<div style="width: 64px; height: 64px;" class="">
-														<img src="../../assets/imgs/appIcons/pythonPackage/flask.png" class="img-fluid"
-															alt="Flask Icon">
-													</div>
-												</div>
-												<div class="ps-3 d-inline-flex flex-column">
-													<p class="p-0 mb-2 fw-bold">Flask</p>
-													<p class="p-0 m-0">Webhook APIs 建立</p>
-												</div>
-											</div>
-										</div>
-										<div class="card d-flex mt-3 rounded-inline-basic">
-											<div class="card-body d-inline-flex align-items-center">
-												<div class="d-inline-block">
-													<div style="width: 64px; height: 64px;" class="">
-														<img src="../../assets/imgs/appIcons/rabbit_mq.png" class="img-fluid"
-															alt="rabbit_mq Icon">
-													</div>
-												</div>
-												<div class="ps-3 d-inline-flex flex-column">
-													<p class="p-0 mb-2 fw-bold">RabbitMQ</p>
-													<p class="p-0 m-0 text-gray">建立任務佇列處理系統</p>
-												</div>
-											</div>
-										</div>
-										<div class="card d-flex mt-3 rounded-inline-basic">
-											<div class="card-body d-inline-flex align-items-center">
-												<div class="d-inline-block">
-													<div style="width: 64px; height: 64px;" class="">
-														<img src="../../assets/imgs/appIcons/mongodb.png" class="img-fluid"
-															alt="MongoDB Icon">
-													</div>
-												</div>
-												<div class="ps-3 d-inline-flex flex-column">
-													<p class="p-0 mb-2 fw-bold">MongoDB</p>
-													<p class="p-0 m-0 text-gray">資料庫儲存</p>
-												</div>
-											</div>
-										</div>
-										<div class="card d-flex mt-3 rounded-inline-basic">
-											<div class="card-body d-inline-flex align-items-center">
-												<div class="d-inline-block">
-													<div style="width: 64px; height: 64px;" class="">
-														<img src="../../assets/imgs/appIcons/milvus.png" class="img-fluid p-1"
-															alt="Milvus Icon">
-													</div>
-												</div>
-												<div class="ps-3 d-inline-flex flex-column">
-													<p class="p-0 mb-2 fw-bold">Milvus</p>
-													<p class="p-0 m-0">向量資料庫</p>
-												</div>
-											</div>
-										</div>
-										<div class="card d-flex mt-3 rounded-inline-basic">
-											<div class="card-body d-inline-flex align-items-center">
-												<div class="d-inline-block">
-													<div style="width: 64px; height: 64px;" class="">
-														<img src="../../assets/imgs/appIcons/sbert.png" class="img-fluid"
-															alt="SBERT Icon">
-													</div>
-												</div>
-												<div class="ps-3 d-inline-flex flex-column">
-													<p class="p-0 mb-2 fw-bold">Sentence-BERT</p>
-													<p class="p-0 m-0 text-gray">文本向量化技術、模型訓練與微調</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="card-body">
 							<h2 class="notoFont m-0 fs-4">
 								產品架構圖
 							</h2>
@@ -394,19 +431,6 @@
 								</a>
 								<a href="../../assets/imgs/trelloFinder/Workflow-ReqPrepare.png" data-fancybox="gallery">
 									<img src="../../assets/imgs/trelloFinder/Workflow-ReqPrepare.png" class="img-fluid mb-2"  alt="Image description">
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="card-body">
-							<h2 class="notoFont m-0 fs-4">
-								搜索架構
-							</h2>
-							<hr>
-							<div class="col-12">
-								<a href="../../assets/imgs/trelloFinder/Workflow-Search.png" data-fancybox="gallery">
-									<img src="../../assets/imgs/trelloFinder/Workflow-Search.png" class="img-fluid mb-2"  alt="Image description">
 								</a>
 							</div>
 						</div>
