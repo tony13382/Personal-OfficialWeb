@@ -161,6 +161,13 @@
 									</div>
 								</div>
 							</div>
+							<div class="card-footer p-0 bg-white">
+								<div class="d-grid gap-2">
+									<a class="btn btn-outline-theme mt-3 rounded-pill" type="button" href="../../assets/imgs/trelloFinder/證書.webp" data-fancybox="gallery">
+										顯示獎狀：TWELF 2024 第十九屆台灣數位學習發展研討會 AIES 組 - 最佳論文獎
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="card mt-4 shadow rounded-basic">
@@ -293,6 +300,109 @@
 						</div>
 					</div>
 					<div class="card shadow mt-4 rounded-basic">
+						<div class="card-body">
+							<h2 class="notoFont m-0 mb-3 fs-4">
+								提示詞列表
+							</h2>
+							<div class="accordion lh-lg" id="accordionPrompts">
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompts-collapseOne" aria-expanded="false" aria-controls="prompts-collapseOne">
+											萃取提示詞<span class="bg-mytheme py-1 ms-3 rounded-pill overflow-hidden">（model=GPT 3.5; temperature=0）</span>
+										</button>
+									</h2>
+									<div id="prompts-collapseOne" class="accordion-collapse collapse">
+										<div class="accordion-body">
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">role</th>
+														<th scope="col">prompt</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>system</td>
+														<td>#zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究 <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">研究主題</span>，而你需要幫助學生瞭解相關知識，因此你需要生成回答並追問學生讓學生回答以促進學生對 <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">研究主題</span> 深度思考。輸出的文本需要基於 Markdown 語法。</td>
+													</tr>
+													<tr>
+														<td>user</td>
+														<td>*聊天文本（舊～新）*</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#prompts-collapseTwo" aria-expanded="true" aria-controls="prompts-collapseTwo">
+											回應提示詞<span class="bg-mytheme py-1 ms-3 rounded-pill overflow-hidden">（model=GPT 4 turbo; temperature=0.1）</span>
+										</button>
+									</h2>
+									<div id="prompts-collapseTwo" class="accordion-collapse collapse show">
+										<div class="accordion-body">
+											<p class="fw-bold m-0">生成回應</p>
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">role</th>
+														<th scope="col">prompt</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>system</td>
+														<td>#zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究 <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">研究主題</span> 而你需要幫助學生瞭解相關知識，因此你需要1. 基於參考資料嘗試回答學生的問題，並在回答之中強制標注[文章編號]。2. 如果參考資料無法解答問題則只告知現有資料無法回答問題。3. 根據對話紀錄生成回應。輸出的文本需要基於 Markdown 語法。</td>
+													</tr>
+													<tr>
+														<td>assistant</td>
+														<td>以下是我們給付的參考資料：以 JSON 格式呈現，格式如下｛article_id: 文章編號,content : 文章的實際內容｝\n <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">文章內容</span></td>
+													</tr>
+													<tr>
+														<td>user</td>
+														<td><span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">聊天文本（舊～新）</span></td>
+													</tr>
+												</tbody>
+											</table>
+											<p class="fw-bold m-0 mt-4">生成反問</p>
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">role</th>
+														<th scope="col">prompt</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>system</td>
+														<td>#zh_tw 你是一位使用繁體中文的自然科學中學老師正在跟剛接觸研究領域的學生交談，首先學生正在研究 <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">研究主題</span>，而你需要幫助學生瞭解相關知識，因此你需要基於以下聊天內容提出問題給學生讓學生回答以促進學生對 <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">研究主題</span> 深度思考。輸出的文本只需要問題無需標題，使用 Markdown 語法輸出。</td>
+													</tr>
+													<tr>
+														<td>assistant</td>
+														<td>以下是我們給付的參考資料：以 JSON 格式呈現，格式如下｛article_id: 文章編號,content : 文章的實際內容｝\n <span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">文章內容</span></td>
+													</tr>
+													<tr>
+														<td>user</td>
+														<td><span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">聊天文本（舊～新）</span></td>
+													</tr>
+													<tr>
+														<td>assistant</td>
+														<td><span class="bg-mytheme py-1 px-2 rounded-pill overflow-hidden">對話回應文本（上表的結果）</span></td>
+													</tr>
+													<tr>
+														<td>user</td>
+														<td>請根據上述內容撰寫問題給學生，促進學生思考。</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow mt-4 rounded-basic">
 						<div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0em; margin-bottom: 0.9em; overflow: hidden; will-change: transform;">
 							<iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
 								src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
@@ -327,7 +437,7 @@
 								</div>
 							</div>
 							<div class="col-12">
-								<div class="card my-2 rounded-inline-basic">
+								<div class="card mt-2 rounded-inline-basic">
 									<div class="card-body d-flex p-2 align-items-center">
 										<div class="col-auto">
 											<div class="d-flex align-items-center justify-content-center fs-3 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
@@ -344,19 +454,6 @@
 											</a>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div class="d-grid gap-2 mt-3">
-								<button class="btn btn-outline-theme mt-3 rounded-basic" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCeti" aria-expanded="false" aria-controls="collapseCeti">
-									顯示獎狀：TWELF 2024 第十九屆台灣數位學習發展研討會 AIES 組 - 最佳論文獎
-								</button>
-							</div>
-							
-							<div class="collapse" id="collapseCeti">
-								<div class="col-12">
-									<a href="../../assets/imgs/trelloFinder/證書.webp" data-fancybox="gallery">
-										<img src="../../assets/imgs/trelloFinder/證書.webp" class="img-fluid"  alt="Image description">
-									</a>
 								</div>
 							</div>
 						</div>
@@ -395,7 +492,7 @@
 								</div>
 							</div>
 							<div class="col-12">
-								<div class="card my-2 rounded-inline-basic">
+								<div class="card mt-2 rounded-inline-basic">
 									<div class="card-body d-flex p-2 align-items-center">
 										<div class="col-auto">
 											<div class="d-flex align-items-center justify-content-center fs-3 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
