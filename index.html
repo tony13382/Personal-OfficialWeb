@@ -226,7 +226,7 @@
             background-color: #E8E1E5 !important;
         }
         .bg-mywork {
-            background-color: #f3f9ff !important;
+            background-color: #ececec !important;
         }
         .navlogofont {
             font-family: "Playwrite HR Lijeva", cursive;
@@ -696,10 +696,10 @@
                                                 <div class="px-2">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 p-2 mx-auto">
-                                                            <img src="./assets/imgs/index/jobs/tiic3.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                                            <img src="./assets/imgs/index/jobs/tiic3.webp" alt="TIIC Discord" class="img-fluid rounded-inline-basic">
                                                         </div>
                                                         <div class="col-12 col-md-6 p-2 mx-auto">
-                                                            <img src="./assets/imgs/index/jobs/tiic4.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                                            <img src="./assets/imgs/index/jobs/tiic4.webp" alt="TIIC Discord" class="img-fluid rounded-inline-basic">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -718,10 +718,10 @@
                                                 <div class="px-2">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 p-2">
-                                                            <img src="./assets/imgs/index/jobs/tiic1.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                                            <img src="./assets/imgs/index/jobs/tiic1.webp" alt="TIIC Discord" class="img-fluid rounded-inline-basic">
                                                         </div>
                                                         <div class="col-12 col-md-6 p-2">
-                                                            <img src="./assets/imgs/index/jobs/tiic2.webp" alt="TIIC Discord" class="img-fluid photoRadius">
+                                                            <img src="./assets/imgs/index/jobs/tiic2.webp" alt="TIIC Discord" class="img-fluid rounded-inline-basic">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1649,7 +1649,7 @@
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project of projects_list">
                             <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100 rounded-basic">
+                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
                                     <img v-bind:src="project.beforeLoadingCover" class="card-img-top lozad" alt="..."
                                         v-bind:data-src="project.cover">
                                     <div class="card-body">
@@ -1675,7 +1675,7 @@
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project in filteredProjects(typetag.id)">
                             <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100 rounded-basic">
+                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
                                     <img :src="project.beforeLoadingCover" class="card-img-top lozad" alt="..." :data-src="project.cover">
                                     <div class="card-body">
                                         <h5 class="card-title text-dark">{{ project.name }}</h5>

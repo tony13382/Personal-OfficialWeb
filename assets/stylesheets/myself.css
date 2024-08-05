@@ -10,19 +10,11 @@
     margin-right: 8px !important;
 }
 
-.photoRadius {
-    border-radius: 16px;
-    overflow: hidden;
-}
 .msf-info-s{
     font-size: 18px;
     line-height: 150%;
 }
-.msf-uiuxHeader{
-    background: linear-gradient(90deg, #465375 0%, #758AC2 100%); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+
 
 .ml12 {
     font-weight: 200;
@@ -36,23 +28,11 @@
     line-height: 0.5em;
 }
 
-.msf-heightlight {
-    border-left: 2px solid black;
-    padding-left: 8px;
-}
-
-.msf-heightlight-w {
-    border-left: 2px solid white;
-    padding-left: 8px;
-}
 
 .notoFont {
     font-family: 'Noto Sans TC', sans-serif;
 }
 
-.msNotiWord {
-    font-size: 5rem;
-}
 .btn {
     -webkit-appearance: none;
 }
@@ -207,6 +187,6 @@
     border-color: var(--themeColor) !important;
 }
 .hoverBigger:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition-duration: 0.5s;
 }
