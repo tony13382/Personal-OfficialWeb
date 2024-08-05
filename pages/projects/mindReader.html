@@ -225,11 +225,11 @@
 						</div>
 					</div>
 					<div class="card mt-4 rounded-basic shadow">
-						<div class="p-2">
+						<div class="p-2 overflow-hidden" id="tech-list" style="height: 320px;">
 							<div class="card-body">
 								<h4>技術採用</h4>
 								<div class="row">
-									<div class="col-12 overflow-hidden" id="tech-list" style="height: 300px; border-bottom: 1px rgba(0, 0, 0, 0.125) solid;">
+									<div class="col-12">
 										<div class="row">
 											<div class="col-12">
 												<div class="notoFont">
@@ -384,19 +384,18 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 mt-3" id="tech-list-lookmore" style="display: grid;">
-										<button type="button" onclick="lookMore()" class="btn btn-outline-theme rounded-pill">Look More</button>
-									</div>
-									<script>
-										function lookMore(){
-											document.getElementById("tech-list").style.height = "auto";
-											document.getElementById("tech-list").style.border = "none";
-											document.getElementById("tech-list-lookmore").style.display = "none";
-										}
-									</script>
 								</div>
 							</div>
 						</div>
+						<div class="card-footer bg-white p-3" id="tech-list-lookmore" style="display: grid;">
+							<button type="button" onclick="lookMore()" class="btn btn-outline-theme rounded-pill">Look More</button>
+						</div>
+						<script>
+							function lookMore(){
+								document.getElementById("tech-list").style.height = "auto";
+								document.getElementById("tech-list-lookmore").style.display = "none";
+							}
+						</script>
 					</div>
 					<div class="card mt-4 rounded-basic shadow">
 						<div class="p-2">
@@ -510,51 +509,121 @@
 						</div>
 						<div class="p-2">
 							<div class="card-body">
-								<h2 class="notoFont m-0 fs-4">
+								<h2 class="notoFont m-0 mb-3 fs-4">
 									輸入文本轉換流程
 								</h2>
-								<hr>
-								<div class="col-12 d-flex align-items-center justify-content-center py-4">
-									<div class="d-flex flex-column">
-										<p class="text-center m-0 notoFont">
-											用戶輸入（鍵盤攔截）
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											鍵盤利用Web APIs 將文字傳送至 <span class="badge bg-danger rounded-pill">MindReader Core</span>
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											<span class="badge bg-success rounded-pill">Line Bot</span> 抓取用戶ID
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											根據ID與文字進行轉換
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											傳送轉譯後文字
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											接收使用者以外的回饋文字
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											<span class="badge bg-warning rounded-pill">錄入資料</span> 進行評分
-										</p>
+								<div class="d-grid gap-3">
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-keyboard"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															用戶輸入（鍵盤攔截）
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-truck"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															鍵盤利用Web APIs 將文字傳送至 <span class="badge bg-danger rounded-pill">MindReader Core</span>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-line"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															<span class="badge bg-success rounded-pill">Line Bot</span> 抓取用戶ID
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-arrow-repeat"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															根據 ID 與文字進行轉換
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-send"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															傳送轉譯後文字
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-truck"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															接收使用者以外的回饋文字
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-database-down"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															<span class="badge bg-warning rounded-pill">錄入資料</span> 進行評分
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -568,45 +637,105 @@
 						</div>
 						<div class="p-2">
 							<div class="card-body">
-								<h2 class="notoFont m-0 fs-4">
+								<h2 class="notoFont m-0 mb-3 fs-4">
 									智慧日程提醒
 								</h2>
-								<hr>
-								<div class="col-12 d-flex align-items-center justify-content-center py-4">
-									<div class="d-flex flex-column">
-										<p class="text-center m-0 notoFont">
-											Line Bot 接收文字
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											Line Bot 利用Web APIs 傳送至 <span class="badge bg-danger rounded-pill">Core APIs</span>
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											Line Bot 文字利用 <span class="badge bg-projectSonglaPrimary rounded-pill">LUIS</span> 分析
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											分析後結果進行資料整理打包
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											Core 利用Web APIs 傳送至 <span class="badge bg-success rounded-pill">Line Bot</span>
-										</p>
-										<p class="text-center m-0">
-											<i class="bi bi-arrow-down"></i>
-										</p>
-										<p class="text-center m-0 notoFont">
-											<span class="badge bg-success rounded-pill">Line Bot</span> 發送訊息
-										</p>
+								<div class="d-grid gap-3">
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-keyboard"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															Line Bot 接收文字
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-truck"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															鍵Line Bot 利用 Web APIs 傳送至 <span class="badge bg-danger rounded-pill">Core APIs</span>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-cloud-haze"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															Line Bot 文字利用 <span class="badge bg-projectSonglaPrimary rounded-pill">LUIS</span> 分析
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-box-seam"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															分析後結果進行資料整理打包
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-truck"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															Core 利用 Web APIs 傳送至 <span class="badge bg-success rounded-pill">Line Bot</span>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card rounded-inline-basic">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
+														<i class="bi bi-line"></i>
+													</div>
+													<div class="col d-flex align-items-center ps-3">
+														<p class="m-0">
+															<span class="badge bg-success rounded-pill">Line Bot</span> 發送訊息
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
