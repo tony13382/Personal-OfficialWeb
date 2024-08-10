@@ -235,7 +235,7 @@
         body {
             background-color: #E8E1E5 !important;
         }
-        .bg-mywork {
+        .bg-my-projects {
             background-color: #ececec !important;
         }
         .navlogofont {
@@ -342,7 +342,7 @@
                         <a class="nav-link" aria-current="page" href="index.html">首頁</a>
                     </li>
                     <li class="nav-item rounded-pill">
-                        <a class="nav-link" href="#myWorks">我的作品</a>
+                        <a class="nav-link" href="#myProjects">我的作品</a>
                     </li>
                     <li class="nav-item rounded-pill">
                         <a class="nav-link" href="pages/awards.html">我的獎項</a>
@@ -1870,8 +1870,8 @@
         </div>
     </div>
     <!-- 作品集 -->
-    <div id="myWorks" class="" style="padding-top: 92px; margin-top: -92px;">
-        <div class="pt-3 bg-mywork">
+    <div id="myProjects" class="" style="padding-top: 92px; margin-top: -92px;">
+        <div class="pt-3 bg-my-projects">
             <div class="container">
                 <div class="row ms-navbar">
                     <div class="col-12">
@@ -1881,43 +1881,63 @@
             </div>
         </div>
     </div>
-    <div class="pb-4 bg-mywork">
+    <div class="pb-4 bg-my-projects">
         <div class="container" id="project_board">
             <div class="row">
                 <div class="col-12">
                     <div class="col-12">
                         <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist"
                             style="margin-left: -0.25rem;">
-                            <li class="nav-item me-3">
-                                <a class="nav-link px-1 py-0 text-nowrap active" id="products-all-tab"
-                                    data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab"
-                                    aria-controls="products-all" aria-selected="true">
-                                    <i class='bi bi-boxes pe-2'></i>所有作品
-                                </a>
-                            </li>
-                            <li class="nav-item me-3" v-for="typetag of type_list">
+                            <li class="nav-item me-3" v-for="(typetag, index) in type_list" :key="typetag.id">
                                 <a class="nav-link px-1 py-0 text-nowrap"
                                     v-bind:id = "'products-' + typetag.id + '-tab' "
                                     v-bind:data-bs-target="'#products-' + typetag.id "
                                     v-bind:aria-controls="'products-' + typetag.id"
+                                    :aria-selected="index === 0 ? 'true' : 'false'"
+                                    :class="{'active': index === 0}"
                                     data-bs-toggle="pill" type="button" role="tab"
                                     aria-selected="false"
                                     v-html="typetag.html_icon">{{typetag.title}}</a>
                             </li>
-                            <!--
-                            <li class="nav-item me-3 ">
-                                <a class="nav-link px-1 py-0 text-nowrap" id="products-dev-tab"
-                                    data-bs-toggle="pill" data-bs-target="#products-dev" type="button"
-                                    role="tab" aria-controls="products-dev" aria-selected="false">開發專案</a>
+                            <li class="nav-item me-3">
+                                <a class="nav-link px-1 py-0 text-nowrap" id="products-all-tab"
+                                    data-bs-toggle="pill" data-bs-target="#products-all" type="button" role="tab"
+                                    aria-controls="products-all" aria-selected="false">
+                                    <i class='bi bi-boxes pe-2'></i>所有作品
+                                </a>
                             </li>
-                            -->
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade" 
+                    v-for="(typetag, index) in type_list"
+                    v-bind:id="'products-' + typetag.id" 
+                    v-bind:aria-labelledby="'products-' + typetag.id + '-tab'" 
+                    :class="{'show active': index === 0}"
+                    role="tabpanel" tabindex="0">
+                    <div class="row d-flex align-items-stretch">
+                        <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project in filteredProjects(typetag.id)">
+                            <a :href="project.link" class="text-decoration-none">
+                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
+                                    <img :src="project.beforeLoadingCover" class="card-img-top lozad" alt="..." :data-src="project.cover">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">{{ project.name }}</h5>
+                                        <p class="card-text text-dark">{{ project.description }}</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-3">
+                                        <div class="fs-5 text-black pt-3">
+                                            <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden" v-for="tag in project.tags">{{ tag }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <!--所有作品-->
-                <div class="tab-pane fade show active" id="products-all" role="tabpanel"
+                <div class="tab-pane fade" id="products-all" role="tabpanel"
                     aria-labelledby="products-all-tab" tabindex="0">
                     <div class="row d-flex align-items-stretch">
                         <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project of projects_list">
@@ -1936,27 +1956,6 @@
                                     <div class="card-footer bg-transparent border-0 pb-3">
                                         <div class="fs-5 text-black pt-3">
                                             <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden" v-for="tag in project.tags">{{tag}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-pane fade" v-for="typetag of type_list" v-bind:id="'products-' + typetag.id" v-bind:aria-labelledby="'products-' + typetag.id + '-tab'" role="tabpanel" tabindex="0">
-                    <div class="row d-flex align-items-stretch">
-                        <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project in filteredProjects(typetag.id)">
-                            <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
-                                    <img :src="project.beforeLoadingCover" class="card-img-top lozad" alt="..." :data-src="project.cover">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-dark">{{ project.name }}</h5>
-                                        <p class="card-text text-dark">{{ project.description }}</p>
-                                    </div>
-                                    <div class="card-footer bg-transparent border-0 pb-3">
-                                        <div class="fs-5 text-black pt-3">
-                                            <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden" v-for="tag in project.tags">{{ tag }}</span>
                                         </div>
                                     </div>
                                 </div>

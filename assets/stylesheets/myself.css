@@ -104,10 +104,7 @@
     color: #664557;
     padding: 0px 2px;
 }
-.halfHightLightBg:hover{
-    background: linear-gradient(to top, #ffd6e7 20%, transparent 20%);
-    padding: 0px 2px;
-}
+
 
 
 .navbar{
