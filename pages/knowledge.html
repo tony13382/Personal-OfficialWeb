@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" CONTENT="我的獎項｜呂亮進">
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://tony13382.github.io/index.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="我的獎項｜呂亮進" />
+    <meta property="og:description" content="關於我的榮譽獎項" />
+    <meta property="og:image" content="https://tony13382.github.io/assets/images/personal_img.jpg" />
+    <meta property="og:image:alt" content="我的獎項｜呂亮進" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="386px" />
+    <meta property="og:image:height" content="386px" />
+    <!-- End Facebook Opengraph -->
+    <title>呂亮進｜一位多領域背景的產品創造者</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico" />
+    <!--Start Load CSS-->
+    <link rel="stylesheet" href="../assets/stylesheets/myself.css">
+    <link rel="stylesheet" href="../assets/stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- Google Font - Nav Logo-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap" rel="stylesheet">
+    <!--GA Ana-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-007VY8R3PZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-007VY8R3PZ');
+    </script>
+
+    <!-- Add: Vue.js Suppot-->
+    <script type="importmap">
+        {"imports": {
+            "vue": "/assets/script/vue.esm-browser.js"
+        }}
+    </script>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3.4.21/dist/vue.esm-browser.js';
+
+        const app = createApp({
+            data() {
+                return {
+                    types: ['全部', 'Facebook', 'Instagram','電子報','Podcast','Website','Youtube'],
+                    tags: ['商業','行銷','財務','投資','UI / UX','設計','簡報設計','攝影','專案管理','資料分析','開發','閱讀分享','新創','工具','工作流','創意','成長','Excel','Notion','科技'],
+                    selectedType: '全部', // 預設為全部
+                    selectedTags: [], // 預設為空
+                    data: [
+                            {
+                                "name": "IC 实验室",
+                                "type": "Youtube",
+                                "tags": [
+                                    "商業"
+                                ],
+                                "url": "https://www.youtube.com/channel/UCJ1zX4FZA15dwE2olLAO3-w",
+                                "cover": "../assets/imgs/knowledge/IC_实验室.png"
+                            },
+                            {
+                                "name": "曼報 Manny’s Newsletter",
+                                "type": "Podcast",
+                                "tags": [
+                                    "商業",
+                                    "新創"
+                                ],
+                                "url": "https://open.firstory.me/user/mannynewsletter",
+                                "cover": "../assets/imgs/knowledge/曼報_Manny’s_Newsletter.png"
+                            },
+                            {
+                                "name": "曼報 Manny’s Newsletter",
+                                "type": "電子報",
+                                "tags": [
+                                    "商業",
+                                    "新創"
+                                ],
+                                "url": "https://manny-li.com/",
+                                "cover": "../assets/imgs/knowledge/曼報_Manny’s_Newsletter.png"
+                            },
+                            {
+                                "name": "Gooaye 股癌",
+                                "type": "Podcast",
+                                "tags": [
+                                    "投資"
+                                ],
+                                "url": "https://podcasts.apple.com/tw/podcast/gooaye-%E8%82%A1%E7%99%8C/id1500839292",
+                                "cover": "../assets/imgs/knowledge/Gooaye_股癌.png"
+                            },
+                            {
+                                "name": "高效人生商學院",
+                                "type": "Podcast",
+                                "tags": [
+                                    "工作流"
+                                ],
+                                "url": "https://podcasts.apple.com/tw/podcast/%E9%AB%98%E6%95%88%E4%BA%BA%E7%94%9F%E5%95%86%E5%AD%B8%E9%99%A2/id1621943244",
+                                "cover": "../assets/imgs/knowledge/高效人生商學院.png"
+                            },
+                            {
+                                "name": "社群丼 Social Marketing Don",
+                                "type": "Facebook",
+                                "tags": [
+                                    "創意",
+                                    "行銷"
+                                ],
+                                "url": "https://www.facebook.com/groups/IB.fanpage.club/",
+                                "cover": "../assets/imgs/knowledge/社群丼_Social_Marketing_Don.jpg"
+                            },
+                            {
+                                "name": "Indie Creative 獨立創意聯盟電子報",
+                                "type": "電子報",
+                                "tags": [
+                                    "創意",
+                                    "行銷"
+                                ],
+                                "url": "https://indiecreative.tw/",
+                                "cover": "../assets/imgs/knowledge/Indie_Creative_獨立創意聯盟電子報.jpg"
+                            },
+                            {
+                                "name": "每日 e 錠",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "行銷",
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/daydayding",
+                                "cover": "../assets/imgs/knowledge/每日_e_錠.png"
+                            },
+                            {
+                                "name": "qq_learn",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "行銷",
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/qq_learn",
+                                "cover": "../assets/imgs/knowledge/qq_learn.png"
+                            },
+                            {
+                                "name": "電商人妻（@ec.wife）",
+                                "type": "Instagram",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://instagram.com/ec.wife",
+                                "cover": "../assets/imgs/knowledge/電商人妻（@ec.wife）.png"
+                            },
+                            {
+                                "name": "Jeremy Lin｜IG經營顧問",
+                                "type": "Instagram",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://www.instagram.com/jeremysnt369",
+                                "cover": "../assets/imgs/knowledge/Jeremy_Lin｜IG經營顧問.png"
+                            },
+                            {
+                                "name": "大辛先生",
+                                "type": "Instagram",
+                                "tags": [
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/mr.bigxin_/",
+                                "cover": "../assets/imgs/knowledge/大辛先生.png"
+                            },
+                            {
+                                "name": "數位行銷實驗室 D.M Lab｜政大✖️社團✖️行銷",
+                                "type": "Instagram",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://instagram.com/dmlab_nccu",
+                                "cover": "../assets/imgs/knowledge/數位行銷實驗室_D.M_Lab｜政大✖️社團✖️行銷.png"
+                            },
+                            {
+                                "name": "Amy 丨行銷 x 社群 x 自我成長",
+                                "type": "Instagram",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://instagram.com/amy_mknote?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/Amy_丨行銷_x_社群_x_自我成長.png"
+                            },
+                            {
+                                "name": "傑哥｜傑哥創意筆記｜陳思傑",
+                                "type": "Instagram",
+                                "tags": [
+                                    "創意",
+                                    "行銷"
+                                ],
+                                "url": "https://instagram.com/jesseuni?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/傑哥_｜傑哥創意筆記_|_陳思傑.png"
+                            },
+                            {
+                                "name": "亨利溫 Henry Wen｜斜槓 x 理財 x 自我成長",
+                                "type": "Instagram",
+                                "tags": [
+                                    "成長",
+                                    "行銷",
+                                    "財務"
+                                ],
+                                "url": "https://instagram.com/henry.wen?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/亨利溫_Henry_Wen｜斜槓_x_理財_x_自我成長.png"
+                            },
+                            {
+                                "name": "設事未深",
+                                "type": "Instagram",
+                                "tags": [
+                                    "設計"
+                                ],
+                                "url": "https://instagram.com/designnotdeep?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/設事未深.png"
+                            },
+                            {
+                                "name": "Artschooool 美感研究所",
+                                "type": "Instagram",
+                                "tags": [
+                                    "設計"
+                                ],
+                                "url": "https://instagram.com/artschooool?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/Artschooool_美感研究所.png"
+                            },
+                            {
+                                "name": "Out Of Design 圈外設計 TW｜Chris",
+                                "type": "Instagram",
+                                "tags": [
+                                    "設計"
+                                ],
+                                "url": "https://instagram.com/out_of_design?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/Out_Of_Design_圈外設計_TW｜Chris.png"
+                            },
+                            {
+                                "name": "凱文設計Kevin Design｜設計X工具X品牌分享",
+                                "type": "Instagram",
+                                "tags": [
+                                    "設計"
+                                ],
+                                "url": "https://instagram.com/kevin_learn?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/凱文設計Kevin_Design｜設計X工具X品牌分享.png"
+                            },
+                            {
+                                "name": "Mediastorm 影视飓风",
+                                "type": "Youtube",
+                                "tags": [
+                                    "攝影"
+                                ],
+                                "url": "https://youtube.com/channel/UC2cRwTuSWxxEtrRnT4lrlQA",
+                                "cover": "../assets/imgs/knowledge/Mediastorm_影视飓风.png"
+                            },
+                            {
+                                "name": "簡報仙貝 PPT.note｜Kevin 文碩 & Vicky 郁棋",
+                                "type": "Instagram",
+                                "tags": [
+                                    "簡報設計"
+                                ],
+                                "url": "https://instagram.com/ppt.note?igshid=YmMyMTA2M2Y=",
+                                "cover": "../assets/imgs/knowledge/簡報仙貝_PPT.note｜Kevin_文碩_&_Vicky_郁棋.png"
+                            },
+                            {
+                                "name": "簡報‧初學者（@slidenovice）",
+                                "type": "Instagram",
+                                "tags": [
+                                    "簡報設計"
+                                ],
+                                "url": "https://www.instagram.com/slidenovice",
+                                "cover": "../assets/imgs/knowledge/簡報‧初學者（@slidenovice）.png"
+                            },
+                            {
+                                "name": "Unblock｜UIUX設計🔸商業思維🔸產業新聞",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "商業",
+                                    "專案管理"
+                                ],
+                                "url": "https://www.instagram.com/unblock.team",
+                                "cover": "../assets/imgs/knowledge/Unblock｜UIUX設計🔸商業思維🔸產業新聞.png"
+                            },
+                            {
+                                "name": "Unblock｜UIUX設計🔸商業思維🔸產業新聞",
+                                "type": "Youtube",
+                                "tags": [
+                                    "UI / UX",
+                                    "商業",
+                                    "專案管理"
+                                ],
+                                "url": "https://www.youtube.com/c/UnblockDesign",
+                                "cover": "../assets/imgs/knowledge/Unblock｜UIUX設計🔸商業思維🔸產業新聞.png"
+                            },
+                            {
+                                "name": "Unblock 設計新聞",
+                                "type": "電子報",
+                                "tags": [
+                                    "UI / UX",
+                                    "商業",
+                                    "專案管理"
+                                ],
+                                "url": "https://unblocknewsletter.substack.com/",
+                                "cover": "../assets/imgs/knowledge/Unblock｜UIUX設計🔸商業思維🔸產業新聞.png"
+                            },
+                            {
+                                "name": "設計女子艾瑪⎢ UI/UX designer",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/emma_uiuxdesign",
+                                "cover": "../assets/imgs/knowledge/設計女子艾瑪⎢_UI:UX_designer_.png"
+                            },
+                            {
+                                "name": "UX Stone",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX"
+                                ],
+                                "url": "https://www.instagram.com/uiux.stone/",
+                                "cover": "../assets/imgs/knowledge/UX_Stone.png"
+                            },
+                            {
+                                "name": "Irene 與資料職涯大小事｜聊職涯 x 生活",
+                                "type": "Instagram",
+                                "tags": [
+                                    "資料分析"
+                                ],
+                                "url": "https://instagram.com/irene.ds.life",
+                                "cover": "../assets/imgs/knowledge/Irene_與資料職涯大小事｜聊職涯_x_生活.png"
+                            },
+                            {
+                                "name": "斐凡 | UX 設計・用戶體驗・產品設計",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX"
+                                ],
+                                "url": "https://www.instagram.com/feifan.design",
+                                "cover": "../assets/imgs/knowledge/斐凡_|_UX_設計・用戶體驗・產品設計.png"
+                            },
+                            {
+                                "name": "產品設計的錦囊妙計 • Designtips.today",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/designtips.today",
+                                "cover": "../assets/imgs/knowledge/產品設計的錦囊妙計_•_Designtips.today.png"
+                            },
+                            {
+                                "name": "Aurora｜設計資本家｜UIUX Designer",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX",
+                                    "設計"
+                                ],
+                                "url": "https://www.instagram.com/aaaurora.design",
+                                "cover": "../assets/imgs/knowledge/Aurora｜設計資本家｜UIUX_Designer.png"
+                            },
+                            {
+                                "name": "郭子慢慢｜服務設計師",
+                                "type": "Instagram",
+                                "tags": [
+                                    "UI / UX"
+                                ],
+                                "url": "https://www.instagram.com/kuosdesign",
+                                "cover": "../assets/imgs/knowledge/郭子慢慢｜服務設計師.png"
+                            },
+                            {
+                                "name": "Excel 效率王",
+                                "type": "Instagram",
+                                "tags": [
+                                    "Excel",
+                                    "資料分析"
+                                ],
+                                "url": "https://www.instagram.com/excelkingx",
+                                "cover": "../assets/imgs/knowledge/Excel_效率王.png"
+                            },
+                            {
+                                "name": "PAPAYA 電腦教室",
+                                "type": "Youtube",
+                                "tags": [
+                                    "工作流",
+                                    "工具"
+                                ],
+                                "url": "https://www.youtube.com/c/papayaclass",
+                                "cover": "../assets/imgs/knowledge/PAPAYA_電腦教室.png"
+                            },
+                            {
+                                "name": "Notion Your College",
+                                "type": "Instagram",
+                                "tags": [
+                                    "Notion",
+                                    "工作流"
+                                ],
+                                "url": "https://www.instagram.com/notion_your_college",
+                                "cover": "../assets/imgs/knowledge/Notion_Your_College.png"
+                            },
+                            {
+                                "name": "Andy Story｜安迪與數據的故事",
+                                "type": "Instagram",
+                                "tags": [
+                                    "資料分析"
+                                ],
+                                "url": "https://www.instagram.com/andystory_ins",
+                                "cover": "../assets/imgs/knowledge/Andy_Story｜安迪與數據的故事.png"
+                            },
+                            {
+                                "name": "資料科學家的工作日常 ❙ 維元",
+                                "type": "Instagram",
+                                "tags": [
+                                    "資料分析"
+                                ],
+                                "url": "https://www.instagram.com/___dsdaily___",
+                                "cover": "../assets/imgs/knowledge/資料科學家的工作日常_❙_維元.png"
+                            },
+                            {
+                                "name": "Jun｜職場支援 Career Support",
+                                "type": "Instagram",
+                                "tags": [
+                                    "閱讀分享"
+                                ],
+                                "url": "https://www.instagram.com/junlearning",
+                                "cover": "../assets/imgs/knowledge/Jun｜職場支援_Career_Support.png"
+                            },
+                            {
+                                "name": "商業思維學院 | 商業 X 線上課程",
+                                "type": "Instagram",
+                                "tags": [
+                                    "商業",
+                                    "財務"
+                                ],
+                                "url": "https://www.instagram.com/bizthinking",
+                                "cover": "../assets/imgs/knowledge/商業思維學院_|_商業_X_線上課程.png"
+                            },
+                            {
+                                "name": "Think with Google 台灣",
+                                "type": "Website",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://www.thinkwithgoogle.com/intl/zh-tw/",
+                                "cover": "../assets/imgs/knowledge/Think_with_Google_台灣.jpg"
+                            },
+                            {
+                                "name": "想舒服就來一「管」| 商管 X 行銷 X學習",
+                                "type": "Instagram",
+                                "tags": [
+                                    "商業",
+                                    "行銷"
+                                ],
+                                "url": "https://www.instagram.com/qq.management_",
+                                "cover": "../assets/imgs/knowledge/想舒服就來一「管」|_商管_X_行銷_X學習.png"
+                            },
+                            {
+                                "name": "產品經理工作說明書｜成長學習｜Stacey",
+                                "type": "Instagram",
+                                "tags": [
+                                    "商業",
+                                    "專案管理",
+                                    "行銷"
+                                ],
+                                "url": "https://instagram.com/product.manager.lab",
+                                "cover": "../assets/imgs/knowledge/產品經理工作說明書｜成長學習｜Stacey.png"
+                            },
+                            {
+                                "name": "奇乐编程学院",
+                                "type": "Youtube",
+                                "tags": [
+                                    "開發"
+                                ],
+                                "url": "https://www.youtube.com/@user-dj8gd3rn7z",
+                                "cover": "../assets/imgs/knowledge/奇乐编程学院.png"
+                            },
+                            {
+                                "name": "小Lin说",
+                                "type": "Youtube",
+                                "tags": [
+                                    "財務"
+                                ],
+                                "url": "https://www.youtube.com/@user-dj8gd3rn7z",
+                                "cover": "../assets/imgs/knowledge/小Lin说.png"
+                            },
+                            {
+                                "name": "GeekHour",
+                                "type": "Youtube",
+                                "tags": [
+                                    "開發"
+                                ],
+                                "url": "https://www.youtube.com/@geekhour_net",
+                                "cover": "../assets/imgs/knowledge/GeekHour.png"
+                            },
+                            {
+                                "name": "Ele实验室",
+                                "type": "Youtube",
+                                "tags": [
+                                    "開發"
+                                ],
+                                "url": "https://www.youtube.com/@ele870",
+                                "cover": "../assets/imgs/knowledge/Ele实验室.png"
+                            },
+                            {
+                                "name": "柴鼠兄弟 ZRBros",
+                                "type": "Youtube",
+                                "tags": [
+                                    "投資"
+                                ],
+                                "url": "https://www.youtube.com/@%E6%9F%B4%E9%BC%A0%E5%85%84%E5%BC%9FZRBros",
+                                "cover": "../assets/imgs/knowledge/柴鼠兄弟_ZRBros.png"
+                            },
+                            {
+                                "name": "Welly SEO",
+                                "type": "Website",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://welly.tw/blog/seo-guides",
+                                "cover": "../assets/imgs/knowledge/Welly_SEO.png"
+                            }
+                        ]
+                }
+            },
+            methods: {
+                selectType(type) {
+                    this.selectedType = type;
+                },
+                toggleTag(tag) {
+                    if (this.selectedTags.includes(tag)) {
+                        this.selectedTags = this.selectedTags.filter(t => t !== tag);
+                    } else {
+                        this.selectedTags.push(tag);
+                    }
+                }
+            },
+            computed: {
+                filteredData() {
+                    const result = new Set();
+
+                    this.data.forEach(item => {
+                        const typeMatch = this.selectedType === '全部' || item.type === this.selectedType;
+                        const tagsMatch = this.selectedTags.length
+                            ? this.selectedTags.every(tag => item.tags.includes(tag))
+                            : true;
+
+                        if (typeMatch && tagsMatch) {
+                            result.add(item);
+                        }
+                    });
+
+                    const filtered = Array.from(result);
+
+                    console.log(filtered); // 打印檢查重複項目
+                    return filtered;
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</head>
+
+<body>
+    <style>
+        :root{
+			--themeColor: #78685b;
+			--secondColor : #52463d;
+		}
+        body {
+            background-color: #faf2ef !important;
+        }
+        .bg-mywork {
+            background-color: #f3f9ff !important;
+        }
+        .theme-color {
+            color: var(--themeColor);
+        }
+        .navlogofont {
+            font-family: "Playwrite HR Lijeva", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    <!--Nav Style-->
+    <style>
+        .nav .nav-item .nav-link {
+            color: gray;
+            font-size: calc(1.275rem);
+            -webkit-appearance : none ;
+        }
+
+        .nav .nav-item .nav-link:hover {
+            color: var(--themeColor);
+        }
+
+        .nav .nav-item .active {
+            font-weight: bolder;
+            border-width: 6px;
+            border-bottom: var(--secondColor);
+            border-bottom-style: solid;
+            text-decoration: none;
+            color: #141929;
+            font-size: calc(1.275rem + 0.3vw);
+            letter-spacing: 0.05em;
+            -webkit-appearance : none ;
+        }
+    
+        .grayBlockHover {
+            text-decoration: none;
+            color: #1f1f1f;
+        }
+
+        .grayBlockHover:hover {
+            text-decoration: none;
+            color: #1f1f1f;
+            background-color: #f0f0f0;
+        }
+
+        .btn-myprimary {
+            background-color: var(--themeColor);
+            color: #ffffff;
+        }
+        .btn-myprimary:hover {
+            background-color: var(--secondColor);
+            color: #ffffff;
+        }
+
+        .btn-outline-myprimary {
+            border-color: var(--themeColor);
+            color: var(--themeColor);
+        }
+        .btn-outline-myprimary:hover {
+            background-color: var(--secondColor);
+            color: #ffffff;
+        }
+    </style>
+
+    <!--filter css-->
+    <style>
+        .filter-group {
+            margin-bottom: 10px;
+        }
+        .filter-group label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .filter-group button {
+            margin: 0.25rem 0.5rem 0.25rem 0rem;
+            padding: 0.25rem 1rem;
+            border: 1px solid #000;
+            border-radius: 999px;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .filter-group button.selected {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+    
+    <nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold px-2 text-white" href="../index.html">
+				<i class="bi bi-arrow-left"></i>
+			</a>
+			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="bi bi-list-nested"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarContentLinks">
+				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" aria-current="page" href="../index.html">首頁</a>
+					</li>
+					<li class="nav-div rounded-pill">
+						<a class="nav-link text-white-50">｜</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+					</li>
+					<li class="nav-item rounded-pill">
+						<a class="nav-link" target="_blank" href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+    <!--To Top Button-->
+    <a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn" style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
+        <div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn" style="background-color: var(--themeColor);">
+            <div class="fs-4 d-flex align-items-center justify-content-center text-white" style="width: 48px; height: 48px;">
+                <i class="bi bi-chevron-up text-decoration-none d-flex"></i>
+            </div>
+        </div>
+    </a>
+    <script src="../assets/script/scroll.js"></script>
+    
+    <div
+        style="
+            padding: 80px 0px; 
+            background: linear-gradient(0deg, rgba(49, 40, 38, 0.89), rgba(45, 38, 30, 0.95)), url(../assets/imgs/index/cover.jpg); 
+            background-size: cover;
+            min-height: 20vh;
+            align-items: center;
+            display: grid;">
+        <div class="text-white" style="padding: 5rem 2rem;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-grid gap-4">
+                        <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="text-center">
+                            知識推薦獲取來源
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container pb-4" style="margin-top: -160px;" id="app">
+        <div class="row position-relative d-flex align-items-start">
+            <div class="col-12 pb-4">
+                <div style="height: 92px;" class="d-none d-lg-block"></div>
+                <div style="margin-top: -92px;padding-top: 92px;">
+                    <div class="card shadow rounded-basic border-0">
+                        <div class="p-2">
+                            <div class="card-body lh-lg pt-1 pb-2" id="about">
+                                <p class="m-0 fs-5">標籤篩選器</p>
+                                <hr class="my-2" style="opacity:10%;">
+                                <div class="row">
+                                    <div class="col">
+                                        <!-- 篩選條件 -->
+                                        <div class="filter-group my-2">
+                                            <p class="mb-2 fw-bold">選擇資料型態：</p>
+                                            <button
+                                                v-for="type in types"
+                                                :key="type"
+                                                @click="selectType(type)"
+                                                :class="{ selected: selectedType === type }"
+                                            >
+                                                {{ type }}
+                                            </button>
+                                        </div>
+                                        <hr class="my-2" style="opacity:10%;">
+                                        <div class="filter-group my-2">
+                                            <p class="mb-2 fw-bold">限定標籤：</p>
+                                            <button
+                                                v-for="tag in tags"
+                                                :key="tag"
+                                                @click="toggleTag(tag)"
+                                                :class="{ selected: selectedTags.includes(tag) }"
+                                            >
+                                                {{ tag }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- 顯示篩選結果 -->
+            <div class="col-lg-3 col-md-6 col-12 p-2" v-for="item in filteredData" :key="item.name + item.type">
+                <a :href="item.url" target="_blank" class="text-decoration-none">
+                    <div class="card rounded-basic hoverBigger hoverShadow h-100">
+                        <img :src="item.cover" class="img-fluid" alt="封面圖">
+                        <div class="card-body">
+                            <p class="m-0 mb-2 text-black-50">{{ item.type }}</p>
+                            <p class="m-0 fs-4 text-black">{{ item.name }}</p>
+                        </div>
+                        <div class="card-footer bg-white p-3">
+                            <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
+                    <h4 class="fs-5">
+                        連結 Links
+                    </h4>
+                    <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank" 
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
+						<p class="footer_item">
+							<i class="bi bi-archive-fill"></i>
+							學習資源庫
+						</p>
+                    </a>
+                    <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" 
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
+                        <p class="footer_item">
+							<i class="bi bi-instagram"></i>
+							旗下知識帳號（DigiOcean）
+						</p>
+                    </a>
+                    <a href="https://www.curator.bio/liang_chin_ml" target="_blank" 
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
+                        <p class="footer_item">
+							<i class="bi bi-box-seam-fill"></i>
+							Curator
+						</p>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 my-4">
+                    <h4 class="fs-5">
+                        贊助 Donate
+                    </h4>
+                    <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" 
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
+                        <p class="footer_item">
+							<i class="bi bi-cup-hot-fill"></i>
+							Buy Me A Coffee
+						</p>
+                    </a>
+                    <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" 
+                        rel="noopener noreferrer" class="text-decoration-none footer-link">
+                        <p class="footer_item">
+							<i class="bi bi-cash-stack"></i>
+							贊助系統（Portaly）
+						</p>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 my-4">
+                    <h4 class="fs-5">
+                        聯絡 Connections
+                    </h4>
+					<a class="text-decoration-none footer-link"
+						href="mailto:liangchinlu@gmail.com" target="_blank">
+						<p class="footer_item">
+							<i class="bi bi-envelope-fill"></i>
+							Email
+						</p>
+					</a>
+					<a class="text-decoration-none footer-link"
+						href="https://www.instagram.com/liang_chin_ml/" target="_blank">
+						<p class="footer_item">
+							<i class="bi bi-instagram"></i>
+							Instagram
+						</p>
+					</a>
+					<a class="text-decoration-none footer-link"
+						href="https://www.facebook.com/tony13382/" target="_blank">
+						<p class="footer_item">
+							<i class="bi bi-facebook"></i>
+							Facebook
+						</p>
+					</a>
+					<a class="text-decoration-none footer-link"
+						href="https://portaly.cc/liang_chin_ml/contact" target="_blank">
+						<p class="footer_item">
+							<i class="bi bi-info-square-fill"></i>
+							Portaly 傳送門
+						</p>
+					</a>
+                </div>
+                <hr>
+                <p class="text-lightpink text-center py-2">
+                    Copyright © 2024 Liang-Chin, Lu 版權所有
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>-->
+    <script src="../assets/script/bootstrap.bundle.min.js"></script>
+    <!--
+    <script src="/node_modules/bootstrap/js/src/popover.js"></script>
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+    -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    <script language="javascript" type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
+        </script>
+    <script>
+        var wow = new WOW({
+            boxClass: 'delayshowanimate', // 要套用WOW.js縮需要的動畫class(預設是wow)
+            animateClass: 'animate__animated', // 要"動起來"的動畫(預設是animated, 因此如果你有其他動畫library要使用也可以在這裡調整)
+            offset: 0, // 距離顯示多遠開始顯示動畫 (預設是0, 因此捲動到顯示時才出現動畫)
+            mobile: true, // 手機上是否要套用動畫 (預設是true)
+            live: true, // 非同步產生的內容是否也要套用 (預設是true, 非常適合搭配SPA)
+            callback: function (box) {
+                // 當每個要開始時, 呼叫這裡面的內容, 參數是要開始進行動畫特效的element DOM
+            },
+            scrollContainer: null // 可以設定成只套用在某個container中捲動才呈現, 不設定就是整個視窗
+        });
+        wow.init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml12');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({
+            loop: false
+        })
+            .add({
+                targets: '.ml12 .letter',
+                translateX: [40, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 500 + 30 * i
+            })
+    </script>
+
+    <script type="text/javascript" src="../assets/script/lozad.min.js"></script>
+    <script>
+        function run_lazad() {
+            const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+            observer.observe();
+        }
+        run_lazad();
+    </script>
+</body>
+
+</html>
