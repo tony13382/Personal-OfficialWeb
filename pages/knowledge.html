@@ -585,7 +585,8 @@
                             : true;
 
                         return typeMatch && tagsMatch;
-                    });
+                    })
+                    .sort((a, b) => a.name.localeCompare(b.name)); // 按名稱排序
                 }
             }
         });
@@ -755,86 +756,99 @@
         </div>
     </div>
     
-    <div class="container pb-4" style="margin-top: -160px;" id="app">
-        <div class="row position-relative d-flex align-items-start">
-            <div class="col-12 pb-4">
-                <div style="height: 92px;" class="d-lg-block"></div>
-                <div style="margin-top: -92px;padding-top: 92px;">
-                    <div class="card shadow rounded-basic border-0">
-                        <div class="p-3">
-                            <div class="card-body lh-lg pt-1 pb-2" id="about">
-                                <p class="m-0 fs-5">標籤篩選器</p>
-                                <hr class="my-2" style="opacity:10%;">
+    <div id="app">
+        <div class="container pb-4" style="margin-top: -160px;">
+            <div class="row position-relative d-flex align-items-start">
+                <div class="col-12 pb-4">
+                    <div style="height: 92px;" class="d-lg-block"></div>
+                    <div style="margin-top: -92px;padding-top: 92px;">
+                        <div class="card shadow rounded-basic border-0">
+                            <div class="p-3 pb-0">
+                                <div class="card-body lh-lg pt-1 pb-0" id="about">
+                                    <p class="m-0 fs-5">標籤篩選器</p>
+                                    <hr class="my-2" style="opacity:10%;">
+                                    <p class="mb-0 fw-bold">選擇資料型態：</p>
+                                </div>
+                            </div>
+                            <div>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-12">
                                         <!-- 篩選條件 -->
                                         <div class="filter-group my-2">
-                                            <p class="mb-2 fw-bold">選擇資料型態：</p>
                                             <div class="overflow-auto d-flex">
-                                                <button
-                                                v-for="type in types"
-                                                :key="type"
-                                                @click="selectType(type)"
-                                                :class="{ selected: selectedType === type }"
-                                                class="text-nowrap"
-                                            >
-                                                {{ type }}
-                                            </button>
+                                                <div class="d-flex px-4">
+                                                    <button
+                                                        v-for="type in types"
+                                                        :key="type"
+                                                        @click="selectType(type)"
+                                                        :class="{ selected: selectedType === type }"
+                                                        class="text-nowrap"
+                                                    >
+                                                        {{ type }}
+                                                    </button>
+                                                </div>
                                             </div>
+                                            
                                         </div>
-                                        <hr class="my-2" style="opacity:10%;">
-                                        <div class="filter-group my-2">
-                                            <p class="mb-2 fw-bold">限定標籤：</p>
-                                            <button
-                                                v-for="tag in tags"
-                                                :key="tag"
-                                                @click="toggleTag(tag)"
-                                                :class="{ selected: selectedTags.includes(tag) }"
-                                            >
-                                                {{ tag }}
-                                            </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="p-3 pt-0">
+                                            <div class="card-body py-0">
+                                                <hr class="mb-3 mt-2" style="opacity:10%;">
+                                                <div class="filter-group my-2">
+                                                    <p class="mb-2 fw-bold">限定標籤：</p>
+                                                    <button
+                                                        v-for="tag in tags"
+                                                        :key="tag"
+                                                        @click="toggleTag(tag)"
+                                                        :class="{ selected: selectedTags.includes(tag) }"
+                                                    >
+                                                        {{ tag }}
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
-                    
                 </div>
             </div>
-        </div>
-        <div class="row pb-4">
-            <!-- 顯示篩選結果 -->
-            <div class="d-none d-md-flex col-lg-3 col-md-4 col-6 p-2" v-for="item in filteredData" :key="item.name + item.type">
-                <a :href="item.url" target="_blank" class="text-decoration-none">
-                    <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
-                        <img :src="item.cover" class="img-fluid" alt="封面圖">
-                        <div class="card-body">
-                            <p class="m-0 mb-2 text-black-50">{{ item.type }}</p>
-                            <p class="m-0 fs-5 text-black">{{ item.name }}</p>
-                        </div>
-                        <div class="card-footer bg-white p-3">
-                            <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="d-flex d-md-none col-12 p-2" v-for="item in filteredData" :key="item.name + item.type">
-                <a :href="item.url" target="_blank" class="text-decoration-none">
-                    <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
-                        <div class="row g-0">
-                            <div class="col-4">
-                                <img :src="item.cover" class="img-fluid h-100" style="object-fit: cover;" alt="封面圖">
+            <div class="row pb-4">
+                <!-- 顯示篩選結果 -->
+                <div class="d-none d-md-flex col-lg-3 col-md-4 col-6 p-2" v-for="item in filteredData" :key="item.name + item.type">
+                    <a :href="item.url" target="_blank" class="text-decoration-none">
+                        <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
+                            <img :src="item.cover" class="img-fluid" alt="封面圖">
+                            <div class="card-body">
+                                <p class="m-0 mb-2 text-black-50">{{ item.type }}</p>
+                                <p class="m-0 fs-5 text-black">{{ item.name }}</p>
                             </div>
-                            <div class="col-8 p-3">
-                                <p class="m-0 mb-2 text-black-50" style="font-size: 0.75rem;">{{ item.type }}</p>
-                                <p class="m-0 text-black text-truncate">{{ item.name }}</p>
-                                <hr class="my-2" style="opacity:10%;">
+                            <div class="card-footer bg-white p-3">
                                 <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <div class="d-flex d-md-none col-12 p-2" v-for="item in filteredData" :key="item.name + item.type">
+                    <a :href="item.url" target="_blank" class="text-decoration-none">
+                        <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img :src="item.cover" class="img-fluid h-100" style="object-fit: cover;" alt="封面圖">
+                                </div>
+                                <div class="col-8 p-3">
+                                    <p class="m-0 mb-2 text-black-50" style="font-size: 0.75rem;">{{ item.type }}</p>
+                                    <p class="m-0 text-black text-truncate">{{ item.name }}</p>
+                                    <hr class="my-2" style="opacity:10%;">
+                                    <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
