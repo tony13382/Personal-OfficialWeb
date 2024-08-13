@@ -57,7 +57,7 @@
             data() {
                 return {
                     types: ['全部', 'Facebook', 'Instagram','電子報','Podcast','Website','Youtube'],
-                    tags: ['商業','行銷','財務','投資','UI / UX','設計','簡報設計','攝影','專案管理','資料分析','開發','閱讀分享','新創','工具','工作流','創意','成長','Excel','Notion','科技'],
+                    tags: ['商業','行銷','財務','投資','UI / UX','設計','簡報設計','攝影','專案管理','資料分析','開發','閱讀分享','新創','工具','工作流','創意','成長','Excel','Notion'],
                     selectedType: '全部', // 預設為全部
                     selectedTags: [], // 預設為空
                     data: [
@@ -178,7 +178,7 @@
                                 "cover": "../assets/imgs/knowledge/大辛先生.png"
                             },
                             {
-                                "name": "數位行銷實驗室 D.M Lab｜政大✖️社團✖️行銷",
+                                "name": "數位行銷實驗室 D.M Lab",
                                 "type": "Instagram",
                                 "tags": [
                                     "行銷"
@@ -187,7 +187,7 @@
                                 "cover": "../assets/imgs/knowledge/數位行銷實驗室_D.M_Lab｜政大✖️社團✖️行銷.png"
                             },
                             {
-                                "name": "Amy 丨行銷 x 社群 x 自我成長",
+                                "name": "Amy 丨行銷x社群x自我成長",
                                 "type": "Instagram",
                                 "tags": [
                                     "行銷"
@@ -206,7 +206,7 @@
                                 "cover": "../assets/imgs/knowledge/傑哥_｜傑哥創意筆記_|_陳思傑.png"
                             },
                             {
-                                "name": "亨利溫 Henry Wen｜斜槓 x 理財 x 自我成長",
+                                "name": "亨利溫 Henry Wen",
                                 "type": "Instagram",
                                 "tags": [
                                     "成長",
@@ -235,7 +235,7 @@
                                 "cover": "../assets/imgs/knowledge/Artschooool_美感研究所.png"
                             },
                             {
-                                "name": "Out Of Design 圈外設計 TW｜Chris",
+                                "name": "Out Of Design 圈外設計",
                                 "type": "Instagram",
                                 "tags": [
                                     "設計"
@@ -244,7 +244,7 @@
                                 "cover": "../assets/imgs/knowledge/Out_Of_Design_圈外設計_TW｜Chris.png"
                             },
                             {
-                                "name": "凱文設計Kevin Design｜設計X工具X品牌分享",
+                                "name": "凱文設計Kevin Design",
                                 "type": "Instagram",
                                 "tags": [
                                     "設計"
@@ -262,7 +262,7 @@
                                 "cover": "../assets/imgs/knowledge/Mediastorm_影视飓风.png"
                             },
                             {
-                                "name": "簡報仙貝 PPT.note｜Kevin 文碩 & Vicky 郁棋",
+                                "name": "簡報仙貝 PPT.note",
                                 "type": "Instagram",
                                 "tags": [
                                     "簡報設計"
@@ -490,7 +490,7 @@
                                 "tags": [
                                     "財務"
                                 ],
-                                "url": "https://www.youtube.com/@user-dj8gd3rn7z",
+                                "url": "https://www.youtube.com/@xiao_lin_shuo",
                                 "cover": "../assets/imgs/knowledge/小Lin说.png"
                             },
                             {
@@ -528,6 +528,15 @@
                                 ],
                                 "url": "https://welly.tw/blog/seo-guides",
                                 "cover": "../assets/imgs/knowledge/Welly_SEO.png"
+                            },
+                            {
+                                "name": "Welly 電子報",
+                                "type": "電子報",
+                                "tags": [
+                                    "行銷"
+                                ],
+                                "url": "https://welly.tw/ebook",
+                                "cover": "../assets/imgs/knowledge/Welly_SEO.png"
                             }
                         ]
                 }
@@ -546,23 +555,17 @@
             },
             computed: {
                 filteredData() {
-                    const result = new Set();
-
-                    this.data.forEach(item => {
+                    return this.data.filter(item => {
+                        // 如果選擇了 "全部" 或沒選擇型態，則不篩選型態
                         const typeMatch = this.selectedType === '全部' || item.type === this.selectedType;
+
+                        // 篩選標籤
                         const tagsMatch = this.selectedTags.length
-                            ? this.selectedTags.every(tag => item.tags.includes(tag))
+                            ? this.selectedTags.some(tag => item.tags.includes(tag))
                             : true;
 
-                        if (typeMatch && tagsMatch) {
-                            result.add(item);
-                        }
+                        return typeMatch && tagsMatch;
                     });
-
-                    const filtered = Array.from(result);
-
-                    console.log(filtered); // 打印檢查重複項目
-                    return filtered;
                 }
             }
         });
@@ -735,10 +738,10 @@
     <div class="container pb-4" style="margin-top: -160px;" id="app">
         <div class="row position-relative d-flex align-items-start">
             <div class="col-12 pb-4">
-                <div style="height: 92px;" class="d-none d-lg-block"></div>
+                <div style="height: 92px;" class="d-lg-block"></div>
                 <div style="margin-top: -92px;padding-top: 92px;">
                     <div class="card shadow rounded-basic border-0">
-                        <div class="p-2">
+                        <div class="p-3">
                             <div class="card-body lh-lg pt-1 pb-2" id="about">
                                 <p class="m-0 fs-5">標籤篩選器</p>
                                 <hr class="my-2" style="opacity:10%;">
@@ -747,14 +750,17 @@
                                         <!-- 篩選條件 -->
                                         <div class="filter-group my-2">
                                             <p class="mb-2 fw-bold">選擇資料型態：</p>
-                                            <button
+                                            <div class="overflow-auto d-flex">
+                                                <button
                                                 v-for="type in types"
                                                 :key="type"
                                                 @click="selectType(type)"
                                                 :class="{ selected: selectedType === type }"
+                                                class="text-nowrap"
                                             >
                                                 {{ type }}
                                             </button>
+                                            </div>
                                         </div>
                                         <hr class="my-2" style="opacity:10%;">
                                         <div class="filter-group my-2">
@@ -777,9 +783,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row pb-4">
             <!-- 顯示篩選結果 -->
-            <div class="col-lg-3 col-md-4 col-6 p-2" v-for="item in filteredData" :key="item.name + item.type">
+            <div class="d-none d-md-flex col-lg-3 col-md-4 col-6 p-2" v-for="item in filteredData" :key="item.name + item.type">
                 <a :href="item.url" target="_blank" class="text-decoration-none">
                     <div class="card rounded-basic hoverBigger hoverShadow h-100">
                         <img :src="item.cover" class="img-fluid" alt="封面圖">
@@ -789,6 +795,23 @@
                         </div>
                         <div class="card-footer bg-white p-3">
                             <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="d-flex d-md-none col-12 p-2" v-for="item in filteredData" :key="item.name + item.type">
+                <a :href="item.url" target="_blank" class="text-decoration-none">
+                    <div class="card rounded-basic hoverBigger hoverShadow h-100">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img :src="item.cover" class="img-fluid h-100" style="object-fit: cover;" alt="封面圖">
+                            </div>
+                            <div class="col-8 p-3">
+                                <p class="m-0 mb-2 text-black-50" style="font-size: 0.75rem;">{{ item.type }}</p>
+                                <p class="m-0 text-black text-truncate">{{ item.name }}</p>
+                                <hr class="my-2" style="opacity:10%;">
+                                <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
+                            </div>
                         </div>
                     </div>
                 </a>
