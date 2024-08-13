@@ -833,7 +833,12 @@
                         <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
                             <img :src="item.cover" class="img-fluid" alt="封面圖">
                             <div class="card-body">
-                                <p class="m-0 mb-2 text-black-50">{{ item.type }}</p>
+                                <p class="text-black-50" v-if="item.type === 'Facebook'"><i class="bi bi-facebook me-2"></i>Facebook</p>
+                                <p class="text-black-50" v-if="item.type === 'Instagram'"><i class="bi bi-instagram me-2"></i>Instagram</p>
+                                <p class="text-black-50" v-if="item.type === '電子報'"><i class="bi bi-envelope-fill me-2"></i>電子報</p>
+                                <p class="text-black-50" v-if="item.type === 'Podcast'"><i class="bi bi-mic-fill me-2"></i>Podcast</p>
+                                <p class="text-black-50" v-if="item.type === 'Website'"><i class="bi bi-window me-2"></i>Website</p>
+                                <p class="text-black-50" v-if="item.type === 'Youtube'"><i class="bi bi-youtube me-2"></i>Youtube</p>
                                 <p class="m-0 fs-5 text-black">{{ item.name }}</p>
                             </div>
                             <div class="card-footer bg-white p-3">
