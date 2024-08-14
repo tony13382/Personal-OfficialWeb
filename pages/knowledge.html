@@ -833,12 +833,12 @@
                         <div class="card rounded-basic hoverBigger hoverShadow h-100 w-100 border-0">
                             <img :src="item.cover" class="img-fluid" alt="封面圖">
                             <div class="card-body">
-                                <p class="text-black-50" v-if="item.type === 'Facebook'"><i class="bi bi-facebook me-2"></i>Facebook</p>
-                                <p class="text-black-50" v-if="item.type === 'Instagram'"><i class="bi bi-instagram me-2"></i>Instagram</p>
-                                <p class="text-black-50" v-if="item.type === '電子報'"><i class="bi bi-envelope-fill me-2"></i>電子報</p>
-                                <p class="text-black-50" v-if="item.type === 'Podcast'"><i class="bi bi-mic-fill me-2"></i>Podcast</p>
-                                <p class="text-black-50" v-if="item.type === 'Website'"><i class="bi bi-window me-2"></i>Website</p>
-                                <p class="text-black-50" v-if="item.type === 'Youtube'"><i class="bi bi-youtube me-2"></i>Youtube</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === 'Facebook'"><i class="bi bi-facebook me-2"></i>Facebook</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === 'Instagram'"><i class="bi bi-instagram me-2"></i>Instagram</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === '電子報'"><i class="bi bi-envelope-fill me-2"></i>電子報</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === 'Podcast'"><i class="bi bi-mic-fill me-2"></i>Podcast</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === 'Website'"><i class="bi bi-window me-2"></i>Website</p>
+                                <p class="text-black-50 mb-2" v-if="item.type === 'Youtube'"><i class="bi bi-youtube me-2"></i>Youtube</p>
                                 <p class="m-0 fs-5 text-black">{{ item.name }}</p>
                             </div>
                             <div class="card-footer bg-white p-3">
@@ -855,7 +855,12 @@
                                     <img :src="item.cover" class="img-fluid h-100" style="max-height: 130px; object-fit: cover;" alt="封面圖">
                                 </div>
                                 <div class="col-8 p-3">
-                                    <p class="m-0 mb-2 text-black-50" style="font-size: 0.75rem;">{{ item.type }}</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === 'Facebook'"><i class="bi bi-facebook me-2"></i>Facebook</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === 'Instagram'"><i class="bi bi-instagram me-2"></i>Instagram</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === '電子報'"><i class="bi bi-envelope-fill me-2"></i>電子報</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === 'Podcast'"><i class="bi bi-mic-fill me-2"></i>Podcast</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === 'Website'"><i class="bi bi-window me-2"></i>Website</p>
+                                    <p class="text-black-50 mb-2" v-if="item.type === 'Youtube'"><i class="bi bi-youtube me-2"></i>Youtube</p>
                                     <p class="m-0 text-black text-truncate">{{ item.name }}</p>
                                     <hr class="my-2" style="opacity:10%;">
                                     <p class="m-0 text-black">{{ item.tags.join('、') }}</p>
@@ -956,73 +961,10 @@
             </div>
         </div>
     </footer>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>-->
+    
+    
     <script src="../assets/script/bootstrap.bundle.min.js"></script>
-    <!--
-    <script src="/node_modules/bootstrap/js/src/popover.js"></script>
-    <script>
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl)
-        })
-    </script>
-    -->
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
-
-    <script language="javascript" type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
-        </script>
-    <script>
-        var wow = new WOW({
-            boxClass: 'delayshowanimate', // 要套用WOW.js縮需要的動畫class(預設是wow)
-            animateClass: 'animate__animated', // 要"動起來"的動畫(預設是animated, 因此如果你有其他動畫library要使用也可以在這裡調整)
-            offset: 0, // 距離顯示多遠開始顯示動畫 (預設是0, 因此捲動到顯示時才出現動畫)
-            mobile: true, // 手機上是否要套用動畫 (預設是true)
-            live: true, // 非同步產生的內容是否也要套用 (預設是true, 非常適合搭配SPA)
-            callback: function (box) {
-                // 當每個要開始時, 呼叫這裡面的內容, 參數是要開始進行動畫特效的element DOM
-            },
-            scrollContainer: null // 可以設定成只套用在某個container中捲動才呈現, 不設定就是整個視窗
-        });
-        wow.init();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script>
-        // Wrap every letter in a span
-        var textWrapper = document.querySelector('.ml12');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        anime.timeline({
-            loop: false
-        })
-            .add({
-                targets: '.ml12 .letter',
-                translateX: [40, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 1200,
-                delay: (el, i) => 500 + 30 * i
-            })
-    </script>
-
-    <script type="text/javascript" src="../assets/script/lozad.min.js"></script>
-    <script>
-        function run_lazad() {
-            const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-            observer.observe();
-        }
-        run_lazad();
-    </script>
+    
 </body>
 
 </html>
