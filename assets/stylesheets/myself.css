@@ -92,7 +92,11 @@
     color: white !important ;
 }
 .toTopBtn {
+    background-color: var(--themeColor);
     transition: opacity 2s;
+}
+.toTopBtn:hover {
+    background-color: var(--secondColor);
 }
 .tagLocationer{
     margin-top: -5rem;
@@ -158,14 +162,15 @@
 
 .footer_item{
     color: rgba(255, 255, 255, 0.6) !important;
+    padding: 0.25rem 0rem;
     margin: 4px 0px;
 }
 .footer_item:hover{
     color: white !important;
     background-color: var(--secondColor);
     font-weight: bold;
-    margin-left: 0.05rem;
     padding: 0.25rem 0.75rem;
+    margin-left: 0.05rem;
     border-radius: 999px;
 }
 .footer_item i{
