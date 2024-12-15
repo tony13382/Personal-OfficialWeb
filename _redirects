@@ -1,0 +1,7 @@
+# 確保靜態資源不被重寫
+/assets/*    /assets/:splat  200
+/pages/*     /pages/:splat   200
+/projects/*  /projects/:splat 200
+
+# 捕捉所有其他未匹配的路徑並導向 index.html（用於 SPA）
+/*           /index.html     200
