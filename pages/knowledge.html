@@ -835,8 +835,8 @@
                 <!-- 顯示篩選結果 -->
                 <div class="d-none d-md-flex d-flex align-items-stretch col-lg-3 col-md-4 col-6 p-2"
                     v-for="item in filteredData" :key="item.name + item.type">
-                    <a :href="item.url" target="_blank" class="text-decoration-none d-flex">
-                        <div class="card rounded-basic hoverBigger hoverShadow border-0">
+                    <a :href="item.url" target="_blank" class="text-decoration-none d-flex flex-fill">
+                        <div class="card rounded-basic hoverBigger hoverShadow border-0 w-100">
                             <img :src="item.cover" class="img-fluid" alt="封面圖">
                             <div class="card-body">
                                 <p class="text-black-50 mb-2" v-if="item.type === 'Facebook'"><i

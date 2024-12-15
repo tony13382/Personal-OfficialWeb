@@ -6,126 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Description" CONTENT="About Liang Chin Lu">
 	<!-- Facebook Opengraph -->
-	<meta property="og:url" content="https://www.lianglu.uk/pages/projects/digitalOcean.html" />
+	<meta property="og:url" content="https://www.lianglu.uk/projects/wpWeb.html" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="數位海洋知識專案" />
-	<meta property="og:description" content="「ML 亮進」的個人知識庫資訊統整並線上公開，高效分享資訊與蒐集到的資源。" />
-	<meta property="og:image" content="https://www.lianglu.uk/assets/imgs/digitalOcean/cover.png" />
-	<meta property="og:image:alt" content="數位海洋知識專案" />
-	<meta property="og:image:type" content="https://www.lianglu.uk/assets/imgs/digitalOcean/cover.png" />
+	<meta property="og:title" content="自架站科技/遊戲Blog - Techjoy" />
+	<meta property="og:description" content="大學系統分析專案，利用歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，以此進行員工銷售策畫訓練。" />
+	<meta property="og:image" content="https://www.lianglu.uk/assets/imgs/wpWeb/cover.png" />
+	<meta property="og:image:alt" content="自架站科技/遊戲Blog - Techjoy" />
+	<meta property="og:image:type" content="https://www.lianglu.uk/assets/imgs/wpWeb/cover.png" />
 	<meta property="og:image:width" content="386px" />
 	<meta property="og:image:height" content="386px" />
 	<!-- End Facebook Opengraph -->
-	<title>數位海洋知識專案 | 呂亮進</title>
+	<title>自架站科技/遊戲Blog - Techjoy | 呂亮進</title>
 	<link rel="Shortcut Icon" type="image/x-icon" href="https://www.lianglu.uk/favicon.png" />
 	<link rel="Shortcut Icon" type="image/x-icon" href="https://www.lianglu.uk/favicon.ico" />
 	<!--Start Load CSS-->
-	<link rel="stylesheet" href="../../assets/stylesheets/myself.css">
-	<link rel="stylesheet" href="../../assets/stylesheets/all.css">
+	<link rel="stylesheet" href="../assets/stylesheets/myself.css">
+	<link rel="stylesheet" href="../assets/stylesheets/all.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+	<!-- Fancyapp (Image Box)-->
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
+	<!-- JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
 </head>
 
 <body class="bg-mytheme">
 	<style>
 		:root {
-			--themeColor: #805F4C;
-			--secondColor: #503C30;
-		}
-
-		.navbar {
-			background-color: var(--themeColor);
-		}
-
-		.navbar-nav .nav-item {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-
-		.navbar-nav .nav-div {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-			color: white;
-		}
-
-		.navbar-nav .nav-item:hover {
-			background-color: var(--secondColor);
-		}
-
-		.navbar-nav .nav-item .nav-link {
-			color: white !important;
-		}
-
-		.bg-theme {
-			background-color: var(--themeColor);
-		}
-
-		.btn-theme {
-			color: white;
-			background-color: var(--themeColor);
-		}
-
-		.btn-theme:hover {
-			color: white;
-			background-color: var(--secondColor);
-		}
-
-		.btn-outline-theme {
-			color: var(--themeColor);
-			border-color: var(--themeColor);
-		}
-
-		.btn-outline-theme:hover {
-			color: white;
-			background-color: var(--themeColor);
-		}
-
-		.btn-text-theme {
-			color: #1f1f1f;
-		}
-
-		.btn-text-theme:hover {
-			background-color: #f0f0f0;
-		}
-
-		.btn-text-theme {
-			color: #1f1f1f;
-		}
-
-		.btn-text-theme:hover {
-			background-color: #f0f0f0;
-		}
-
-		.footer_item {
-			color: rgba(255, 255, 255, 0.6) !important;
-			margin: 4px 0px;
-		}
-
-		.footer_item:hover {
-			color: white !important;
-			background-color: var(--secondColor);
-			font-weight: bold;
-			margin-left: 0.05rem;
-			padding: 0.25rem 0.75rem;
-			border-radius: 999px;
-		}
-
-		.footer_item i {
-			margin-right: 0.25rem;
-			display: none;
-		}
-
-		.footer_item:hover i {
-			margin-right: 0.25rem;
-			display: inline-block;
-		}
-
-		.border-theme {
-			border-color: var(--themeColor) !important;
+			--themeColor: #4C6D80;
+			--secondColor: #304450;
 		}
 
 		.bg-mytheme {
@@ -153,7 +66,7 @@
 	</style>
 	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
 		<div class="container-fluid">
-			<a class="navbar-brand fw-bold px-2 text-white" href="../../index.html">
+			<a class="navbar-brand fw-bold px-2 text-white" href="../index.html">
 				<i class="bi bi-arrow-left"></i>
 			</a>
 			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
@@ -164,7 +77,7 @@
 			<div class="collapse navbar-collapse" id="navbarContentLinks">
 				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
 					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="../../index.html">首頁</a>
+						<a class="nav-link" aria-current="page" href="../index.html">首頁</a>
 					</li>
 					<li class="nav-div rounded-pill">
 						<a class="nav-link text-white-50">｜</a>
@@ -192,17 +105,17 @@
 			</div>
 		</div>
 	</a>
-	<script src="../../assets/script/scroll.js"></script>
+	<script src="../assets/script/scroll.js"></script>
 	<div>
 		<div class="" style="padding: 80px 0px;width: 100%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0,
-			0.7)),url(../../assets/imgs/digitalOcean/cover.webp); background-repeat:no-repeat;background-size:cover;
+			0.7)),url(../../assets/imgs/wpWeb/linkCover.webp); background-repeat:no-repeat;background-size:cover;
 			background-attachment: fixed;">
 			<div class="d-flex align-items-center pb-2"
 				style="backdrop-filter: blur(1px); width: 100%;min-height: 240px;">
 				<div class="container">
 					<div class="col-12">
-						<h1 class="text-center fw-bold text-white notoFont">數位海洋知識專案</h1>
-						<p class="text-center fw-bold text-white m-0 notoFont">2021/07 ~ NOW</p>
+						<h1 class="text-center fw-bold text-white notoFont">自架站科技/遊戲Blog - Techjoy</h1>
+						<p class="text-center fw-bold text-white m-0 notoFont">2015 ~ 2018</p>
 					</div>
 				</div>
 			</div>
@@ -212,35 +125,62 @@
 				<div class="col-lg-4 col-12 pb-4 sticky-lg-top " style="padding-top: 92px;">
 					<div class="card shadow p-3 bg-body rounded-basic">
 						<div class="card-body">
-							<span class="badge bg-success rounded-pill mb-2 fs-5">專案執行中</span>
+							<span class="badge bg-secondary rounded-pill mb-2 fs-5">專案關閉</span>
 							<p class="mb-2 notoFont msf-info-s">
-								「ML 亮進」的個人知識庫資訊統整並線上公開，高效分享資訊與蒐集到的資源。
+								約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，目的為了為產品進行體驗分享與推廣Minecraft 遊戲創作，當時伺服器採用 Red Hat
+								的OpenShift 方案與 Byethost
+								Free 方案，但後來因課業壓力與營運成本，於16年關閉 Tecjoy，於18年正式放棄mcblog營運工作，但後期仍有參與其他網站營運如：123電影院等。
 							</p>
 							<div class="fs-5 text-black pt-3">
 								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 數位內容</span>
-							</div>
-							<div class="d-grid gap-2 mt-4">
-								<a target="_blank"
-									href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663?utm_source=GitHub"
-									class="btn btn-outline-theme rounded-pill" type="button">專案網址<i
-										class="bi bi-arrow-up-right ps-1"></i></a>
+								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 網站架設</span>
 							</div>
 						</div>
 					</div>
 					<div class="card shadow mt-4 px-3 py-2 rounded-basic">
 						<div class="card-body">
-							<h2 class="fs-4 text-SkyHeavyBlue">個人負責</h2>
-							<div class="card d-flex mt-3 rounded-inline-basic">
-								<div class="card-body d-inline-flex align-items-center">
-									<div class="d-inline-block">
-										<div style="width: 64px; height: 64px;" class="">
-											<img src="../../assets/imgs/appIcons/notion.png" class="img-fluid p-1"
-												alt="Figma Icon">
+							<h2 class="fs-4 text-SkyHeavyBlue">個人專案</h2>
+							<div class="notoFont mt-3">
+								<div class="card d-flex mt-3 rounded-inline-basic">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../assets/imgs/appIcons/wordpress.png" class="img-fluid p-1"
+													alt="Figma Icon">
+											</div>
+										</div>
+										<div class="ps-3 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">WordPress</p>
+											<p class="p-0 m-0">CMS 內容管理系統</p>
 										</div>
 									</div>
-									<div class="ps-3 d-inline-flex flex-column">
-										<p class="p-0 mb-2 fw-bold">Notion</p>
-										<p class="p-0 m-0">內容管理與發佈</p>
+								</div>
+								<div class="card d-flex mt-3 rounded-inline-basic">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../assets/imgs/appIcons/openshift.png" class="img-fluid"
+													alt="firebase Icon">
+											</div>
+										</div>
+										<div class="ps-3 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">Red Hat OpenShift</p>
+											<p class="p-0 m-0 text-gray">Server 架設與配置</p>
+										</div>
+									</div>
+								</div>
+								<div class="card d-flex mt-3 rounded-inline-basic">
+									<div class="card-body d-inline-flex align-items-center">
+										<div class="d-inline-block">
+											<div style="width: 64px; height: 64px;" class="">
+												<img src="../assets/imgs/appIcons/bluehost.png" class="img-fluid"
+													alt="firebase Icon">
+											</div>
+										</div>
+										<div class="ps-3 d-inline-flex flex-column">
+											<p class="p-0 mb-2 fw-bold">Bluehost</p>
+											<p class="p-0 m-0 text-gray">Server 架設與配置</p>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -249,46 +189,34 @@
 				</div>
 				<div class="col-lg-8 col-12 pb-4">
 					<div style="height: 92px;" class="d-none d-lg-block"></div>
-					<div class="card shadow rounded-basic border-0">
-						<img src="../../assets/imgs/digitalOcean/cover.webp" class="img-fluid border-bottom" alt="...">
+					<div class="card shadow border-0 rounded-basic">
+						<a href="../assets/imgs/wpWeb/techJoy.png" data-fancybox="gallery">
+							<img src="../assets/imgs/wpWeb/techJoy.png" class="img-fluid" alt="Image description">
+						</a>
 						<div class="p-2">
 							<div class="card-body">
-								<h2 class="fs-4 mb-4">為何要開展計畫？</h2>
-								<p class="mt-3 mb-2">
-									數位海洋專案源自於作者「ML」的個人知識庫，在大學期間由於有積累一些常用資源，因此常常會進行分享，但是由於分享資源越來越多且沒有一個系統性的統整，因此知識如同碎片一般，要找尋時不太容易，因此建立了這個計畫，將以往資訊打通，建立一個統一的方式分享資訊與蒐集到的資源。
-								</p>
+								<h2 class="fs-4 text-SkyHeavyBlue">Techjoy 樂享科技</h2>
+								<div class="col-12">
+									<p class="mt-3">
+										分享科技，體驗產品
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card shadow mt-4 rounded-basic">
+					<div class="card shadow mt-4 border-0 rounded-basic">
+						<a href="../assets/imgs/wpWeb/mcblogCover.png" data-fancybox="gallery">
+							<img src="../assets/imgs/wpWeb/mcblogCover.png" class="img-fluid" alt="Image description">
+						</a>
 						<div class="p-2">
 							<div class="card-body">
+								<h2 class="fs-4 text-SkyHeavyBlue">Mcblog / Tt Team 原創地圖</h2>
 								<div class="col-12">
-									<h2 class="fs-4 mt-2 mb-4">這項計畫的知識從何而來？</h2>
-									<p class="m-0 lh-md">
-										這項計畫的知識目前有三個來源，第一個是網路上的網頁擷取，第二個是個人筆記，第三個則是投稿內容，觀看者可以利用投稿提供知識或資源給平台方審核，經審核後即可在網站中發現。由於許多的知識來源來自於網絡，因此本網站若從網路上收錄的資訊均會標示來源地址，而著作權歸屬也歸原網站，此網站只會整理資訊與精煉出重點，但個人筆記與心法之著作權歸作者所有，而投稿之文章也代表同意本平台方可以進行內容發佈。
+									<p class="mt-3">
+										起源於一群愛玩此遊戲的同好，因希望開拓更多玩法，於是投入創造的行列，活躍於MCPE社群，經營一小段時間後，作品日漸豐富，也有許多不同的類型，為了宣傳更多作品，於是成立了
+										Tt Team 團隊進行宣傳、測試，在此期間習得 WordPress 架設、網域的相關設置、 Adobe Premiere
+										剪輯，最後因維護成本問題於2018年4月正式關停所有網站、服務、宣傳作業，也停止 http://tt-mcblog.rhcloud.com 其所有相關子服務。
 									</p>
-								</div>
-								<div class="col-12 pt-2">
-									<div class="card mt-2 rounded-inline-basic">
-										<div class="card-body d-flex p-2 align-items-center">
-											<div class="col-auto">
-												<div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white"
-													style="background-color: var(--themeColor); width:56px; height:56px;">
-													<i class="bi bi-globe"></i>
-												</div>
-											</div>
-											<div class="col">
-												<p class="m-0 px-3">網站網址</p>
-											</div>
-											<div class="col-auto">
-												<a href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663"
-													type="button" target="_blank" class="btn btn-link fs-5">
-													<i class="bi bi-box-arrow-up-right"></i>
-												</a>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -296,6 +224,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
 		<div class="container py-4">
@@ -318,7 +247,7 @@
 							旗下知識帳號（DigiOcean）
 						</p>
 					</a>
-					<a href="../../pages/knowledge.html" rel="noopener noreferrer"
+					<a href="../pages/knowledge.html" rel="noopener noreferrer"
 						class="text-decoration-none footer-link">
 						<p class="footer_item">
 							<i class="bi bi-bookmark-heart-fill"></i>
@@ -391,8 +320,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 		</script>
-	<script src="../../assets/script/scroll.js"></script>
-	<script type="text/javascript" src="../../assets/script/lozad.min.js"></script>
+	<script src="../assets/script/scroll.js"></script>
+	<script type="text/javascript" src="../assets/script/lozad.min.js"></script>
 	<script>
 		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
 		observer.observe();
