@@ -1176,20 +1176,21 @@
                             <div class="col-12">
                                 <ul class="nav mb-2 align-items-end flex-nowrap overflow-auto" id="products-tabs"
                                     role="tablist" style="margin-left: -0.25rem;">
+                                    <li class="nav-item me-3 ">
+                                        <a class="nav-link px-1 py-0 text-nowrap active" id="skill-develope-tab"
+                                            data-bs-toggle="pill" data-bs-target="#skill-develope" type="button"
+                                            role="tab" aria-controls="skill-develope" aria-selected="true">開發技能</a>
+                                    </li>
                                     <li class="nav-item me-3">
-                                        <a class="nav-link px-1 py-0 text-nowrap active" id="skill-dataScience-tab"
+                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-dataScience-tab"
                                             data-bs-toggle="pill" data-bs-target="#skill-dataScience" type="button"
-                                            role="tab" aria-controls="skill-dataScience" aria-selected="true">數據分析技能</a>
+                                            role="tab" aria-controls="skill-dataScience"
+                                            aria-selected="false">數據分析技能</a>
                                     </li>
                                     <li class="nav-item me-3">
                                         <a class="nav-link px-1 py-0 text-nowrap" id="skill-design-tab"
                                             data-bs-toggle="pill" data-bs-target="#skill-design" type="button"
                                             role="tab" aria-controls="skill-design" aria-selected="false">設計相關技能</a>
-                                    </li>
-                                    <li class="nav-item me-3 ">
-                                        <a class="nav-link px-1 py-0 text-nowrap" id="skill-develope-tab"
-                                            data-bs-toggle="pill" data-bs-target="#skill-develope" type="button"
-                                            role="tab" aria-controls="skill-develope" aria-selected="false">開發技能</a>
                                     </li>
                                     <li class="nav-item me-3 ">
                                         <a class="nav-link px-1 py-0 text-nowrap" id="skill-other-tab"
@@ -1200,19 +1201,18 @@
                             </div>
                         </div>
                         <div class="tab-content" id="pills-tabContent">
-                            <!--數據分析技能-->
-                            <div class="tab-pane fade show active" id="skill-dataScience" role="tabpanel"
-                                aria-labelledby="skill-dataScience-tab" tabindex="0">
+                            <!--開發技能-->
+                            <div class="tab-pane fade show active" id="skill-develope" role="tabpanel"
+                                aria-labelledby="skill-develope-tab" tabindex="0">
                                 <p class="mb-1 mt-2 notoFont lh-lg">
-                                    可協助資料清理與自動化爬蟲取得所需資料，並熟悉利用各式工具將結構化的資料進行視覺化，在非結構化的資料則專注於
-                                    <span class="halfHightLightBg">文字探勘</span>
-                                    領域，藉由各式分析讓非結構化文字也能對企業帶來新洞察與效益。
+                                    全端皆可開發，主要發力於 <span class="halfHightLightBg">網站領域</span>，對於 APIs
+                                    串接與架設皆已有相關實務經驗，能整合各式套件協助企業完成產品開發。
                                 </p>
                                 <hr class="my-3" style="opacity: 0.10;">
                                 <div class="row" style="margin: 0rem -0.25rem;">
                                     <div class="col-12 p-1">
                                         <p class="fs-5 m-0">
-                                            <i class='bi bi-database px-2'></i>資料搜集／前處理
+                                            <i class='bi bi-laptop px-2'></i> 前端
                                         </p>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
@@ -1220,13 +1220,219 @@
                                             <div class="card-body d-inline-flex align-items-center">
                                                 <div class="d-inline-block">
                                                     <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/milvus.png"
-                                                            class="img-fluid p-1" alt="Milvus Icon">
+                                                        <img src="/assets/imgs/appIcons/pythonPackage/streamlit.png"
+                                                            class="img-fluid p-1" alt="ChatGPT（LLM） Icon">
                                                     </div>
                                                 </div>
                                                 <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Milvus (Vector Database)</p>
-                                                    <p class="p-0 m-0">向量資料庫管理</p>
+                                                    <p class="p-0 mb-2 fw-bold">Streamlit</p>
+                                                    <p class="p-0 m-0">Python 介面快速部署</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/html.png" class="img-fluid p-1"
+                                                            alt="HTML5 Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">HTML5 & CSS3</p>
+                                                    <p class="p-0 m-0">前端設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/bootstrapV5.png"
+                                                            class="img-fluid p-1" alt="BS5 Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Bootstrap</p>
+                                                    <p class="p-0 m-0">網頁切版</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/javascript.png"
+                                                            class="img-fluid p-1" alt="JS Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">JavaScript</p>
+                                                    <p class="p-0 m-0">DOM 物件操作與變化</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/react.png" class="img-fluid p-1"
+                                                            alt="React Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">React</p>
+                                                    <p class="p-0 m-0">前端開發</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/vue.png" class="img-fluid p-1"
+                                                            alt="VueJS Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Vue.js</p>
+                                                    <p class="p-0 m-0">前端開發</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/flutter.png"
+                                                            class="img-fluid p-1" alt="flutter Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Flutter</p>
+                                                    <p class="p-0 m-0">APP 開發</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0 pt-4">
+                                            <i class='bi bi-terminal px-2'></i>後端
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/fastapi.png"
+                                                            class="img-fluid p-2" alt="Milvus Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">FastAPI</p>
+                                                    <p class="p-0 m-0">API 開發</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/pythonPackage/flask.png"
+                                                            class="img-fluid p-1" alt="python Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Python</p>
+                                                    <p class="p-0 m-0">Flask APIs 開發實務／資料庫串接</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/apacheTomcat.png"
+                                                            class="img-fluid p-1" alt="JSP Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Java Server Page</p>
+                                                    <p class="p-0 m-0">Tomcat 後端程式／MySQL 交互</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/nodejs.png"
+                                                            class="img-fluid p-1" alt="NodeJs Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">NodeJs</p>
+                                                    <p class="p-0 m-0">APIs 建立／網頁後端</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/php.png" class="img-fluid"
+                                                            alt="NodeJs Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">php</p>
+                                                    <p class="p-0 m-0">網頁後端</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1 pt-4">
+                                        <p class="fs-5 m-0">
+                                            <i class='bi bi-database px-2'></i>資料庫
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/postgreSQL.png"
+                                                            class="img-fluid p-2" alt="MySQL Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">PostgreSQL（pgvector）</p>
+                                                    <p class="p-0 m-0">SQL語法／關聯資料表設計</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1278,6 +1484,229 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/milvus.png"
+                                                            class="img-fluid p-1" alt="Milvus Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Milvus (Vector Database)</p>
+                                                    <p class="p-0 m-0">向量資料庫管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1 pt-4">
+                                        <p class="fs-5 m-0">
+                                            <i class='bi bi-boxes px-2'></i>模型
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/chatgpt.png"
+                                                            class="img-fluid p-1" alt="ChatGPT（LLM） Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">ChatGPT (LLM)</p>
+                                                    <p class="p-0 m-0">Fine-tuning、提示詞工程、系統串接</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/anthropic.png"
+                                                            class="img-fluid p-1" alt="Anthropic (LLM) Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Anthropic (LLM)</p>
+                                                    <p class="p-0 m-0">提示詞工程、系統串接</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/chatgpt.png"
+                                                            class="img-fluid p-1" alt="ChatGPT（LLM） Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Whisper (OpenAI)</p>
+                                                    <p class="p-0 m-0">語音轉文字、語音合成</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/volcengine.png"
+                                                            class="img-fluid p-2" alt="SBERT Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">火山雲</p>
+                                                    <p class="p-0 m-0">語音轉文字、語音合成</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/azure.png" class="img-fluid p-1"
+                                                            alt="SBERT Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Azure LUIS</p>
+                                                    <p class="p-0 m-0">NLP 自然語言處理／文字意圖訓練與分析</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/sbert.png" class="img-fluid p-1"
+                                                            alt="SBERT Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Sentence-BERT</p>
+                                                    <p class="p-0 m-0">文本向量化處理與微調</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0 pt-4">
+                                            <i class='bi bi-braces-asterisk px-2'></i>其他
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/docker.png"
+                                                            class="img-fluid p-1" alt="Java Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Docker</p>
+                                                    <p class="p-0 m-0">Docker 封裝／部署</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/java.png" class="img-fluid p-1"
+                                                            alt="Java Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Java</p>
+                                                    <p class="p-0 m-0">程式設計</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/git.png" class="img-fluid p-1"
+                                                            alt="Git Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">Git</p>
+                                                    <p class="p-0 m-0">版本控制</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/rabbit_mq.png"
+                                                            class="img-fluid p-1" alt="rabbit_mq Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">RabbitMQ</p>
+                                                    <p class="p-0 m-0">API 訊息佇列處理系統</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
+                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
+                                            <div class="card-body d-inline-flex align-items-center">
+                                                <div class="d-inline-block">
+                                                    <div style="width: 64px; height: 64px;" class="">
+                                                        <img src="/assets/imgs/appIcons/xampp.svg" class="img-fluid p-1"
+                                                            alt="rabbit_mq Icon">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-3 d-inline-flex flex-column">
+                                                    <p class="p-0 mb-2 fw-bold">XAMPP</p>
+                                                    <p class="p-0 m-0">部署與配置 Server</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--數據分析技能-->
+                            <div class="tab-pane fade" id="skill-dataScience" role="tabpanel"
+                                aria-labelledby="skill-dataScience-tab" tabindex="0">
+                                <p class="mb-1 mt-2 notoFont lh-lg">
+                                    可協助資料清理與自動化爬蟲取得所需資料，並熟悉利用各式工具將結構化的資料進行視覺化，在非結構化的資料則專注於
+                                    <span class="halfHightLightBg">文字探勘</span>
+                                    領域，藉由各式分析讓非結構化文字也能對企業帶來新洞察與效益。
+                                </p>
+                                <hr class="my-3" style="opacity: 0.10;">
+                                <div class="row" style="margin: 0rem -0.25rem;">
+                                    <div class="col-12 p-1">
+                                        <p class="fs-5 m-0">
+                                            <i class='bi bi-database px-2'></i>資料搜集／前處理
+                                        </p>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
                                         <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
@@ -1431,61 +1860,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="margin: 0rem -0.25rem;">
-                                    <div class="col-12 p-1">
-                                        <p class="fs-5 m-0 pt-4">
-                                            <i class='bi bi-boxes px-2'></i>模型與其他
-                                        </p>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/chatgpt.png"
-                                                            class="img-fluid p-1" alt="ChatGPT（LLM） Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">ChatGPT (LLM)</p>
-                                                    <p class="p-0 m-0">模型 Fine-tuning、提示詞工程、系統串接</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/sbert.png" class="img-fluid p-1"
-                                                            alt="SBERT Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Sentence-BERT</p>
-                                                    <p class="p-0 m-0">文本向量化處理與微調</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/azure.png" class="img-fluid p-1"
-                                                            alt="SBERT Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Azure LUIS</p>
-                                                    <p class="p-0 m-0">NLP 自然語言處理／文字意圖訓練與分析</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!--設計相關技能-->
                             <div class="tab-pane fade" id="skill-design" role="tabpanel"
@@ -1617,260 +1991,6 @@
                                                 <div class="ps-3 d-inline-flex flex-column">
                                                     <p class="p-0 mb-2 fw-bold">Premiere</p>
                                                     <p class="p-0 m-0">影片剪輯</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--開發技能-->
-                            <div class="tab-pane fade" id="skill-develope" role="tabpanel"
-                                aria-labelledby="skill-develope-tab" tabindex="0">
-                                <p class="mb-1 mt-2 notoFont lh-lg">
-                                    全端皆可開發，主要發力於 <span class="halfHightLightBg">網站領域</span>，對於 APIs
-                                    串接與架設皆已有相關實務經驗，能整合各式套件協助企業完成產品開發。
-                                </p>
-                                <hr class="my-3" style="opacity: 0.10;">
-                                <div class="row" style="margin: 0rem -0.25rem;">
-                                    <div class="col-12 p-1">
-                                        <p class="fs-5 m-0">
-                                            <i class='bi bi-laptop px-2'></i> 前端
-                                        </p>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/html.png" class="img-fluid p-1"
-                                                            alt="HTML5 Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">HTML5 & CSS3</p>
-                                                    <p class="p-0 m-0">前端設計</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/bootstrapV5.png"
-                                                            class="img-fluid p-1" alt="BS5 Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Bootstrap</p>
-                                                    <p class="p-0 m-0">網頁切版</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/javascript.png"
-                                                            class="img-fluid p-1" alt="JS Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">JavaScript</p>
-                                                    <p class="p-0 m-0">DOM 物件操作與變化</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/react.png" class="img-fluid p-1"
-                                                            alt="React Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">React</p>
-                                                    <p class="p-0 m-0">前端開發</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/vue.png" class="img-fluid p-1"
-                                                            alt="VueJS Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Vue.js</p>
-                                                    <p class="p-0 m-0">前端開發</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/flutter.png"
-                                                            class="img-fluid p-1" alt="flutter Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Flutter</p>
-                                                    <p class="p-0 m-0">APP 開發</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin: 0rem -0.25rem;">
-                                    <div class="col-12 p-1">
-                                        <p class="fs-5 m-0 pt-4">
-                                            <i class='bi bi-terminal px-2'></i>後端
-                                        </p>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/pythonPackage/flask.png"
-                                                            class="img-fluid p-1" alt="python Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Python</p>
-                                                    <p class="p-0 m-0">Flask APIs 開發實務／資料庫串接</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/apacheTomcat.png"
-                                                            class="img-fluid p-1" alt="JSP Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Java Server Page</p>
-                                                    <p class="p-0 m-0">Tomcat 後端程式／MySQL 交互</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/nodejs.png"
-                                                            class="img-fluid p-1" alt="NodeJs Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">NodeJs</p>
-                                                    <p class="p-0 m-0">APIs 建立／網頁後端</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/php.png" class="img-fluid"
-                                                            alt="NodeJs Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">php</p>
-                                                    <p class="p-0 m-0">網頁後端</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin: 0rem -0.25rem;">
-                                    <div class="col-12 p-1">
-                                        <p class="fs-5 m-0 pt-4">
-                                            <i class='bi bi-braces-asterisk px-2'></i>其他
-                                        </p>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/java.png" class="img-fluid p-1"
-                                                            alt="Java Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Java</p>
-                                                    <p class="p-0 m-0">程式設計</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/git.png" class="img-fluid p-1"
-                                                            alt="Git Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">Git</p>
-                                                    <p class="p-0 m-0">版本控制</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/rabbit_mq.png"
-                                                            class="img-fluid p-1" alt="rabbit_mq Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">RabbitMQ</p>
-                                                    <p class="p-0 m-0">API 訊息佇列處理系統</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 p-2 d-flex align-items-stretch">
-                                        <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-                                            <div class="card-body d-inline-flex align-items-center">
-                                                <div class="d-inline-block">
-                                                    <div style="width: 64px; height: 64px;" class="">
-                                                        <img src="/assets/imgs/appIcons/xampp.svg" class="img-fluid p-1"
-                                                            alt="rabbit_mq Icon">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-3 d-inline-flex flex-column">
-                                                    <p class="p-0 mb-2 fw-bold">XAMPP</p>
-                                                    <p class="p-0 m-0">部署與配置 Server</p>
                                                 </div>
                                             </div>
                                         </div>
