@@ -51,60 +51,19 @@ page = ProjectPage(
             score="最佳論文獎",
         )
     ],
+    tools=[
+        Tool("Flask", "Webhook APIs 建立"),
+        Tool("RabbitMQ", "建立任務佇列處理系統，處理大量用戶請求時不會造成服務阻塞"),
+        Tool("MongoDB", "主要系統資料庫，紀錄所有學生互動資料"),
+        Tool("Milvus", "系統知識向量資料庫，用於建置與管理 RAG 知識搜尋"),
+        Tool("Sentence-BERT", "文本向量化技術、模型訓練與微調"),
+    ],
     children=[
         Card(
             header=Canva(
                 src="https://www.canva.com/design/DAGAH5TIfcM/noA5DlVGa0eP-raZZdv56w/view?embed"
             ),
             body=[Text("系統使用說明", "h3")],
-        ),
-        Card(
-            body=[
-                Text("採用技術", "h3"),
-                DivBar(),
-                ListDiv(
-                    [
-                        ListDiv(
-                            [
-                                Text("Flask", bold=True),
-                                Text("Webhook APIs 建立"),
-                            ],
-                            "nano",
-                        ),
-                        ListDiv(
-                            [
-                                Text("RabbitMQ", bold=True),
-                                Text(
-                                    "建立任務佇列處理系統，處理大量用戶請求時不會造成服務阻塞"
-                                ),
-                            ],
-                            "nano",
-                        ),
-                        ListDiv(
-                            [
-                                Text("MongoDB", bold=True),
-                                Text("主要系統資料庫，紀錄所有學生互動資料"),
-                            ],
-                            "nano",
-                        ),
-                        ListDiv(
-                            [
-                                Text("Milvus", bold=True),
-                                Text("系統知識向量資料庫，用於建置與管理 RAG 知識搜尋"),
-                            ],
-                            "nano",
-                        ),
-                        ListDiv(
-                            [
-                                Text("Sentence-BERT", bold=True),
-                                Text("文本向量化技術、模型訓練與微調"),
-                            ],
-                            "nano",
-                        ),
-                    ],
-                    "large",
-                ),
-            ],
         ),
         Card(
             header=Image(

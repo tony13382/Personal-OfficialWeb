@@ -112,14 +112,14 @@ class ProjectPage:
 
         tools_html = ""
         if self.tools:
-            tools_html = str(
+            tools_html += str(
                 Card(
                     body=[
                         Text("採用技術", "h3"),
                         DivBar(),
                         ListDiv(
-                            children=self.tools,
-                            gap_size="large",
+                            self.tools,
+                            "large",
                         ),
                     ],
                 )
@@ -211,8 +211,8 @@ class ProjectPage:
 				<div class="col-lg-8 col-12 pb-5 d-grid gap-5">
 					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
 					{str(meta_card)}
-                    {content_html}
                     {tools_html}
+                    {content_html}
 				</div>
 			</div>
 		</div>

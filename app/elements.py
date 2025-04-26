@@ -224,6 +224,43 @@ class Image:
 """
 
 
+class ImageCarousel:
+    def __init__(self, images: List[Image]) -> None:
+        self.images = images
+
+    def __str__(self) -> str:
+        random_id = f"c{uuid4().hex[0:6]}"
+        index_id = 0
+
+        inner_html = ""
+        for image in self.images:
+            active_class = "active" if index_id == 0 else ""
+            index_id += 1
+            inner_html += f"""
+<div class="carousel-item {active_class}">
+    <a href="{image.src}" data-fancybox="gallery">
+        <img src="{image.src}" class="img-fluid" alt="{image.alt}">
+    </a>
+</div>
+"""
+
+        return f"""
+<div id="{random_id}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {inner_html}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#{random_id}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{random_id}" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+"""
+
+
 class Link:
     def __init__(
         self,
