@@ -172,13 +172,8 @@ cython_debug/
 .pytest_cache
 .DS_Store
 
-# Storage
-storage/*
-!storage/.gitkeep
-logs/*
-
-# Firebase
-serviceAccountKey.json
 
 # Node.js
 node_modules/
+
+test.py
