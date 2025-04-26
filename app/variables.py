@@ -35,3 +35,11 @@ class ThemeColor:
             return self.__dict__[name][1] if is_dark else self.__dict__[name][0]
 
         raise ValueError(f"Unknown color name: {name}")
+
+
+GapClass = {
+    "nano": "gap-0",
+    "small": "gap-1",
+    "regular": "gap-2",
+    "large": "gap-3",
+}

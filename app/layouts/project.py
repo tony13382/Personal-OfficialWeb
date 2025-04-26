@@ -2,7 +2,7 @@ from typing import List, Literal, Optional, Tuple
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer
-from app.elements import Card, Link
+from app.elements import Card, Link, Score, Image, Text
 
 
 class ProjectPage:
@@ -13,26 +13,28 @@ class ProjectPage:
         enddate: str,
         status: Literal["running", "closed"],
         colorSet: Tuple,  # ThemeColor
-        link: str,
+        prefix: str,
         cover: str = "/assets/MetaTagCover.png",
         description: Optional[str] = None,
         subdescription: Optional[str] = None,
         tags: Optional[List[str]] = None,
         description_links: Optional[List[Link]] = None,
-        items: Optional[List[Card]] = None,
+        scores: Optional[List[Score]] = None,
+        children: Optional[List[Card]] = None,
     ):
         self.title = title
         self.startdate = startdate
         self.enddate = enddate
         self.status = status
         self.colorSet = colorSet
-        self.link = link
+        self.prefix = prefix
         self.cover = cover
         self.description = description
         self.subdescription = subdescription
         self.tags = tags or []
         self.desc_links = description_links or []
-        self.items = items or []
+        self.scores = scores or []
+        self.children = children or []
 
     def __str__(self):
 
@@ -41,7 +43,7 @@ class ProjectPage:
                 title=self.title,
                 description=self.description,
                 cover=self.cover,
-                link=self.link,
+                link="/projects/" + self.prefix,
             )
         )
 
@@ -50,7 +52,7 @@ class ProjectPage:
         navbar_html = str(Navbar(path="project"))
 
         items_html = ""
-        for item in self.items:
+        for item in self.children:
             items_html += str(item)
 
         status_html = ""
@@ -88,9 +90,25 @@ class ProjectPage:
             for link in self.desc_links:
                 desc_link_html = desc_link_html + str(link) + "\n"
 
+        meta_card = Card()
+        if self.cover:
+            meta_card.header = Image(self.cover, "Cover Image")
+        if self.scores:
+            meta_card.body = [
+                Text("專案成就", "h3"),
+            ]
+            for score in self.scores:
+                meta_card.body.append(
+                    Score(
+                        name=score.name,
+                        group=score.group,
+                        score=score.score,
+                    )
+                )
+
         content_html = ""
-        if self.items:
-            for item in self.items:
+        if self.children:
+            for item in self.children:
                 content_html = content_html + str(item) + "\n"
 
         return f"""
@@ -176,7 +194,8 @@ class ProjectPage:
 				</div>
 				<div class="col-lg-8 col-12 pb-5 d-grid gap-5">
 					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
-					{content_html}
+					{str(meta_card)}
+                    {content_html}
 				</div>
 			</div>
 		</div>
