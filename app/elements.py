@@ -52,7 +52,7 @@ class Card:
 
         footer_html = ""
         if self.footer:
-            footer_html += f"""<div class="card-footer bg-transparent"><div class="p-2 d-grid {GapClass[self.body_gap_size]}">"""
+            footer_html += f"""<div class="card-footer bg-transparent"><div class="p-2 d-grid {GapClass[self.footer_gap_size]}">"""
             for item in self.footer:
                 footer_html += str(item)
             footer_html += """</div></div>"""
@@ -133,9 +133,9 @@ class Div:
     def __str__(self) -> str:
         margin_class = ""
         margin_class += f"mt-{self.mt} " if self.mt else ""
-        margin_class += f"mt-{self.md} " if self.md else ""
-        margin_class += f"mt-{self.ms} " if self.ms else ""
-        margin_class += f"mt-{self.me} " if self.me else ""
+        margin_class += f"md-{self.md} " if self.md else ""
+        margin_class += f"ms-{self.ms} " if self.ms else ""
+        margin_class += f"me-{self.me} " if self.me else ""
 
         return f"""
 <div class="{margin_class}">
@@ -277,9 +277,9 @@ class ListDiv:
 
         margin_class = ""
         margin_class += f"mt-{self.mt} " if self.mt else ""
-        margin_class += f"mt-{self.md} " if self.md else ""
-        margin_class += f"mt-{self.ms} " if self.ms else ""
-        margin_class += f"mt-{self.me} " if self.me else ""
+        margin_class += f"md-{self.md} " if self.md else ""
+        margin_class += f"ms-{self.ms} " if self.ms else ""
+        margin_class += f"me-{self.me} " if self.me else ""
 
         for item in self.children:
             content_html += str(item)
@@ -315,6 +315,7 @@ class Score:
 
 
 class Text:
+
     def __init__(
         self,
         content: str,
@@ -332,8 +333,29 @@ class Text:
             return f"""
 <span class="badge bg-mytheme text-dark {fw_class} rounded-pill overflow-hidden fs-6">{self.content}</span>
 """
-        return f"""
+        elif self.fontsize in ["h2", "h3", "p"]:
+            return f"""
 <{self.fontsize} class="m-0 p-0 {fw_class}">
     {self.content}
 </{self.fontsize}>
 """
+        else:
+            return f"""
+<p class="m-0 p-0 {fw_class}">
+    {self.content}
+</p>
+"""
+
+
+class Tool:
+    def __init__(self, name: str, action: str):
+        self.name = name
+        self.action = action
+
+    def __str__(self) -> str:
+        return str(
+            ListDiv(
+                children=[Text(self.name, bold=True), Text(self.action)],
+                gap_size="nano",
+            )
+        )

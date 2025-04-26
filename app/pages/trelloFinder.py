@@ -14,6 +14,7 @@ from app.elements import (
     ListDiv,
     Score,
     Text,
+    Tool,
 )
 
 
@@ -43,18 +44,14 @@ page = ProjectPage(
             open_in_tab=True,
         ),
     ],
+    scores=[
+        Score(
+            name="TWELF 2024 第十九屆台灣數位學習發展研討會",
+            group="AIES 組",
+            score="最佳論文獎",
+        )
+    ],
     children=[
-        Card(
-            header=Image(src="/assets/imgs/trelloFinder/cover.png", alt="cover"),
-            body=[
-                Text("專案成就", "h3"),
-                Score(
-                    name="TWELF 2024 第十九屆台灣數位學習發展研討會",
-                    group="AIES 組",
-                    score="最佳論文獎",
-                ),
-            ],
-        ),
         Card(
             header=Canva(
                 src="https://www.canva.com/design/DAGAH5TIfcM/noA5DlVGa0eP-raZZdv56w/view?embed"

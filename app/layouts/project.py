@@ -2,7 +2,7 @@ from typing import List, Literal, Optional, Tuple
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer
-from app.elements import Card, Link, Score, Image, Text
+from app.elements import Card, DivBar, Link, ListDiv, Score, Image, Text, Tool
 
 
 class ProjectPage:
@@ -20,6 +20,7 @@ class ProjectPage:
         tags: Optional[List[str]] = None,
         description_links: Optional[List[Link]] = None,
         scores: Optional[List[Score]] = None,
+        tools: Optional[List[Tool]] = None,
         children: Optional[List[Card]] = None,
     ):
         self.title = title
@@ -34,6 +35,7 @@ class ProjectPage:
         self.tags = tags or []
         self.desc_links = description_links or []
         self.scores = scores or []
+        self.tools = tools or []
         self.children = children or []
 
     def __str__(self):
@@ -87,8 +89,10 @@ class ProjectPage:
 
         desc_link_html = ""
         if self.desc_links:
+            desc_link_html += """<div class="d-grid gap-2 mt-4">"""
             for link in self.desc_links:
-                desc_link_html = desc_link_html + str(link) + "\n"
+                desc_link_html += str(link) + "\n"
+            desc_link_html += "</div>"
 
         meta_card = Card()
         if self.cover:
@@ -105,6 +109,21 @@ class ProjectPage:
                         score=score.score,
                     )
                 )
+
+        tools_html = ""
+        if self.tools:
+            tools_html = str(
+                Card(
+                    body=[
+                        Text("採用技術", "h3"),
+                        DivBar(),
+                        ListDiv(
+                            children=self.tools,
+                            gap_size="large",
+                        ),
+                    ],
+                )
+            )
 
         content_html = ""
         if self.children:
@@ -185,10 +204,7 @@ class ProjectPage:
 							{description_html}
 							{subdesc_html}
 							{tags_html}
-							<div class="d-grid gap-2 mt-4">
-								{desc_link_html}
-							</div>
-
+							{desc_link_html}
 						</div>
 					</div>
 				</div>
@@ -196,6 +212,7 @@ class ProjectPage:
 					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
 					{str(meta_card)}
                     {content_html}
+                    {tools_html}
 				</div>
 			</div>
 		</div>
