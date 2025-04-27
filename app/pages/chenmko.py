@@ -1,19 +1,11 @@
 from app.layouts.project import ProjectPage
 from app.variables import ThemeColor
 from app.elements import (
-    AccordionBlock,
-    AccordionItem,
-    Canva,
     Card,
-    Div,
-    DivBar,
-    FileLink,
-    Html,
     Image,
     ImageCarousel,
     ListDiv,
     ListStr,
-    Score,
     Text,
     Tool,
 )

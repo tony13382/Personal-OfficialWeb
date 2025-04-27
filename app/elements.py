@@ -5,6 +5,7 @@ from app.variables import GapClass
 
 
 def string_formator(text: str):
+    # return text
     parts = text.split("`")
     result = ""
     for i, part in enumerate(parts):
@@ -157,8 +158,13 @@ class Div:
 
 
 class DivBar:
-    def __init__(self, space: Literal["nano", "mini", "regular", "wide"] = "regular"):
+    def __init__(
+        self,
+        space: Literal["nano", "mini", "regular", "wide"] = "regular",
+        opacity: float = 0.15,
+    ):
         self.space = space
+        self.opacity = opacity
 
     def __str__(self):
         margin_class = {
@@ -169,7 +175,7 @@ class DivBar:
         }
 
         return f"""
-<hr class="{margin_class[self.space]}">
+<hr class="{margin_class[self.space]}" style="opacity:{self.opacity}">
 """
 
 
@@ -219,20 +225,27 @@ class Html:
 
 
 class Image:
-    def __init__(self, src: str, alt: str = "", allow_pop: bool = False):
+    def __init__(
+        self, src: str, alt: str = "", allow_pop: bool = False, max_width: int = None
+    ):
         self.src = src
         self.alt = alt
         self.allow_pop = allow_pop
+        self.max_width = max_width
 
     def __str__(self):
+        max_width_style = ""
+        if self.max_width:
+            max_width_style = f"""style="max-width: {self.max_width}px;" """
+
         if self.allow_pop:
             return f"""
-<a href="{self.src}" data-fancybox="gallery">
-    <img src="{self.src}" class="img-fluid" alt="{self.alt}">
+<a href="{self.src}" data-fancybox="gallery" class="mx-auto">
+    <img src="{self.src}" class="img-fluid mx-auto" alt="{self.alt}"  {max_width_style}>
 </a>
 """
         return f"""
-<img src="{self.src}" class="img-fluid" alt="{self.alt}">
+<img src="{self.src}" class="img-fluid mx-auto" alt="{self.alt}" {max_width_style}>
 """
 
 
@@ -376,33 +389,35 @@ class Score:
 
 
 class Text:
-
     def __init__(
         self,
         content: str,
         fontsize: Literal["h2", "h3", "p", "span"] = "p",
         bold: bool = False,
+        center: bool = False,
     ):
         self.content = string_formator(content)
         self.fontsize = fontsize
         self.bold = bold
+        self.center = center
 
     def __str__(self) -> str:
         fw_class = "fw-bold" if self.bold is True else ""
+        center_class = "text-center" if self.center is True else ""
 
         if self.fontsize == "span":
             return f"""
-<span class="badge bg-mytheme text-dark {fw_class} rounded-pill overflow-hidden fs-6">{self.content}</span>
+<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6">{self.content}</span>
 """
         elif self.fontsize in ["h2", "h3", "p"]:
             return f"""
-<{self.fontsize} class="m-0 p-0 {fw_class}">
+<{self.fontsize} class="m-0 p-0 {fw_class} {center_class}">
     {self.content}
 </{self.fontsize}>
 """
         else:
             return f"""
-<p class="m-0 p-0 {fw_class}">
+<p class="m-0 p-0 {fw_class} {center_class}">
     {self.content}
 </p>
 """
@@ -420,3 +435,18 @@ class Tool:
                 gap_size="nano",
             )
         )
+
+
+class Youtube:
+    def __init__(self, src="") -> None:
+        self.src = src
+
+    def __str__(self) -> str:
+        return f"""
+<div class="ratio ratio-16x9">
+    <iframe width="560" height="315" src="{self.src}"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen=""></iframe>
+</div>
+"""
