@@ -4,6 +4,7 @@ from app.pages import (
     hsCloudMeetingManage,
     hsVmi,
     mindReader,
+    noDrinkNoDrunk,
     pincakeAi,
     songla,
     trelloFinder,
@@ -29,3 +30,4 @@ builder.addProject(hsCloudMeetingManage.page)
 builder.addProject(hsVmi.page)
 builder.addProject(pincakeAi.page)
 builder.addProject(foodome.page)
+builder.addProject(noDrinkNoDrunk.page)
