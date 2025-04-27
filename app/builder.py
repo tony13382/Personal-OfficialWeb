@@ -3,8 +3,10 @@ from app.pages import (
     foodome,
     hsCloudMeetingManage,
     hsVmi,
+    jobAnalytics2020,
     mindReader,
     noDrinkNoDrunk,
+    oneDayLover,
     pincakeAi,
     songla,
     trelloFinder,
@@ -31,3 +33,5 @@ builder.addProject(hsVmi.page)
 builder.addProject(pincakeAi.page)
 builder.addProject(foodome.page)
 builder.addProject(noDrinkNoDrunk.page)
+builder.addProject(oneDayLover.page)
+builder.addProject(jobAnalytics2020.page)

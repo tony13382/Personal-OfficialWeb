@@ -133,20 +133,20 @@ class Div:
         self,
         child,
         mt: int = None,
-        md: int = None,
+        mb: int = None,
         ms: int = None,
         me: int = None,
     ) -> None:
         self.child = child
         self.mt = mt
-        self.md = md
+        self.mb = mb
         self.ms = ms
         self.me = me
 
     def __str__(self) -> str:
         margin_class = ""
         margin_class += f"mt-{self.mt} " if self.mt else ""
-        margin_class += f"md-{self.md} " if self.md else ""
+        margin_class += f"mb-{self.mb} " if self.mb else ""
         margin_class += f"ms-{self.ms} " if self.ms else ""
         margin_class += f"me-{self.me} " if self.me else ""
 
@@ -181,7 +181,11 @@ class DivBar:
 
 class FileLink:
     def __init__(
-        self, title: str = None, subtitle: str = None, src: str = "", icon: str = ""
+        self,
+        title: str = None,
+        subtitle: str = None,
+        src: str = "",
+        icon: str = "bi-file-earmark-arrow-down",
     ) -> None:
         self.src = src
         self.icon = icon
@@ -335,14 +339,14 @@ class ListDiv:
         children: list = [],
         gap_size: Literal["nano", "small", "regular", "large"] = "regular",
         mt: int = None,
-        md: int = None,
+        mb: int = None,
         ms: int = None,
         me: int = None,
     ):
         self.children = children
         self.gap_size = gap_size
         self.mt = mt
-        self.md = md
+        self.mb = mb
         self.ms = ms
         self.me = me
 
@@ -351,7 +355,7 @@ class ListDiv:
 
         margin_class = ""
         margin_class += f"mt-{self.mt} " if self.mt else ""
-        margin_class += f"md-{self.md} " if self.md else ""
+        margin_class += f"mb-{self.mb} " if self.mb else ""
         margin_class += f"ms-{self.ms} " if self.ms else ""
         margin_class += f"me-{self.me} " if self.me else ""
 
