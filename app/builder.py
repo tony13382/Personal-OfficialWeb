@@ -1,5 +1,6 @@
 from app.layouts.project import ProjectPage
 from app.pages import (
+    foodome,
     hsCloudMeetingManage,
     hsVmi,
     mindReader,
@@ -27,3 +28,4 @@ builder.addProject(mindReader.page)
 builder.addProject(hsCloudMeetingManage.page)
 builder.addProject(hsVmi.page)
 builder.addProject(pincakeAi.page)
+builder.addProject(foodome.page)
