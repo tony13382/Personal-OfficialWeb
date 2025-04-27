@@ -1,5 +1,6 @@
 from app.layouts.project import ProjectPage
 from app.pages import (
+    digitalOcean,
     foodome,
     hsCloudMeetingManage,
     hsVmi,
@@ -35,3 +36,4 @@ builder.addProject(foodome.page)
 builder.addProject(noDrinkNoDrunk.page)
 builder.addProject(oneDayLover.page)
 builder.addProject(jobAnalytics2020.page)
+builder.addProject(digitalOcean.page)
