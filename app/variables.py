@@ -12,7 +12,7 @@ class ThemeColor:
         self.yellow: Tuple[str, str] = ("#807E4C", "#6F6D42")
         self.green: Tuple[str, str] = ("#4C8077", "#30504A")
         self.blue: Tuple[str, str] = ("#4C6D80", "#304450")
-        self.purple: Tuple[str, str] = ("#303150", "#4C4E80")
+        self.purple: Tuple[str, str] = ("#4C4E80", "#303150")
         self.pink: Tuple[str, str] = ("#804C78", "#653A5E")
         self.natural: Tuple[str, str] = ("#373737", "#2B2B2B")
 
@@ -41,5 +41,5 @@ GapClass = {
     "nano": "gap-0",
     "small": "gap-1",
     "regular": "gap-2",
-    "large": "gap-3",
+    "large": "gap-4",
 }

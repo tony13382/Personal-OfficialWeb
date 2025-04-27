@@ -373,13 +373,13 @@ class Score:
     def __str__(self) -> str:
         group_html = ""
         if self.group:
-            group_html = f"""<span class="d-inline-block">{self.group}</span>"""
+            group_html = f"""・<span class="d-inline-block">{self.group}</span>"""
         return f"""
 <div class="row notoFont px-1">
     <div class="col-12 p-2">
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
-                <p class="m-0 msf-info-s">{self.name}・{group_html}</p>
+                <p class="m-0 msf-info-s">{self.name}{group_html}</p>
                 <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">{self.score}</p>
             </li>
         </ul>
@@ -429,12 +429,86 @@ class Tool:
         self.action = action
 
     def __str__(self) -> str:
-        return str(
-            ListDiv(
-                children=[Text(self.name, bold=True), Text(self.action)],
-                gap_size="nano",
+        return (
+            "<div class='col-12 col-sm-6'>"
+            + str(
+                ListDiv(
+                    children=[Text(self.name, bold=True), Text(self.action)],
+                    gap_size="nano",
+                )
             )
+            + "</div>"
         )
+
+
+"""
+<div id="uiCarousel" class="carousel has-dots is-draggable">
+    <div class="carousel__viewport">
+        <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
+            <div class="carousel__slide is-selected" data-index="0"><img data-lazy-src="/assets/imgs/pincakeAi/uiHome.png" data-fancybox="/assets/imgs/pincakeAi/uiHome.png" class="d-block w-100 rounded-inline-basic" alt="1" src="/assets/imgs/pincakeAi/uiHome.png"></div>
+            <div class="carousel__slide" data-index="1" aria-hidden="true"><img data-lazy-src="/assets/imgs/pincakeAi/uiInfo.png" data-fancybox="/assets/imgs/pincakeAi/uiInfo.png" class="d-block w-100 rounded-inline-basic" alt="2" src="/assets/imgs/pincakeAi/uiInfo.png"></div>
+            <div class="carousel__slide" data-index="2" aria-hidden="true" style="left: -1542px;"><img data-lazy-src="/assets/imgs/pincakeAi/uiMeet.png" data-fancybox="/assets/imgs/pincakeAi/uiMeet.png" class="d-block w-100 rounded-inline-basic" alt="3" src="/assets/imgs/pincakeAi/uiMeet.png"></div>
+            <!-- 更多的圖片 -->
+        </div>
+    </div>
+    
+    
+</div>
+
+"""
+
+
+class UiImageCarousel:
+    def __init__(self, images: List[str]):
+        self.images = images
+
+    def __str__(self) -> str:
+        random_id = f"c{uuid4().hex[0:6]}"
+        index_id = 0
+        imagesLen = len(self.images)
+
+        carousel_html = ""
+        for image in self.images:
+            if index_id == 0:
+                carousel_html += f"""
+<div class="carousel__slide is-selected" data-index="{index_id}"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id+1}" src="{image}"></div>
+                """
+            else:
+                carousel_html += f"""
+<div class="carousel__slide" data-index="{index_id}" aria-hidden="true"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id+1}" src="{image}"></div>
+"""
+
+            index_id += 1
+
+        ol_html = """<ol class="carousel__dots">"""
+        for i in range(imagesLen):
+            if i == 0:
+                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+            else:
+                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+        ol_html = """</ol>"""
+        script_html = f"""
+<script>
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_{random_id}"), {{
+        // 配置選項
+        autoplay: true,
+        autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
+        infinite: true
+    }});
+</script>
+"""
+
+        return f"""
+<div id="uiCarouse_{random_id}" class="carousel has-dots is-draggable mt-3 mb-5">
+    <div class="carousel__viewport">
+        <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
+        {carousel_html}
+        </div>
+    </div>
+    <div class="carousel__nav"><button title="Next slide" class="carousel__button is-next" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"></path></svg></button><button title="Previous slide" class="carousel__button is-prev" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"></path></svg></button></div>
+</div>
+{script_html}
+"""
 
 
 class Youtube:

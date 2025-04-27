@@ -2,7 +2,7 @@ from typing import List, Literal, Optional, Tuple
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer
-from app.elements import Card, DivBar, Link, ListDiv, Score, Image, Text, Tool
+from app.elements import Card, DivBar, Html, Link, ListDiv, Score, Image, Text, Tool
 
 
 class ProjectPage:
@@ -118,14 +118,21 @@ class ProjectPage:
 
         tools_html = ""
         if self.tools:
+            tool_content = ""
+            for tool in self.tools:
+                tool_content = tool_content + str(tool)
+
             tools_html += str(
                 Card(
                     body=[
                         Text("採用技術", "h3"),
                         DivBar(),
-                        ListDiv(
-                            self.tools,
-                            "large",
+                        Html(
+                            f"""
+<div class= "row g-3">
+    {tool_content}     
+</div>
+"""
                         ),
                     ],
                 )
@@ -170,6 +177,17 @@ class ProjectPage:
 
         .color-mytheme {{
             color: var(--themeColor);
+        }}
+    </style>
+    <style>
+        .carousel__nav .carousel__button {{
+            background-color: #FFFFFF;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+        }}
+
+        .carousel__nav .carousel__button:hover {{
+            background-color: #f9f9f9;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
         }}
     </style>
     {navbar_html}
