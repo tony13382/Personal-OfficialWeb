@@ -1,38 +1,41 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
 
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Description" CONTENT="About Liang Chin Lu">
+	<meta name="Description" CONTENT="大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。">
 	<!-- Facebook Opengraph -->
-	<meta property="og:url" content="https://lianglu.uk/projects/noDrinkNoDrunk.html" />
+	<meta property="og:url" content="/projects/noDrinkNoDrunk" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="No Drink No Drunk" />
-	<meta property="og:description" content="大學開發專案，酒類商店前端設計" />
+	<meta property="og:description" content="大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。" />
 	<meta property="og:image" content="/assets/imgs/noDrinkNoDrunk/cover.png" />
 	<meta property="og:image:alt" content="No Drink No Drunk" />
 	<meta property="og:image:type" content="/assets/imgs/noDrinkNoDrunk/cover.png" />
 	<meta property="og:image:width" content="386px" />
 	<meta property="og:image:height" content="386px" />
 	<!-- End Facebook Opengraph -->
-	<title>No Drink No Drunk | 呂亮進</title>
-	<link rel="Shortcut Icon" type="image/x-icon" href="https://lianglu.uk/favicon.png" />
+	<title>No Drink No Drunk・呂亮進</title>
+	<link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png" />
 
-	<!--Start Load CSS-->
+	<!-- Self CSS -->
 	<link rel="stylesheet" href="/assets/stylesheets/myself.css">
 	<link rel="stylesheet" href="/assets/stylesheets/all.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<!-- End of Self CSS -->
 	<!-- Fancyapp (Image Box)-->
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
 	<!-- JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
+	<!-- End of Fancyapp (Image Box)-->
 </head>
+
 
 <body class="bg-mytheme">
 	<style>
@@ -64,6 +67,18 @@
 			color: var(--themeColor);
 		}
 	</style>
+	<style>
+		.carousel__nav .carousel__button {
+			background-color: #FFFFFF;
+			box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+		}
+
+		.carousel__nav .carousel__button:hover {
+			background-color: #f9f9f9;
+			box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+		}
+	</style>
+
 	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
 		<div class="container-fluid">
 			<a class="navbar-brand fw-bold px-2 text-white" href="/">
@@ -96,6 +111,7 @@
 			</div>
 		</div>
 	</nav>
+
 	<a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
 		style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
 		<div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
@@ -106,9 +122,10 @@
 		</div>
 	</a>
 	<script src="/assets/script/scroll.js"></script>
+
 	<div>
 		<div class="position-relative"
-			style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/noDrinkNoDrunk/linkCover.webp); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
+			style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/noDrinkNoDrunk/cover.png); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
 			<div class="position-absolute top-0 start-0 w-100 h-100"
 				style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
 			</div>
@@ -116,134 +133,169 @@
 				<div class="container">
 					<div class="col-12">
 						<h1 class="text-center fw-bold text-white notoFont">No Drink No Drunk</h1>
-						<p class="text-center fw-bold text-white m-0 notoFont">2020/09 ~ 2021/01</p>
+						<p class="text-center fw-bold text-white m-0 notoFont">
+							2020/09 ~ 2021/01
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container" style="margin-top: -160px; min-height: 100vh;">
 			<div class="row position-relative d-flex align-items-start">
-				<div class="col-lg-4 col-12 pb-4 sticky-lg-top " style="padding-top: 92px;">
+				<div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
 					<div class="card shadow p-3 bg-body rounded-basic">
 						<div class="card-body">
-							<span class="badge bg-secondary rounded-pill mb-2 fs-5">專案關閉</span>
+							<span class="badge bg-secondary rounded-pill mb-3 fs-5">專案關閉</span>
+
 							<p class="mb-2 notoFont msf-info-s">
-								大學開發專案，純HTML5 & CSS3 製作網頁
+								大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。
 							</p>
+
+
 							<hr class="my-2" style="opacity:10%;">
 							<p class="color-mytheme fw-bold my-3">
-								擔任：網站設計師<br>
-								負責：網站介面設計、前端開發、RWD 實作
+								擔任：網站設計師<br>負責：網站介面設計、前端開發、RWD 實作
 							</p>
+
 							<hr class="my-2" style="opacity:10%;">
-							<div class="fs-5 text-black pt-3">
-								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 程式開發</span>
+							<div class="fs-5 text-black pt-3"><span
+									class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 程式開發</span>
 							</div>
 							<div class="d-grid gap-2 mt-4">
-								<a target="_blank"
-									href="https://tony13382.github.io/CycuWebDesign-FinalWeb/pages/products.html"
-									class="btn btn-theme rounded-pill" type="button">專案網址<i
-										class="bi bi-arrow-up-right ps-1"></i></a>
+								<a href="https://tony13382.github.io/CycuWebDesign-FinalWeb/pages/products.html"
+									type="button" target="_blank" class="btn btn-theme rounded-pill">
+									<i class="bi bi-cloud me-2"></i>專案網址・純前端展示
+								</a>
+
+
 								<a href="https://github.com/tony13382/CycuWebDesign-FinalWeb" type="button"
-									target="_blank" class="btn btn-outline-theme rounded-pill mt-2"><i
-										class="bi bi-github me-2"></i>GitHub 代碼</a>
+									target="_blank" class="btn btn-outline-theme rounded-pill">
+									<i class="bi bi-github me-2"></i>GitHub 專案・前端版本
+								</a>
+
+
 								<a href="https://github.com/tony13382/CycuWebDesign-JspWeb" type="button"
-									target="_blank" class="btn btn-outline-theme rounded-pill mt-2"><i
-										class="bi bi-github me-2"></i>JSP 版本代碼</a>
+									target="_blank" class="btn btn-outline-theme rounded-pill">
+									<i class="bi bi-github me-2"></i>GitHub 專案・JSP 版本
+								</a>
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8 col-12 pb-4">
-					<div style="height: 92px;" class="d-none d-lg-block"></div>
-					<div class="card shadow rounded-basic">
-						<div class="p-2">
-							<div class="card-body p-4">
-								<h2 class="notoFont fs-4">專案技術</h2>
-								<div class="notoFont mt-4">
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/figma.png" class="img-fluid p-1"
-														alt="Figma Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">Figma</p>
-												<p class="p-0 m-0">UI Design</p>
-											</div>
+				<div class="col-lg-8 col-12 pb-5 d-grid gap-5">
+					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+
+					<div class="card shadow rounded-basic border-0">
+						<div>
+							<img src="/assets/imgs/noDrinkNoDrunk/cover.png" class="img-fluid mx-auto"
+								alt="Cover Image">
+						</div>
+
+
+					</div>
+
+
+					<div class="card shadow rounded-basic border-0">
+
+						<div class="card-body">
+							<div class="p-2 d-grid gap-2">
+								<h3 class="m-0 p-0  ">
+									採用技術
+								</h3>
+
+								<hr class="my-2" style="opacity:0.15">
+
+								<div class="row g-3">
+									<div class='col-12 col-sm-6'>
+										<div class="d-grid gap-0 ">
+
+											<p class="m-0 p-0 fw-bold ">
+												Figma
+											</p>
+
+											<p class="m-0 p-0  ">
+												UI Design
+											</p>
+
 										</div>
 									</div>
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/html.png" class="img-fluid p-1"
-														alt="Figma Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">HTML5 & CSS3</p>
-												<p class="p-0 m-0">前端</p>
-											</div>
+									<div class='col-12 col-sm-6'>
+										<div class="d-grid gap-0 ">
+
+											<p class="m-0 p-0 fw-bold ">
+												HTML5 & CSS3
+											</p>
+
+											<p class="m-0 p-0  ">
+												前端
+											</p>
+
+										</div>
+									</div>
+									<div class='col-12 col-sm-6'>
+										<div class="d-grid gap-0 ">
+
+											<p class="m-0 p-0 fw-bold ">
+												Bootstrap v3
+											</p>
+
+											<p class="m-0 p-0  ">
+												前端介面工具
+											</p>
+
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="p-2">
-							<div class="card-body pb-2">
-								<h4 class="mb-4">系統介面</h4>
-								<div class="col-12 mb-2">
-									<a href="/assets/imgs/noDrinkNoDrunk/nodrinkIndex.jpeg" data-fancybox="gallery">
-										<img src="/assets/imgs/noDrinkNoDrunk/nodrinkIndex.jpeg" class="img-fluid mb-2"
-											style="border-radius:1.2rem;" alt="Image description">
-									</a>
-									<p class="mb-4 text-center">
-										<i class="bi bi-caret-up-fill pt-3 pe-2"></i>
-										首頁
-									</p>
-								</div>
-								<div class="col-12 mb-2">
-									<a href="/assets/imgs/noDrinkNoDrunk/info.png" data-fancybox="gallery">
-										<img src="/assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid mb-2"
-											style="border-radius:1.2rem;" alt="Image description">
-									</a>
-									<p class="mb-4 text-center">
-										<i class="bi bi-caret-up-fill pt-3 pe-2"></i>
-										商品頁面
-									</p>
-								</div>
-								<div class="col-12 mb-2">
-									<a href="/assets/imgs/noDrinkNoDrunk/list.png" data-fancybox="gallery">
-										<img src="/assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid mb-2"
-											style="border-radius:1.2rem;" alt="Image description">
-									</a>
-									<p class="mb-4 text-center">
-										<i class="bi bi-caret-up-fill pt-3 pe-2"></i>
-										訂單頁面
-									</p>
-								</div>
-								<div class="col-12">
-									<a href="/assets/imgs/noDrinkNoDrunk/knowledge.png" data-fancybox="gallery">
-										<img src="/assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid mb-2"
-											style="border-radius:1.2rem;" alt="Image description">
-									</a>
-									<p class="mb-0 text-center">
-										<i class="bi bi-caret-up-fill pt-3"></i>
-										紅酒小知識
-									</p>
-								</div>
+
+
+					<div class="card shadow rounded-basic border-0">
+
+						<div class="card-body">
+							<div class="p-2 d-grid gap-2">
+								<h3 class="m-0 p-0  ">
+									系統介面
+								</h3>
+
+								<hr class="my-0" style="opacity:0">
+
+								<a href="/assets/imgs/noDrinkNoDrunk/nodrinkIndex.jpeg" data-fancybox="gallery"
+									class="mx-auto">
+									<img src="/assets/imgs/noDrinkNoDrunk/nodrinkIndex.jpeg" class="img-fluid mx-auto"
+										alt="Home Page">
+								</a>
+
+								<a href="/assets/imgs/noDrinkNoDrunk/info.png" data-fancybox="gallery" class="mx-auto">
+									<img src="/assets/imgs/noDrinkNoDrunk/info.png" class="img-fluid mx-auto"
+										alt="Wine Info Page">
+								</a>
+
+								<a href="/assets/imgs/noDrinkNoDrunk/list.png" data-fancybox="gallery" class="mx-auto">
+									<img src="/assets/imgs/noDrinkNoDrunk/list.png" class="img-fluid mx-auto"
+										alt="Shopping List Page">
+								</a>
+
+								<a href="/assets/imgs/noDrinkNoDrunk/knowledge.png" data-fancybox="gallery"
+									class="mx-auto">
+									<img src="/assets/imgs/noDrinkNoDrunk/knowledge.png" class="img-fluid mx-auto"
+										alt="Wine Knowledge Page">
+								</a>
 							</div>
 						</div>
+
 					</div>
+
+
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 	<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
 		<div class="container py-4">
 			<div class="row">
@@ -330,9 +382,6 @@
 			</div>
 		</div>
 	</footer>
-
-
-
 	<!-- Optional JavaScript; choose one of the two! -->
 
 	<!-- Option 1: Bootstrap Bundle with Popper -->
@@ -346,11 +395,6 @@
 		observer.observe();
 	</script>
 
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
