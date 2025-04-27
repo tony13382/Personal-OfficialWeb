@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.pages import trelloFinder
+from app.pages import trelloFinder, chenmko
 
 
 class WebBuilder:
@@ -13,3 +13,4 @@ class WebBuilder:
 builder = WebBuilder()
 
 builder.addProject(trelloFinder.page)
+builder.addProject(chenmko.page)

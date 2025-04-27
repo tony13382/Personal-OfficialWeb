@@ -101,14 +101,20 @@ class ProjectPage:
             meta_card.body = [
                 Text("專案成就", "h3"),
             ]
+            score_list = ListDiv(gap_size="nano")
+            index = 0
             for score in self.scores:
-                meta_card.body.append(
+                if index != 0:
+                    score_list.children.append(DivBar(space="nano"))
+                score_list.children.append(
                     Score(
                         name=score.name,
                         group=score.group,
                         score=score.score,
                     )
                 )
+                index += 1
+            meta_card.body.append(score_list)
 
         tools_html = ""
         if self.tools:
@@ -137,88 +143,88 @@ class ProjectPage:
 {head_html}
 
 <body class="bg-mytheme">
-	<style>
-		:root {{
-			--themeColor: {theme_color};
-			--secondColor: {second_color};
-		}}
+    <style>
+        :root {{
+            --themeColor: {theme_color};
+            --secondColor: {second_color};
+        }}
 
-		.bg-mytheme {{
-			color: var(--secondColor);
-			position: relative;
-			letter-spacing: 0.02rem;
-			z-index: 10;
-		}}
+        .bg-mytheme {{
+            color: var(--secondColor);
+            position: relative;
+            letter-spacing: 0.02rem;
+            z-index: 10;
+        }}
 
-		.bg-mytheme::before {{
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: var(--themeColor);
-			opacity: 0.2;
-			z-index: -1;
-		}}
+        .bg-mytheme::before {{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--themeColor);
+            opacity: 0.2;
+            z-index: -1;
+        }}
 
-		.color-mytheme {{
-			color: var(--themeColor);
-		}}
-	</style>
-	{navbar_html}
-	<a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
-		style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
-		<div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
-			<div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
-				style="width: 48px; height: 48px;">
-				<i class="bi bi-chevron-up text-decoration-none d-flex"></i>
-			</div>
-		</div>
-	</a>
-	<script src="/assets/script/scroll.js"></script>
-	
+        .color-mytheme {{
+            color: var(--themeColor);
+        }}
+    </style>
+    {navbar_html}
+    <a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
+        style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
+        <div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
+            <div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
+                style="width: 48px; height: 48px;">
+                <i class="bi bi-chevron-up text-decoration-none d-flex"></i>
+            </div>
+        </div>
+    </a>
+    <script src="/assets/script/scroll.js"></script>
+    
     <div>
-		<div class="position-relative"
-			style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
-			<div class="position-absolute top-0 start-0 w-100 h-100"
-				style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
-			</div>
-			<div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
-				<div class="container">
-					<div class="col-12">
-						<h1 class="text-center fw-bold text-white notoFont">{self.title}</h1>
-						<p class="text-center fw-bold text-white m-0 notoFont">
+        <div class="position-relative"
+            style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
+            </div>
+            <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
+                <div class="container">
+                    <div class="col-12">
+                        <h1 class="text-center fw-bold text-white notoFont">{self.title}</h1>
+                        <p class="text-center fw-bold text-white m-0 notoFont">
                             {self.startdate} ~ {self.enddate}
                         </p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container" style="margin-top: -160px; min-height: 100vh;">
-			<div class="row position-relative d-flex align-items-start">
-				<div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
-					<div class="card shadow p-3 bg-body rounded-basic">
-						<div class="card-body">
-							{status_html}
-							{description_html}
-							{subdesc_html}
-							{tags_html}
-							{desc_link_html}
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-12 pb-5 d-grid gap-5">
-					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
-					{str(meta_card)}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: -160px; min-height: 100vh;">
+            <div class="row position-relative d-flex align-items-start">
+                <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
+                    <div class="card shadow p-3 bg-body rounded-basic">
+                        <div class="card-body">
+                            {status_html}
+                            {description_html}
+                            {subdesc_html}
+                            {tags_html}
+                            {desc_link_html}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
+                    <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+                    {str(meta_card)}
                     {tools_html}
                     {content_html}
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
-	</div>
-	{str(Footer())}
+    </div>
+    {str(Footer())}
 </body>
 
 </html>

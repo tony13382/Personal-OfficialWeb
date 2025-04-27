@@ -4,6 +4,18 @@ from uuid import uuid4
 from app.variables import GapClass
 
 
+def string_formator(text: str):
+    parts = text.split("`")
+    result = ""
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            result += part
+        else:
+            result += f'<span class="color-mytheme fw-bold px-1">{part}</span>'
+    # 如果原本字串最後是 ` 結尾，會多一個空的 part，這邊不用特別處理
+    return result
+
+
 class Canva:
     def __init__(self, src: str = ""):
         self.src = src
@@ -292,6 +304,18 @@ class Link:
         """
 
 
+class ListStr:
+    def __init__(self, items: List[str]) -> None:
+        self.items = items
+
+    def __str__(self):
+        return_html = """<ul class="ps-4 lh-lg">"""
+        for item in self.items:
+            return_html += f"""<li>{string_formator(item)}</li>"""
+        return_html += """</ul>"""
+        return return_html
+
+
 class ListDiv:
     def __init__(
         self,
@@ -359,7 +383,7 @@ class Text:
         fontsize: Literal["h2", "h3", "p", "span"] = "p",
         bold: bool = False,
     ):
-        self.content = content
+        self.content = string_formator(content)
         self.fontsize = fontsize
         self.bold = bold
 
