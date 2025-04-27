@@ -12,6 +12,7 @@ from app.elements import (
     Score,
     Text,
     Tool,
+    UiImageCarousel,
     Youtube,
 )
 
@@ -112,37 +113,13 @@ page = ProjectPage(
             ]
         ),
         Card(
-            header=Html(
-                """
-<div class="col-12">
-<style>
-    .carousel__nav .carousel__button {
-        background-color: #FFFFFF;
-        box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
-    }
-
-    .carousel__nav .carousel__button:hover {
-        background-color: #f9f9f9;
-        box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
-    }
-</style>
-<div id="uiCarousel" class="carousel has-dots is-draggable"><div class="carousel__viewport"><div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
-    <div class="carousel__slide is-selected" data-index="0"><img data-lazy-src="/assets/imgs/mindReader/keybroad01.png" data-fancybox="/assets/imgs/mindReader/keybroad01.png" class="d-block w-100" alt="1" src="/assets/imgs/mindReader/keybroad01.png"></div>
-    <div class="carousel__slide" data-index="1" aria-hidden="true"><img data-lazy-src="/assets/imgs/mindReader/keybroad02.png" data-fancybox="/assets/imgs/mindReader/keybroad02.png" class="d-block w-100" alt="2" src="/assets/imgs/mindReader/keybroad02.png"></div>
-    <div class="carousel__slide" aria-hidden="true"><img data-lazy-src="/assets/imgs/mindReader/keybroad03.png" data-fancybox="/assets/imgs/mindReader/keybroad03.png" class="d-block w-100" alt="3"></div>
-    <div class="carousel__slide" data-index="3" aria-hidden="true" style="left: -2056px;"><img data-lazy-src="/assets/imgs/mindReader/keybroad04.png" data-fancybox="/assets/imgs/mindReader/keybroad04.png" class="d-block w-100" alt="4" src="/assets/imgs/mindReader/keybroad04.png"></div>
-    <!-- 更多的圖片 -->
-</div></div><div class="carousel__nav"><button title="Next slide" class="carousel__button is-next" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"></path></svg></button><button title="Previous slide" class="carousel__button is-prev" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"></path></svg></button></div><ol class="carousel__dots"><li class="carousel__dot is-selected" data-page="0" role="button" tabindex="0" title="Go to slide #1"></li><li class="carousel__dot" data-page="1" role="button" tabindex="0" title="Go to slide #2"></li><li class="carousel__dot" data-page="2" role="button" tabindex="0" title="Go to slide #3"></li><li class="carousel__dot" data-page="3" role="button" tabindex="0" title="Go to slide #4"></li></ol></div>
-<script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarousel"), {
-        // 配置選項
-        autoplay: true,
-        autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
-        infinite: true
-    });
-</script>
-</div>
-"""
+            header=UiImageCarousel(
+                [
+                    "/assets/imgs/mindReader/keybroad01.png",
+                    "/assets/imgs/mindReader/keybroad02.png",
+                    "/assets/imgs/mindReader/keybroad03.png",
+                    "/assets/imgs/mindReader/keybroad04.png",
+                ]
             ),
             body=(
                 [

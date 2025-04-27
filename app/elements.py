@@ -441,23 +441,6 @@ class Tool:
         )
 
 
-"""
-<div id="uiCarousel" class="carousel has-dots is-draggable">
-    <div class="carousel__viewport">
-        <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
-            <div class="carousel__slide is-selected" data-index="0"><img data-lazy-src="/assets/imgs/pincakeAi/uiHome.png" data-fancybox="/assets/imgs/pincakeAi/uiHome.png" class="d-block w-100 rounded-inline-basic" alt="1" src="/assets/imgs/pincakeAi/uiHome.png"></div>
-            <div class="carousel__slide" data-index="1" aria-hidden="true"><img data-lazy-src="/assets/imgs/pincakeAi/uiInfo.png" data-fancybox="/assets/imgs/pincakeAi/uiInfo.png" class="d-block w-100 rounded-inline-basic" alt="2" src="/assets/imgs/pincakeAi/uiInfo.png"></div>
-            <div class="carousel__slide" data-index="2" aria-hidden="true" style="left: -1542px;"><img data-lazy-src="/assets/imgs/pincakeAi/uiMeet.png" data-fancybox="/assets/imgs/pincakeAi/uiMeet.png" class="d-block w-100 rounded-inline-basic" alt="3" src="/assets/imgs/pincakeAi/uiMeet.png"></div>
-            <!-- 更多的圖片 -->
-        </div>
-    </div>
-    
-    
-</div>
-
-"""
-
-
 class UiImageCarousel:
     def __init__(self, images: List[str]):
         self.images = images
