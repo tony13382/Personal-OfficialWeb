@@ -181,7 +181,7 @@ class DivBar:
 
 class FileLink:
     def __init__(
-        self, src="", icon="", title: str = None, subtitle: str = None
+        self, title: str = None, subtitle: str = None, src: str = "", icon: str = ""
     ) -> None:
         self.src = src
         self.icon = icon
