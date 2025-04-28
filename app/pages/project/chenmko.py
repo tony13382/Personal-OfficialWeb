@@ -19,7 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().blue,
     prefix="chenmko",
-    cover="/assets/imgs/chenmko/cover.png",
+    cover="/assets/imgs/project/chenmko/cover.png",
     tags=["網站架設", "資料庫設計", "前端開發", "後端開發"],
     tools=[
         Tool("php", "開發所採用程式語言"),
@@ -30,7 +30,7 @@ page = ProjectPage(
     children=[
         Card(
             header=Image(
-                src="/assets/imgs/chenmko/cover.webp",
+                src="/assets/imgs/project/chenmko/cover.webp",
                 alt="委託封面圖",
             ),
             body=[
@@ -53,11 +53,11 @@ page = ProjectPage(
                 ImageCarousel(
                     [
                         Image(
-                            "/assets/imgs/chenmko/banner_manage_2.webp",
+                            "/assets/imgs/project/chenmko/banner_manage_2.webp",
                             "Banner 圖片管理 - Modal Show",
                         ),
                         Image(
-                            "/assets/imgs/chenmko/banner_manage_1.webp",
+                            "/assets/imgs/project/chenmko/banner_manage_1.webp",
                             "Banner 圖片管理 - Home",
                         ),
                     ]
@@ -72,7 +72,7 @@ page = ProjectPage(
             body=[
                 Text("後端・公司資訊管理", "h3"),
                 Image(
-                    src="/assets/imgs/chenmko/comp_manage.webp",
+                    src="/assets/imgs/project/chenmko/comp_manage.webp",
                     alt="後端・公司資訊管理",
                     allow_pop=True,
                 ),
@@ -89,7 +89,7 @@ page = ProjectPage(
             body=[
                 Text("後端・公司沿革資訊管理", "h3"),
                 Image(
-                    src="/assets/imgs/chenmko/comp_history.webp",
+                    src="/assets/imgs/project/chenmko/comp_history.webp",
                     alt="後端・公司沿革資訊管理",
                     allow_pop=True,
                 ),
@@ -106,7 +106,7 @@ page = ProjectPage(
             body=[
                 Text("後端・分類表格欄位管理", "h3"),
                 Image(
-                    src="/assets/imgs/chenmko/table_cols.webp",
+                    src="/assets/imgs/project/chenmko/table_cols.webp",
                     alt="後端・分類表格欄位管理",
                     allow_pop=True,
                 ),
@@ -126,7 +126,7 @@ page = ProjectPage(
             body=[
                 Text("後端・產品管理", "h3"),
                 Image(
-                    src="/assets/imgs/chenmko/products_edit_1.webp",
+                    src="/assets/imgs/project/chenmko/products_edit_1.webp",
                     alt="後端・產品管理1",
                     allow_pop=True,
                 ),
@@ -137,7 +137,7 @@ page = ProjectPage(
                     "使用此工具，內容管理者可以輕鬆地編輯產品和欄位，而不必花費過多的時間在繁瑣的切換操作上。"
                 ),
                 Image(
-                    src="/assets/imgs/chenmko/products_edit_2.webp",
+                    src="/assets/imgs/project/chenmko/products_edit_2.webp",
                     alt="後端・產品管理2",
                     allow_pop=True,
                 ),
@@ -151,7 +151,9 @@ page = ProjectPage(
             body_gap_size="large",
         ),
         Card(
-            header=Image("/assets/imgs/chenmko/db_ErModel.png", "ER Modal Table", True),
+            header=Image(
+                "/assets/imgs/project/chenmko/db_ErModel.png", "ER Modal Table", True
+            ),
             body=[
                 Text("資料架構設計（ER-Model）", "h3"),
                 ListDiv(

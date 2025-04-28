@@ -20,7 +20,7 @@ page = JobPage(
     tags=["LLM 應用", "文本探勘", "資訊佇列系統", "Webhook 串接", "API 開發"],
     children=[
         Card(
-            header=Image("/assets/imgs/trelloFinder/cover.png"),
+            header=Image("/assets/imgs/project/trelloFinder/cover.png"),
             body=[
                 Text("Trello 知識小幫手 2.0", "h4"),
                 Text("2023/07 ~ 2024/07"),

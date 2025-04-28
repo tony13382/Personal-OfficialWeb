@@ -24,7 +24,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().green,
     prefix="songla",
-    cover="/assets/imgs/songla/cover.png",
+    cover="/assets/imgs/project/songla/cover.png",
     description_links=[
         LinkButton(
             content="公司社群網站",
@@ -57,19 +57,23 @@ page = ProjectPage(
             body=[
                 Text("產品架構「公開版」", "h3"),
                 DivBar(),
-                Image("/assets/imgs/songla/systemFrame2.png", "產品架構 1", True),
+                Image(
+                    "/assets/imgs/project/songla/systemFrame2.png", "產品架構 1", True
+                ),
                 DivBar(),
-                Image("/assets/imgs/songla/systemFrame.png", "產品架構 2", True),
+                Image(
+                    "/assets/imgs/project/songla/systemFrame.png", "產品架構 2", True
+                ),
             ],
             body_gap_size="large",
         ),
         Card(
             header=UiImageCarousel(
                 [
-                    "/assets/imgs/songla/UI01.png",
-                    "/assets/imgs/songla/UI02.png",
-                    "/assets/imgs/songla/UI03.png",
-                    "/assets/imgs/songla/UI04.png",
+                    "/assets/imgs/project/songla/UI01.png",
+                    "/assets/imgs/project/songla/UI02.png",
+                    "/assets/imgs/project/songla/UI03.png",
+                    "/assets/imgs/project/songla/UI04.png",
                 ]
             ),
             body=(
@@ -89,7 +93,7 @@ page = ProjectPage(
             body=[
                 Text("導航列設計", "h3"),
                 DivBar(),
-                Image("/assets/imgs/songla/ux/Navbar.png", "導航列設計"),
+                Image("/assets/imgs/project/songla/ux/Navbar.png", "導航列設計"),
                 DivBar(),
                 Html(
                     """
@@ -109,7 +113,7 @@ page = ProjectPage(
     <div class="d-flex d-flex align-items-center">
         <p class="m-0 fs-4">在</p>
         <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-            <img src="/assets/imgs/songla/ux/icon-home.svg" width="48px">
+            <img src="/assets/imgs/project/songla/ux/icon-home.svg" width="48px">
             <b>探索</b>
         </p>
         <p class="m-0 fs-4">我們可以</p>
@@ -175,7 +179,7 @@ page = ProjectPage(
     <div class="d-flex d-flex align-items-center my-3">
         <p class="m-0 fs-4">因此在</p>
         <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-            <img src="/assets/imgs/songla/ux/icon-social.svg" class="p-1" width="48px">
+            <img src="/assets/imgs/project/songla/ux/icon-social.svg" class="p-1" width="48px">
             <b>動態</b>
         </p>
         <p class="m-0 fs-4">中我們提供社群相關屬性</p>
@@ -227,7 +231,7 @@ page = ProjectPage(
                     """
 <div class="row">
     <p class="fs-4 col-12">
-        <img src="/assets/imgs/songla/ux/icon-record.svg" width="48px">
+        <img src="/assets/imgs/project/songla/ux/icon-record.svg" width="48px">
         <b>錄音室</b>
     </p>
 </div>
@@ -340,7 +344,7 @@ page = ProjectPage(
             ]
         ),
         Card(
-            header=Image("/assets/imgs/songla/laCoin.png", "點數用途"),
+            header=Image("/assets/imgs/project/songla/laCoin.png", "點數用途"),
             body=[
                 Html(
                     """
@@ -349,7 +353,7 @@ page = ProjectPage(
         <div class="d-flex d-flex align-items-center pb-3">
             <p class="m-0 fs-4">在</p>
             <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-                <img src="/assets/imgs/songla/ux/icon-coins.svg" width="48px">
+                <img src="/assets/imgs/project/songla/ux/icon-coins.svg" width="48px">
                 <b>點數</b>
             </p>
             <p class="m-0 fs-4">我們可以</p>
@@ -395,7 +399,7 @@ page = ProjectPage(
                     """
 <div class="row justify-content-center align-items-center">
     <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/songla/ux/Music Wider.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/songla/ux/Music Wider.png" data-loaded="true">
+        <img data-src="/assets/imgs/project/songla/ux/Music Wider.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/project/songla/ux/Music Wider.png" data-loaded="true">
     </div>
     <div class="col-12 col-md-6 py-3">
         <h5 class="card-title fw-bold">寬版音樂封面照</h5>
@@ -414,7 +418,7 @@ page = ProjectPage(
                     """
 <div class="row justify-content-center align-items-center">
     <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/songla/ux/Music List.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/songla/ux/Music List.png" data-loaded="true">
+        <img data-src="/assets/imgs/project/songla/ux/Music List.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/project/songla/ux/Music List.png" data-loaded="true">
     </div>
     <div class="col-12 col-md-6 py-3">
         <h5 class="card-title fw-bold">標準音樂封面照</h5>
@@ -433,7 +437,7 @@ page = ProjectPage(
                     """
 <div class="row justify-content-center align-items-center">
     <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/songla/ux/Music Thin.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/songla/ux/Music Thin.png" data-loaded="true">
+        <img data-src="/assets/imgs/project/songla/ux/Music Thin.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/project/songla/ux/Music Thin.png" data-loaded="true">
     </div>
     <div class="col-12 col-md-6 py-3">
         <h5 class="card-title fw-bold">窄版音樂封面照</h5>
@@ -454,7 +458,7 @@ page = ProjectPage(
                 Text("設計色彩", "h3", bold=True),
                 DivBar(),
                 Image(
-                    "/assets/imgs/songla/ux/colortheme.png",
+                    "/assets/imgs/project/songla/ux/colortheme.png",
                     "設計色彩系統",
                     max_width=400,
                 ),
@@ -467,7 +471,7 @@ page = ProjectPage(
                 Text("蒙版漸層背景設計", "h3", bold=True),
                 DivBar(),
                 Image(
-                    "/assets/imgs/songla/ux/colorBG.png",
+                    "/assets/imgs/project/songla/ux/colorBG.png",
                     "蒙版漸層背景設計",
                     max_width=400,
                 ),
@@ -480,7 +484,7 @@ page = ProjectPage(
                 Text("圖示設計", "h3", bold=True),
                 DivBar(),
                 Image(
-                    "/assets/imgs/songla/ux/iconpack.png",
+                    "/assets/imgs/project/songla/ux/iconpack.png",
                     "圖示設計",
                     max_width=400,
                 ),

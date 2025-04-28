@@ -27,7 +27,7 @@ page = ProjectPage(
     status="running",
     colorSet=ThemeColor().blue,
     prefix="trelloFinder",
-    cover="/assets/imgs/trelloFinder/cover.png",
+    cover="/assets/imgs/project/trelloFinder/cover.png",
     tags=[
         "文本探勘",
         "文本搜尋算法",
@@ -67,7 +67,7 @@ page = ProjectPage(
         ),
         Card(
             header=Image(
-                src="/assets/imgs/trelloFinder/workflowPerpareData.png",
+                src="/assets/imgs/project/trelloFinder/workflowPerpareData.png",
                 alt="知識文本資料前處理流程",
                 allow_pop=True,
             ),
@@ -81,7 +81,7 @@ page = ProjectPage(
         ),
         Card(
             header=Image(
-                src="/assets/imgs/trelloFinder/workflowModule.png",
+                src="/assets/imgs/project/trelloFinder/workflowModule.png",
                 alt="模組建立流程",
                 allow_pop=True,
             ),
@@ -102,7 +102,7 @@ page = ProjectPage(
         ),
         Card(
             header=Image(
-                src="/assets/imgs/trelloFinder/workflowTrello.png",
+                src="/assets/imgs/project/trelloFinder/workflowTrello.png",
                 alt="Trello 資料建立流程",
                 allow_pop=True,
             ),
@@ -239,14 +239,14 @@ page = ProjectPage(
                 DivBar(),
                 Text("聊天文本處理", bold=True),
                 Image(
-                    "/assets/imgs/trelloFinder/workflowPrepareChat.png",
+                    "/assets/imgs/project/trelloFinder/workflowPrepareChat.png",
                     "聊天文本處理流程",
                     allow_pop=True,
                 ),
                 DivBar(),
                 Text("知識文本處理", bold=True),
                 Image(
-                    "/assets/imgs/trelloFinder/workflowPrepareKnow.png",
+                    "/assets/imgs/project/trelloFinder/workflowPrepareKnow.png",
                     "知識文本處理流程",
                     allow_pop=True,
                 ),

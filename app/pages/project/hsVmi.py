@@ -18,7 +18,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().blue,
     prefix="hsVmi",
-    cover="/assets/imgs/hsVmi/cover.png",
+    cover="/assets/imgs/project/hsVmi/cover.png",
     description_links=[
         LinkButton(
             content="GitHub 代碼",

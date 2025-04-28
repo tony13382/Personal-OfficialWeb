@@ -1,393 +1,369 @@
+
 <!doctype html>
 <html lang="zh-Hant-TW">
 
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Description" CONTENT="因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。">
-	<!-- Facebook Opengraph -->
-	<meta property="og:url" content="/projects/stockCalc" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="MeowLu Stock - 股票試算小工具" />
-	<meta property="og:description" content="因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。" />
-	<meta property="og:image" content="/assets/imgs/stockCalc/cover.png" />
-	<meta property="og:image:alt" content="MeowLu Stock - 股票試算小工具" />
-	<meta property="og:image:type" content="/assets/imgs/stockCalc/cover.png" />
-	<meta property="og:image:width" content="386px" />
-	<meta property="og:image:height" content="386px" />
-	<!-- End Facebook Opengraph -->
-	<title>MeowLu Stock - 股票試算小工具・呂亮進</title>
-	<link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png" />
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="Description" CONTENT="輕鬆好用的股票交易試算工具">
+            <!-- Facebook Opengraph -->
+            <meta property="og:url" content="/projects/stockCalc" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="MeowLu Stock - 股票試算小工具" />
+            <meta property="og:description" content="輕鬆好用的股票交易試算工具" />
+            <meta property="og:image" content="/assets/imgs/project/stockCalc/cover.png" />
+            <meta property="og:image:alt" content="MeowLu Stock - 股票試算小工具" />
+            <meta property="og:image:type" content="/assets/imgs/project/stockCalc/cover.png" />
+            <meta property="og:image:width" content="1200px" />
+            <meta property="og:image:height" content="630px" />
+            <!-- End Facebook Opengraph -->
+            <title>MeowLu Stock - 股票試算小工具・呂亮進</title>
+            <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png" />
 
-	<!-- Self CSS -->
-	<link rel="stylesheet" href="/assets/stylesheets/myself.css">
-	<link rel="stylesheet" href="/assets/stylesheets/all.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-	<!-- End of Self CSS -->
-	<!-- Fancyapp (Image Box)-->
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
-	<!-- JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
-	<!-- End of Fancyapp (Image Box)-->
-</head>
-
+            <!-- Self CSS -->
+            <link rel="stylesheet" href="/assets/stylesheets/myself.css">
+            <link rel="stylesheet" href="/assets/stylesheets/all.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+                integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+            <!-- End of Self CSS -->
+            <!-- Fancyapp (Image Box)-->
+            <!-- CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
+            <!-- JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
+            <!-- End of Fancyapp (Image Box)-->
+        </head>
+        
 
 <body class="bg-mytheme">
-	<style>
-		:root {
-			--themeColor: #804C4C;
-			--secondColor: #503030;
-		}
+    <style>
+        :root {
+            --themeColor: #804C4C;
+            --secondColor: #503030;
+        }
 
-		.bg-mytheme {
-			color: var(--secondColor);
-			position: relative;
-			letter-spacing: 0.02rem;
-			z-index: 10;
-		}
+        .bg-mytheme {
+            color: var(--secondColor);
+            position: relative;
+            letter-spacing: 0.02rem;
+            z-index: 10;
+        }
 
-		.bg-mytheme::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: var(--themeColor);
-			opacity: 0.2;
-			z-index: -1;
-		}
+        .bg-mytheme::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--themeColor);
+            opacity: 0.2;
+            z-index: -1;
+        }
 
-		.color-mytheme {
-			color: var(--themeColor);
-		}
-	</style>
-	<style>
-		.carousel__nav .carousel__button {
-			background-color: #FFFFFF;
-			box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
-		}
+        .color-mytheme {
+            color: var(--themeColor);
+        }
+    </style>
+    <style>
+        .carousel__nav .carousel__button {
+            background-color: #FFFFFF;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+        }
 
-		.carousel__nav .carousel__button:hover {
-			background-color: #f9f9f9;
-			box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
-		}
-	</style>
+        .carousel__nav .carousel__button:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+        }
+    </style>
+    
+<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold px-2 text-white" href="/">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="bi bi-list-nested"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContentLinks">
+            <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" aria-current="page" href="/">首頁</a>
+                </li>
+                <li class="nav-div rounded-pill">
+                    <a class="nav-link text-white-50">｜</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank"
+                        href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
-		<div class="container-fluid">
-			<a class="navbar-brand fw-bold px-2 text-white" href="/">
-				<i class="bi bi-arrow-left"></i>
-			</a>
-			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<i class="bi bi-list-nested"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarContentLinks">
-				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="/">首頁</a>
-					</li>
-					<li class="nav-div rounded-pill">
-						<a class="nav-link text-white-50">｜</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank"
-							href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
+        style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
+        <div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
+            <div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
+                style="width: 48px; height: 48px;">
+                <i class="bi bi-chevron-up text-decoration-none d-flex"></i>
+            </div>
+        </div>
+    </a>
+    <script src="/assets/script/scroll.js"></script>
+    
+    <div>
+        <div class="position-relative"
+            style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/project/stockCalc/cover.png); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
+            </div>
+            <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
+                <div class="container">
+                    <div class="col-12">
+                        <h1 class="text-center fw-bold text-white notoFont">MeowLu Stock - 股票試算小工具</h1>
+                        <p class="text-center fw-bold text-white m-0 notoFont">
+                            2020/10 ~ NOW
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: -160px; min-height: 100vh;">
+            <div class="row position-relative d-flex align-items-start">
+                <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
+                    <div class="card shadow p-3 bg-body rounded-basic">
+                        <div class="card-body">
+                            <span class="badge bg-success rounded-pill mb-3 fs-5">專案持續維護中</span>
+                            
+<p class="mb-2 notoFont msf-info-s">
+    輕鬆好用的股票交易試算工具
+</p>
 
-	<a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
-		style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
-		<div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
-			<div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
-				style="width: 48px; height: 48px;">
-				<i class="bi bi-chevron-up text-decoration-none d-flex"></i>
-			</div>
-		</div>
-	</a>
-	<script src="/assets/script/scroll.js"></script>
+                            
+                            <hr class="my-2" style="opacity:10%;"><div class="fs-5 text-black pt-3"><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 介面設計</span><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 產品規劃</span><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 前端開發</span></div>
+                            <div class="d-grid gap-2 mt-4">
+        <a href="https://stockcal.lianglu.uk/" type="button" target="_blank" class="btn btn-outline-theme rounded-pill">
+            <i class="bi bi-window-sidebar me-2"></i>服務網址
+        </a>
+        
 
-	<div>
-		<div class="position-relative"
-			style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/stockCalc/cover.png); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
-			<div class="position-absolute top-0 start-0 w-100 h-100"
-				style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
-			</div>
-			<div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
-				<div class="container">
-					<div class="col-12">
-						<h1 class="text-center fw-bold text-white notoFont">MeowLu Stock - 股票試算小工具</h1>
-						<p class="text-center fw-bold text-white m-0 notoFont">
-							2020/10 ~ NOW
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container" style="margin-top: -160px; min-height: 100vh;">
-			<div class="row position-relative d-flex align-items-start">
-				<div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
-					<div class="card shadow p-3 bg-body rounded-basic">
-						<div class="card-body">
-							<span class="badge bg-success rounded-pill mb-3 fs-5">專案持續維護中</span>
+        <a href="https://github.com/tony13382/Tools-StockCal" type="button" target="_blank" class="btn btn-outline-theme rounded-pill">
+            <i class="bi bi-github me-2"></i>GitHub 專案
+        </a>
+        
+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
+                    <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+                    
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/project/stockCalc/cover.png" class="img-fluid mx-auto" alt="Cover Image" >
+</div>
+    
+    
+</div>
 
-							<p class="mb-2 notoFont msf-info-s">
-								因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。
-							</p>
+                    
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    採用技術
+</h3>
 
+<hr class="my-2" style="opacity:0.15">
 
-							<hr class="my-2" style="opacity:10%;">
-							<div class="fs-5 text-black pt-3"><span
-									class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2">#
-									介面設計</span><span
-									class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2">#
-									產品規劃</span><span
-									class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 前端開發</span>
-							</div>
-							<div class="d-grid gap-2 mt-4">
-								<a href="https://stockcal.lianglu.uk/" type="button" target="_blank"
-									class="btn btn-outline-theme rounded-pill">
-									<i class="bi bi-window-sidebar me-2"></i>服務網址
-								</a>
+<div class= "row g-3">
+    <div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
 
+<p class="m-0 p-0 fw-bold ">
+    UIKit v2
+</p>
 
-								<a href="https://github.com/tony13382/Tools-StockCal" type="button" target="_blank"
-									class="btn btn-outline-theme rounded-pill">
-									<i class="bi bi-github me-2"></i>GitHub 專案
-								</a>
+<p class="m-0 p-0  ">
+    前端樣式庫
+</p>
 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-12 pb-5 d-grid gap-5">
-					<div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+</div>
+</div><div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
 
-					<div class="card shadow rounded-basic border-0">
-						<div>
-							<img src="/assets/imgs/stockCalc/cover.png" class="img-fluid mx-auto" alt="Cover Image">
-						</div>
+<p class="m-0 p-0 fw-bold ">
+    JavaScript
+</p>
 
+<p class="m-0 p-0  ">
+    邏輯計算與 Dom 交互
+</p>
 
-					</div>
+</div>
+</div>     
+</div>
+</div></div>
+    
+</div>
 
-
-					<div class="card shadow rounded-basic border-0">
-
-						<div class="card-body">
-							<div class="p-2 d-grid gap-2">
-								<h3 class="m-0 p-0  ">
-									採用技術
-								</h3>
-
-								<hr class="my-2" style="opacity:0.15">
-
-								<div class="row g-3">
-									<div class='col-12 col-sm-6'>
-										<div class="d-grid gap-0 ">
-
-											<p class="m-0 p-0 fw-bold ">
-												UIKit v2
-											</p>
-
-											<p class="m-0 p-0  ">
-												前端樣式庫
-											</p>
-
-										</div>
-									</div>
-									<div class='col-12 col-sm-6'>
-										<div class="d-grid gap-0 ">
-
-											<p class="m-0 p-0 fw-bold ">
-												JavaScript
-											</p>
-
-											<p class="m-0 p-0  ">
-												邏輯計算與 Dom 交互
-											</p>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="card shadow rounded-basic border-0">
-						<div>
-							<a href="/assets/imgs/stockCalc/priceCalc.png" data-fancybox="gallery" class="mx-auto">
-								<img src="/assets/imgs/stockCalc/priceCalc.png" class="img-fluid mx-auto" alt="試算交易手續費">
-							</a>
-						</div>
-						<div class="card-body">
-							<div class="p-2 d-grid gap-2">
-								<h3 class="m-0 p-0  ">
-									試算交易手續費
-								</h3>
-							</div>
-						</div>
-
-					</div>
+                    
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/project/stockCalc/priceCalc.png" class="img-fluid mx-auto" alt="試算交易手續費" >
+</div>
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    試算交易手續費
+</h3>
+</div></div>
+    
+</div>
 
 
-					<div class="card shadow rounded-basic border-0">
-						<div>
-							<a href="/assets/imgs/stockCalc/trendCalc.png" data-fancybox="gallery" class="mx-auto">
-								<img src="/assets/imgs/stockCalc/trendCalc.png" class="img-fluid mx-auto"
-									alt="預估漲跌目標股價">
-							</a>
-						</div>
-						<div class="card-body">
-							<div class="p-2 d-grid gap-2">
-								<h3 class="m-0 p-0  ">
-									預估漲跌目標股價
-								</h3>
-							</div>
-						</div>
-
-					</div>
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/project/stockCalc/trendCalc.png" class="img-fluid mx-auto" alt="預估漲跌目標股價" >
+</div>
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    預估漲跌目標股價
+</h3>
+</div></div>
+    
+</div>
 
 
-					<div class="card shadow rounded-basic border-0">
-						<div>
-							<a href="/assets/imgs/stockCalc/quickCalc.png" data-fancybox="gallery" class="mx-auto">
-								<img src="/assets/imgs/stockCalc/quickCalc.png" class="img-fluid mx-auto" alt="快速加減計算">
-							</a>
-						</div>
-						<div class="card-body">
-							<div class="p-2 d-grid gap-2">
-								<h3 class="m-0 p-0  ">
-									快速加減計算
-								</h3>
-							</div>
-						</div>
-
-					</div>
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/project/stockCalc/quickCalc.png" class="img-fluid mx-auto" alt="快速加減計算" >
+</div>
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    快速加減計算
+</h3>
+</div></div>
+    
+</div>
 
 
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
-	</div>
+    </div>
+    
+<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
+                <h4 class="fs-5">
+                    連結 Links
+                </h4>
+                <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
+                    rel="noopener noreferrer" class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-archive-fill"></i>
+                        學習資源庫
+                    </p>
+                </a>
+                <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        旗下知識帳號（DigiOcean）
+                    </p>
+                </a>
+                <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-bookmark-heart-fill"></i>
+                        知識推薦獲取來源
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    贊助 Donate
+                </h4>
+                <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cup-hot-fill"></i>
+                        Buy Me A Coffee
+                    </p>
+                </a>
+                <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cash-stack"></i>
+                        贊助系統（Portaly）
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    聯絡 Connections
+                </h4>
+                <a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-envelope-fill"></i>
+                        Email
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        Instagram
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-facebook"></i>
+                        Facebook
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-info-square-fill"></i>
+                        Portaly 傳送門
+                    </p>
+                </a>
+            </div>
+            <hr>
+            <p class="text-lightpink text-center py-2">
+                Copyright © 2024 Liang-Chin, Lu 版權所有
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript; choose one of the two! -->
 
-	<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
-		<div class="container py-4">
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
-					<h4 class="fs-5">
-						連結 Links
-					</h4>
-					<a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
-						rel="noopener noreferrer" class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-archive-fill"></i>
-							學習資源庫
-						</p>
-					</a>
-					<a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-instagram"></i>
-							旗下知識帳號（DigiOcean）
-						</p>
-					</a>
-					<a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-bookmark-heart-fill"></i>
-							知識推薦獲取來源
-						</p>
-					</a>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 my-4">
-					<h4 class="fs-5">
-						贊助 Donate
-					</h4>
-					<a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-cup-hot-fill"></i>
-							Buy Me A Coffee
-						</p>
-					</a>
-					<a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-cash-stack"></i>
-							贊助系統（Portaly）
-						</p>
-					</a>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 my-4">
-					<h4 class="fs-5">
-						聯絡 Connections
-					</h4>
-					<a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-envelope-fill"></i>
-							Email
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
-						target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-instagram"></i>
-							Instagram
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
-						target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-facebook"></i>
-							Facebook
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml" target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-info-square-fill"></i>
-							Portaly 傳送門
-						</p>
-					</a>
-				</div>
-				<hr>
-				<p class="text-lightpink text-center py-2">
-					Copyright © 2024 Liang-Chin, Lu 版權所有
-				</p>
-			</div>
-		</div>
-	</footer>
-	<!-- Optional JavaScript; choose one of the two! -->
-
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-		</script>
-	<script src="/assets/script/scroll.js"></script>
-	<script type="text/javascript" src="/assets/script/lozad.min.js"></script>
-	<script>
-		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-		observer.observe();
-	</script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+<script src="/assets/script/scroll.js"></script>
+<script type="text/javascript" src="/assets/script/lozad.min.js"></script>
+<script>
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+</script>
 
 </body>
 

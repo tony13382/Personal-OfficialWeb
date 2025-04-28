@@ -31,7 +31,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().blue,
     prefix="jobAnalytics2020",
-    cover="/assets/imgs/jobAnalytics2020/cover.png",
+    cover="/assets/imgs/project/jobAnalytics2020/cover.png",
     description_links=[
         LinkButton(
             content="專案網址（datastudio）",

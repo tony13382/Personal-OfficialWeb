@@ -20,7 +20,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().purple,
     prefix="foodome",
-    cover="/assets/imgs/foodome/cover.png",
+    cover="/assets/imgs/project/foodome/cover.png",
     description_links=[
         LinkButton(
             content="企劃書網址",
@@ -59,7 +59,14 @@ page = ProjectPage(
         ),
         Card(
             header=ListDiv(
-                [Image("/assets/imgs/foodome/ui01.png", "UI 01", True, max_width=320)],
+                [
+                    Image(
+                        "/assets/imgs/project/foodome/ui01.png",
+                        "UI 01",
+                        True,
+                        max_width=320,
+                    )
+                ],
                 mt=4,
             ),
             body=[
@@ -70,7 +77,14 @@ page = ProjectPage(
         ),
         Card(
             header=ListDiv(
-                [Image("/assets/imgs/foodome/ui02.png", "UI 01", True, max_width=320)],
+                [
+                    Image(
+                        "/assets/imgs/project/foodome/ui02.png",
+                        "UI 01",
+                        True,
+                        max_width=320,
+                    )
+                ],
                 mt=4,
             ),
             body=[
@@ -81,7 +95,14 @@ page = ProjectPage(
         ),
         Card(
             header=ListDiv(
-                [Image("/assets/imgs/foodome/ui03.png", "UI 01", True, max_width=320)],
+                [
+                    Image(
+                        "/assets/imgs/project/foodome/ui03.png",
+                        "UI 01",
+                        True,
+                        max_width=320,
+                    )
+                ],
                 mt=4,
             ),
             body=[
@@ -92,7 +113,14 @@ page = ProjectPage(
         ),
         Card(
             header=ListDiv(
-                [Image("/assets/imgs/foodome/ui04.png", "UI 01", True, max_width=320)],
+                [
+                    Image(
+                        "/assets/imgs/project/foodome/ui04.png",
+                        "UI 01",
+                        True,
+                        max_width=320,
+                    )
+                ],
                 mt=4,
             ),
             body=[

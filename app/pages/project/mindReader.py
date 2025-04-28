@@ -26,7 +26,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().orange,
     prefix="mindReader",
-    cover="/assets/imgs/mindReader/cover.png",
+    cover="/assets/imgs/project/mindReader/cover.png",
     description_links=[
         LinkButton(
             content="專案網址",
@@ -100,13 +100,13 @@ page = ProjectPage(
                 Text("產品架構", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/mindReader/systemFrame.png",
+                    "/assets/imgs/project/mindReader/systemFrame.png",
                     "MindReader's system design",
                     True,
                 ),
                 DivBar(),
                 Image(
-                    "/assets/imgs/mindReader/systemFrame2.png",
+                    "/assets/imgs/project/mindReader/systemFrame2.png",
                     "MindReader's system design",
                     True,
                 ),
@@ -115,10 +115,10 @@ page = ProjectPage(
         Card(
             header=UiImageCarousel(
                 [
-                    "/assets/imgs/mindReader/keybroad01.png",
-                    "/assets/imgs/mindReader/keybroad02.png",
-                    "/assets/imgs/mindReader/keybroad03.png",
-                    "/assets/imgs/mindReader/keybroad04.png",
+                    "/assets/imgs/project/mindReader/keybroad01.png",
+                    "/assets/imgs/project/mindReader/keybroad02.png",
+                    "/assets/imgs/project/mindReader/keybroad03.png",
+                    "/assets/imgs/project/mindReader/keybroad04.png",
                 ]
             ),
             body=(
@@ -146,7 +146,9 @@ page = ProjectPage(
             ),
         ),
         Card(
-            header=Image("/assets/imgs/mindReader/apiFlow (1).jpg", "API Flow", True),
+            header=Image(
+                "/assets/imgs/project/mindReader/apiFlow (1).jpg", "API Flow", True
+            ),
             body=[
                 Text("輸入文本轉換流程", "h3"),
                 Html(

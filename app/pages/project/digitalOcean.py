@@ -17,7 +17,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().orange,
     prefix="digitalOcean",
-    cover="/assets/imgs/digitalOcean/cover.png",
+    cover="/assets/imgs/project/digitalOcean/cover.png",
     description_links=[
         LinkButton(
             content="專案網址（datastudio）",

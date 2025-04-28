@@ -21,7 +21,7 @@ page = JobPage(
     tags=["資訊設計", "提案", "UI 設計", "系統規劃"],
     children=[
         Card(
-            header=Image("/assets/imgs/songla/cover.png"),
+            header=Image("/assets/imgs/project/songla/cover.png"),
             body=[
                 Text("產品設計師／技術總管", "h4"),
                 Text("2022/01 ~ 2023/09"),
