@@ -61,7 +61,7 @@ page = ProjectPage(
             body_gap_size="large",
         ),
         Card(
-            header=Youtube("https://www.youtube.com/embed/mOWnXJHIqIY"),
+            header=Youtube("https://www.youtube.com/embed/R_vsL1NFWN8"),
             body=[
                 Text("教案：10 分鐘學會製作 Linebot", "h3"),
                 FileLink(
