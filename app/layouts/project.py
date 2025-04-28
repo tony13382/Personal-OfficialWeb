@@ -34,7 +34,7 @@ class ProjectPage:
         self.subdescription = subdescription
         self.tags = tags or []
         self.desc_links = description_links or []
-        self.scores = scores or []
+        self.scores = [] if scores is None else scores.copy()
         self.tools = tools or []
         self.children = children or []
 
@@ -102,19 +102,13 @@ class ProjectPage:
                 Text("專案成就", "h3"),
             ]
             score_list = ListDiv(gap_size="nano")
-            index = 0
-            for score in self.scores:
+            for index, score in enumerate(self.scores):
                 if index != 0:
                     score_list.children.append(DivBar(space="nano"))
-                score_list.children.append(
-                    Score(
-                        name=score.name,
-                        group=score.group,
-                        score=score.score,
-                    )
-                )
-                index += 1
+                score_list.children.append(score)
             meta_card.body.append(score_list)
+        else:
+            meta_card.body = []
 
         tools_html = ""
         if self.tools:

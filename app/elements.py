@@ -38,14 +38,14 @@ class Card:
     def __init__(
         self,
         header=None,
-        body: list = [],
-        footer: list = [],
+        body: list = None,
+        footer: list = None,
         body_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
         footer_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
     ):
         self.header = header
-        self.body = body
-        self.footer = footer
+        self.body = [] if body is None else body
+        self.footer = [] if footer is None else footer
         self.body_gap_size = body_gap_size
         self.footer_gap_size = footer_gap_size
 
@@ -336,14 +336,14 @@ class ListStr:
 class ListDiv:
     def __init__(
         self,
-        children: list = [],
+        children: list = None,
         gap_size: Literal["nano", "small", "regular", "large"] = "regular",
         mt: int = None,
         mb: int = None,
         ms: int = None,
         me: int = None,
     ):
-        self.children = children
+        self.children = children if children is not None else []
         self.gap_size = gap_size
         self.mt = mt
         self.mb = mb

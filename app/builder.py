@@ -27,6 +27,9 @@ class WebBuilder:
     def addProject(self, newProject: ProjectPage):
         self.projectWebConfigs.append(newProject)
 
+    def getProjects(self):
+        return self.projectWebConfigs
+
     def build(self):
         for page in self.projectWebConfigs:
             file_path = self.path + f"{page.prefix}.html"
@@ -48,6 +51,5 @@ builder.addProject(foodome.page)
 builder.addProject(noDrinkNoDrunk.page)
 builder.addProject(oneDayLover.page)
 builder.addProject(jobAnalytics2020.page)
-builder.addProject(digitalOcean.page)
 builder.addProject(digitalOcean.page)
 builder.addProject(techlife.page)
