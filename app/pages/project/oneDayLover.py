@@ -4,7 +4,7 @@ from app.elements import (
     Card,
     FileLink,
     Image,
-    Link,
+    LinkButton,
     Text,
     Tool,
 )
@@ -21,13 +21,13 @@ page = ProjectPage(
     prefix="oneDayLover",
     cover="/assets/imgs/oneDayLover/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="GitHub・前端版本",
             href="https://github.com/ziyihong/ziyihong.github.io",
             open_in_tab=True,
             icon="bi-github",
         ),
-        Link(
+        LinkButton(
             content="GitHub・JSP 版本",
             href="https://github.com/ziyihong/ziyihong.github.io/tree/master/final",
             open_in_tab=True,

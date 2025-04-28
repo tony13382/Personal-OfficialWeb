@@ -5,7 +5,7 @@ from app.elements import (
     DivBar,
     FileLink,
     Image,
-    Link,
+    LinkButton,
     ListDiv,
     Text,
     Tool,
@@ -23,14 +23,14 @@ page = ProjectPage(
     prefix="hsCloudMeetingManage",
     cover="/assets/imgs/hsCloudMeetingManage/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="GitHub 代碼",
             href="https://github.com/tony13382/CycuSA-MeetManagement",
             fill=True,
             open_in_tab=True,
             icon="bi-github",
         ),
-        Link(
+        LinkButton(
             content="Figma 設計界面稿",
             href="https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94",
             open_in_tab=True,

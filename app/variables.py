@@ -16,26 +16,6 @@ class ThemeColor:
         self.pink: Tuple[str, str] = ("#804C78", "#653A5E")
         self.natural: Tuple[str, str] = ("#373737", "#2B2B2B")
 
-    def get_color(self, name: str, is_dark: bool = False) -> str:
-        """获取指定名称的颜色值
-
-        Args:
-            name: 颜色名称
-            is_dark: 是否获取深色版本
-
-        Returns:
-            str: 颜色值
-        """
-        if name == "home":
-            return self.home_color[1] if is_dark else self.home_color[0]
-        if name == "natural":
-            return self.natural[1] if is_dark else self.natural[0]
-
-        if name in self.__dict__:
-            return self.__dict__[name][1] if is_dark else self.__dict__[name][0]
-
-        raise ValueError(f"Unknown color name: {name}")
-
 
 GapClass = {
     "nano": "gap-0",

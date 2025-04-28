@@ -3,7 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     FileLink,
-    Link,
+    LinkButton,
     Score,
     Text,
     Tool,
@@ -21,7 +21,7 @@ page = ProjectPage(
     prefix="techlife",
     cover="/assets/imgs/techlife/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="企劃書網址",
             href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view",
             open_in_tab=True,

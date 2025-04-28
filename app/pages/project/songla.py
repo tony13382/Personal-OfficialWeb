@@ -6,7 +6,7 @@ from app.elements import (
     FileLink,
     Html,
     Image,
-    Link,
+    LinkButton,
     Score,
     Text,
     Tool,
@@ -26,7 +26,7 @@ page = ProjectPage(
     prefix="songla",
     cover="/assets/imgs/songla/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="公司社群網站",
             href="https://linkby.tw/Songla",
             open_in_tab=True,

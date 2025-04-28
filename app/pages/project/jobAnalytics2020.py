@@ -11,7 +11,7 @@ from app.elements import (
     Html,
     Image,
     ImageCarousel,
-    Link,
+    LinkButton,
     ListDiv,
     ListStr,
     Score,
@@ -33,7 +33,7 @@ page = ProjectPage(
     prefix="jobAnalytics2020",
     cover="/assets/imgs/jobAnalytics2020/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="專案網址（datastudio）",
             href="https://datastudio.google.com/s/rcRR2G3x4VI",
             open_in_tab=True,

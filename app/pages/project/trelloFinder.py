@@ -10,7 +10,7 @@ from app.elements import (
     FileLink,
     Html,
     Image,
-    Link,
+    LinkButton,
     ListDiv,
     Score,
     Text,
@@ -37,7 +37,7 @@ page = ProjectPage(
         "佇列系統",
     ],
     description_links=[
-        Link(
+        LinkButton(
             content="專案網址",
             href="https://github.com/tony13382/Tools-TrelloFinderV2",
             icon="bi-github",

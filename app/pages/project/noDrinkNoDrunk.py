@@ -4,7 +4,7 @@ from app.elements import (
     Card,
     DivBar,
     Image,
-    Link,
+    LinkButton,
     Text,
     Tool,
 )
@@ -21,20 +21,20 @@ page = ProjectPage(
     prefix="noDrinkNoDrunk",
     cover="/assets/imgs/noDrinkNoDrunk/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="專案網址・純前端展示",
             href="https://tony13382.github.io/CycuWebDesign-FinalWeb/pages/products.html",
             fill=True,
             open_in_tab=True,
             icon="bi-cloud",
         ),
-        Link(
+        LinkButton(
             content="GitHub 專案・前端版本",
             href="https://github.com/tony13382/CycuWebDesign-FinalWeb",
             open_in_tab=True,
             icon="bi-github",
         ),
-        Link(
+        LinkButton(
             content="GitHub 專案・JSP 版本",
             href="https://github.com/tony13382/CycuWebDesign-JspWeb",
             open_in_tab=True,

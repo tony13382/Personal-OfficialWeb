@@ -3,7 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
-    Link,
+    LinkButton,
     Text,
     Tool,
 )
@@ -19,7 +19,7 @@ page = ProjectPage(
     prefix="digitalOcean",
     cover="/assets/imgs/digitalOcean/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="專案網址（datastudio）",
             href="https://meowlu.notion.site/12e7c67f7f2d47249f0111882d932663",
             open_in_tab=True,

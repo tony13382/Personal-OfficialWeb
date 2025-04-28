@@ -25,8 +25,8 @@ class Head:
             <meta property="og:image" content="{self.cover}" />
             <meta property="og:image:alt" content="{self.title}" />
             <meta property="og:image:type" content="{self.cover}" />
-            <meta property="og:image:width" content="386px" />
-            <meta property="og:image:height" content="386px" />
+            <meta property="og:image:width" content="1200px" />
+            <meta property="og:image:height" content="630px" />
             <!-- End Facebook Opengraph -->
             <title>{self.title}・呂亮進</title>
             <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png" />

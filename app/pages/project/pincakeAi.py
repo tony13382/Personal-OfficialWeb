@@ -6,7 +6,7 @@ from app.elements import (
     FileLink,
     Html,
     Image,
-    Link,
+    LinkButton,
     ListDiv,
     ListStr,
     Text,
@@ -24,7 +24,7 @@ page = ProjectPage(
     prefix="pincakeAi",
     cover="/assets/imgs/pincakeAi/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="企劃書網址",
             href="https://drive.google.com/file/d/1OlLW1L3FS_4KHjfdIIe_AVNtSnrNocFT/view?usp=sharing",
             open_in_tab=True,

@@ -3,7 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     FileLink,
-    Link,
+    LinkButton,
     ListDiv,
     Text,
     Tool,
@@ -20,7 +20,7 @@ page = ProjectPage(
     prefix="hsVmi",
     cover="/assets/imgs/hsVmi/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="GitHub 代碼",
             href="https://github.com/tony13382/CycuSA_VMI",
             fill=True,

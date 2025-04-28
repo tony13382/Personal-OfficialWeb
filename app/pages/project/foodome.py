@@ -4,7 +4,7 @@ from app.elements import (
     Card,
     FileLink,
     Image,
-    Link,
+    LinkButton,
     ListDiv,
     Text,
     Tool,
@@ -22,7 +22,7 @@ page = ProjectPage(
     prefix="foodome",
     cover="/assets/imgs/foodome/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="企劃書網址",
             href="https://drive.google.com/file/d/1cK0o97WPkW5v2Z6mb2eFtH3JYOkN6VJ8/view",
             open_in_tab=True,

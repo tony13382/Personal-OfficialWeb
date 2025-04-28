@@ -1,5 +1,7 @@
+import os
+from typing import List
 from app.layouts.project import ProjectPage
-from app.pages import (
+from app.pages.project import (
     digitalOcean,
     foodome,
     hsCloudMeetingManage,
@@ -14,7 +16,6 @@ from app.pages import (
     trelloFinder,
     chenmko,
 )
-import os
 
 
 class WebBuilder:
@@ -27,6 +28,9 @@ class WebBuilder:
     def addProject(self, newProject: ProjectPage):
         self.projectWebConfigs.append(newProject)
 
+    def addProjects(self, newProjects: List[ProjectPage]):
+        self.projectWebConfigs.extend(newProjects)
+
     def getProjects(self):
         return self.projectWebConfigs
 
@@ -38,18 +42,37 @@ class WebBuilder:
                 print(f"Output to html Successful. File: {file_path}")
 
 
-builder = WebBuilder("static/")
+builder = WebBuilder("projects/")
 
-builder.addProject(trelloFinder.page)
-builder.addProject(chenmko.page)
-builder.addProject(songla.page)
-builder.addProject(mindReader.page)
-builder.addProject(hsCloudMeetingManage.page)
-builder.addProject(hsVmi.page)
-builder.addProject(pincakeAi.page)
-builder.addProject(foodome.page)
-builder.addProject(noDrinkNoDrunk.page)
-builder.addProject(oneDayLover.page)
-builder.addProject(jobAnalytics2020.page)
-builder.addProject(digitalOcean.page)
-builder.addProject(techlife.page)
+
+builder.addProjects(
+    [
+        trelloFinder.page,
+        chenmko.page,
+        songla.page,
+        mindReader.page,
+        hsCloudMeetingManage.page,
+        hsVmi.page,
+        pincakeAi.page,
+        foodome.page,
+        noDrinkNoDrunk.page,
+        oneDayLover.page,
+        jobAnalytics2020.page,
+        digitalOcean.page,
+        techlife.page,
+    ]
+)
+
+# builder.addProject(trelloFinder.page)
+# builder.addProject(chenmko.page)
+# builder.addProject(songla.page)
+# builder.addProject(mindReader.page)
+# builder.addProject(hsCloudMeetingManage.page)
+# builder.addProject(hsVmi.page)
+# builder.addProject(pincakeAi.page)
+# builder.addProject(foodome.page)
+# builder.addProject(noDrinkNoDrunk.page)
+# builder.addProject(oneDayLover.page)
+# builder.addProject(jobAnalytics2020.page)
+# builder.addProject(digitalOcean.page)
+# builder.addProject(techlife.page)

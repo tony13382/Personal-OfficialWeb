@@ -1,4 +1,6 @@
 from typing import List, Literal, Optional, Tuple
+
+from pydantic import BaseModel
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer
@@ -8,20 +10,30 @@ from app.elements import (
     Html,
     LinkButton,
     ListDiv,
+    ListStr,
     Score,
     Image,
     Text,
     Tool,
 )
+from app.layouts.project import ProjectPage
 
 
-class ProjectPage:
+class JobRecord(BaseModel):
+    cover: str
+    title: str
+    startdate: str
+    enddate: str
+    jobDesc: ListStr
+    Linkproject: ProjectPage
+
+
+class JobPage:
     def __init__(
         self,
         title: str,
         startdate: str,
         enddate: str,
-        status: Literal["running", "closed"],
         colorSet: Tuple,  # ThemeColor
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
@@ -29,14 +41,11 @@ class ProjectPage:
         subdescription: Optional[str] = None,
         tags: Optional[List[str]] = None,
         description_links: Optional[List[LinkButton]] = None,
-        scores: Optional[List[Score]] = None,
-        tools: Optional[List[Tool]] = None,
         children: Optional[List[Card]] = None,
     ):
         self.title = title
         self.startdate = startdate
         self.enddate = enddate
-        self.status = status
         self.colorSet = colorSet
         self.prefix = prefix
         self.cover = cover
@@ -44,8 +53,6 @@ class ProjectPage:
         self.subdescription = subdescription
         self.tags = tags or []
         self.desc_links = description_links or []
-        self.scores = [] if scores is None else scores.copy()
-        self.tools = tools or []
         self.children = children or []
 
     def __str__(self):
@@ -55,7 +62,7 @@ class ProjectPage:
                 title=self.title,
                 description=self.description,
                 cover=self.cover,
-                link="/projects/" + self.prefix,
+                link="/jobs/" + self.prefix,
             )
         )
 
@@ -66,12 +73,6 @@ class ProjectPage:
         items_html = ""
         for item in self.children:
             items_html += str(item)
-
-        status_html = ""
-        if self.status == "running":
-            status_html = """<span class="badge bg-success rounded-pill mb-3 fs-5">專案持續維護中</span>"""
-        elif self.status == "closed":
-            status_html = """<span class="badge bg-secondary rounded-pill mb-3 fs-5">專案關閉</span>"""
 
         description_html = ""
         if self.description:
@@ -89,7 +90,6 @@ class ProjectPage:
     {self.subdescription}
 </p>
 """
-
         tags_html = ""
         if self.tags:
             tags_html = """<hr class="my-2" style="opacity:10%;"><div class="fs-5 text-black pt-3">"""
@@ -107,40 +107,8 @@ class ProjectPage:
         meta_card = Card()
         if self.cover:
             meta_card.header = Image(self.cover, "Cover Image")
-        if self.scores:
-            meta_card.body = [
-                Text("專案成就", "h3"),
-            ]
-            score_list = ListDiv(gap_size="nano")
-            for index, score in enumerate(self.scores):
-                if index != 0:
-                    score_list.children.append(DivBar(space="nano"))
-                score_list.children.append(score)
-            meta_card.body.append(score_list)
         else:
             meta_card.body = []
-
-        tools_html = ""
-        if self.tools:
-            tool_content = ""
-            for tool in self.tools:
-                tool_content = tool_content + str(tool)
-
-            tools_html += str(
-                Card(
-                    body=[
-                        Text("採用技術", "h3"),
-                        DivBar(),
-                        Html(
-                            f"""
-<div class= "row g-3">
-    {tool_content}     
-</div>
-"""
-                        ),
-                    ],
-                )
-            )
 
         content_html = ""
         if self.children:
@@ -228,7 +196,6 @@ class ProjectPage:
                 <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
                     <div class="card shadow p-3 bg-body rounded-basic">
                         <div class="card-body">
-                            {status_html}
                             {description_html}
                             {subdesc_html}
                             {tags_html}
@@ -239,7 +206,6 @@ class ProjectPage:
                 <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
                     <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
                     {str(meta_card)}
-                    {tools_html}
                     {content_html}
                 </div>
             </div>

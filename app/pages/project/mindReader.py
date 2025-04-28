@@ -7,7 +7,7 @@ from app.elements import (
     FileLink,
     Html,
     Image,
-    Link,
+    LinkButton,
     ListDiv,
     Score,
     Text,
@@ -28,7 +28,7 @@ page = ProjectPage(
     prefix="mindReader",
     cover="/assets/imgs/mindReader/cover.png",
     description_links=[
-        Link(
+        LinkButton(
             content="專案網址",
             href="https://github.com/tony13382/MindReader-MVP",
             open_in_tab=True,
