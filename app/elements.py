@@ -240,7 +240,7 @@ class Image:
     def __str__(self):
         max_width_style = ""
         if self.max_width:
-            max_width_style = f"""style="max-width: {self.max_width}px;" """
+            max_width_style = f"""style="width:100%; max-width: {self.max_width}px;" """
 
         if self.allow_pop:
             return f"""
