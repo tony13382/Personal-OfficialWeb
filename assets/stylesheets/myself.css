@@ -192,3 +192,7 @@
     transform: scale(1.02);
     transition-duration: 0.5s;
 }
+
+.file-links:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
+}

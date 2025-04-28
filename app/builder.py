@@ -10,20 +10,32 @@ from app.pages import (
     oneDayLover,
     pincakeAi,
     songla,
+    techlife,
     trelloFinder,
     chenmko,
 )
+import os
 
 
 class WebBuilder:
-    def __init__(self) -> None:
+    def __init__(self, path: str) -> None:
+        self.path = path
         self.projectWebConfigs = []
+        # 确保目录存在
+        os.makedirs(path, exist_ok=True)
 
     def addProject(self, newProject: ProjectPage):
         self.projectWebConfigs.append(newProject)
 
+    def build(self):
+        for page in self.projectWebConfigs:
+            file_path = self.path + f"{page.prefix}.html"
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(str(page))
+                print(f"Output to html Successful. File: {file_path}")
 
-builder = WebBuilder()
+
+builder = WebBuilder("static/")
 
 builder.addProject(trelloFinder.page)
 builder.addProject(chenmko.page)
@@ -37,3 +49,5 @@ builder.addProject(noDrinkNoDrunk.page)
 builder.addProject(oneDayLover.page)
 builder.addProject(jobAnalytics2020.page)
 builder.addProject(digitalOcean.page)
+builder.addProject(digitalOcean.page)
+builder.addProject(techlife.page)

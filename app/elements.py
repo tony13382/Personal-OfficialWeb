@@ -203,7 +203,7 @@ class FileLink:
         )
         return f"""
 <a href="{self.src}" type="button" target="_blank" class="text-decoration-none">
-    <div class="card rounded-inline-basic">
+    <div class="card rounded-inline-basic file-links">
         <div class="card-body d-flex p-2 align-items-center">
             <div class="col-auto">
                 <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
