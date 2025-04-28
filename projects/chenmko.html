@@ -1,602 +1,589 @@
+
 <!doctype html>
 <html lang="zh-Hant-TW">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Description" CONTENT="About Liang Chin Lu">
-	<!-- Facebook Opengraph -->
-	<meta property="og:url" content="https://lianglu.uk/projects/chenmko.html" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Chenmko 全端網頁開發內容" />
-	<meta property="og:description" content="php 全端開發，建立，協助企業宣傳產品給全國客戶" />
-	<meta property="og:image" content="/assets/imgs/chenmko/cover.png" />
-	<meta property="og:image:alt" content="Chenmko 全端網頁開發內容" />
-	<meta property="og:image:type" content="/assets/imgs/chenmko/cover.png" />
-	<meta property="og:image:width" content="386px" />
-	<meta property="og:image:height" content="386px" />
-	<!-- End Facebook Opengraph -->
-	<title>Chenmko 全端網頁開發內容 | 呂亮進</title>
-	<link rel="Shortcut Icon" type="image/x-icon" href="https://lianglu.uk/favicon.png" />
 
-	<!--Start Load CSS-->
-	<link rel="stylesheet" href="/assets/stylesheets/myself.css">
-	<link rel="stylesheet" href="/assets/stylesheets/all.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-	<!-- Fancyapp (Image Box)-->
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
-	<!-- JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
-</head>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="Description" CONTENT="Chenmko 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。">
+            <!-- Facebook Opengraph -->
+            <meta property="og:url" content="/projects/chenmko" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Chenmko 全端網頁開發內容" />
+            <meta property="og:description" content="Chenmko 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。" />
+            <meta property="og:image" content="/assets/imgs/chenmko/cover.png" />
+            <meta property="og:image:alt" content="Chenmko 全端網頁開發內容" />
+            <meta property="og:image:type" content="/assets/imgs/chenmko/cover.png" />
+            <meta property="og:image:width" content="386px" />
+            <meta property="og:image:height" content="386px" />
+            <!-- End Facebook Opengraph -->
+            <title>Chenmko 全端網頁開發內容・呂亮進</title>
+            <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png" />
+
+            <!-- Self CSS -->
+            <link rel="stylesheet" href="/assets/stylesheets/myself.css">
+            <link rel="stylesheet" href="/assets/stylesheets/all.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+                integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+            <!-- End of Self CSS -->
+            <!-- Fancyapp (Image Box)-->
+            <!-- CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css" />
+            <!-- JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
+            <!-- End of Fancyapp (Image Box)-->
+        </head>
+        
 
 <body class="bg-mytheme">
-	<style>
-		:root {
-			--themeColor: #4C6D80;
-			--secondColor: #304450;
-		}
+    <style>
+        :root {
+            --themeColor: #4C6D80;
+            --secondColor: #304450;
+        }
 
-		.bg-mytheme {
-			color: var(--secondColor);
-			position: relative;
-			letter-spacing: 0.02rem;
-			z-index: 10;
-		}
+        .bg-mytheme {
+            color: var(--secondColor);
+            position: relative;
+            letter-spacing: 0.02rem;
+            z-index: 10;
+        }
 
-		.bg-mytheme::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: var(--themeColor);
-			opacity: 0.2;
-			z-index: -1;
-		}
+        .bg-mytheme::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--themeColor);
+            opacity: 0.2;
+            z-index: -1;
+        }
 
-		.color-mytheme {
-			color: var(--themeColor);
-		}
-	</style>
-	<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
-		<div class="container-fluid">
-			<a class="navbar-brand fw-bold px-2 text-white" href="/">
-				<i class="bi bi-arrow-left"></i>
-			</a>
-			<button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<i class="bi bi-list-nested"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarContentLinks">
-				<ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" aria-current="page" href="/">首頁</a>
-					</li>
-					<li class="nav-div rounded-pill">
-						<a class="nav-link text-white-50">｜</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
-					</li>
-					<li class="nav-item rounded-pill">
-						<a class="nav-link" target="_blank"
-							href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
-		style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
-		<div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
-			<div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
-				style="width: 48px; height: 48px;">
-				<i class="bi bi-chevron-up text-decoration-none d-flex"></i>
-			</div>
-		</div>
-	</a>
-	<script src="/assets/script/scroll.js"></script>
-	<div>
-		<div class="position-relative"
-			style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/chenmko/cover.png); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
-			<div class="position-absolute top-0 start-0 w-100 h-100"
-				style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
-			</div>
-			<div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
-				<div class="container">
-					<div class="col-12">
-						<h1 class="text-center fw-bold text-white notoFont">Chenmko 全端網頁開發內容</h1>
-						<p class="text-center fw-bold text-white m-0 notoFont">2023</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container" style="margin-top: -160px; min-height: 100vh;">
-			<div class="row position-relative d-flex align-items-start">
-				<div class="col-lg-4 col-12 pb-4 sticky-lg-top " style="padding-top: 92px;">
-					<div class="card shadow p-3 bg-body rounded-basic">
-						<div class="card-body">
-							<span class="badge bg-secondary rounded-pill mb-2 fs-5">專案結束</span>
-							<p class="mb-2 notoFont msf-info-s">
-								CHENMKO
-								企業委託專案，專案旨在為企業提供一個完整的官網和後台系統管理產品。根據客戶提供的設計圖和需求，打造出一個兼具美觀和實用性的網站，並且使用響應式(RWD)設計確保在不同的設備上都能良好地顯示。
-								<br>目標提供易用、高效和具備美感的官網和後台系統管理產品，讓他們能夠更好地展示和管理企業資訊，提高企業形象和競爭力。
-							</p>
-							<div class="fs-5 text-black pt-3">
-								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 網站架設</span>
-								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 資料庫設計</span>
-								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 前端開發</span>
-								<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden"># 後端開發</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-12 pb-4">
-					<div style="height: 92px;" class="d-none d-lg-block"></div>
-					<div class="card shadow rounded-basic border-0">
-						<img src="/assets/imgs/chenmko/cover.webp" class="img-fluid" alt="...">
-						<div class="p-2">
-							<div class="card-body">
-								<div class="col-12 pt-2">
-									<p class="m-0">
-										根據企業的設計圖打造官網和後台系統管理產品。
-									<ul class="py-2 ps-4 lh-lg">
-										<li>技術前端採用 bootstrap 打造出響應式 (RWD) 網頁，確保網站在不同設備上能夠良好地顯示。</li>
-										<li>後端採用 php 語言打造，以便後續系統交接「企業要求」。</li>
-										<li>網站內容採用英語、日語與繁體中文，確保企業的目標受眾能夠理解網站的內容。</li>
-									</ul>
-									總之，專案的目標是為企業打造一個高效、易用、且能夠展示企業資訊的官網和後台系統便於管理產品與資訊。
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="p-2">
-							<div class="card-body">
-								<h2 class="fs-4 text-SkyHeavyBlue">委託專案</h2>
-								<div class="notoFont mt-3">
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/php.png" class="img-fluid p-1"
-														alt="php Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">php</p>
-												<p class="p-0 m-0">開發所採用程式語言</p>
-											</div>
-										</div>
-									</div>
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/mysql.png" class="img-fluid p-1"
-														alt="SQL Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">MySQL</p>
-												<p class="p-0 m-0">資料庫設計與管理</p>
-											</div>
-										</div>
-									</div>
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/xampp.svg" class="img-fluid p-1"
-														alt="xampp Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">XAMPP</p>
-												<p class="p-0 m-0 text-gray">部署與配置 Server</p>
-											</div>
-										</div>
-									</div>
-									<div class="card d-flex mt-3 rounded-inline-basic">
-										<div class="card-body d-inline-flex align-items-center">
-											<div class="d-inline-block">
-												<div style="width: 64px; height: 64px;" class="">
-													<img src="/assets/imgs/appIcons/bootstrapV5.png"
-														class="img-fluid p-1" alt="bootstrap Icon">
-												</div>
-											</div>
-											<div class="ps-3 d-inline-flex flex-column">
-												<p class="p-0 mb-2 fw-bold">Bootstrap</p>
-												<p class="p-0 m-0 text-gray">RWD 切版與元件</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="p-2">
-							<div class="card-body">
-								<div class="col-12">
-									<h2 class="fs-4 text-SkyHeavyBlue">後端功能設計</h2>
-								</div>
-								<div class="col-12 pt-2">
-									<style>
-										.nav .nav-link:hover {
-											color: #FFFFFF;
-											background-color: var(--themeColor);
-										}
+        .color-mytheme {
+            color: var(--themeColor);
+        }
+    </style>
+    <style>
+        .carousel__nav .carousel__button {
+            background-color: #FFFFFF;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+        }
 
-										.nav .active {
-											color: #FFFFFF;
-											background-color: var(--secondColor) !important;
-										}
-									</style>
-									<div class="nav nav-pills me-3 mb-3 d-flex flex-nowrap overflow-auto"
-										id="v-pills-tab" role="tablist">
-										<button class="nav-link active rounded-pill text-nowrap" id="banner_manage-tab"
-											data-bs-toggle="pill" data-bs-target="#banner_manage" type="button"
-											role="tab" aria-controls="banner_manage" aria-selected="true">Banner
-											圖片管理</button>
-										<button class="nav-link rounded-pill text-nowrap" id="comp_info-tab"
-											data-bs-toggle="pill" data-bs-target="#comp_info" type="button" role="tab"
-											aria-controls="comp_info" aria-selected="false">公司資訊管理</button>
-										<button class="nav-link rounded-pill text-nowrap" id="comp_history-tab"
-											data-bs-toggle="pill" data-bs-target="#comp_history" type="button"
-											role="tab" aria-controls="comp_history"
-											aria-selected="false">公司沿革資訊管理</button>
-										<button class="nav-link rounded-pill text-nowrap" id="cate-col-manage-tab"
-											data-bs-toggle="pill" data-bs-target="#cate-col-manage" type="button"
-											role="tab" aria-controls="cate-col-manage"
-											aria-selected="false">分類表格欄位管理</button>
-										<button class="nav-link rounded-pill text-nowrap" id="product-manage-tab"
-											data-bs-toggle="pill" data-bs-target="#product-manage" type="button"
-											role="tab" aria-controls="product-manage"
-											aria-selected="false">產品管理</button>
-									</div>
-									<div class="tab-content" id="v-pills-tabContent">
-										<div class="tab-pane fade show active" id="banner_manage" role="tabpanel"
-											aria-labelledby="banner_manage-tab" tabindex="0">
-											<div class="row">
-												<div class="col-12">
-													<div id="carousel_banner_manage" class="carousel slide"
-														data-bs-ride="carousel">
-														<div class="carousel-inner">
-															<div class="carousel-item active">
-																<a href="/assets/imgs/chenmko/banner_manage_1.webp"
-																	data-fancybox="gallery">
-																	<img src="/assets/imgs/chenmko/banner_manage_1.webp"
-																		class="img-fluid" alt="Image description">
-																</a>
-															</div>
-															<div class="carousel-item">
-																<a href="/assets/imgs/chenmko/banner_manage_2.webp"
-																	data-fancybox="gallery">
-																	<img src="/assets/imgs/chenmko/banner_manage_2.webp"
-																		class="img-fluid" alt="Image description">
-																</a>
-															</div>
-														</div>
-														<button class="carousel-control-prev" type="button"
-															data-bs-target="#carousel_banner_manage"
-															data-bs-slide="prev">
-															<span class="carousel-control-prev-icon"
-																aria-hidden="true"></span>
-															<span class="visually-hidden">Previous</span>
-														</button>
-														<button class="carousel-control-next" type="button"
-															data-bs-target="#carousel_banner_manage"
-															data-bs-slide="next">
-															<span class="carousel-control-next-icon"
-																aria-hidden="true"></span>
-															<span class="visually-hidden">Next</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-12">
-													<p class="px-2 pt-4">
-														這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。
-													</p>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="comp_info" role="tabpanel"
-											aria-labelledby="comp_info-tab" tabindex="0">
-											<div class="row">
-												<div class="col-12 m-auto">
-													<a href="/assets/imgs/chenmko/comp_manage.webp"
-														data-fancybox="gallery">
-														<img src="/assets/imgs/chenmko/comp_manage.webp"
-															class="img-fluid" alt="Image description">
-													</a>
-												</div>
-												<div class="col-12">
-													<p class="px-2 pt-4">
-														提供了管理企業相關資訊的功能，例如企業基本資料、聯絡方式。透過這個系統，企業可以方便地管理自己的資訊，同時也可以提供更多的資訊給客戶與潛在客戶。
-														<br><br>
-														除了基本的企業資訊管理功能外，這個解決方案還結合了 Bootstrap 的 Switches
-														功能，讓企業可以直觀選擇是否在聯絡我們頁面與 footer
-														顯示相關資訊。這個自定義顯示開關功能可以提供更多彈性，讓企業可以更好地控制自己的資訊展示。
-													</p>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="comp_history" role="tabpanel"
-											aria-labelledby="comp_history-tab" tabindex="0">
-											<div class="row">
-												<div class="col-12 m-auto">
-													<a href="/assets/imgs/chenmko/comp_history.webp"
-														data-fancybox="gallery">
-														<img src="/assets/imgs/chenmko/comp_history.webp"
-															class="img-fluid" alt="Image description">
-													</a>
-												</div>
-												<div class="col-12">
-													<p class="px-2 pt-4">
-														對於企業內容管理者來說，擁有一個易於使用且功能強大的編輯界面是非常重要的。為滿足此需求，我選擇 ckeditor
-														工具來滿足此需求。
-														<br><br>
-														使用 ckeditor，企業內容管理者可以輕鬆地創建、編輯和格式化網站上的內容，而不需要具備任何編程技能。ckeditor
-														的簡潔而直觀的界面使得它易於使用，即使是初學者也能夠快速上手。
-													</p>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="cate-col-manage" role="tabpanel"
-											aria-labelledby="cate-col-manage-tab" tabindex="0">
-											<div class="row">
-												<div class="col-12 m-auto">
-													<a href="/assets/imgs/chenmko/table_cols.webp"
-														data-fancybox="gallery">
-														<img src="/assets/imgs/chenmko/table_cols.webp"
-															class="img-fluid" alt="Image description">
-													</a>
-												</div>
-												<div class="col-12">
-													<p class="px-2 pt-4">
-														系統採用開關功能，以讓管理者輕鬆地自訂產品欄位，讓產品展示更具彈性和效果。因為不同產品分類可能需要不同的欄位，而此設計能讓您直覺地開關欄位，以確保只有相關屬性會顯示出來。
-														<br><br>
-														此設計只顯示您需要的欄位。使得產品顯示更專注，更直觀，更容易讓客戶了解。
-														<br><br>
-														在此設計中，您可以在不同的產品分類之間進行快速的欄位切換。我們的開關功能會自動隱藏不需要的欄位，以確保您只看到與您的產品分類相關的欄位。
-													</p>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="product-manage" role="tabpanel"
-											aria-labelledby="product-manage-tab" tabindex="0">
-											<div class="row">
-												<div class="col-12 m-auto">
-													<a href="/assets/imgs/chenmko/products_edit_1.webp"
-														data-fancybox="gallery">
-														<img src="/assets/imgs/chenmko/products_edit_1.webp"
-															class="img-fluid" alt="Image description">
-													</a>
-												</div>
-												<div class="col-12">
-													<p class="px-2 pt-2 pb-3 m-0">
-														為協助內容管理者更快速便捷地編輯類別產品和欄位。在側邊提供快速切換功能，使管理者可以輕鬆地切換並管理不同的內容。此工具可有效節省時間和提高工作效率。
-														<br><br>
-														使用此工具，內容管理者可以輕鬆地編輯產品和欄位，而不必花費過多的時間在繁瑣的切換操作上。
-													</p>
-												</div>
-												<div class="col-12 m-auto">
-													<a href="/assets/imgs/chenmko/products_edit_2.webp"
-														data-fancybox="gallery">
-														<img src="/assets/imgs/chenmko/products_edit_2.webp"
-															class="img-fluid" alt="Image description">
-													</a>
-												</div>
-												<div class="col-12">
-													<p class=" pt-2 pb-3 m-0">
-														根據所屬分類動態調整顯示欄位，讓內容管理者在填寫內容時不會被非顯示的欄位干擾。
-														<br><br>
-														這個內容管理系統的設計是為了讓內容管理者更加輕鬆地填寫內容，不顯示該類別關閉的欄位選項，讓內容管理者能夠更加專注於內容本身。
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card shadow mt-4 rounded-basic">
-						<div class="p-3 border-bottom">
-							<a href="/assets/imgs/chenmko/db_ErModel.png" data-fancybox="gallery">
-								<img src="/assets/imgs/chenmko/db_ErModel.png" class="img-fluid mb-2"
-									alt="Image description">
-							</a>
-						</div>
-						<div class="p-2">
-							<div class="card-body">
-								<h2 class="fs-4 mb-3">資料架構設計（ER-Model）</h2>
-								<div class="col-12">
-									<p class="m-0 pt-2">
-										<b>關聯資料表設計思路：</b>
-									<p class="mt-2 mb-0">
-										在一個網站的開發中，遇到了一個困難：不同分類的產品需要不同的欄位進行描述，而這些欄位的數量和內容是不同的，因此無法在單一的產品資料表中完成描述。為了解決這個問題，採用了一個新的設計方法。
-									</p>
-									<p class="mt-2 mb-0">
-										我設計了三個資料表： <span class="badge bg-secondary">cols_html</span>、<span
-											class="badge bg-secondary">products</span>和<span
-											class="badge bg-secondary">category</span>。<br>
-										<span class="badge bg-secondary">cols_html</span> 用來存放欄位資料，
-										<span class="badge bg-secondary">products</span> 用來存放產品資料，
-										<span class="badge bg-secondary">category</span> 用來存放產品分類資料。
+        .carousel__nav .carousel__button:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0 0 / 30%);
+        }
+    </style>
+    
+<nav class="navbar navbar-expand-sm navbar-light shadow p-3 fixed-top" id="nav">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold px-2 text-white" href="/">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="bi bi-list-nested"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContentLinks">
+            <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" aria-current="page" href="/">首頁</a>
+                </li>
+                <li class="nav-div rounded-pill">
+                    <a class="nav-link text-white-50">｜</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                </li>
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" target="_blank"
+                        href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-									</p>
-									<p class="mt-2 mb-0">
-										此外，團隊還設計了兩個關聯資料表：<span class="badge bg-secondary">products_col_link</span>和<span
-											class="badge bg-secondary">cols_congfigs</span>。
-										<br>其中，<span class="badge bg-secondary">products_col_link</span> 用來關聯產品和欄位，
-										<span class="badge bg-secondary">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
-									</p>
-									<p class="mt-2 mb-0">
-										當用戶需要查詢某個分類的產品時，系統會根據分類檢索產品和欄位資料。接著，系統會動態生成SQL語句，根據所需欄位進行查詢。最終，系統會將查詢結果呈現在前端頁面上。
-									</p>
-									<p class="mt-2 mb-0">
-										通過這種設計方法，團隊成功地解決了不同分類產品欄位描述的問題。這種方法不僅提高了系統的可擴展性和可維護性，還能夠有效地處理複雜的查詢需求。在實際的應用中，這個設計還能夠進一步擴展，滿足更多複雜的需求。
-									</p>
-									<p class="mt-4 mb-0 fw-bold">需求：</p>
-									<ul class="py-2 ps-4 lh-lg mb-0">
-										<li>各個分類會有不一樣的資料表欄位</li>
-										<li>每個分類會對應多樣商品</li>
-										<li>單頁最多呈現 50 樣商品（需分頁）</li>
-										<li>可根據資訊排序所有商品</li>
-										<li>欄位資料為數字與文字混合（需要進行數字大小排序）</li>
-										<li>跨分類資料檢索</li>
-									</ul>
-									<p class="mt-2 mb-0 fw-bold">執行：</p>
-									<ul class="py-2 ps-4 lh-lg">
-										<li>設計三個資料表存放
-											欄位 <span class="badge bg-secondary">cols_html</span>
-											、產品 <span class="badge bg-secondary">products</span>
-											、分類 <span class="badge bg-secondary">category</span>
-										</li>
-										<li>設計 <span class="badge bg-secondary">products_col_link</span> ：存放欄位資料、
-											<span class="badge bg-secondary">cols_congfigs</span>：每個分類所需要啟用的欄位
-										</li>
-										<li>
-											透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING /
-											ORDER(排序)彙整成一張產品資料表
-										</li>
-									</ul>
-									<b>獨立資料表：</b>
-									<ul class="py-2 ps-4 lh-lg">
-										<li>company：企業資訊紀錄</li>
-										<li>banner：首頁 banner 圖片管理</li>
-										<li>backend_psw_config：後台加密後密碼驗證</li>
-										<li>company_history：企業沿革資訊管理</li>
-									</ul>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
+        style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
+        <div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
+            <div class="fs-4 d-flex align-items-center flex-wrap justify-content-center text-white"
+                style="width: 48px; height: 48px;">
+                <i class="bi bi-chevron-up text-decoration-none d-flex"></i>
+            </div>
+        </div>
+    </a>
+    <script src="/assets/script/scroll.js"></script>
+    
+    <div>
+        <div class="position-relative"
+            style="padding: 80px 0px;width: 100%; background: url(/assets/imgs/chenmko/cover.png); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
+            </div>
+            <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
+                <div class="container">
+                    <div class="col-12">
+                        <h1 class="text-center fw-bold text-white notoFont">Chenmko 全端網頁開發內容</h1>
+                        <p class="text-center fw-bold text-white m-0 notoFont">
+                            2023/03 ~ 2023/06
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: -160px; min-height: 100vh;">
+            <div class="row position-relative d-flex align-items-start">
+                <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
+                    <div class="card shadow p-3 bg-body rounded-basic">
+                        <div class="card-body">
+                            <span class="badge bg-secondary rounded-pill mb-3 fs-5">專案關閉</span>
+                            
+<p class="mb-2 notoFont msf-info-s">
+    Chenmko 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。
+</p>
 
-	</div>
-	<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
-		<div class="container py-4">
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
-					<h4 class="fs-5">
-						連結 Links
-					</h4>
-					<a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
-						rel="noopener noreferrer" class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-archive-fill"></i>
-							學習資源庫
-						</p>
-					</a>
-					<a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-instagram"></i>
-							旗下知識帳號（DigiOcean）
-						</p>
-					</a>
-					<a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-bookmark-heart-fill"></i>
-							知識推薦獲取來源
-						</p>
-					</a>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 my-4">
-					<h4 class="fs-5">
-						贊助 Donate
-					</h4>
-					<a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-cup-hot-fill"></i>
-							Buy Me A Coffee
-						</p>
-					</a>
-					<a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
-						class="text-decoration-none footer-link">
-						<p class="footer_item">
-							<i class="bi bi-cash-stack"></i>
-							贊助系統（Portaly）
-						</p>
-					</a>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 my-4">
-					<h4 class="fs-5">
-						聯絡 Connections
-					</h4>
-					<a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-envelope-fill"></i>
-							Email
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
-						target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-instagram"></i>
-							Instagram
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
-						target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-facebook"></i>
-							Facebook
-						</p>
-					</a>
-					<a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml" target="_blank">
-						<p class="footer_item">
-							<i class="bi bi-info-square-fill"></i>
-							Portaly 傳送門
-						</p>
-					</a>
-				</div>
-				<hr>
-				<p class="text-lightpink text-center py-2">
-					Copyright © 2024 Liang-Chin, Lu 版權所有
-				</p>
-			</div>
-		</div>
-	</footer>
+                            
+                            <hr class="my-2" style="opacity:10%;"><div class="fs-5 text-black pt-3"><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 網站架設</span><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 資料庫設計</span><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 前端開發</span><span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># 後端開發</span></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
+                    <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+                    
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/chenmko/cover.png" class="img-fluid mx-auto" alt="Cover Image" >
+</div>
+    
+    
+</div>
+
+                    
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    採用技術
+</h3>
+
+<hr class="my-2" style="opacity:0.15">
+
+<div class= "row g-3">
+    <div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
+
+<p class="m-0 p-0 fw-bold ">
+    php
+</p>
+
+<p class="m-0 p-0  ">
+    開發所採用程式語言
+</p>
+
+</div>
+</div><div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
+
+<p class="m-0 p-0 fw-bold ">
+    MySQL
+</p>
+
+<p class="m-0 p-0  ">
+    資料庫設計與管理
+</p>
+
+</div>
+</div><div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
+
+<p class="m-0 p-0 fw-bold ">
+    XAMPP
+</p>
+
+<p class="m-0 p-0  ">
+    部署與配置 Server
+</p>
+
+</div>
+</div><div class='col-12 col-sm-6'>
+<div class="d-grid gap-0 ">
+
+<p class="m-0 p-0 fw-bold ">
+    Bootstrap
+</p>
+
+<p class="m-0 p-0  ">
+    RWD 切版與元件
+</p>
+
+</div>
+</div>     
+</div>
+</div></div>
+    
+</div>
+
+                    
+<div class="card shadow rounded-basic border-0">
+    <div>
+<img src="/assets/imgs/chenmko/cover.webp" class="img-fluid mx-auto" alt="委託封面圖" >
+</div>
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<p class="m-0 p-0  ">
+    根據企業的設計圖打造官網和後台系統管理產品。
+</p>
+<ul class="ps-4 lh-lg"><li>技術前端採用 bootstrap 打造出響應式 (RWD) 網頁，確保網站在不同設備上能夠良好地顯示。</li><li>後端採用 php 語言打造，以便後續系統交接「企業要求」。</li><li>網站內容採用英語、日語與繁體中文，確保企業的目標受眾能夠理解網站的內容。</li></ul>
+<p class="m-0 p-0  ">
+    總之，專案的目標是為企業打造一個高效、易用、且能夠展示企業資訊的官網和後台系統便於管理產品與資訊。
+</p>
+</div></div>
+    
+</div>
 
 
-	<!-- Optional JavaScript; choose one of the two! -->
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-4">
+<h3 class="m-0 p-0  ">
+    後端・Banner 圖片管理
+</h3>
 
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-		</script>
-	<script src="/assets/script/scroll.js"></script>
-	<script type="text/javascript" src="/assets/script/lozad.min.js"></script>
-	<script>
-		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-		observer.observe();
-	</script>
+<div id="c5f489a" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        
+<div class="carousel-item active">
+    <a href="/assets/imgs/chenmko/banner_manage_2.webp" data-fancybox="gallery">
+        <img src="/assets/imgs/chenmko/banner_manage_2.webp" class="img-fluid" alt="Banner 圖片管理 - Modal Show">
+    </a>
+</div>
 
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+<div class="carousel-item ">
+    <a href="/assets/imgs/chenmko/banner_manage_1.webp" data-fancybox="gallery">
+        <img src="/assets/imgs/chenmko/banner_manage_1.webp" class="img-fluid" alt="Banner 圖片管理 - Home">
+    </a>
+</div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#c5f489a" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#c5f489a" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<p class="m-0 p-0  ">
+    這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。
+</p>
+</div></div>
+    
+</div>
+
+
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-4">
+<h3 class="m-0 p-0  ">
+    後端・公司資訊管理
+</h3>
+
+<a href="/assets/imgs/chenmko/comp_manage.webp" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/comp_manage.webp" class="img-fluid mx-auto" alt="後端・公司資訊管理"  >
+</a>
+
+<p class="m-0 p-0  ">
+    提供了管理企業相關資訊的功能，例如企業基本資料、聯絡方式。透過這個系統，企業可以方便地管理自己的資訊，同時也可以提供更多的資訊給客戶與潛在客戶。
+</p>
+
+<p class="m-0 p-0  ">
+    除了基本的企業資訊管理功能外，這個解決方案還結合了 Bootstrap 的 Switches 功能，讓企業可以直觀選擇是否在聯絡我們頁面與 footer 顯示相關資訊。這個自定義顯示開關功能可以提供更多彈性，讓企業可以更好地控制自己的資訊展示。
+</p>
+</div></div>
+    
+</div>
+
+
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-4">
+<h3 class="m-0 p-0  ">
+    後端・公司沿革資訊管理
+</h3>
+
+<a href="/assets/imgs/chenmko/comp_history.webp" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/comp_history.webp" class="img-fluid mx-auto" alt="後端・公司沿革資訊管理"  >
+</a>
+
+<p class="m-0 p-0  ">
+    對於企業內容管理者來說，擁有一個易於使用且功能強大的編輯界面是非常重要的。為滿足此需求，我選擇 ckeditor 工具來滿足此需求。
+</p>
+
+<p class="m-0 p-0  ">
+    使用 ckeditor，企業內容管理者可以輕鬆地創建、編輯和格式化網站上的內容，而不需要具備任何編程技能。ckeditor 的簡潔而直觀的界面使得它易於使用，即使是初學者也能夠快速上手。
+</p>
+</div></div>
+    
+</div>
+
+
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-4">
+<h3 class="m-0 p-0  ">
+    後端・分類表格欄位管理
+</h3>
+
+<a href="/assets/imgs/chenmko/table_cols.webp" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/table_cols.webp" class="img-fluid mx-auto" alt="後端・分類表格欄位管理"  >
+</a>
+
+<p class="m-0 p-0  ">
+    系統採用開關功能，以讓管理者輕鬆地自訂產品欄位，讓產品展示更具彈性和效果。因為不同產品分類可能需要不同的欄位，而此設計能讓您直覺地開關欄位，以確保只有相關屬性會顯示出來。
+</p>
+
+<p class="m-0 p-0  ">
+    此設計只顯示您需要的欄位。使得產品顯示更專注，更直觀，更容易讓客戶了解。
+</p>
+
+<p class="m-0 p-0  ">
+    在此設計中，您可以在不同的產品分類之間進行快速的欄位切換。我們的開關功能會自動隱藏不需要的欄位，以確保您只看到與您的產品分類相關的欄位。
+</p>
+</div></div>
+    
+</div>
+
+
+<div class="card shadow rounded-basic border-0">
+    
+    <div class="card-body"><div class="p-2 d-grid gap-4">
+<h3 class="m-0 p-0  ">
+    後端・產品管理
+</h3>
+
+<a href="/assets/imgs/chenmko/products_edit_1.webp" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/products_edit_1.webp" class="img-fluid mx-auto" alt="後端・產品管理1"  >
+</a>
+
+<p class="m-0 p-0  ">
+    為協助內容管理者更快速便捷地編輯類別產品和欄位。在側邊提供快速切換功能，使管理者可以輕鬆地切換並管理不同的內容。此工具可有效節省時間和提高工作效率。
+</p>
+
+<p class="m-0 p-0  ">
+    使用此工具，內容管理者可以輕鬆地編輯產品和欄位，而不必花費過多的時間在繁瑣的切換操作上。
+</p>
+
+<a href="/assets/imgs/chenmko/products_edit_2.webp" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/products_edit_2.webp" class="img-fluid mx-auto" alt="後端・產品管理2"  >
+</a>
+
+<p class="m-0 p-0  ">
+    根據所屬分類動態調整顯示欄位，讓內容管理者在填寫內容時不會被非顯示的欄位干擾。
+</p>
+
+<p class="m-0 p-0  ">
+    這個內容管理系統的設計是為了讓內容管理者更加輕鬆地填寫內容，不顯示該類別關閉的欄位選項，讓內容管理者能夠更加專注於內容本身。
+</p>
+</div></div>
+    
+</div>
+
+
+<div class="card shadow rounded-basic border-0">
+    <div>
+<a href="/assets/imgs/chenmko/db_ErModel.png" data-fancybox="gallery" class="mx-auto">
+    <img src="/assets/imgs/chenmko/db_ErModel.png" class="img-fluid mx-auto" alt="ER Modal Table"  >
+</a>
+</div>
+    <div class="card-body"><div class="p-2 d-grid gap-2">
+<h3 class="m-0 p-0  ">
+    資料架構設計（ER-Model）
+</h3>
+
+<div class="d-grid gap-2 mt-3 ">
+
+<p class="m-0 p-0 fw-bold ">
+    關聯資料表設計思路：
+</p>
+
+<div class="d-grid gap-2 ">
+
+<p class="m-0 p-0  ">
+    在一個網站的開發中，遇到了一個困難：不同分類的產品需要不同的欄位進行描述，而這些欄位的數量和內容是不同的，因此無法在單一的產品資料表中完成描述。為了解決這個問題，採用了一個新的設計方法。
+</p>
+
+<p class="m-0 p-0  ">
+    
+我設計了三個資料表： <span class="color-mytheme fw-bold px-1">cols_html</span>、<span class="color-mytheme fw-bold px-1">products</span>和<span class="color-mytheme fw-bold px-1">category</span>。<br>
+<span class="color-mytheme fw-bold px-1">cols_html</span> 用來存放欄位資料，<span class="color-mytheme fw-bold px-1">products</span> 用來存放產品資料，<span class="color-mytheme fw-bold px-1">category</span> 用來存放產品分類資料。
+
+</p>
+
+<p class="m-0 p-0  ">
+    
+此外，團隊還設計了兩個關聯資料表：<span class="color-mytheme fw-bold px-1">products_col_link</span>和<span class="color-mytheme fw-bold px-1">cols_congfigs</span>。<br>
+其中，<span class="color-mytheme fw-bold px-1">products_col_link</span> 用來關聯產品和欄位，
+<span class="color-mytheme fw-bold px-1">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
+
+</p>
+
+<p class="m-0 p-0  ">
+    當用戶需要查詢某個分類的產品時，系統會根據分類檢索產品和欄位資料。接著，系統會動態生成SQL語句，根據所需欄位進行查詢。最終，系統會將查詢結果呈現在前端頁面上。
+</p>
+
+<p class="m-0 p-0  ">
+    通過這種設計方法，團隊成功地解決了不同分類產品欄位描述的問題。這種方法不僅提高了系統的可擴展性和可維護性，還能夠有效地處理複雜的查詢需求。在實際的應用中，這個設計還能夠進一步擴展，滿足更多複雜的需求。
+</p>
+
+</div>
+
+</div>
+
+<div class="d-grid gap-2 mt-3 ">
+
+<p class="m-0 p-0 fw-bold ">
+    需求：
+</p>
+<ul class="ps-4 lh-lg"><li>各個分類會有不一樣的資料表欄位</li><li>每個分類會對應多樣商品</li><li>單頁最多呈現 50 樣商品（需分頁）</li><li>單頁最多呈現 50 樣商品（需分頁）</li><li>可根據資訊排序所有商品</li><li>欄位資料為數字與文字混合（需要進行數字大小排序）</li><li>跨分類資料檢索</li></ul>
+</div>
+
+<div class="d-grid gap-2 mt-3 ">
+
+<p class="m-0 p-0 fw-bold ">
+    執行：
+</p>
+<ul class="ps-4 lh-lg"><li>設計三個資料表存放欄位 <span class="color-mytheme fw-bold px-1">cols_html</span>、產品 <span class="color-mytheme fw-bold px-1">products</span>、分類 <span class="color-mytheme fw-bold px-1">category</span></li><li>設計 <span class="color-mytheme fw-bold px-1">products_col_link</span> ：存放欄位資料、<span class="color-mytheme fw-bold px-1">cols_congfigs</span>：每個分類所需要啟用的欄位</li><li>透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING / ORDER(排序)彙整成一張產品資料表</li></ul>
+</div>
+
+<div class="d-grid gap-2 mt-3 ">
+
+<p class="m-0 p-0 fw-bold ">
+    獨立資料表：
+</p>
+<ul class="ps-4 lh-lg"><li>company：企業資訊紀錄</li><li>banner：首頁 banner 圖片管理</li><li>backend_psw_config：後台加密後密碼驗證</li><li>company_history：企業沿革資訊管理</li></ul>
+</div>
+</div></div>
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
+                <h4 class="fs-5">
+                    連結 Links
+                </h4>
+                <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
+                    rel="noopener noreferrer" class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-archive-fill"></i>
+                        學習資源庫
+                    </p>
+                </a>
+                <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        旗下知識帳號（DigiOcean）
+                    </p>
+                </a>
+                <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-bookmark-heart-fill"></i>
+                        知識推薦獲取來源
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    贊助 Donate
+                </h4>
+                <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cup-hot-fill"></i>
+                        Buy Me A Coffee
+                    </p>
+                </a>
+                <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cash-stack"></i>
+                        贊助系統（Portaly）
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    聯絡 Connections
+                </h4>
+                <a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-envelope-fill"></i>
+                        Email
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        Instagram
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-facebook"></i>
+                        Facebook
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-info-square-fill"></i>
+                        Portaly 傳送門
+                    </p>
+                </a>
+            </div>
+            <hr>
+            <p class="text-lightpink text-center py-2">
+                Copyright © 2024 Liang-Chin, Lu 版權所有
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+<script src="/assets/script/scroll.js"></script>
+<script type="text/javascript" src="/assets/script/lozad.min.js"></script>
+<script>
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+</script>
+
 </body>
 
 </html>
