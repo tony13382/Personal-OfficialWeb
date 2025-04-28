@@ -396,7 +396,7 @@ class Text:
     def __init__(
         self,
         content: str,
-        fontsize: Literal["h2", "h3", "p", "span"] = "p",
+        fontsize: Literal["h2", "h3", "h4", "p", "span"] = "p",
         bold: bool = False,
         center: bool = False,
     ):
@@ -413,7 +413,7 @@ class Text:
             return f"""
 <span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6">{self.content}</span>
 """
-        elif self.fontsize in ["h2", "h3", "p"]:
+        elif self.fontsize in ["h2", "h3", "p", "h4"]:
             return f"""
 <{self.fontsize} class="m-0 p-0 {fw_class} {center_class}">
     {self.content}

@@ -16,16 +16,6 @@ from app.elements import (
     Text,
     Tool,
 )
-from app.layouts.project import ProjectPage
-
-
-class JobRecord(BaseModel):
-    cover: str
-    title: str
-    startdate: str
-    enddate: str
-    jobDesc: ListStr
-    Linkproject: ProjectPage
 
 
 class JobPage:
