@@ -1,3 +1,4 @@
-from app.builder import builder
+from app.builder import projectBuilder, jobBuilder
 
-builder.build()
+projectBuilder.build()
+jobBuilder.build()

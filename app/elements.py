@@ -338,6 +338,7 @@ class ListDiv:
         self,
         children: list = None,
         gap_size: Literal["nano", "small", "regular", "large"] = "regular",
+        grid_layout: bool = True,
         mt: int = None,
         mb: int = None,
         ms: int = None,
@@ -345,6 +346,7 @@ class ListDiv:
     ):
         self.children = children if children is not None else []
         self.gap_size = gap_size
+        self.grid_layout = grid_layout
         self.mt = mt
         self.mb = mb
         self.ms = ms
@@ -359,10 +361,14 @@ class ListDiv:
         margin_class += f"ms-{self.ms} " if self.ms else ""
         margin_class += f"me-{self.me} " if self.me else ""
 
+        display_class = ""
+        if self.grid_layout is True:
+            display_class = "d-grid"
+
         for item in self.children:
             content_html += str(item)
         return f"""
-<div class="d-grid {GapClass[self.gap_size]} {margin_class}">
+<div class="{display_class} {GapClass[self.gap_size]} {margin_class}">
 {content_html}
 </div>
 """
@@ -411,7 +417,7 @@ class Text:
 
         if self.fontsize == "span":
             return f"""
-<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6">{self.content}</span>
+<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-2">{self.content}</span>
 """
         elif self.fontsize in ["h2", "h3", "p", "h4"]:
             return f"""

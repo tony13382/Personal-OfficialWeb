@@ -28,9 +28,6 @@ class JobPage:
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
         description: Optional[str] = None,
-        subdescription: Optional[str] = None,
-        tags: Optional[List[str]] = None,
-        description_links: Optional[List[LinkButton]] = None,
         children: Optional[List[Card]] = None,
     ):
         self.title = title
@@ -40,9 +37,6 @@ class JobPage:
         self.prefix = prefix
         self.cover = cover
         self.description = description
-        self.subdescription = subdescription
-        self.tags = tags or []
-        self.desc_links = description_links or []
         self.children = children or []
 
     def __str__(self):
@@ -66,39 +60,9 @@ class JobPage:
 
         description_html = ""
         if self.description:
-            description_html = f"""
-<p class="mb-2 notoFont msf-info-s">
-    {self.description}
-</p>
-"""
+            description_html = f"""{self.description}"""
 
-        subdesc_html = ""
-        if self.subdescription:
-            subdesc_html = f"""
-<hr class="my-2" style="opacity:10%;">
-<p class="color-mytheme fw-bold my-3">
-    {self.subdescription}
-</p>
-"""
-        tags_html = ""
-        if self.tags:
-            tags_html = """<hr class="my-2" style="opacity:10%;"><div class="fs-5 text-black pt-3">"""
-            for tag in self.tags:
-                tags_html += f"""<span class="badge bg-mytheme text-dark rounded-pill overflow-hidden me-2"># {tag}</span>"""
-            tags_html += "</div>"
-
-        desc_link_html = ""
-        if self.desc_links:
-            desc_link_html += """<div class="d-grid gap-2 mt-4">"""
-            for link in self.desc_links:
-                desc_link_html += str(link) + "\n"
-            desc_link_html += "</div>"
-
-        meta_card = Card()
-        if self.cover:
-            meta_card.header = Image(self.cover, "Cover Image")
-        else:
-            meta_card.body = []
+        cover_html = str(Image(self.cover, "Cover Image"))
 
         content_html = ""
         if self.children:
@@ -174,9 +138,6 @@ class JobPage:
                 <div class="container">
                     <div class="col-12">
                         <h1 class="text-center fw-bold text-white notoFont">{self.title}</h1>
-                        <p class="text-center fw-bold text-white m-0 notoFont">
-                            {self.startdate} ~ {self.enddate}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -184,18 +145,18 @@ class JobPage:
         <div class="container" style="margin-top: -160px; min-height: 100vh;">
             <div class="row position-relative d-flex align-items-start">
                 <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
-                    <div class="card shadow p-3 bg-body rounded-basic">
-                        <div class="card-body">
-                            {description_html}
-                            {subdesc_html}
-                            {tags_html}
-                            {desc_link_html}
+                    <div class="card shadow bg-body border-0 rounded-basic">
+                        {cover_html}
+                        <div class="card-body p-4 pt-0 text-center">
+                            <p class="text-center fw-bold m-0 pb-2 fs-5 notoFont">
+                                {description_html}
+                            </p>
+                            {self.startdate} ~ {self.enddate}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
                     <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
-                    {str(meta_card)}
                     {content_html}
                 </div>
             </div>

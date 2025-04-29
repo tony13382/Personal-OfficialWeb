@@ -3,6 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
+    ListDiv,
     ListStr,
     Text,
 )
@@ -16,7 +17,6 @@ page = JobPage(
     colorSet=ThemeColor().purple,
     prefix="2023_NthuIr",
     cover="/assets/imgs/jobs/2023_NthuIr/cover.png",
-    tags=["資料搜集／前處理", "文字探勘", "文本分析"],
     children=[
         Card(
             body=[
@@ -34,10 +34,20 @@ page = JobPage(
                 ListStr(
                     [
                         "在校務研究中心運用先進的文本處理技術，從各種校園相關資料源中擷取、清理和整理大量的文本資料，確保資料品質以及適合後續的分析。",
-                        "處理文本資料時，我使用了SBERT（Sentence-BERT）模型來進行文本向量化。這有助於將課程資訊轉換為數值表示，使其更易於進行相關的量化分析。",
+                        "處理文本資料時，我使用了 SBERT（Sentence-BERT）模型來進行文本向量化。這有助於將課程資訊轉換為數值表示，使其更易於進行相關的量化分析。",
                         "利用我對文本分析技術的熟悉，我能夠分析和評估校園內不同領域的能力表現，幫助決策者了解哪些領域能力優勢以及可能需要進一步發展的領域。",
                     ]
                 ),
+            ],
+            footer=[
+                ListDiv(
+                    [
+                        Text("# 資料搜集／前處理", "span"),
+                        Text("# 文字探勘", "span"),
+                        Text("# 文本分析", "span"),
+                    ],
+                    grid_layout=False,
+                )
             ],
         ),
     ],

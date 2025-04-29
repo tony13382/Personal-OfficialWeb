@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Any
 from app.layouts.project import ProjectPage
 from app.pages.project import (
     digitalOcean,
@@ -17,6 +17,13 @@ from app.pages.project import (
     trelloFinder,
     chenmko,
 )
+from app.pages.job import (
+    y2022_Songla,
+    y2023_NthuOu,
+    y2023_NthuIr,
+    y2023_Tiic,
+    y2024_solwenAi,
+)
 
 
 class WebBuilder:
@@ -26,13 +33,13 @@ class WebBuilder:
         # 确保目录存在
         os.makedirs(path, exist_ok=True)
 
-    def addProject(self, newProject: ProjectPage):
+    def addPage(self, newProject: Any):
         self.projectWebConfigs.append(newProject)
 
-    def addProjects(self, newProjects: List[ProjectPage]):
+    def addPages(self, newProjects: List[Any]):
         self.projectWebConfigs.extend(newProjects)
 
-    def getProjects(self):
+    def getPages(self):
         return self.projectWebConfigs
 
     def build(self):
@@ -43,10 +50,10 @@ class WebBuilder:
                 print(f"Output to html Successful. File: {file_path}")
 
 
-builder = WebBuilder("projects/")
+projectBuilder = WebBuilder("projects/")
+jobBuilder = WebBuilder("jobs/")
 
-
-builder.addProjects(
+projectBuilder.addPages(
     [
         trelloFinder.page,
         chenmko.page,
@@ -65,16 +72,13 @@ builder.addProjects(
     ]
 )
 
-# builder.addProject(trelloFinder.page)
-# builder.addProject(chenmko.page)
-# builder.addProject(songla.page)
-# builder.addProject(mindReader.page)
-# builder.addProject(hsCloudMeetingManage.page)
-# builder.addProject(hsVmi.page)
-# builder.addProject(pincakeAi.page)
-# builder.addProject(foodome.page)
-# builder.addProject(noDrinkNoDrunk.page)
-# builder.addProject(oneDayLover.page)
-# builder.addProject(jobAnalytics2020.page)
-# builder.addProject(digitalOcean.page)
-# builder.addProject(techlife.page)
+
+jobBuilder.addPages(
+    [
+        y2022_Songla.page,
+        y2023_NthuOu.page,
+        y2023_NthuIr.page,
+        y2023_Tiic.page,
+        y2024_solwenAi.page,
+    ]
+)

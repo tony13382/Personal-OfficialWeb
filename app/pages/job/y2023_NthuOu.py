@@ -17,7 +17,6 @@ page = JobPage(
     colorSet=ThemeColor().purple,
     prefix="2023_NthuOu",
     cover="/assets/imgs/jobs/2023_NthuOu/cover.png",
-    tags=["LLM 應用", "文本探勘", "資訊佇列系統", "Webhook 串接", "API 開發"],
     children=[
         Card(
             header=Image("/assets/imgs/project/trelloFinder/cover.png"),
