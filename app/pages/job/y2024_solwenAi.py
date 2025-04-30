@@ -14,8 +14,8 @@ page = JobPage(
     startdate="2024/08",
     enddate="Present",
     colorSet=ThemeColor().green,
-    prefix="2024_solwenAi",
-    cover="/assets/imgs/jobs/2024_solwenAi/cover.png",
+    prefix="2024_SolwenAi",
+    cover="/assets/imgs/jobs/2024_SolwenAi/cover.png",
     children=[
         Card(
             body=[

@@ -18,8 +18,8 @@ page = JobPage(
     startdate="2022/01",
     enddate="2023/09",
     colorSet=ThemeColor().green,
-    prefix="2022_songla",
-    cover="/assets/imgs/jobs/2022_songla/cover.png",
+    prefix="2022_Songla",
+    cover="/assets/imgs/jobs/2022_Songla/cover.png",
     children=[
         Card(
             header=Image("/assets/imgs/project/songla/cover.png"),
