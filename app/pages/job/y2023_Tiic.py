@@ -77,5 +77,13 @@ page = JobPage(
                 )
             ],
         ),
+        Card(
+            body=[
+                Text("證書", "h4"),
+                DivBar(),
+                Image("/assets/imgs/jobs/2023_Tiic/tiic4.webp", rounded=True),
+                Image("/assets/imgs/jobs/2023_Tiic/tiic2.webp", rounded=True),
+            ]
+        ),
     ],
 )

@@ -230,26 +230,32 @@ class Html:
 
 class Image:
     def __init__(
-        self, src: str, alt: str = "", allow_pop: bool = False, max_width: int = None
+        self,
+        src: str,
+        alt: str = "",
+        allow_pop: bool = False,
+        max_width: int = None,
+        rounded: bool = False,
     ):
         self.src = src
         self.alt = alt
         self.allow_pop = allow_pop
         self.max_width = max_width
+        self.rounded = rounded
 
     def __str__(self):
         max_width_style = ""
         if self.max_width:
             max_width_style = f"""style="width:100%; max-width: {self.max_width}px;" """
-
+        rounded_class = "rounded-inline-basic" if self.rounded else ""
         if self.allow_pop:
             return f"""
-<a href="{self.src}" data-fancybox="gallery" class="mx-auto">
+<a href="{self.src}" data-fancybox="gallery" class="mx-auto {rounded_class}">
     <img src="{self.src}" class="img-fluid mx-auto" alt="{self.alt}"  {max_width_style}>
 </a>
 """
         return f"""
-<img src="{self.src}" class="img-fluid mx-auto" alt="{self.alt}" {max_width_style}>
+<img src="{self.src}" class="img-fluid mx-auto {rounded_class}" alt="{self.alt}" {max_width_style}>
 """
 
 
@@ -417,7 +423,7 @@ class Text:
 
         if self.fontsize == "span":
             return f"""
-<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-2">{self.content}</span>
+<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-1">{self.content}</span>
 """
         elif self.fontsize in ["h2", "h3", "p", "h4"]:
             return f"""
