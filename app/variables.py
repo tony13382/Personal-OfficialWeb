@@ -14,7 +14,7 @@ class ThemeColor:
         self.blue: Tuple[str, str] = ("#4C6D80", "#304450")
         self.purple: Tuple[str, str] = ("#4C4E80", "#303150")
         self.pink: Tuple[str, str] = ("#804C78", "#653A5E")
-        self.natural: Tuple[str, str] = ("#373737", "#2B2B2B")
+        self.natural: Tuple[str, str] = ("#555555", "#2B2B2B")
 
 
 GapClass = {
