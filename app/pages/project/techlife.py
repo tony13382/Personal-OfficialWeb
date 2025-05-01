@@ -2,7 +2,7 @@ from app.layouts.project import ProjectPage
 from app.variables import ThemeColor
 from app.elements import (
     Card,
-    FileLink,
+    IconBlock,
     LinkButton,
     Score,
     Text,
@@ -40,7 +40,7 @@ page = ProjectPage(
                 Text(
                     "`方案名稱`：TechLife 讓科技充滿生活<br>`團隊名稱`：中原資管總動員<br>`服務日期`：2021 年 6 月 11～12 日<br>`預計服務地點及對象`：台東縣延平鄉桃源國小（15～20 位小朋友）"
                 ),
-                FileLink(
+                IconBlock(
                     title="教案文件",
                     subtitle="PDF (Google Drive)",
                     src="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing",
@@ -51,7 +51,7 @@ page = ProjectPage(
             header=Youtube("https://www.youtube.com/embed/mOWnXJHIqIY"),
             body=[
                 Text("教案：圖像創作不設限", "h3"),
-                FileLink(
+                IconBlock(
                     title="圖像創作不設限",
                     subtitle="PPT 教案",
                     src="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1",
@@ -64,7 +64,7 @@ page = ProjectPage(
             header=Youtube("https://www.youtube.com/embed/R_vsL1NFWN8"),
             body=[
                 Text("教案：10 分鐘學會製作 Linebot", "h3"),
-                FileLink(
+                IconBlock(
                     title="快樂農場​",
                     subtitle="PPT 教案",
                     src="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit#slide=id.p1",

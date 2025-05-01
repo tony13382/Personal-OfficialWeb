@@ -2,7 +2,7 @@ from app.layouts.project import ProjectPage
 from app.variables import ThemeColor
 from app.elements import (
     Card,
-    FileLink,
+    IconBlock,
     Image,
     LinkButton,
     ListDiv,
@@ -40,13 +40,13 @@ page = ProjectPage(
                 Text("專案文檔", "h3"),
                 ListDiv(
                     [
-                        FileLink(
+                        IconBlock(
                             title="系統規格書",
                             subtitle="PDF",
                             icon="bi-file-earmark-arrow-down",
                             src="https://drive.google.com/file/d/1cK0o97WPkW5v2Z6mb2eFtH3JYOkN6VJ8/view",
                         ),
-                        FileLink(
+                        IconBlock(
                             title="Figma 設計界面稿",
                             subtitle="Figma",
                             icon="bi-window-sidebar",

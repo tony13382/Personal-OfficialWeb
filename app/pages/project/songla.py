@@ -3,7 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
-    FileLink,
+    IconBlock,
     Html,
     Image,
     LinkButton,
@@ -79,7 +79,7 @@ page = ProjectPage(
             body=(
                 [
                     Text("Figma 原型展示連結", "h3"),
-                    FileLink(
+                    IconBlock(
                         src="https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=306-8&t=BiEbxhMaInIN0bkG-1",
                         icon="bi-phone",
                         title="Figma 原型展示連結",

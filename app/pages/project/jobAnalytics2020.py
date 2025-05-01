@@ -7,7 +7,7 @@ from app.elements import (
     Card,
     Div,
     DivBar,
-    FileLink,
+    IconBlock,
     Html,
     Image,
     ImageCarousel,
@@ -49,7 +49,7 @@ page = ProjectPage(
         Card(
             body=[
                 Text("系統資訊", "h3"),
-                FileLink(
+                IconBlock(
                     title="網站網址",
                     subtitle="datastudio",
                     src="https://datastudio.google.com/s/rcRR2G3x4VI",
@@ -80,7 +80,7 @@ page = ProjectPage(
 </div>
 """
                 ),
-                FileLink(
+                IconBlock(
                     title="下載檔案",
                     subtitle="Google Slide",
                     src="https://docs.google.com/presentation/d/1fL7nC1nQda0PS9qcBswW9wU4Kmc1ME93/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true",
@@ -99,7 +99,7 @@ page = ProjectPage(
 </div>
 """
                 ),
-                FileLink(
+                IconBlock(
                     title="下載檔案",
                     subtitle="Google Slide",
                     src="https://docs.google.com/presentation/d/1ff073pwGJFImE-1LVw6L2gE-2OFpwGi3/edit?usp=share_link&ouid=106449819474178509805&rtpof=true&sd=true",

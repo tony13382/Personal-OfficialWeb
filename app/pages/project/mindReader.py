@@ -4,7 +4,7 @@ from app.elements import (
     Card,
     Div,
     DivBar,
-    FileLink,
+    IconBlock,
     Html,
     Image,
     LinkButton,
@@ -44,14 +44,14 @@ page = ProjectPage(
         Score("110 年中原大學高教深耕學生解決企業問題研究團隊計畫", "佳作"),
     ],
     tools=[
-        Tool("Figma", "UI & Prototype"),
-        Tool("Bootstrap V5.0", "前端框架"),
+        Tool("Figma", "UI 設計與產品原型設計"),
+        Tool("Bootstrap V5.0", "前端元件套件"),
         Tool("Azure LUIS", "NLP 自然語言處理、文字意圖分析"),
-        Tool("Firebase", "NoSQL 資料庫交互"),
-        Tool("Flask", "伺服器 API 建置"),
-        Tool("Django", "LineBot Server"),
-        Tool("Jieba", "NLP處理、斷詞"),
-        Tool("OpenCC", "文字處理（簡繁轉換）"),
+        Tool("Firebase", "NoSQL 資料庫設計與串接"),
+        Tool("Flask", "API 伺服器開發"),
+        Tool("Django", "LineBot 伺服器開發"),
+        Tool("Jieba", "NLP 中文斷詞與字典訓練"),
+        Tool("OpenCC", "簡繁轉換文字處理"),
     ],
     children=[
         Card(
@@ -127,13 +127,13 @@ page = ProjectPage(
                     Text("介面設計貼近原生鍵盤體驗，唯一記得的事就是`輸入`"),
                     ListDiv(
                         [
-                            FileLink(
+                            IconBlock(
                                 title="Figma 原型展示連結",
                                 subtitle="Figma",
                                 src="https://www.figma.com/proto/Tk1mSaUpLrBxUdHbHQvtQd/%5B2021-MR%5D-APP-Design?page-id=0%3A1&node-id=58%3A3277&viewport=241%2C48%2C0.14&scaling=scale-down&starting-point-node-id=58%3A3277&show-proto-sidebar=1",
                                 icon="bi-phone-fill",
                             ),
-                            FileLink(
+                            IconBlock(
                                 title="MVP 網頁",
                                 subtitle="GitHub",
                                 src="https://github.com/tony13382/MindReader-MVP/",
@@ -151,124 +151,37 @@ page = ProjectPage(
             ),
             body=[
                 Text("輸入文本轉換流程", "h3"),
-                Html(
-                    """
-<div class="d-grid gap-3">
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-keyboard"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            用戶輸入（鍵盤攔截）
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-hdd-network"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            鍵盤利用 Web APIs 將文字傳送至 <span class="fw-bold">MindReader
-                                Core</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-line"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            <span class="fw-bold">Line Bot</span> 抓取用戶 ID
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-arrow-repeat"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            根據 ID 與文字進行轉換
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-send"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            傳送轉譯後文字
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-hdd-network"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            接收使用者以外的回饋文字
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-database-down"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            <span class="fw-bold">錄入資料</span> 進行評分
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-"""
+                ListDiv(
+                    [
+                        IconBlock(
+                            title="用戶輸入（鍵盤攔截）",
+                            icon="bi-keyboard",
+                        ),
+                        IconBlock(
+                            title="鍵盤利用 Web APIs 將文字傳送至 `MindReader Core`",
+                            icon="bi-hdd-network",
+                        ),
+                        IconBlock(
+                            title="`Line Bot` 抓取用戶 ID",
+                            icon="bi-line",
+                        ),
+                        IconBlock(
+                            title="根據 ID 與文字進行轉換",
+                            icon="bi-arrow-repeat",
+                        ),
+                        IconBlock(
+                            title="傳送轉譯後文字",
+                            icon="bi-send",
+                        ),
+                        IconBlock(
+                            title="接收使用者以外的回饋文字",
+                            icon="bi-hdd-network",
+                        ),
+                        IconBlock(
+                            title="`錄入資料`進行評分",
+                            icon="bi-database-down",
+                        ),
+                    ]
                 ),
             ],
             body_gap_size="large",

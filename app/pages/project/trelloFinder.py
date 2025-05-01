@@ -7,7 +7,7 @@ from app.elements import (
     Card,
     Div,
     DivBar,
-    FileLink,
+    IconBlock,
     Html,
     Image,
     LinkButton,
@@ -264,13 +264,13 @@ page = ProjectPage(
                 ),
                 ListDiv(
                     [
-                        FileLink(
+                        IconBlock(
                             src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view",
                             icon="bi-file-earmark-ppt",
                             title="研究會議簡報連結",
                             subtitle="Canva",
                         ),
-                        FileLink(
+                        IconBlock(
                             src="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk",
                             icon="bi-file-earmark-arrow-down",
                             title="研討會論文文件",
@@ -293,13 +293,13 @@ page = ProjectPage(
                 ),
                 ListDiv(
                     [
-                        FileLink(
+                        IconBlock(
                             src="https://drive.google.com/file/d/1xoYvRgNZ3Li3kEbwFW5QEBuK-JOLogfz/view",
                             icon="bi-file-earmark-ppt",
                             title="研究會議簡報連結",
                             subtitle="Canva",
                         ),
-                        FileLink(
+                        IconBlock(
                             src="https://drive.google.com/file/d/1y7yCt21CVPbaPbOCFheRRoO3R98cCWuP/view?usp=sharing",
                             icon="bi-file-earmark-arrow-down",
                             title="研討會論文文件",

@@ -22,10 +22,10 @@ page = ProjectPage(
     cover="/assets/imgs/project/chenmko/cover.png",
     tags=["網站架設", "資料庫設計", "前端開發", "後端開發"],
     tools=[
-        Tool("php", "開發所採用程式語言"),
-        Tool("MySQL", "資料庫設計與管理"),
-        Tool("XAMPP", "部署與配置 Server"),
-        Tool("Bootstrap", "RWD 切版與元件"),
+        Tool("Bootstrap", "RWD 切版與前端介面開發"),
+        Tool("php", "後端開發（無框架）"),
+        Tool("PostgreSQL", "資料庫設計與管理"),
+        Tool("ckeditor", "內容編輯工具"),
     ],
     children=[
         Card(

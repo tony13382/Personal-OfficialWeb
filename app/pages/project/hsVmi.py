@@ -2,7 +2,7 @@ from app.layouts.project import ProjectPage
 from app.variables import ThemeColor
 from app.elements import (
     Card,
-    FileLink,
+    IconBlock,
     LinkButton,
     ListDiv,
     Text,
@@ -30,9 +30,9 @@ page = ProjectPage(
     ],
     tags=["全端開發"],
     tools=[
-        Tool("Apache Tomcat (JSP)", "後端資料處理"),
-        Tool("MySQL", "資料庫處理"),
-        Tool("Bootstrap V4.3", "前端框架"),
+        Tool("Apache Tomcat (JSP)", "後端資料處理（無框架）"),
+        Tool("MySQL", "SQL 資料庫設計與串接"),
+        Tool("Bootstrap V4.3", "前端元件套件"),
     ],
     children=[
         Card(
@@ -40,25 +40,25 @@ page = ProjectPage(
                 Text("技術文件", "h3"),
                 ListDiv(
                     [
-                        FileLink(
+                        IconBlock(
                             src="/assets/file/hsVmi/供應商庫存管理系統規格.pdf",
                             icon="bi-file-earmark-arrow-down",
                             title="系統規格書(1)",
                             subtitle="PDF",
                         ),
-                        FileLink(
+                        IconBlock(
                             src="/assets/file/hsVmi/VMI個案遊戲.docx",
                             icon="bi-file-earmark-arrow-down",
                             title="系統規格書(2)",
                             subtitle="DOCX",
                         ),
-                        FileLink(
+                        IconBlock(
                             src="/assets/file/hsVmi/VMI起始資料.xlsx",
                             icon="bi-database-down",
                             title="預設資料集(1)",
                             subtitle="XLSX",
                         ),
-                        FileLink(
+                        IconBlock(
                             src="/assets/file/hsVmi/VMIDATA2020.xlsx",
                             icon="bi-database-down",
                             title="預設資料集(2)",

@@ -2,7 +2,7 @@ from app.layouts.project import ProjectPage
 from app.variables import ThemeColor
 from app.elements import (
     Card,
-    FileLink,
+    IconBlock,
     Image,
     LinkButton,
     Text,
@@ -46,13 +46,13 @@ page = ProjectPage(
             ),
             body=[
                 Text("ER Model", "h3"),
-                FileLink(
+                IconBlock(
                     title="SQL File （預設資料庫）",
                     subtitle=".SQL",
                     src="/assets/file/oneDayLover/mydata.sql",
                     icon="bi-table",
                 ),
-                FileLink(
+                IconBlock(
                     title="ZIP File （JSP 程式碼備份）",
                     subtitle="ZIP",
                     src="https://drive.google.com/file/d/1SFD0cc5bJYFFNuvxcoyXMdBAoDrOWUFh/view",

@@ -12,7 +12,9 @@ def string_formator(text: str):
         if i % 2 == 0:
             result += part
         else:
-            result += f'<span class="color-mytheme fw-bold px-1">{part}</span>'
+            result += (
+                f'<span class="color-mytheme bg-mytheme fw-bold px-1">{part}</span>'
+            )
     # 如果原本字串最後是 ` 結尾，會多一個空的 part，這邊不用特別處理
     return result
 
@@ -179,7 +181,15 @@ class DivBar:
 """
 
 
-class FileLink:
+class Html:
+    def __init__(self, code: str):
+        self.code = code
+
+    def __str__(self):
+        return self.code
+
+
+class IconBlock:
     def __init__(
         self,
         title: str = None,
@@ -193,17 +203,31 @@ class FileLink:
         self.subtitle = subtitle
 
     def __str__(self) -> str:
-        title_html = (
-            f"""<p class="m-0 fw-bold">{self.title}</p>""" if self.title else ""
-        )
-        subtitle_html = (
-            f"""<p class="m-0 opacity-50">{self.subtitle}</p>"""
-            if self.subtitle
-            else ""
-        )
+        title_html = ""
+        if self.title:
+            title_html = (
+                f"""<p class="m-0 fw-bold">{string_formator(self.title)}</p>"""
+                if self.title
+                else ""
+            )
+        subtitle_html = ""
+        if self.subtitle:
+            subtitle_html = (
+                f"""<p class="m-0 opacity-50">{string_formator(self.subtitle)}</p>"""
+                if self.subtitle
+                else ""
+            )
+        link_h_start = ""
+        link_h_end = ""
+        fileLink_css = ""
+        if self.src != "":
+            link_h_start = f"""<a href="{self.src}" type="button" target="_blank" class="text-decoration-none">"""
+            link_h_end = "</a>"
+            fileLink_css = "file-links"
+        # RETURN HTML
         return f"""
-<a href="{self.src}" type="button" target="_blank" class="text-decoration-none">
-    <div class="card rounded-inline-basic file-links">
+{link_h_start}
+    <div class="card rounded-inline-basic {fileLink_css}">
         <div class="card-body d-flex p-2 align-items-center">
             <div class="col-auto">
                 <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
@@ -216,16 +240,8 @@ class FileLink:
             </div>
         </div>
     </div>
-</a>
+{link_h_end}
 """
-
-
-class Html:
-    def __init__(self, code: str):
-        self.code = code
-
-    def __str__(self):
-        return self.code
 
 
 class Image:

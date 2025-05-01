@@ -43,9 +43,10 @@ page = ProjectPage(
     ],
     tags=["程式開發"],
     tools=[
-        Tool("Figma", "UI Design"),
-        Tool("HTML5 & CSS3", "前端"),
-        Tool("Bootstrap v3", "前端介面工具"),
+        Tool("Figma", "UI 設計與產品原型設計"),
+        Tool("HTML5 & CSS3", "前端介面排版與設計"),
+        Tool("Bootstrap v3", "前端元件套件與 RWD 切版實作"),
+        Tool("Github Pages", "前端網頁靜態部署工具"),
     ],
     children=[
         Card(
@@ -55,22 +56,29 @@ page = ProjectPage(
                 Image(
                     "/assets/imgs/project/noDrinkNoDrunk/nodrinkIndex.jpeg",
                     "Home Page",
-                    True,
+                    allow_pop=True,
+                    rounded=True,
                 ),
+                DivBar(),
                 Image(
                     "/assets/imgs/project/noDrinkNoDrunk/info.png",
                     "Wine Info Page",
-                    True,
+                    allow_pop=True,
+                    rounded=True,
                 ),
+                DivBar(),
                 Image(
                     "/assets/imgs/project/noDrinkNoDrunk/list.png",
                     "Shopping List Page",
-                    True,
+                    allow_pop=True,
+                    rounded=True,
                 ),
+                DivBar(),
                 Image(
                     "/assets/imgs/project/noDrinkNoDrunk/knowledge.png",
                     "Wine Knowledge Page",
-                    True,
+                    allow_pop=True,
+                    rounded=True,
                 ),
             ],
         )

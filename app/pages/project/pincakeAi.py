@@ -3,7 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
-    FileLink,
+    IconBlock,
     Html,
     Image,
     LinkButton,
@@ -61,7 +61,7 @@ page = ProjectPage(
                 ),
                 ListDiv(
                     [
-                        FileLink(
+                        IconBlock(
                             title="Figma 原型展示連結",
                             subtitle="Figma",
                             icon="bi-phone-fill",
