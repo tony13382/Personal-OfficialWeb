@@ -14,7 +14,7 @@ from app.elements import (
 
 page = JobPage(
     title="產品設計師／技術總管",
-    description="即時行樂有限公司（新創）",
+    job_name="即時行樂有限公司（新創）",
     startdate="2022/01",
     enddate="2023/09",
     colorSet=ThemeColor().green,

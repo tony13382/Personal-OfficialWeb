@@ -12,7 +12,7 @@ from app.elements import (
 
 page = JobPage(
     title="AI 工程師",
-    description="Solwen AI（新創）",
+    job_name="Solwen AI（新創）",
     startdate="2024/08",
     enddate="Present",
     colorSet=ThemeColor().natural,

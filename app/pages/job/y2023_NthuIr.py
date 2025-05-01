@@ -11,7 +11,7 @@ from app.elements import (
 
 page = JobPage(
     title="研究實習生",
-    description="清華大學校務研究中心",
+    job_name="清華大學校務研究中心",
     startdate="2022/09",
     enddate="2023/01",
     colorSet=ThemeColor().purple,

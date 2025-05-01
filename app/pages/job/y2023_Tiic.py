@@ -12,7 +12,7 @@ from app.elements import (
 
 page = JobPage(
     title="行銷部組長／行銷部 CRM 組幹部",
-    description="TIIC 台灣實習影響力社群<br>（TYCIA 臺灣青年職涯創新協會）",
+    job_name="TIIC 台灣實習影響力社群<br>（TYCIA 臺灣青年職涯創新協會）",
     startdate="2023/03",
     enddate="2024/02",
     colorSet=ThemeColor().green,

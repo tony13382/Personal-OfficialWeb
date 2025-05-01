@@ -27,7 +27,7 @@ class JobPage:
         colorSet: Tuple,  # ThemeColor
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
-        description: Optional[str] = None,
+        job_name: Optional[str] = None,
         children: Optional[List[Card]] = None,
     ):
         self.title = title
@@ -36,7 +36,7 @@ class JobPage:
         self.colorSet = colorSet
         self.prefix = prefix
         self.cover = cover
-        self.description = description
+        self.description = job_name
         self.children = children or []
 
     def __str__(self):

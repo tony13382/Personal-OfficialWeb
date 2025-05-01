@@ -13,7 +13,7 @@ from app.elements import (
 
 page = JobPage(
     title="系統開發工程師",
-    description="國立清華大學（國科會）",
+    job_name="國立清華大學（國科會）",
     startdate="2023/07",
     enddate="2024/07",
     colorSet=ThemeColor().purple,
