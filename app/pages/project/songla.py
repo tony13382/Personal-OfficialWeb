@@ -40,9 +40,9 @@ page = ProjectPage(
         Score("2021 桃園新創之星創天下實作競賽", "佳作"),
     ],
     tools=[
-        Tool("Figma", "UI & Prototype"),
-        Tool("Notion", "時程控管、檔案管理"),
-        Tool("PowerPoint", "簡報視覺與編排"),
+        Tool("Figma", "UI 設計與產品原型設計"),
+        Tool("PowerPoint", "資訊設計與簡報文案編輯"),
+        Tool("Notion", "企業時程控管、檔案管理、多團隊協作系統"),
     ],
     children=[
         Card(
