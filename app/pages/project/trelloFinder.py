@@ -52,7 +52,7 @@ page = ProjectPage(
         )
     ],
     tools=[
-        Tool("Flask", "Webhook APIs 建立"),
+        Tool("Flask", "Webhook APIs 開發與建立"),
         Tool("RabbitMQ", "建立任務佇列處理系統，處理大量用戶請求時不會造成服務阻塞"),
         Tool("MongoDB", "主要系統資料庫，紀錄所有學生互動資料"),
         Tool("Milvus", "系統知識向量資料庫，用於建置與管理 RAG 知識搜尋"),
