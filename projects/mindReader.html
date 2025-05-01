@@ -269,7 +269,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    UI & Prototype
+    UI 設計與產品原型設計
 </p>
 
 </div>
@@ -281,7 +281,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    前端框架
+    前端元件套件
 </p>
 
 </div>
@@ -305,7 +305,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    NoSQL 資料庫交互
+    NoSQL 資料庫設計與串接
 </p>
 
 </div>
@@ -317,7 +317,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    伺服器 API 建置
+    API 伺服器開發
 </p>
 
 </div>
@@ -329,7 +329,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    LineBot Server
+    LineBot 伺服器開發
 </p>
 
 </div>
@@ -341,7 +341,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    NLP處理、斷詞
+    NLP 中文斷詞與字典訓練
 </p>
 
 </div>
@@ -353,7 +353,7 @@
 </p>
 
 <p class="m-0 p-0  ">
-    文字處理（簡繁轉換）
+    簡繁轉換文字處理
 </p>
 
 </div>
@@ -460,7 +460,7 @@
 
 <div class="card shadow rounded-basic border-0">
     <div>
-<div id="uiCarouse_c64aed1" class="carousel has-dots is-draggable mt-3 mb-5">
+<div id="uiCarouse_c76e8d7" class="carousel has-dots is-draggable mt-3 mb-5">
     <div class="carousel__viewport">
         <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
         
@@ -478,7 +478,7 @@
 </div>
 
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c64aed1"), {
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c76e8d7"), {
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
@@ -493,7 +493,7 @@
 </h3>
 
 <p class="m-0 p-0  ">
-    介面設計貼近原生鍵盤體驗，唯一記得的事就是<span class="color-mytheme fw-bold px-1">輸入</span>
+    介面設計貼近原生鍵盤體驗，唯一記得的事就是<span class="color-mytheme bg-mytheme fw-bold px-1">輸入</span>
 </p>
 
 <div class="d-grid gap-2 mt-3 ">
@@ -547,120 +547,120 @@
     輸入文本轉換流程
 </h3>
 
-<div class="d-grid gap-3">
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-keyboard"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            用戶輸入（鍵盤攔截）
-                        </p>
-                    </div>
+<div class="d-grid gap-2 ">
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-keyboard"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold">用戶輸入（鍵盤攔截）</p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-hdd-network"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            鍵盤利用 Web APIs 將文字傳送至 <span class="fw-bold">MindReader
-                                Core</span>
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-hdd-network"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold">鍵盤利用 Web APIs 將文字傳送至 <span class="color-mytheme bg-mytheme fw-bold px-1">MindReader Core</span></p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-line"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            <span class="fw-bold">Line Bot</span> 抓取用戶 ID
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-line"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold"><span class="color-mytheme bg-mytheme fw-bold px-1">Line Bot</span> 抓取用戶 ID</p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-arrow-repeat"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            根據 ID 與文字進行轉換
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-arrow-repeat"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold">根據 ID 與文字進行轉換</p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-send"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            傳送轉譯後文字
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-send"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold">傳送轉譯後文字</p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-hdd-network"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            接收使用者以外的回饋文字
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-hdd-network"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold">接收使用者以外的回饋文字</p>
+                
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card rounded-inline-basic">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                        <i class="bi bi-database-down"></i>
-                    </div>
-                    <div class="col d-flex align-items-center ps-3">
-                        <p class="m-0">
-                            <span class="fw-bold">錄入資料</span> 進行評分
-                        </p>
-                    </div>
+
+
+
+    <div class="card rounded-inline-basic ">
+        <div class="card-body d-flex p-2 align-items-center">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center fs-4 rounded-inline-basic text-white" style="background-color: var(--themeColor); width:56px; height:56px;">
+                <i class="bi bi-database-down"></i>
                 </div>
+            </div>
+            <div class="col ps-3 text-dark">
+                <p class="m-0 fw-bold"><span class="color-mytheme bg-mytheme fw-bold px-1">錄入資料</span>進行評分</p>
+                
             </div>
         </div>
     </div>
+
+
 </div>
 </div></div>
     
