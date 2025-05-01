@@ -89,7 +89,7 @@ class Head:
             color: var(--secondColor);
             margin: 0 2px;
             padding: 0 4px;
-            font-weight: 600;
+            font-weight: 800;
             position: relative;
         }}
         .text-highlight::before {{

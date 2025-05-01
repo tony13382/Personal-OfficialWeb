@@ -12,7 +12,7 @@ from app.elements import (
 
 page = JobPage(
     title="AI 工程師",
-    description="Solwen AI（偉利科技子公司）",
+    description="Solwen AI（新創）",
     startdate="2024/08",
     enddate="Present",
     colorSet=ThemeColor().natural,
@@ -76,15 +76,15 @@ page = JobPage(
                         "結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。",
                         "針對對話內容提供詳細的報告，幫助用戶了解自己的口說表現。",
                         "基於`FastAPI`框架開發，實現了高效的 API 接口，並基於併發測試持續優化。",
+                        "建立自動化 CI/CD 流程，結合 Docker Compose 部署搭配 alembic 進行資料庫版本控制，確保系統的穩定性與一致性。",
                     ]
                 ),
             ],
             footer=[
                 ListDiv(
                     [
-                        Text("# OpenAI", "span"),
                         Text("# API 開發", "span"),
-                        Text("# FastAPI", "span"),
+                        Text("# OpenAI Whisper", "span"),
                         Text("# 火山雲語音合成", "span"),
                     ],
                     grid_layout=False,
@@ -97,18 +97,23 @@ page = JobPage(
                 Text("Solwen RAG For Business", "h4"),
                 Text("2024/08 ~ 2024/11"),
                 DivBar(),
-                Text(
-                    "基於 FastAPI 框架規劃建構與`開發開發企業 AI 知識庫問答系統`。"
-                    "深度與 AI 工程師合作，將 LangChain 生成文本工作流整合進系統。"
+                ListStr(
+                    [
+                        "基於 FastAPI 框架規劃建構與`開發企業 AI 知識庫問答系統`。",
+                        "深度與 AI 工程師合作，`整合 LangChain`工作流進系統。",
+                        "使用 alembic 進行`資料庫版本控制`，確保資料庫結構的穩定性與一致性。",
+                        "使用 PGVector 進行文本向量化管理，並結合`PostgreSQL`資料庫進行資料存儲與檢索。",
+                        "使用`Docker`進行容器化部署，確保系統的可擴展性與穩定性。",
+                        "使用 FastAPI `開發 RESTful API`，實現了高效的資料存取與處理。",
+                    ]
                 ),
             ],
             footer=[
                 ListDiv(
                     [
                         Text("# API 開發", "span"),
-                        Text("# 後端開發", "span"),
-                        Text("# ORM", "span"),
-                        Text("# PGVector", "span"),
+                        Text("# 自動化部署", "span"),
+                        Text("# PGVector 整合", "span"),
                     ],
                     grid_layout=False,
                 )
