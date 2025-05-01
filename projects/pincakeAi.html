@@ -71,19 +71,13 @@
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
-            position: relative;
+            background: linear-gradient(to top, #804C4C40 40%, transparent 40%);
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 100%; /* 使背景覆蓋文字 */
         }
-        .text-highlight::before {
-            content: "";
-            position: absolute;
-            bottom: -2%;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: var(--themeColor);
-            opacity: 0.25;
-            border-radius: 5px;
-        }
+
+        
     </style>
     <style>
         .carousel__nav .carousel__button {
@@ -198,7 +192,7 @@
                     
 <div class="card shadow rounded-basic border-0">
     <div>
-<div id="uiCarouse_cf04746" class="carousel has-dots is-draggable mt-3 mb-5">
+<div id="uiCarouse_c7121c3" class="carousel has-dots is-draggable mt-3 mb-5">
     <div class="carousel__viewport">
         <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
         
@@ -214,7 +208,7 @@
 </div>
 
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_cf04746"), {
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c7121c3"), {
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒

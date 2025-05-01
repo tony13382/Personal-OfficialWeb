@@ -18,6 +18,13 @@ page = JobPage(
     colorSet=ThemeColor().green,
     prefix="2023_Tiic",
     cover="/assets/imgs/jobs/2023_Tiic/cover.png",
+    description=ListStr(
+        [
+            "擔任行銷部組長，負責團隊與行銷策略管理。",
+            "協助團隊進行內部培訓，並管理學員的培訓進度。",
+            "負責行銷部的社群經營與用戶體驗優化，提升用戶留存率。",
+        ]
+    ),
     children=[
         Card(
             header=Image("/assets/imgs/jobs/2023_Tiic/tiic3.webp"),

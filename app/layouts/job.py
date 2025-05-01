@@ -28,6 +28,7 @@ class JobPage:
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
         job_name: Optional[str] = None,
+        description: Optional[ListStr] = None,
         children: Optional[List[Card]] = None,
     ):
         self.title = title
@@ -36,7 +37,8 @@ class JobPage:
         self.colorSet = colorSet
         self.prefix = prefix
         self.cover = cover
-        self.description = job_name
+        self.job_name = job_name
+        self.description = description
         self.children = children or []
 
     def __str__(self):
@@ -44,7 +46,7 @@ class JobPage:
         head_html = str(
             Head(
                 title=self.title,
-                description=self.description,
+                description=self.job_name,
                 cover=self.cover,
                 link="/jobs/" + self.prefix,
                 colorSet=self.colorSet,
@@ -57,11 +59,15 @@ class JobPage:
         for item in self.children:
             items_html += str(item)
 
-        description_html = ""
-        if self.description:
-            description_html = f"""{self.description}"""
+        job_name_html = ""
+        if self.job_name:
+            job_name_html = f"""{self.job_name}"""
 
         cover_html = str(Image(self.cover, "Cover Image"))
+
+        description_html = ""
+        if self.description:
+            description_html = str(Card(body=[self.description]))
 
         content_html = ""
         if self.children:
@@ -106,7 +112,7 @@ class JobPage:
                         {cover_html}
                         <div class="card-body p-4 pt-0 text-center">
                             <p class="text-center fw-bold m-0 pb-2 fs-5 notoFont">
-                                {description_html}
+                                {job_name_html}
                             </p>
                             {self.startdate} ~ {self.enddate}
                         </div>
@@ -114,6 +120,7 @@ class JobPage:
                 </div>
                 <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
                     <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
+                    {description_html}
                     {content_html}
                 </div>
             </div>

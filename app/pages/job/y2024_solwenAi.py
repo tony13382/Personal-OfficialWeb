@@ -18,6 +18,14 @@ page = JobPage(
     colorSet=ThemeColor().natural,
     prefix="2024_SolwenAi",
     cover="/assets/imgs/jobs/2024_SolwenAi/cover.png",
+    description=ListStr(
+        [
+            "專注於開發與整合 AI 解決方案，提升企業的運營效率與競爭力。",
+            "負責設計、實現和維護 AI 系統，並確保其性能和可靠性。",
+            "將 AI 技術轉為 API 服務並結合 Docker Compose 自動部署於 Linode 伺服器。",
+            "持續學習和研究最新的 AI 技術和趨勢，為企業提供前瞻性的技術建議。",
+        ]
+    ),
     children=[
         Card(
             body=[

@@ -19,6 +19,13 @@ page = JobPage(
     colorSet=ThemeColor().purple,
     prefix="2023_NthuOu",
     cover="/assets/imgs/jobs/2023_NthuOu/cover.png",
+    description=ListStr(
+        [
+            "使用`爬蟲搜集開放學習資源`，並將資料存儲於 Milvus 向量資料庫中，實現高效的資料檢索、分析與管理。",
+            "使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度`1分鐘→ 50毫秒`。",
+            "結合 RabbitMQ 與 Flask 模組，實現`大量併發服務需求的即時排程處理`，並確保系統的穩定性與高效性。",
+        ]
+    ),
     children=[
         Card(
             header=Image("/assets/imgs/projects/trelloFinder/cover.png"),

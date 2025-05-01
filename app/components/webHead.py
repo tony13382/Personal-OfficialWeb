@@ -90,19 +90,13 @@ class Head:
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
-            position: relative;
+            background: linear-gradient(to top, {theme_color}40 40%, transparent 40%);
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 100%; /* 使背景覆蓋文字 */
         }}
-        .text-highlight::before {{
-            content: "";
-            position: absolute;
-            bottom: -2%;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: var(--themeColor);
-            opacity: 0.25;
-            border-radius: 5px;
-        }}
+
+        
     </style>
     <style>
         .carousel__nav .carousel__button {{
