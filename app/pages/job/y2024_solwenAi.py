@@ -40,6 +40,25 @@ page = JobPage(
         ),
         Card(
             body=[
+                Text("龍騰發票視覺處理系統", "h4"),
+                Text("2025/02 ~ Now"),
+                DivBar(),
+                Text(
+                    "利用`多模態模型`進行發票影像處理，結合`OCR 與 LLM`技術，實現發票資料的自動化處理與分析。系統能夠自動識別發票上的文字、數字和圖像，並將其轉換為結構化的數據格式，從而提高了發票處理的效率和準確性。"
+                ),
+            ],
+            footer=[
+                ListDiv(
+                    [
+                        Text("# LLM 視覺多模態", "span"),
+                        Text("# Streamlit", "span"),
+                    ],
+                    grid_layout=False,
+                )
+            ],
+        ),
+        Card(
+            body=[
                 Text("Solwen RAG For Business", "h4"),
                 Text("2024/08 ~ 2024/11"),
                 DivBar(),

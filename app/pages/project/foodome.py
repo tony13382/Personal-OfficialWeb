@@ -20,7 +20,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().purple,
     prefix="foodome",
-    cover="/assets/imgs/project/foodome/cover.png",
+    cover="/assets/imgs/projects/foodome/cover.png",
     description_links=[
         LinkButton(
             content="企劃書網址",
@@ -61,7 +61,7 @@ page = ProjectPage(
             header=ListDiv(
                 [
                     Image(
-                        "/assets/imgs/project/foodome/ui01.png",
+                        "/assets/imgs/projects/foodome/ui01.png",
                         "UI 01",
                         True,
                         max_width=320,
@@ -79,7 +79,7 @@ page = ProjectPage(
             header=ListDiv(
                 [
                     Image(
-                        "/assets/imgs/project/foodome/ui02.png",
+                        "/assets/imgs/projects/foodome/ui02.png",
                         "UI 01",
                         True,
                         max_width=320,
@@ -97,7 +97,7 @@ page = ProjectPage(
             header=ListDiv(
                 [
                     Image(
-                        "/assets/imgs/project/foodome/ui03.png",
+                        "/assets/imgs/projects/foodome/ui03.png",
                         "UI 01",
                         True,
                         max_width=320,
@@ -115,7 +115,7 @@ page = ProjectPage(
             header=ListDiv(
                 [
                     Image(
-                        "/assets/imgs/project/foodome/ui04.png",
+                        "/assets/imgs/projects/foodome/ui04.png",
                         "UI 01",
                         True,
                         max_width=320,

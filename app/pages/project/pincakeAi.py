@@ -22,7 +22,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().red,
     prefix="pincakeAi",
-    cover="/assets/imgs/project/pincakeAi/cover.png",
+    cover="/assets/imgs/projects/pincakeAi/cover.png",
     description_links=[
         LinkButton(
             content="企劃書網址",
@@ -36,9 +36,9 @@ page = ProjectPage(
         Card(
             header=UiImageCarousel(
                 [
-                    "/assets/imgs/project/pincakeAi/uiHome.png",
-                    "/assets/imgs/project/pincakeAi/uiInfo.png",
-                    "/assets/imgs/project/pincakeAi/uiMeet.png",
+                    "/assets/imgs/projects/pincakeAi/uiHome.png",
+                    "/assets/imgs/projects/pincakeAi/uiInfo.png",
+                    "/assets/imgs/projects/pincakeAi/uiMeet.png",
                 ]
             ),
             body=[
@@ -76,7 +76,7 @@ page = ProjectPage(
             header=ListDiv(
                 [
                     Image(
-                        "/assets/imgs/project/pincakeAi/workflowUser.png",
+                        "/assets/imgs/projects/pincakeAi/workflowUser.png",
                         "workflow",
                         True,
                     )

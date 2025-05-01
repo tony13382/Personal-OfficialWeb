@@ -22,7 +22,7 @@ page = JobPage(
     cover="/assets/imgs/jobs/2022_Songla/cover.png",
     children=[
         Card(
-            header=Image("/assets/imgs/project/songla/cover.png"),
+            header=Image("/assets/imgs/projects/songla/cover.png"),
             body=[
                 Text("產品設計師／技術總管", "h4"),
                 Text("2022/01 ~ 2023/09"),

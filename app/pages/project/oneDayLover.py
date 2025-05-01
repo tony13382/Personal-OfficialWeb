@@ -19,7 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().red,
     prefix="oneDayLover",
-    cover="/assets/imgs/project/oneDayLover/cover.png",
+    cover="/assets/imgs/projects/oneDayLover/cover.png",
     description_links=[
         LinkButton(
             content="GitHub・前端版本",
@@ -42,7 +42,7 @@ page = ProjectPage(
     children=[
         Card(
             header=Image(
-                "/assets/imgs/project/oneDayLover/er-model.png", "ER-Modal", True
+                "/assets/imgs/projects/oneDayLover/er-model.png", "ER-Modal", True
             ),
             body=[
                 Text("ER Model", "h3"),

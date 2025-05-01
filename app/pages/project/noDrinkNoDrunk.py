@@ -19,7 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().orange,
     prefix="noDrinkNoDrunk",
-    cover="/assets/imgs/project/noDrinkNoDrunk/cover.png",
+    cover="/assets/imgs/projects/noDrinkNoDrunk/cover.png",
     description_links=[
         LinkButton(
             content="專案網址・純前端展示",
@@ -54,28 +54,28 @@ page = ProjectPage(
                 Text("系統介面", "h3"),
                 DivBar("nano", opacity=0),
                 Image(
-                    "/assets/imgs/project/noDrinkNoDrunk/nodrinkIndex.jpeg",
+                    "/assets/imgs/projects/noDrinkNoDrunk/nodrinkIndex.jpeg",
                     "Home Page",
                     allow_pop=True,
                     rounded=True,
                 ),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/noDrinkNoDrunk/info.png",
+                    "/assets/imgs/projects/noDrinkNoDrunk/info.png",
                     "Wine Info Page",
                     allow_pop=True,
                     rounded=True,
                 ),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/noDrinkNoDrunk/list.png",
+                    "/assets/imgs/projects/noDrinkNoDrunk/list.png",
                     "Shopping List Page",
                     allow_pop=True,
                     rounded=True,
                 ),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/noDrinkNoDrunk/knowledge.png",
+                    "/assets/imgs/projects/noDrinkNoDrunk/knowledge.png",
                     "Wine Knowledge Page",
                     allow_pop=True,
                     rounded=True,

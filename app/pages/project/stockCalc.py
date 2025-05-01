@@ -23,7 +23,7 @@ page = ProjectPage(
     status="running",
     colorSet=ThemeColor().red,
     prefix="stockCalc",
-    cover="/assets/imgs/project/stockCalc/cover.png",
+    cover="/assets/imgs/projects/stockCalc/cover.png",
     description_links=[
         LinkButton(
             content="服務網址",
@@ -49,7 +49,7 @@ page = ProjectPage(
                 Text("試算交易手續費", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/stockCalc/priceCalc.png",
+                    "/assets/imgs/projects/stockCalc/priceCalc.png",
                     "試算交易手續費",
                     allow_pop=True,
                     rounded=True,
@@ -61,7 +61,7 @@ page = ProjectPage(
                 Text("預估漲跌目標股價", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/stockCalc/trendCalc.png",
+                    "/assets/imgs/projects/stockCalc/trendCalc.png",
                     "預估漲跌目標股價",
                     allow_pop=True,
                     rounded=True,
@@ -73,7 +73,7 @@ page = ProjectPage(
                 Text("快速加減計算", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/stockCalc/quickCalc.png",
+                    "/assets/imgs/projects/stockCalc/quickCalc.png",
                     "快速加減計算",
                     allow_pop=True,
                     rounded=True,

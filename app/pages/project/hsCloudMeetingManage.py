@@ -21,7 +21,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().purple,
     prefix="hsCloudMeetingManage",
-    cover="/assets/imgs/project/hsCloudMeetingManage/cover.png",
+    cover="/assets/imgs/projects/hsCloudMeetingManage/cover.png",
     description_links=[
         LinkButton(
             content="GitHub 代碼",
@@ -49,7 +49,7 @@ page = ProjectPage(
     children=[
         Card(
             header=Image(
-                "/assets/imgs/project/hsCloudMeetingManage/ad.png", "Ad Cover", True
+                "/assets/imgs/projects/hsCloudMeetingManage/ad.png", "Ad Cover", True
             ),
         ),
         Card(
@@ -57,13 +57,13 @@ page = ProjectPage(
                 Text("DFD 設計", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/hsCloudMeetingManage/dfdL0.png",
+                    "/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png",
                     "DFD 設計 1",
                     True,
                 ),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/hsCloudMeetingManage/dfdL1.png",
+                    "/assets/imgs/projects/hsCloudMeetingManage/dfdL1.png",
                     "DFD 設計 2",
                     True,
                 ),
@@ -91,7 +91,7 @@ page = ProjectPage(
                 Text("ER Model", "h3"),
                 DivBar(),
                 Image(
-                    "/assets/imgs/project/hsCloudMeetingManage/erModel.png",
+                    "/assets/imgs/projects/hsCloudMeetingManage/erModel.png",
                     "ER Model",
                     True,
                 ),

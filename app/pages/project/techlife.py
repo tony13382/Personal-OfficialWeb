@@ -19,7 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().green,
     prefix="techlife",
-    cover="/assets/imgs/project/techlife/cover.png",
+    cover="/assets/imgs/projects/techlife/cover.png",
     description_links=[
         LinkButton(
             content="企劃書網址",

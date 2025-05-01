@@ -21,7 +21,7 @@ page = JobPage(
     cover="/assets/imgs/jobs/2023_NthuOu/cover.png",
     children=[
         Card(
-            header=Image("/assets/imgs/project/trelloFinder/cover.png"),
+            header=Image("/assets/imgs/projects/trelloFinder/cover.png"),
             body=[
                 Text("Trello 知識小幫手 2.0", "h4"),
                 Text("2023/07 ~ 2024/07"),
