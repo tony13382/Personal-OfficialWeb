@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -152,7 +174,7 @@
 
                             
 <hr class="my-2" style="opacity:10%;">
-<p class="color-mytheme fw-bold my-3">
+<p class="text-theme fw-bold my-3">
     擔任：CTO, Product Designer<br>負責：軟體架構設計、產品介面設計、資料庫設計、軟體開發、技術管理
 </p>
 
@@ -185,7 +207,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">2021 大專校院資訊應用服務創新競賽・<span class="d-inline-block">資訊應用組</span></p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">佳作</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">佳作</p>
             </li>
         </ul>
     </div>
@@ -198,7 +220,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">2021 大專校院資訊應用服務創新競賽・<span class="d-inline-block">Azure 雲端組</span></p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">第三名</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">第三名</p>
             </li>
         </ul>
     </div>
@@ -211,7 +233,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">中原大學資管系 110 學年度資訊管理畢業專題競賽</p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">第一名</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">第一名</p>
             </li>
         </ul>
     </div>
@@ -224,7 +246,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">109 學年度中原大學資管系資訊管理專題初賽</p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">第二名</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">第二名</p>
             </li>
         </ul>
     </div>
@@ -237,7 +259,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">110 年中原大學高教深耕學生解決企業問題研究團隊計畫</p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">佳作</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">佳作</p>
             </li>
         </ul>
     </div>
@@ -458,7 +480,7 @@
 
 <div class="card shadow rounded-basic border-0">
     <div>
-<div id="uiCarouse_c814c7c" class="carousel has-dots is-draggable mt-3 mb-5">
+<div id="uiCarouse_cc8a717" class="carousel has-dots is-draggable mt-3 mb-5">
     <div class="carousel__viewport">
         <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
         
@@ -476,7 +498,7 @@
 </div>
 
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c814c7c"), {
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_cc8a717"), {
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
@@ -491,7 +513,7 @@
 </h3>
 
 <p class="m-0 p-0  ">
-    介面設計貼近原生鍵盤體驗，唯一記得的事就是<span class="color-mytheme bg-mytheme fw-bold px-1">輸入</span>
+    介面設計貼近原生鍵盤體驗，唯一記得的事就是<span class="text-highlight">輸入</span>
 </p>
 
 <div class="d-grid gap-2 mt-3 ">
@@ -572,7 +594,7 @@
                 </div>
             </div>
             <div class="col ps-3 text-dark">
-                <p class="m-0 fw-bold">鍵盤利用 Web APIs 將文字傳送至 <span class="color-mytheme bg-mytheme fw-bold px-1">MindReader Core</span></p>
+                <p class="m-0 fw-bold">鍵盤利用 Web APIs 將文字傳送至 <span class="text-highlight">MindReader Core</span></p>
                 
             </div>
         </div>
@@ -588,7 +610,7 @@
                 </div>
             </div>
             <div class="col ps-3 text-dark">
-                <p class="m-0 fw-bold"><span class="color-mytheme bg-mytheme fw-bold px-1">Line Bot</span> 抓取用戶 ID</p>
+                <p class="m-0 fw-bold"><span class="text-highlight">Line Bot</span> 抓取用戶 ID</p>
                 
             </div>
         </div>
@@ -652,7 +674,7 @@
                 </div>
             </div>
             <div class="col ps-3 text-dark">
-                <p class="m-0 fw-bold"><span class="color-mytheme bg-mytheme fw-bold px-1">錄入資料</span>進行評分</p>
+                <p class="m-0 fw-bold"><span class="text-highlight">錄入資料</span>進行評分</p>
                 
             </div>
         </div>

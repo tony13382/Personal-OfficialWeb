@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -168,7 +190,7 @@
 <hr class="my-2" style="opacity:0.15">
 
 <p class="m-0 p-0  ">
-    開發<span class="color-mytheme bg-mytheme fw-bold px-1">英語口說學習系統</span>，提供語音即時對話結合語言模型與 Azure 工具，生成口說評估報表生成與輸出功能。
+    開發<span class="text-highlight">英語口說學習系統</span>，提供語音即時對話結合語言模型與 Azure 工具，生成口說評估報表生成與輸出功能。
 </p>
 </div></div>
     <div class="card-footer bg-transparent"><div class="p-2 d-grid gap-2">
@@ -201,7 +223,7 @@
 </p>
 
 <hr class="my-2" style="opacity:0.15">
-<ul class="ps-4 m-0 lh-lg"><li>利用<span class="color-mytheme bg-mytheme fw-bold px-1">多模態模型</span>進行發票影像處理，結合<span class="color-mytheme bg-mytheme fw-bold px-1">OCR 與 LLM</span>技術，實現發票資料的自動化處理與分析。</li><li>系統能夠自動識別發票上的文字、數字和圖像，並將其轉換為結構化的數據格式，從而提高了發票處理的效率和準確性。</li><li>使用<span class="color-mytheme bg-mytheme fw-bold px-1">Streamlit</span>開發前端介面，提供用戶友好的操作界面，並實現了即時的數據可視化與編輯功能。</li></ul></div></div>
+<ul class="ps-4 m-0 lh-lg"><li>利用<span class="text-highlight">多模態模型</span>進行發票影像處理，結合<span class="text-highlight">OCR 與 LLM</span>技術，實現發票資料的自動化處理與分析。</li><li>系統能夠自動識別發票上的文字、數字和圖像，並將其轉換為結構化的數據格式，從而提高了發票處理的效率和準確性。</li><li>使用<span class="text-highlight">Streamlit</span>開發前端介面，提供用戶友好的操作界面，並實現了即時的數據可視化與編輯功能。</li></ul></div></div>
     <div class="card-footer bg-transparent"><div class="p-2 d-grid gap-2">
 <div class=" gap-2 ">
 
@@ -228,7 +250,7 @@
 </p>
 
 <hr class="my-2" style="opacity:0.15">
-<ul class="ps-4 m-0 lh-lg"><li>開發特定主題的 AI 對話系統，具有<span class="color-mytheme bg-mytheme fw-bold px-1">自動對話</span>、<span class="color-mytheme bg-mytheme fw-bold px-1">偏題偵測</span>等功能。</li><li>結合<span class="color-mytheme bg-mytheme fw-bold px-1">火山雲</span>語音合成技術，實現了高品質的語音合成效果，使聲音更自然。</li><li>針對對話內容提供詳細的報告，幫助用戶了解自己的口說表現。</li><li>基於<span class="color-mytheme bg-mytheme fw-bold px-1">FastAPI</span>框架開發，實現了高效的 API 接口，並基於併發測試持續優化。</li></ul></div></div>
+<ul class="ps-4 m-0 lh-lg"><li>開發特定主題的 AI 對話系統，具有<span class="text-highlight">自動對話</span>、<span class="text-highlight">偏題偵測</span>等功能。</li><li>結合<span class="text-highlight">火山雲</span>語音合成技術，實現了高品質的語音合成效果，使聲音更自然。</li><li>針對對話內容提供詳細的報告，幫助用戶了解自己的口說表現。</li><li>基於<span class="text-highlight">FastAPI</span>框架開發，實現了高效的 API 接口，並基於併發測試持續優化。</li></ul></div></div>
     <div class="card-footer bg-transparent"><div class="p-2 d-grid gap-2">
 <div class=" gap-2 ">
 
@@ -261,7 +283,7 @@
 <hr class="my-2" style="opacity:0.15">
 
 <p class="m-0 p-0  ">
-    基於 FastAPI 框架規劃建構與<span class="color-mytheme bg-mytheme fw-bold px-1">開發開發企業 AI 知識庫問答系統</span>。深度與 AI 工程師合作，將 LangChain 生成文本工作流整合進系統。
+    基於 FastAPI 框架規劃建構與<span class="text-highlight">開發開發企業 AI 知識庫問答系統</span>。深度與 AI 工程師合作，將 LangChain 生成文本工作流整合進系統。
 </p>
 </div></div>
     <div class="card-footer bg-transparent"><div class="p-2 d-grid gap-2">

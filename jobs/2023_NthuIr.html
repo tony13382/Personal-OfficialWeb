@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -168,11 +190,11 @@
 <hr class="my-2" style="opacity:0.15">
 
 <p class="m-0 p-0  ">
-    利用 Gephi、Excel、Python 處理<span class="color-mytheme bg-mytheme fw-bold px-1">約 3000 筆</span>資料建立課程圖譜，找出不同課程與系所的連結程度。
+    利用 Gephi、Excel、Python 處理<span class="text-highlight">約 3000 筆</span>資料建立課程圖譜，找出不同課程與系所的連結程度。
 </p>
 
 <p class="m-0 p-0  ">
-    使用 SBERT 模型進行文本向量化分析校園內不同領域的課程相似度，整理並利用校園課綱資料進行<span class="color-mytheme bg-mytheme fw-bold px-1">分群分析</span>。
+    使用 SBERT 模型進行文本向量化分析校園內不同領域的課程相似度，整理並利用校園課綱資料進行<span class="text-highlight">分群分析</span>。
 </p>
 
 <hr class="my-2" style="opacity:0.15">

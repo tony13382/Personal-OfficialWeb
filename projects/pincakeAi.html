@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -176,7 +198,7 @@
                     
 <div class="card shadow rounded-basic border-0">
     <div>
-<div id="uiCarouse_c80e57d" class="carousel has-dots is-draggable mt-3 mb-5">
+<div id="uiCarouse_c805b4c" class="carousel has-dots is-draggable mt-3 mb-5">
     <div class="carousel__viewport">
         <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
         
@@ -192,7 +214,7 @@
 </div>
 
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c80e57d"), {
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c805b4c"), {
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
@@ -287,7 +309,7 @@
 <p class="m-0 p-0  ">
     求職相關的產品市場主要分為三類
 </p>
-<ul class="ps-4 m-0 lh-lg"><li><span class="color-mytheme bg-mytheme fw-bold px-1">線上履歷製作工具</span>：這些工具提供多種履歷模板和自訂功能，讓使用者能輕鬆地製作符合其需求的履歷。常見的線上履歷製作工具包括：Canva、Visual CV、CakeResume。自 2023 年開始觀察，根據 CakeResume 公開的用戶數據，至少在台有 200 萬使用者使用了這類服務，且這一市場仍在持續擴大。</li><li><span class="color-mytheme bg-mytheme fw-bold px-1">履歷分析工具</span>：這些工具利用人工智慧或機器學習技術來分析履歷內容，並提供建議，有助於使用者提升履歷品質。常見的履歷分析工具包括：履歷診斷 - 104 人力銀行、履歷診斷 - 1111 人力銀行。自 2023 年開始觀察，根據 104 人力銀行和 1111 人力銀行公開的用戶數據，至少有 10 萬名使用者使用了這類服務，並為之付費優化自己的履歷。</li><li><span class="color-mytheme bg-mytheme fw-bold px-1">AI 模擬面試</span>：大多數模擬面試的服務多是以真人的服務進行，且大多都是針對外商或國外求職、求學進行專人的服務。並且在台灣只有像是原本履歷投遞平台人力銀行有類似的服務。</li></ul></div></div>
+<ul class="ps-4 m-0 lh-lg"><li><span class="text-highlight">線上履歷製作工具</span>：這些工具提供多種履歷模板和自訂功能，讓使用者能輕鬆地製作符合其需求的履歷。常見的線上履歷製作工具包括：Canva、Visual CV、CakeResume。自 2023 年開始觀察，根據 CakeResume 公開的用戶數據，至少在台有 200 萬使用者使用了這類服務，且這一市場仍在持續擴大。</li><li><span class="text-highlight">履歷分析工具</span>：這些工具利用人工智慧或機器學習技術來分析履歷內容，並提供建議，有助於使用者提升履歷品質。常見的履歷分析工具包括：履歷診斷 - 104 人力銀行、履歷診斷 - 1111 人力銀行。自 2023 年開始觀察，根據 104 人力銀行和 1111 人力銀行公開的用戶數據，至少有 10 萬名使用者使用了這類服務，並為之付費優化自己的履歷。</li><li><span class="text-highlight">AI 模擬面試</span>：大多數模擬面試的服務多是以真人的服務進行，且大多都是針對外商或國外求職、求學進行專人的服務。並且在台灣只有像是原本履歷投遞平台人力銀行有類似的服務。</li></ul></div></div>
     
 </div>
 

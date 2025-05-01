@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -257,7 +279,7 @@
     後端・Banner 圖片管理
 </h3>
 
-<div id="c28e834" class="carousel slide" data-bs-ride="carousel">
+<div id="c146d60" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         
 <div class="carousel-item active">
@@ -273,11 +295,11 @@
 </div>
 
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#c28e834" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#c146d60" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#c28e834" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#c146d60" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -424,16 +446,16 @@
 
 <p class="m-0 p-0  ">
     
-我設計了三個資料表： <span class="color-mytheme bg-mytheme fw-bold px-1">cols_html</span>、<span class="color-mytheme bg-mytheme fw-bold px-1">products</span>和<span class="color-mytheme bg-mytheme fw-bold px-1">category</span>。<br>
-<span class="color-mytheme bg-mytheme fw-bold px-1">cols_html</span> 用來存放欄位資料，<span class="color-mytheme bg-mytheme fw-bold px-1">products</span> 用來存放產品資料，<span class="color-mytheme bg-mytheme fw-bold px-1">category</span> 用來存放產品分類資料。
+我設計了三個資料表： <span class="text-highlight">cols_html</span>、<span class="text-highlight">products</span>和<span class="text-highlight">category</span>。<br>
+<span class="text-highlight">cols_html</span> 用來存放欄位資料，<span class="text-highlight">products</span> 用來存放產品資料，<span class="text-highlight">category</span> 用來存放產品分類資料。
 
 </p>
 
 <p class="m-0 p-0  ">
     
-此外，團隊還設計了兩個關聯資料表：<span class="color-mytheme bg-mytheme fw-bold px-1">products_col_link</span>和<span class="color-mytheme bg-mytheme fw-bold px-1">cols_congfigs</span>。<br>
-其中，<span class="color-mytheme bg-mytheme fw-bold px-1">products_col_link</span> 用來關聯產品和欄位，
-<span class="color-mytheme bg-mytheme fw-bold px-1">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
+此外，團隊還設計了兩個關聯資料表：<span class="text-highlight">products_col_link</span>和<span class="text-highlight">cols_congfigs</span>。<br>
+其中，<span class="text-highlight">products_col_link</span> 用來關聯產品和欄位，
+<span class="text-highlight">cols_congfigs</span> 用來定義每個分類所需要啟用的欄位。
 
 </p>
 
@@ -462,7 +484,7 @@
 <p class="m-0 p-0 fw-bold ">
     執行：
 </p>
-<ul class="ps-4 m-0 lh-lg"><li>設計三個資料表存放欄位 <span class="color-mytheme bg-mytheme fw-bold px-1">cols_html</span>、產品 <span class="color-mytheme bg-mytheme fw-bold px-1">products</span>、分類 <span class="color-mytheme bg-mytheme fw-bold px-1">category</span></li><li>設計 <span class="color-mytheme bg-mytheme fw-bold px-1">products_col_link</span> ：存放欄位資料、<span class="color-mytheme bg-mytheme fw-bold px-1">cols_congfigs</span>：每個分類所需要啟用的欄位</li><li>透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING / ORDER(排序)彙整成一張產品資料表</li></ul>
+<ul class="ps-4 m-0 lh-lg"><li>設計三個資料表存放欄位 <span class="text-highlight">cols_html</span>、產品 <span class="text-highlight">products</span>、分類 <span class="text-highlight">category</span></li><li>設計 <span class="text-highlight">products_col_link</span> ：存放欄位資料、<span class="text-highlight">cols_congfigs</span>：每個分類所需要啟用的欄位</li><li>透過分類檢索產品與欄位、動態生成 SQL ，最後透過 INNER JOIN / GROUP（聚合）、SUBSTRING / ORDER(排序)彙整成一張產品資料表</li></ul>
 </div>
 
 <div class="d-grid gap-2 mt-3 ">

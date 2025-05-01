@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -170,11 +192,11 @@
 <hr class="my-2" style="opacity:0.15">
 
 <p class="m-0 p-0  ">
-    使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="color-mytheme bg-mytheme fw-bold px-1">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>
+    使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus 向量資料庫。在確保資料搜索準確性的情形下<span class="text-highlight">減少資源推薦運算時間（1 分鐘 → 3 秒）</span>
 </p>
 
 <p class="m-0 p-0  ">
-    使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度<span class="color-mytheme bg-mytheme fw-bold px-1">1分鐘→ 50毫秒。</span>
+    使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度<span class="text-highlight">1分鐘→ 50毫秒。</span>
 </p>
 
 <hr class="my-2" style="opacity:0.15">

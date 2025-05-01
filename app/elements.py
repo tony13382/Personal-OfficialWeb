@@ -12,9 +12,7 @@ def string_formator(text: str):
         if i % 2 == 0:
             result += part
         else:
-            result += (
-                f'<span class="color-mytheme bg-mytheme fw-bold px-1">{part}</span>'
-            )
+            result += f'<span class="text-highlight">{part}</span>'
     # 如果原本字串最後是 ` 結尾，會多一個空的 part，這邊不用特別處理
     return result
 
@@ -412,7 +410,7 @@ class Score:
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">{self.name}{group_html}</p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">{self.score}</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">{self.score}</p>
             </li>
         </ul>
     </div>

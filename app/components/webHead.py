@@ -78,8 +78,30 @@ class Head:
             z-index: -1;
         }}
 
-        .color-mytheme {{
+        .text-theme {{
             color: var(--themeColor);
+        }}
+        .text-secondTheme {{
+            color: var(--secondColor);
+        }}
+
+        .text-highlight {{
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }}
+        .text-highlight::before {{
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }}
     </style>
     <style>

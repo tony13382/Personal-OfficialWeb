@@ -86,9 +86,7 @@ class Navbar:
         z-index: -1;
     }
 
-    .color-mytheme {
-        color: var(--themeColor);
-    }
+    
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">

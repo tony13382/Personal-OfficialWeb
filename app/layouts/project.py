@@ -84,7 +84,7 @@ class ProjectPage:
         if self.subdescription:
             subdesc_html = f"""
 <hr class="my-2" style="opacity:10%;">
-<p class="color-mytheme fw-bold my-3">
+<p class="text-theme fw-bold my-3">
     {self.subdescription}
 </p>
 """

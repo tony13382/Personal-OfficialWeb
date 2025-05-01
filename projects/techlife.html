@@ -59,8 +59,30 @@
             z-index: -1;
         }
 
-        .color-mytheme {
+        .text-theme {
             color: var(--themeColor);
+        }
+        .text-secondTheme {
+            color: var(--secondColor);
+        }
+
+        .text-highlight {
+            color: var(--secondColor);
+            margin: 0 2px;
+            padding: 0 4px;
+            font-weight: 600;
+            position: relative;
+        }
+        .text-highlight::before {
+            content: "";
+            position: absolute;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--themeColor);
+            opacity: 0.25;
+            border-radius: 5px;
         }
     </style>
     <style>
@@ -180,7 +202,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
                 <p class="m-0 msf-info-s">1092 中原大學資管系資訊管理競賽</p>
-                <p class="m-0 pt-1 fw-bold fs-4 color-mytheme">第一名</p>
+                <p class="m-0 pt-1 fw-bold fs-4 text-theme">第一名</p>
             </li>
         </ul>
     </div>
@@ -237,7 +259,7 @@
     
     <div class="card-body"><div class="p-2 d-grid gap-2">
 <p class="m-0 p-0  ">
-    <span class="color-mytheme bg-mytheme fw-bold px-1">方案名稱</span>：TechLife 讓科技充滿生活<br><span class="color-mytheme bg-mytheme fw-bold px-1">團隊名稱</span>：中原資管總動員<br><span class="color-mytheme bg-mytheme fw-bold px-1">服務日期</span>：2021 年 6 月 11～12 日<br><span class="color-mytheme bg-mytheme fw-bold px-1">預計服務地點及對象</span>：台東縣延平鄉桃源國小（15～20 位小朋友）
+    <span class="text-highlight">方案名稱</span>：TechLife 讓科技充滿生活<br><span class="text-highlight">團隊名稱</span>：中原資管總動員<br><span class="text-highlight">服務日期</span>：2021 年 6 月 11～12 日<br><span class="text-highlight">預計服務地點及對象</span>：台東縣延平鄉桃源國小（15～20 位小朋友）
 </p>
 
 <a href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing" type="button" target="_blank" class="text-decoration-none">
