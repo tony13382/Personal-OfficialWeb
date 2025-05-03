@@ -28,6 +28,7 @@ page = ProjectPage(
     colorSet=ThemeColor().blue,
     prefix="trelloFinder",
     cover="/assets/imgs/projects/trelloFinder/cover.png",
+    skill_types=["pin", "dev", "analysis"],
     tags=[
         "文本探勘",
         "文本搜尋算法",

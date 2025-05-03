@@ -28,6 +28,7 @@ class ProjectPage:
         description: Optional[str] = None,
         subdescription: Optional[str] = None,
         tags: Optional[List[str]] = None,
+        skill_types: Optional[List[str]] = None,
         description_links: Optional[List[LinkButton]] = None,
         scores: Optional[List[Score]] = None,
         tools: Optional[List[Tool]] = None,
@@ -43,6 +44,7 @@ class ProjectPage:
         self.description = description
         self.subdescription = subdescription
         self.tags = tags or []
+        self.skill_types = skill_types or []
         self.desc_links = description_links or []
         self.scores = [] if scores is None else scores.copy()
         self.tools = tools or []

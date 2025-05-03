@@ -41,6 +41,7 @@ page = ProjectPage(
             icon="bi-github",
         ),
     ],
+    skill_types=["dev"],
     tags=["程式開發"],
     tools=[
         Tool("Figma", "UI 設計與產品原型設計"),

@@ -40,6 +40,7 @@ page = ProjectPage(
             icon="bi-window-sidebar",
         )
     ],
+    skill_types=["analysis"],
     tags=["資料清理", "資料視覺化", "簡報設計"],
     tools=[
         Tool("Data Studio", "資料視覺化（儀表板製作）"),

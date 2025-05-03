@@ -60,23 +60,10 @@ class Head:
         }}
 
         .bg-mytheme {{
-            color: var(--secondColor);
-            position: relative;
-            letter-spacing: 0.02rem;
-            z-index: 10;
+            background: {second_color}20;
+            color: {second_color};
         }}
-
-        .bg-mytheme::before {{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--themeColor);
-            opacity: 0.2;
-            z-index: -1;
-        }}
+        
 
         .text-theme {{
             color: var(--themeColor);
@@ -90,7 +77,7 @@ class Head:
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
-            background: linear-gradient(to top, {theme_color}40 40%, transparent 40%);
+            background: linear-gradient(to top, {theme_color}40 30%, transparent 30%);
             background-position: bottom;
             background-repeat: no-repeat;
             background-size: 100% 100%; /* 使背景覆蓋文字 */

@@ -31,6 +31,7 @@ page = ProjectPage(
             icon="bi-cloud",
         ),
     ],
+    skill_types=["design", "plan"],
     tags=["介面設計", "行銷企劃"],
     children=[
         Card(

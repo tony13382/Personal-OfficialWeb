@@ -29,6 +29,7 @@ page = ProjectPage(
             icon="bi-cloud",
         ),
     ],
+    skill_types=["design", "plan"],
     tags=["介面設計", "企劃書製作"],
     tools=[
         Tool("Figma", "UI Design"),

@@ -128,6 +128,36 @@ class AccordionBlock:
         return accordion_html
 
 
+class Columns:
+    def __init__(
+        self, gap_size: int = 0, cols_of_row: int = 0, children: List[Any] = None
+    ):
+        self.gap_size = gap_size
+        self.cols_of_row = cols_of_row
+        self.children = children if children is not None else []
+        self.min_cols = 12
+        self.sm_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
+        self.md_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
+        self.lg_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
+        self.xl_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
+        self.xxl_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
+
+    def __str__(self) -> str:
+
+        col_class = f"col-{self.min_cols} col-sm-{self.sm_cols} col-md-{self.md_cols} col-lg-{self.lg_cols} col-xl-{self.xl_cols} col-xxl-{self.xxl_cols}"
+        html = ""
+        if self.children:
+            html += f"""<div class="row g-{self.gap_size}">"""
+            for item in self.children:
+                if self.cols_of_row > 0:
+                    col_class = f"{col_class}"
+                else:
+                    col_class = "col-12"
+                html += f"""<div class="{col_class}">{str(item)}</div>"""
+            html += "</div>"
+        return html
+
+
 class Div:
     def __init__(
         self,

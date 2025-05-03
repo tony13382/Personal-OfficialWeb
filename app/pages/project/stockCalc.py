@@ -38,6 +38,7 @@ page = ProjectPage(
             icon="bi-github",
         ),
     ],
+    skill_types=["pin", "dev"],
     tags=["介面設計", "產品規劃", "前端開發"],
     tools=[
         Tool("UIKit v2", "前端元件套件"),

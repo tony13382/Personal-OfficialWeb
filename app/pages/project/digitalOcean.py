@@ -26,6 +26,7 @@ page = ProjectPage(
             icon="bi-window-sidebar",
         )
     ],
+    skill_types=["other"],
     tags=["數位內容"],
     tools=[
         Tool("Notion", "內容管理與發佈"),

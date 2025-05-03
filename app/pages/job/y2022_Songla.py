@@ -20,6 +20,14 @@ page = JobPage(
     colorSet=ThemeColor().green,
     prefix="2022_Songla",
     cover="/assets/imgs/jobs/2022_Songla/cover.png",
+    description=ListStr(
+        [
+            "建立企業原子設計系統，`協助企業建立一致的設計風格`，包括排版、用色和字體。",
+            "`設計提案簡報`協助企業向政府與投資者精準傳達企業資訊。",
+            "利用 Figma 進行`產品與原型設計`，提升企業對外溝通效率。",
+            "利用資訊設計能力設計 UI，透過訪談用戶需求`設計產品功能`，並`與工程師協作`開發產品。",
+        ]
+    ),
     children=[
         Card(
             header=Image("/assets/imgs/projects/songla/cover.png"),

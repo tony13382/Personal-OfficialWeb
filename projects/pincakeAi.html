@@ -41,23 +41,10 @@
         }
 
         .bg-mytheme {
-            color: var(--secondColor);
-            position: relative;
-            letter-spacing: 0.02rem;
-            z-index: 10;
+            background: #50303020;
+            color: #503030;
         }
-
-        .bg-mytheme::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--themeColor);
-            opacity: 0.2;
-            z-index: -1;
-        }
+        
 
         .text-theme {
             color: var(--themeColor);
@@ -71,7 +58,7 @@
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
-            background: linear-gradient(to top, #804C4C40 40%, transparent 40%);
+            background: linear-gradient(to top, #804C4C40 30%, transparent 30%);
             background-position: bottom;
             background-repeat: no-repeat;
             background-size: 100% 100%; /* 使背景覆蓋文字 */
@@ -192,7 +179,7 @@
                     
 <div class="card shadow rounded-basic border-0">
     <div>
-<div id="uiCarouse_cbabb64" class="carousel has-dots is-draggable mt-3 mb-5">
+<div id="uiCarouse_c448d3d" class="carousel has-dots is-draggable mt-3 mb-5">
     <div class="carousel__viewport">
         <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
         
@@ -208,7 +195,7 @@
 </div>
 
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_cbabb64"), {
+    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_c448d3d"), {
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
@@ -516,7 +503,7 @@
             </div>
             <hr>
             <p class="text-lightpink text-center py-2">
-                Copyright © 2024 Liang-Chin, Lu 版權所有
+                Copyright © 2025 Liang-Chin, Lu 版權所有
             </p>
         </div>
     </div>

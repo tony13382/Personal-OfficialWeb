@@ -28,6 +28,7 @@ page = ProjectPage(
             icon="bi-github",
         ),
     ],
+    skill_types=["pin", "dev"],
     tags=["全端開發"],
     tools=[
         Tool("Apache Tomcat (JSP)", "後端資料處理（無框架）"),

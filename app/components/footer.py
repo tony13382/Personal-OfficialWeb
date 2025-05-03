@@ -82,7 +82,7 @@ class Footer:
             </div>
             <hr>
             <p class="text-lightpink text-center py-2">
-                Copyright © 2024 Liang-Chin, Lu 版權所有
+                Copyright © 2025 Liang-Chin, Lu 版權所有
             </p>
         </div>
     </div>

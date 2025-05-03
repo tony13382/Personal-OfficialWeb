@@ -28,6 +28,7 @@ page = ProjectPage(
             icon="bi-file-earmark-arrow-down",
         )
     ],
+    skill_types=["pin", "plan", "other"],
     tags=["教案設計", "PowerPoint 設計"],
     tools=[
         Tool("Photopea", "修圖"),

@@ -20,6 +20,7 @@ page = ProjectPage(
     colorSet=ThemeColor().blue,
     prefix="chenmko",
     cover="/assets/imgs/projects/chenmko/cover.png",
+    skill_types=["pin", "dev"],
     tags=["網站架設", "資料庫設計", "前端開發", "後端開發"],
     tools=[
         Tool("Bootstrap", "RWD 切版與前端介面開發"),

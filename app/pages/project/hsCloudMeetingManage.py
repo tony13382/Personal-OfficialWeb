@@ -37,6 +37,7 @@ page = ProjectPage(
             icon="bi-window-sidebar",
         ),
     ],
+    skill_types=["pin", "dev", "design"],
     tags=["介面設計", "產品規劃", "全端開發"],
     tools=[
         Tool("Figma", "UI 設計與產品原型設計"),

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zh-Hant-TW">
 
@@ -86,291 +87,308 @@
                 html_icon: "<i class='bi bi-three-dots pe-2'></i>其他"
             }
         ]
-
+        // 作品集資料
         const set_projects = [
-            {
-                name: "Trello 知識小幫手 2.0",
-                cover: "/assets/imgs/projects/trelloFinder/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/trelloFinder/coverLoading.jpg",
-                link: "/projects/trelloFinder.html",
-                tags: ["# 文本探勘", "# 文本搜尋算法", "# 大型語言模型", "# 向量資料管理", "# APIs 設計", "# 佇列系統"],
-                description: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。",
-                projectType: ["pin", "dev", "analysis"]
-            },
-            {
-                name: "Chenmko 全端網頁開發內容",
-                cover: "/assets/imgs/projects/chenmko/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/chenmko/coverLoading.jpg",
-                link: "/projects/chenmko.html",
-                tags: ["# 網站架設", "# 資料庫設計", "# 前端開發", "# 後端開發"],
-                description: "CHENMKO 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。",
-                projectType: ["pin", "dev"]
-            },
-            {
-                name: "Songla 音樂智慧創作小幫手",
-                cover: "/assets/imgs/projects/songla/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/songla/coverLoading.jpg",
-                link: "/projects/songla.html",
-                tags: ["# 介面設計", "# 產品規劃", "# UX優化"],
-                description: "哼唱即可作曲，讓創作音樂不再是遙不可及的夢想。",
-                projectType: ["pin", "design"]
-            },
-            {
-                name: "MindReader",
-                cover: "/assets/imgs/projects/mindReader/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/mindReader/coverLoading.jpg",
-                link: "/projects/mindReader.html",
-                tags: ["# 產品規劃", "# 介面設計", "# 機器學習", "# APIs 設計", "# 文本分析"],
-                description: "Mind Reader 與你心譯相通，精準的表達出文字中所包含的情感和意思，減少生活上的誤會。",
-                projectType: ["pin", "dev", "design", "analysis"]
-            },
-            {
-                name: "華新雲會議管理系統",
-                cover: "/assets/imgs/projects/hsCloudMeetingManage/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/hsCloudMeetingManage/coverLoading.jpg",
-                link: "/projects/hsCloudMeetingManage.html",
-                tags: ["# 介面設計", "# 產品規劃", "# 前端開發", "# 後端開發"],
-                description: "大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。",
-                projectType: ["pin", "dev", "design"]
-            },
-            {
-                name: "華新 VMI 庫存管理遊戲",
-                cover: "/assets/imgs/projects/hsVmi/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/hsVmi/coverLoading.jpg",
-                link: "/projects/hsVmi.html",
-                tags: ["# 程式開發", "# 前端開發", "# 後端開發"],
-                description: "大學系統分析專案，利用歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，以此進行員工銷售策畫訓練。",
-                projectType: ["pin", "dev"]
-            },
-            {
-                name: "Pincake AI 履歷",
-                cover: "/assets/imgs/projects/pincakeAi/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/pincakeAi/coverLoading.jpg",
-                link: "/projects/pincakeAi.html",
-                tags: ["# 介面設計", "# 產品規劃", "# 行銷策劃"],
-                description: "Pincake 針對求職新鮮人的產品。主要產品為 AI 求職助手平台,根據求職者提供的公司職缺與工作描述等內容為用戶提供求職整合服務。",
-                projectType: ["design", "plan"]
-            },
-            {
-                name: "食材外送專家 - Foodome",
-                cover: "/assets/imgs/projects/foodome/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/foodome/coverLoading.jpg",
-                link: "/projects/foodome.html",
-                tags: ["# 介面設計", "# 商業企劃書製作"],
-                description: "本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。",
-                projectType: ["design", "plan"]
-            },
-            {
-                name: "MeowLu Stock - 股票試算小工具",
-                cover: "/assets/imgs/projects/stockCalc/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/stockCalc/coverLoading.jpg",
-                link: "/projects/stockCalc.html",
-                tags: ["# 介面設計", "# 產品規劃", "# 程式開發"],
-                description: "提供股票交易款計算小工具，也能依據設定漲跌幅度來計算期望股價。適合作為新手小白的工具。",
-                projectType: ["pin", "dev"]
-            },
-            {
-                name: "No Drink No Drunk",
-                cover: "/assets/imgs/projects/noDrinkNoDrunk/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/noDrinkNoDrunk/coverLoading.jpg",
-                link: "/projects/noDrinkNoDrunk.html",
-                tags: ["# 程式開發"],
-                description: "大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。",
-                projectType: ["dev"]
-            },
-            {
-                name: "一日情人後端",
-                cover: "/assets/imgs/projects/oneDayLover/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/oneDayLover/coverLoading.jpg",
-                link: "/projects/oneDayLover.html",
-                tags: ["# 程式開發"],
-                description: "大學開發專案，利用 JSP 製作商城後端（純資料庫交互，無金流，具備後台）。",
-                projectType: ["dev"]
-            },
-            {
-                name: "2020年台灣各行業別員工薪資統計分析",
-                cover: "/assets/imgs/projects/jobAnalytics2020/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/jobAnalytics2020/coverLoading.jpg",
-                link: "/projects/jobAnalytics2020.html",
-                tags: ["# 資料清理", "# 資料視覺化", "# 簡報設計"],
-                description: "利用政府公開資訊分析職場，提供學子未來工作的預期薪資的參考資訊。",
-                projectType: ["analysis"]
-            },
-            {
-                name: "數位海洋知識專案",
-                cover: "/assets/imgs/projects/digitalOcean/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/digitalOcean/coverLoading.jpg",
-                link: "/projects/digitalOcean.html",
-                tags: ["# 數位內容"],
-                description: "我的個人知識庫",
-                projectType: ["other"]
-            },
-            {
-                name: "自架站科技／遊戲Blog－Techjoy",
-                cover: "/assets/imgs/projects/wpWeb/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/wpWeb/coverLoading.jpg",
-                link: "/projects/wpWeb.html",
-                tags: ["# 數位內容", "# 網站架設"],
-                description: "約高中時期創立2個網站，分別為「Tecjoy 樂享科技」，「mcblog」，分享產品體驗與推廣 Minecraft 遊戲創作。",
-                projectType: ["other"]
-            },
-            {
-                name: "TechLife 讓科技充滿生活",
-                cover: "/assets/imgs/projects/techlife/cover.png",
-                beforeLoadingCover: "/assets/imgs/projects/techlife/coverLoading.jpg",
-                link: "/projects/techlife.html",
-                tags: ["# PowerPoint 設計", "# 教案設計"],
-                description: "適逢網際網路活躍發展的世代，我們認為擁有基本的資訊素養是非常重要的，除了瞭解資訊相關知識以外，學會使用資訊科技亦是如今不可或缺的能力。而年紀尚幼的孩子們可塑性強、學習力高，非常適合慢慢地開始接觸資訊這個領域，提早學習一定能夠替未來發展創造出更多的機會。",
-                projectType: ["pin", "plan", "other"]
-            }
-        ]
+
+    {
+        name: "Trello 知識小幫手 2.0",
+        cover: "/assets/imgs/projects/trelloFinder/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/trelloFinder.html",
+        tags: ['文本探勘', '文本搜尋算法', '大型語言模型', '向量資料管理', 'APIs 設計', '佇列系統'],
+        description: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。",
+        projectType: ['pin', 'dev', 'analysis'],
+    },
+    
+    {
+        name: "Chenmko 全端網頁開發內容",
+        cover: "/assets/imgs/projects/chenmko/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/chenmko.html",
+        tags: ['網站架設', '資料庫設計', '前端開發', '後端開發'],
+        description: "Chenmko 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。",
+        projectType: ['pin', 'dev'],
+    },
+    
+    {
+        name: "Songla 音樂智慧創作小幫手",
+        cover: "/assets/imgs/projects/songla/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/songla.html",
+        tags: ['介面設計', '產品規劃', 'UX 優化'],
+        description: "哼唱即可作曲，讓創作音樂不再是遙不可及的夢想",
+        projectType: ['pin', 'design'],
+    },
+    
+    {
+        name: "MindReader 與你心譯相通",
+        cover: "/assets/imgs/projects/mindReader/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/mindReader.html",
+        tags: ['介面設計', '產品規劃', 'UX 優化', 'API 開發', 'NLP'],
+        description: "透過文本分析技術微調用戶輸入文本，經由技術精準的表達出文字中所包含的情感和意思，減少生活上的誤會。",
+        projectType: ['pin', 'dev', 'design', 'analysis'],
+    },
+    
+    {
+        name: "華新雲會議管理系統",
+        cover: "/assets/imgs/projects/hsCloudMeetingManage/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/hsCloudMeetingManage.html",
+        tags: ['介面設計', '產品規劃', '全端開發'],
+        description: "大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。",
+        projectType: ['pin', 'dev', 'design'],
+    },
+    
+    {
+        name: "華新 VMI 庫存管理遊戲",
+        cover: "/assets/imgs/projects/hsVmi/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/hsVmi.html",
+        tags: ['全端開發'],
+        description: "模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。",
+        projectType: ['pin', 'dev'],
+    },
+    
+    {
+        name: "Pincake AI 履歷",
+        cover: "/assets/imgs/projects/pincakeAi/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/pincakeAi.html",
+        tags: ['介面設計', '行銷企劃'],
+        description: "Pincake 針對求職新鮮人的產品。主要產品為 AI 求職助手平台,根據求職者提供的公司職缺與工作描述等內容為用戶提供求職整合服務。",
+        projectType: ['design', 'plan'],
+    },
+    
+    {
+        name: "MeowLu Stock - 股票試算小工具",
+        cover: "/assets/imgs/projects/stockCalc/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/stockCalc.html",
+        tags: ['介面設計', '產品規劃', '前端開發'],
+        description: "輕鬆好用的股票交易試算工具",
+        projectType: ['pin', 'dev'],
+    },
+    
+    {
+        name: "食材外送專家 - Foodome",
+        cover: "/assets/imgs/projects/foodome/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/foodome.html",
+        tags: ['介面設計', '企劃書製作'],
+        description: "本產品提供客戶食譜教學的服務，並且以銷售食材為主要的收入來源。",
+        projectType: ['design', 'plan'],
+    },
+    
+    {
+        name: "No Drink No Drunk",
+        cover: "/assets/imgs/projects/noDrinkNoDrunk/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/noDrinkNoDrunk.html",
+        tags: ['程式開發'],
+        description: "大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。",
+        projectType: ['dev'],
+    },
+    
+    {
+        name: "一日情人後端",
+        cover: "/assets/imgs/projects/oneDayLover/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/oneDayLover.html",
+        tags: ['後端開發'],
+        description: "大學專案，基於 JSP 所建構商城後端（純資料庫交互，無金流，具備後台）。",
+        projectType: ['dev'],
+    },
+    
+    {
+        name: "2020 年台灣各行業別員工薪資統計分析",
+        cover: "/assets/imgs/projects/jobAnalytics2020/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/jobAnalytics2020.html",
+        tags: ['資料清理', '資料視覺化', '簡報設計'],
+        description: "大學專案，利用政府公開資訊分析職場，提供學子未來工作的預期薪資的參考資訊。",
+        projectType: ['analysis'],
+    },
+    
+    {
+        name: "數位海洋知識專案",
+        cover: "/assets/imgs/projects/digitalOcean/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/digitalOcean.html",
+        tags: ['數位內容'],
+        description: "ML 亮進 的個人知識庫資訊統整並線上公開，高效分享資訊與蒐集到的資源。",
+        projectType: ['other'],
+    },
+    
+    {
+        name: "TechLife 讓科技充滿生活 - Photopea 講師",
+        cover: "/assets/imgs/projects/techlife/cover.png",
+        beforeLoadingCover: "",
+        link: "/projects/techlife.html",
+        tags: ['教案設計', 'PowerPoint 設計'],
+        description: "因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。",
+        projectType: ['pin', 'plan', 'other'],
+    },
+    
+    ]
     </script>
 </head>
 
 <body>
-    <style>
-        :root {
-            --themeColor: #7c6e69;
-            --secondColor: #49413d;
-        }
+    
+<style>
+    :root {
+        --themeColor: #7c6e69;
+        --secondColor: #49413d;
+    }
 
-        body {
-            background-color: #E8E1E5 !important;
-        }
+    body {
+        background-color: #E8E1E5 !important;
+    }
 
-        .bg-my-projects {
-            background-color: #ececec !important;
-        }
+    .bg-my-projects {
+        background-color: #ececec !important;
+    }
 
-        .navlogofont {
-            font-family: "Playwrite HR Lijeva", cursive;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-        }
-    </style>
-    <!--Nav Style-->
-    <style>
-        .nav .nav-item .nav-link {
-            color: gray;
-            font-size: calc(1.275rem);
-            -webkit-appearance: none;
-        }
+    .navlogofont {
+        font-family: "Playwrite HR Lijeva", cursive;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
 
-        .nav .nav-item .nav-link:hover {
-            color: var(--themeColor);
-            border-width: 6px;
-            border-bottom: var(--themeColor);
-            border-bottom-style: solid;
-        }
+    .text-highlight {
+        color: var(--secondColor);
+        margin: 0 2px;
+        padding: 0 4px;
+        font-weight: 800;
+        background: linear-gradient(to top, #7c6e6940 30%, transparent 30%);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 100%; /* 使背景覆蓋文字 */
+    }
+</style>
 
-        .nav .nav-item .active {
-            font-weight: bolder;
-            border-width: 6px;
-            border-bottom: black;
-            border-bottom-style: solid;
-            text-decoration: none;
-            color: #141929;
-            font-size: calc(1.275rem + 0.3vw);
-            letter-spacing: 0.05em;
-            -webkit-appearance: none;
-        }
+<!--Nav Style-->
+<style>
+    .nav .nav-item .nav-link {
+        color: gray;
+        font-size: calc(1.275rem);
+        -webkit-appearance: none;
+    }
 
-        .grayBlockHover {
-            text-decoration: none;
-            color: #1f1f1f;
-        }
+    .nav .nav-item .nav-link:hover {
+        color: var(--themeColor);
+        border-width: 6px;
+        border-bottom: var(--themeColor);
+        border-bottom-style: solid;
+    }
 
-        .grayBlockHover:hover {
-            text-decoration: none;
-            color: #1f1f1f;
-            background-color: #f0f0f0;
-        }
+    .nav .nav-item .active {
+        font-weight: bolder;
+        border-width: 6px;
+        border-bottom: black;
+        border-bottom-style: solid;
+        text-decoration: none;
+        color: #141929;
+        font-size: calc(1.275rem + 0.3vw);
+        letter-spacing: 0.05em;
+        -webkit-appearance: none;
+    }
 
-        .btn-myprimary {
-            background-color: var(--themeColor);
-            color: #ffffff;
-        }
+    .grayBlockHover {
+        text-decoration: none;
+        color: #1f1f1f;
+    }
 
-        .btn-myprimary:hover {
-            background-color: var(--secondColor);
-            color: #ffffff;
-        }
+    .grayBlockHover:hover {
+        text-decoration: none;
+        color: #1f1f1f;
+        background-color: #f0f0f0;
+    }
 
-        .btn-outline-myprimary {
-            border-color: var(--themeColor);
-            color: var(--themeColor);
-        }
+    .btn-myprimary {
+        background-color: var(--themeColor);
+        color: #ffffff;
+    }
 
-        .btn-outline-myprimary:hover {
-            border-color: var(--secondColor);
-            background-color: var(--themeColor);
-            color: #ffffff;
-        }
+    .btn-myprimary:hover {
+        background-color: var(--secondColor);
+        color: #ffffff;
+    }
 
-        .bg-mytheme {
-            color: var(--secondColor);
-            position: relative;
-            letter-spacing: 0.02rem;
-            z-index: 10;
-        }
+    .btn-outline-myprimary {
+        border-color: var(--themeColor);
+        color: var(--themeColor);
+    }
 
-        .bg-mytheme::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--themeColor);
-            opacity: 0.2;
-            z-index: -1;
-        }
+    .btn-outline-myprimary:hover {
+        border-color: var(--secondColor);
+        background-color: var(--themeColor);
+        color: #ffffff;
+    }
 
-        .text-theme {
-            color: var(--themeColor);
-        }
-    </style>
+    .bg-mytheme {
+        color: var(--secondColor);
+        position: relative;
+        letter-spacing: 0.02rem;
+        z-index: 10;
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center flex-wrap text-white" href="#topCover">
-                <img src="/assets/file/iconDesignFile/logo.svg" class="me-3" alt="Icon of Logo" width="24px"
-                    height="24px">
-                <span class="navlogofont" style="font-size: 1rem;">Liang Chin Lu</span>
-            </a>
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="bi bi-list-nested"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContentLinks">
-                <hr class="d-block d-lg-none bg-light" style="opacity: 0.2;">
-                <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end">
-                    <li class="nav-item rounded-pill text-center">
-                        <a class="nav-link" href="#myProjects">我的作品</a>
-                    </li>
-                    <li class="nav-item rounded-pill text-center">
-                        <a class="nav-link" href="/awards">我的獎項</a>
-                    </li>
-                    <li class="nav-div rounded-pill">
-                        <a class="nav-link text-white-50 d-none d-md-block">｜</a>
-                        <hr class="d-block d-md-none">
-                    </li>
-                    <li class="nav-item rounded-pill text-center">
-                        <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
-                    </li>
-                    <li class="nav-item rounded-pill text-center">
-                        <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
-                    </li>
-                    <li class="nav-item rounded-pill text-center">
-                        <a class="nav-link" target="_blank"
-                            href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
-                    </li>
-                </ul>
-            </div>
+    .bg-mytheme::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--themeColor);
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+    
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center flex-wrap text-white" href="#topCover">
+            <img src="/assets/file/iconDesignFile/logo.svg" class="me-3" alt="Icon of Logo" width="24px"
+                height="24px"><span class="navlogofont" style="font-size: 1rem;">Liang Chin Lu</span>
+        </a>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContentLinks" aria-controls="navbarContentLinks" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="bi bi-list-nested"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContentLinks">
+            <hr class="d-block d-lg-none bg-light" style="opacity: 0.2;">
+            <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end">
+                <li class="nav-item rounded-pill text-center">
+                    <a class="nav-link" href="#myProjects">我的作品</a>
+                </li>
+                <li class="nav-item rounded-pill text-center">
+                    <a class="nav-link" href="/awards">我的獎項</a>
+                </li>
+                <li class="nav-div rounded-pill">
+                    <a class="nav-link text-white-50 d-none d-md-block">｜</a>
+                    <hr class="d-block d-md-none">
+                </li>
+                <li class="nav-item rounded-pill text-center">
+                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+                </li>
+                <li class="nav-item rounded-pill text-center">
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                </li>
+                <li class="nav-item rounded-pill text-center">
+                    <a class="nav-link" target="_blank"
+                        href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
     <a class="fixed-bottom text-decoration-none" onclick="toTop()" id="toTopBtn"
         style="display:none; z-index: 1000; right:16px; bottom:40px; left: auto;">
         <div class="rounded-circle d-inline-flex shadow-lg p-2 rounded toTopBtn">
@@ -598,130 +616,107 @@
                                         style="color: #ea81b0;">經歷</span></h3>
                             </div>
                             <div class="col-12 d-grid gap-3 bordre-1">
-                                <a href="/jobs/2024_solwenAi.html" class="text-decoration-none text-black">
-                                    <div class="card pb-2 rounded-inline-basic hoverShadow">
-                                        <div class="card-body pb-1">
-                                            <div class="d-flex align-items-center flex-wrap">
-                                                <p class="mb-0 flex-fill fs-5 fw-bold">AI 工程師</p>
-                                                <p class="mb-0 opacity-50 ">八月 2024 ～ Present</p>
-                                            </div>
-                                            <div class="">
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <p class="mb-0 me-2">Solwen AI（偉利科技子公司）</p>
-                                                </div>
-                                            </div>
-                                            <div class="">
-                                                <hr style="opacity: 0.1;">
-                                                <ul class="ps-4 mb-0">
-                                                    <li>基於 FastAPI 框架規劃建構與開發<span class="halfHightLightBg">開發企業 AI
-                                                            知識庫問答系統</span>，深度與 AI 工程師合作，將 LangChain 生成文本工作流整合進系統。</li>
-                                                    <li>開發語言模型<span
-                                                            class="halfHightLightBg">英語口說學習系統</span>，提供語音即時對話，口說評估報表生成與輸出功能。
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="/jobs/2023_NthuOu.html" class="text-decoration-none text-black">
-                                    <div class="card pb-2 rounded-inline-basic hoverShadow">
-                                        <div class="card-body pb-1">
-                                            <div class="d-flex align-items-center flex-wrap">
-                                                <p class="mb-0 flex-fill fs-5 fw-bold">系統設計與開發</p>
-                                                <p class="mb-0 opacity-50 ">七月 2023 ～ 七月 2024</p>
-                                            </div>
-                                            <div class="">
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <p class="mb-0 me-2">國立清華大學（國科會計劃案）</p>
-                                                </div>
-                                            </div>
-                                            <hr style="opacity: 0.1;">
-                                            <ul class="ps-4 mb-0">
-                                                <li>使用了SBERT（Sentence-BERT）模型進行文本向量化。結合 Milvus
-                                                    向量資料庫。在確保資料搜索準確性的情形下<span class="halfHightLightBg">減少資源推薦運算時間（1
-                                                        分鐘 → 3 秒）</span>。</li>
-                                                <li>使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook
-                                                    進行結合，重構流程大幅減少整體系統獲取資料速度
-                                                    <span class="halfHightLightBg">1分鐘→ 50毫秒</span>。
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="/jobs/2023_NthuIr.html" class="text-decoration-none text-black">
-                                    <div class="card pb-2 rounded-inline-basic hoverShadow">
-                                        <div class="card-body pb-1">
-                                            <div>
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <p class="mb-0 flex-fill fs-5 fw-bold">研究實習生</p>
-                                                    <p class="mb-0 opacity-50 ">九月 2022 ～ 一月 2023</p>
-                                                </div>
-                                                <p class="text-start mb-0 fs-6">清華大學校務研究中心</p>
-                                                <hr style="opacity: 0.1;">
-                                                <ul class="ps-4 mb-0">
-                                                    <li>利用 Gephi、Excel、Python 處理<span class="halfHightLightBg">約 3000
-                                                            筆</span>資料建立課程圖譜，找出不同課程與系所的連結程度。</li>
-                                                    <li>使用 SBERT 模型進行文本向量化分析校園內不同領域的課程相似度，整理並利用校園課綱資料進行<span
-                                                            class="halfHightLightBg">分群分析</span>。</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="/jobs/2023_Tiic.html" class="text-decoration-none text-black">
-                                    <div class="card pb-2 rounded-inline-basic hoverShadow">
-                                        <div class="card-body pb-1">
-                                            <div>
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <p class="mb-0 flex-fill fs-5 fw-bold">行銷部組長／行銷部 CRM 組幹部</p>
-                                                    <p class="mb-0 opacity-50 ">三月 2023 ～ 二月 2024</p>
-                                                </div>
-                                                <p class="text-start mb-0 fs-6">TIIC 台灣實習影響力社群（TYCIA 臺灣青年職涯創新協會）</p>
-                                                <hr style="opacity: 0.1;">
-                                                <ul class="ps-4 mb-0">
-                                                    <li>建立團隊社群策略，帶領 3 位夥伴執行企劃，<span class="halfHightLightBg">吸引 280
-                                                            人加入社群</span>。</li>
-                                                    <li><span class="halfHightLightBg">管理 13 位學員</span>的培訓進度，帶領學員進行內部培訓。
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <hr style="opacity: 0.1;">
-                                            <div>
-                                                <span
-                                                    class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                    領導</span>
-                                                <span
-                                                    class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                    行銷規劃</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="/jobs/2022_songla.html" class="text-decoration-none text-black">
-                                    <div class="card pb-2 rounded-inline-basic hoverShadow">
-                                        <div class="card-body pb-1">
-                                            <div>
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <p class="mb-0 flex-fill fs-5 fw-bold">產品設計師／技術總管</p>
-                                                    <p class="mb-0 opacity-50 ">ㄧ月 2022 ～ 九月 2023</p>
-                                                </div>
-                                                <div>
-                                                    <hr style="opacity: 0.1;">
-                                                    <ul class="ps-4 mb-0">
-                                                        <li>設計提案簡報協助企業向政府與投資者精準傳達企業資訊，最終團隊<span
-                                                                class="halfHightLightBg">通過教育部青年署 U-start
-                                                                創新創業第一階段計畫</span>。
-                                                        </li>
-                                                        <li>利用資訊設計能力設計 UI，透過訪談 5名用戶需求於 Figma 進行產品設計，<span
-                                                                class="halfHightLightBg">建立企業原子設計系統設計並完成初步的產品
-                                                                MVP</span>。
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                
+<a href="/jobs/2024_SolwenAi.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">AI 工程師</p>
+                <p class="mb-0 opacity-50 ">2024/08 ～ Present</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">Solwen AI（新創）</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                <ul class="ps-4 m-0 lh-lg"><li>專注於<span class="text-highlight">開發與整合 AI 解決方案</span>，提升企業的運營效率與競爭力。</li><li>負責設計、實現和維護 AI 系統，並確保其性能和可靠性。</li><li>將 <span class="text-highlight">AI 技術轉為 API 服務</span>並結合 <span class="text-highlight">Docker Compose 自動部署</span>於 Linode 伺服器。</li><li>專注於多模態模型的開發與應用，結合<span class="text-highlight">語音識別、自然語言處理和計算機視覺</span>等技術，實現多種應用場景。</li><li>持續學習和研究最新的 AI 技術和趨勢，為企業提供前瞻性的技術建議。</li></ul>
+            </div>
+        </div>
+    </div>
+</a>
+    
+<a href="/jobs/2023_Tiic.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">行銷部組長／行銷部 CRM 組幹部</p>
+                <p class="mb-0 opacity-50 ">2023/03 ～ 2024/02</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">TIIC 台灣實習影響力社群（TYCIA 臺灣青年職涯創新協會）</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                <ul class="ps-4 m-0 lh-lg"><li>擔任行銷部組長，負責團隊與行銷策略管理。</li><li>協助團隊進行內部培訓，並管理學員的培訓進度。</li><li>負責行銷部的社群經營與用戶體驗優化，提升用戶留存率。</li></ul>
+            </div>
+        </div>
+    </div>
+</a>
+    
+<a href="/jobs/2023_NthuIr.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">研究實習生</p>
+                <p class="mb-0 opacity-50 ">2022/09 ～ 2023/01</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">清華大學校務研究中心</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                <ul class="ps-4 m-0 lh-lg"><li>清理與整理<span class="text-highlight">約 3000 筆</span>複合式資料，確保資料品質以及適合後續的分析。</li><li>使用<span class="text-highlight">SBERT（Sentence-BERT）模型</span>向量化文本，使其更易於進行相關的量化分析。</li><li>利用 Gephi、Excel、Python 處理<span class="text-highlight">約 3000 筆</span>資料建立課程圖譜，透過視覺化工具找出不同課程與系所的連結程度。</li></ul>
+            </div>
+        </div>
+    </div>
+</a>
+    
+<a href="/jobs/2023_NthuOu.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">系統開發工程師</p>
+                <p class="mb-0 opacity-50 ">2023/07 ～ 2024/07</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">國立清華大學（國科會）</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                <ul class="ps-4 m-0 lh-lg"><li>使用<span class="text-highlight">爬蟲搜集開放學習資源</span>，並將資料存儲於 Milvus 向量資料庫中，實現高效的資料檢索、分析與管理。</li><li>使用 Flask 模組建立 WebAPIs，將系統與 Trello Webhook 進行結合，重構流程大幅減少整體系統獲取資料速度<span class="text-highlight">1分鐘→ 50毫秒</span>。</li><li>結合 RabbitMQ 與 Flask 模組，實現<span class="text-highlight">大量併發服務需求的即時排程處理</span>，並確保系統的穩定性與高效性。</li></ul>
+            </div>
+        </div>
+    </div>
+</a>
+    
+<a href="/jobs/2022_Songla.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">產品設計師／技術總管</p>
+                <p class="mb-0 opacity-50 ">2022/01 ～ 2023/09</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">即時行樂有限公司（新創）</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                <ul class="ps-4 m-0 lh-lg"><li>建立企業原子設計系統，<span class="text-highlight">協助企業建立一致的設計風格</span>，包括排版、用色和字體。</li><li><span class="text-highlight">設計提案簡報</span>協助企業向政府與投資者精準傳達企業資訊。</li><li>利用 Figma 進行<span class="text-highlight">產品與原型設計</span>，提升企業對外溝通效率。</li><li>利用資訊設計能力設計 UI，透過訪談用戶需求<span class="text-highlight">設計產品功能</span>，並<span class="text-highlight">與工程師協作</span>開發產品。</li></ul>
+            </div>
+        </div>
+    </div>
+</a>
+    
                             </div>
                         </div>
                     </div>
@@ -2159,94 +2154,106 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
-                    <h4 class="fs-5">
-                        連結 Links
-                    </h4>
-                    <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
-                        rel="noopener noreferrer" class="text-decoration-none footer-link">
-                        <p class="footer_item">
-                            <i class="bi bi-archive-fill"></i>
-                            學習資源庫
-                        </p>
-                    </a>
-                    <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
-                        class="text-decoration-none footer-link">
-                        <p class="footer_item">
-                            <i class="bi bi-instagram"></i>
-                            旗下知識帳號（DigiOcean）
-                        </p>
-                    </a>
-                    <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
-                        class="text-decoration-none footer-link">
-                        <p class="footer_item">
-                            <i class="bi bi-bookmark-heart-fill"></i>
-                            知識推薦獲取來源
-                        </p>
-                    </a>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 my-4">
-                    <h4 class="fs-5">
-                        贊助 Donate
-                    </h4>
-                    <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
-                        class="text-decoration-none footer-link">
-                        <p class="footer_item">
-                            <i class="bi bi-cup-hot-fill"></i>
-                            Buy Me A Coffee
-                        </p>
-                    </a>
-                    <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
-                        class="text-decoration-none footer-link">
-                        <p class="footer_item">
-                            <i class="bi bi-cash-stack"></i>
-                            贊助系統（Portaly）
-                        </p>
-                    </a>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 my-4">
-                    <h4 class="fs-5">
-                        聯絡 Connections
-                    </h4>
-                    <a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
-                        <p class="footer_item">
-                            <i class="bi bi-envelope-fill"></i>
-                            Email
-                        </p>
-                    </a>
-                    <a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
-                        target="_blank">
-                        <p class="footer_item">
-                            <i class="bi bi-instagram"></i>
-                            Instagram
-                        </p>
-                    </a>
-                    <a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
-                        target="_blank">
-                        <p class="footer_item">
-                            <i class="bi bi-facebook"></i>
-                            Facebook
-                        </p>
-                    </a>
-                    <a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml/contact"
-                        target="_blank">
-                        <p class="footer_item">
-                            <i class="bi bi-info-square-fill"></i>
-                            Portaly 傳送門
-                        </p>
-                    </a>
-                </div>
-                <hr style="opacity: 0.1;">
-                <p class="text-lightpink text-center py-2">
-                    Copyright © 2024 Liang-Chin, Lu 版權所有
-                </p>
+    
+<footer class="bg-theme text-light" style="border-radius: 2rem 2rem 0rem 0rem;">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 text-decoration-none my-4">
+                <h4 class="fs-5">
+                    連結 Links
+                </h4>
+                <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
+                    rel="noopener noreferrer" class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-archive-fill"></i>
+                        學習資源庫
+                    </p>
+                </a>
+                <a href="https://www.instagram.com/digi.ocean/?hl=zh-tw" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        旗下知識帳號（DigiOcean）
+                    </p>
+                </a>
+                <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-bookmark-heart-fill"></i>
+                        知識推薦獲取來源
+                    </p>
+                </a>
             </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    贊助 Donate
+                </h4>
+                <a href="https://www.buymeacoffee.com/liangchinml" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cup-hot-fill"></i>
+                        Buy Me A Coffee
+                    </p>
+                </a>
+                <a href="https://portaly.cc/liang_chin_ml/support" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-cash-stack"></i>
+                        贊助系統（Portaly）
+                    </p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 my-4">
+                <h4 class="fs-5">
+                    聯絡 Connections
+                </h4>
+                <a class="text-decoration-none footer-link" href="mailto:liangchinlu@gmail.com" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-envelope-fill"></i>
+                        Email
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.instagram.com/liang_chin_ml/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-instagram"></i>
+                        Instagram
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://www.facebook.com/tony13382/"
+                    target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-facebook"></i>
+                        Facebook
+                    </p>
+                </a>
+                <a class="text-decoration-none footer-link" href="https://portaly.cc/liang_chin_ml" target="_blank">
+                    <p class="footer_item">
+                        <i class="bi bi-info-square-fill"></i>
+                        Portaly 傳送門
+                    </p>
+                </a>
+            </div>
+            <hr>
+            <p class="text-lightpink text-center py-2">
+                Copyright © 2025 Liang-Chin, Lu 版權所有
+            </p>
         </div>
-    </footer>
+    </div>
+</footer>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+<script src="/assets/script/scroll.js"></script>
+<script type="text/javascript" src="/assets/script/lozad.min.js"></script>
+<script>
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+</script>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->

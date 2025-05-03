@@ -34,6 +34,7 @@ page = ProjectPage(
             icon="bi-github",
         ),
     ],
+    skill_types=["dev"],
     tags=["後端開發"],
     tools=[
         Tool("Apache Tomcat", "後端處理"),

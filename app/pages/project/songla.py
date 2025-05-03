@@ -33,6 +33,7 @@ page = ProjectPage(
             icon="bi-building",
         )
     ],
+    skill_types=["pin", "design"],
     tags=["介面設計", "產品規劃", "UX 優化"],
     scores=[
         Score("通過教育部青年署 U-start 創新創業第一階段計畫", "取得 50 萬資金"),

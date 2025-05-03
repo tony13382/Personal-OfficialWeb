@@ -41,23 +41,10 @@
         }
 
         .bg-mytheme {
-            color: var(--secondColor);
-            position: relative;
-            letter-spacing: 0.02rem;
-            z-index: 10;
+            background: #2B2B2B20;
+            color: #2B2B2B;
         }
-
-        .bg-mytheme::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--themeColor);
-            opacity: 0.2;
-            z-index: -1;
-        }
+        
 
         .text-theme {
             color: var(--themeColor);
@@ -71,7 +58,7 @@
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
-            background: linear-gradient(to top, #55555540 40%, transparent 40%);
+            background: linear-gradient(to top, #55555540 30%, transparent 30%);
             background-position: bottom;
             background-repeat: no-repeat;
             background-size: 100% 100%; /* 使背景覆蓋文字 */
@@ -172,7 +159,7 @@
                     
 <div class="card shadow rounded-basic border-0">
     
-    <div class="card-body"><div class="p-2 d-grid gap-2"><ul class="ps-4 m-0 lh-lg"><li>專注於開發與整合 AI 解決方案，提升企業的運營效率與競爭力。</li><li>負責設計、實現和維護 AI 系統，並確保其性能和可靠性。</li><li>將 AI 技術轉為 API 服務並結合 Docker Compose 自動部署於 Linode 伺服器。</li><li>持續學習和研究最新的 AI 技術和趨勢，為企業提供前瞻性的技術建議。</li></ul></div></div>
+    <div class="card-body"><div class="p-2 d-grid gap-2"><ul class="ps-4 m-0 lh-lg"><li>專注於<span class="text-highlight">開發與整合 AI 解決方案</span>，提升企業的運營效率與競爭力。</li><li>負責設計、實現和維護 AI 系統，並確保其性能和可靠性。</li><li>將 <span class="text-highlight">AI 技術轉為 API 服務</span>並結合 <span class="text-highlight">Docker Compose 自動部署</span>於 Linode 伺服器。</li><li>專注於多模態模型的開發與應用，結合<span class="text-highlight">語音識別、自然語言處理和計算機視覺</span>等技術，實現多種應用場景。</li><li>持續學習和研究最新的 AI 技術和趨勢，為企業提供前瞻性的技術建議。</li></ul></div></div>
     
 </div>
 
@@ -382,7 +369,7 @@
             </div>
             <hr>
             <p class="text-lightpink text-center py-2">
-                Copyright © 2024 Liang-Chin, Lu 版權所有
+                Copyright © 2025 Liang-Chin, Lu 版權所有
             </p>
         </div>
     </div>
