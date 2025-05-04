@@ -12,7 +12,7 @@ for project in projectBuilder.getPages():
     {{
         name: "{project.title}",
         cover: "{project.cover}",
-        beforeLoadingCover: "",
+        beforeLoadingCover: "/assets/imgs/general/imageLoading.svg",
         link: "{f"/projects/{project.prefix}.html"}",
         tags: {project.tags},
         description: "{project.description}",
