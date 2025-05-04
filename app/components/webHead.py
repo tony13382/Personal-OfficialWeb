@@ -73,7 +73,7 @@ class Head:
         }}
 
         .text-highlight {{
-            color: var(--secondColor);
+            color: var(--themeColor);
             margin: 0 2px;
             padding: 0 4px;
             font-weight: 800;
