@@ -93,7 +93,7 @@ class JobPage:
     
     <div>
         <div class="position-relative"
-            style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:cover; background-attachment: fixed;">
+            style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:100%; background-attachment: fixed;">
             <div class="position-absolute top-0 start-0 w-100 h-100"
                 style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(20px);">
             </div>
