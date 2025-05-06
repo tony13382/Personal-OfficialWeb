@@ -169,7 +169,7 @@ class ProjectPage:
         <div class="position-relative"
             style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:100%; background-attachment: fixed;">
             <div class="position-absolute top-0 start-0 w-100 h-100"
-                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); backdrop-filter: blur(100px);">
+                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); backdrop-filter: blur(40px);">
             </div>
             <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
                 <div class="container">
