@@ -3,6 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
+    Image,
     ListDiv,
     ListStr,
     Text,
@@ -26,6 +27,7 @@ page = JobPage(
     ),
     children=[
         Card(
+            header=Image("/assets/imgs/jobs/2023_NthuIr/gephi_all.png"),
             body=[
                 Text("研究實習生", "h4"),
                 Text("2022/09 ~ 2023/01"),
