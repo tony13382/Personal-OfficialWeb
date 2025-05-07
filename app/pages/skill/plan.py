@@ -36,7 +36,7 @@ page = SkillPage(
                 SkillItem(
                     title="Excel",
                     description="UI Design／平面設計",
-                    icon="/assets/imgs/appIcons/figma.png",
+                    icon="/assets/imgs/appIcons/excel.png",
                 ),
                 SkillItem(
                     title="BeautifulSoup",
