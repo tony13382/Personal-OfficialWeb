@@ -11,8 +11,6 @@ import app.builder.home as homeBuilder
 projectBuilder.build()
 jobBuilder.build()
 skillBuilder.build()
-os.makedirs("projects", exist_ok=True)
 projects_homeBuilder.build()
-os.makedirs("awards", exist_ok=True)
 awardsBuilder.build()
 homeBuilder.build()
