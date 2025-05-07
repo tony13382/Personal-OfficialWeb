@@ -155,23 +155,21 @@ skill_html = ""
 for skill in skillBuilder.getPages():
     skill_html += f"""
     <div class="col-12 col-md-6 d-grid">
-        <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black hoverBigger hoverBigger">
-            <div class="card rounded-inline-basic h-100">
+        <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
+            <div class="card rounded-inline-basic h-100 hoverBigger hoverShadow">
                 <div class="card-body">
                     <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: #755e70;">
                         <i class="bi {skill.icon}"></i>
                     </div>
-                    <p class="m-0 mt-2">{skill.title}</p>
-                    <hr style="opacity: 0.1;">
+                    <p class="m-0 mt-2 fw-bold">{skill.title}</p>
+                    <hr style="opacity: 0.1;" class="my-2">
                     {str(skill.description)}
                 </div>
             </div>
         </a>
     </div>
 """
-    print(skill.title)
-    print(skill.icon)
-    print(skill.description)
+
 
 footer_html = str(Footer())
 
