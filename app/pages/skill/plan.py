@@ -9,7 +9,7 @@ from app.pages.project import (
     techlife,
     foodome,
 )
-from app.pages.job import y2023_NthuIr, y2023_NthuOu, y2023_Tiic
+from app.pages.job import y2023_NthuIr, y2023_NthuOu
 
 page = SkillPage(
     title="數據分析與企劃",
@@ -19,13 +19,11 @@ page = SkillPage(
     icon="bi-map",
     description=ListStr(
         [
-            "熟悉資料清理流程",
-            "擅長 Excel 分析",
-            "Python 爬蟲處理",
-            "精通 pandas 操作",
-            "熟用 R 語言整理",
+            "熟悉資料清理與 pipeline",
+            "擅長利用 BI 工具將資料可視化",
+            "妥善使用 Excel 公式進行分析",
+            "Python 爬蟲處理與逆向分析",
             "GA 數據收集分析",
-            "使用 BI 工具將資料可視化",
         ]
     ),
     skill_group=[
@@ -97,7 +95,6 @@ page = SkillPage(
     jobs=[
         y2023_NthuIr.page,
         y2023_NthuOu.page,
-        y2023_Tiic.page,
     ],
     certificate=[
         Certificate(

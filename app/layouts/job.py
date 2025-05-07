@@ -99,7 +99,9 @@ class JobPage:
             <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
                 <div class="container">
                     <div class="col-12">
-                        <h1 class="text-center fw-bold text-white notoFont">{self.title}</h1>
+                        <h1 style="letter-spacing: 0.4em; line-height: 150%; color: #FFFFFF;" class="text-center">
+                            {self.title}
+                        </h1>
                     </div>
                 </div>
             </div>

@@ -14,9 +14,10 @@ page = SkillPage(
     cover="/assets/imgs/skills/design/cover.png",
     description=ListStr(
         [
-            "社群行銷",
+            "社群行銷與媒體經營",
             "商業思維",
-            "使用者研究",
+            "團隊領導",
+            "引入 Notion 管理專案與團隊",
         ]
     ),
     skill_group=[
@@ -49,6 +50,11 @@ page = SkillPage(
                     title="Wordpress",
                     description="網頁架設與管理",
                     icon="/assets/imgs/appIcons/wordpress.png",
+                ),
+                SkillItem(
+                    title="Notion",
+                    description="專案管理與團隊協作",
+                    icon="/assets/imgs/appIcons/notion.png",
                 ),
             ],
         ),
