@@ -27,6 +27,7 @@ page = ProjectPage(
     status="running",
     colorSet=ThemeColor().blue,
     prefix="trelloFinder",
+    pin=True,
     cover="/assets/imgs/projects/trelloFinder/cover.png",
     skill_types=["pin", "dev", "analysis"],
     tags=[

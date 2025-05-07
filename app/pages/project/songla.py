@@ -24,6 +24,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().green,
     prefix="songla",
+    pin=True,
     cover="/assets/imgs/projects/songla/cover.png",
     description_links=[
         LinkButton(

@@ -19,6 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().green,
     prefix="techlife",
+    pin=True,
     cover="/assets/imgs/projects/techlife/cover.png",
     description_links=[
         LinkButton(

@@ -19,6 +19,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().blue,
     prefix="chenmko",
+    pin=True,
     cover="/assets/imgs/projects/chenmko/cover.png",
     skill_types=["pin", "dev"],
     tags=["網站架設", "資料庫設計", "前端開發", "後端開發"],

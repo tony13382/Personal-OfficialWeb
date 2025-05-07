@@ -23,6 +23,7 @@ page = ProjectPage(
     status="running",
     colorSet=ThemeColor().red,
     prefix="stockCalc",
+    pin=True,
     cover="/assets/imgs/projects/stockCalc/cover.png",
     description_links=[
         LinkButton(

@@ -26,6 +26,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().orange,
     prefix="mindReader",
+    pin=True,
     cover="/assets/imgs/projects/mindReader/cover.png",
     description_links=[
         LinkButton(

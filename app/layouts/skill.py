@@ -4,8 +4,10 @@ from pydantic import BaseModel
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer
-from app.elements import Card, Html, Image, ListStr
+from app.components.person_card import PersonCard, MoreModal
+from app.elements import Card, DivBar, Html, ListDiv, ListStr, Text
 from app.layouts.project import ProjectPage
+from app.layouts.job import JobPage
 
 
 class SkillItem(BaseModel):
@@ -18,6 +20,12 @@ class SkillsGroup(BaseModel):
     icon: str
     title: str
     children: List[SkillItem] = []
+
+
+class Certificate(BaseModel):
+    title: str
+    company: str
+    tags: List[str] = []
 
 
 def convert_project(project: ProjectPage) -> str:
@@ -43,6 +51,54 @@ def convert_project(project: ProjectPage) -> str:
     return single_code
 
 
+def convert_job(job: JobPage) -> str:
+    return f"""
+<a href="/jobs/{job.prefix}.html" class="text-decoration-none text-black">
+    <div class="card pb-2 rounded-inline-basic hoverShadow">
+        <div class="card-body pb-1">
+            <div class="d-flex align-items-center flex-wrap">
+                <p class="mb-0 flex-fill fs-5 fw-bold">{job.title}</p>
+                <p class="mb-0 opacity-50 ">{job.startdate} ～ {job.enddate}</p>
+            </div>
+            <div class="">
+                <div class="d-flex align-items-center flex-wrap">
+                    <p class="mb-0 me-2">{job.job_name.replace("<br>", "")}</p>
+                </div>
+            </div>
+            <div class="">
+                <hr style="opacity: 0.1;">
+                {str(job.description)}
+            </div>
+        </div>
+    </div>
+</a>    
+"""
+
+
+def convert_certificate(certificate: Certificate) -> str:
+    tags = ""
+    if certificate.tags:
+        tags += """<div class="card-footer p-3 pb-2 pt-0 bg-white border-0"><p class="col-12 mb-0">"""
+        for tag in certificate.tags:
+            tags += f"""<span class="badge rounded-pill bg-mytheme text-dark p-2 me-2 overflow-hidden"># {tag}</span>"""
+        tags += """</p></div>"""
+    return f"""
+<div class="col-12 text-black">
+    <div class="card rounded-inline-basic">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <b>{certificate.title}</b>
+                    <p class="mb-0">{certificate.company}</p>
+                </div>
+            </div>
+        </div>
+        {tags}
+    </div>
+</div>
+"""
+
+
 class SkillPage:
     def __init__(
         self,
@@ -53,6 +109,8 @@ class SkillPage:
         description: Optional[ListStr] = None,
         skill_group: Optional[List[SkillsGroup]] = None,
         projects: Optional[List[ProjectPage]] = None,
+        jobs: Optional[List[JobPage]] = None,
+        certificate: Optional[List[Certificate]] = None,
     ):
         self.title = title
         self.colorSet = colorSet
@@ -61,6 +119,8 @@ class SkillPage:
         self.description = description
         self.skill_group = skill_group or []
         self.projects = projects or []
+        self.jobs = jobs or []
+        self.certificate = certificate or []
 
     def __str__(self):
 
@@ -78,23 +138,7 @@ class SkillPage:
 
         skill_tools_html = ""
         if self.skill_group:
-            skill_tools_html += """
-<style>
-.skill-card .card-footer {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-}
 
-.skill-card:hover .card-footer {
-    opacity: 1;
-    padding: 0.5rem 1rem;
-    max-height: 100px;
-}
-</style>
-"""
             for group in self.skill_group:
                 skill_tools_html += """<div class="row g-3">"""
                 skill_tools_html += f"""\
@@ -106,7 +150,7 @@ class SkillPage:
 """
                 for item in group.children:
                     skill_tools_html += f"""\
-<div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch skill-card">
+<div class="col-12 col-md-6 col-lg-6 d-flex align-items-stretch skill-card">
     <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
         <div class="card-body d-inline-flex align-items-center">
             <div class="d-inline-block">
@@ -116,34 +160,62 @@ class SkillPage:
             </div>
             <div class="ps-3 d-inline-flex flex-column">
                 <p class="p-0 m-0 fw-bold">{item.title}</p>
+                <p class="p-0 m-0">{str(item.description)}</p>
             </div>
-        </div>
-        <div class="card-footer bg-transparent">
-            <p class="p-0 m-0">{str(item.description)}</p>
         </div>
     </div>
 </div>
 """
                 skill_tools_html += """</div>"""
 
-        skill_card = str(Card(body=[Html(skill_tools_html)], body_gap_size="large"))
+        skill_card = Card(
+            body=[
+                Text("技能組", "h3"),
+                DivBar(),
+                ListDiv([Html(skill_tools_html)], gap_size="large"),
+            ],
+        )
 
-        project_html = ""
+        projects_html = ""
         if self.projects:
-            project_html += """
+            projects_html += """
 
         <div class="row">
-            <div class="col-12"><h3 class="pb-2 px-2">作品集</h3></div>
+            <div class="col-12"><h3 class="pb-2 px-2">相關作品</h3></div>
         </div>
         <div class="row d-flex align-items-stretch g-2">
 """
             for project in self.projects:
-                project_html += convert_project(project)
+                projects_html += convert_project(project)
 
-            project_html += """
+            projects_html += """
         </div>
     """
 
+        job_html = ""
+        if self.jobs:
+            job_content = ""
+            for job in self.jobs:
+                job_content += convert_job(job)
+            job_html = Card(
+                body=[
+                    Text("相關工作經歷", "h3"),
+                    ListDiv([Html(job_content)], gap_size="large"),
+                ],
+                body_gap_size="large",
+            )
+
+        certificate_html = ""
+        if self.certificate:
+            certificate_content = ""
+            for cert in self.certificate:
+                certificate_content += convert_certificate(cert)
+            certificate_html = Card(
+                body=[
+                    Text("相關證照", "h3"),
+                    ListDiv([Html(certificate_content)], gap_size="large", mt=2),
+                ],
+            )
         return f"""
 <!doctype html>
 <html lang="zh-Hant-TW">
@@ -175,30 +247,32 @@ class SkillPage:
                 </div>
             </div>
         </div>
-        <div class="container pb-5" style="margin-top: -160px; min-height: 100vh;">
+        <div class="container pb-5 text-black" style="margin-top: -160px; min-height: 100vh;">
             <div class="row position-relative d-flex align-items-start">
-                <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
+                <div class="col-lg-3 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
+                    {str(PersonCard())}
                     <div class="card shadow bg-body border-0 rounded-basic">
-                        {str(Image(self.cover, "Cover Image"))}
                         <div class="card-body p-4">
-                            <p class="fw-bold m-0 pb-2 fs-5 notoFont">
-                                {str(self.description)}
-                            </p>
+                            {str(self.description)}
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-12 pb-5 d-grid gap-5">
+                <div class="col-lg-9 col-12 pb-5 d-grid gap-5">
                     <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
-                    {skill_card}
+                    {str(skill_card)}
+                    {job_html}
+                    {certificate_html}
                 </div>
             </div>
-            {project_html}
+            {projects_html}
         </div>
     </div>
 
     
 
     {str(Footer())}
+
+    {str(MoreModal())}
 </body>
 
 </html>

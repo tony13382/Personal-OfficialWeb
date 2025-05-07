@@ -21,6 +21,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().purple,
     prefix="hsCloudMeetingManage",
+    pin=True,
     cover="/assets/imgs/projects/hsCloudMeetingManage/cover.png",
     description_links=[
         LinkButton(

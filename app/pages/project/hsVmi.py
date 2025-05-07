@@ -18,6 +18,7 @@ page = ProjectPage(
     status="closed",
     colorSet=ThemeColor().blue,
     prefix="hsVmi",
+    pin=True,
     cover="/assets/imgs/projects/hsVmi/cover.png",
     description_links=[
         LinkButton(

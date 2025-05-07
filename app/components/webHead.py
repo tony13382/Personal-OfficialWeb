@@ -82,7 +82,16 @@ class Head:
             background-repeat: no-repeat;
             background-size: 100% 100%; /* 使背景覆蓋文字 */
         }}
+        .grayBlockHover {{
+            text-decoration: none;
+            color: #1f1f1f;
+        }}
 
+        .grayBlockHover:hover {{
+            text-decoration: none;
+            color: #1f1f1f;
+            background-color: #f0f0f0;
+        }}
         
     </style>
     <style>

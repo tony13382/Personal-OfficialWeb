@@ -33,6 +33,7 @@ class ProjectPage:
         scores: Optional[List[Score]] = None,
         tools: Optional[List[Tool]] = None,
         children: Optional[List[Card]] = None,
+        pin: Optional[bool] = False,
     ):
         self.title = title
         self.startdate = startdate

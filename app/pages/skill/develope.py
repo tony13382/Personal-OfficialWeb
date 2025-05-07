@@ -1,5 +1,5 @@
 from app.elements import ListStr, Text
-from app.layouts.skill import SkillPage, SkillsGroup, SkillItem
+from app.layouts.skill import Certificate, SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
 from app.pages.project import (
@@ -13,20 +13,22 @@ from app.pages.project import (
     oneDayLover,
 )
 
+from app.pages.job import y2024_SolwenAi, y2023_NthuOu, y2023_NthuIr
+
 page = SkillPage(
-    title="AI 導入／NLP",
+    title="AI 系統導入／自然語言處理",
     colorSet=ThemeColor().orange,
     prefix="develope",
     cover="/assets/imgs/skills/develope/cover.png",
     description=ListStr(
         [
-            "精通大型語言模型應用與整合。",
-            "熟悉自然語言理解與生成技術。",
-            "掌握前後端全棧開發。",
-            "能將多模態模型整合至網頁。",
-            "擅長資料庫結構設計與優化。",
-            "具備用戶友好界面設計經驗。",
-            "快速適應多種開發工具與環境。",
+            "精通大型語言模型應用與整合",
+            "熟悉自然語言理解與生成技術",
+            "掌握前後端全棧開發",
+            "能將多模態模型整合至網頁",
+            "擅長資料庫結構設計與優化",
+            "具備用戶友好界面設計經驗",
+            "快速適應多種開發工具與環境",
         ]
     ),
     skill_group=[
@@ -210,5 +212,22 @@ page = SkillPage(
         stockCalc.page,
         noDrinkNoDrunk.page,
         oneDayLover.page,
+    ],
+    jobs=[
+        y2024_SolwenAi.page,
+        y2023_NthuOu.page,
+        y2023_NthuIr.page,
+    ],
+    certificate=[
+        Certificate(
+            title="Google Data Analytics Professional Certificate",
+            company="Google (Coursera)",
+            tags=["Python", "Excel", "SQL", "資料搜集／前處理", "資料視覺化"],
+        ),
+        Certificate(
+            title="IBM Data Visualization & Dashboard Essentials",
+            company="IBM (Coursera)",
+            tags=["Python", "Excel", "IBM Cognos", "SQL", "資料視覺化"],
+        ),
     ],
 )
