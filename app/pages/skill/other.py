@@ -8,7 +8,7 @@ from app.pages.job import y2023_Tiic
 
 page = SkillPage(
     title="其他技能",
-    colorSet=ThemeColor().pink,
+    colorSet=ThemeColor().natural,
     prefix="other",
     icon="bi-bag",
     cover="/assets/imgs/skills/design/cover.png",

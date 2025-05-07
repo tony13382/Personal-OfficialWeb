@@ -17,7 +17,7 @@ from app.pages.job import y2024_SolwenAi, y2023_NthuOu, y2023_NthuIr
 
 page = SkillPage(
     title="AI 系統導入／自然語言處理",
-    colorSet=ThemeColor().orange,
+    colorSet=ThemeColor().green,
     prefix="develope",
     icon="bi-code-slash",
     cover="/assets/imgs/skills/develope/cover.png",

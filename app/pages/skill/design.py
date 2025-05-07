@@ -12,7 +12,7 @@ from app.pages.project import (
 
 page = SkillPage(
     title="設計技能・專精 UI/UX",
-    colorSet=ThemeColor().orange,
+    colorSet=ThemeColor().purple,
     prefix="design",
     cover="/assets/imgs/skills/design/cover.png",
     icon="bi-phone",
