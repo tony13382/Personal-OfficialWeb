@@ -106,6 +106,7 @@ class SkillPage:
         colorSet: Tuple,  # ThemeColor
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
+        icon: str = "bi-person",
         description: Optional[ListStr] = None,
         skill_group: Optional[List[SkillsGroup]] = None,
         projects: Optional[List[ProjectPage]] = None,
@@ -116,6 +117,7 @@ class SkillPage:
         self.colorSet = colorSet
         self.prefix = prefix
         self.cover = cover
+        self.icon = icon
         self.description = description
         self.skill_group = skill_group or []
         self.projects = projects or []

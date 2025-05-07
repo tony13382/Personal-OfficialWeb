@@ -10,6 +10,7 @@ page = SkillPage(
     title="其他技能",
     colorSet=ThemeColor().pink,
     prefix="other",
+    icon="bi-bag",
     cover="/assets/imgs/skills/design/cover.png",
     description=ListStr(
         [

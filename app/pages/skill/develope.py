@@ -19,6 +19,7 @@ page = SkillPage(
     title="AI 系統導入／自然語言處理",
     colorSet=ThemeColor().orange,
     prefix="develope",
+    icon="bi-code-slash",
     cover="/assets/imgs/skills/develope/cover.png",
     description=ListStr(
         [

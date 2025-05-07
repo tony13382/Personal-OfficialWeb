@@ -15,6 +15,7 @@ page = SkillPage(
     colorSet=ThemeColor().orange,
     prefix="design",
     cover="/assets/imgs/skills/design/cover.png",
+    icon="bi-phone",
     description=ListStr(
         [
             "熟悉 UI/UX 設計流程",

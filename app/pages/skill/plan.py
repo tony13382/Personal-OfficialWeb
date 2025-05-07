@@ -16,6 +16,7 @@ page = SkillPage(
     colorSet=ThemeColor().blue,
     prefix="plan",
     cover="/assets/imgs/skills/plan/cover.png",
+    icon="bi-map",
     description=ListStr(
         [
             "熟悉資料清理流程",

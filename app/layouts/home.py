@@ -1,9 +1,9 @@
 from app.builder.jobs import jobBuilder
 from app.builder.projects import projectBuilder
+from app.builder.skill import skillBuilder
 from app.components.footer import Footer
 from app.components.navbar import Navbar
 from app.components.person_card import PersonCard, MoreModal
-
 
 projectBuilder.getPages()
 
@@ -149,6 +149,29 @@ for job in jobBuilder.getPages():
     </div>
 </a>
     """
+
+
+skill_html = ""
+for skill in skillBuilder.getPages():
+    skill_html += f"""
+    <div class="col-12 col-md-6 d-grid">
+        <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black hoverBigger hoverBigger">
+            <div class="card rounded-inline-basic h-100">
+                <div class="card-body">
+                    <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: #755e70;">
+                        <i class="bi {skill.icon}"></i>
+                    </div>
+                    <p class="m-0 mt-2">{skill.title}</p>
+                    <hr style="opacity: 0.1;">
+                    {str(skill.description)}
+                </div>
+            </div>
+        </a>
+    </div>
+"""
+    print(skill.title)
+    print(skill.icon)
+    print(skill.description)
 
 footer_html = str(Footer())
 
@@ -302,6 +325,20 @@ full_html = (
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 專業技能 -->
+                <div class="card shadow mt-4 border-0 rounded-basic">
+                    <div class="card-body lh-lg" id="about">
+                        <div class="col-12">
+                            <h3 class="py-2 fw-bold" style="letter-spacing: 4px;">我的<span
+                                    style="color: #ea81b0;">專業技能</span></h3>
+                        </div>
+                        <div class="row g-3">
+                            """
+    + skill_html
+    + """
                         </div>
                     </div>
                 </div>
