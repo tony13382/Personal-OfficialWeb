@@ -566,56 +566,13 @@ full_html = (
                 </div>
             </div>
         </div>
-
-        
-
     </div>
 
     """
     + str(MoreModal())
     + footer_html
     + """
-
-    
-    <script src="/assets/script/bootstrap.bundle.min.js"></script>
-    
-
-    <!-- <script language="javascript" type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
-        </script>
-    <script>
-        var wow = new WOW({
-            boxClass: 'delayshowanimate', // 要套用WOW.js縮需要的動畫class(預設是wow)
-            animateClass: 'animate__animated', // 要"動起來"的動畫(預設是animated, 因此如果你有其他動畫library要使用也可以在這裡調整)
-            offset: 0, // 距離顯示多遠開始顯示動畫 (預設是0, 因此捲動到顯示時才出現動畫)
-            mobile: true, // 手機上是否要套用動畫 (預設是true)
-            live: true, // 非同步產生的內容是否也要套用 (預設是true, 非常適合搭配SPA)
-            callback: function (box) {
-                // 當每個要開始時, 呼叫這裡面的內容, 參數是要開始進行動畫特效的element DOM
-            },
-            scrollContainer: null // 可以設定成只套用在某個container中捲動才呈現, 不設定就是整個視窗
-        });
-        wow.init();
-    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <!-- <script>
-        // Wrap every letter in a span
-        var textWrapper = document.querySelector('.ml12');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        anime.timeline({
-            loop: false
-        })
-            .add({
-                targets: '.ml12 .letter',
-                translateX: [40, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 1200,
-                delay: (el, i) => 500 + 30 * i
-            })
-    </script> -->
 </body>
 
 </html>
