@@ -110,7 +110,7 @@ class JobPage:
                 <div class="col-lg-4 col-12 pb-5 sticky-lg-top " style="padding-top: 92px;">
                     <div class="card shadow bg-body border-0 rounded-basic">
                         {cover_html}
-                        <div class="card-body p-4 pt-0 text-center">
+                        <div class="card-body p-4 text-center">
                             <p class="text-center fw-bold m-0 pb-2 fs-5 notoFont">
                                 {job_name_html}
                             </p>

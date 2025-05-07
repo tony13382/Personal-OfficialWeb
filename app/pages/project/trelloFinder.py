@@ -297,13 +297,13 @@ page = ProjectPage(
                         IconBlock(
                             src="https://drive.google.com/file/d/1xoYvRgNZ3Li3kEbwFW5QEBuK-JOLogfz/view",
                             icon="bi-file-earmark-ppt",
-                            title="研究會議簡報連結",
+                            title="論文簡報連結",
                             subtitle="Canva",
                         ),
                         IconBlock(
                             src="https://drive.google.com/file/d/1y7yCt21CVPbaPbOCFheRRoO3R98cCWuP/view?usp=sharing",
                             icon="bi-file-earmark-arrow-down",
-                            title="研討會論文文件",
+                            title="論文文件",
                             subtitle="PDF",
                         ),
                     ],

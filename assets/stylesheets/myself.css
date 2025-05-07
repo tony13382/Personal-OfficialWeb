@@ -193,6 +193,19 @@
     transition-duration: 0.5s;
 }
 
+.file-links {
+    position: relative;
+}
 .file-links:hover {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
+    border : 1px solid var(--themeColor);
+}
+.file-links:hover::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--themeColor);
+    opacity: 0.1;
 }
