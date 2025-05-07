@@ -52,9 +52,16 @@ def convert_project(project: ProjectPage) -> str:
 
 
 def convert_job(job: JobPage) -> str:
+    firstColor, secondColor = job.colorSet
     return f"""
+<style>
+.jobCard-{job.prefix}:hover {{
+    border: 1px solid {firstColor};
+    background-color: {firstColor}20;
+}}
+</style>
 <a href="/jobs/{job.prefix}.html" class="text-decoration-none text-black">
-    <div class="card pb-2 rounded-inline-basic hoverShadow">
+    <div class="card pb-2 rounded-inline-basic hoverShadow jobCard-{job.prefix}">
         <div class="card-body pb-1">
             <div class="d-flex align-items-center flex-wrap">
                 <p class="mb-0 flex-fill fs-5 fw-bold">{job.title}</p>

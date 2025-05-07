@@ -17,16 +17,15 @@ from app.pages.job import y2024_SolwenAi, y2023_NthuOu, y2023_NthuIr
 
 page = SkillPage(
     title="AI 系統開發／自然語言處理",
-    colorSet=ThemeColor().green,
+    colorSet=ThemeColor().red,
     prefix="develope",
     icon="bi-code-slash",
     cover="/assets/imgs/skills/develope/cover.png",
     description=ListStr(
         [
             "精通大型語言模型應用與整合",
-            "熟悉自然語言理解與生成技術",
             "掌握前後端全棧開發",
-            "能將多模態模型整合至網頁",
+            "擅長建構網頁式 AI 應用程式",
             "擅長資料庫結構設計與優化",
             "具備用戶友好界面設計經驗",
             "快速適應多種開發工具與環境",

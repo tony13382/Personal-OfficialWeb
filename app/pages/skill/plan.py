@@ -19,7 +19,7 @@ page = SkillPage(
     icon="bi-map",
     description=ListStr(
         [
-            "熟悉資料清理與 pipeline",
+            "熟悉資料清理與 Pipeline",
             "擅長利用 BI 工具將資料可視化",
             "妥善使用 Excel 公式進行分析",
             "Python 爬蟲處理與逆向分析",

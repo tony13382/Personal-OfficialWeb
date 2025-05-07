@@ -65,9 +65,16 @@ jobBuilder.getPages()
 
 job_html = ""
 for job in jobBuilder.getPages():
+    firstColor, secondColor = job.colorSet
     job_html += f"""
+<style>
+.jobCard-{job.prefix}:hover {{
+    border: 1px solid {firstColor};
+    background-color: {firstColor}20;
+}}
+</style>
 <a href="/jobs/{job.prefix}.html" class="text-decoration-none text-black">
-    <div class="card pb-2 rounded-inline-basic hoverShadow">
+    <div class="card pb-2 rounded-inline-basic hoverShadow jobCard-{job.prefix}">
         <div class="card-body pb-1">
             <div class="d-flex align-items-center flex-wrap">
                 <p class="mb-0 flex-fill fs-5 fw-bold">{job.title}</p>
@@ -90,15 +97,25 @@ for job in jobBuilder.getPages():
 
 skill_html = ""
 for skill in skillBuilder.getPages():
+    firstColor, secondColor = skill.colorSet
     skill_html += f"""
+    <style>
+    .skillCard-{skill.prefix} {{
+        border: 0px;
+        background-color: {firstColor}10;
+    }}
+    .skillCard-{skill.prefix}:hover {{
+        border: 1px solid {firstColor};
+    }}
+    </style>
     <div class="col-12 col-md-6 d-grid">
         <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
-            <div class="card rounded-inline-basic border-0 h-100 hoverBigger hoverShadow" style="background-color: #f8eff6ca;">
+            <div class="card rounded-inline-basic h-100 hoverShadow skillCard-{skill.prefix}">
                 <div class="card-body">
-                    <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: #755e70;">
+                    <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: {firstColor};">
                         <i class="bi {skill.icon}"></i>
                     </div>
-                    <p class="m-0 mt-2 fw-bold">{skill.title}</p>
+                    <p class="m-0 mt-2 fw-bold" style="color: {firstColor};">{skill.title}</p>
                     <hr style="opacity: 0.1;" class="my-2">
                     {str(skill.description)}
                 </div>
@@ -117,13 +134,13 @@ def convert_project(project: ProjectPage) -> str:
         tag_code += """</div></div>"""
     single_code = f"""
     <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="/projects/{project.prefix}.html" class="text-decoration-none">
+        <a href="/projects/{project.prefix}.html" class="text-decoration-none text-dark">
             <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
                     src="{project.cover}" class="card-img-top lozad" alt="..."
                     data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
                 <div class="card-body">
-                    <h5 class="card-title text-dark">{project.title}</h5>
-                    <p class="card-text text-dark">{project.description}</p>
+                    <h5 class="card-title">{project.title}</h5>
+                    <p class="card-text">{project.description}</p>
                 </div>
                 {tag_code}
             </div>

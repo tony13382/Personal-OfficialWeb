@@ -12,7 +12,7 @@ from app.pages.project import (
 from app.pages.job import y2022_Songla
 
 page = SkillPage(
-    title="設計技能・專精 UI/UX",
+    title="設計技能・專精資訊設計",
     colorSet=ThemeColor().purple,
     prefix="design",
     cover="/assets/imgs/skills/design/cover.png",
