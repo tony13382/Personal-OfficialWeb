@@ -93,7 +93,7 @@ for skill in skillBuilder.getPages():
     skill_html += f"""
     <div class="col-12 col-md-6 d-grid">
         <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
-            <div class="card rounded-inline-basic h-100 hoverBigger hoverShadow">
+            <div class="card rounded-inline-basic border-0 h-100 hoverBigger hoverShadow" style="background-color: #f8eff6ca;">
                 <div class="card-body">
                     <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: #755e70;">
                         <i class="bi {skill.icon}"></i>
@@ -140,14 +140,9 @@ if projects:
     for project in projects:
         if project.pin:
             pin_projects.append(project)
-    projects_html += """
-<div class="row d-flex align-items-stretch g-2">
-"""
+
     for project in pin_projects:
         projects_html += convert_project(project)
-    projects_html += """
-</div>
-"""
 
 
 footer_html = str(Footer())
