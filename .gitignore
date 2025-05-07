@@ -177,6 +177,7 @@ cython_debug/
 node_modules/
 
 test.py
+test.ipynb
 test.html
 temp.py
 
