@@ -4,22 +4,9 @@ from app.builder.skill import skillBuilder
 from app.components.footer import Footer
 from app.components.navbar import Navbar
 from app.components.person_card import PersonCard, MoreModal
+from app.layouts.project import ProjectPage
 
 projectBuilder.getPages()
-
-set_projects_js = ""
-for project in projectBuilder.getPages():
-    set_projects_js += f"""
-    {{
-        name: "{project.title}",
-        cover: "{project.cover}",
-        beforeLoadingCover: "/assets/imgs/general/imageLoading.svg",
-        link: "{f"/projects/{project.prefix}.html"}",
-        tags: {project.tags},
-        description: "{project.description}",
-        projectType: {project.skill_types},
-    }},
-    """
 
 
 head_html = """
@@ -67,56 +54,6 @@ head_html = """
         gtag('js', new Date());
 
         gtag('config', 'G-165132NHTH');
-    </script>
-
-
-    <!-- Add: Vue.js Suppot-->
-    <script type="importmap">
-        {"imports": {
-            "vue": "/assets/script/vue.esm-browser.js"
-        }}
-    </script>
-
-    <script>
-        // 定義作品集資料格式
-        const set_type = [
-            {
-                id: "pin",
-                title: "⭐ 精選專案",
-                html_icon: "<i class='bi bi-star-fill pe-2'></i>精選專案"
-            },
-            {
-                id: "analysis",
-                title: "📊 數據/文本分析",
-                html_icon: "<i class='bi bi-bar-chart-fill pe-2'></i>數據／文本分析"
-            },
-            {
-                id: "dev",
-                title: "💻 程式開發",
-                html_icon: "<i class='bi-terminal-fill pe-2'></i>程式開發"
-            },
-            {
-                id: "design",
-                title: "🎨 設計",
-                html_icon: "<i class='bi bi-vector-pen pe-2'></i>設計"
-            },
-            {
-                id: "plan",
-                title: "🖊️ 企劃",
-                html_icon: "<i class='bi-file-earmark-medical-fill pe-2'></i>企劃"
-            },
-            {
-                id: "other",
-                title: "🗃️ 其他",
-                html_icon: "<i class='bi bi-three-dots pe-2'></i>其他"
-            }
-        ]
-        // 作品集資料
-        const set_projects = [
-"""
-head_html += set_projects_js
-head_html += """
-    ]
     </script>
 </head>
 """
@@ -168,6 +105,48 @@ for skill in skillBuilder.getPages():
             </div>
         </a>
     </div>
+"""
+
+
+def convert_project(project: ProjectPage) -> str:
+    tag_code = ""
+    if project.tags:
+        tag_code += """<div class="card-footer bg-transparent border-0 pb-3"><div class="fs-5 text-black pt-3">"""
+        for tag in project.tags:
+            tag_code += f"""<span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden">{tag}</span>"""
+        tag_code += """</div></div>"""
+    single_code = f"""
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="/projects/{project.prefix}.html" class="text-decoration-none">
+            <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
+                    src="{project.cover}" class="card-img-top lozad" alt="..."
+                    data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">{project.title}</h5>
+                    <p class="card-text text-dark">{project.description}</p>
+                </div>
+                {tag_code}
+            </div>
+        </a>
+    </div>
+"""
+    return single_code
+
+
+projects_html = ""
+projects = projectBuilder.getPages()
+if projects:
+    pin_projects = []
+    for project in projects:
+        if project.pin:
+            pin_projects.append(project)
+    projects_html += """
+<div class="row d-flex align-items-stretch g-2">
+"""
+    for project in pin_projects:
+        projects_html += convert_project(project)
+    projects_html += """
+</div>
 """
 
 
@@ -336,7 +315,7 @@ full_html = (
                         <div class="row g-3">
                             """
     + skill_html
-    + """
+    + f"""
                         </div>
                     </div>
                 </div>
@@ -440,7 +419,7 @@ full_html = (
                             <div class="col-12 d-grid gap-3 bordre-1">
                                 """
     + job_html
-    + """
+    + f"""
                             </div>
                         </div>
                     </div>
@@ -1490,7 +1469,7 @@ full_html = (
             <div class="container">
                 <div class="row ms-navbar">
                     <div class="col-12">
-                        <h2 class="mb-4 mt-5" style="margin-left: -4px;">作品集</h2>
+                        <h2 class="mb-2 mt-5" style="margin-left: -4px;">精選作品集</h2>
                     </div>
                 </div>
             </div>
@@ -1498,112 +1477,21 @@ full_html = (
     </div>
     <div class="pb-5 bg-my-projects">
         <div class="container" id="project_board">
-            <div class="row">
-                <div class="col-12">
-                    <div class="col-12">
-                        <ul class="nav mb-3 align-items-end flex-nowrap overflow-auto" id="products-tabs" role="tablist"
-                            style="margin-left: -0.25rem;">
-                            <li class="nav-item me-3" v-for="(typetag, index) in type_list" :key="typetag.id">
-                                <a class="nav-link px-1 py-0 text-nowrap" v-bind:id="'products-' + typetag.id + '-tab' "
-                                    v-bind:data-bs-target="'#products-' + typetag.id "
-                                    v-bind:aria-controls="'products-' + typetag.id"
-                                    :aria-selected="index === 0 ? 'true' : 'false'" :class="{'active': index === 0}"
-                                    data-bs-toggle="pill" type="button" role="tab" aria-selected="false"
-                                    v-html="typetag.html_icon">{{typetag.title}}</a>
-                            </li>
-                            <li class="nav-item me-3">
-                                <a class="nav-link px-1 py-0 text-nowrap" id="products-all-tab" data-bs-toggle="pill"
-                                    data-bs-target="#products-all" type="button" role="tab" aria-controls="products-all"
-                                    aria-selected="false">
-                                    <i class='bi bi-boxes pe-2'></i>所有作品
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade" v-for="(typetag, index) in type_list" v-bind:id="'products-' + typetag.id"
-                    v-bind:aria-labelledby="'products-' + typetag.id + '-tab'" :class="{'show active': index === 0}"
-                    role="tabpanel" tabindex="0">
-                    <div class="row d-flex align-items-stretch">
-                        <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project in filteredProjects(typetag.id)">
-                            <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
-                                    <img :src="project.beforeLoadingCover" class="card-img-top lozad" alt="..."
-                                        :data-src="project.cover">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-dark">{{ project.name }}</h5>
-                                        <p class="card-text text-dark">{{ project.description }}</p>
-                                    </div>
-                                    <div class="card-footer bg-transparent border-0 pb-3">
-                                        <div class="fs-5 text-black pt-3">
-                                            <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden"
-                                                v-for="tag in project.tags">{{ tag }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+            <div class="row d-flex align-items-stretch">
+                {projects_html}
+                <div class="col-12 p-2">
+                    <a href="/projects/index.html" class="text-decoration-none text-black">
+                        <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
+                            <div class="card-body">
+                                <p class="card-text text-center">查看更多作品</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <!--所有作品-->
-                <div class="tab-pane fade" id="products-all" role="tabpanel" aria-labelledby="products-all-tab"
-                    tabindex="0">
-                    <div class="row d-flex align-items-stretch">
-                        <div class="col-12 col-md-6 col-lg-4 p-2" v-for="project of projects_list">
-                            <a :href="project.link" class="text-decoration-none">
-                                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
-                                    <img v-bind:src="project.beforeLoadingCover" class="card-img-top lozad" alt="..."
-                                        v-bind:data-src="project.cover">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-dark">
-                                            {{project.name}}
-                                        </h5>
-                                        <p class="card-text text-dark">
-                                            {{project.description}}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer bg-transparent border-0 pb-3">
-                                        <div class="fs-5 text-black pt-3">
-                                            <span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden"
-                                                v-for="tag in project.tags">{{tag}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <script type="module">
-            import { createApp, ref } from 'vue';
-
-            createApp({
-                setup() {
-                    const projects_list = ref(set_projects); // 初始化項目列表
-                    const type_list = ref(set_type); // 初始化類型列表
-
-                    // 定義過濾項目的函數
-                    const filteredProjects = (typeId) => {
-                        return projects_list.value.filter(project => project.projectType.includes(typeId));
-                    };
-
-                    return {
-                        projects_list,
-                        type_list,
-                        filteredProjects,
-                    };
-                },
-            }).mount('#project_board');
-
-            // 當 document 準備好後執行 run_lazad
-            document.addEventListener('DOMContentLoaded', () => {
-                run_lazad()
-            });
-        </script>
+        
 
     </div>
 
@@ -1612,17 +1500,9 @@ full_html = (
     + footer_html
     + """
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>-->
+    
     <script src="/assets/script/bootstrap.bundle.min.js"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+    
 
     <!-- <script language="javascript" type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
@@ -1660,15 +1540,6 @@ full_html = (
                 delay: (el, i) => 500 + 30 * i
             })
     </script> -->
-
-    <script type="text/javascript" src="/assets/script/lozad.min.js"></script>
-    <script>
-        function run_lazad() {
-            const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-            observer.observe();
-        }
-        run_lazad();
-    </script>
 </body>
 
 </html>

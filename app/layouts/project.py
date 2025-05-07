@@ -50,6 +50,7 @@ class ProjectPage:
         self.scores = [] if scores is None else scores.copy()
         self.tools = tools or []
         self.children = children or []
+        self.pin = pin
 
     def __str__(self):
 

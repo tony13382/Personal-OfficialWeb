@@ -15,17 +15,19 @@ def convert_project(project: ProjectPage) -> str:
             tag_code += f"""<span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden">{tag}</span>"""
         tag_code += """</div></div>"""
     single_code = f"""
-    <div class="col-12 col-md-6 col-lg-6 p-2"><a href="/projects/{project.prefix}.html" class="text-decoration-none">
-                <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
-                        src="{project.cover}" class="card-img-top lozad" alt="..."
-                        data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
-                    <div class="card-body">
-                        <h5 class="card-title text-dark">{project.title}</h5>
-                        <p class="card-text text-dark">{project.description}</p>
-                    </div>
-                    {tag_code}
-                </div>
-            </a></div>
+<div class="col-12 col-md-6 col-lg-6 p-2">
+    <a href="/projects/{project.prefix}.html" class="text-decoration-none">
+        <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
+                src="{project.cover}" class="card-img-top lozad" alt="..."
+                data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
+            <div class="card-body">
+                <h5 class="card-title text-dark">{project.title}</h5>
+                <p class="card-text text-dark">{project.description}</p>
+            </div>
+            {tag_code}
+        </div>
+    </a>
+</div>
 """
     return single_code
 

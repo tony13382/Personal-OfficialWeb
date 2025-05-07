@@ -101,25 +101,20 @@ class Navbar:
             <i class="bi bi-list-nested"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarContentLinks">
-            <hr class="d-block d-lg-none bg-light" style="opacity: 0.2;">
-            <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end">
-                <li class="nav-item rounded-pill text-center">
-                    <a class="nav-link" href="#myProjects">我的作品</a>
-                </li>
-                <li class="nav-item rounded-pill text-center">
-                    <a class="nav-link" href="/awards">我的獎項</a>
+            <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
+                <li class="nav-item rounded-pill">
+                    <a class="nav-link" aria-current="page" href="/">首頁</a>
                 </li>
                 <li class="nav-div rounded-pill">
-                    <a class="nav-link text-white-50 d-none d-md-block">｜</a>
-                    <hr class="d-block d-md-none">
+                    <a class="nav-link text-white-50">｜</a>
                 </li>
-                <li class="nav-item rounded-pill text-center">
+                <li class="nav-item rounded-pill">
                     <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
                 </li>
-                <li class="nav-item rounded-pill text-center">
+                <li class="nav-item rounded-pill">
                     <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
                 </li>
-                <li class="nav-item rounded-pill text-center">
+                <li class="nav-item rounded-pill">
                     <a class="nav-link" target="_blank"
                         href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
                 </li>
