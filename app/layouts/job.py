@@ -1,6 +1,5 @@
 from typing import List, Literal, Optional, Tuple
 
-from pydantic import BaseModel
 from app.components.webHead import Head
 from app.components.navbar import Navbar
 from app.components.footer import Footer

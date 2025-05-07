@@ -249,6 +249,3 @@ page = ProjectPage(
         ),
     ],
 )
-with open(f"test.html", "w", encoding="utf-8") as f:
-    f.write(str(page))
-    print("Output to html Successful.")

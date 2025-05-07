@@ -456,7 +456,7 @@ class Text:
         bold: bool = False,
         center: bool = False,
     ):
-        self.content = string_formator(content)
+        self.content = content
         self.fontsize = fontsize
         self.bold = bold
         self.center = center
@@ -467,18 +467,18 @@ class Text:
 
         if self.fontsize == "span":
             return f"""
-<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-1">{self.content}</span>
+<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-1">{string_formator(self.content)}</span>
 """
         elif self.fontsize in ["h2", "h3", "p", "h4"]:
             return f"""
 <{self.fontsize} class="m-0 p-0 {fw_class} {center_class}">
-    {self.content}
+    {string_formator(self.content)}
 </{self.fontsize}>
 """
         else:
             return f"""
 <p class="m-0 p-0 {fw_class} {center_class}">
-    {self.content}
+    {string_formator(self.content)}
 </p>
 """
 
