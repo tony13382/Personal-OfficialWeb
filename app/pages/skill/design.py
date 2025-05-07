@@ -9,6 +9,7 @@ from app.pages.project import (
     pincakeAi,
     foodome,
 )
+from app.pages.job import y2022_Songla
 
 page = SkillPage(
     title="設計技能・專精 UI/UX",
@@ -81,4 +82,5 @@ page = SkillPage(
         pincakeAi.page,
         foodome.page,
     ],
+    jobs=[y2022_Songla.page],
 )
