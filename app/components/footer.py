@@ -8,6 +8,20 @@ class Footer:
                 <h4 class="fs-5">
                     連結 Links
                 </h4>
+                <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-bookmark-heart-fill"></i>
+                        知識推薦獲取來源
+                    </p>
+                </a>
+                <a href="https://bm.lianglu.uk/" rel="noopener noreferrer"
+                    class="text-decoration-none footer-link">
+                    <p class="footer_item">
+                        <i class="bi bi-bookmark-heart-fill"></i>
+                        推薦工作書籤
+                    </p>
+                </a>
                 <a href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663" target="_blank"
                     rel="noopener noreferrer" class="text-decoration-none footer-link">
                     <p class="footer_item">
@@ -20,13 +34,6 @@ class Footer:
                     <p class="footer_item">
                         <i class="bi bi-instagram"></i>
                         旗下知識帳號（DigiOcean）
-                    </p>
-                </a>
-                <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
-                    class="text-decoration-none footer-link">
-                    <p class="footer_item">
-                        <i class="bi bi-bookmark-heart-fill"></i>
-                        知識推薦獲取來源
                     </p>
                 </a>
             </div>
