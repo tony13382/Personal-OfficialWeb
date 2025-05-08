@@ -9,7 +9,7 @@ from app.pages.project import (
     pincakeAi,
     foodome,
 )
-from app.pages.job import y2022_Songla
+from app.pages.job import y2019_CycuEdu, y2022_Songla
 
 page = SkillPage(
     title="設計技能・專精資訊設計",
@@ -82,5 +82,8 @@ page = SkillPage(
         pincakeAi.page,
         foodome.page,
     ],
-    jobs=[y2022_Songla.page],
+    jobs=[
+        y2022_Songla.page,
+        y2019_CycuEdu.page,
+    ],
 )
