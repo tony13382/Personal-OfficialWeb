@@ -28,11 +28,17 @@ page = ProjectPage(
     cover="/assets/imgs/projects/songla/cover.png",
     description_links=[
         LinkButton(
-            content="公司社群網站",
-            href="https://linkby.tw/Songla",
+            content="公司網站（封存）",
+            href="https://tony13382.github.io/Songla-OfficialWeb/",
             open_in_tab=True,
             icon="bi-building",
-        )
+        ),
+        LinkButton(
+            content="Figma 原型展示連結",
+            href="https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=321-262&t=BiEbxhMaInIN0bkG-1&starting-point-node-id=321:262",
+            open_in_tab=True,
+            icon="bi-phone",
+        ),
     ],
     skill_types=["pin", "design"],
     tags=["介面設計", "產品規劃", "UX 優化"],
