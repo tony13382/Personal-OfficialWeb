@@ -181,8 +181,8 @@ test.ipynb
 test.html
 temp.py
 
-jobs/
-projects/
-skills/
-awards/
+jobs/*.html
+projects/*.html
+skills/*.html
+awards/*.html
 index.html
