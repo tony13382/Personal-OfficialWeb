@@ -71,16 +71,11 @@ page = ProjectPage(
             body_gap_size="large",
         ),
         Card(
+            header=Canva(
+                "https://www.canva.com/design/DAGm0-HNlm0/z5fy9uv5zelJIsqGtkHhBw/view?embed"
+            ),
             body=[
                 Text("期中見解報告", "h3"),
-                Html(
-                    """
-<div class="ratio ratio-4x3 overflow-hidden rounded-basic">
-    <iframe src="https://www.slideshare.net/slideshow/embed_code/key/HBCM3uQ0iF0fNr" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen="">
-    </iframe>
-</div>
-"""
-                ),
                 IconBlock(
                     title="下載檔案",
                     subtitle="Google Slide",
@@ -90,16 +85,11 @@ page = ProjectPage(
             body_gap_size="large",
         ),
         Card(
+            header=Canva(
+                "https://www.canva.com/design/DAGm0yetpKs/np_Z035Mycf67qyDDQkRiQ/view?embed"
+            ),
             body=[
                 Text("期末見解報告", "h3"),
-                Html(
-                    """
-<div class="ratio ratio-4x3 overflow-hidden rounded-basic">
-    <iframe src="https://www.slideshare.net/slideshow/embed_code/key/1ZyhDhZmEU41MY" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom:5px; max-width: 100%;" allowfullscreen="">
-    </iframe>
-</div>
-"""
-                ),
                 IconBlock(
                     title="下載檔案",
                     subtitle="Google Slide",
