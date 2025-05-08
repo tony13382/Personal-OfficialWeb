@@ -37,7 +37,7 @@ page = ProjectPage(
         )
     ],
     skill_types=["pin", "dev", "design", "analysis"],
-    tags=["介面設計", "產品規劃", "UX 優化", "API 開發", "NLP"],
+    tags=["介面設計", "產品規劃", "UX 優化", "API 開發", "NLP", "Azure"],
     scores=[
         Score("2021 大專校院資訊應用服務創新競賽", "佳作", "資訊應用組"),
         Score("2021 大專校院資訊應用服務創新競賽", "第三名", "Azure 雲端組"),

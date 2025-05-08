@@ -469,7 +469,8 @@ class ListDiv:
         margin_class += f"me-{self.me} " if self.me else ""
 
         display_class = f"d-{self.layout}"
-
+        if self.layout == "flex":
+            display_class += " flex-wrap"
         for item in self.children:
             content_html += str(item)
         return f"""
