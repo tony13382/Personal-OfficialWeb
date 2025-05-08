@@ -222,7 +222,7 @@ full_html = (
     <div style="
             padding: 80px 0px; 
             background: linear-gradient(0deg, rgba(49, 40, 38, 0.89), rgba(45, 38, 30, 0.95)), url(assets/imgs/index/homeCover.jpg); 
-            background-size: 100%;
+            background-repeat:no-repeat;background-size:cover; background-attachment: local;
             min-height: 90vh;
             align-items: center;
             display: grid;" id="topCover">
