@@ -11,7 +11,7 @@ class Footer:
                 <a href="https://learn.lianglu.uk/" rel="noopener noreferrer"
                     class="text-decoration-none footer-link">
                     <p class="footer_item">
-                        <i class="bi bi-bookmark-heart-fill"></i>
+                        <i class="bi bi-book-half"></i>
                         知識推薦獲取來源
                     </p>
                 </a>
