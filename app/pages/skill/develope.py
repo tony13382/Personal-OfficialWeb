@@ -13,7 +13,7 @@ from app.pages.project import (
     oneDayLover,
 )
 
-from app.pages.job import y2024_SolwenAi, y2023_NthuOu, y2023_NthuIr
+from app.pages.job import y2024_SolwenAi, y2022_NthuOu, y2023_NthuIr
 
 page = SkillPage(
     title="AI 系統開發／自然語言處理",
@@ -215,8 +215,8 @@ page = SkillPage(
     ],
     jobs=[
         y2024_SolwenAi.page,
-        y2023_NthuOu.page,
         y2023_NthuIr.page,
+        y2022_NthuOu.page,
     ],
     certificate=[
         Certificate(

@@ -336,7 +336,7 @@ full_html = (
                     <div class="card-body lh-lg" id="about">
                         <div class="row">
                             <div class="col-12 pb-3">
-                                <h3 class="pt-2 fw-bold" style="letter-spacing: 4px;">工作<span
+                                <h3 class="pt-2 fw-bold" style="letter-spacing: 4px;">個人<span
                                         style="color: #ea81b0;">經歷</span></h3>
                             </div>
                             <div class="col-12 d-grid gap-3 bordre-1">
@@ -429,116 +429,6 @@ full_html = (
                                         <p class="mt-1 mb-0" style="letter-spacing: 0.1rem;">
                                             具備良好的團隊合作能力，能夠有效溝通和協調。<span
                                                 class="halfHightLightBg">多次擔任管理職與協調者角色</span>，善於與團隊成員合作，共同努力實現目標。我相信良好的團隊合作能讓計畫走得更長遠。
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--學歷-->
-                <div class="card shadow mt-4 rounded-basic">
-                    <div class="card-body lh-lg" id="about">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="pt-2 fw-bold" style="letter-spacing: 4px;">學歷</h3>
-                            </div>
-                        </div>
-                        <div class="row d-grid gap-3 mt-3">
-                            <div class="col-12">
-                                <div class="card rounded-inline-basic">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <b>國立清華大學</b>
-                                                <p class="mb-0">學習科學與科技研究所</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="mb-0 opacity-50">2022/07～2024/07</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <hr class="my-2" style="opacity:10%;">
-                                                <p class="mb-0">論文：</p>
-                                                <ol class="mb-0" style="padding-left: 22px;">
-                                                    <li>在自主學習環境比較不同提示策略對大型語言模型回應的影響</li>
-                                                    <li>使用自然語言技術建構自主學習資源推薦系統</li>
-                                                </ol>
-                                                <hr class="my-2" style="opacity:10%;">
-                                                <div class="d-flex flex-wrap align-items-center mt-3">
-                                                    <p class="mb-0 me-2">相關專案：</p>
-                                                    <a href="projects/trelloFinder.html"
-                                                        class="btn btn-outline-myprimary px-2 py-1 my-1 me-2 rounded-pill"
-                                                        style="font-size: 0.75rem;">
-                                                        Trello 知識小幫手 2.0
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="mt-1 mb-0">
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                教育</span>
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                科技</span>
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                自然語言分析</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="card rounded-inline-basic">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <b>中原大學</b>
-                                                <p class="mb-0">資訊管理系</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="mb-0 opacity-50">2019/07～2022/07</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <hr class="my-2" style="opacity:10%;">
-                                                <div class="d-flex flex-wrap align-items-center mt-3">
-                                                    <p class="mb-0 me-2">相關專案：</p>
-                                                    <a href="projects/mindReader.html"
-                                                        class="btn btn-outline-myprimary px-2 py-1 my-1 me-2 rounded-pill"
-                                                        style="font-size: 0.75rem;">
-                                                        MindReader 與你心譯相通
-                                                    </a>
-                                                    <a href="projects/hsCloudMeetingManage.html"
-                                                        class="btn btn-outline-myprimary px-2 py-1 my-1 me-2 rounded-pill"
-                                                        style="font-size: 0.75rem;">
-                                                        華新雲會議管理系統
-                                                    </a>
-                                                    <a href="projects/hsVmi.html"
-                                                        class="btn btn-outline-myprimary px-2 py-1 my-1 me-2 rounded-pill"
-                                                        style="font-size: 0.75rem;">
-                                                        華新 VMI 庫存管理遊戲
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-white">
-                                        <p class="mt-1 mb-0">
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                開發</span>
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                資料庫</span>
-                                            <span
-                                                class="badge rounded-pill bg-mytheme text-dark p-2 mt-1 me-1 overflow-hidden">#
-                                                數據分析</span>
                                         </p>
                                     </div>
                                 </div>

@@ -150,6 +150,7 @@ class ProjectPage:
             for item in self.children:
                 content_html = content_html + str(item) + "\n"
 
+        f_color, s_color = self.colorSet
         return f"""
 <!doctype html>
 <html lang="zh-Hant-TW">
@@ -169,9 +170,9 @@ class ProjectPage:
     
     <div>
         <div class="position-relative"
-            style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:100%; background-attachment: fixed;">
+            style="padding: 80px 0px;width: 100%; background: url({self.cover}); background-repeat:no-repeat;background-size:cover; background-attachment: local;">
             <div class="position-absolute top-0 start-0 w-100 h-100"
-                style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); backdrop-filter: blur(40px);">
+                style="background: linear-gradient(0deg, {f_color}80, {s_color}90); backdrop-filter: blur(40px);">
             </div>
             <div class="d-flex align-items-center pb-2 position-relative" style="width: 100%;min-height: 240px;">
                 <div class="container">

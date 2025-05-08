@@ -1,5 +1,5 @@
 import os
-from app.layouts.projects import page
+from app.layouts.projects_index import page
 
 
 def build():

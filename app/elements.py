@@ -470,8 +470,12 @@ class Text:
 <span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-1">{string_formator(self.content)}</span>
 """
         elif self.fontsize in ["h2", "h3", "p", "h4"]:
+            id_code = ""
+            if self.fontsize != "p":
+                id_code = f"""id='{self.content.replace(' ', '_').replace("`","")}'"""
+
             return f"""
-<{self.fontsize} class="m-0 p-0 {fw_class} {center_class}">
+<{self.fontsize} class="m-0 p-0 {fw_class} {center_class}" {id_code}>
     {string_formator(self.content)}
 </{self.fontsize}>
 """

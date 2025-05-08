@@ -9,7 +9,7 @@ from app.pages.project import (
     techlife,
     foodome,
 )
-from app.pages.job import y2023_NthuIr, y2023_NthuOu
+from app.pages.job import y2022_NthuOu, y2023_NthuIr
 
 page = SkillPage(
     title="數據分析與企劃",
@@ -93,8 +93,8 @@ page = SkillPage(
         foodome.page,
     ],
     jobs=[
+        y2022_NthuOu.page,
         y2023_NthuIr.page,
-        y2023_NthuOu.page,
     ],
     certificate=[
         Certificate(
