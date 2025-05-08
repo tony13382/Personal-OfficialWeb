@@ -259,7 +259,13 @@ page = ProjectPage(
                 "https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed"
             ),
             body=[
-                Div(Text("搜尋模組", "span")),
+                Div(
+                    Text(
+                        "搜尋模組",
+                        "span",
+                        pill_type=True,
+                    )
+                ),
                 Text("使用自然語言技術建構自主學習資源推薦系統", "h3"),
                 Text(
                     "融合 BM25（詞頻）、TF-IDF、SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。"
@@ -288,7 +294,13 @@ page = ProjectPage(
                 "https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
             ),
             body=[
-                Div(Text("生成模組", "span")),
+                Div(
+                    Text(
+                        "生成模組",
+                        "span",
+                        pill_type=True,
+                    )
+                ),
                 Text("在自主學習環境比較不同提示策略對大型語言模型回應的影響", "h3"),
                 Text(
                     "基於 RAG 與鏈式提示策略，進行大型語言模型回應的生成模組，並進行實驗比較不同提示策略對回應的影響。"

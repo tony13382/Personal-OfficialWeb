@@ -44,12 +44,12 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 語音合成開發", "span"),
-                        Text("# Azure", "span"),
-                        Text("# API 開發", "span"),
-                        Text("# ORM", "span"),
+                        Text("# 語音合成開發", "span", pill_type=True),
+                        Text("# Azure", "span", pill_type=True),
+                        Text("# API 開發", "span", pill_type=True),
+                        Text("# ORM", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -70,10 +70,10 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# LLM 視覺多模態", "span"),
-                        Text("# Streamlit", "span"),
+                        Text("# LLM 視覺多模態", "span", pill_type=True),
+                        Text("# Streamlit", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -96,11 +96,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# API 開發", "span"),
-                        Text("# OpenAI Whisper", "span"),
-                        Text("# 火山雲語音合成", "span"),
+                        Text("# API 開發", "span", pill_type=True),
+                        Text("# OpenAI Whisper", "span", pill_type=True),
+                        Text("# 火山雲語音合成", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -124,11 +124,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# API 開發", "span"),
-                        Text("# 自動化部署", "span"),
-                        Text("# PGVector 整合", "span"),
+                        Text("# API 開發", "span", pill_type=True),
+                        Text("# 自動化部署", "span", pill_type=True),
+                        Text("# PGVector 整合", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),

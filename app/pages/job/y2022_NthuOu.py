@@ -71,15 +71,15 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# API 開發", "span"),
-                        Text("# 資訊佇列系統", "span"),
-                        Text("# LLM 應用", "span"),
-                        Text("# 文本探勘", "span"),
-                        Text("# Webhook 串接", "span"),
-                        Text("# SBERT", "span"),
-                        Text("# Milvus", "span"),
+                        Text("# API 開發", "span", pill_type=True),
+                        Text("# 資訊佇列系統", "span", pill_type=True),
+                        Text("# LLM 應用", "span", pill_type=True),
+                        Text("# 文本探勘", "span", pill_type=True),
+                        Text("# Webhook 串接", "span", pill_type=True),
+                        Text("# SBERT", "span", pill_type=True),
+                        Text("# Milvus", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),

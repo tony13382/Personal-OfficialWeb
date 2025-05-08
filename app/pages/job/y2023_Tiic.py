@@ -43,10 +43,10 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 領導力", "span"),
-                        Text("# 教育培訓", "span"),
+                        Text("# 領導力", "span", pill_type=True),
+                        Text("# 教育培訓", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -77,10 +77,10 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 社群經營", "span"),
-                        Text("# 行銷", "span"),
+                        Text("# 社群經營", "span", pill_type=True),
+                        Text("# 行銷", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),

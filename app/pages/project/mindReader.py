@@ -69,7 +69,7 @@ page = ProjectPage(
                 Text("產品優勢", "h3"),
                 ListDiv(
                     [
-                        Div(Text("客製化對話情境", "span", bold=True)),
+                        Div(Text("客製化對話情境", "span", pill_type=True, bold=True)),
                         Text(
                             "為聊天對象設定角色定位並打造出專屬於你的客製化說話情境。希望能藉此系統為使用者雙方都帶來舒適的聊天體驗，不會因為是透過文字傳遞訊息而有所誤會甚至是產生衝突，解決文字訊息中無法確切傳遞出情感的問題。"
                         ),
@@ -78,7 +78,7 @@ page = ProjectPage(
                 ),
                 ListDiv(
                     [
-                        Div(Text("聊天話題不間斷", "span", bold=True)),
+                        Div(Text("聊天話題不間斷", "span", pill_type=True, bold=True)),
                         Text(
                             "為了讓使用者能將話題不斷地延續下去，系統能透過過往的聊天紀錄去分析用戶間有所共鳴的話題，並結合當下的時事推薦給你。除了共鳴的話題之外，系統也會推薦各種不同領域的熱門話題，並附上一段開頭語句，讓你成為話題高手，聊天不間斷。"
                         ),
@@ -87,7 +87,7 @@ page = ProjectPage(
                 ),
                 ListDiv(
                     [
-                        Div(Text("個人化智慧提醒", "span", bold=True)),
+                        Div(Text("個人化智慧提醒", "span", pill_type=True, bold=True)),
                         Text(
                             "人們常需要將已經安排好的行程再次手動輸入到手機行事曆中，費時又費力，利用系統的功能一鍵加入，便利又快速。智慧提醒能在最即時和適當的時間推播個人化的資訊，如:本日行程、天氣、股市的波動等等。讓MindReader替你安排好，使你輕鬆沒煩惱，成為你專屬的智慧秘書。"
                         ),

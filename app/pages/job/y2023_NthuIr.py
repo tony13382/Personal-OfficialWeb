@@ -44,11 +44,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 資料搜集／前處理", "span"),
-                        Text("# 文字探勘", "span"),
-                        Text("# 文本分析", "span"),
+                        Text("# 資料搜集／前處理", "span", pill_type=True),
+                        Text("# 文字探勘", "span", pill_type=True),
+                        Text("# 文本分析", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),

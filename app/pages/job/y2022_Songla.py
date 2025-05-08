@@ -77,11 +77,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# UI 設計", "span"),
-                        Text("# 資訊設計", "span"),
-                        Text("# 原子設計", "span"),
+                        Text("# UI 設計", "span", pill_type=True),
+                        Text("# 資訊設計", "span", pill_type=True),
+                        Text("# 原子設計", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 ),
             ],
         ),

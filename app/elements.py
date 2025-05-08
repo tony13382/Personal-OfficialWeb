@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Any, List, Literal
+from typing import Any, List, Literal, Union
 from uuid import uuid4
 from app.variables import GapClass
 
@@ -217,6 +217,63 @@ class Html:
         return self.code
 
 
+class HtmlCarousel:
+    def __init__(self, blocks: Union[List[str], List[Any]]):
+        self.blocks = blocks
+
+    def __str__(self) -> str:
+        random_id = f"c{uuid4().hex[0:6]}"
+        index_id = 0
+        blocksLen = len(self.blocks)
+
+        carousel_html = ""
+        for block in self.blocks:
+            if index_id == 0:
+                carousel_html += f"""
+<div class="carousel__slide is-selected" data-index="{index_id}">
+    {str(block)}
+</div>
+                """
+            else:
+                carousel_html += f"""
+<div class="carousel__slide" data-index="{index_id}" aria-hidden="true">
+    {block}
+</div>
+"""
+
+            index_id += 1
+
+        ol_html = """<ol class="carousel__dots">"""
+        for i in range(blocksLen):
+            if i == 0:
+                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+            else:
+                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+        ol_html = """</ol>"""
+        script_html = f"""
+<script>
+    const uiCarousel_{random_id} = new Carousel(document.querySelector("#uiCarouse_{random_id}"), {{
+        // 配置選項
+        autoplay: true,
+        autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒
+        infinite: true
+    }});
+</script>
+"""
+
+        return f"""
+<div id="uiCarouse_{random_id}" class="carousel has-dots is-draggable mt-3 mb-5">
+    <div class="carousel__viewport">
+        <div class="carousel__track" style="transform: translate3d(171px, 0px, 0px) scale(1);">
+        {carousel_html}
+        </div>
+    </div>
+    <div class="carousel__nav"><button title="Next slide" class="carousel__button is-next" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"></path></svg></button><button title="Previous slide" class="carousel__button is-prev" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"></path></svg></button></div>
+</div>
+{script_html}
+"""
+
+
 class IconBlock:
     def __init__(
         self,
@@ -388,7 +445,7 @@ class ListDiv:
         self,
         children: list = None,
         gap_size: Literal["nano", "small", "regular", "large"] = "regular",
-        grid_layout: bool = True,
+        layout: Literal["grid", "flex", "inline"] = "grid",
         mt: int = None,
         mb: int = None,
         ms: int = None,
@@ -396,7 +453,7 @@ class ListDiv:
     ):
         self.children = children if children is not None else []
         self.gap_size = gap_size
-        self.grid_layout = grid_layout
+        self.layout = layout
         self.mt = mt
         self.mb = mb
         self.ms = ms
@@ -411,9 +468,7 @@ class ListDiv:
         margin_class += f"ms-{self.ms} " if self.ms else ""
         margin_class += f"me-{self.me} " if self.me else ""
 
-        display_class = ""
-        if self.grid_layout is True:
-            display_class = "d-grid"
+        display_class = f"d-{self.layout}"
 
         for item in self.children:
             content_html += str(item)
@@ -455,36 +510,36 @@ class Text:
         fontsize: Literal["h2", "h3", "h4", "p", "span"] = "p",
         bold: bool = False,
         center: bool = False,
+        pill_type: bool = False,
     ):
         self.content = content
         self.fontsize = fontsize
         self.bold = bold
         self.center = center
+        self.pill_type = pill_type
 
     def __str__(self) -> str:
         fw_class = "fw-bold" if self.bold is True else ""
         center_class = "text-center" if self.center is True else ""
 
-        if self.fontsize == "span":
-            return f"""
-<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6 me-1">{string_formator(self.content)}</span>
-"""
-        elif self.fontsize in ["h2", "h3", "p", "h4"]:
-            id_code = ""
-            if self.fontsize != "p":
-                id_code = f"""id='{self.content.replace(' ', '_').replace("`","")}'"""
+        id_code = ""
+        if self.fontsize in ["h2", "h3", "h4"]:
+            id_code = f"""id='{self.content.replace(' ', '_').replace("`","")}'"""
 
+        content_html = f"""
+            <{self.fontsize} class="m-0 p-0 {fw_class} {center_class}" {id_code}>
+                {string_formator(self.content)}
+            </{self.fontsize}>
+        """
+
+        if self.pill_type:
             return f"""
-<{self.fontsize} class="m-0 p-0 {fw_class} {center_class}" {id_code}>
-    {string_formator(self.content)}
-</{self.fontsize}>
+<span class="badge bg-mytheme text-dark {fw_class} {center_class} rounded-pill overflow-hidden fs-6" {id_code}>
+    {content_html}
+</span>
 """
         else:
-            return f"""
-<p class="m-0 p-0 {fw_class} {center_class}">
-    {string_formator(self.content)}
-</p>
-"""
+            return content_html
 
 
 class Tool:
@@ -536,7 +591,7 @@ class UiImageCarousel:
         ol_html = """</ol>"""
         script_html = f"""
 <script>
-    const uiCarousel = new Carousel(document.querySelector("#uiCarouse_{random_id}"), {{
+    const uiCarousel_{random_id} = new Carousel(document.querySelector("#uiCarouse_{random_id}"), {{
         // 配置選項
         autoplay: true,
         autoplaySpeed: 1000, // 每張圖片展示 1000 毫秒，即 1 秒

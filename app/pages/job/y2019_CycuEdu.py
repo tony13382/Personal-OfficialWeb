@@ -61,11 +61,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# Azure", "span"),
-                        Text("# API 開發", "span"),
-                        Text("# NLP", "span"),
+                        Text("# Azure", "span", pill_type=True),
+                        Text("# API 開發", "span", pill_type=True),
+                        Text("# NLP", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -89,10 +89,10 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 介面設計", "span"),
-                        Text("# 全端開發", "span"),
+                        Text("# 介面設計", "span", pill_type=True),
+                        Text("# 全端開發", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -114,9 +114,9 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 全端開發", "span"),
+                        Text("# 全端開發", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -145,11 +145,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 教案設計", "span"),
-                        Text("# 簡報設計", "span"),
-                        Text("# 影音剪輯", "span"),
+                        Text("# 教案設計", "span", pill_type=True),
+                        Text("# 簡報設計", "span", pill_type=True),
+                        Text("# 影音剪輯", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -171,9 +171,9 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 全端開發", "span"),
+                        Text("# 全端開發", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -196,11 +196,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# UI 設計", "span"),
-                        Text("# RWD 設計", "span"),
-                        Text("# 前端開發", "span"),
+                        Text("# UI 設計", "span", pill_type=True),
+                        Text("# RWD 設計", "span", pill_type=True),
+                        Text("# 前端開發", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -223,11 +223,11 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 資料清理", "span"),
-                        Text("# 資料視覺化", "span"),
-                        Text("# 簡報設計", "span"),
+                        Text("# 資料清理", "span", pill_type=True),
+                        Text("# 資料視覺化", "span", pill_type=True),
+                        Text("# 簡報設計", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),
@@ -249,9 +249,9 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 後端開發", "span"),
+                        Text("# 後端開發", "span", pill_type=True),
                     ],
-                    grid_layout=False,
+                    layout="flex",
                 )
             ],
         ),

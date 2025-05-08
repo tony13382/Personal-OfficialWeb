@@ -3,10 +3,12 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
+    HtmlCarousel,
     IconBlock,
     Html,
     Image,
     LinkButton,
+    ListDiv,
     Score,
     Text,
     Tool,
@@ -115,53 +117,23 @@ page = ProjectPage(
 """
                 ),
                 DivBar(),
-                Html(
-                    """
-<div class="row">
-    <div class="d-flex d-flex align-items-center">
-        <p class="m-0 fs-4">在</p>
-        <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-            <img src="/assets/imgs/projects/songla/ux/icon-home.svg" width="48px">
-            <b>探索</b>
-        </p>
-        <p class="m-0 fs-4">我們可以</p>
-    </div>
-</div>
-<div class="row d-flex align-items-stretch">
-    <div class="col-6 col-md-6 p-2">
-        <div class="card h-100 rounded-inline-basic">
-            <div class="card-body pb-4">
-                <p class="fs-1 m-0 text-success pb-2"><i class="bi bi-crosshair2"></i></p>
-                <p class="m-0">利用風格篩選的音樂，透過他人作品找尋靈感</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-6 p-2">
-        <div class="card h-100 rounded-inline-basic">
-            <div class="card-body pb-4">
-                <p class="fs-1 m-0 text-danger pb-2"><i class="bi bi-fire"></i></p>
-                <p class="m-0">精選與你相關的熱門音樂，了解你創作的最新趨勢</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-6 p-2">
-        <div class="card h-100 rounded-inline-basic">
-            <div class="card-body pb-4">
-                <p class="fs-1 m-0 text-info pb-2"><i class="bi bi-share-fill"></i></p>
-                <p class="m-0">瀏覽社群，聆聽朋友的作品來思考作品</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-6 p-2">
-        <div class="card h-100 rounded-inline-basic">
-            <div class="card-body pb-4">
-                <p class="fs-1 m-0 text-warning pb-2"><i class="bi bi-search"></i></p>
-                <p class="m-0">利用風格篩選的音樂，透過他人作品找尋靈感</p>
-            </div>
-        </div>
-    </div>
-</div>
-"""
+                Text("在`探索`我們可以", "h4"),
+                ListDiv(
+                    [
+                        IconBlock(
+                            title="利用風格篩選的音樂，透過他人作品找尋靈感",
+                            icon="bi-crosshair2",
+                        ),
+                        IconBlock(
+                            title="精選與你相關的熱門音樂，了解你創作的最新趨勢",
+                            icon="bi-fire",
+                        ),
+                        IconBlock(
+                            title="瀏覽社群，聆聽朋友的作品來思考作品",
+                            icon="bi-share-fill",
+                        ),
+                    ],
+                    mt=2,
                 ),
             ]
         ),
@@ -181,283 +153,144 @@ page = ProjectPage(
 """
                 ),
                 DivBar(),
-                Html(
-                    """
-<div class="row">
-    <div class="d-flex d-flex align-items-center my-3">
-        <p class="m-0 fs-4">因此在</p>
-        <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-            <img src="/assets/imgs/projects/songla/ux/icon-social.svg" class="p-1" width="48px">
-            <b>動態</b>
-        </p>
-        <p class="m-0 fs-4">中我們提供社群相關屬性</p>
-    </div>
-    <div class="col-12 col-md-6 d-flex p-2">
-        <div class="card flex-fill rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-1 m-0 text-success pb-2"><i class="bi bi-flag-fill"></i></p>
-                <p class="m-0 mb-2 fw-bold">音樂創作挑戰</p>
-                <p class="m-0">你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6 d-flex p-2">
-        <div class="card flex-fill rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-1 m-0 text-danger pb-2"><i class="bi bi-headphones"></i></p>
-                <p class="m-0 mb-2 fw-bold">分享音樂作品</p>
-                <p class="m-0">分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音。</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6 d-flex p-2">
-        <div class="card flex-fill rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-1 m-0 text-info pb-2"><i class="bi bi-image-fill"></i></p>
-                <p class="m-0 mb-2 fw-bold">生活照片紀錄</p>
-                <p class="m-0">與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動。</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6 d-flex p-2">
-        <div class="card flex-fill rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-1 m-0 text-warning pb-2"><i class="bi bi-pencil-fill"></i></p>
-                <p class="m-0 mb-2 fw-bold">文章</p>
-                <p class="m-0">你可以分享心情、活動，可以用文字表達的都可以書寫。</p>
-            </div>
-        </div>
-    </div>
-</div>
-"""
+                Text("因此在`動態`中我們提供社群相關屬性", "h4"),
+                ListDiv(
+                    [
+                        IconBlock(
+                            title="音樂創作挑戰",
+                            subtitle="你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！",
+                            icon="bi-flag-fill",
+                        ),
+                        IconBlock(
+                            title="分享音樂作品",
+                            subtitle="分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音。",
+                            icon="bi-headphones",
+                        ),
+                        IconBlock(
+                            title="生活照片紀錄",
+                            subtitle="與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動。",
+                            icon="bi-image-fill",
+                        ),
+                        IconBlock(
+                            title="文章",
+                            subtitle="你可以分享心情、活動，可以用文字表達的都可以書寫。",
+                            icon="bi-pencil-fill",
+                        ),
+                    ],
+                    mt=2,
                 ),
             ]
         ),
         Card(
             body=[
-                Html(
-                    """
-<div class="row">
-    <p class="fs-4 col-12">
-        <img src="/assets/imgs/projects/songla/ux/icon-record.svg" width="48px">
-        <b>錄音室</b>
-    </p>
-</div>
-<div class="row notoFont">
-    <div class="col-12">
-        <p class="fs-5 lh-lg">即時行樂Song
-            la結合音樂創作功能與社群功能，使用者不需會任何樂器或樂理知識，只要會哼唱就能透過產品的「智慧編曲」功能完成屬於自己的音樂，並且上傳至即時行樂分享平台或下載保存至手機，大幅降低創作所需門檻。
-        </p>
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card rounded-inline-basic">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                                <i class="bi bi-mic"></i>
-                            </div>
-                            <div class="col">
-                                <p class="m-0 mb-2 fw-bold">
-                                    音樂創作
-                                </p>
-                                <p class="m-0">
-                                    打開Songla 錄音室，按下錄音鍵開始哼唱旋律。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card rounded-inline-basic">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                                <i class="bi bi-stars"></i>
-                            </div>
-                            <div class="col">
-                                <p class="m-0 mb-2 fw-bold">
-                                    智慧編曲
-                                </p>
-                                <p class="m-0">
-                                    交給 Song la 讓 AI 幫你編出獨一無二的曲子。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card rounded-inline-basic">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                                <i class="bi bi-music-note-list"></i>
-                            </div>
-                            <div class="col">
-                                <p class="m-0 mb-2 fw-bold">
-                                    選擇音色
-                                </p>
-                                <p class="m-0">
-                                    從275種音色裡面任選喜歡音色演奏自己的創作。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card rounded-inline-basic">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                                <i class="bi bi-file-earmark-music"></i>
-                            </div>
-                            <div class="col">
-                                <p class="m-0 mb-2 fw-bold">
-                                    瀏覽樂譜
-                                </p>
-                                <p class="m-0">
-                                    Song la 幫你編寫樂譜，誰說需要樂理才能當音樂家？
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card rounded-inline-basic">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto fs-3 text-center d-flex justify-content-center align-items-center ps-3">
-                                <i class="bi bi-box-arrow-right"></i>
-                            </div>
-                            <div class="col">
-                                <p class="m-0 mb-2 fw-bold">
-                                    與世界共享
-                                </p>
-                                <p class="m-0">
-                                    按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-"""
-                )
+                Text("錄音室", "h3"),
+                DivBar(),
+                Text(
+                    "即時行樂 Songla `結合音樂創作功能與社群`功能，使用者不需會任何樂器或樂理知識，只要會哼唱就能透過產品的「`智慧編曲`」功能完成屬於自己的音樂，並且上傳至即時行樂分享平台或下載保存至手機，`大幅降低創作所需門檻`。"
+                ),
+                ListDiv(
+                    [
+                        IconBlock(
+                            title="音樂創作",
+                            subtitle="打開Songla 錄音室，按下錄音鍵開始哼唱旋律。",
+                            icon="bi-mic",
+                        ),
+                        IconBlock(
+                            title="智慧編曲",
+                            subtitle="交給 Songla 讓 AI 幫你編出獨一無二的曲子。",
+                            icon="bi-stars",
+                        ),
+                        IconBlock(
+                            title="選擇音色",
+                            subtitle="從 275 種音色裡面任選喜歡音色演奏自己的創作。",
+                            icon="bi-music-note-list",
+                        ),
+                        IconBlock(
+                            title="瀏覽樂譜",
+                            subtitle="Songla 幫你編寫樂譜，誰說需要樂理才能當音樂家？",
+                            icon="bi-file-earmark-music",
+                        ),
+                        IconBlock(
+                            title="與世界共享",
+                            subtitle="按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！",
+                            icon="bi-box-arrow-right",
+                        ),
+                    ],
+                    mt=2,
+                ),
             ]
         ),
         Card(
             header=Image("/assets/imgs/projects/songla/laCoin.png", "點數用途"),
             body=[
-                Html(
-                    """
-<div class="row">
-    <div class="col-12">
-        <div class="d-flex d-flex align-items-center pb-3">
-            <p class="m-0 fs-4">在</p>
-            <p class="m-0 fs-4 ms-0 me-1 align-items-center d-flex">
-                <img src="/assets/imgs/projects/songla/ux/icon-coins.svg" width="48px">
-                <b>點數</b>
-            </p>
-            <p class="m-0 fs-4">我們可以</p>
-        </div>
-    </div>
-    <div class="d-flex col-12 mt-1">
-        <div class="card col-12 my-1 rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-5 m-0">
-                    <i class="bi bi-collection-fill ms-1 me-3 text-info"></i>蒐集樂幣
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex col-12 mt-1">
-        <div class="card col-12 my-1 rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-5 m-0">
-                    <i class="bi bi-arrow-repeat ms-1 me-3 text-warning"></i>轉換樂幣
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex col-12 mt-1">
-        <div class="card col-12 my-1 rounded-inline-basic">
-            <div class="card-body">
-                <p class="fs-5 m-0">
-                    <i class="bi bi-wallet-fill ms-1 me-3 text-danger"></i>消費樂幣
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-"""
-                )
+                Text("在`點數`我們可以", "h4"),
+                ListDiv(
+                    [
+                        IconBlock(
+                            title="蒐集樂幣",
+                            icon="bi-collection",
+                        ),
+                        IconBlock(
+                            title="轉換樂幣",
+                            icon="bi-arrow-repeat",
+                        ),
+                        IconBlock(
+                            title="消費樂幣",
+                            icon="bi-wallet",
+                        ),
+                    ],
+                    mt=2,
+                ),
             ],
         ),
         Card(
             body=[
                 Text("音樂封面照", "h3"),
                 DivBar(),
-                Html(
-                    """
-<div class="row justify-content-center align-items-center">
-    <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/projects/songla/ux/Music Wider.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/projects/songla/ux/Music Wider.png" data-loaded="true">
-    </div>
-    <div class="col-12 col-md-6 py-3">
-        <h5 class="card-title fw-bold">寬版音樂封面照</h5>
-        <p class="card-text msf-info-s">
-            呈現內容包含：<br>音樂標題、封面照片、封面照片、音樂介紹、音樂分類、音樂長度、播放次數、授權方式。
-        </p>
-        <div class="msf-heightlight">
-            多用於需要給予較多資訊內容的場景，如：工作室、搜尋結果。
-        </div>
-    </div>
-</div>
-"""
-                ),
-                DivBar(),
-                Html(
-                    """
-<div class="row justify-content-center align-items-center">
-    <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/projects/songla/ux/Music List.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/projects/songla/ux/Music List.png" data-loaded="true">
-    </div>
-    <div class="col-12 col-md-6 py-3">
-        <h5 class="card-title fw-bold">標準音樂封面照</h5>
-        <p class="card-text msf-info-s">
-            呈現內容包含：<br>音樂標題、封面照片、封面照片、音樂分類、音樂長度、播放次數、授權方式。
-        </p>
-        <div class="msf-heightlight">
-            運用於預設場景，如：首頁推播音樂、分類排行榜、搜尋預覽。
-        </div>
-    </div>
-</div>
-"""
-                ),
-                DivBar(),
-                Html(
-                    """
-<div class="row justify-content-center align-items-center">
-    <div class="col-12 col-md-6 py-2 d-flex justify-content-center">
-        <img data-src="/assets/imgs/projects/songla/ux/Music Thin.png" class="card-img-top lozad" alt="songla app song list" src="/assets/imgs/projects/songla/ux/Music Thin.png" data-loaded="true">
-    </div>
-    <div class="col-12 col-md-6 py-3">
-        <h5 class="card-title fw-bold">窄版音樂封面照</h5>
-        <p class="card-text msf-info-s">
-            呈現內容包含：<br>音樂標題、音樂長度、播放次數。
-        </p>
-        <div class="msf-heightlight">
-            多用於不重於資訊內容的場景，如：社群附加音樂、播放紀錄。
-        </div>
-    </div>
-</div>
-"""
+                HtmlCarousel(
+                    [
+                        ListDiv(
+                            [
+                                Text("寬版音樂封面照", "h4"),
+                                Image(
+                                    "/assets/imgs/projects/songla/ux/Music Wider.png"
+                                ),
+                                Text(
+                                    "多用於需要給予較多資訊內容的場景，如：工作室、搜尋結果。"
+                                ),
+                                DivBar(),
+                                Text(
+                                    "`呈現內容包含：`<br>音樂標題、封面照片、封面照片、音樂介紹、音樂分類、音樂長度、播放次數、授權方式。"
+                                ),
+                            ]
+                        ),
+                        ListDiv(
+                            [
+                                Text("標準音樂封面照", "h4"),
+                                Image("/assets/imgs/projects/songla/ux/Music List.png"),
+                                Text(
+                                    "運用於預設場景，如：首頁推播音樂、分類排行榜、搜尋預覽。"
+                                ),
+                                DivBar(),
+                                Text(
+                                    "`呈現內容包含：`<br>音樂標題、封面照片、封面照片、音樂分類、音樂長度、播放次數、授權方式。"
+                                ),
+                            ]
+                        ),
+                        ListDiv(
+                            [
+                                Text("窄版音樂封面照", "h4"),
+                                Image("/assets/imgs/projects/songla/ux/Music Thin.png"),
+                                Text(
+                                    "多用於不重於資訊內容的場景，如：社群附加音樂、播放紀錄。"
+                                ),
+                                DivBar(),
+                                Text(
+                                    "`呈現內容包含：`<br>音樂標題、音樂長度、播放次數。"
+                                ),
+                            ]
+                        ),
+                    ]
                 ),
             ]
         ),
