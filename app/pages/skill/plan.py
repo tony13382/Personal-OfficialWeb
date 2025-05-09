@@ -2,14 +2,8 @@ from app.elements import ListStr, Text
 from app.layouts.skill import Certificate, SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
-from app.pages.project import (
-    trelloFinder,
-    pincakeAi,
-    jobAnalytics2020,
-    techlife,
-    foodome,
-)
-from app.pages.job import y2019_CycuEdu, y2022_NthuIlst, y2023_NthuIr
+import app.pages.project as projectPages
+import app.pages.job as jobPages
 
 page = SkillPage(
     title="數據分析與企劃",
@@ -86,16 +80,16 @@ page = SkillPage(
         ),
     ],
     projects=[
-        trelloFinder.page,
-        pincakeAi.page,
-        jobAnalytics2020.page,
-        techlife.page,
-        foodome.page,
+        projectPages.trelloFinder,
+        projectPages.pincakeAi,
+        projectPages.jobAnalytics2020,
+        projectPages.techlife,
+        projectPages.foodome,
     ],
     jobs=[
-        y2023_NthuIr.page,
-        y2022_NthuIlst.page,
-        y2019_CycuEdu.page,
+        jobPages.y2023_NthuIr,
+        jobPages.y2022_NthuIlst,
+        jobPages.y2019_CycuEdu,
     ],
     certificate=[
         Certificate(

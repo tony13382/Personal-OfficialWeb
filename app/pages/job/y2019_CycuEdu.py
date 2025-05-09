@@ -5,16 +5,7 @@ from app.elements import (
     ListDiv,
     ListStr,
 )
-from app.pages.project import (
-    mindReader,
-    hsCloudMeetingManage,
-    hsVmi,
-    techlife,
-    foodome,
-    noDrinkNoDrunk,
-    jobAnalytics2020,
-    oneDayLover,
-)
+import app.pages.project as projectPages
 
 page = JobPage(
     title="中原資管學士",
@@ -37,7 +28,7 @@ page = JobPage(
     ),
     children=[
         ProjectCard(
-            project=mindReader.page,
+            project=projectPages.mindReader,
             memo=ListDiv(
                 [
                     ListStr(
@@ -52,7 +43,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=hsCloudMeetingManage.page,
+            project=projectPages.hsCloudMeetingManage,
             memo=ListDiv(
                 [
                     ListStr(
@@ -67,7 +58,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=hsVmi.page,
+            project=projectPages.hsVmi,
             memo=ListDiv(
                 [
                     ListStr(
@@ -80,7 +71,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=techlife.page,
+            project=projectPages.techlife,
             memo=ListDiv(
                 [
                     ListStr(
@@ -93,7 +84,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=foodome.page,
+            project=projectPages.foodome,
             memo=ListDiv(
                 [
                     ListStr(
@@ -106,7 +97,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=noDrinkNoDrunk.page,
+            project=projectPages.noDrinkNoDrunk,
             memo=ListDiv(
                 [
                     ListStr(
@@ -120,7 +111,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=jobAnalytics2020.page,
+            project=projectPages.jobAnalytics2020,
             memo=ListDiv(
                 [
                     ListStr(
@@ -134,7 +125,7 @@ page = JobPage(
             ),
         ),
         ProjectCard(
-            project=oneDayLover.page,
+            project=projectPages.oneDayLover,
             memo=ListDiv(
                 [
                     ListStr(

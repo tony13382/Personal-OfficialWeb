@@ -2,18 +2,8 @@ from app.elements import ListStr, Text
 from app.layouts.skill import Certificate, SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
-from app.pages.project import (
-    trelloFinder,
-    chenmko,
-    mindReader,
-    hsCloudMeetingManage,
-    hsVmi,
-    stockCalc,
-    noDrinkNoDrunk,
-    oneDayLover,
-)
-
-from app.pages.job import y2022_NthuIlst, y2024_SolwenAi, y2023_NthuIr, y2019_CycuEdu
+import app.pages.project as projectPages
+import app.pages.job as jobPages
 
 page = SkillPage(
     title="AI 系統開發／自然語言處理",
@@ -204,20 +194,20 @@ page = SkillPage(
         ),
     ],
     projects=[
-        trelloFinder.page,
-        chenmko.page,
-        mindReader.page,
-        hsCloudMeetingManage.page,
-        hsVmi.page,
-        stockCalc.page,
-        noDrinkNoDrunk.page,
-        oneDayLover.page,
+        projectPages.trelloFinder,
+        projectPages.chenmko,
+        projectPages.mindReader,
+        projectPages.hsCloudMeetingManage,
+        projectPages.hsVmi,
+        projectPages.stockCalc,
+        projectPages.noDrinkNoDrunk,
+        projectPages.oneDayLover,
     ],
     jobs=[
-        y2024_SolwenAi.page,
-        y2023_NthuIr.page,
-        y2022_NthuIlst.page,
-        y2019_CycuEdu.page,
+        jobPages.y2024_SolwenAi,
+        jobPages.y2023_NthuIr,
+        jobPages.y2022_NthuIlst,
+        jobPages.y2019_CycuEdu,
     ],
     certificate=[
         Certificate(

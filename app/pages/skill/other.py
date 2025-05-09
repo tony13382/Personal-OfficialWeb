@@ -2,9 +2,9 @@ from app.elements import ListStr, Text
 from app.layouts.skill import Certificate, SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
-from app.pages.project import digitalOcean, techlife
+import app.pages.project as projectPages
 
-from app.pages.job import y2023_Tiic
+import app.pages.job as jobPages
 
 page = SkillPage(
     title="其他技能",
@@ -60,10 +60,10 @@ page = SkillPage(
         ),
     ],
     projects=[
-        digitalOcean.page,
-        techlife.page,
+        projectPages.digitalOcean,
+        projectPages.techlife,
     ],
-    jobs=[y2023_Tiic.page],
+    jobs=[jobPages.y2023_Tiic],
     certificate=[
         Certificate(
             title="Google Analytics (分析) 個人認證",

@@ -2,15 +2,12 @@ from app.components.project_card import ProjectCard
 from app.layouts.job import JobPage
 from app.variables import ThemeColor
 from app.elements import (
-    Card,
     DivBar,
-    Image,
-    LinkButton,
     ListDiv,
     ListStr,
     Text,
 )
-from app.pages.project import trelloFinder
+import app.pages.project as projectPages
 
 page = JobPage(
     title="學科所碩士／RD 工程師",
@@ -31,7 +28,7 @@ page = JobPage(
     ),
     children=[
         ProjectCard(
-            project=trelloFinder.page,
+            project=projectPages.trelloFinder,
             memo=ListDiv(
                 [
                     Text(

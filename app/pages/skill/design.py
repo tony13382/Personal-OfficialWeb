@@ -2,14 +2,8 @@ from app.elements import ListStr, Text
 from app.layouts.skill import SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
-from app.pages.project import (
-    songla,
-    mindReader,
-    hsCloudMeetingManage,
-    pincakeAi,
-    foodome,
-)
-from app.pages.job import y2019_CycuEdu, y2022_Songla
+import app.pages.project as projectPages
+import app.pages.job as jobPages
 
 page = SkillPage(
     title="設計技能・專精資訊設計",
@@ -76,14 +70,14 @@ page = SkillPage(
         ),
     ],
     projects=[
-        songla.page,
-        mindReader.page,
-        hsCloudMeetingManage.page,
-        pincakeAi.page,
-        foodome.page,
+        projectPages.songla,
+        projectPages.mindReader,
+        projectPages.hsCloudMeetingManage,
+        projectPages.pincakeAi,
+        projectPages.foodome,
     ],
     jobs=[
-        y2022_Songla.page,
-        y2019_CycuEdu.page,
+        jobPages.y2022_Songla,
+        jobPages.y2019_CycuEdu,
     ],
 )
