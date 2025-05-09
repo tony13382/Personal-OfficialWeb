@@ -3,6 +3,7 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     IconBlock,
+    Image,
     LinkButton,
     ListDiv,
     Text,
@@ -23,7 +24,7 @@ page = ProjectPage(
     description_links=[
         LinkButton(
             content="GitHub 代碼",
-            href="https://github.com/tony13382/CycuSA_VMI",
+            href="https://github.com/tony13382/CycuSA-VMI",
             fill=True,
             open_in_tab=True,
             icon="bi-github",
@@ -38,6 +39,9 @@ page = ProjectPage(
     ],
     children=[
         Card(
+            header=Image(
+                "/assets/imgs/projects/hsVmi/ErModal.png", "ER Model", allow_pop=True
+            ),
             body=[
                 Text("技術文件", "h3"),
                 ListDiv(
@@ -69,7 +73,7 @@ page = ProjectPage(
                     ],
                     mt=2,
                 ),
-            ]
+            ],
         ),
     ],
 )
