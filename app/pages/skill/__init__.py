@@ -4,8 +4,8 @@ from .plan import page as plan
 from .other import page as other
 
 allPages = [
-    design,
     develope,
+    design,
     plan,
     other,
 ]
