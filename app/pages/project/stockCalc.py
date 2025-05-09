@@ -3,10 +3,12 @@ from app.variables import ThemeColor
 from app.elements import (
     Card,
     DivBar,
+    HtmlCarousel,
     IconBlock,
     Html,
     Image,
     LinkButton,
+    ListDiv,
     Score,
     Text,
     Tool,
@@ -47,39 +49,36 @@ page = ProjectPage(
     ],
     children=[
         Card(
+            header=Image(
+                "/assets/imgs/projects/stockCalc/priceCalc.png",
+                "試算交易手續費",
+                allow_pop=True,
+                rounded=True,
+            ),
             body=[
                 Text("試算交易手續費", "h3"),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/stockCalc/priceCalc.png",
-                    "試算交易手續費",
-                    allow_pop=True,
-                    rounded=True,
-                ),
             ],
         ),
         Card(
+            header=Image(
+                "/assets/imgs/projects/stockCalc/trendCalc.png",
+                "預估漲跌目標股價",
+                allow_pop=True,
+                rounded=True,
+            ),
             body=[
                 Text("預估漲跌目標股價", "h3"),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/stockCalc/trendCalc.png",
-                    "預估漲跌目標股價",
-                    allow_pop=True,
-                    rounded=True,
-                ),
             ],
         ),
         Card(
+            header=Image(
+                "/assets/imgs/projects/stockCalc/quickCalc.png",
+                "快速加減計算",
+                allow_pop=True,
+                rounded=True,
+            ),
             body=[
                 Text("快速加減計算", "h3"),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/stockCalc/quickCalc.png",
-                    "快速加減計算",
-                    allow_pop=True,
-                    rounded=True,
-                ),
             ],
         ),
     ],
