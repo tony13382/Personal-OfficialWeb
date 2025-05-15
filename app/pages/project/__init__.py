@@ -12,9 +12,11 @@ from .songla import page as songla
 from .stockCalc import page as stockCalc
 from .techlife import page as techlife
 from .trelloFinder import page as trelloFinder
+from .notionAsDb import page as notionAsDb
 
 
 allProjects = [
+    notionAsDb,
     trelloFinder,
     chenmko,
     songla,

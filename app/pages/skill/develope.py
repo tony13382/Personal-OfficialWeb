@@ -195,6 +195,7 @@ page = SkillPage(
     ],
     projects=[
         projectPages.trelloFinder,
+        projectPages.notionAsDb,
         projectPages.chenmko,
         projectPages.mindReader,
         projectPages.hsCloudMeetingManage,
