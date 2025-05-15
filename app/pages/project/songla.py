@@ -10,6 +10,8 @@ from app.elements import (
     LinkButton,
     ListDiv,
     Score,
+    Tab,
+    TabItem,
     Text,
     Tool,
     UiImageCarousel,
@@ -105,8 +107,16 @@ page = ProjectPage(
                 DivBar(),
                 Image("/assets/imgs/projects/songla/ux/Navbar.png", "導航列設計"),
                 DivBar(),
-                Html(
-                    """
+                Tab(
+                    [
+                        TabItem(
+                            title="探索",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Html(
+                                            """
 <div class="py-4">
     <p class="m-0 fs-4 text-center">根據用戶訪談，有</p>
     <p class="m-0 fs-3 text-center">高達<span class="px-1 text-projectSonglaPrimary fw-bold" style="font-size:5rem;"> 89</span>
@@ -115,34 +125,38 @@ page = ProjectPage(
     <p class="m-0 fs-4 text-center">認為沒有靈感阻礙了他們創作</p>
 </div>
 """
-                ),
-                DivBar(),
-                Text("在`探索`我們可以", "h4"),
-                ListDiv(
-                    [
-                        IconBlock(
-                            title="利用風格篩選的音樂，透過他人作品找尋靈感",
-                            icon="bi-crosshair2",
+                                        ),
+                                        DivBar(),
+                                        Text("在`探索`我們可以", "h4"),
+                                        ListDiv(
+                                            [
+                                                IconBlock(
+                                                    title="利用風格篩選的音樂，透過他人作品找尋靈感",
+                                                    icon="bi-crosshair2",
+                                                ),
+                                                IconBlock(
+                                                    title="精選與你相關的熱門音樂，了解你創作的最新趨勢",
+                                                    icon="bi-fire",
+                                                ),
+                                                IconBlock(
+                                                    title="瀏覽社群，聆聽朋友的作品來思考作品",
+                                                    icon="bi-share-fill",
+                                                ),
+                                            ],
+                                            mt=2,
+                                        ),
+                                    ]
+                                )
+                            ),
                         ),
-                        IconBlock(
-                            title="精選與你相關的熱門音樂，了解你創作的最新趨勢",
-                            icon="bi-fire",
-                        ),
-                        IconBlock(
-                            title="瀏覽社群，聆聽朋友的作品來思考作品",
-                            icon="bi-share-fill",
-                        ),
-                    ],
-                    mt=2,
-                ),
-            ]
-        ),
-        Card(
-            body=[
-                Text("音樂社群設計", "h3"),
-                DivBar(),
-                Html(
-                    """
+                        TabItem(
+                            title="動態",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Html(
+                                            """
 <div class="py-4">
     <p class="m-0 fs-4 text-center">根據用戶訪談</p>
     <p class="m-0 fs-3 text-center">有<span class="ps-1 text-projectSonglaPrimary fw-bold" style="font-size: 5rem;">2/3</span>
@@ -151,97 +165,120 @@ page = ProjectPage(
     <p class="m-0 fs-4 text-center">對於<span class="mx-1 fw-bold">社群＋音樂</span>提出支持</p>
 </div>
 """
-                ),
-                DivBar(),
-                Text("因此在`動態`中我們提供社群相關屬性", "h4"),
-                ListDiv(
-                    [
-                        IconBlock(
-                            title="音樂創作挑戰",
-                            subtitle="你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！",
-                            icon="bi-flag-fill",
+                                        ),
+                                        DivBar(),
+                                        Text(
+                                            "因此在`動態`中我們提供社群相關屬性", "h4"
+                                        ),
+                                        ListDiv(
+                                            [
+                                                IconBlock(
+                                                    title="音樂創作挑戰",
+                                                    subtitle="你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！",
+                                                    icon="bi-flag-fill",
+                                                ),
+                                                IconBlock(
+                                                    title="分享音樂作品",
+                                                    subtitle="分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音。",
+                                                    icon="bi-headphones",
+                                                ),
+                                                IconBlock(
+                                                    title="生活照片紀錄",
+                                                    subtitle="與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動。",
+                                                    icon="bi-image-fill",
+                                                ),
+                                                IconBlock(
+                                                    title="文章",
+                                                    subtitle="你可以分享心情、活動，可以用文字表達的都可以書寫。",
+                                                    icon="bi-pencil-fill",
+                                                ),
+                                            ],
+                                            mt=2,
+                                        ),
+                                    ]
+                                )
+                            ),
                         ),
-                        IconBlock(
-                            title="分享音樂作品",
-                            subtitle="分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音。",
-                            icon="bi-headphones",
+                        TabItem(
+                            title="錄音室",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Text(
+                                            "即時行樂 Songla `結合音樂創作功能與社群`功能，使用者不需會任何樂器或樂理知識，只要會哼唱就能透過產品的「`智慧編曲`」功能完成屬於自己的音樂，並且上傳至即時行樂分享平台或下載保存至手機，`大幅降低創作所需門檻`。"
+                                        ),
+                                        ListDiv(
+                                            [
+                                                IconBlock(
+                                                    title="音樂創作",
+                                                    subtitle="打開Songla 錄音室，按下錄音鍵開始哼唱旋律。",
+                                                    icon="bi-mic",
+                                                ),
+                                                IconBlock(
+                                                    title="智慧編曲",
+                                                    subtitle="交給 Songla 讓 AI 幫你編出獨一無二的曲子。",
+                                                    icon="bi-stars",
+                                                ),
+                                                IconBlock(
+                                                    title="選擇音色",
+                                                    subtitle="從 275 種音色裡面任選喜歡音色演奏自己的創作。",
+                                                    icon="bi-music-note-list",
+                                                ),
+                                                IconBlock(
+                                                    title="瀏覽樂譜",
+                                                    subtitle="Songla 幫你編寫樂譜，誰說需要樂理才能當音樂家？",
+                                                    icon="bi-file-earmark-music",
+                                                ),
+                                                IconBlock(
+                                                    title="與世界共享",
+                                                    subtitle="按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！",
+                                                    icon="bi-box-arrow-right",
+                                                ),
+                                            ],
+                                            mt=2,
+                                        ),
+                                    ]
+                                )
+                            ),
                         ),
-                        IconBlock(
-                            title="生活照片紀錄",
-                            subtitle="與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動。",
-                            icon="bi-image-fill",
+                        TabItem(
+                            title="點數",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Image(
+                                            "/assets/imgs/projects/songla/laCoin.png",
+                                            "點數用途",
+                                            rounded=True,
+                                        ),
+                                        DivBar(),
+                                        Text("在`點數`我們可以", "h4"),
+                                        ListDiv(
+                                            [
+                                                IconBlock(
+                                                    title="蒐集樂幣",
+                                                    icon="bi-collection",
+                                                ),
+                                                IconBlock(
+                                                    title="轉換樂幣",
+                                                    icon="bi-arrow-repeat",
+                                                ),
+                                                IconBlock(
+                                                    title="消費樂幣",
+                                                    icon="bi-wallet",
+                                                ),
+                                            ],
+                                            mt=2,
+                                        ),
+                                    ]
+                                )
+                            ),
                         ),
-                        IconBlock(
-                            title="文章",
-                            subtitle="你可以分享心情、活動，可以用文字表達的都可以書寫。",
-                            icon="bi-pencil-fill",
-                        ),
-                    ],
-                    mt=2,
+                    ]
                 ),
             ]
-        ),
-        Card(
-            body=[
-                Text("錄音室", "h3"),
-                DivBar(),
-                Text(
-                    "即時行樂 Songla `結合音樂創作功能與社群`功能，使用者不需會任何樂器或樂理知識，只要會哼唱就能透過產品的「`智慧編曲`」功能完成屬於自己的音樂，並且上傳至即時行樂分享平台或下載保存至手機，`大幅降低創作所需門檻`。"
-                ),
-                ListDiv(
-                    [
-                        IconBlock(
-                            title="音樂創作",
-                            subtitle="打開Songla 錄音室，按下錄音鍵開始哼唱旋律。",
-                            icon="bi-mic",
-                        ),
-                        IconBlock(
-                            title="智慧編曲",
-                            subtitle="交給 Songla 讓 AI 幫你編出獨一無二的曲子。",
-                            icon="bi-stars",
-                        ),
-                        IconBlock(
-                            title="選擇音色",
-                            subtitle="從 275 種音色裡面任選喜歡音色演奏自己的創作。",
-                            icon="bi-music-note-list",
-                        ),
-                        IconBlock(
-                            title="瀏覽樂譜",
-                            subtitle="Songla 幫你編寫樂譜，誰說需要樂理才能當音樂家？",
-                            icon="bi-file-earmark-music",
-                        ),
-                        IconBlock(
-                            title="與世界共享",
-                            subtitle="按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！",
-                            icon="bi-box-arrow-right",
-                        ),
-                    ],
-                    mt=2,
-                ),
-            ]
-        ),
-        Card(
-            header=Image("/assets/imgs/projects/songla/laCoin.png", "點數用途"),
-            body=[
-                Text("在`點數`我們可以", "h4"),
-                ListDiv(
-                    [
-                        IconBlock(
-                            title="蒐集樂幣",
-                            icon="bi-collection",
-                        ),
-                        IconBlock(
-                            title="轉換樂幣",
-                            icon="bi-arrow-repeat",
-                        ),
-                        IconBlock(
-                            title="消費樂幣",
-                            icon="bi-wallet",
-                        ),
-                    ],
-                    mt=2,
-                ),
-            ],
         ),
         Card(
             body=[
@@ -292,53 +329,75 @@ page = ProjectPage(
                         ),
                     ]
                 ),
+            ],
+        ),
+        Card(
+            body=[
+                Text("設計上的思考", "h3"),
+                DivBar(),
+                Tab(
+                    [
+                        TabItem(
+                            title="色彩",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Image(
+                                            "/assets/imgs/projects/songla/ux/colortheme.png",
+                                            "設計色彩系統",
+                                            max_width=400,
+                                        ),
+                                        Text("運用多彩色系營造活潑的感覺", center=True),
+                                    ],
+                                    gap_size="large",
+                                )
+                            ),
+                        ),
+                        TabItem(
+                            title="蒙版漸層背景設計",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Image(
+                                            "/assets/imgs/projects/songla/ux/colorBG.png",
+                                            "蒙版漸層背景設計",
+                                            max_width=400,
+                                        ),
+                                        Text("運用漸層營造立體的感覺", center=True),
+                                    ],
+                                    gap_size="large",
+                                )
+                            ),
+                        ),
+                        TabItem(
+                            title="圖示設計",
+                            content=str(
+                                ListDiv(
+                                    [
+                                        DivBar(),
+                                        Image(
+                                            "/assets/imgs/projects/songla/ux/iconpack.png",
+                                            "圖示設計",
+                                            max_width=400,
+                                        ),
+                                        Text(
+                                            "依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標",
+                                            center=True,
+                                        ),
+                                        Text(
+                                            "上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計，",
+                                            center=True,
+                                        ),
+                                    ],
+                                    gap_size="large",
+                                )
+                            ),
+                        ),
+                    ]
+                ),
             ]
-        ),
-        Card(
-            body=[
-                Text("設計色彩", "h3", bold=True),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/songla/ux/colortheme.png",
-                    "設計色彩系統",
-                    max_width=400,
-                ),
-                Text("運用多彩色系營造活潑的感覺", center=True),
-            ],
-            body_gap_size="large",
-        ),
-        Card(
-            body=[
-                Text("蒙版漸層背景設計", "h3", bold=True),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/songla/ux/colorBG.png",
-                    "蒙版漸層背景設計",
-                    max_width=400,
-                ),
-                Text("運用漸層營造立體的感覺", center=True),
-            ],
-            body_gap_size="large",
-        ),
-        Card(
-            body=[
-                Text("圖示設計", "h3", bold=True),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/songla/ux/iconpack.png",
-                    "圖示設計",
-                    max_width=400,
-                ),
-                Text(
-                    "依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標",
-                    center=True,
-                ),
-                Text(
-                    "上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計，",
-                    center=True,
-                ),
-            ],
-            body_gap_size="large",
         ),
     ],
 )

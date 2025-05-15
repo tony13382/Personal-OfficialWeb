@@ -85,8 +85,6 @@ class Navbar:
         opacity: 0.2;
         z-index: -1;
     }
-
-    
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">

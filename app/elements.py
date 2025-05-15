@@ -504,6 +504,53 @@ class Score:
 """
 
 
+class TabItem(BaseModel):
+    title: str
+    content: str
+
+
+class Tab:
+    def __init__(self, data: List[TabItem]):
+        self.data = data
+        pass
+
+    def __str__(self) -> str:
+        random_id = f"c{uuid4().hex[0:6]}"
+        index_id = 0
+        ul_html = (
+            f"""<ul class="nav nav-pills" id="pills-tab-{random_id}" role="tablist">"""
+        )
+        for item in self.data:
+            if index_id == 0:
+                ul_html += f""" 
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-{random_id}-{item.title.replace(" ", "-")}-tab" data-bs-toggle="pill" data-bs-target="#pills-{random_id}-{item.title.replace(" ", "-")}" type="button" role="tab" aria-controls="pills-{random_id}-{item.title.replace(" ", "-")}" aria-selected="true">{item.title}</button>
+                </li>"""
+            else:
+                ul_html += f""" 
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-{random_id}-{item.title.replace(" ", "-")}-tab" data-bs-toggle="pill" data-bs-target="#pills-{random_id}-{item.title.replace(" ", "-")}" type="button" role="tab" aria-controls="pills-{random_id}-{item.title.replace(" ", "-")}" aria-selected="false">{item.title}</button>
+                </li>"""
+            index_id += 1
+        ul_html += """</ul>"""
+        index_id = 0
+        ul_html += f"""<div class="tab-content" id="pills-{random_id}-tabContent">"""
+        for item in self.data:
+            if index_id == 0:
+                ul_html += f""" 
+                <div class="tab-pane fade show active" id="pills-{random_id}-{item.title.replace(" ", "-")}" role="tabpanel" aria-labelledby="pills-{random_id}-{item.title.replace(" ", "-")}-tab" tabindex="0">
+                    {str(item.content)}
+                </div>"""
+            else:
+                ul_html += f""" 
+                <div class="tab-pane fade" id="pills-{random_id}-{item.title.replace(" ", "-")}" role="tabpanel" aria-labelledby="pills-{random_id}-{item.title.replace(" ", "-")}-tab" tabindex="0">
+                    {str(item.content)}
+                </div>"""
+            index_id += 1
+        ul_html += """</div>"""
+        return ul_html
+
+
 class Text:
     def __init__(
         self,

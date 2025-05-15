@@ -92,7 +92,19 @@ class Head:
             color: #1f1f1f;
             background-color: #f0f0f0;
         }}
-        
+        .nav-pills .nav-link {{
+            border-radius: 99rem;
+        }}
+        .nav-pills .nav-link:hover {{
+            color: var(--themeColor);
+        }}
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {{
+            color: #ffffff;
+            background-color: var(--themeColor);
+        }}
+        .nav-pills .nav-link.active:hover, .nav-pills .show > .nav-link {{
+            background-color: var(--secondColor);
+        }}
     </style>
     <style>
         .carousel__nav .carousel__button {{
