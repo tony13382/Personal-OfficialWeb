@@ -506,7 +506,7 @@ class Score:
 
 class TabItem(BaseModel):
     title: str
-    content: str
+    content: str | Any
 
 
 class Tab:
