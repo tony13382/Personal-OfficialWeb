@@ -517,9 +517,7 @@ class Tab:
     def __str__(self) -> str:
         random_id = f"c{uuid4().hex[0:6]}"
         index_id = 0
-        ul_html = (
-            f"""<ul class="nav nav-pills" id="pills-tab-{random_id}" role="tablist">"""
-        )
+        ul_html = f"""<div class="overflow-auto"><ul class="nav nav-pills flex-nowrap" id="pills-tab-{random_id}" role="tablist" style="white-space: nowrap;">"""
         for item in self.data:
             if index_id == 0:
                 ul_html += f""" 
@@ -532,7 +530,7 @@ class Tab:
                     <button class="nav-link" id="pills-{random_id}-{item.title.replace(" ", "-")}-tab" data-bs-toggle="pill" data-bs-target="#pills-{random_id}-{item.title.replace(" ", "-")}" type="button" role="tab" aria-controls="pills-{random_id}-{item.title.replace(" ", "-")}" aria-selected="false">{item.title}</button>
                 </li>"""
             index_id += 1
-        ul_html += """</ul>"""
+        ul_html += """</ul></div>"""
         index_id = 0
         ul_html += f"""<div class="tab-content" id="pills-{random_id}-tabContent">"""
         for item in self.data:
