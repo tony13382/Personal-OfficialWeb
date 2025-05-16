@@ -14,8 +14,8 @@ from app.elements import (
 
 
 page = ProjectPage(
-    title="知識庫與書籤。Notion As DB 實驗專案",
-    description="基於 Notion API, Github Action, Cloudflare Pages 所打造的靜態網頁",
+    title="知識庫與精選書籤",
+    description="[Notion As DB 實驗專案] 基於 Notion API, Cloudflare Pages 所打造的靜態網頁流程",
     startdate="2022/03",
     enddate="NOW",
     status="running",
