@@ -26,12 +26,17 @@ page = ProjectPage(
     skill_types=["pin", "dev"],
     tags=["網站架設", "Notion", "靜態網頁"],
     description_links=[
+        LinkButton(
+            "Notion 截取模組",
+            "https://github.com/tony13382/PythonPackage-NotionRetrieve",
+            icon="bi-github",
+        ),
         LinkButton("亮進的精選書籤", "https://bm.lianglu.uk/"),
         LinkButton("知識推薦獲取來源", "https://learn.lianglu.uk/"),
     ],
     tools=[
-        Tool("Notion", "靜態網頁資料庫"),
-        Tool("Github Action", "自動化部署"),
+        Tool("Notion", "網頁資料庫"),
+        Tool("App Script", "定時觸發自動化部署"),
         Tool("Cloudflare Pages", "靜態網頁部署"),
     ],
     children=[
