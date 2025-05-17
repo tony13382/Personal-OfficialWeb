@@ -126,7 +126,7 @@ page = SkillPage(
             ],
         ),
         SkillsGroup(
-            title="模型",
+            title="模型與雲服務",
             icon="bi-boxes",
             children=[
                 SkillItem(
@@ -162,6 +162,32 @@ page = SkillPage(
             ],
         ),
         SkillsGroup(
+            title="部署與自動化",
+            icon="bi-hdd-network",
+            children=[
+                SkillItem(
+                    title="Docker",
+                    description="容器化技術／封裝／部署",
+                    icon="/assets/imgs/appIcons/docker.png",
+                ),
+                SkillItem(
+                    title="Cloudflare",
+                    description="Worker & Page／Tunnel／ZeroTrust",
+                    icon="/assets/imgs/appIcons/cloudflare.png",
+                ),
+                SkillItem(
+                    title="GitHub Actions",
+                    description="CI/CD 自動化部署",
+                    icon="/assets/imgs/appIcons/github.png",
+                ),
+                SkillItem(
+                    title="APP Script",
+                    description="自動化任務與排程",
+                    icon="/assets/imgs/appIcons/appScript.png",
+                ),
+            ],
+        ),
+        SkillsGroup(
             title="其他",
             icon="bi-braces-asterisk",
             children=[
@@ -169,11 +195,6 @@ page = SkillPage(
                     title="Java",
                     description="程式設計",
                     icon="/assets/imgs/appIcons/java.png",
-                ),
-                SkillItem(
-                    title="Docker",
-                    description="容器化技術／封裝／部署",
-                    icon="/assets/imgs/appIcons/docker.png",
                 ),
                 SkillItem(
                     title="RabbitMQ",
@@ -184,11 +205,6 @@ page = SkillPage(
                     title="Git",
                     description="版本控制",
                     icon="/assets/imgs/appIcons/git.png",
-                ),
-                SkillItem(
-                    title="GitHub Actions",
-                    description="CI/CD 自動化部署",
-                    icon="/assets/imgs/appIcons/github.png",
                 ),
             ],
         ),
