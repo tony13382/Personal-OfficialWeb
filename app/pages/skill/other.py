@@ -60,6 +60,7 @@ page = SkillPage(
         ),
     ],
     projects=[
+        projectPages.notionAsDb,
         projectPages.digitalOcean,
         projectPages.techlife,
     ],
