@@ -59,7 +59,7 @@ page = SkillPage(
                 SkillItem(
                     title="Google Data Studio",
                     description="數據視覺化",
-                    icon="/assets/imgs/appIcons/data_studio.svg",
+                    icon="/assets/imgs/appIcons/data_studio.png",
                 ),
                 SkillItem(
                     title="Poewr BI",
