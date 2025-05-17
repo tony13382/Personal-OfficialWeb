@@ -163,7 +163,7 @@ class SkillPage:
     <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
         <div class="card-body d-inline-flex align-items-center">
             <div class="d-inline-block">
-                <div style="width: 48px; height: 48px;" class="">
+                <div style="width: 40px; height: 40px;">
                     <img src="{item.icon}" class="img-fluid" alt="{item.title} Icon">
                 </div>
             </div>
