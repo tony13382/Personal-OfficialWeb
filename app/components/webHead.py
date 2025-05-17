@@ -61,7 +61,6 @@ class Head:
 
         .bg-mytheme {{
             background: {second_color}15;
-            color: {second_color};
         }}
         
 

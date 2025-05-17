@@ -356,7 +356,9 @@ class Image:
 </a>
 """
         return f"""
-<img src="{self.src}" class="img-fluid mx-auto {rounded_class}" alt="{self.alt}" {max_width_style}>
+<div class="d-block mx-auto text-center">
+    <img src="{self.src}" class="img-fluid mx-auto {rounded_class}" alt="{self.alt}" {max_width_style}>
+</div>
 """
 
 

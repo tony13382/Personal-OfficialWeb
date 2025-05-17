@@ -47,14 +47,19 @@ page = ProjectPage(
                 ListDiv(
                     [
                         IconBlock(
-                            title="步驟ㄧ：建置 Notion 資料庫", icon="bi-1-circle"
+                            title="步驟ㄧ：建置 Notion 資料庫",
+                            subtitle="建立 Notion 資料庫，並設定 API 權限",
+                            icon="bi-1-circle",
                         ),
                         IconBlock(
-                            title="步驟二：於`Cloudflare Page`透過腳本連線 Notion 生成靜態檔案",
+                            title="步驟二：於`Cloudflare Page`透過 Python 腳本連線 Notion 生成 html",
+                            subtitle="先使用 Request 從 Notion API 取得資料，之後生成靜態網頁",
                             icon="bi-2-circle",
                         ),
                         IconBlock(
-                            title="步驟三：部署`html`靜態網頁", icon="bi-3-circle"
+                            title="步驟三：部署`html`靜態網頁",
+                            subtitle="透過 Cloudflare Pages 部署靜態網頁並綁定網域",
+                            icon="bi-3-circle",
                         ),
                         IconBlock(
                             title="背景任務：每 20 分鐘透過`Cloudflare Hook`執行生成腳本",

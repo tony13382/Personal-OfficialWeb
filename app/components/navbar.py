@@ -68,7 +68,6 @@ class Navbar:
     }
 
     .bg-mytheme {
-        color: var(--secondColor);
         position: relative;
         letter-spacing: 0.02rem;
         z-index: 10;
