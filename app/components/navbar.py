@@ -97,7 +97,7 @@ class Navbar:
 
 <nav class="navbar navbar-expand-lg navbar-light shadow p-3 fixed-top" id="nav">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center flex-wrap text-white" href="#topCover">
+        <a class="navbar-brand d-flex align-items-center flex-wrap text-white" href="/#topCover">
             <img src="/assets/file/iconDesignFile/logo.svg" class="me-3" alt="Icon of Logo" width="24px"
                 height="24px"><span class="navlogofont" style="font-size: 1rem;">Liang Chin Lu</span>
         </a>
