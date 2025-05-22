@@ -143,7 +143,7 @@ class SkillPage:
             )
         )
 
-        navbar_html = str(Navbar(path="project"))
+        navbar_html = str(Navbar(path="main"))
 
         skill_tools_html = ""
         if self.skill_group:

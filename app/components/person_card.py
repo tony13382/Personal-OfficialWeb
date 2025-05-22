@@ -13,10 +13,13 @@ class PersonCard:
             <p class="text-center text-black-50">後端開發／AI 工程師</p>
         </div>
         <div class="d-grid gap-2">
+            <!--
             <a target="_blank" type="button" class="btn btn-theme rounded-pill" href="/assets/file/rv/RV(Data_Science).pdf">
                 我的履歷
+            </a> -->
+            <a type="button" class="btn btn-theme rounded-pill" data-bs-toggle="modal" data-bs-target="#skillsModel" data-bs-trigger="hover focus" data-bs-content="Skill Button" data-bs-placement="bottom">我的技能組
             </a>
-            <a type="button" class="btn btn-outline-theme rounded-pill" data-bs-toggle="modal" data-bs-target="#shareModel" data-bs-trigger="hover focus" data-bs-content="QR Code" data-bs-placement="bottom">聯絡我
+            <a type="button" class="btn btn-outline-theme rounded-pill" data-bs-toggle="modal" data-bs-target="#shareModel" data-bs-trigger="hover focus" data-bs-content="Content Me" data-bs-placement="bottom">聯絡我
             </a>
         </div>
     </div>
@@ -26,8 +29,39 @@ class PersonCard:
 
 class MoreModal:
     def __str__(self):
-        return """
-<!-- Modal -->
+        from app.pages.skill import allPages
+
+        skill_html = ""
+        for skill in allPages:
+            firstColor, secondColor = skill.colorSet
+            skill_html += f"""
+            <style>
+            .skillCard-{skill.prefix} {{
+                border: 0px;
+                background-color: {firstColor}10;
+            }}
+            .skillCard-{skill.prefix}:hover {{
+                border: 1px solid {firstColor};
+            }}
+            </style>
+            <div class="col-12 col-md-6 d-grid">
+                <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
+                    <div class="card rounded-inline-basic h-100 hoverShadow skillCard-{skill.prefix}">
+                        <div class="card-body">
+                            <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: {firstColor};">
+                                <i class="bi {skill.icon}"></i>
+                            </div>
+                            <p class="m-0 mt-2 fw-bold" style="color: {firstColor};">{skill.title}</p>
+                            <hr style="opacity: 0.1;" class="my-2">
+                            {str(skill.description)}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        """
+
+        return f"""
+<!-- Content Me Modal -->
 <div class="modal fade" id="shareModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="shareModelLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered p-2" style="max-width: 800px;">
@@ -151,6 +185,26 @@ class MoreModal:
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex ">
+                <button type="button" class="btn btn-dark w-100 rounded-pill" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Skills Modal -->
+<div class="modal fade" id="skillsModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="skillsModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered p-2" style="max-width: 800px;">
+        <div class="modal-content rounded-basic">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="skillsModelLabel">我的技能組</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body h-auto">
+                <div class="row g-3">
+                    {skill_html}
                 </div>
             </div>
             <div class="modal-footer d-flex ">

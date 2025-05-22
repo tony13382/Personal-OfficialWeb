@@ -8,6 +8,8 @@ class Navbar:
     def __str__(self):
         if self.path == "main":
             return """
+<!-- Google Font - Nav Logo-->
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap" rel="stylesheet">
 <!--Nav Style-->
 <style>
     .nav .nav-item .nav-link {
@@ -83,6 +85,13 @@ class Navbar:
         background: var(--themeColor);
         opacity: 0.2;
         z-index: -1;
+    }
+    
+    .navlogofont {
+        font-family: "Playwrite HR Lijeva", cursive;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
     }
 </style>
 

@@ -1,4 +1,4 @@
-from app.elements import ListStr, Text
+from app.elements import ListStr
 from app.layouts.skill import SkillPage, SkillsGroup, SkillItem
 from app.variables import ThemeColor
 
