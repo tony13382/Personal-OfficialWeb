@@ -181,12 +181,6 @@ theme_html = f"""
         background-color: #ececec !important;
     }}
 
-    .navlogofont {{
-        font-family: "Playwrite HR Lijeva", cursive;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-    }}
 
     .text-highlight {{
         color: var(--secondColor);
