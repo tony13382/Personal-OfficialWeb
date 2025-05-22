@@ -1,33 +1,3 @@
-.msf-h1{
-    font-size: 3rem;
-}
-.msf-sh1{
-    font-size: 2rem;
-    line-height: 150%;
-}
-.productBlock {
-    margin-left: 0px !important;
-    margin-right: 8px !important;
-}
-
-.msf-info-s{
-    font-size: 18px;
-    line-height: 150%;
-}
-
-
-.ml12 {
-    font-weight: 200;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-}
-
-.ml12 .letter {
-    display: inline-block;
-    line-height: 0.5em;
-}
-
 
 .notoFont {
     font-family: 'Noto Sans TC', sans-serif;

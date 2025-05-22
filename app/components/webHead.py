@@ -58,19 +58,15 @@ class Head:
             --themeColor: {theme_color};
             --secondColor: {second_color};
         }}
-
         .bg-mytheme {{
             background: {second_color}15;
         }}
-        
-
         .text-theme {{
             color: var(--themeColor);
         }}
         .text-secondTheme {{
             color: var(--secondColor);
         }}
-
         .text-highlight {{
             color: var(--themeColor);
             margin: 0 2px;
@@ -85,7 +81,6 @@ class Head:
             text-decoration: none;
             color: #1f1f1f;
         }}
-
         .grayBlockHover:hover {{
             text-decoration: none;
             color: #1f1f1f;

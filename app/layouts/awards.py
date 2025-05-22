@@ -13,11 +13,11 @@ def convert_project(project: ProjectPage, delay_times: float) -> str:
     if project.scores:
         for score in project.scores:
             if index != 0:
-                awards_code += """<hr class="my-2">"""
+                awards_code += """<hr class="my-2" style="opacity: 0.05;" >"""
             index += 1
             awards_code += f"""
 <div class="col my-autor">
-    <p class="card-text m-0 fw-bold">
+    <p class="card-text m-0">
         {score.name}{f"・{score.group}" if score.group else ""}
     </p>
     <p class="card-text m-0 text-theme fs-4 fw-bold">
@@ -27,16 +27,16 @@ def convert_project(project: ProjectPage, delay_times: float) -> str:
 """
     single_code = f"""
 <div class="card shadow rounded-basic animate__animated animate__fadeInUp" style="animation-delay: {delay_times}s;">
-    <div class="card-body lh-lg pt-1 pb-2" id="about">
+    <div class="card-body lh-lg pt-2 pb-3 px-3" id="about">
         <div class="row">
             <div class="col align-self-center">
-                <p class="m-0 text-secondary fs-5">{project.title}</p>
+                <p class="m-0 text-secondary fs-5 fw-bold text-dark">{project.title}</p>
             </div>
             <div class="col-auto">
                 <a href="../projects/{project.prefix}.html" class="btn btn-outline-theme rounded-pill my-2">相關專案</a>
             </div>
         </div>
-        <hr class="mt-1 mb-2">
+        <hr class="mt-1 mb-3"">
         <div class="row">
             {awards_code}
         </div>

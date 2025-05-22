@@ -70,7 +70,8 @@ page = f"""
     </a>
     <script src="/assets/script/scroll.js"></script>
 
-    <div style="
+    <div id="topCover"
+        style="
             padding: 80px 0px;
             background: linear-gradient(0deg, rgba(49, 40, 38, 0.89), rgba(45, 38, 30, 0.95)), url(/assets/imgs/index/cover.jpg);
             background-size: cover;

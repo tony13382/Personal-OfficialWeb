@@ -44,12 +44,12 @@
                             {% endif %}
 
                             {% if description %}
-                            <p class="mb-2 notoFont msf-info-s">{{ description }}</p>
+                            <p class="mb-2 notoFont msf-info-s">{{ description |safe}}</p>
                             {% endif %}
 
                             {% if subdescription %}
                             <hr class="my-2" style="opacity:10%;">
-                            <p class="text-theme fw-bold my-3">{{ subdescription }}</p>
+                            <p class="text-theme fw-bold my-3">{{ subdescription|safe }}</p>
                             {% endif %}
 
                             {% if tags %}

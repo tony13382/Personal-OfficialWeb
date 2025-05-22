@@ -69,23 +69,7 @@ class Navbar:
         color: #ffffff;
     }
 
-    .bg-mytheme {
-        position: relative;
-        letter-spacing: 0.02rem;
-        z-index: 10;
-    }
-
-    .bg-mytheme::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--themeColor);
-        opacity: 0.2;
-        z-index: -1;
-    }
+    
     
     .navlogofont {
         font-family: "Playwrite HR Lijeva", cursive;

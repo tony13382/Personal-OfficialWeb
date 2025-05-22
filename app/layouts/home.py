@@ -181,8 +181,14 @@ theme_html = f"""
         background-color: #ececec !important;
     }}
 
+    .bg-mytheme {{
+        background: {secondColor}15;
+    }}
+    .text-theme {{
+        color: var(--themeColor);
+    }}
 
-    .text-highlight {{
+        .text-highlight {{
         color: var(--secondColor);
         margin: 0 2px;
         padding: 0 4px;
