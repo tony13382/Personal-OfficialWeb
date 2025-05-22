@@ -103,12 +103,6 @@ page = ProjectPage(
                     "MindReader's system design",
                     True,
                 ),
-                DivBar(),
-                Image(
-                    "/assets/imgs/projects/mindReader/systemFrame2.png",
-                    "MindReader's system design",
-                    True,
-                ),
             ]
         ),
         Card(
