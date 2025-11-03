@@ -15,7 +15,7 @@ def convert_project(project: ProjectPage) -> str:
             tag_code += f"""<span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden">{tag}</span>"""
         tag_code += """</div></div>"""
     single_code = f"""
-<div class="col-12 col-md-6 col-lg-6 p-2">
+<div class="col-12 col-md-6 col-xl-3 p-2">
     <a href="/projects/{project.prefix}" class="text-decoration-none">
         <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
                 src="{project.cover}" class="card-img-top lozad" alt="..."
@@ -90,12 +90,12 @@ page = f"""
             </div>
         </div>
     </div>
-    <div class="container pb-5" style="margin-top: -160px;">
+    <div class="container-fluid pb-5" style="margin-top: -160px; max-width:2000px;">
         <div class="row position-relative d-flex align-items-start">
-            <div class="col-lg-3 col-12 pb-4 sticky-lg-top " style="padding-top: 92px; z-index: 999;">
+            <div class="col-xl-2 col-lg-3 col-12 pb-4 sticky-lg-top " style="padding-top: 92px; z-index: 999;">
                 {str(PersonCard())}
             </div>
-            <div class="col-lg-9 col-12 pb-4">
+            <div class="col-xl-10 col-lg-9 col-12 pb-4">
                 <div style="height: 92px;" class="d-none d-lg-block"></div>
                 <div style="margin-top: -92px;padding-top: 92px;">
                     {projects_html}
