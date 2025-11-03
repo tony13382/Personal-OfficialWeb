@@ -16,7 +16,7 @@ page = JobPage(
     enddate=None,
     colorSet=ThemeColor().natural,
     prefix="developer",
-    cover="/assets/imgs/jobs/2019_CycuEdu/cover.png",
+    cover="/assets/imgs/jobs/0000_Developer/cover.png",
     description=ListStr(
         [
             "`前端`：Bootstrap, Tailwind CSS",
