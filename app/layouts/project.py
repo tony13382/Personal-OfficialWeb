@@ -14,12 +14,13 @@ from app.elements import (
     Text,
     Tool,
 )
+from app.layouts import PageLayout
 
 env = Environment(loader=FileSystemLoader("app/layouts/templates"), autoescape=True)
 template = env.get_template("project_detail.j2")
 
 
-class ProjectPage:
+class ProjectPage(PageLayout):
     def __init__(
         self,
         title: str,

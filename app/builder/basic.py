@@ -1,6 +1,8 @@
 import os
 from typing import List, Any
 
+from app.layouts import PageLayout
+
 
 class WebBuilder:
     def __init__(self, path: str) -> None:
@@ -9,10 +11,10 @@ class WebBuilder:
         # 确保目录存在
         os.makedirs(path, exist_ok=True)
 
-    def addPage(self, newPage: Any):
+    def addPage(self, newPage: PageLayout):
         self.pages.append(newPage)
 
-    def addPages(self, newPages: List[Any]):
+    def addPages(self, newPages: List[PageLayout]):
         self.pages.extend(newPages)
 
     def getPages(self):

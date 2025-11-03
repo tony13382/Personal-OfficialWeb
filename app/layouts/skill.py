@@ -6,6 +6,7 @@ from app.components.navbar import Navbar
 from app.components.footer import Footer
 from app.components.person_card import PersonCard, MoreModal
 from app.elements import Card, DivBar, Html, ListDiv, ListStr, Text
+from app.layouts import PageLayout
 from app.layouts.project import ProjectPage
 from app.layouts.job import JobPage
 from app.variables import SpaceSet
@@ -118,7 +119,7 @@ def convert_certificate(certificate: Certificate) -> str:
 """
 
 
-class SkillPage:
+class SkillPage(PageLayout):
     def __init__(
         self,
         title: str,

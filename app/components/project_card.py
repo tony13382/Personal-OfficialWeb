@@ -1,11 +1,10 @@
-from typing import Any
-from app.elements import Card, DivBar, Image, LinkButton, ListDiv, ListStr, Text
+from app.elements import Card, DivBar, Element, Image, LinkButton, ListDiv, ListStr, Text
 from app.layouts.project import ProjectPage
 from app.variables import SpaceSet
 
 
 class ProjectCard:
-    def __init__(self, project: ProjectPage, memo: Any):
+    def __init__(self, project: ProjectPage, memo: Element | None):
         self.project = project
         self.memo = memo
 

@@ -17,7 +17,11 @@ def string_formator(text: str):
     return result
 
 
-class Canva:
+class Element:
+    """Base class for elements."""
+    pass
+
+class Canva(Element):
     def __init__(self, src: str = ""):
         self.src = src
 
@@ -34,7 +38,7 @@ class Canva:
 """
 
 
-class Card:
+class Card(Element):
     def __init__(
         self,
         header=None,
@@ -91,7 +95,7 @@ class AccordionItem(BaseModel):
     expanded: bool = False
 
 
-class AccordionBlock:
+class AccordionBlock(Element):
     def __init__(self, items: List[AccordionItem]):
         self.items = items
 
@@ -134,7 +138,7 @@ class AccordionBlock:
         return accordion_html
 
 
-class Columns:
+class Columns(Element):
     def __init__(
         self, gap_size: int = 0, cols_of_row: int = 0, children: List[Any] = None
     ):
@@ -164,7 +168,7 @@ class Columns:
         return html
 
 
-class Div:
+class Div(Element):
     def __init__(
         self,
         child,
@@ -193,7 +197,7 @@ class Div:
 """
 
 
-class DivBar:
+class DivBar(Element):
     def __init__(
         self,
         space: Literal["nano", "mini", "regular", "wide"] = "regular",
@@ -215,7 +219,7 @@ class DivBar:
 """
 
 
-class Html:
+class Html(Element):
     def __init__(self, code: str):
         self.code = code
 
@@ -223,7 +227,7 @@ class Html:
         return self.code
 
 
-class HtmlCarousel:
+class HtmlCarousel(Element):
     def __init__(self, blocks: Union[List[str], List[Any]]):
         self.blocks = blocks
 
@@ -280,7 +284,7 @@ class HtmlCarousel:
 """
 
 
-class IconBlock:
+class IconBlock(Element):
     def __init__(
         self,
         title: str = None,
@@ -335,7 +339,7 @@ class IconBlock:
 """
 
 
-class Image:
+class Image(Element):
     def __init__(
         self,
         src: str,
@@ -368,7 +372,7 @@ class Image:
 """
 
 
-class ImageCarousel:
+class ImageCarousel(Element):
     def __init__(self, images: List[Image]) -> None:
         self.images = images
 
@@ -405,7 +409,7 @@ class ImageCarousel:
 """
 
 
-class LinkButton:
+class LinkButton(Element):
     def __init__(
         self,
         content: str = "",
@@ -436,7 +440,7 @@ class LinkButton:
         """
 
 
-class ListStr:
+class ListStr(Element):
     def __init__(self, items: List[str]) -> None:
         self.items = items
 
@@ -448,7 +452,7 @@ class ListStr:
         return return_html
 
 
-class ListDiv:
+class ListDiv(Element):
     def __init__(
         self,
         children: list = None,
@@ -477,7 +481,7 @@ class ListDiv:
 """
 
 
-class Score:
+class Score(Element):
     def __init__(self, name: str, score: str, group: str = None):
         self.name = name
         self.group = group
@@ -506,7 +510,7 @@ class TabItem(BaseModel):
     content: str | Any
 
 
-class Tab:
+class Tab(Element):
     def __init__(self, data: List[TabItem]):
         self.data = data
         pass
@@ -546,7 +550,7 @@ class Tab:
         return ul_html
 
 
-class Text:
+class Text(Element):
     def __init__(
         self,
         content: str,
@@ -585,7 +589,7 @@ class Text:
             return content_html
 
 
-class Tool:
+class Tool(Element):
     def __init__(self, name: str, action: str):
         self.name = name
         self.action = action
@@ -603,7 +607,7 @@ class Tool:
         )
 
 
-class UiImageCarousel:
+class UiImageCarousel(Element):
     def __init__(self, images: List[str]):
         self.images = images
 
@@ -656,7 +660,7 @@ class UiImageCarousel:
 """
 
 
-class Youtube:
+class Youtube(Element):
     def __init__(self, src="") -> None:
         self.src = src
 

@@ -15,9 +15,10 @@ from app.elements import (
     Text,
     Tool,
 )
+from app.layouts import PageLayout
 
 
-class JobPage:
+class JobPage(PageLayout):
     def __init__(
         self,
         title: str,
