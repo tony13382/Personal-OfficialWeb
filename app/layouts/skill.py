@@ -149,7 +149,7 @@ class SkillPage:
         if self.skill_group:
 
             for group in self.skill_group:
-                skill_tools_html += """<div class="row g-3">"""
+                skill_tools_html += """<div class="row g-2 g-md-3">"""
                 skill_tools_html += f"""\
 <div class="col-12 px-3">
     <p class="fs-5 m-0">
@@ -159,15 +159,15 @@ class SkillPage:
 """
                 for item in group.children:
                     skill_tools_html += f"""\
-<div class="col-12 col-md-6 col-lg-6 d-flex align-items-stretch skill-card">
+<div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch skill-card">
     <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-        <div class="card-body d-inline-flex align-items-center">
+        <div class="card-body p-2 d-inline-flex align-items-center">
             <div class="d-inline-block">
-                <div style="width: 40px; height: 40px;">
+                <div style="width: 44px; height: 44px;">
                     <img src="{item.icon}" class="img-fluid" alt="{item.title} Icon">
                 </div>
             </div>
-            <div class="ps-3 d-inline-flex flex-column">
+            <div class="ps-2 d-inline-flex flex-column">
                 <p class="p-0 m-0 fw-bold">{item.title}</p>
                 <p class="p-0 m-0">{str(item.description)}</p>
             </div>

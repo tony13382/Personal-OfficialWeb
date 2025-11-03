@@ -28,17 +28,17 @@ page = SkillPage(
                 SkillItem(
                     title="OBS",
                     description="直播架設與實務操作（FB & Youtube）",
-                    icon="/assets/imgs/appIcons/obs.png",
+                    icon="/assets/imgs/icons/OBS.svg",
                 ),
                 SkillItem(
                     title="Google Ads",
                     description="廣告操作",
-                    icon="/assets/imgs/appIcons/googleAds.png",
+                    icon="/assets/imgs/icons/GoogleAds.svg",
                 ),
                 SkillItem(
                     title="社群行銷",
                     description="社群經營與維護",
-                    icon="/assets/imgs/appIcons/social.png",
+                    icon="/assets/imgs/icons/SocialGroup.svg",
                 ),
             ],
         ),
@@ -49,12 +49,12 @@ page = SkillPage(
                 SkillItem(
                     title="Wordpress",
                     description="網頁架設與管理",
-                    icon="/assets/imgs/appIcons/wordpress.png",
+                    icon="/assets/imgs/icons/Wordpress.svg",
                 ),
                 SkillItem(
                     title="Notion",
                     description="專案管理與團隊協作",
-                    icon="/assets/imgs/appIcons/notion.png",
+                    icon="/assets/imgs/icons/Notion.svg",
                 ),
             ],
         ),

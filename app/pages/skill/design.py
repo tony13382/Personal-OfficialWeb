@@ -28,12 +28,12 @@ page = SkillPage(
                 SkillItem(
                     title="Figma",
                     description="UI Design／平面設計",
-                    icon="/assets/imgs/appIcons/figma.png",
+                    icon="/assets/imgs/icons/Figma.svg",
                 ),
                 SkillItem(
                     title="Adobe XD",
                     description="UI/UX 設計",
-                    icon="/assets/imgs/appIcons/xd.png",
+                    icon="/assets/imgs/icons/AdobeXD.svg",
                 ),
             ],
         ),
@@ -44,27 +44,27 @@ page = SkillPage(
                 SkillItem(
                     title="資訊設計",
                     description="整理資訊並傳遞給受眾",
-                    icon="/assets/imgs/appIcons/thinkFlow.png",
+                    icon="/assets/imgs/icons/DataDesign.svg",
                 ),
                 SkillItem(
                     title="PowerPoint",
                     description="簡報設計",
-                    icon="/assets/imgs/appIcons/powerpoint.png",
+                    icon="/assets/imgs/icons/Powerpoint.svg",
                 ),
                 SkillItem(
                     title="Canva",
                     description="簡報設計／平面設計",
-                    icon="/assets/imgs/appIcons/canva.png",
+                    icon="/assets/imgs/icons/Canva.svg",
                 ),
                 SkillItem(
                     title="Photoshop",
                     description="圖片設計",
-                    icon="/assets/imgs/appIcons/photoshop.png",
+                    icon="/assets/imgs//icons/AdobePhotoshop.svg",
                 ),
                 SkillItem(
                     title="Premiere",
                     description="影片剪輯",
-                    icon="/assets/imgs/appIcons/premiere.png",
+                    icon="/assets/imgs/icons/AdobePremiere.svg",
                 ),
             ],
         ),
