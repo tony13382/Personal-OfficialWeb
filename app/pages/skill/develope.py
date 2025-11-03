@@ -247,6 +247,7 @@ page = SkillPage(
     ],
     jobs=[
         jobPages.y2024_SolwenAi,
+        jobPages.y0000_Developer,
         jobPages.y2023_NthuIr,
         jobPages.y2022_NthuIlst,
         jobPages.y2019_CycuEdu,
