@@ -23,3 +23,30 @@ GapClass = {
     "regular": "gap-2",
     "large": "gap-4",
 }
+
+
+class SpaceSet:
+    def __init__(self, mt: int | None = None, mb: int | None = None, ms: int | None = None, me: int | None = None, pt: int | None = None, pb: int | None = None, ps: int | None = None, pe: int | None = None):
+        self.mt = mt
+        self.mb = mb
+        self.ms = ms
+        self.me = me
+        self.pt = pt
+        self.pb = pb
+        self.ps = ps
+        self.pe = pe
+
+    def __str__(self) -> str:
+        margin_class = ""
+        margin_class += f"mt-{self.mt} " if self.mt is not None else ""
+        margin_class += f"mb-{self.mb} " if self.mb is not None else ""
+        margin_class += f"ms-{self.ms} " if self.ms is not None else ""
+        margin_class += f"me-{self.me} " if self.me is not None else ""
+
+        padding_class = ""
+        padding_class += f"pt-{self.pt} " if self.pt is not None else ""
+        padding_class += f"pb-{self.pb} " if self.pb is not None else ""
+        padding_class += f"ps-{self.ps} " if self.ps is not None else ""
+        padding_class += f"pe-{self.pe} " if self.pe is not None else ""
+
+        return f"{margin_class}{padding_class}".strip()

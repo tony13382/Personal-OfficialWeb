@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     DivBar,
@@ -84,7 +84,7 @@ page = ProjectPage(
                             subtitle="Figma",
                         ),
                     ],
-                    mt=4,
+                    space=SpaceSet(mt=4),
                 ),
             ]
         ),

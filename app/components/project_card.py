@@ -1,6 +1,7 @@
 from typing import Any
 from app.elements import Card, DivBar, Image, LinkButton, ListDiv, ListStr, Text
 from app.layouts.project import ProjectPage
+from app.variables import SpaceSet
 
 
 class ProjectCard:
@@ -45,8 +46,8 @@ class ProjectCard:
             [
                 DivBar(),
                 ListDiv(
-                    [LinkButton("專案網址", f"/projects/{self.project.prefix}.html")],
-                    mt=2,
+                    [LinkButton("專案網址", f"/projects/{self.project.prefix}")],
+                    space=SpaceSet(mt=2),
                 ),
             ],
         )

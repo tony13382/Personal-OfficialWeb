@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     DivBar,
@@ -69,7 +69,7 @@ page = ProjectPage(
                             src="https://www.figma.com/proto/Pl8coAJTROnRdb5HVGBieY/202312--Pincake-Design?page-id=0:1&node-id=11-194&viewport=644,710,0.08&t=QndT068SEi3PAePE-1&scaling=scale-down&content-scaling=fixed",
                         ),
                     ],
-                    mt=3,
+                    space=SpaceSet(mt=3),
                 ),
             ],
         ),

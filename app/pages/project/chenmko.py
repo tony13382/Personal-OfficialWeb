@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     Image,
@@ -191,7 +191,7 @@ page = ProjectPage(
                             ]
                         ),
                     ],
-                    mt=3,
+                    space=SpaceSet(mt=3)
                 ),
                 ListDiv(
                     children=[
@@ -211,7 +211,7 @@ page = ProjectPage(
                             ]
                         ),
                     ],
-                    mt=3,
+                    space=SpaceSet(mt=3),
                 ),
                 ListDiv(
                     children=[
@@ -227,7 +227,7 @@ page = ProjectPage(
                             ]
                         ),
                     ],
-                    mt=3,
+                    space=SpaceSet(mt=3),
                 ),
                 ListDiv(
                     children=[
@@ -244,7 +244,7 @@ page = ProjectPage(
                             ]
                         ),
                     ],
-                    mt=3,
+                    space=SpaceSet(mt=3),
                 ),
             ],
         ),

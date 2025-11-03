@@ -14,7 +14,7 @@ page = JobPage(
     title="AI 工程師",
     job_name="Solwen AI（新創）",
     startdate="2024/08",
-    enddate="Present",
+    enddate=None,
     colorSet=ThemeColor().natural,
     prefix="2024_SolwenAi",
     cover="/assets/imgs/jobs/2024_SolwenAi/cover.png",
@@ -29,6 +29,7 @@ page = JobPage(
     ),
     children=[
         Card(
+            header=Image("/assets/imgs/projects/soeasyeduAITest/cover.png"),
             body=[
                 Text("巨匠英語口說 AI 學習系統", "h4"),
                 Text("2024/11 ~ Now"),

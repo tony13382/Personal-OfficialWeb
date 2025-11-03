@@ -66,6 +66,16 @@ jobBuilder.getPages()
 job_html = ""
 for job in jobBuilder.getPages():
     firstColor, secondColor = job.colorSet
+    time_str = ""
+    if job.startdate is None and job.enddate is None:
+        time_str = ""
+    elif job.startdate and job.enddate:
+        time_str = f"{job.startdate} ~ {job.enddate}"
+    elif job.startdate:
+        time_str = f"{job.startdate} ~ Present"
+    elif job.enddate:
+        time_str = f"~ {job.enddate}"
+
     job_html += f"""
 <style>
 .jobCard-{job.prefix}:hover {{
@@ -73,12 +83,12 @@ for job in jobBuilder.getPages():
     background-color: {firstColor}20;
 }}
 </style>
-<a href="/jobs/{job.prefix}.html" class="text-decoration-none text-black">
+<a href="/jobs/{job.prefix}" class="text-decoration-none text-black">
     <div class="card pb-2 rounded-inline-basic hoverShadow jobCard-{job.prefix}">
         <div class="card-body pb-1">
             <div class="d-flex align-items-center flex-wrap">
                 <p class="mb-0 flex-fill fs-5 fw-bold">{job.title}</p>
-                <p class="mb-0 opacity-50 ">{job.startdate} ～ {job.enddate}</p>
+                <p class="mb-0 opacity-50 ">{time_str}</p>
             </div>
             <div class="">
                 <div class="d-flex align-items-center flex-wrap">
@@ -109,7 +119,7 @@ for skill in skillBuilder.getPages():
     }}
     </style>
     <div class="col-12 col-md-6 d-grid">
-        <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
+        <a href="/skills/{skill.prefix}" class="text-decoration-none text-black">
             <div class="card rounded-inline-basic h-100 hoverShadow skillCard-{skill.prefix}">
                 <div class="card-body">
                     <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: {firstColor};">
@@ -134,7 +144,7 @@ def convert_project(project: ProjectPage) -> str:
         tag_code += """</div></div>"""
     single_code = f"""
     <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="/projects/{project.prefix}.html" class="text-decoration-none text-dark">
+        <a href="/projects/{project.prefix}" class="text-decoration-none text-dark">
             <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
                     src="{project.cover}" class="card-img-top lozad" alt="..."
                     data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
@@ -458,7 +468,7 @@ full_html = (
             <div class="row d-flex align-items-stretch">
                 {projects_html}
                 <div class="col-12 p-2">
-                    <a href="/projects/index.html" class="text-decoration-none text-black">
+                    <a href="/projects/" class="text-decoration-none text-black">
                         <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic">
                             <div class="card-body">
                                 <p class="card-text text-center">查看更多作品</p>

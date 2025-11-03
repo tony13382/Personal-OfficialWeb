@@ -89,7 +89,7 @@ page = SkillPage(
                 ),
                 SkillItem(
                     title="Java Server Page",
-                    description="Tomcat 後端／串接 MySQL",
+                    description="Tomcat 後端／資料庫串接",
                     icon="/assets/imgs/icons/JavaServerPage.svg",
                 ),
                 SkillItem(

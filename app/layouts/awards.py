@@ -33,7 +33,7 @@ def convert_project(project: ProjectPage, delay_times: float) -> str:
                 <p class="m-0 text-secondary fs-5 fw-bold text-dark">{project.title}</p>
             </div>
             <div class="col-auto">
-                <a href="../projects/{project.prefix}.html" class="btn btn-outline-theme rounded-pill my-2">相關專案</a>
+                <a href="../projects/{project.prefix}" class="btn btn-outline-theme rounded-pill my-2">相關專案</a>
             </div>
         </div>
         <hr class="mt-1 mb-3"">

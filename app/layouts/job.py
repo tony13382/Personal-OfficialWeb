@@ -21,8 +21,8 @@ class JobPage:
     def __init__(
         self,
         title: str,
-        startdate: str,
-        enddate: str,
+        startdate: str | None,
+        enddate: str | None,
         colorSet: Tuple,  # ThemeColor
         prefix: str,
         cover: str = "/assets/MetaTagCover.png",
@@ -53,6 +53,17 @@ class JobPage:
         )
 
         navbar_html = str(Navbar(path="project"))
+
+        time_str = ""
+        if self.startdate and self.enddate:
+            time_str = f"{self.startdate} ~ {self.enddate}"
+        elif self.startdate is None and self.enddate is None:
+            time_str = "---"
+        elif self.startdate:
+            time_str = f"{self.startdate} ~ Present"
+        elif self.enddate:
+            time_str = f"~ {self.enddate}"
+
 
         items_html = ""
         for item in self.children:
@@ -116,7 +127,7 @@ class JobPage:
                             <p class="text-center fw-bold m-0 pb-2 fs-5 notoFont">
                                 {job_name_html}
                             </p>
-                            {self.startdate} ~ {self.enddate}
+                            {time_str}
                         </div>
                     </div>
                 </div>

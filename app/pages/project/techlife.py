@@ -47,7 +47,8 @@ page = ProjectPage(
                     subtitle="PDF (Google Drive)",
                     src="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing",
                 ),
-            ]
+            ],
+            body_gap_size="large",
         ),
         Card(
             header=Youtube("https://www.youtube.com/embed/mOWnXJHIqIY"),

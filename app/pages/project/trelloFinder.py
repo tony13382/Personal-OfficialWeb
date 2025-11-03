@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     AccordionBlock,
     AccordionItem,
@@ -285,7 +285,7 @@ page = ProjectPage(
                             subtitle="PDF",
                         ),
                     ],
-                    mt=2,
+                    space=SpaceSet(mt=2),
                 ),
             ],
         ),
@@ -320,7 +320,7 @@ page = ProjectPage(
                             subtitle="PDF",
                         ),
                     ],
-                    mt=2,
+                    space=SpaceSet(mt=2),
                 ),
             ],
         ),

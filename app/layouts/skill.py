@@ -8,6 +8,7 @@ from app.components.person_card import PersonCard, MoreModal
 from app.elements import Card, DivBar, Html, ListDiv, ListStr, Text
 from app.layouts.project import ProjectPage
 from app.layouts.job import JobPage
+from app.variables import SpaceSet
 
 
 class SkillItem(BaseModel):
@@ -36,7 +37,7 @@ def convert_project(project: ProjectPage) -> str:
             tag_code += f"""<span class="badge bg-mytheme text-black me-1 rounded-pill overflow-hidden">{tag}</span>"""
         tag_code += """</div></div>"""
     single_code = f"""
-    <div class="col-12 col-md-6 col-lg-4 p-2"><a href="/projects/{project.prefix}.html" class="text-decoration-none">
+    <div class="col-12 col-md-6 col-lg-4 p-2"><a href="/projects/{project.prefix}" class="text-decoration-none">
                 <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
                         src="{project.cover}" class="card-img-top lozad" alt="..."
                         data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">
@@ -53,6 +54,17 @@ def convert_project(project: ProjectPage) -> str:
 
 def convert_job(job: JobPage) -> str:
     firstColor, secondColor = job.colorSet
+
+    time_str = ""
+    if job.startdate is None and job.enddate is None:
+        time_str = ""
+    elif job.startdate and job.enddate:
+        time_str = f"{job.startdate} ~ {job.enddate}"
+    elif job.startdate:
+        time_str = f"{job.startdate} ~ Present"
+    elif job.enddate:
+        time_str = f"~ {job.enddate}"
+
     return f"""
 <style>
 .jobCard-{job.prefix}:hover {{
@@ -60,12 +72,12 @@ def convert_job(job: JobPage) -> str:
     background-color: {firstColor}20;
 }}
 </style>
-<a href="/jobs/{job.prefix}.html" class="text-decoration-none text-black">
+<a href="/jobs/{job.prefix}" class="text-decoration-none text-black">
     <div class="card pb-2 rounded-inline-basic hoverShadow jobCard-{job.prefix}">
         <div class="card-body pb-1">
             <div class="d-flex align-items-center flex-wrap">
                 <p class="mb-0 flex-fill fs-5 fw-bold">{job.title}</p>
-                <p class="mb-0 opacity-50 ">{job.startdate} ～ {job.enddate}</p>
+                <p class="mb-0 opacity-50">{time_str}</p>
             </div>
             <div class="">
                 <div class="d-flex align-items-center flex-wrap">
@@ -161,13 +173,13 @@ class SkillPage:
                     skill_tools_html += f"""\
 <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch skill-card">
     <div class="card d-flex mt-1 flex-fill rounded-inline-basic">
-        <div class="card-body p-2 d-inline-flex align-items-center">
+        <div class="card-body p-3 d-inline-flex align-items-center">
             <div class="d-inline-block">
-                <div style="width: 44px; height: 44px;">
+                <div style="width: 48px; height: 48px;">
                     <img src="{item.icon}" class="img-fluid" alt="{item.title} Icon">
                 </div>
             </div>
-            <div class="ps-2 d-inline-flex flex-column">
+            <div class="ps-3 d-inline-flex flex-column">
                 <p class="p-0 m-0 fw-bold">{item.title}</p>
                 <p class="p-0 m-0">{str(item.description)}</p>
             </div>
@@ -183,6 +195,8 @@ class SkillPage:
                 DivBar(),
                 ListDiv([Html(skill_tools_html)], gap_size="large"),
             ],
+            has_shadow=False,
+            space=SpaceSet(mt=4)
         )
 
         projects_html = ""
@@ -222,7 +236,7 @@ class SkillPage:
             certificate_html = Card(
                 body=[
                     Text("相關證照", "h3"),
-                    ListDiv([Html(certificate_content)], gap_size="large", mt=2),
+                    ListDiv([Html(certificate_content)], gap_size="large", space=SpaceSet(mt=2)),
                 ],
             )
         return f"""
@@ -270,12 +284,12 @@ class SkillPage:
                 </div>
                 <div class="col-lg-9 col-12 pb-5 d-grid gap-5">
                     <div style="height: calc(92px - 3rem);" class="d-none d-lg-block"></div>
-                    {str(skill_card)}
                     {job_html}
                     {certificate_html}
                 </div>
             </div>
             {projects_html}
+            {str(skill_card)}
         </div>
     </div>
 

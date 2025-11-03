@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     Div,
@@ -133,7 +133,7 @@ page = ProjectPage(
                                 icon="bi-github",
                             ),
                         ],
-                        mt=3,
+                        space=SpaceSet(mt=3),
                     ),
                 ]
             ),

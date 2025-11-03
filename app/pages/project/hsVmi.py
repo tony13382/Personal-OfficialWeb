@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     IconBlock,
@@ -71,7 +71,7 @@ page = ProjectPage(
                             subtitle="XLSX",
                         ),
                     ],
-                    mt=2,
+                    space=SpaceSet(mt=2),
                 ),
             ],
         ),

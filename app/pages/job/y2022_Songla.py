@@ -1,3 +1,4 @@
+from app.components.project_card import ProjectCard
 from app.layouts.job import JobPage
 from app.variables import ThemeColor
 from app.elements import (
@@ -10,7 +11,7 @@ from app.elements import (
     ListStr,
     Text,
 )
-
+import app.pages.project as projectPages
 
 page = JobPage(
     title="產品設計師／技術總管",
@@ -29,9 +30,9 @@ page = JobPage(
         ]
     ),
     children=[
-        Card(
-            header=Image("/assets/imgs/projects/songla/cover.png"),
-            body=[
+        ProjectCard(
+            project=projectPages.songla,
+            memo=ListDiv([
                 Text("產品設計師／技術總管", "h4"),
                 Text("2022/01 ~ 2023/09"),
                 DivBar(),
@@ -68,22 +69,7 @@ page = JobPage(
                         "設計系統訂製：為企業建立一致的設計風格，包括排版、用色和字體。",
                     ]
                 ),
-                DivBar(),
-                LinkButton(
-                    "專案網址",
-                    "/projects/songla.html",
-                ),
-            ],
-            footer=[
-                ListDiv(
-                    [
-                        Text("# UI 設計", "span", pill_type=True),
-                        Text("# 資訊設計", "span", pill_type=True),
-                        Text("# 原子設計", "span", pill_type=True),
-                    ],
-                    layout="flex",
-                ),
-            ],
+            ]),
         ),
     ],
 )

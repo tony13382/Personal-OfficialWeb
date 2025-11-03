@@ -45,7 +45,7 @@ class MoreModal:
             }}
             </style>
             <div class="col-12 col-md-6 d-grid">
-                <a href="/skills/{skill.prefix}.html" class="text-decoration-none text-black">
+                <a href="/skills/{skill.prefix}" class="text-decoration-none text-black">
                     <div class="card rounded-inline-basic h-100 hoverShadow skillCard-{skill.prefix}">
                         <div class="card-body">
                             <div class="d-inline-flex justify-content-center align-items-center fs-4 text-white" style="width: 52px; height: 52px; border-radius: 1rem; background-color: {firstColor};">

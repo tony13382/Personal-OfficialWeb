@@ -93,10 +93,10 @@ class Navbar:
         <div class="collapse navbar-collapse" id="navbarContentLinks">
             <ul class="navbar-nav me-auto mb-lg-0 d-flex col-12 justify-content-end align-items-center">
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" aria-current="page" href="/projects/index.html">所有作品</a>
+                    <a class="nav-link" aria-current="page" href="/projects/">所有作品</a>
                 </li>
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" aria-current="page" href="/awards/index.html">我的獎項</a>
+                    <a class="nav-link" aria-current="page" href="/awards/">我的獎項</a>
                 </li>
                 <li class="nav-div rounded-pill">
                     <a class="nav-link text-white-50">｜</a>

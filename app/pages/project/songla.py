@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import SpaceSet, ThemeColor
 from app.elements import (
     Card,
     DivBar,
@@ -142,7 +142,7 @@ page = ProjectPage(
                                                 icon="bi-share-fill",
                                             ),
                                         ],
-                                        mt=2,
+                                        space=SpaceSet(mt=2),
                                     ),
                                 ]
                             ),
@@ -188,7 +188,7 @@ page = ProjectPage(
                                                 icon="bi-pencil-fill",
                                             ),
                                         ],
-                                        mt=2,
+                                        space=SpaceSet(mt=2),
                                     ),
                                 ]
                             ),
@@ -229,7 +229,7 @@ page = ProjectPage(
                                                 icon="bi-box-arrow-right",
                                             ),
                                         ],
-                                        mt=2,
+                                        space=SpaceSet(mt=2),
                                     ),
                                 ]
                             ),
@@ -261,7 +261,7 @@ page = ProjectPage(
                                                 icon="bi-wallet",
                                             ),
                                         ],
-                                        mt=2,
+                                        space=SpaceSet(mt=2),
                                     ),
                                 ]
                             ),

@@ -16,7 +16,7 @@ def convert_project(project: ProjectPage) -> str:
         tag_code += """</div></div>"""
     single_code = f"""
 <div class="col-12 col-md-6 col-lg-6 p-2">
-    <a href="/projects/{project.prefix}.html" class="text-decoration-none">
+    <a href="/projects/{project.prefix}" class="text-decoration-none">
         <div class="card hoverShadow hoverBigger h-100 border-0 rounded-basic"><img
                 src="{project.cover}" class="card-img-top lozad" alt="..."
                 data-src="/assets/imgs/general/imageLoading.svg" data-loaded="true">

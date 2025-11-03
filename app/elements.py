@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Any, List, Literal, Union
 from uuid import uuid4
-from app.variables import GapClass
+from app.variables import GapClass, SpaceSet
 
 
 def string_formator(text: str):
@@ -42,12 +42,17 @@ class Card:
         footer: list = None,
         body_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
         footer_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
+        has_shadow: bool = True,
+        space: SpaceSet = None,
     ):
         self.header = header
         self.body = [] if body is None else body
         self.footer = [] if footer is None else footer
         self.body_gap_size = body_gap_size
         self.footer_gap_size = footer_gap_size
+        self.has_shadow = has_shadow
+        self.space = space
+
 
     def __str__(self):
         header_html = ""
@@ -70,8 +75,9 @@ class Card:
                 footer_html += str(item)
             footer_html += """</div></div>"""
 
+        shadow_class = "shadow" if self.has_shadow else ""
         return f"""
-<div class="card shadow rounded-basic border-0">
+<div class="card {shadow_class} {str(self.space)} rounded-basic border-0">
     {header_html}
     {body_html}
     {footer_html}
@@ -448,35 +454,24 @@ class ListDiv:
         children: list = None,
         gap_size: Literal["nano", "small", "regular", "large"] = "regular",
         layout: Literal["grid", "flex", "inline"] = "grid",
-        mt: int = None,
-        mb: int = None,
-        ms: int = None,
-        me: int = None,
+        space: SpaceSet = None,
     ):
         self.children = children if children is not None else []
         self.gap_size = gap_size
         self.layout = layout
-        self.mt = mt
-        self.mb = mb
-        self.ms = ms
-        self.me = me
+        self.space = space if space is not None else ""
+
 
     def __str__(self) -> str:
         content_html = ""
-
-        margin_class = ""
-        margin_class += f"mt-{self.mt} " if self.mt else ""
-        margin_class += f"mb-{self.mb} " if self.mb else ""
-        margin_class += f"ms-{self.ms} " if self.ms else ""
-        margin_class += f"me-{self.me} " if self.me else ""
-
+        
         display_class = f"d-{self.layout}"
         if self.layout == "flex":
             display_class += " flex-wrap"
         for item in self.children:
             content_html += str(item)
         return f"""
-<div class="{display_class} {GapClass[self.gap_size]} {margin_class}">
+<div class="{display_class} {GapClass[self.gap_size]} {str(self.space)}">
 {content_html}
 </div>
 """
