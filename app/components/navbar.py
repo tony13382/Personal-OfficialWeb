@@ -68,8 +68,6 @@ class Navbar:
         background-color: var(--themeColor);
         color: #ffffff;
     }
-
-    
     
     .navlogofont {
         font-family: "Playwrite HR Lijeva", cursive;
@@ -102,14 +100,14 @@ class Navbar:
                     <a class="nav-link text-white-50">｜</a>
                 </li>
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com"><i class="bi bi-envelope-at-fill me-2"></i>信箱</a>
                 </li>
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/"><i class="bi bi-facebook me-2"></i>臉書</a>
                 </li>
                 <li class="nav-item rounded-pill">
                     <a class="nav-link" target="_blank"
-                        href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                        href="https://www.linkedin.com/in/liang-chin-lu/"><i class="bi bi-linkedin me-2"></i>領英</a>
                 </li>
             </ul>
         </div>
@@ -137,14 +135,14 @@ class Navbar:
                     <a class="nav-link text-white-50">｜</a>
                 </li>
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com">Email</a>
+                    <a class="nav-link" target="_blank" href="mailto:liangchinlu@gmail.com"><i class="bi bi-envelope-at-fill me-2"></i>信箱</a>
                 </li>
                 <li class="nav-item rounded-pill">
-                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/">Facebook</a>
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/tony13382/"><i class="bi bi-facebook me-2"></i>臉書</a>
                 </li>
                 <li class="nav-item rounded-pill">
                     <a class="nav-link" target="_blank"
-                        href="https://www.linkedin.com/in/liang-chin-lu/">LinkedIn</a>
+                        href="https://www.linkedin.com/in/liang-chin-lu/"><i class="bi bi-linkedin me-2"></i>領英</a>
                 </li>
             </ul>
         </div>
