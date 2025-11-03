@@ -38,6 +38,7 @@ page = JobPage(
                     [
                         "開發專注於英語學習的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。",
                         "結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。",
+                        "針對對話紀錄動態調整難度，增加評估精準度。",
                         "針對對話內容結合 `Azure 語音評分工具`，提供詳細的對話與綜合報告，幫助用戶了解自己的口說表現。",
                     ]
                 ),
@@ -45,9 +46,9 @@ page = JobPage(
             footer=[
                 ListDiv(
                     [
-                        Text("# 語音合成開發", "span", pill_type=True),
-                        Text("# Azure", "span", pill_type=True),
+                        Text("# 語音系統", "span", pill_type=True),
                         Text("# API 開發", "span", pill_type=True),
+                        Text("# Azure", "span", pill_type=True),
                         Text("# ORM", "span", pill_type=True),
                     ],
                     layout="flex",
@@ -58,7 +59,7 @@ page = JobPage(
             header=Image("/assets/imgs/projects/longtengInvoice/cover.png"),
             body=[
                 Text("龍騰發票視覺處理系統", "h4"),
-                Text("2025/02 ~ Now"),
+                Text("2025/02 ~ 2026/03"),
                 DivBar(),
                 ListStr(
                     [
