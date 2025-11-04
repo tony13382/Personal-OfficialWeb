@@ -1,4 +1,13 @@
-from app.elements import Card, DivBar, Element, Image, LinkButton, ListDiv, ListStr, Text
+from app.elements import (
+    Card,
+    DivBar,
+    Element,
+    Image,
+    LinkButton,
+    ListDiv,
+    ListStr,
+    Text,
+)
 from app.layouts.project import ProjectPage
 from app.variables import SpaceSet
 

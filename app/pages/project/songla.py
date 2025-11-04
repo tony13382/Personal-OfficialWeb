@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import SpaceSet, ThemeColor
+from app.variables import GapSet, SpaceSet, ThemeColor
 from app.elements import (
     Card,
     DivBar,
@@ -77,7 +77,7 @@ page = ProjectPage(
                     "/assets/imgs/projects/songla/systemFrame.png", "產品架構 2", True
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=UiImageCarousel(
@@ -99,7 +99,7 @@ page = ProjectPage(
                     ),
                 ]
             ),
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[
@@ -340,7 +340,7 @@ page = ProjectPage(
                                         ),
                                         Text("運用多彩色系營造活潑的感覺", center=True),
                                     ],
-                                    gap_size="large",
+                                    gap=SpaceSet("large"),
                                 )
                             ),
                         ),
@@ -357,7 +357,7 @@ page = ProjectPage(
                                         ),
                                         Text("運用漸層營造立體的感覺", center=True),
                                     ],
-                                    gap_size="large",
+                                    gap=SpaceSet("large"),
                                 )
                             ),
                         ),
@@ -381,7 +381,7 @@ page = ProjectPage(
                                             center=True,
                                         ),
                                     ],
-                                    gap_size="large",
+                                    gap=SpaceSet("large"),
                                 )
                             ),
                         ),

@@ -9,7 +9,7 @@ from app.elements import Card, DivBar, Html, ListDiv, ListStr, Text
 from app.layouts import PageLayout
 from app.layouts.project import ProjectPage
 from app.layouts.job import JobPage
-from app.variables import SpaceSet
+from app.variables import GapSet, SpaceSet
 
 
 class SkillItem(BaseModel):
@@ -145,7 +145,6 @@ class SkillPage(PageLayout):
         self.certificate = certificate or []
 
     def __str__(self):
-
         head_html = str(
             Head(
                 title=self.title,
@@ -160,7 +159,6 @@ class SkillPage(PageLayout):
 
         skill_tools_html = ""
         if self.skill_group:
-
             for group in self.skill_group:
                 skill_tools_html += """<div class="row g-2 g-md-3">"""
                 skill_tools_html += f"""\
@@ -194,10 +192,10 @@ class SkillPage(PageLayout):
             body=[
                 Text("技能組", "h3"),
                 DivBar(),
-                ListDiv([Html(skill_tools_html)], gap_size="large"),
+                ListDiv([Html(skill_tools_html)], gap=SpaceSet("large")),
             ],
             has_shadow=False,
-            space=SpaceSet(mt=4)
+            space=SpaceSet(mt=4),
         )
 
         projects_html = ""
@@ -224,9 +222,9 @@ class SkillPage(PageLayout):
             job_html = Card(
                 body=[
                     Text("相關工作經歷", "h3"),
-                    ListDiv([Html(job_content)], gap_size="large"),
+                    ListDiv([Html(job_content)], gap=SpaceSet("large")),
                 ],
-                body_gap_size="large",
+                body_gap=GapSet("large"),
             )
 
         certificate_html = ""
@@ -237,7 +235,11 @@ class SkillPage(PageLayout):
             certificate_html = Card(
                 body=[
                     Text("相關證照", "h3"),
-                    ListDiv([Html(certificate_content)], gap_size="large", space=SpaceSet(mt=2)),
+                    ListDiv(
+                        [Html(certificate_content)],
+                        gap=SpaceSet("large"),
+                        space=SpaceSet(mt=2),
+                    ),
                 ],
             )
         return f"""

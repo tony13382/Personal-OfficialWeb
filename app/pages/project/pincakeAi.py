@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import SpaceSet, ThemeColor
+from app.variables import GapSet, SpaceSet, ThemeColor
 from app.elements import (
     Card,
     DivBar,
@@ -188,7 +188,7 @@ page = ProjectPage(
                     ]
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[

@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import SpaceSet, ThemeColor
+from app.variables import GapSet, SpaceSet, ThemeColor
 from app.elements import (
     Card,
     Image,
@@ -68,7 +68,7 @@ page = ProjectPage(
                     "這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。"
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[
@@ -85,7 +85,7 @@ page = ProjectPage(
                     "除了基本的企業資訊管理功能外，這個解決方案還結合了 Bootstrap 的 Switches 功能，讓企業可以直觀選擇是否在聯絡我們頁面與 footer 顯示相關資訊。這個自定義顯示開關功能可以提供更多彈性，讓企業可以更好地控制自己的資訊展示。"
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[
@@ -102,7 +102,7 @@ page = ProjectPage(
                     "使用 ckeditor，企業內容管理者可以輕鬆地創建、編輯和格式化網站上的內容，而不需要具備任何編程技能。ckeditor 的簡潔而直觀的界面使得它易於使用，即使是初學者也能夠快速上手。"
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[
@@ -122,7 +122,7 @@ page = ProjectPage(
                     "在此設計中，您可以在不同的產品分類之間進行快速的欄位切換。我們的開關功能會自動隱藏不需要的欄位，以確保您只看到與您的產品分類相關的欄位。"
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[
@@ -150,7 +150,7 @@ page = ProjectPage(
                     "這個內容管理系統的設計是為了讓內容管理者更加輕鬆地填寫內容，不顯示該類別關閉的欄位選項，讓內容管理者能夠更加專注於內容本身。"
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=Image(
@@ -191,7 +191,7 @@ page = ProjectPage(
                             ]
                         ),
                     ],
-                    space=SpaceSet(mt=3)
+                    space=SpaceSet(mt=3),
                 ),
                 ListDiv(
                     children=[

@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import GapSet, ThemeColor
 from app.elements import (
     Card,
     IconBlock,
@@ -48,7 +48,7 @@ page = ProjectPage(
                     src="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing",
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=Youtube("https://www.youtube.com/embed/mOWnXJHIqIY"),
@@ -61,7 +61,7 @@ page = ProjectPage(
                     icon="bi-file-earmark-ppt",
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=Youtube("https://www.youtube.com/embed/R_vsL1NFWN8"),
@@ -74,7 +74,7 @@ page = ProjectPage(
                     icon="bi-file-earmark-ppt",
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
     ],
 )

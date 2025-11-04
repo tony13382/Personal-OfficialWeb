@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import GapSet, ThemeColor
 from app.elements import (
     Card,
     IconBlock,
@@ -69,7 +69,7 @@ page = ProjectPage(
                     ]
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
     ],
 )

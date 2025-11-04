@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import SpaceSet, ThemeColor
+from app.variables import GapSet, SpaceSet, ThemeColor
 from app.elements import (
     AccordionBlock,
     AccordionItem,
@@ -100,7 +100,7 @@ page = ProjectPage(
                     "基於 RAG 與鏈式提示策略設計，使用大型語言模型（GPT-4 Turbo）生成適切的回應與延伸提問。"
                 ),
             ],
-            body_gap_size="small",
+            body_gap=GapSet("small"),
         ),
         Card(
             header=Image(
@@ -233,7 +233,7 @@ page = ProjectPage(
                     ]
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             body=[

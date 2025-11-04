@@ -48,13 +48,15 @@ if projects:
 page = f"""
 <!doctype html>
 <html lang="zh-Hant-TW">
-    {Head(
+    {
+    Head(
         title="所有作品",
         description="這是我的所有作品，包含了我在學校的專題、實習的專案、以及我自己開發的專案。",
         cover="/assets/imgs/index/cover.jpg",
         link="/projects",
         colorSet=ThemeColor().natural,
-    )}
+    )
+}
 <body class="bg-mytheme">
 
     {Navbar("project")}

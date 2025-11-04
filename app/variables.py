@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Literal, Tuple
 
 
 class ThemeColor:
@@ -23,6 +23,20 @@ GapClass = {
     "regular": "gap-2",
     "large": "gap-4",
 }
+class GapSet:
+    def __init__(self, size: Literal["nano", "small", "regular", "large"] = "regular"):
+        self.size = size
+    
+    def __str__(self) -> str:
+        match self.size:
+            case "nano":
+                return "gap-0"
+            case "small":
+                return "gap-1"
+            case "regular":
+                return "gap-2"
+            case "large":
+                return "gap-4"
 
 
 class SpaceSet:

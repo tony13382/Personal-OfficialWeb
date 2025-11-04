@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Any, List, Literal, Union
 from uuid import uuid4
-from app.variables import GapClass, SpaceSet
+from app.variables import GapClass, GapSet, SpaceSet
 
 
 def string_formator(text: str):
@@ -19,7 +19,9 @@ def string_formator(text: str):
 
 class Element:
     """Base class for elements."""
+
     pass
+
 
 class Canva(Element):
     def __init__(self, src: str = ""):
@@ -44,19 +46,27 @@ class Card(Element):
         header=None,
         body: list = None,
         footer: list = None,
-        body_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
-        footer_gap_size: Literal["nano", "small", "regular", "large"] = "regular",
+        body_gap: GapSet = None,
+        footer_gap: GapSet = None,
         has_shadow: bool = True,
         space: SpaceSet = None,
     ):
         self.header = header
         self.body = [] if body is None else body
         self.footer = [] if footer is None else footer
-        self.body_gap_size = body_gap_size
-        self.footer_gap_size = footer_gap_size
+
+        if body_gap is None:
+            self.body_gap = GapSet("regular")
+        else:
+            self.body_gap = body_gap
+
+        self.footer_gap = footer_gap
+        if space is None:
+            self.space = SpaceSet("regular")
+        else:
+            self.space = space
         self.has_shadow = has_shadow
         self.space = space
-
 
     def __str__(self):
         header_html = ""
@@ -67,14 +77,14 @@ class Card(Element):
 
         body_html = ""
         if self.body:
-            body_html += f"""<div class="card-body"><div class="p-2 d-grid {GapClass[self.body_gap_size]}">"""
+            body_html += f"""<div class="card-body"><div class="p-2 d-grid {str(self.body_gap)}">"""
             for item in self.body:
                 body_html += str(item)
             body_html += """</div></div>"""
 
         footer_html = ""
         if self.footer:
-            footer_html += f"""<div class="card-footer bg-transparent"><div class="p-2 d-grid {GapClass[self.footer_gap_size]}">"""
+            footer_html += f"""<div class="card-footer bg-transparent"><div class="p-2 d-grid {str(self.footer_gap)}">"""
             for item in self.footer:
                 footer_html += str(item)
             footer_html += """</div></div>"""
@@ -153,7 +163,6 @@ class Columns(Element):
         self.xxl_cols = 12 // self.cols_of_row if self.cols_of_row > 0 else 12
 
     def __str__(self) -> str:
-
         col_class = f"col-{self.min_cols} col-sm-{self.sm_cols} col-md-{self.md_cols} col-lg-{self.lg_cols} col-xl-{self.xl_cols} col-xxl-{self.xxl_cols}"
         html = ""
         if self.children:
@@ -256,9 +265,9 @@ class HtmlCarousel(Element):
         ol_html = """<ol class="carousel__dots">"""
         for i in range(blocksLen):
             if i == 0:
-                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i + 1}"></li>"""
             else:
-                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i + 1}"></li>"""
         ol_html = """</ol>"""
         script_html = f"""
 <script>
@@ -456,26 +465,25 @@ class ListDiv(Element):
     def __init__(
         self,
         children: list = None,
-        gap_size: Literal["nano", "small", "regular", "large"] = "regular",
+        gap: SpaceSet = None,
         layout: Literal["grid", "flex", "inline"] = "grid",
         space: SpaceSet = None,
     ):
         self.children = children if children is not None else []
-        self.gap_size = gap_size
+        self.gap = gap if gap is not None else SpaceSet("regular")
         self.layout = layout
         self.space = space if space is not None else ""
 
-
     def __str__(self) -> str:
         content_html = ""
-        
+
         display_class = f"d-{self.layout}"
         if self.layout == "flex":
             display_class += " flex-wrap"
         for item in self.children:
             content_html += str(item)
         return f"""
-<div class="{display_class} {GapClass[self.gap_size]} {str(self.space)}">
+<div class="{display_class} {str(self.gap)} {str(self.space)}">
 {content_html}
 </div>
 """
@@ -571,7 +579,7 @@ class Text(Element):
 
         id_code = ""
         if self.fontsize in ["h2", "h3", "h4"]:
-            id_code = f"""id='{self.content.replace(' ', '_').replace("`","")}'"""
+            id_code = f"""id='{self.content.replace(" ", "_").replace("`", "")}'"""
 
         content_html = f"""
             <{self.fontsize} class="m-0 p-0 {fw_class} {center_class}" {id_code}>
@@ -600,7 +608,7 @@ class Tool(Element):
             + str(
                 ListDiv(
                     children=[Text(self.name, bold=True), Text(self.action)],
-                    gap_size="nano",
+                    gap=SpaceSet("nano"),
                 )
             )
             + "</div>"
@@ -620,11 +628,11 @@ class UiImageCarousel(Element):
         for image in self.images:
             if index_id == 0:
                 carousel_html += f"""
-<div class="carousel__slide is-selected" data-index="{index_id}"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id+1}" src="{image}"></div>
+<div class="carousel__slide is-selected" data-index="{index_id}"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id + 1}" src="{image}"></div>
                 """
             else:
                 carousel_html += f"""
-<div class="carousel__slide" data-index="{index_id}" aria-hidden="true"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id+1}" src="{image}"></div>
+<div class="carousel__slide" data-index="{index_id}" aria-hidden="true"><img data-lazy-src="{image}" data-fancybox="{image}" class="d-block w-100 rounded-inline-basic" alt="{index_id + 1}" src="{image}"></div>
 """
 
             index_id += 1
@@ -632,9 +640,9 @@ class UiImageCarousel(Element):
         ol_html = """<ol class="carousel__dots">"""
         for i in range(imagesLen):
             if i == 0:
-                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+                ol_html += f"""<li class="carousel__dot is-selected" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i + 1}"></li>"""
             else:
-                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i+1}"></li>"""
+                ol_html += f"""<li class="carousel__dot" data-page="{i}" role="button" tabindex="0" title="Go to slide #{i + 1}"></li>"""
         ol_html = """</ol>"""
         script_html = f"""
 <script>

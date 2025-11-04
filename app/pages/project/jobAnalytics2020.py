@@ -1,5 +1,5 @@
 from app.layouts.project import ProjectPage
-from app.variables import ThemeColor
+from app.variables import GapSet, ThemeColor
 from app.elements import (
     AccordionBlock,
     AccordionItem,
@@ -68,7 +68,7 @@ page = ProjectPage(
                     ]
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=Canva(
@@ -82,7 +82,7 @@ page = ProjectPage(
                     src="https://docs.google.com/presentation/d/1fL7nC1nQda0PS9qcBswW9wU4Kmc1ME93/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true",
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=Canva(
@@ -96,7 +96,7 @@ page = ProjectPage(
                     src="https://docs.google.com/presentation/d/1ff073pwGJFImE-1LVw6L2gE-2OFpwGi3/edit?usp=share_link&ouid=106449819474178509805&rtpof=true&sd=true",
                 ),
             ],
-            body_gap_size="large",
+            body_gap=GapSet("large"),
         ),
         Card(
             header=ListDiv(
