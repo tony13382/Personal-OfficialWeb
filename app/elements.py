@@ -445,7 +445,7 @@ class ListStr(Element):
         self.items = items
 
     def __str__(self):
-        return_html = """<ul class="ps-4 m-0 lh-lg">"""
+        return_html = """<ul class="ps-3 m-0 lh-lg">"""
         for item in self.items:
             return_html += f"""<li>{string_formator(item)}</li>"""
         return_html += """</ul>"""
