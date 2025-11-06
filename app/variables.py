@@ -23,10 +23,12 @@ GapClass = {
     "regular": "gap-2",
     "large": "gap-4",
 }
+
+
 class GapSet:
     def __init__(self, size: Literal["nano", "small", "regular", "large"] = "regular"):
         self.size = size
-    
+
     def __str__(self) -> str:
         match self.size:
             case "nano":
@@ -40,11 +42,33 @@ class GapSet:
 
 
 class SpaceSet:
-    def __init__(self, mt: int | None = None, mb: int | None = None, ms: int | None = None, me: int | None = None, pt: int | None = None, pb: int | None = None, ps: int | None = None, pe: int | None = None):
+    def __init__(
+        self,
+        m:int | None = None,
+        mx: int | None = None,
+        my: int | None = None,
+        mt: int | None = None,
+        mb: int | None = None,
+        ms: int | None = None,
+        me: int | None = None,
+        p:int | None = None,
+        px: int | None = None,
+        py: int | None = None,
+        pt: int | None = None,
+        pb: int | None = None,
+        ps: int | None = None,
+        pe: int | None = None,
+    ):
+        self.m = m
+        self.mx = mx
+        self.my = my
         self.mt = mt
         self.mb = mb
         self.ms = ms
         self.me = me
+        self.p = p
+        self.px = px
+        self.py = py
         self.pt = pt
         self.pb = pb
         self.ps = ps
@@ -52,12 +76,18 @@ class SpaceSet:
 
     def __str__(self) -> str:
         margin_class = ""
+        margin_class += f"m-{self.m} " if self.m is not None else ""
+        margin_class += f"mx-{self.mx} " if self.mx is not None else ""
+        margin_class += f"my-{self.my} " if self.my is not None else ""
         margin_class += f"mt-{self.mt} " if self.mt is not None else ""
         margin_class += f"mb-{self.mb} " if self.mb is not None else ""
         margin_class += f"ms-{self.ms} " if self.ms is not None else ""
         margin_class += f"me-{self.me} " if self.me is not None else ""
 
         padding_class = ""
+        padding_class += f"p-{self.p} " if self.p is not None else ""
+        padding_class += f"px-{self.px} " if self.px is not None else ""
+        padding_class += f"py-{self.py} " if self.py is not None else ""
         padding_class += f"pt-{self.pt} " if self.pt is not None else ""
         padding_class += f"pb-{self.pb} " if self.pb is not None else ""
         padding_class += f"ps-{self.ps} " if self.ps is not None else ""

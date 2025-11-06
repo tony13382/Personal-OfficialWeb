@@ -1,7 +1,10 @@
 from app.layouts.project import ProjectPage
-from app.variables import GapSet, ThemeColor
+from app.variables import GapSet, SpaceSet, ThemeColor
 from app.elements import (
+    AccordionItem,
+    AccordionBlock,
     Card,
+    Canva,
     IconBlock,
     LinkButton,
     Score,
@@ -60,6 +63,17 @@ page = ProjectPage(
                     src="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1",
                     icon="bi-file-earmark-ppt",
                 ),
+                AccordionBlock(
+                    [
+                        AccordionItem(
+                            title="圖像創作不設限（簡報資源預覽）",
+                            items=[
+                                Canva("https://www.canva.com/design/DAG35mSwP18/DR5c7o5yWyfYZ3jgg3RnGg/view?embed")
+                            ],
+                            body_space=SpaceSet(p=0)
+                        )
+                    ]
+                )
             ],
             body_gap=GapSet("large"),
         ),

@@ -100,9 +100,11 @@ class Card(Element):
 
 
 class AccordionItem(BaseModel):
+    model_config = {"arbitrary_types_allowed": True}
     title: str
-    items: List[Any]
+    items: List[Element]
     expanded: bool = False
+    body_space: SpaceSet = None
 
 
 class AccordionBlock(Element):
@@ -126,6 +128,8 @@ class AccordionBlock(Element):
             for ele in item.items:
                 tab_content += str(ele)
 
+            gap_class = "" if item.body_space is None else str(item.body_space)
+
             accordion_html += f"""
 <div class="accordion-item">
     <h2 class="accordion-header">
@@ -137,7 +141,7 @@ class AccordionBlock(Element):
     </h2>
     <div id="{random_id}Collapse_{index_id}" 
         class="accordion-collapse collapse {show_class}">
-        <div class="accordion-body">
+        <div class="accordion-body {gap_class}"">
             {tab_content}
         </div>
     </div>

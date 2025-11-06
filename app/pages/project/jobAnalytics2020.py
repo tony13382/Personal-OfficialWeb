@@ -1,26 +1,17 @@
-from app.layouts.project import ProjectPage
-from app.variables import GapSet, ThemeColor
 from app.elements import (
-    AccordionBlock,
-    AccordionItem,
     Canva,
     Card,
     Div,
     DivBar,
-    IconBlock,
     Html,
-    Image,
-    ImageCarousel,
+    IconBlock,
     LinkButton,
     ListDiv,
-    ListStr,
-    Score,
     Text,
     Tool,
-    UiImageCarousel,
-    Youtube,
 )
-
+from app.layouts.project import ProjectPage
+from app.variables import GapSet, ThemeColor
 
 page = ProjectPage(
     title="2020 年台灣各行業別員工薪資統計分析",

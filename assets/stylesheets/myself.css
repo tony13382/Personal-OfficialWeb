@@ -1,4 +1,3 @@
-
 .notoFont {
     font-family: 'Noto Sans TC', sans-serif;
 }
@@ -6,14 +5,17 @@
 .btn {
     -webkit-appearance: none;
 }
+
 .rounded-basic {
     border-radius: 1.25rem !important;
     overflow: hidden;
 }
+
 .rounded-inline-basic {
     border-radius: 1rem !important;
     overflow: hidden;
 }
+
 .round24p {
     border-radius: 24px !important;
     overflow: hidden;
@@ -48,31 +50,39 @@
 .expPage .nav-pills .active {
     background-color: #959bbd;
 }
+
 .bg-skyHeavyBlue {
-    background-color:#465375 !important;
+    background-color: #465375 !important;
 }
+
 .text-skyHeavyBlue {
     color: #465375 !important;
 }
-.hoverShadow:hover{ 
+
+.hoverShadow:hover {
     box-shadow: 0px 0rem 2rem rgba(0, 0, 0, 0.14);
     margin-top: -2px;
 }
+
 .ms-fixColor-primary:hover {
-    color: white !important ;
+    color: white !important;
 }
+
 .toTopBtn {
     background-color: var(--themeColor);
     transition: opacity 2s;
 }
+
 .toTopBtn:hover {
     background-color: var(--secondColor);
 }
-.tagLocationer{
+
+.tagLocationer {
     margin-top: -5rem;
     padding-top: 5rem;
 }
-.halfHightLightBg{
+
+.halfHightLightBg {
     background: linear-gradient(to top, #ffd6e7 40%, transparent 40%);
     font-weight: bold;
     color: #664557;
@@ -81,61 +91,73 @@
 
 
 
-.navbar{
+.navbar {
     background-color: var(--themeColor);
 }
-.navbar-nav .nav-item{
+
+.navbar-nav .nav-item {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
-.navbar-nav .nav-div{
+
+.navbar-nav .nav-div {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     color: white;
 }
-.navbar-nav .nav-item:hover{
+
+.navbar-nav .nav-item:hover {
     background-color: var(--secondColor);
 }
-.navbar-nav .nav-item .nav-link{
-    color: white!important ;
+
+.navbar-nav .nav-item .nav-link {
+    color: white !important;
 }
-.bg-theme{
+
+.bg-theme {
     background-color: var(--themeColor) !important;
 }
-.btn-theme{
+
+.btn-theme {
     color: white !important;
     background-color: var(--themeColor) !important;
 }
-.btn-theme:hover{
+
+.btn-theme:hover {
     color: white !important;
     background-color: var(--secondColor) !important;
 }
-.btn-outline-theme{
+
+.btn-outline-theme {
     color: var(--themeColor) !important;
     border-color: var(--themeColor) !important;
 }
-.btn-outline-theme:hover{
+
+.btn-outline-theme:hover {
     color: white !important;
     background-color: var(--themeColor) !important;
 }
-.btn-text-theme{
+
+.btn-text-theme {
     color: #1f1f1f !important;
 }
-.btn-text-theme:hover{
+
+.btn-text-theme:hover {
     background-color: #f0f0f0 !important;
 }
 
-.border-theme{
+.border-theme {
     border-color: var(--themeColor) !important;
 }
 
 
-.footer_item{
+.footer_item {
     color: rgba(255, 255, 255, 0.6) !important;
     padding: 0.25rem 0rem;
     margin: 4px 0px;
 }
-.footer_item:hover{
+
+.footer_item:hover {
     color: white !important;
     background-color: var(--secondColor);
     font-weight: bold;
@@ -143,21 +165,25 @@
     margin-left: 0.05rem;
     border-radius: 999px;
 }
-.footer_item i{
+
+.footer_item i {
     margin-right: 0.25rem;
     visibility: hidden;
     margin-left: calc(-20px - 0.25rem);
 }
-.footer_item:hover i{
+
+.footer_item:hover i {
     margin-right: 0.25rem;
     visibility: visible;
     margin-left: 0px;
     transition: visibility 3s ease;
     transition: margin 50ms ease;
 }
+
 .border-theme {
     border-color: var(--themeColor) !important;
 }
+
 .hoverBigger:hover {
     transform: scale(1.02);
     transition-duration: 0.5s;
@@ -166,9 +192,11 @@
 .file-links {
     position: relative;
 }
+
 .file-links:hover {
-    border : 1px solid var(--themeColor);
+    border: 1px solid var(--themeColor);
 }
+
 .file-links:hover::before {
     content: " ";
     position: absolute;
@@ -178,4 +206,17 @@
     bottom: 0;
     background-color: var(--themeColor);
     opacity: 0.1;
+}
+
+.accordion-item:first-of-type,
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+}
+
+.accordion-item:last-of-type,
+.accordion-item:last-of-type .accordion-button.collapsed,
+.accordion-item:last-of-type .accordion-collapse {
+    border-bottom-right-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
 }
