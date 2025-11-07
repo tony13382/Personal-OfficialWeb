@@ -25,7 +25,11 @@ class Element:
 
 class Canva(Element):
     def __init__(self, src: str = ""):
-        self.src = src
+        # 如果最後是 `/view` 則填充成 `/view?embed`，如果最後是 `/view?embed` 則不修改
+        if src.endswith("/view"):
+            self.src = src + "?embed"
+        else:
+            self.src = src
 
     def __str__(self) -> str:
         return f"""

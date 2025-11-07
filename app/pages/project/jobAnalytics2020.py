@@ -77,7 +77,7 @@ page = ProjectPage(
         ),
         Card(
             header=Canva(
-                "https://www.canva.com/design/DAGm0yetpKs/np_Z035Mycf67qyDDQkRiQ/view?embed"
+                "https://www.canva.com/design/DAGm0yetpKs/np_Z035Mycf67qyDDQkRiQ/view"
             ),
             body=[
                 Text("期末見解報告", "h3"),

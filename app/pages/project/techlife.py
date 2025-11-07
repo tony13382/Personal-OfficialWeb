@@ -87,6 +87,17 @@ page = ProjectPage(
                     src="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit#slide=id.p1",
                     icon="bi-file-earmark-ppt",
                 ),
+                AccordionBlock(
+                    [
+                        AccordionItem(
+                            title="快樂農場​（簡報資源預覽）",
+                            items=[
+                                Canva("https://www.canva.com/design/DAG3_U2O5UM/7BineOJpAOxa4MRyZv8opA/view?embed")
+                            ],
+                            body_space=SpaceSet(p=0)
+                        )
+                    ]
+                )
             ],
             body_gap=GapSet("large"),
         ),
