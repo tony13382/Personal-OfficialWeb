@@ -340,7 +340,7 @@ page = ProjectPage(
                                         ),
                                         Text("運用多彩色系營造活潑的感覺", center=True),
                                     ],
-                                    gap=SpaceSet("large"),
+                                    gap=GapSet("large"),
                                 )
                             ),
                         ),
@@ -357,7 +357,7 @@ page = ProjectPage(
                                         ),
                                         Text("運用漸層營造立體的感覺", center=True),
                                     ],
-                                    gap=SpaceSet("large"),
+                                    gap=GapSet("large"),
                                 )
                             ),
                         ),
@@ -381,7 +381,7 @@ page = ProjectPage(
                                             center=True,
                                         ),
                                     ],
-                                    gap=SpaceSet("large"),
+                                    gap=GapSet("large"),
                                 )
                             ),
                         ),

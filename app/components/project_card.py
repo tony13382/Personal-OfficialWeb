@@ -9,7 +9,7 @@ from app.elements import (
     Text,
 )
 from app.layouts.project import ProjectPage
-from app.variables import SpaceSet
+from app.variables import GapSet, SpaceSet
 
 
 class ProjectCard:
@@ -65,6 +65,7 @@ class ProjectCard:
                 ListDiv(
                     tag_array,
                     layout="flex",
+                    gap=GapSet("regular")
                 )
             ]
         return str(return_card)

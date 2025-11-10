@@ -192,7 +192,7 @@ class SkillPage(PageLayout):
             body=[
                 Text("技能組", "h3"),
                 DivBar(),
-                ListDiv([Html(skill_tools_html)], gap=SpaceSet("large")),
+                ListDiv([Html(skill_tools_html)], gap=GapSet("large")),
             ],
             has_shadow=False,
             space=SpaceSet(mt=4),
@@ -222,7 +222,7 @@ class SkillPage(PageLayout):
             job_html = Card(
                 body=[
                     Text("相關工作經歷", "h3"),
-                    ListDiv([Html(job_content)], gap=SpaceSet("large")),
+                    ListDiv([Html(job_content)], gap=GapSet("large")),
                 ],
                 body_gap=GapSet("large"),
             )
@@ -237,7 +237,7 @@ class SkillPage(PageLayout):
                     Text("相關證照", "h3"),
                     ListDiv(
                         [Html(certificate_content)],
-                        gap=SpaceSet("large"),
+                        gap=GapSet("large"),
                         space=SpaceSet(mt=2),
                     ),
                 ],

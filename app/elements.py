@@ -473,7 +473,7 @@ class ListDiv(Element):
     def __init__(
         self,
         children: list = None,
-        gap: SpaceSet = None,
+        gap: GapSet = None,
         layout: Literal["grid", "flex", "inline"] = "grid",
         space: SpaceSet = None,
     ):
@@ -616,7 +616,7 @@ class Tool(Element):
             + str(
                 ListDiv(
                     children=[Text(self.name, bold=True), Text(self.action)],
-                    gap=SpaceSet("nano"),
+                    gap=GapSet("nano"),
                 )
             )
             + "</div>"
