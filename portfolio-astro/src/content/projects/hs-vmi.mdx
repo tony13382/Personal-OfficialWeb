@@ -1,0 +1,76 @@
+---
+title: 華新 VMI 庫存管理遊戲
+description: 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。
+startDate: 2020-10-01
+endDate: 2020-12-31
+status: closed
+theme: blue
+cover: /assets/imgs/projects/hsVmi/cover.png
+pin: true
+skillTypes: [pin, dev]
+tags: [全端開發]
+links:
+  - content: GitHub 代碼
+    href: https://github.com/tony13382/CycuSA-VMI
+    icon: bi-github
+    openInTab: true
+tools:
+  - name: Apache Tomcat (JSP)
+    description: 後端資料處理(無框架)
+  - name: MySQL
+    description: SQL 資料庫設計與串接
+  - name: Bootstrap V4.3
+    description: 前端元件套件
+seo:
+  metaTitle: 華新 VMI 庫存管理遊戲 - 呂亮進的專案作品
+  metaDescription: 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。
+  ogImage: /assets/imgs/projects/hsVmi/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/hsVmi/ErModal.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <h2>技術文件</h2>
+
+    <div className="flex flex-col gap-4 mt-4">
+      <IconBlock
+        title="系統規格書(1)"
+        subtitle="PDF"
+        href="/assets/file/hsVmi/供應商庫存管理系統規格.pdf"
+        icon="FileDown"
+        client:visible
+      />
+      <IconBlock
+        title="系統規格書(2)"
+        subtitle="DOCX"
+        href="/assets/file/hsVmi/VMI個案遊戲.docx"
+        icon="FileDown"
+        client:visible
+      />
+      <IconBlock
+        title="預設資料集(1)"
+        subtitle="XLSX"
+        href="/assets/file/hsVmi/VMI起始資料.xlsx"
+        icon="Database"
+        client:visible
+      />
+      <IconBlock
+        title="預設資料集(2)"
+        subtitle="XLSX"
+        href="/assets/file/hsVmi/VMIDATA2020.xlsx"
+        icon="Database"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>

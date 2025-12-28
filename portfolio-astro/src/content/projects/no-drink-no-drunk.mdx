@@ -1,0 +1,80 @@
+---
+title: No Drink No Drunk
+description: 大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。
+subdescription: "擔任：網站設計師<br>負責：網站介面設計、前端開發、RWD 實作"
+startDate: 2020-09-01
+endDate: 2021-01-31
+status: closed
+theme: orange
+cover: /assets/imgs/projects/noDrinkNoDrunk/cover.png
+pin: false
+skillTypes: [dev]
+tags: [程式開發]
+links:
+  - content: 專案網址・純前端展示
+    href: https://tony13382.github.io/CycuWebDesign-FinalWeb/pages/products.html
+    icon: bi-cloud
+    openInTab: true
+  - content: GitHub 專案・前端版本
+    href: https://github.com/tony13382/CycuWebDesign-FinalWeb
+    icon: bi-github
+    openInTab: true
+  - content: GitHub 專案・JSP 版本
+    href: https://github.com/tony13382/CycuWebDesign-JspWeb
+    icon: bi-github
+    openInTab: true
+tools:
+  - name: Figma
+    description: UI 設計與產品原型設計
+  - name: HTML5 & CSS3
+    description: 前端介面排版與設計
+  - name: Bootstrap v3
+    description: 前端元件套件與 RWD 切版實作
+  - name: Github Pages
+    description: 前端網頁靜態部署工具
+seo:
+  metaTitle: No Drink No Drunk - 呂亮進的專案作品
+  metaDescription: 大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。
+  ogImage: /assets/imgs/projects/noDrinkNoDrunk/cover.png
+---
+
+import { Card, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>系統介面</h2>
+
+    <div className="space-y-4 mt-4">
+      <ImageWithLightbox
+        src="/assets/imgs/projects/noDrinkNoDrunk/nodrinkIndex.jpeg"
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src="/assets/imgs/projects/noDrinkNoDrunk/info.png"
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src="/assets/imgs/projects/noDrinkNoDrunk/list.png"
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src="/assets/imgs/projects/noDrinkNoDrunk/knowledge.png"
+        allowPop={true}
+        client:load
+      />
+    </div>
+  </CardContent>
+</Card>

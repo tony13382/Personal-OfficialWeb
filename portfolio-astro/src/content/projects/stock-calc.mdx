@@ -1,0 +1,71 @@
+---
+title: MeowLu Stock - 股票試算小工具
+description: 輕鬆好用的股票交易試算工具
+startDate: 2020-10-01
+status: active
+theme: red
+cover: /assets/imgs/projects/stockCalc/cover.png
+pin: true
+skillTypes: [pin, dev]
+tags: [介面設計, 產品規劃, 前端開發]
+links:
+  - content: 服務網址
+    href: https://stockcal.lianglu.uk/
+    icon: bi-window-sidebar
+    openInTab: true
+  - content: GitHub 專案
+    href: https://github.com/tony13382/Tools-StockCal
+    icon: bi-github
+    openInTab: true
+tools:
+  - name: UIKit v2
+    description: 前端元件套件
+  - name: JavaScript
+    description: 邏輯計算與 Dom 交互
+seo:
+  metaTitle: MeowLu Stock - 股票試算小工具 - 呂亮進的專案作品
+  metaDescription: 輕鬆好用的股票交易試算工具
+  ogImage: /assets/imgs/projects/stockCalc/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/stockCalc/priceCalc.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <h2>試算交易手續費</h2>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/stockCalc/trendCalc.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <h2>預估漲跌目標股價</h2>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/stockCalc/quickCalc.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <h2>快速加減計算</h2>
+  </CardContent>
+</Card>

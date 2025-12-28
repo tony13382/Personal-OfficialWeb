@@ -1,0 +1,254 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { themes } from "@/lib/themes";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Star, History, ExternalLink, Github, Globe, Dot } from "lucide-react";
+import { IconBlock } from "@/components/react/IconBlock";
+import { Button } from "@/components/ui/button";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+// SEO
+const seo = {
+  title: project.data.seo?.metaTitle || `${project.data.title} | 呂亮進`,
+  description: project.data.seo?.metaDescription || project.data.description,
+  ogImage: project.data.seo?.ogImage || project.data.cover,
+};
+
+// 主題顏色
+const themeColors = themes[project.data.theme];
+
+// 圖標映射（Bootstrap Icons -> Lucide Icons）
+const iconMap: Record<string, any> = {
+  "bi-github": Github,
+  "bi-box-arrow-up-right": ExternalLink,
+  "bi-globe": Globe,
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+>
+  <!-- 動態 CSS 變量 -->
+  <style
+    define:vars={{
+      "theme-primary": themeColors.primary,
+      "theme-secondary": themeColors.secondary,
+    }}
+  >
+    :global(:root) {
+      /* CSS variables injected via define:vars */
+      h2 {
+        color: var(--theme-primary);
+      }
+      .text-highlight {
+        color: var(--theme-primary);
+        margin: 0 2px;
+        padding: 0 4px;
+        font-weight: 800;
+        background: linear-gradient(to top, #55555540 30%, transparent 30%);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      code {
+        color: var(--theme-primary);
+        margin: 0 2px;
+        padding: 0 4px;
+        font-weight: 800;
+        background: linear-gradient(to top, #55555540 30%, transparent 30%);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  </style>
+
+  <div style=`background-color: ${themeColors.primary}10;`>
+    <!-- Header Section -->
+    <div
+      class="relative py-20 w-full"
+      style={`background:url(${project.data.cover}); background-repeat:no-repeat; background-size:cover; background-attachment:local;`}
+    >
+      <div
+        class="absolute top-0 start-0 w-full h-full"
+        style=`background: linear-gradient(0deg, ${themeColors.primary}70, ${themeColors.secondary}50); backdrop-filter: blur(40px);`
+      >
+      </div>
+      <div class="relative flex items-center pb-2 w-full min-h-60">
+        <div class="container grid grid-cols-1 mx-auto">
+          <div class="flex flex-col gap-4">
+            <h1 class="text-4xl text-center font-bold text-white notoFont">
+              {project.data.title}
+            </h1>
+            <p class="text-center text-white m-0 notoFont">
+              {
+                project.data.startDate.toLocaleDateString("zh-TW", {
+                  year: "numeric",
+                  month: "2-digit",
+                })
+              }
+              {
+                project.data.endDate
+                  ? ` ~ ${project.data.endDate.toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit" })}`
+                  : " ~ 現在"
+              }
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="container mx-auto -mt-40 pb-20 min-h-screen">
+      <div class="row grid grid-cols-12 align-items-start gap-8 px-4">
+        <div class="relative lg:col-span-4 col-span-12 z-10">
+          <div class="sticky top-0 pt-23">
+            <Card>
+              <CardContent className="space-y-4">
+                <div class="flex items-center gap-2">
+                  <Badge>
+                    {
+                      project.data.status === "active"
+                        ? "進行中"
+                        : project.data.status === "closed"
+                          ? "已結束"
+                          : "暫停"
+                    }
+                  </Badge>
+                  {
+                    project.data.pin && (
+                      <Badge variant="outline">
+                        <Star className="size-3 me-2" />
+                        精選
+                      </Badge>
+                    )
+                  }
+                </div>
+                <p class="notoFont msf-info-s">
+                  {project.data.description}
+                </p>
+                <!-- 標籤 -->
+                <div class="flex flex-wrap gap-2">
+                  {
+                    project.data.tags.map((tag: string) => (
+                      <Badge variant="secondary">{tag}</Badge>
+                    ))
+                  }
+                </div>
+                <!-- 連結按鈕 -->
+                {
+                  project.data.links && project.data.links.length > 0 && (
+                    <div class="flex flex-col flex-wrap gap-3 mt-6">
+                      {project.data.links.map((link: any) => {
+                        const IconComponent = link.icon
+                          ? iconMap[link.icon]
+                          : null;
+                        return (
+                          <Button variant="outline">
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="flex gap-2 items-center"
+                            >
+                              {IconComponent && (
+                                <IconComponent className="size-4" />
+                              )}
+                              {link.content}
+                            </a>
+                          </Button>
+                        );
+                      })}
+                    </div>
+                  )
+                }
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div class="grid col-span-12 lg:col-span-8 pb-5 gap-8 z-10">
+          <div class="hidden lg:block h-[calc(var(--spacing)*(23-8))]"></div>
+          <!-- Tools Card -->
+          <Card>
+            <CardHeader>
+              <img
+                src={project.data.cover}
+                alt={project.data.title}
+                class="img-fluid"
+              />
+            </CardHeader>
+          </Card>
+          <!-- 獎項 -->
+          {
+            project.data.scores && project.data.scores.length > 0 && (
+              <Card>
+                <CardTitle>
+                  <h2 style="color: var(--foreground);">獲獎紀錄</h2>
+                </CardTitle>
+                <CardContent className="pt-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {project.data.scores.map((score: any) => (
+                      <div class="pt-2 pb-0 space-y-2">
+                        <h3>{score.title}</h3>
+                        <p
+                          class="font-bold text-xl flex items-center"
+                          style={`color: ${themeColors.primary}`}
+                        >
+                          {score.award}
+                          {score.category && (
+                            <>
+                              <Dot className="size-6" />
+                              {score.category}
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          }
+          <!-- 使用工具 -->
+          {
+            project.data.tools && project.data.tools.length > 0 && (
+              <Card>
+                <CardTitle>
+                  <h2>採用技術</h2>
+                </CardTitle>
+                <CardContent className="pt-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {project.data.tools.map((tool: any) => (
+                      <div>
+                        <p class="font-bold">{tool.name}</p>
+                        <p class="text-muted-foreground">{tool.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          }
+          <!-- MDX 內容 -->
+          <article class="flex flex-col gap-8">
+            <Content />
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

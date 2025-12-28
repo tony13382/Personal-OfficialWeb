@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python main.py:*)"
+      "Bash(python main.py:*)",
+      "Bash(npm create:*)",
+      "Bash(npm install)",
+      "Bash(npx astro add:*)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run dev:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,364 @@
+---
+title: Trello 知識小幫手 2.0
+description: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。"
+subdescription: "擔任：教育系統 RD 工程師<br>負責：軟體架構設計、API 設計、資料庫設計、軟體開發"
+startDate: 2023-07-01
+endDate: 2024-07-31
+status: active
+theme: blue
+cover: /assets/imgs/projects/trelloFinder/cover.png
+pin: true
+skillTypes: [pin, dev, analysis]
+tags: [文本探勘, 搜尋算法, LLM, 向量資料管理, 後端, 佇列系統]
+links:
+  - content: 專案網址
+    href: https://github.com/tony13382/Tools-TrelloFinderV2
+    icon: bi-github
+    openInTab: true
+scores:
+  - title: TWELF 2024 第十九屆台灣數位學習發展研討會
+    award: 最佳論文獎
+    category: AIES 組
+tools:
+  - name: Flask
+    description: Webhook APIs 開發與建立
+  - name: RabbitMQ
+    description: 建立任務佇列處理系統，處理大量用戶請求時不會造成服務阻塞
+  - name: MongoDB
+    description: 主要系統資料庫，紀錄所有學生互動資料
+  - name: Milvus
+    description: 系統知識向量資料庫，用於建置與管理 RAG 知識搜尋
+  - name: Sentence-BERT
+    description: 文本向量化技術、模型訓練與微調
+seo:
+  metaTitle: Trello 知識小幫手 2.0 - 呂亮進的專案作品
+  metaDescription: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。"
+  ogImage: /assets/imgs/projects/trelloFinder/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+<Card>
+  <CardHeader>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden;">
+      <iframe
+        loading="lazy"
+        style="position: absolute; width: 100%; height: calc(100% + 1px); top: -1px; left: 0; border: none; padding: 0; margin: 0;"
+        src="https://www.canva.com/design/DAGAH5TIfcM/noA5DlVGa0eP-raZZdv56w/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <h2>系統使用說明</h2>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowPerpareData.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <h2>知識文本資料前處理</h2>
+
+    <hr className="my-4" />
+
+    <p>
+      取得文章的標題、內文與連結後會以純文本的形式儲存至 mongoDB 的文章文本資料庫進行管理，為了滿足 RAG 的文章搜尋需求，標題與內文會合併成索引文本，索引文本會在透過 Sentence-BERT 的 paraphrase-multilingual-mpnet-base-v2 多語言模型轉換成固定長度的向量並儲存至文章向量資料庫。
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowModule.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <h2>模組建立</h2>
+
+    <div className="space-y-4 mt-4">
+      <div>
+        <p className="font-bold">搜索架構</p>
+        <p>
+          融合 BM25(詞頻)、TF-IDF、共現分析 與 SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
+        </p>
+      </div>
+
+      <hr className="my-4" />
+
+      <div>
+        <p className="font-bold">回應架構</p>
+        <p>
+          基於 RAG 與鏈式提示策略設計，使用大型語言模型(GPT-4 Turbo)生成適切的回應與延伸提問。
+        </p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowTrello.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <h2>Trello 資料建立流程</h2>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>提示詞列表</h2>
+
+    <Accordion type="single" collapsible className="mt-4">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>萃取提示詞・基於 GPT 3.5、溫度設定為 0</AccordionTrigger>
+        <AccordionContent>
+          <table className="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 px-4 py-2">role</th>
+                <th className="border border-gray-300 px-4 py-2">prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 px-4 py-2">system</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  #zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究
+                  <span className="text-theme font-bold">研究主題</span>，而你需要幫助學生瞭解相關知識，因此你需要生成回答並追問學生讓學生回答以促進學生對
+                  <span className="text-theme font-bold">研究主題</span> 深度思考。輸出的文本需要基於 Markdown 語法。
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 px-4 py-2">user</td>
+                <td className="border border-gray-300 px-4 py-2">*聊天文本(舊～新)*</td>
+              </tr>
+            </tbody>
+          </table>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-2">
+        <AccordionTrigger>回應提示詞・基於 GPT 4 turbo、溫度設定為 0.1</AccordionTrigger>
+        <AccordionContent>
+          <div className="space-y-6">
+            <div>
+              <p className="font-bold mb-3">生成回應</p>
+              <table className="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-4 py-2">role</th>
+                    <th className="border border-gray-300 px-4 py-2">prompt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">system</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      #zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究
+                      <span className="text-theme font-bold">研究主題</span>
+                      而你需要幫助學生瞭解相關知識，因此你需要1. 基於參考資料嘗試回答學生的問題，並在回答之中強制標注[文章編號]。2.
+                      如果參考資料無法解答問題則只告知現有資料無法回答問題。3. 根據對話紀錄生成回應。輸出的文本需要基於 Markdown 語法。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">assistant</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      以下是我們給付的參考資料：以 JSON 格式呈現，格式如下｛article_id: 文章編號,content : 文章的實際內容｝\n
+                      <span className="text-theme font-bold">文章內容</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">user</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <span className="text-theme font-bold">聊天文本(舊～新)</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <p className="font-bold mb-3">生成反問</p>
+              <table className="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-4 py-2">role</th>
+                    <th className="border border-gray-300 px-4 py-2">prompt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">system</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      #zh_tw 你是一位使用繁體中文的自然科學中學老師正在跟剛接觸研究領域的學生交談，首先學生正在研究
+                      <span className="text-theme font-bold">研究主題</span>，而你需要幫助學生瞭解相關知識，因此你需要基於以下聊天內容提出問題給學生讓學生回答以促進學生對
+                      <span className="text-theme font-bold">研究主題</span> 深度思考。輸出的文本只需要問題無需標題，使用 Markdown 語法輸出。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">assistant</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      以下是我們給付的參考資料：以 JSON 格式呈現，格式如下｛article_id: 文章編號,content : 文章的實際內容｝\n
+                      <span className="text-theme font-bold">文章內容</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">user</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <span className="text-theme font-bold">聊天文本(舊～新)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">assistant</td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <span className="text-theme font-bold">對話回應文本(上表的結果)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2">user</td>
+                    <td className="border border-gray-300 px-4 py-2">請根據上述內容撰寫問題給學生，促進學生思考。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>回應模組資料前處理</h2>
+
+    <div className="space-y-6 mt-4">
+      <div>
+        <p className="font-bold">聊天文本處理</p>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/trelloFinder/workflowPrepareChat.png"
+          allowPop={true}
+          client:load
+        />
+      </div>
+
+      <hr className="my-4" />
+
+      <div>
+        <p className="font-bold">知識文本處理</p>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/trelloFinder/workflowPrepareKnow.png"
+          allowPop={true}
+          client:load
+        />
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden;">
+      <iframe
+        loading="lazy"
+        style="position: absolute; width: 100%; height: calc(100% + 1px); top: -1px; left: 0; border: none; padding: 0; margin: 0;"
+        src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
+    </div>
+  </CardHeader>
+  <CardContent className="pt-6">
+    <div className="mb-4">
+      <Badge variant="secondary" className="text-base">搜尋模組</Badge>
+    </div>
+
+    <h2>使用自然語言技術建構自主學習資源推薦系統</h2>
+
+    <p className="mt-3">
+      融合 BM25(詞頻)、TF-IDF、SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
+    </p>
+
+    <div className="flex flex-col gap-4 mt-6">
+      <IconBlock
+        title="研究會議簡報連結"
+        subtitle="Canva"
+        href="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view"
+        icon="FilePresentation"
+        client:visible
+      />
+      <IconBlock
+        title="研討會論文文件"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk"
+        icon="FileDown"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden;">
+      <iframe
+        loading="lazy"
+        style="position: absolute; width: 100%; height: calc(100% + 1px); top: -1px; left: 0; border: none; padding: 0; margin: 0;"
+        src="https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
+    </div>
+  </CardHeader>
+  <CardContent className="pt-6">
+    <div className="mb-4">
+      <Badge variant="secondary" className="text-base">生成模組</Badge>
+    </div>
+
+    <h2>在自主學習環境比較不同提示策略對大型語言模型回應的影響</h2>
+
+    <p className="mt-3">
+      基於 RAG 與鏈式提示策略，進行大型語言模型回應的生成模組，並進行實驗比較不同提示策略對回應的影響。
+    </p>
+
+    <div className="flex flex-col gap-4 mt-6">
+      <IconBlock
+        title="論文簡報連結"
+        subtitle="Canva"
+        href="https://drive.google.com/file/d/1xoYvRgNZ3Li3kEbwFW5QEBuK-JOLogfz/view"
+        icon="FilePresentation"
+        client:visible
+      />
+      <IconBlock
+        title="論文文件"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/1y7yCt21CVPbaPbOCFheRRoO3R98cCWuP/view?usp=sharing"
+        icon="FileDown"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
