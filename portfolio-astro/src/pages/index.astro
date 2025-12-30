@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
-import { Star } from "phosphor-react";
+import { Star } from "@phosphor-icons/react";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序

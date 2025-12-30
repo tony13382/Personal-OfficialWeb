@@ -24,7 +24,7 @@ seo:
   ogImage: /assets/imgs/projects/chenmko/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
@@ -40,7 +40,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardContent>
     <p>根據企業的設計圖打造官網和後台系統管理產品。</p>
 
-    <ul className="space-y-2 mt-4 ps-3">
+    <ul className="list-disc space-y-2 mt-4 ps-4">
       <li>技術前端採用 bootstrap 打造出響應式 (RWD) 網頁，確保網站在不同設備上能夠良好地顯示。</li>
       <li>後端採用 php 語言打造，以便後續系統交接「企業要求」。</li>
       <li>網站內容採用英語、日語與繁體中文，確保企業的目標受眾能夠理解網站的內容。</li>
@@ -53,9 +53,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>後端・Banner 圖片管理</h2>
-
+  <CardTitle>後端・Banner 圖片管理</CardTitle>
+  <CardHeader>
     <UiImageCarousel
       images={[
         "/assets/imgs/projects/chenmko/banner_manage_2.webp",
@@ -63,17 +62,15 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
       ]}
       client:load
     />
-
-    <p className="mt-4">
-      這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。
-    </p>
+  </CardHeader>
+  <CardContent>
+    這個工具擁有一個簡單的介面，讓您輕鬆地瀏覽您的輪播圖片，並且可以直接進行新增或刪除。您可以使用這個工具上傳新的輪播圖片，也可以隨時刪除您不需要的圖片，讓您的網站上的輪播圖片保持最新和最適合的內容。
   </CardContent>
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>後端・公司資訊管理</h2>
-
+  <CardTitle>後端・公司資訊管理</CardTitle>
+  <CardContent>
     <ImageWithLightbox
       src="/assets/imgs/projects/chenmko/comp_manage.webp"
       allowPop={true}
@@ -91,9 +88,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>後端・公司沿革資訊管理</h2>
-
+  <CardTitle>後端・公司沿革資訊管理</CardTitle>
+  <CardContent>
     <ImageWithLightbox
       src="/assets/imgs/projects/chenmko/comp_history.webp"
       allowPop={true}
@@ -111,9 +107,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>後端・分類表格欄位管理</h2>
-
+  <CardTitle>後端・分類表格欄位管理</CardTitle>
+  <CardContent>
     <ImageWithLightbox
       src="/assets/imgs/projects/chenmko/table_cols.webp"
       allowPop={true}
@@ -135,9 +130,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>後端・產品管理</h2>
-
+  <CardTitle>後端・產品管理</CardTitle>
+  <CardContent>
     <ImageWithLightbox
       src="/assets/imgs/projects/chenmko/products_edit_1.webp"
       allowPop={true}
@@ -169,14 +163,14 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 </Card>
 
 <Card>
-  <CardHeader>
+  <CardHeader className="p-3">
     <ImageWithLightbox
       src="/assets/imgs/projects/chenmko/db_ErModel.png"
       allowPop={true}
       client:load
     />
   </CardHeader>
-  <CardContent className="pt-6">
+  <CardContent>
     <h2>資料架構設計(ER-Model)</h2>
 
     <div className="space-y-6 mt-4">
@@ -206,7 +200,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 
       <div>
         <p className="font-bold mb-3">需求:</p>
-        <ul className="space-y-2 ps-3">
+        <ul className="list-disc space-y-2 ps-5">
           <li>各個分類會有不一樣的資料表欄位</li>
           <li>每個分類會對應多樣商品</li>
           <li>單頁最多呈現 50 樣商品(需分頁)</li>
@@ -218,7 +212,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 
       <div>
         <p className="font-bold mb-3">執行:</p>
-        <ul className="space-y-2 ps-3">
+        <ul className="list-disc space-y-2 ps-5">
           <li>設計三個資料表存放欄位 `cols_html`、產品 `products`、分類 `category`</li>
           <li>設計 `products_col_link`：存放欄位資料、`cols_congfigs`：每個分類所需要啟用的欄位</li>
           <li>透過分類檢索產品與欄位、動態生成 SQL，最後透過 INNER JOIN / GROUP(聚合)、SUBSTRING / ORDER(排序)彙整成一張產品資料表</li>
@@ -227,7 +221,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 
       <div>
         <p className="font-bold mb-3">獨立資料表:</p>
-        <ul className="space-y-2 ps-3">
+        <ul className="list-disc space-y-2 ps-5">
           <li>company：企業資訊紀錄</li>
           <li>banner：首頁 banner 圖片管理</li>
           <li>backend_psw_config：後台加密後密碼驗證</li>

@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { CaretLeft, CaretRight } from 'phosphor-react'
+import { CaretLeft, CaretLeftIcon, CaretRight, CaretRightIcon } from '@phosphor-icons/react'
 
 interface UiImageCarouselProps {
   images: string[]
@@ -80,20 +80,20 @@ export function UiImageCarousel({
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
               aria-label="Previous slide"
               title="Previous slide"
             >
-              <CaretLeft className="w-6 h-6" />
+              <CaretLeftIcon className="w-6 h-6" />
             </button>
             <button
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
               aria-label="Next slide"
               title="Next slide"
             >
-              <CaretRight className="w-6 h-6" />
+              <CaretRightIcon className="w-6 h-6" />
             </button>
           </>
         )}

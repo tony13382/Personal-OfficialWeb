@@ -51,7 +51,7 @@ seo:
   ogImage: /assets/imgs/projects/mindReader/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Youtube } from '@/components/react/Youtube'
 import { IconBlock } from '@/components/react/IconBlock'
@@ -101,8 +101,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 
 
 <Card>
+  <CardTitle>系統設計架構圖</CardTitle>
   <CardContent className="pt-6">
-    <h2>系統設計架構圖</h2>
     <ImageWithLightbox
       src="/assets/imgs/projects/mindReader/systemFrame.png" 
       allowPop={true}
@@ -133,14 +133,14 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
         title="Figma 原型展示連結"
         subtitle="Figma"
         href="https://www.figma.com/proto/Tk1mSaUpLrBxUdHbHQvtQd/%5B2021-MR%5D-APP-Design?page-id=0%3A1&node-id=58%3A3277&viewport=241%2C48%2C0.14&scaling=scale-down&starting-point-node-id=58%3A3277&show-proto-sidebar=1"
-        icon="Smartphone"
+        icon="FigmaLogo"
         client:visible
       />
       <IconBlock
         title="MVP 網頁"
         subtitle="GitHub"
         href="https://github.com/tony13382/MindReader-MVP/"
-        icon="Github"
+        icon="Laptop"
         client:visible
       />
     </div>
@@ -158,11 +158,11 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
     />
     <div className="space-y-4">
       <IconBlock title="用戶輸入（鍵盤攔截）" icon="Keyboard" />
-      <IconBlock title="鍵盤利用 Web APIs 將文字傳送至 `MindReader Core`" icon="Server" />
-      <IconBlock title="`Line Bot` 抓取用戶 ID" icon="MessageCircle" />
-      <IconBlock title="根據 ID 與文字進行轉換" icon="RefreshCw" />
-      <IconBlock title="傳送轉譯後文字" icon="Send" />
-      <IconBlock title="接收使用者以外的回饋文字" icon="Server" />
+      <IconBlock title="鍵盤利用 Web APIs 將文字傳送至 `MindReader Core`" icon="WebhooksLogo" />
+      <IconBlock title="`Line Bot` 抓取用戶 ID" icon="IdentificationBadge" />
+      <IconBlock title="根據 ID 與文字進行轉換" icon="Sparkle" />
+      <IconBlock title="傳送轉譯後文字" icon="Textbox" />
+      <IconBlock title="接收使用者以外的回饋文字" icon="ChatTeardropText" />
       <IconBlock title="`錄入資料`進行評分" icon="Database" />
     </div>
   </CardContent>

@@ -11,13 +11,13 @@ pin: false
 skillTypes: [analysis]
 tags: [資料清理, 資料視覺化, 簡報設計]
 links:
-  - content: 專案網址(datastudio)
+  - content: 專案網址 (datastudio)
     href: https://datastudio.google.com/s/rcRR2G3x4VI
     icon: Sidebar
     openInTab: true
 tools:
   - name: Data Studio
-    description: 資料視覺化(儀表板製作)
+    description: 資料視覺化 (儀表板製作)
   - name: Powerpoint
     description: 簡報設計
 seo:
@@ -26,29 +26,25 @@ seo:
   ogImage: /assets/imgs/projects/jobAnalytics2020/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { IconBlock } from '@/components/react/IconBlock'
 
 <Card>
-  <CardContent className="pt-6">
+  <CardContent className="gap-4">
     <h2>系統資訊</h2>
 
     <IconBlock
       title="網站網址"
       subtitle="datastudio"
       href="https://datastudio.google.com/s/rcRR2G3x4VI"
-      icon="PanelLeft"
+      icon="Link"
       client:visible
     />
 
-    <div className="space-y-4 mt-6">
-      <p>
-        數據來源：政府資料開放平台中的受雇員工人數、每人每月薪資，總共有17個獨立工作表，是依照職業類別區分，包含醫療保健業、金融與保險業等，都包含在我們這次分析範圍內。
-      </p>
+    <div className="space-y-4">
+      數據來源：政府資料開放平台中的受雇員工人數、每人每月薪資，總共有17個獨立工作表，是依照職業類別區分，包含醫療保健業、金融與保險業等，都包含在我們這次分析範圍內。
       <hr className="my-4" />
-      <p>
-        資料的欄位：年度、職類別、行業別、受僱員工人數、總薪資、經常性薪資、非經常性薪資，總共 7 個欄位。而這次總資料筆數達到了 13,644 筆
-      </p>
+      資料的欄位：年度、職類別、行業別、受僱員工人數、總薪資、經常性薪資、非經常性薪資，總共 7 個欄位。而這次總資料筆數達到了 13,644 筆
     </div>
   </CardContent>
 </Card>
@@ -65,14 +61,13 @@ import { IconBlock } from '@/components/react/IconBlock'
       </iframe>
     </div>
   </CardHeader>
-  <CardContent className="pt-6">
+  <CardContent className="gap-4">
     <h2>期中見解報告</h2>
-
     <IconBlock
       title="下載檔案"
       subtitle="Google Slide"
       href="https://docs.google.com/presentation/d/1fL7nC1nQda0PS9qcBswW9wU4Kmc1ME93/edit?usp=sharing&ouid=106449819474178509805&rtpof=true&sd=true"
-      icon="FileDown"
+      icon="MicrosoftPowerpointLogo"
       client:visible
     />
   </CardContent>
@@ -90,27 +85,29 @@ import { IconBlock } from '@/components/react/IconBlock'
       </iframe>
     </div>
   </CardHeader>
-  <CardContent className="pt-6">
+  <CardContent className="gap-4">
     <h2>期末見解報告</h2>
-
     <IconBlock
       title="下載檔案"
       subtitle="Google Slide"
       href="https://docs.google.com/presentation/d/1ff073pwGJFImE-1LVw6L2gE-2OFpwGi3/edit?usp=share_link&ouid=106449819474178509805&rtpof=true&sd=true"
-      icon="FileDown"
+      icon="MicrosoftPowerpointLogo"
       client:visible
     />
   </CardContent>
 </Card>
 
 <Card>
+  <CardTitle className="p-6">
+    線上 Demo
+  </CardTitle>
   <CardHeader>
-    <h2 className="ms-3 mt-4 mb-3">線上 Demo</h2>
-    <div className="ratio ratio-4x3">
+    <div className="aspect-4/3">
       <iframe
         src="https://datastudio.google.com/embed/reporting/48a45ac6-cf4f-4016-aed5-7680e097c616/page/JfGqC"
         frameborder="0"
         style="border:0"
+        className="w-full h-full"
         allowfullscreen="">
       </iframe>
     </div>

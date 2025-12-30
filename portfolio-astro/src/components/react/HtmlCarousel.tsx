@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { CaretLeft, CaretRight } from 'phosphor-react'
+import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 import type { ReactNode } from 'react'
 
 interface HtmlCarouselProps {

@@ -4,8 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Star, ClockCounterClockwise, ArrowSquareOut, GithubLogo, Globe, Buildings, DeviceMobile, FileArrowDown, Sidebar, Cloud } from "phosphor-react";
-import { IconBlock } from "@/components/react/IconBlock";
+import * as PhosphorIcons from "@phosphor-icons/react";
+import { Dot, DotOutline, Star } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 
 export async function getStaticPaths() {
@@ -28,18 +28,6 @@ const seo = {
 
 // 主題顏色
 const themeColors = themes[project.data.theme];
-
-// Phosphor Icons 映射
-const iconMap: Record<string, any> = {
-  GithubLogo,
-  ArrowSquareOut,
-  Globe,
-  Buildings,
-  DeviceMobile,
-  FileArrowDown,
-  Sidebar,
-  Cloud,
-};
 ---
 
 <BaseLayout
@@ -161,7 +149,9 @@ const iconMap: Record<string, any> = {
                     <div class="flex flex-col flex-wrap gap-3 mt-4">
                       {project.data.links.map((link: any) => {
                         const IconComponent = link.icon
-                          ? iconMap[link.icon]
+                          ? (PhosphorIcons[
+                              link.icon as keyof typeof PhosphorIcons
+                            ] as PhosphorIcons.Icon) || null
                           : null;
                         return (
                           <Button variant="outline">
@@ -169,7 +159,7 @@ const iconMap: Record<string, any> = {
                               href={link.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              class="flex gap-2 items-center"
+                              class="flex gap-1.5 items-center"
                             >
                               {IconComponent && (
                                 <IconComponent className="size-4" />
@@ -218,7 +208,7 @@ const iconMap: Record<string, any> = {
                           {score.award}
                           {score.category && (
                             <>
-                              <span class="mx-2">·</span>
+                              <span class="mx-1">。</span>
                               {score.category}
                             </>
                           )}

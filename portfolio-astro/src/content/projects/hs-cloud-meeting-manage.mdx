@@ -17,7 +17,7 @@ links:
     openInTab: true
   - content: Figma 設計界面稿
     href: https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94
-    icon: Sidebar
+    icon: FigmaLogo
     openInTab: true
 tools:
   - name: Figma
@@ -38,7 +38,7 @@ seo:
   ogImage: /assets/imgs/projects/hsCloudMeetingManage/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
 
@@ -53,9 +53,8 @@ import { IconBlock } from '@/components/react/IconBlock'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>DFD 設計</h2>
-
+  <CardTitle>DFD 設計</CardTitle>
+  <CardContent>
     <div className="space-y-4 mt-4">
       <ImageWithLightbox
         src="/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png"
@@ -77,14 +76,14 @@ import { IconBlock } from '@/components/react/IconBlock'
         title="系統規格書"
         subtitle="PDF"
         href="https://drive.google.com/file/d/1svdIQLUVO5-AF-cirV8XNvexPLyFgCc0/view"
-        icon="FileDown"
+        icon="FileText"
         client:visible
       />
       <IconBlock
         title="Figma 設計界面稿"
         subtitle="Figma"
         href="https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94"
-        icon="PanelLeft"
+        icon="FigmaLogo"
         client:visible
       />
     </div>
@@ -92,9 +91,8 @@ import { IconBlock } from '@/components/react/IconBlock'
 </Card>
 
 <Card>
-  <CardContent className="pt-6">
-    <h2>ER Model</h2>
-
+  <CardTitle>ER Model</CardTitle>
+  <CardContent>
     <ImageWithLightbox
       src="/assets/imgs/projects/hsCloudMeetingManage/erModel.png"
       allowPop={true}

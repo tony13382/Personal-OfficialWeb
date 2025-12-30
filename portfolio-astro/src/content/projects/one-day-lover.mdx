@@ -30,12 +30,13 @@ seo:
   ogImage: /assets/imgs/projects/oneDayLover/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
 
 <Card>
-  <CardHeader>
+  <CardTitle>ER Model</CardTitle>
+  <CardHeader className='p-2'>
     <ImageWithLightbox
       src="/assets/imgs/projects/oneDayLover/er-model.png"
       allowPop={true}
@@ -43,8 +44,6 @@ import { IconBlock } from '@/components/react/IconBlock'
     />
   </CardHeader>
   <CardContent className="pt-6">
-    <h2>ER Model</h2>
-
     <div className="flex flex-col gap-4 mt-4">
       <IconBlock
         title="SQL File (預設資料庫)"

@@ -1,12 +1,13 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
+import { renderEmbedComponent, type EmbedComponent } from './Basic'
 
 interface TabData {
   value: string
   label: string
   title: string
   description?: string
-  listItems?: string[]
+  embed?: EmbedComponent[]  // 可選的嵌入元件
   code?: string
 }
 
@@ -31,12 +32,14 @@ export function TabsBlock({ tabs, defaultValue, className = '' }: TabsBlockProps
           <div>
             <h4 className="font-bold mb-2">{tab.title}</h4>
             {tab.description && <p>{tab.description}</p>}
-            {tab.listItems && (
-              <ul className="list-disc pl-6 space-y-1">
-                {tab.listItems.map((item, index) => (
-                  <li key={index}>{item}</li>
+            {tab.embed && tab.embed.length > 0 && (
+              <div className="space-y-4">
+                {tab.embed.map((embedItem, index) => (
+                  <div key={index}>
+                    {renderEmbedComponent(embedItem)}
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
             {tab.code && (
               <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">

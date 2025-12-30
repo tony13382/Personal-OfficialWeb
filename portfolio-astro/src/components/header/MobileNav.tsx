@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { List, X, FacebookLogo, LinkedinLogo, Envelope } from 'phosphor-react'
+import { List, X, FacebookLogo, LinkedinLogo, Envelope, EnvelopeIcon, FacebookLogoIcon, LinkedinLogoIcon, ListIcon } from '@phosphor-icons/react'
 import {
   Sheet,
   SheetContent,
@@ -32,19 +32,19 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
     {
       href: 'mailto:liangchinlu@gmail.com',
       label: '信箱',
-      icon: <Envelope className="size-4" />,
+      icon: <EnvelopeIcon className="size-5" />,
       external: true,
     },
     {
       href: 'https://www.facebook.com/tony13382/',
       label: 'Facebook',
-      icon: <FacebookLogo className="size-4" />,
+      icon: <FacebookLogoIcon className="size-5" />,
       external: true,
     },
     {
       href: 'https://www.linkedin.com/in/liang-chin-lu/',
       label: 'LinkedIn',
-      icon: <LinkedinLogo className="size-4" />,
+      icon: <LinkedinLogoIcon className="size-5" />,
       external: true,
     },
   ]
@@ -60,12 +60,12 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
           className="lg:hidden bg-transparent border-0 text-gray-900 dark:text-white cursor-pointer  hover:bg-foreground/20 p-4 rounded-full"
           aria-label="Toggle navigation"
         >
-          <List className="size-6" />
+          <ListIcon className="size-6" />
         </button>
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[300px] sm:w-[400px] bg-background flex flex-col px-4 py-6"
+        className="w-[300px] sm:w-[400px] bg-background flex flex-col px-4 py-6 rounded-s-2xl"
       >
         <SheetHeader>
           <SheetTitle className="text-left text-gray-900 dark:text-white">

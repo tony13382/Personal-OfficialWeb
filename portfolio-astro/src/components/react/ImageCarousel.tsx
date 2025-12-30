@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { CaretLeft, CaretRight } from 'phosphor-react'
+import { CaretLeft, CaretLeftIcon, CaretRight, CaretRightIcon } from '@phosphor-icons/react'
 
 interface ImageItem {
   src: string
@@ -63,7 +63,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
             aria-label="Previous image"
           >
-            <CaretLeft className="w-6 h-6" />
+            <CaretLeftIcon className="w-6 h-6" />
           </button>
           <button
             onClick={scrollNext}
@@ -71,7 +71,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
             aria-label="Next image"
           >
-            <CaretRight className="w-6 h-6" />
+            <CaretRightIcon className="w-6 h-6" />
           </button>
         </>
       )}

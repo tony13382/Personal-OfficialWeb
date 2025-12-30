@@ -1,10 +1,10 @@
 ---
 import {
-  FacebookLogo,
-  LinkedinLogo,
-  Envelope,
-  ArrowLeft,
-} from "phosphor-react";
+  EnvelopeIcon,
+  FacebookLogoIcon,
+  LinkedinLogoIcon,
+  ArrowLeftIcon,
+} from "@phosphor-icons/react";
 import { MobileNav } from "@/components/header/MobileNav";
 
 interface Props {
@@ -25,14 +25,14 @@ const { type = "main", themeColor } = Astro.props;
   class="fixed top-0 left-0 right-0 z-40 py-2 bg-background border-b"
   class:list={[!themeColor && "dark:bg-gray-900"]}
 >
-  <nav class="max-w-8xl mx-auto px-12">
+  <nav class="max-w-8xl mx-auto px-4 md:px-12">
     <div class="flex items-center justify-between">
       <!-- Logo / Brand -->
       {
         type === "main" ? (
           <a
             href="/#topCover"
-            class="flex items-center gap-3 text-gray-900 dark:text-white font-semibold no-underline transition-opacity hover:opacity-80"
+            class="flex items-center gap-3 py-3 text-gray-900 dark:text-white font-semibold no-underline transition-opacity hover:opacity-80"
           >
             <img
               src="/assets/file/iconDesignFile/logo.svg"
@@ -51,9 +51,9 @@ const { type = "main", themeColor } = Astro.props;
         ) : (
           <a
             href="/"
-            class="flex items-center text-gray-900 dark:text-white font-bold no-underline text-2xl transition-opacity hover:bg-foreground/20 p-4 rounded-full"
+            class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-foreground/20 p-4 rounded-full"
           >
-            <ArrowLeft className="size-6" />
+            <ArrowLeftIcon className="size-6" />
           </a>
         )
       }
@@ -89,7 +89,7 @@ const { type = "main", themeColor } = Astro.props;
           rel="noopener noreferrer"
           class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
         >
-          <Envelope className="size-5" />
+          <EnvelopeIcon className="size-5" />
           <span>信箱</span>
         </a>
         <a
@@ -98,7 +98,7 @@ const { type = "main", themeColor } = Astro.props;
           rel="noopener noreferrer"
           class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
         >
-          <FacebookLogo className="size-5" />
+          <FacebookLogoIcon className="size-5" />
           <span>臉書</span>
         </a>
         <a
@@ -107,7 +107,7 @@ const { type = "main", themeColor } = Astro.props;
           rel="noopener noreferrer"
           class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
         >
-          <LinkedinLogo className="size-5" />
+          <LinkedinLogoIcon className="size-5" />
           <span>領英</span>
         </a>
       </div>

@@ -31,13 +31,7 @@ seo:
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { Youtube } from '@/components/react/Youtube'
 import { IconBlock } from '@/components/react/IconBlock'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-
+import { AccordionBlock } from '@/components/react/AccordionBlock'
 
 <Card>
   <CardContent className="pt-6 gap-4">
@@ -52,7 +46,7 @@ import {
       title="教案文件"
       subtitle="PDF (Google Drive)"
       href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing"
-      icon="FileDown"
+      icon="FileText"
       client:visible
     />
   </CardContent>
@@ -71,84 +65,69 @@ import {
       title="圖像創作不設限"
       subtitle="PPT 教案"
       href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1"
-      icon="FilePresentation"
+      icon="MicrosoftPowerpointLogo"
+      client:visible
+    />
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "圖像創作不設限(簡報資源預覽)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG35mSwP18/DR5c7o5yWyfYZ3jgg3RnGg/view?embed",
+              title: "圖像創作不設限簡報"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
       client:visible
     />
   </CardContent>
 </Card>
 
-{/* 
 
 <Card>
   <CardHeader>
     <Youtube
-      embedUrl="https://www.youtube.com/embed/mOWnXJHIqIY"
-      client:visible
-    />
+        embedUrl="https://www.youtube.com/embed/R_vsL1NFWN8"
+        client:visible
+      />
   </CardHeader>
-  <CardContent className="pt-6">
-    <h2>教案：圖像創作不設限</h2>
-
+  <CardContent className="gap-4">
+    ## 教案：10 分鐘學會製作 Linebot
     <IconBlock
-      title="圖像創作不設限"
-      subtitle="PPT 教案"
-      href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1"
-      icon="FilePresentation"
-      client:visible
-    />
-
-    <Accordion type="single" collapsible className="mt-4">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>圖像創作不設限(簡報資源預覽)</AccordionTrigger>
-        <AccordionContent className="p-0">
-          <div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden;">
-            <iframe
-              loading="lazy"
-              style="position: absolute; width: 100%; height: calc(100% + 1px); top: -1px; left: 0; border: none; padding: 0; margin: 0;"
-              src="https://www.canva.com/design/DAG35mSwP18/DR5c7o5yWyfYZ3jgg3RnGg/view?embed"
-              allowfullscreen="allowfullscreen"
-              allow="fullscreen">
-            </iframe>
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  </CardContent>
-</Card>
-
-<Card>
-  <CardHeader>
-    <Youtube
-      embedUrl="https://www.youtube.com/embed/R_vsL1NFWN8"
-      client:visible
-    />
-  </CardHeader>
-  <CardContent className="pt-6">
-    <h2>教案：10 分鐘學會製作 Linebot</h2>
-
-    <IconBlock
-      title="快樂農場"
+      title="教案：10 分鐘學會製作 Linebot"
       subtitle="PPT 教案"
       href="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit#slide=id.p1"
-      icon="FilePresentation"
+      icon="MicrosoftPowerpointLogo"
       client:visible
     />
-
-    <Accordion type="single" collapsible className="mt-4">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>快樂農場(簡報資源預覽)</AccordionTrigger>
-        <AccordionContent className="p-0">
-          <div style="position: relative; width: 100%; height: 0; padding-top: 56.2400%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden;">
-            <iframe
-              loading="lazy"
-              style="position: absolute; width: 100%; height: calc(100% + 1px); top: -1px; left: 0; border: none; padding: 0; margin: 0;"
-              src="https://www.canva.com/design/DAG3_U2O5UM/7BineOJpAOxa4MRyZv8opA/view?embed"
-              allowfullscreen="allowfullscreen"
-              allow="fullscreen">
-            </iframe>
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "教案：10 分鐘學會製作 Linebot (簡報資源預覽)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG3_U2O5UM/7BineOJpAOxa4MRyZv8opA/view?embed",
+              title: "教案：10 分鐘學會製作 Linebot 簡報"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
+      client:visible
+    />
   </CardContent>
-</Card> */}
+</Card>
+
