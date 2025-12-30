@@ -1,17 +1,22 @@
 ---
 import "../styles/global.css";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import Header from "@/components/header/Header.astro";
 
 interface Props {
     title: string;
     description: string;
     ogImage?: string;
+    headerType?: "main" | "project";
+    themeColor?: string;
 }
 
 const {
     title,
     description,
     ogImage = "/assets/MetaTagCover.png",
+    headerType = "main",
+    themeColor,
 } = Astro.props;
 const canonicalURL = new URL(
     Astro.url.pathname,
@@ -64,6 +69,7 @@ const canonicalURL = new URL(
         </script>
     </head>
     <body class="font-sans">
+        <Header type={headerType} themeColor={themeColor} />
         <slot />
 
         <!-- Fancybox initialization -->

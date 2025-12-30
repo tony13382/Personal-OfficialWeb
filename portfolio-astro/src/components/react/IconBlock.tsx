@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils"
-import * as LucideIcons from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import * as PhosphorIcons from "phosphor-react"
 import { formatHighlight } from "@/lib/formatters"
 
 interface IconBlockProps {
@@ -18,8 +17,8 @@ export function IconBlock({
   icon = undefined,
   className
 }: IconBlockProps) {
-  // Dynamically get the Lucide icon component
-  const IconComponent = (LucideIcons[icon as keyof typeof LucideIcons] as LucideIcon) || LucideIcons.FileDown
+  // Dynamically get the Phosphor icon component
+  const IconComponent = (PhosphorIcons[icon as keyof typeof PhosphorIcons]) || PhosphorIcons.DownloadSimple
 
   const content = (
     <div className={cn(

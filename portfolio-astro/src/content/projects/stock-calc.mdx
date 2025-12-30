@@ -11,11 +11,11 @@ tags: [介面設計, 產品規劃, 前端開發]
 links:
   - content: 服務網址
     href: https://stockcal.lianglu.uk/
-    icon: bi-window-sidebar
+    icon: GithubLogo
     openInTab: true
   - content: GitHub 專案
     href: https://github.com/tony13382/Tools-StockCal
-    icon: bi-github
+    icon: GithubLogo
     openInTab: true
 tools:
   - name: UIKit v2
@@ -28,10 +28,11 @@ seo:
   ogImage: /assets/imgs/projects/stockCalc/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 
 <Card>
+  <CardTitle className="pb-5">試算交易手續費</CardTitle>
   <CardHeader>
     <ImageWithLightbox
       src="/assets/imgs/projects/stockCalc/priceCalc.png"
@@ -39,12 +40,10 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       client:load
     />
   </CardHeader>
-  <CardContent>
-    <h2>試算交易手續費</h2>
-  </CardContent>
 </Card>
 
 <Card>
+  <CardTitle className="pb-5">預估漲跌目標股價</CardTitle>
   <CardHeader>
     <ImageWithLightbox
       src="/assets/imgs/projects/stockCalc/trendCalc.png"
@@ -52,12 +51,10 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       client:load
     />
   </CardHeader>
-  <CardContent>
-    <h2>預估漲跌目標股價</h2>
-  </CardContent>
 </Card>
 
 <Card>
+  <CardTitle className="pb-5">快速加減計算</CardTitle>
   <CardHeader>
     <ImageWithLightbox
       src="/assets/imgs/projects/stockCalc/quickCalc.png"
@@ -65,7 +62,4 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       client:load
     />
   </CardHeader>
-  <CardContent>
-    <h2>快速加減計算</h2>
-  </CardContent>
 </Card>

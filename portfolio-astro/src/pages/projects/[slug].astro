@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Star, History, ExternalLink, Github, Globe, Dot } from "lucide-react";
+import { Star, ClockCounterClockwise, ArrowSquareOut, GithubLogo, Globe, Buildings, DeviceMobile, FileArrowDown, Sidebar, Cloud } from "phosphor-react";
 import { IconBlock } from "@/components/react/IconBlock";
 import { Button } from "@/components/ui/button";
 
@@ -29,11 +29,16 @@ const seo = {
 // 主題顏色
 const themeColors = themes[project.data.theme];
 
-// 圖標映射（Bootstrap Icons -> Lucide Icons）
+// Phosphor Icons 映射
 const iconMap: Record<string, any> = {
-  "bi-github": Github,
-  "bi-box-arrow-up-right": ExternalLink,
-  "bi-globe": Globe,
+  GithubLogo,
+  ArrowSquareOut,
+  Globe,
+  Buildings,
+  DeviceMobile,
+  FileArrowDown,
+  Sidebar,
+  Cloud,
 };
 ---
 
@@ -41,6 +46,8 @@ const iconMap: Record<string, any> = {
   title={seo.title}
   description={seo.description}
   ogImage={seo.ogImage}
+  headerType="project"
+  themeColor={themeColors.primary}
 >
   <!-- 動態 CSS 變量 -->
   <style
@@ -112,13 +119,13 @@ const iconMap: Record<string, any> = {
       </div>
     </div>
     <!-- Main Content -->
-    <div class="container mx-auto -mt-40 pb-20 min-h-screen">
+    <div class="container mx-auto -mt-40 pb-20 min-h-screen max-w-5xl">
       <div class="row grid grid-cols-12 align-items-start gap-8 px-4">
         <div class="relative lg:col-span-4 col-span-12 z-10">
           <div class="sticky top-0 pt-23">
             <Card>
               <CardContent className="space-y-4">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center justify-between gap-2">
                   <Badge>
                     {
                       project.data.status === "active"
@@ -151,7 +158,7 @@ const iconMap: Record<string, any> = {
                 <!-- 連結按鈕 -->
                 {
                   project.data.links && project.data.links.length > 0 && (
-                    <div class="flex flex-col flex-wrap gap-3 mt-6">
+                    <div class="flex flex-col flex-wrap gap-3 mt-4">
                       {project.data.links.map((link: any) => {
                         const IconComponent = link.icon
                           ? iconMap[link.icon]
@@ -211,7 +218,7 @@ const iconMap: Record<string, any> = {
                           {score.award}
                           {score.category && (
                             <>
-                              <Dot className="size-6" />
+                              <span class="mx-2">·</span>
                               {score.category}
                             </>
                           )}

@@ -12,7 +12,7 @@ tags: [教案設計, PowerPoint 設計]
 links:
   - content: 企劃書網址
     href: https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view
-    icon: bi-file-earmark-arrow-down
+    icon: FileArrowDown
     openInTab: true
 scores:
   - title: 1092 中原大學資管系資訊管理競賽
@@ -38,14 +38,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+
 <Card>
-  <CardContent className="pt-6">
-    <p>
-      `方案名稱`：TechLife 讓科技充滿生活<br />
-      `團隊名稱`：中原資管總動員<br />
-      `服務日期`：2021 年 6 月 11～12 日<br />
-      `預計服務地點及對象`：台東縣延平鄉桃源國小(15～20 位小朋友)
-    </p>
+  <CardContent className="pt-6 gap-4">
+    <div className="grid gap-2">
+      <p>`方案名稱`：TechLife 讓科技充滿生活</p>
+      <p>`團隊名稱`：中原資管總動員</p>
+      <p>`服務日期`：2021 年 6 月 11～12 日</p>
+      <p>`預計服務地點及對象`：台東縣延平鄉桃源國小(15～20 位小朋友)</p>
+    </div>
 
     <IconBlock
       title="教案文件"
@@ -56,6 +57,27 @@ import {
     />
   </CardContent>
 </Card>
+
+<Card>
+  <CardHeader>
+    <Youtube
+        embedUrl="https://www.youtube.com/embed/mOWnXJHIqIY"
+        client:visible
+      />
+  </CardHeader>
+  <CardContent className="gap-4">
+    ## 教案：圖像創作不設限
+    <IconBlock
+      title="圖像創作不設限"
+      subtitle="PPT 教案"
+      href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1"
+      icon="FilePresentation"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+{/* 
 
 <Card>
   <CardHeader>
@@ -129,4 +151,4 @@ import {
       </AccordionItem>
     </Accordion>
   </CardContent>
-</Card>
+</Card> */}

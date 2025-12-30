@@ -24,9 +24,9 @@ export function Canva({ src, title = "Canva presentation" }: CanvaProps) {
         style={{
           position: "absolute",
           width: "calc(100% + 4px)",
-          height: "calc(100% + 1px)",
+          height: "calc(100% + 2px)",
           top: "-1px",
-          left: "-1px",
+          left: "-2px",
           border: "none",
           padding: 0,
           margin: 0,

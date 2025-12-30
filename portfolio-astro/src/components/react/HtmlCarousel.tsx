@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { CaretLeft, CaretRight } from 'phosphor-react'
 import type { ReactNode } from 'react'
 
 interface HtmlCarouselProps {
@@ -79,7 +79,7 @@ export function HtmlCarousel({
               aria-label="Previous slide"
               title="Previous slide"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <CaretLeft className="w-6 h-6" />
             </button>
             <button
               onClick={scrollNext}
@@ -88,7 +88,7 @@ export function HtmlCarousel({
               aria-label="Next slide"
               title="Next slide"
             >
-              <ChevronRight className="w-6 h-6" />
+              <CaretRight className="w-6 h-6" />
             </button>
           </>
         )}

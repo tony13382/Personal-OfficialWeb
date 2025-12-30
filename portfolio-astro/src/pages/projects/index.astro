@@ -21,21 +21,6 @@ const sortedProjects = allProjects.sort((a, b) => {
   headerType="main"
 >
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
-    <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-16 md:py-24">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1
-          class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
-        >
-          呂亮進
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mb-4">
-          一位多領域背景的產品創造者
-        </p>
-        <p class="text-lg text-gray-500">AI 工程師 · 產品設計師 · 全端開發者</p>
-      </div>
-    </section>
-
     <!-- Projects Section -->
     <section class="container mx-auto px-4 py-12">
       <div class="max-w-6xl mx-auto">
@@ -60,9 +45,9 @@ const sortedProjects = allProjects.sort((a, b) => {
                     {project.data.pin && (
                       <div
                         class="absolute top-3 right-3"
-                        style={`color: ${themeColors.primary}`}
+                        style={`color: ${themeColors.secondary}`}
                       >
-                        <Star className="size-4" weight="fill" />
+                        <Star className="size-4" />
                       </div>
                     )}
                     <div

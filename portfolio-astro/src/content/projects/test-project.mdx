@@ -11,7 +11,7 @@ tags: [Astro, React, shadcn/ui, MDX]
 links:
   - content: GitHub
     href: https://github.com
-    icon: Github
+    icon: GithubLogo
 tools:
   - name: Astro
     description: 靜態網站生成器
@@ -259,6 +259,11 @@ export const tabsData = [
           client:load
         />
 
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
     <UiImageCarousel
       images={[
         "https://picsum.photos/800/400?random=1",
@@ -268,15 +273,14 @@ export const tabsData = [
       autoplaySpeed={3000}
       client:load
     />
-
+  </CardHeader>
+  <CardContent>
+  ## Canva
   </CardContent>
 </Card>
 
 
 <Card>
-  <CardTitle>
-    Canva 組件
-  </CardTitle>
   <CardHeader>
     <Canva
       src="https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
@@ -284,4 +288,7 @@ export const tabsData = [
       client:visible
     />
   </CardHeader>
+  <CardContent>
+  ## Canva
+  </CardContent>
 </Card>

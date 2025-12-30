@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { CaretLeft, CaretRight } from 'phosphor-react'
 
 interface UiImageCarouselProps {
   images: string[]
@@ -55,10 +55,10 @@ export function UiImageCarousel({
   }, [emblaApi, onSelect])
 
   return (
-    <div className={`mt-3 mb-5 ${className}`}>
+    <div className={`${className ? className : "mt-5 mb-5"}`}>
       {/* Carousel viewport */}
       <div className="relative">
-        <div className="overflow-hidden rounded-inline-basic" ref={emblaRef}>
+        <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {images.map((image, index) => (
               <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
@@ -84,7 +84,7 @@ export function UiImageCarousel({
               aria-label="Previous slide"
               title="Previous slide"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <CaretLeft className="w-6 h-6" />
             </button>
             <button
               onClick={scrollNext}
@@ -93,7 +93,7 @@ export function UiImageCarousel({
               aria-label="Next slide"
               title="Next slide"
             >
-              <ChevronRight className="w-6 h-6" />
+              <CaretRight className="w-6 h-6" />
             </button>
           </>
         )}
@@ -101,7 +101,7 @@ export function UiImageCarousel({
 
       {/* Dot indicators */}
       {images.length > 1 && (
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-4">
           {images.map((_, index) => (
             <button
               key={index}
