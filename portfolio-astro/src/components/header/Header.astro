@@ -1,11 +1,10 @@
 ---
 import {
-  EnvelopeIcon,
-  FacebookLogoIcon,
-  LinkedinLogoIcon,
   ArrowLeftIcon,
 } from "@phosphor-icons/react";
 import { MobileNav } from "@/components/header/MobileNav";
+import { SocialLinks } from "@/components/header/SocialLinks";
+import { mainLinks } from "@/components/header/index";
 
 interface Props {
   type?: "main" | "project";
@@ -63,18 +62,14 @@ const { type = "main", themeColor } = Astro.props;
         {
           type === "main" ? (
             <>
-              <a
-                href="/projects/"
+              {mainLinks.map((link) => (
+                <a
+                href={link.href}
                 class="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap"
               >
-                所有作品
+                {link.label}
               </a>
-              <a
-                href="/awards/"
-                class="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap"
-              >
-                我的獎項
-              </a>
+              ))}
               <span class="text-gray-400 px-2">｜</span>
             </>
           ) : (
@@ -83,33 +78,7 @@ const { type = "main", themeColor } = Astro.props;
         }
 
         <!-- Social Links -->
-        <a
-          href="mailto:liangchinlu@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
-        >
-          <EnvelopeIcon className="size-5" />
-          <span>信箱</span>
-        </a>
-        <a
-          href="https://www.facebook.com/tony13382/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
-        >
-          <FacebookLogoIcon className="size-5" />
-          <span>臉書</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/liang-chin-lu/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted"
-        >
-          <LinkedinLogoIcon className="size-5" />
-          <span>領英</span>
-        </a>
+        <SocialLinks client:load />
       </div>
 
       <!-- Mobile Navigation (Sheet) -->

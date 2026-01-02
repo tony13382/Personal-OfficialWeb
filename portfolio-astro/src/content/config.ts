@@ -39,7 +39,7 @@ const projectsCollection = defineCollection({
     pin: z.boolean().default(false),
 
     // 分類與標籤
-    skillTypes: z.array(z.string()).default([]),
+    skillTypes: z.array(z.enum(['dev', 'design', 'plan'])).default([]),
     tags: z.array(z.string()).default([]),
 
     // 關聯資料
@@ -56,6 +56,36 @@ const projectsCollection = defineCollection({
   })
 })
 
+// Jobs Collection
+const jobsCollection = defineCollection({
+  type: 'content',  // MDX 內容
+  schema: z.object({
+    // 基本資訊
+    title: z.string(),
+    company: z.string(),
+
+    // 時間
+    startDate: z.coerce.date().optional().nullable(),
+    endDate: z.coerce.date().optional().nullable(),
+
+    // 視覺
+    theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
+    cover: z.string(),
+    logo: z.string().optional(),
+
+    // 工作描述
+    description: z.array(z.string()).default([]),
+
+    // SEO
+    seo: z.object({
+      metaTitle: z.string().optional(),
+      metaDescription: z.string().optional(),
+      ogImage: z.string().optional()
+    }).optional()
+  })
+})
+
 export const collections = {
   projects: projectsCollection,
+  jobs: jobsCollection,
 }

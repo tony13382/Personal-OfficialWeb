@@ -6,7 +6,7 @@ import { IconBlock } from './IconBlock';
 import { Fragment } from 'react';
 
 // 將反引號包裹的文字轉換為 highlight span
-const parseTextWithHighlight = (text: string) => {
+export const parseTextWithHighlight = (text: string) => {
     const parts = text.split(/(`[^`]+`)/g);
     return parts.map((part, index) => {
         if (part.startsWith('`') && part.endsWith('`')) {

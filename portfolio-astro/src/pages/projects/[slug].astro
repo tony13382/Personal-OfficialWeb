@@ -37,42 +37,7 @@ const themeColors = themes[project.data.theme];
   headerType="project"
   themeColor={themeColors.primary}
 >
-  <!-- 動態 CSS 變量 -->
-  <style
-    define:vars={{
-      "theme-primary": themeColors.primary,
-      "theme-secondary": themeColors.secondary,
-    }}
-  >
-    :global(:root) {
-      /* CSS variables injected via define:vars */
-      h2 {
-        color: var(--theme-primary);
-      }
-      .text-highlight {
-        color: var(--theme-primary);
-        margin: 0 2px;
-        padding: 0 4px;
-        font-weight: 800;
-        background: linear-gradient(to top, #55555540 30%, transparent 30%);
-        background-position: bottom;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-      }
-      code {
-        color: var(--theme-primary);
-        margin: 0 2px;
-        padding: 0 4px;
-        font-weight: 800;
-        background: linear-gradient(to top, #55555540 30%, transparent 30%);
-        background-position: bottom;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-      }
-    }
-  </style>
-
-  <div style=`background-color: ${themeColors.primary}10;`>
+  <div>
     <!-- Header Section -->
     <div
       class="relative py-20 w-full"

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { List, X, FacebookLogo, LinkedinLogo, Envelope, EnvelopeIcon, FacebookLogoIcon, LinkedinLogoIcon, ListIcon } from '@phosphor-icons/react'
 import {
   Sheet,
   SheetContent,
@@ -7,47 +6,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { ListIcon } from '@phosphor-icons/react'
+import { mainLinks, socialLinks, type NavLink } from "@/components/header/index"
 
-interface NavLink {
-  href: string
-  label: string
-  icon?: React.ReactNode
-  external?: boolean
-}
 
 interface MobileNavProps {
   type?: 'main' | 'project'
   themeColor?: string
 }
 
+
+
 export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
   const [open, setOpen] = useState(false)
-
-  const mainLinks: NavLink[] = [
-    { href: '/projects/', label: '所有作品' },
-    { href: '/awards/', label: '我的獎項' },
-  ]
-
-  const socialLinks: NavLink[] = [
-    {
-      href: 'mailto:liangchinlu@gmail.com',
-      label: '信箱',
-      icon: <EnvelopeIcon className="size-5" />,
-      external: true,
-    },
-    {
-      href: 'https://www.facebook.com/tony13382/',
-      label: 'Facebook',
-      icon: <FacebookLogoIcon className="size-5" />,
-      external: true,
-    },
-    {
-      href: 'https://www.linkedin.com/in/liang-chin-lu/',
-      label: 'LinkedIn',
-      icon: <LinkedinLogoIcon className="size-5" />,
-      external: true,
-    },
-  ]
 
   const projectLinks: NavLink[] = [{ href: '/', label: '首頁' }]
 

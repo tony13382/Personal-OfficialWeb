@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { themes } from "@/lib/themes";
+import { Trophy, ArrowRight } from "@phosphor-icons/react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+// 獲取所有專案
+const allProjects = await getCollection("projects");
+
+// 篩選出有獎項的專案，並按日期從新到舊排序
+const awardProjects = allProjects
+  .filter((project) => project.data.scores && project.data.scores.length > 0)
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+---
+
+<BaseLayout
+  title="得獎紀錄 - 呂亮進"
+  description="呂亮進的專案得獎紀錄"
+  ogImage="/assets/MetaTagCover.png"
+  headerType="main"
+>
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
+    <!-- Awards Section -->
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+          <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">
+            得獎紀錄
+          </h1>
+        </div>
+
+        <!-- Awards List -->
+        <div class="space-y-6">
+          {
+            awardProjects.map((project) => {
+              const themeColors = themes[project.data.theme];
+              return (
+                <Card>
+                  <CardContent className="gap-4">
+                    <div class="flex">
+                      <div class="flex-1 grid">
+                        <h2
+                          class="text-xl font-bold mb-2"
+                          style={`color: ${themeColors.primary}`}
+                        >
+                          {project.data.title}
+                        </h2>
+                        <p class="text-sm text-gray-500">
+                          {project.data.startDate.toLocaleDateString("zh-TW", {
+                            year: "numeric",
+                            month: "long",
+                          })}
+                          {project.data.endDate
+                            ? ` - ${project.data.endDate.toLocaleDateString("zh-TW", { year: "numeric", month: "long" })}`
+                            : " - 現在"}
+                        </p>
+                      </div>
+                      <a href={`/projects/${project.slug}/`}>
+                        <Button variant="outline">查看專案</Button>
+                      </a>
+                    </div>
+                    <hr />
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {project.data.scores.map((score, index) => (
+                        <div class="flex items-start gap-3">
+                          <div class="flex-1">
+                            <div class="flex items-baseline gap-2 flex-wrap">
+                              <span class="text-xl font-semibold text-gray-900">
+                                {score.award}
+                              </span>
+                              {score.category && (
+                                <span class="text-sm text-gray-500">
+                                  ({score.category})
+                                </span>
+                              )}
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">
+                              {score.title}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+        </div>
+
+        {/* Empty State */}
+        {
+          awardProjects.length === 0 && (
+            <div class="text-center py-12">
+              <Trophy className="size-16 mx-auto mb-4 text-gray-300" />
+              <p class="text-gray-500">目前沒有得獎紀錄</p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

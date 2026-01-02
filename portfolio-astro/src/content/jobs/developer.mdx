@@ -1,0 +1,98 @@
+---
+title: 接案經驗
+company: AI 系統開發／全端網頁開發
+startDate: 2021-07-20
+endDate: null
+theme: natural
+cover: /assets/imgs/jobs/0000_Developer/cover.png
+logo: /assets/imgs/jobs/0000_Developer/logo.png
+description:
+  - "`前端`：Bootstrap, Tailwind CSS"
+  - "`後端`：FastAPI, Flask, Node.js, Apache Tomcat, Ruby on rails"
+  - "`DB`：PostgreSQL, MySQL, MongoDB, Firebase"
+seo:
+  metaTitle: 接案經驗 - AI 系統開發／全端網頁開發 - 呂亮進的工作經歷
+  metaDescription: 全端網頁開發與 AI 系統開發經驗，涵蓋前端、後端與資料庫技術。
+  ogImage: /assets/imgs/jobs/0000_Developer/cover.png
+---
+
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { ArrowUpRightIcon } from '@phosphor-icons/react'
+
+<Card>
+  <CardHeader>
+    <img src="/assets/imgs/projects/fileTaggerWeb/Cover.png" alt="File Tagger Web" class="img-fluid" />
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <h4>File Tagger Web</h4>
+    <ul className="space-y-2">
+      <li>PostgreSQL 作為核心資料庫，存處所有標籤資料，並搭配 alembic 管理資料庫</li>
+      <li>前端採用 Jinja2 模版語言，並搭配 Bootstrap 打造 RWD 響應式網頁</li>
+      <li>後端採用 fastapi 確保多併發安全執行</li>
+      <li>Docker Compose 部屬，杜絕環境干擾</li>
+    </ul>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <img src="/assets/imgs/projects/chenmko/cover.png" alt="晨茂企業" class="img-fluid" />
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="flex items-center justify-between">
+      <h4>晨茂企業</h4>
+      <Button variant="outline" size="sm">
+        <a href="/projects/chenmko" className="flex items-center gap-1.5">
+          <ArrowUpRightIcon className="size-4" />
+          查看專案
+        </a>
+      </Button>
+    </div>
+    <ul className="space-y-2">
+      <li>基於 php 與 PostgreSQL 打造包含 產品、公告、企業資訊的管理系統</li>
+      <li>特殊資料表設計`動態調整產品欄位顯示`</li>
+      <li>使用 Bootstrap 打造 RWD 響應式網頁</li>
+    </ul>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <img src="/assets/imgs/projects/hsCloudMeetingManage/cover.png" alt="雲端會議管理系統" class="img-fluid" />
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="flex items-center justify-between">
+      <h4>雲端會議管理系統</h4>
+      <Button variant="outline" size="sm">
+        <a href="/projects/hs-cloud-meeting-manage" className="flex items-center gap-1.5">
+          <ArrowUpRightIcon className="size-4" />
+          查看專案
+        </a>
+      </Button>
+    </div>
+    <ul className="space-y-2">
+      <li>涵蓋設計與全端開發工作</li>
+      <li>基於 Node.js＋Jitsi Meet 作為會議系統後端核心</li>
+      <li>結合 Bootstrap 打造 RWD 響應式網頁</li>
+    </ul>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <img src="/assets/imgs/projects/hsVmi/cover.png" alt="虛擬製造整合系統" class="img-fluid" />
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="flex items-center justify-between">
+      <h4>虛擬製造整合系統</h4>
+      <Button variant="outline" size="sm">
+        <a href="/projects/hs-vmi" className="flex items-center gap-1.5">
+          <ArrowUpRightIcon className="size-4" />
+          查看專案
+        </a>
+      </Button>
+    </div>
+  </CardContent>
+</Card>
