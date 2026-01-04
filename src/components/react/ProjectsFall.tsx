@@ -474,7 +474,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </TooltipProvider>
             </div>
             <ArrowDownIcon className='size-8 text-muted-foreground' />
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
               <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
                 <p className='text-center text-muted-foreground'>簡報</p>
                 <TooltipProvider>
