@@ -10,6 +10,7 @@ import {
   EnvelopeIcon,
   WalletIcon,
   MessengerLogoIcon,
+  LinkedinLogoIcon,
 } from "@phosphor-icons/react";
 ---
 
@@ -18,7 +19,7 @@ import {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Links Section -->
       <div class="col-span-1 lg:col-span-2">
-        <h4 class="text-xl text-muted-foreground font-semibold mb-4 px-4">
+        <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">
           連結 Links
         </h4>
         <a
@@ -112,6 +113,16 @@ import {
               class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
             >
               <EnvelopeIcon
+                className="size-5 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/liang-chin-lu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            >
+              <LinkedinLogoIcon
                 className="size-5 group-hover:scale-110 transition-transform"
               />
             </a>

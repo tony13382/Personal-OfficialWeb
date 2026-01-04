@@ -5,15 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import {
   ArrowRightIcon,
-  DotIcon,
   DownloadSimpleIcon,
   EnvelopeIcon,
   GithubLogoIcon,
   InfoIcon,
   InstagramLogoIcon,
+  LinkedinLogoIcon,
   MessengerLogoIcon,
   PaperPlaneTiltIcon,
-  Star,
 } from "@phosphor-icons/react";
 import { ProjectsFall } from "@/components/react/ProjectsFall";
 import { JobsFall } from "@/components/react/JobsFall";
@@ -113,6 +112,16 @@ const sortedJobs = allJobs
                         class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
                       >
                         <EnvelopeIcon
+                          className="size-5 group-hover:scale-110 transition-transform"
+                        />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/liang-chin-lu/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+                      >
+                        <LinkedinLogoIcon
                           className="size-5 group-hover:scale-110 transition-transform"
                         />
                       </a>

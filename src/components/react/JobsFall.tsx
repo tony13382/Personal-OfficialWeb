@@ -37,30 +37,28 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
             className="group flex bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
             <div className="flex-3 flex flex-col p-5 pb-3">
-              <div className="flex gap-3">
+              <div className="flex gap-3 mb-3">
                 {job.data.logo && (
                   <div className="flex-shrink-0">
                     <img
                       src={job.data.logo}
                       alt=""
-                      className="h-12 w-12 mt-0.5 rounded-lg"
+                      className="size-16 mt-0.5 rounded-lg"
                     />
                   </div>
                 )}
-                <div className="flex-1">
+                <div className="flex-1 grid gap-2">
                   <h3
-                    className="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
+                    className="text-xl font-bold group-hover:text-opacity-80 transition-colors line-clamp-2"
                     style={{ color: themeColors.primary }}
                   >
                     {job.data.title}
                   </h3>
                   <p
-                    className="text-sm font-semibold text-gray-700 mb-3"
+                    className="text-sm font-semibold text-foreground"
                     dangerouslySetInnerHTML={{ __html: job.data.company }}
                   />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 mb-2">{timeStr}</p>
+                  <p className="text-xs text-muted-foreground">{timeStr}</p>
                 </div>
               </div>
 
