@@ -66,7 +66,7 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
           <p className="px-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
             聯絡方式
           </p>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 gap-2">
             {socialLinks.map((link) => (
               <a
                 key={link.href}

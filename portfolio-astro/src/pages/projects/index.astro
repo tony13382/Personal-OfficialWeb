@@ -1,9 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Badge } from "@/components/ui/badge";
+import { ProjectsFall } from "@/components/react/ProjectsFall";
 import { themes } from "@/lib/themes";
-import { Star, StarIcon } from "@phosphor-icons/react";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序
@@ -24,75 +23,7 @@ const sortedProjects = allProjects.sort((a, b) => {
     <!-- Projects Section -->
     <section class="container mx-auto px-4 py-12">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8">專案作品</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            sortedProjects.map((project) => {
-              const themeColors = themes[project.data.theme];
-              return (
-                <a
-                  href={`/projects/${project.slug}/`}
-                  class="group flex flex-col bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  {/* Cover Image */}
-                  <div class="relative h-auto overflow-hidden bg-gray-100">
-                    <img
-                      src={project.data.cover}
-                      alt={project.data.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {project.data.pin && (
-                      <div
-                        class="absolute top-3 right-3"
-                        style={`color: ${themeColors.secondary}`}
-                      >
-                        <StarIcon className="size-4" weight="fill" />
-                      </div>
-                    )}
-                    <div
-                      class="absolute bottom-0 left-0 right-0 h-1"
-                      style={`background-color: ${themeColors.primary}`}
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div class="flex-1 flex  flex-col p-5 pb-3">
-                    {/* Date */}
-                    <p class="text-xs text-gray-400 mb-2">
-                      {project.data.startDate.toLocaleDateString("zh-TW", {
-                        year: "numeric",
-                        month: "2-digit",
-                      })}
-                      {project.data.endDate
-                        ? ` - ${project.data.endDate.toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit" })}`
-                        : " - 現在"}
-                    </p>
-                    <h3
-                      class="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
-                      style={`color: ${themeColors.primary}`}
-                    >
-                      {project.data.title}
-                    </h3>
-
-                    <p class="flex-1 text-gray-600 text-sm mb-4">
-                      {project.data.description}
-                    </p>
-
-                    {/* Tags */}
-                    <div class="flex flex-wrap gap-2">
-                      {project.data.tags.map((tag: string) => (
-                        <Badge variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </a>
-              );
-            })
-          }
-        </div>
+        <ProjectsFall projects={sortedProjects} themes={themes} client:load />
       </div>
     </section>
   </div>

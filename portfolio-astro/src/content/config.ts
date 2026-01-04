@@ -31,7 +31,7 @@ const projectsCollection = defineCollection({
     // 時間與狀態
     startDate: z.coerce.date(),
     endDate: z.coerce.date().optional().nullable(),
-    status: z.enum(['active', 'closed', 'paused']).default('active'),
+    status: z.enum(['active', 'closed', 'paused', 'switch']).default('active'),
 
     // 視覺與分類
     theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),

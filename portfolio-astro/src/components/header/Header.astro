@@ -48,12 +48,12 @@ const { type = "main", themeColor } = Astro.props;
             </span>
           </a>
         ) : (
-          <a
-            href="/"
-            class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-foreground/20 p-4 rounded-full"
+          <button
+            onclick="history.back()"
+            class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-foreground/20 p-4 rounded-full cursor-pointer border-0 bg-transparent"
           >
             <ArrowLeftIcon className="size-6" />
-          </a>
+          </button>
         )
       }
 

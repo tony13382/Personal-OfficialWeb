@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { themes } from "@/lib/themes";
-import { JobDescription } from "@/components/jobs/JobDescription";
+import { JobsFall } from "@/components/react/JobsFall";
 
 const allJobs = await getCollection("jobs");
 
@@ -21,14 +21,6 @@ const sortedJobs = allJobs.sort((a, b) => {
   return bDate - aDate;
 });
 
-// 格式化日期
-const formatDate = (date: Date | null | undefined) => {
-  if (!date) return null;
-  return date.toLocaleDateString("zh-TW", {
-    year: "numeric",
-    month: "2-digit",
-  });
-};
 ---
 
 <BaseLayout
@@ -43,69 +35,7 @@ const formatDate = (date: Date | null | undefined) => {
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold mb-8">工作經歷</h2>
 
-        <div class="grid grid-cols-1 gap-4">
-          {
-            sortedJobs.map((job) => {
-              const themeColors = themes[job.data.theme];
-              const startDateStr = formatDate(job.data.startDate);
-              const endDateStr = job.data.endDate
-                ? formatDate(job.data.endDate)
-                : "現在";
-              const timeStr =
-                startDateStr && endDateStr
-                  ? `${startDateStr} ~ ${endDateStr}`
-                  : startDateStr || endDateStr || "---";
-
-              return (
-                <a
-                  href={`/jobs/${job.slug}/`}
-                  class="group flex bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  {/* Content */}
-                  <div class="flex-3 flex flex-col p-5 pb-3">
-                    {/* Date */}
-                    <div class="flex gap-3">
-                      {job.data.logo && (
-                        <div class="flex-shrink-0">
-                          <img
-                            src={job.data.logo}
-                            alt=""
-                            class="h-12 w-12 mt-0.5 rounded-lg"
-                          />
-                        </div>
-                      )}
-                      <div class="flex-1">
-                        <h3
-                          class="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
-                          style={`color: ${themeColors.primary}`}
-                        >
-                          {job.data.title}
-                        </h3>
-                        <p
-                          class="text-sm font-semibold text-gray-700 mb-3"
-                          set:html={job.data.company}
-                        />
-                      </div>
-                      <div>
-                        <p class="text-xs text-gray-400 mb-2">{timeStr}</p>
-                      </div>
-                    </div>
-
-                    {job.data.description &&
-                      job.data.description.length > 0 && (
-                        <div class="pt-4 border-t">
-                          <JobDescription
-                            descriptions={job.data.description}
-                            client:load
-                          />
-                        </div>
-                      )}
-                  </div>
-                </a>
-              );
-            })
-          }
-        </div>
+        <JobsFall jobs={sortedJobs} themes={themes} />
       </div>
     </section>
   </div>

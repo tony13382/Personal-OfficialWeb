@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import * as PhosphorIcons from "@phosphor-icons/react";
 import { Dot, DotOutline, Star } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { string } from "astro:schema";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -28,6 +29,24 @@ const seo = {
 
 // 主題顏色
 const themeColors = themes[project.data.theme];
+
+//Get Status Badge
+const getStatusBadge = (statusStr: string) => {
+  switch (statusStr) {
+    case "active":
+      return { text: "進行中", class: "bg-green-600 hover:bg-green-700" };
+    case "closed":
+      return { text: "已結束", class: "bg-stone-600 hover:bg-stone-700" };
+    case "switch":
+      return { text: "已交接", class: "bg-teal-600 hover:bg-teal-700" };
+    case "paused":
+      return { text: "暫停中", class: "bg-amber-600 hover:bg-amber-700" };
+    default:
+      return { text: "未知", class: "" };
+  }
+};
+
+const statusBadge = getStatusBadge(project.data.status);
 ---
 
 <BaseLayout
@@ -79,15 +98,9 @@ const themeColors = themes[project.data.theme];
             <Card>
               <CardContent className="space-y-4">
                 <div class="flex items-center justify-between gap-2">
-                  <Badge>
-                    {
-                      project.data.status === "active"
-                        ? "進行中"
-                        : project.data.status === "closed"
-                          ? "已結束"
-                          : "暫停"
-                    }
-                  </Badge>
+                  <Badge className={getStatusBadge(project.data.status).class}
+                    >{getStatusBadge(project.data.status).text}</Badge
+                  >
                   {
                     project.data.pin && (
                       <Badge variant="outline">

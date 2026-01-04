@@ -76,7 +76,7 @@ const timeStr =
         <div class="relative lg:col-span-4 col-span-12 z-10">
           <div class="sticky top-0 pt-23">
             <Card>
-              <CardContent className="flex-row gap-4">
+              <CardContent className="gap-4 items-center">
                 {
                   job.data.logo && (
                     <img
@@ -86,12 +86,12 @@ const timeStr =
                     />
                   )
                 }
-                <div class="">
+                <div class="grid items-center">
                   <p
-                    class="font-bold text-lg notoFont"
+                    class="font-bold text-lg text-center notoFont"
                     set:html={job.data.company}
                   />
-                  <p class="text-muted-foreground">{timeStr}</p>
+                  <p class="text-muted-foreground text-center">{timeStr}</p>
                 </div>
               </CardContent>
             </Card>

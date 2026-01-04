@@ -20,173 +20,97 @@ seo:
   ogImage: /assets/imgs/jobs/2019_CycuEdu/cover.png
 ---
 
-import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { ArrowUpRightIcon } from '@phosphor-icons/react'
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/mindReader/cover.png" alt="Mind Reader" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>Mind Reader</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/mind-reader" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>結合用戶分析需求並使用 Figma `設計產品原型`。</li>
-      <li>基於 `Azure LUIS` 技術分析文本意圖與結構，並結合 Firebase 字詞庫微調用戶輸入文本。</li>
-      <li>基於 Django 框架`開發 LineBot`，實現即時的對話與互動。</li>
-      <li>使用 Flask 框架`開發 RESTful API`，實現了高效的資料存取與處理。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/mindReader/cover.png"
+  imageAlt="Mind Reader"
+  name="Mind Reader"
+  link="/projects/mind-reader"
+  descriptions={[
+    "結合用戶分析需求並使用 Figma `設計產品原型`。",
+    "基於 `Azure LUIS` 技術分析文本意圖與結構，並結合 Firebase 字詞庫微調用戶輸入文本。",
+    "基於 Django 框架`開發 LineBot`，實現即時的對話與互動。",
+    "使用 Flask 框架`開發 RESTful API`，實現了高效的資料存取與處理。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/hsCloudMeetingManage/cover.png" alt="雲端會議管理系統" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>雲端會議管理系統</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/hs-cloud-meeting-manage" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>結合用戶分析需求並使用 Figma `設計產品原型`。</li>
-      <li>使用 `Node.js` 與 `mongoDB` 開發後端系統，實現了高效的資料存取與處理。</li>
-      <li>使用 `Jitsi Meet` 建構線上會議。</li>
-      <li>使用 `Bootstrap` 建構出 RWD 網頁介面。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/hsCloudMeetingManage/cover.png"
+  imageAlt="雲端會議管理系統"
+  name="雲端會議管理系統"
+  link="/projects/hs-cloud-meeting-manage"
+  descriptions={[
+    "結合用戶分析需求並使用 Figma `設計產品原型`。",
+    "使用 `Node.js` 與 `mongoDB` 開發後端系統，實現了高效的資料存取與處理。",
+    "使用 `Jitsi Meet` 建構線上會議。",
+    "使用 `Bootstrap` 建構出 RWD 網頁介面。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/hsVmi/cover.png" alt="虛擬製造整合系統" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>虛擬製造整合系統</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/hs-vmi" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>使用 `Apache Tomcat (Java Page)` 與 `MySQL` 開發模擬物流系統。</li>
-      <li>使用 `Bootstrap` 建構出 RWD 網頁介面。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/hsVmi/cover.png"
+  imageAlt="虛擬製造整合系統"
+  name="虛擬製造整合系統"
+  link="/projects/hs-vmi"
+  descriptions={[
+    "使用 `Apache Tomcat (Java Page)` 與 `MySQL` 開發模擬物流系統。",
+    "使用 `Bootstrap` 建構出 RWD 網頁介面。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/techlife/cover.png" alt="科技生活" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>科技生活</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/techlife" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>錄製 `Photopea` 的教學影片，並設計教學大綱並設計活動。</li>
-      <li>使用 `Premiere Pro` 剪輯影片微調節奏並加上字幕。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/techlife/cover.png"
+  imageAlt="TechLife 讓科技充滿生活 - Photopea 講師"
+  name="TechLife 讓科技充滿生活 - Photopea 講師"
+  link="/projects/techlife"
+  descriptions={[
+    "錄製 `Photopea` 的教學影片，並設計教學大綱並設計活動。",
+    "使用 `Premiere Pro` 剪輯影片微調節奏並加上字幕。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/foodome/cover.png" alt="Foodome" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <h4>Foodome</h4>
-    <ul className="space-y-2">
-      <li>結合用戶分析需求並使用 Figma `設計產品原型`。</li>
-      <li>作為行銷策劃人員，主要負責`市場分析、安索夫矩陣、STP 策略和行銷 4P` 等工作。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/foodome/cover.png"
+  imageAlt="Foodome"
+  name="Foodome"
+  descriptions={[
+    "結合用戶分析需求並使用 Figma `設計產品原型`。",
+    "作為行銷策劃人員，主要負責`市場分析、安索夫矩陣、STP 策略和行銷 4P` 等工作。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/noDrinkNoDrunk/cover.png" alt="No Drink No Drunk" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>No Drink No Drunk</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/no-drink-no-drunk" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>結合用戶分析需求並使用 Figma `設計產品原型`。</li>
-      <li>使用 `Bootstrap` 建構出 RWD 網頁介面。</li>
-      <li>利用 `Github Pages` 靜態部署前端網頁。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/noDrinkNoDrunk/cover.png"
+  imageAlt="No Drink No Drunk"
+  name="No Drink No Drunk"
+  link="/projects/no-drink-no-drunk"
+  descriptions={[
+    "結合用戶分析需求並使用 Figma `設計產品原型`。",
+    "使用 `Bootstrap` 建構出 RWD 網頁介面。",
+    "利用 `Github Pages` 靜態部署前端網頁。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/jobAnalytics2020/cover.png" alt="2020 職缺分析" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>2020 職缺分析</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/job-analytics-2020" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>從政府資料開放平台中獲取資料，並使用 `Excel` 進行資料清理與整合。</li>
-      <li>使用 `Data Studio` 製作儀表板，線上部署成可操作網頁。</li>
-      <li>使用 `Powerpoint` 並利用資訊設計能力建構簡報。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/jobAnalytics2020/cover.png"
+  imageAlt="2020 職缺分析"
+  name="2020 職缺分析"
+  link="/projects/job-analytics-2020"
+  descriptions={[
+    "從政府資料開放平台中獲取資料，並使用 `Excel` 進行資料清理與整合。",
+    "使用 `Data Studio` 製作儀表板，線上部署成可操作網頁。",
+    "使用 `Powerpoint` 並利用資訊設計能力建構簡報。",
+  ]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/oneDayLover/cover.png" alt="One Day Lover" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <h4>One Day Lover</h4>
-      <Button variant="outline" size="sm">
-        <a href="/projects/one-day-lover" className="flex items-center gap-1.5">
-          <ArrowUpRightIcon className="size-4" />
-          查看專案
-        </a>
-      </Button>
-    </div>
-    <ul className="space-y-2">
-      <li>使用 `Apache Tomcat (Java Page)` 與 `MySQL` 開發商城。</li>
-      <li>使用 `Bootstrap` 建構出 RWD 網頁介面。</li>
-    </ul>
-  </CardContent>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/oneDayLover/cover.png"
+  imageAlt="One Day Lover"
+  name="One Day Lover"
+  link="/projects/one-day-lover"
+  descriptions={[
+    "使用 `Apache Tomcat (Java Page)` 與 `MySQL` 開發商城。",
+    "使用 `Bootstrap` 建構出 RWD 網頁介面。",
+  ]}
+/>

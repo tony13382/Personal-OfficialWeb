@@ -3,7 +3,23 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
-import { Star } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  DotIcon,
+  DownloadSimpleIcon,
+  EnvelopeIcon,
+  GithubLogoIcon,
+  InfoIcon,
+  InstagramLogoIcon,
+  MessengerLogoIcon,
+  PaperPlaneTiltIcon,
+  Star,
+} from "@phosphor-icons/react";
+import { ProjectsFall } from "@/components/react/ProjectsFall";
+import { JobsFall } from "@/components/react/JobsFall";
+import { Button } from "@/components/ui/button";
+import { PhoneIcon } from "@phosphor-icons/react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序
@@ -12,103 +28,170 @@ const sortedProjects = allProjects.sort((a, b) => {
   if (!a.data.pin && b.data.pin) return 1;
   return b.data.startDate.getTime() - a.data.startDate.getTime();
 });
+
+const allJobs = await getCollection("jobs");
+// 按日期排序（正在進行中的工作排最前面，然後按開始日期倒序）
+const sortedJobs = allJobs
+  .sort((a, b) => {
+    // 正在進行中的工作（endDate 為 null）排在最前面
+    const aIsActive = !a.data.endDate;
+    const bIsActive = !b.data.endDate;
+
+    if (aIsActive && !bIsActive) return -1;
+    if (!aIsActive && bIsActive) return 1;
+
+    // 都是進行中或都已結束，按開始日期倒序排列
+    const aDate = a.data.startDate?.getTime() || 0;
+    const bDate = b.data.startDate?.getTime() || 0;
+    return bDate - aDate;
+  })
+  .splice(0, 3);
 ---
 
 <BaseLayout
-  title="呂亮進・一位多領域背景的產品創造者"
+  title="呂亮進・結合 AI 技術與設計思維的全端工程師"
   description="關於呂亮進 - AI 工程師、產品設計師、全端開發者"
   ogImage="/assets/MetaTagCover.png"
   headerType="main"
 >
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
     <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-16 md:py-24">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1
-          class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
-        >
-          呂亮進
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mb-4">
-          一位多領域背景的產品創造者
-        </p>
-        <p class="text-lg text-gray-500">AI 工程師 · 產品設計師 · 全端開發者</p>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="container mx-auto px-4 py-12">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8">專案作品</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            sortedProjects.map((project) => {
-              const themeColors = themes[project.data.theme];
-              return (
-                <a
-                  href={`/projects/${project.slug}/`}
-                  class="group flex flex-col bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  {/* Cover Image */}
-                  <div class="relative h-auto overflow-hidden bg-gray-100">
-                    <img
-                      src={project.data.cover}
-                      alt={project.data.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {project.data.pin && (
-                      <div
-                        class="absolute top-3 right-3"
-                        style={`color: ${themeColors.primary}`}
-                      >
-                        <Star className="size-4" weight="fill" />
-                      </div>
-                    )}
-                    <div
-                      class="absolute bottom-0 left-0 right-0 h-1"
-                      style={`background-color: ${themeColors.primary}`}
-                    />
+    <section class="container mx-auto px-4 pt-16 md:pt-24">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="grid items-center">
+          <h1
+            class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent tracking-wider leading-[1.5]"
+          >
+            結合 AI 技術與設計思維的全端工程師
+          </h1>
+          <div class="overflow-hidden">
+            <div class="overflow-hidden">
+              <Card
+                className="mt-12 transition-all duration-300 hover:mt-9 pb-4 hover:pb-7 inline-flex rounded-b-none"
+              >
+                <CardContent className="gap-6 items-center pt-3 pb-4">
+                  <div
+                    class="h-4 w-10 my-2 border rounded-full bg-[var(--theme-primary-10)] inset-shadow-sm"
+                  >
                   </div>
-
-                  {/* Content */}
-                  <div class="flex-1 flex  flex-col p-5 pb-3">
-                    {/* Date */}
-                    <p class="text-xs text-gray-400 mb-2">
-                      {project.data.startDate.toLocaleDateString("zh-TW", {
-                        year: "numeric",
-                        month: "2-digit",
-                      })}
-                      {project.data.endDate
-                        ? ` - ${project.data.endDate.toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit" })}`
-                        : " - 現在"}
-                    </p>
-                    <h3
-                      class="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
-                      style={`color: ${themeColors.primary}`}
+                  <img
+                    src="/assets/imgs/index/myHead.webp"
+                    alt="呂亮進頭像"
+                    class="size-32 rounded-full overflow-hidden"
+                  />
+                  <div class="px-4">
+                    <p
+                      class="text-xl md:text-2xl text-foreground font-bold mb-3"
                     >
-                      {project.data.title}
-                    </h3>
-
-                    <p class="flex-1 text-gray-600 text-sm mb-4">
-                      {project.data.description}
+                      呂亮進
                     </p>
-
-                    {/* Tags */}
-                    <div class="flex flex-wrap gap-2">
-                      {project.data.tags.map((tag: string) => (
-                        <Badge variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
+                    <p class="text-muted-foreground mb-3">
+                      AI 工程師、產品設計師、全端開發者
+                    </p>
+                  </div>
+                  <div class="flex gap-4">
+                    <a href="https://github.com/tony13382" target="_blank">
+                      <Button>
+                        <GithubLogoIcon className="size-12" /> Github
+                      </Button>
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1vN6BVqPXcnAzDVIDNJvWqHbNMjirxx0D/view?usp=sharing"
+                      target="_blank"
+                    >
+                      <Button>
+                        <DownloadSimpleIcon className="size-12" /> 下載履歷
+                      </Button>
+                    </a>
+                  </div>
+                  <div>
+                    <div class="flex px-1">
+                      <a
+                        href="mailto:liangchinlu@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+                      >
+                        <EnvelopeIcon
+                          className="size-5 group-hover:scale-110 transition-transform"
+                        />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/liang_chin_ml/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+                      >
+                        <InstagramLogoIcon
+                          className="size-5 group-hover:scale-110 transition-transform"
+                        />
+                      </a>
+                      <a
+                        href="https://www.facebook.com/tony13382/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+                      >
+                        <MessengerLogoIcon
+                          className="size-5 group-hover:scale-110 transition-transform"
+                        />
+                      </a>
+                      <a
+                        href="https://portaly.cc/liang_chin_ml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+                      >
+                        <InfoIcon
+                          className="size-5 group-hover:scale-110 transition-transform"
+                        />
+                      </a>
                     </div>
                   </div>
-                </a>
-              );
-            })
-          }
+                </CardContent>
+              </Card>
+            </div>
+            <div class="h-1 border-t"></div>
+          </div>
         </div>
       </div>
+
+      <!-- Projects Section -->
+      <section class="container mx-auto px-4 py-12">
+        <div class="max-w-6xl mx-auto space-y-12">
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold">工作經歷</h2>
+            <JobsFall jobs={sortedJobs} themes={themes} />
+            <div>
+              <a href="/jobs/" class="mx-auto">
+                <Button variant="outline" className="hover:[&>svg]:ms-1">
+                  顯示所有工作經歷
+                  <ArrowRightIcon className="transition-all duration-300" />
+                </Button>
+              </a>
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold mb-8">專案作品</h2>
+            <div class="max-w-6xl mx-auto">
+              <ProjectsFall
+                projects={sortedProjects}
+                themes={themes}
+                client:load
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
+
+    <a href="mailto:liangchinlu@gmail.com">
+      <button
+        class="fixed bottom-28 right-6 w-16 h-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-300 ease-in-out z-[1000] cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+        title="通知我"
+      >
+        <PaperPlaneTiltIcon className="size-8" />
+      </button>
+    </a>
   </div>
 </BaseLayout>

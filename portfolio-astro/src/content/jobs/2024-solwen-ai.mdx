@@ -18,96 +18,66 @@ seo:
   ogImage: /assets/imgs/jobs/2024_SolwenAi/cover.png
 ---
 
-import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/soeasyeduAITest/cover.png" alt="巨匠英語口說 AI 學習系統" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <h4>巨匠英語口說 AI 學習系統</h4>
-    <p className="text-muted-foreground">2024/11 ~ Now</p>
-    <hr />
-    <ul className="space-y-2">
-      <li>開發專注於英語學習的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。</li>
-      <li>結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。</li>
-      <li>針對對話紀錄動態調整難度，增加評估精準度。</li>
-      <li>針對對話內容結合 `Azure 語音評分工具`，提供詳細的對話與綜合報告，幫助用戶了解自己的口說表現。</li>
-    </ul>
-  </CardContent>
-  <CardFooter className="flex flex-wrap gap-2">
-    <Badge variant="secondary"># 語音系統</Badge>
-    <Badge variant="secondary"># API 開發</Badge>
-    <Badge variant="secondary"># Azure</Badge>
-    <Badge variant="secondary"># ORM</Badge>
-  </CardFooter>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/soeasyeduAITest/cover.png"
+  imageAlt="巨匠英語口說 AI 學習系統"
+  name="巨匠英語口說 AI 學習系統"
+  startDate="2024/11"
+  endDate="Now"
+  descriptions={[
+    "開發專注於英語學習的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。",
+    "結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。",
+    "針對對話紀錄動態調整難度，增加評估精準度。",
+    "針對對話內容結合 `Azure 語音評分工具`，提供詳細的對話與綜合報告，幫助用戶了解自己的口說表現。",
+  ]}
+  tags={["語音系統", "API 開發", "Azure", "React SPA"]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/longtengInvoice/cover.png" alt="龍騰發票視覺處理系統" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <h4>龍騰發票視覺處理系統</h4>
-    <p className="text-muted-foreground">2025/02 ~ 2026/03</p>
-    <hr />
-    <ul className="space-y-2">
-      <li>利用`多模態模型`進行發票影像處理，結合`OCR 與 LLM`技術，實現發票資料的自動化處理與分析。</li>
-      <li>系統能夠自動識別發票上的文字、數字和圖像，並將其轉換為結構化的數據格式，從而提高了發票處理的效率和準確性。</li>
-      <li>使用`Streamlit`開發前端介面，提供用戶友好的操作界面，並實現了即時的數據可視化與編輯功能。</li>
-    </ul>
-  </CardContent>
-  <CardFooter className="flex flex-wrap gap-2">
-    <Badge variant="secondary"># LLM 視覺多模態</Badge>
-    <Badge variant="secondary"># Streamlit</Badge>
-  </CardFooter>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/longtengInvoice/cover.png"
+  imageAlt="龍騰發票視覺處理系統"
+  name="龍騰發票視覺處理系統"
+  startDate="2025/02"
+  endDate="2026/03"
+  descriptions={[
+    "利用`多模態模型`進行發票影像處理，結合`OCR 與 LLM`技術，實現發票資料的自動化處理與分析。",
+    "系統能夠自動識別發票上的文字、數字和圖像，並將其轉換為結構化的數據格式，從而提高了發票處理的效率和準確性。",
+    "使用`Streamlit`開發前端介面，提供用戶友好的操作界面，並實現了即時的數據可視化與編輯功能。",
+  ]}
+  tags={["LLM 視覺多模態", "Streamlit", "OpenAI", "Anthropic"]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/pandaChinese/cover.png" alt="Panda Chinese・中文口說 AI 學習系統" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <h4>Panda Chinese・中文口說 AI 學習系統</h4>
-    <p className="text-muted-foreground">2024/11 ~ 2025/03</p>
-    <hr />
-    <ul className="space-y-2">
-      <li>開發特定主題的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。</li>
-      <li>結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。</li>
-      <li>針對對話內容提供詳細的報告，幫助用戶了解自己的口說表現。</li>
-      <li>基於`FastAPI`框架開發，實現了高效的 API 接口，並基於併發測試持續優化。</li>
-      <li>建立自動化 CI/CD 流程，結合 Docker Compose 部署搭配 alembic 進行資料庫版本控制，確保系統的穩定性與一致性。</li>
-    </ul>
-  </CardContent>
-  <CardFooter className="flex flex-wrap gap-2">
-    <Badge variant="secondary"># API 開發</Badge>
-    <Badge variant="secondary"># OpenAI Whisper</Badge>
-    <Badge variant="secondary"># 火山雲語音合成</Badge>
-  </CardFooter>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/pandaChinese/cover.png"
+  imageAlt="Panda Chinese・中文口說 AI 學習系統"
+  name="Panda Chinese・中文口說 AI 學習系統"
+  startDate="2024/11"
+  endDate="2025/03"
+  descriptions={[
+    "開發特定主題的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。",
+    "結合`火山雲`語音合成技術，實現了高品質的語音合成效果，使聲音更自然。",
+    "針對對話內容提供詳細的報告，幫助用戶了解自己的口說表現。",
+    "基於`FastAPI`框架開發，實現了高效的 API 接口，並基於併發測試持續優化。",
+    "建立自動化 CI/CD 流程，結合 Docker Compose 部署搭配 alembic 進行資料庫版本控制，確保系統的穩定性與一致性。",
+  ]}
+  tags={["API 開發", "OpenAI Whisper", "火山雲語音合成"]}
+/>
 
-<Card>
-  <CardHeader>
-    <img src="/assets/imgs/projects/enterpriseKnowledgeBase/cover.png" alt="Solwen RAG For Business" class="img-fluid" />
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <h4>Solwen RAG For Business</h4>
-    <p className="text-muted-foreground">2024/08 ~ 2024/11</p>
-    <hr />
-    <ul className="space-y-2">
-      <li>基於 FastAPI 框架規劃建構與`開發企業 AI 知識庫問答系統`。</li>
-      <li>深度與 AI 工程師合作，`整合 LangChain`工作流進系統。</li>
-      <li>使用 alembic 進行`資料庫版本控制`，確保資料庫結構的穩定性與一致性。</li>
-      <li>使用 PGVector 進行文本向量化管理，並結合`PostgreSQL`資料庫進行資料存儲與檢索。</li>
-      <li>使用`Docker`進行容器化部署，確保系統的可擴展性與穩定性。</li>
-      <li>使用 FastAPI `開發 RESTful API`，實現了高效的資料存取與處理。</li>
-    </ul>
-  </CardContent>
-  <CardFooter className="flex flex-wrap gap-2">
-    <Badge variant="secondary"># API 開發</Badge>
-    <Badge variant="secondary"># 自動化部署</Badge>
-    <Badge variant="secondary"># PGVector 整合</Badge>
-  </CardFooter>
-</Card>
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/enterpriseKnowledgeBase/cover.png"
+  imageAlt="Solwen RAG For Business"
+  name="Solwen RAG For Business"
+  startDate="2024/08"
+  endDate="2024/11"
+  descriptions={[
+    "基於 FastAPI 框架規劃建構與`開發企業 AI 知識庫問答系統`。",
+    "深度與 AI 工程師合作，`整合 LangChain`工作流進系統。",
+    "使用 alembic 進行`資料庫版本控制`，確保資料庫結構的穩定性與一致性。",
+    "使用 PGVector 進行文本向量化管理，並結合`PostgreSQL`資料庫進行資料存儲與檢索。",
+    "使用`Docker`進行容器化部署，確保系統的可擴展性與穩定性。",
+    "使用 FastAPI `開發 RESTful API`，實現了高效的資料存取與處理。",
+  ]}
+  tags={["API 開發", "自動化部署", "PGVector 整合"]}
+/>
