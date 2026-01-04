@@ -5,9 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import * as PhosphorIcons from "@phosphor-icons/react";
-import { Dot, DotOutline, Star } from "@phosphor-icons/react";
+import { StarIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { string } from "astro:schema";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -104,7 +103,7 @@ const statusBadge = getStatusBadge(project.data.status);
                   {
                     project.data.pin && (
                       <Badge variant="outline">
-                        <Star className="size-3 me-2" />
+                        <StarIcon className="size-3 me-2" />
                         精選
                       </Badge>
                     )
