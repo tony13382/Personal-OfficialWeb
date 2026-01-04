@@ -474,8 +474,8 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </TooltipProvider>
             </div>
             <ArrowDownIcon className='size-8 text-muted-foreground' />
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mt-4'>
+              <div className='inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted'>
                 <p className='text-center text-muted-foreground'>簡報</p>
                 <TooltipProvider>
                   <div className='flex flex-wrap justify-center gap-4'>
@@ -514,7 +514,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   </div>
                 </TooltipProvider>
               </div>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
+              <div className='inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted'>
                 <p className='text-center text-muted-foreground'>儀表板</p>
                 <TooltipProvider>
                   <div className='flex flex-wrap justify-center gap-4'>
@@ -722,7 +722,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               <div className='flex items-center justify-center gap-4'>
                 <div className='p-3 rounded-xl bg-muted'>
                   <TooltipProvider>
-                    <div className='flex gap-4'>
+                    <div className='flex flex-wrap justify-center gap-4'>
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <img src="/assets/imgs/appIcons/GoogleDocs.png" alt="GoogleDocs" className='size-14' />
