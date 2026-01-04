@@ -36,7 +36,7 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[300px] sm:w-[400px] bg-background flex flex-col px-4 py-6 rounded-s-2xl"
+        className="w-[300px] sm:w-[400px] bg-background flex flex-col px-4 py-6"
       >
         <SheetHeader>
           <SheetTitle className="text-left text-gray-900 dark:text-white">
