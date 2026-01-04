@@ -1,0 +1,66 @@
+---
+title: 接案經驗
+company: AI 系統開發／全端網頁開發
+startDate: 2021-07-20
+endDate: null
+theme: natural
+cover: /assets/imgs/jobs/0000_Developer/cover.png
+logo: /assets/imgs/jobs/0000_Developer/logo.png
+description:
+  - "`前端`：React SPA 前端開發、RWD 靜態網頁"
+  - "`後端`：FastAPI, Flask, Node.js, Apache Tomcat, Ruby on rails"
+  - "`DB`：PostgreSQL, MySQL, MongoDB, Firebase"
+seo:
+  metaTitle: 接案經驗 - AI 系統開發／全端網頁開發 - 呂亮進的工作經歷
+  metaDescription: 全端網頁開發與 AI 系統開發經驗，涵蓋前端、後端與資料庫技術。
+  ogImage: /assets/imgs/jobs/0000_Developer/cover.png
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/fileTaggerWeb/Cover.png"
+  imageAlt="專案文件管理系統"
+  name="專案文件管理系統"
+  descriptions={[
+    "PostgreSQL 作為核心資料庫，存處所有標籤資料，並搭配 `alembic 管理資料庫`。",
+    "前端採用 Jinja2 模版語言，並搭配 Bootstrap 打造 `RWD 響應式網頁`。",
+    "後端採用 `fastapi` 確保多併發安全執行。",
+    "Docker Compose 部屬，杜絕環境干擾。",
+  ]}
+  tags={["Docker","全端開發","Python"]}
+/>
+
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/chenmko/cover.png"
+  imageAlt="Chenmko 全端網頁開發"
+  name="Chenmko 全端網頁開發"
+  link="/projects/chenmko"
+  descriptions={[
+    "基於 php 與 PostgreSQL 打造包含 產品、公告、企業資訊的管理系統。",
+    "特殊資料表設計`動態調整產品欄位顯示`。",
+    "使用 Bootstrap 打造 RWD 響應式網頁。",
+  ]}
+  tags={["全端開發","php"]}
+/>
+
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/hsCloudMeetingManage/cover.png"
+  imageAlt="雲端會議管理系統"
+  name="雲端會議管理系統"
+  link="/projects/hs-cloud-meeting-manage"
+  descriptions={[
+    "涵蓋設計與全端開發工作。",
+    "基於 Node.js＋Jitsi Meet 作為會議系統後端核心。",
+    "結合 Bootstrap 打造 RWD 響應式網頁。",
+  ]}
+  tags={["全端開發","NodeJs","UI Design"]}
+/>
+
+<JobProjectCard
+  imageSrc="/assets/imgs/projects/hsVmi/cover.png"
+  imageAlt="虛擬製造整合系統"
+  name="虛擬製造整合系統"
+  link="/projects/hs-vmi"
+  tags={["Java Page","MySQL"]}
+/>

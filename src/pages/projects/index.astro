@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { ProjectsFall } from "@/components/react/ProjectsFall";
+import { themes } from "@/lib/themes";
+
+const allProjects = await getCollection("projects");
+// 按 pin 和日期排序
+const sortedProjects = allProjects.sort((a, b) => {
+  if (a.data.pin && !b.data.pin) return -1;
+  if (!a.data.pin && b.data.pin) return 1;
+  return b.data.startDate.getTime() - a.data.startDate.getTime();
+});
+---
+
+<BaseLayout
+  title="呂亮進・一位多領域背景的產品創造者"
+  description="關於呂亮進 - AI 工程師、產品設計師、全端開發者"
+  ogImage="/assets/MetaTagCover.png"
+  headerType="main"
+>
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
+    <!-- Projects Section -->
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-6xl mx-auto">
+        <ProjectsFall projects={sortedProjects} themes={themes} client:load />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

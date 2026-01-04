@@ -1,0 +1,79 @@
+---
+title: 知識庫與精選書籤
+description: "[Notion As DB 實驗專案] 基於 Notion API, Cloudflare Pages 所打造的靜態網頁流程"
+startDate: 2022-03-01
+status: active
+theme: natural
+cover: /assets/imgs/projects/notionAsDb/cover.png
+pin: true
+skillTypes: [dev]
+tags: [網站架設, Notion, 靜態網頁]
+links:
+  - content: Notion 截取模組
+    href: https://github.com/tony13382/PythonPackage-NotionRetrieve
+    icon: GithubLogo
+    openInTab: true
+  - content: 亮進的精選書籤
+    href: https://bm.lianglu.uk/
+    icon: Bookmarks
+    openInTab: true
+  - content: 知識推薦獲取來源
+    href: https://learn.lianglu.uk/
+    icon: GraduationCap
+    openInTab: true
+tools:
+  - name: Notion
+    description: 網頁資料庫
+  - name: App Script
+    description: 定時觸發自動化部署
+  - name: Cloudflare Pages
+    description: 靜態網頁部署
+seo:
+  metaTitle: 知識庫與精選書籤 - 呂亮進的專案作品
+  metaDescription: "[Notion As DB 實驗專案] 基於 Notion API, Cloudflare Pages 所打造的靜態網頁流程"
+  ogImage: /assets/imgs/projects/notionAsDb/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/notionAsDb/workflow.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <h2>工作流程</h2>
+
+    <div className="flex flex-col gap-4 mt-4">
+      <IconBlock
+        title="步驟ㄧ：建置 Notion 資料庫"
+        subtitle="建立 Notion 資料庫，並設定 API 權限"
+        icon="NumberCircleOne"
+        client:visible
+      />
+      <IconBlock
+        title="步驟二：於 Cloudflare Page 透過 Python 腳本連線 Notion 生成 html"
+        subtitle="先使用 Request 從 Notion API 取得資料，之後生成靜態網頁"
+        icon="NumberCircleTwo"
+        client:visible
+      />
+      <IconBlock
+        title="步驟三：部署 html 靜態網頁"
+        subtitle="透過 Cloudflare Pages 部署靜態網頁並綁定網域"
+        icon="NumberCircleThree"
+        client:visible
+      />
+      <IconBlock
+        title="背景任務：每 20 分鐘透過 Cloudflare Hook 執行生成腳本"
+        subtitle="處理圖片路徑更新限制"
+        icon="Clock"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>

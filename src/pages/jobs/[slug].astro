@@ -1,0 +1,130 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { themes } from "@/lib/themes";
+import { JobDescription } from "@/components/jobs/JobDescription";
+
+export async function getStaticPaths() {
+  const jobs = await getCollection("jobs");
+  return jobs.map((j) => ({
+    params: { slug: j.slug },
+    props: { job: j },
+  }));
+}
+
+const { job } = Astro.props;
+const { Content } = await job.render();
+
+// SEO
+const seo = {
+  title: job.data.seo?.metaTitle || `${job.data.title} | 呂亮進`,
+  description:
+    job.data.seo?.metaDescription || job.data.description[0] || job.data.title,
+  ogImage: job.data.seo?.ogImage || job.data.cover,
+};
+
+// 主題顏色
+const themeColors = themes[job.data.theme];
+
+// 格式化日期
+const formatDate = (date: Date | null | undefined) => {
+  if (!date) return null;
+  return date.toLocaleDateString("zh-TW", {
+    year: "numeric",
+    month: "2-digit",
+  });
+};
+
+const startDateStr = formatDate(job.data.startDate);
+const endDateStr = job.data.endDate ? formatDate(job.data.endDate) : "現在";
+const timeStr =
+  startDateStr && endDateStr
+    ? `${startDateStr} ~ ${endDateStr}`
+    : startDateStr || endDateStr || "---";
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  headerType="project"
+  themeColor={themeColors.primary}
+>
+  <div>
+    <!-- Header Section -->
+    <div class="relative py-20 w-full">
+      <div
+        class="absolute top-0 start-0 w-full h-full"
+        style="background: linear-gradient(0deg, var(--theme-primary-70), var(--theme-secondary-50)); backdrop-filter: blur(40px);"
+      >
+      </div>
+      <div class="relative flex items-center pb-2 w-full min-h-60">
+        <div class="container grid grid-cols-1 mx-auto">
+          <div class="flex flex-col gap-4">
+            <h1 class="text-4xl text-center font-bold text-white notoFont">
+              {job.data.title}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto -mt-40 pb-20 min-h-screen max-w-5xl">
+      <div class="row grid grid-cols-12 align-items-start gap-8 px-4">
+        <div class="relative lg:col-span-4 col-span-12 z-10">
+          <div class="sticky top-0 pt-23">
+            <Card>
+              <CardContent className="gap-4 items-center">
+                {
+                  job.data.logo && (
+                    <img
+                      src={job.data.logo}
+                      alt=""
+                      class="h-20 w-20 rounded-xl"
+                    />
+                  )
+                }
+                <div class="grid items-center">
+                  <p
+                    class="font-bold text-lg text-center notoFont"
+                    set:html={job.data.company}
+                  />
+                  <p class="text-muted-foreground text-center">{timeStr}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div class="grid col-span-12 lg:col-span-8 pb-5 gap-8 z-10">
+          <div class="hidden lg:block h-[calc(var(--spacing)*(23-8))]"></div>
+
+          <!-- 工作描述 -->
+          {
+            job.data.description && job.data.description.length > 0 && (
+              <Card>
+                <CardContent className="space-y-3">
+                  {job.data.description && job.data.description.length > 0 && (
+                    <div class="">
+                      <JobDescription
+                        descriptions={job.data.description}
+                        client:load
+                      />
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )
+          }
+
+          <!-- MDX 內容 -->
+          <article class="flex flex-col gap-8">
+            <Content />
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

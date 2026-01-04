@@ -1,0 +1,88 @@
+---
+import {
+  ArrowLeftIcon,
+} from "@phosphor-icons/react";
+import { MobileNav } from "@/components/header/MobileNav";
+import { SocialLinks } from "@/components/header/SocialLinks";
+import { mainLinks } from "@/components/header/index";
+
+interface Props {
+  type?: "main" | "project";
+  themeColor?: string;
+}
+
+const { type = "main", themeColor } = Astro.props;
+---
+
+<!-- Google Font - Nav Logo -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap"
+  rel="stylesheet"
+/>
+
+<header
+  class="fixed top-0 left-0 right-0 z-40 py-2 bg-background border-b"
+  class:list={[!themeColor && "dark:bg-gray-900"]}
+>
+  <nav class="max-w-8xl mx-auto px-4 md:px-12">
+    <div class="flex items-center justify-between">
+      <!-- Logo / Brand -->
+      {
+        type === "main" ? (
+          <a
+            href="/#topCover"
+            class="flex items-center gap-3 py-3 text-gray-900 dark:text-white font-semibold no-underline transition-opacity hover:opacity-80"
+          >
+            <img
+              src="/assets/file/iconDesignFile/logo.svg"
+              alt="Logo"
+              width="36"
+              height="36"
+              class="flex-shrink-0 bg-foreground/80 p-1 rounded-full"
+            />
+            <span
+              class="text-base font-normal"
+              style="font-family: 'Playwrite HR Lijeva', cursive;"
+            >
+              Liang Chin Lu
+            </span>
+          </a>
+        ) : (
+          <button
+            onclick="history.back()"
+            class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-foreground/20 p-4 rounded-full cursor-pointer border-0 bg-transparent"
+          >
+            <ArrowLeftIcon className="size-6" />
+          </button>
+        )
+      }
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-0">
+        {
+          type === "main" ? (
+            <>
+              {mainLinks.map((link) => (
+                <a
+                href={link.href}
+                class="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap"
+              >
+                {link.label}
+              </a>
+              ))}
+              <span class="text-gray-400 px-2">｜</span>
+            </>
+          ) : (
+            <></>
+          )
+        }
+
+        <!-- Social Links -->
+        <SocialLinks client:load />
+      </div>
+
+      <!-- Mobile Navigation (Sheet) -->
+      <MobileNav client:load type={type} themeColor={themeColor} />
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,102 @@
+---
+title: 華新雲會議管理系統
+description: 大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+subdescription: "擔任：CTO, Product Designer<br>負責：軟體架構設計、產品介面設計、軟體開發、技術總負責人"
+startDate: 2020-09-01
+endDate: 2021-01-31
+status: closed
+theme: purple
+cover: /assets/imgs/projects/hsCloudMeetingManage/cover.png
+pin: true
+skillTypes: [dev, design]
+tags: [介面設計, 產品規劃, 全端開發]
+links:
+  - content: GitHub 代碼
+    href: https://github.com/tony13382/CycuSA-MeetManagement
+    icon: GithubLogo
+    openInTab: true
+  - content: Figma 設計界面稿
+    href: https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94
+    icon: FigmaLogo
+    openInTab: true
+tools:
+  - name: Figma
+    description: UI 設計與產品原型設計
+  - name: Node.js
+    description: 後端資料處理與信件發送服務器
+  - name: mongoDB
+    description: NoSQL 資料庫設計與串接
+  - name: Jitsi Meet
+    description: 線上會議後端系統
+  - name: Bootstrap V4.3
+    description: 前端元件套件
+  - name: handlebars
+    description: 前端模板管理套件
+seo:
+  metaTitle: 華新雲會議管理系統 - 呂亮進的專案作品
+  metaDescription: 大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+  ogImage: /assets/imgs/projects/hsCloudMeetingManage/cover.png
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/hsCloudMeetingManage/ad.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+</Card>
+
+<Card>
+  <CardTitle>DFD 設計</CardTitle>
+  <CardContent>
+    <div className="space-y-4 mt-4">
+      <ImageWithLightbox
+        src="/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png"
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src="/assets/imgs/projects/hsCloudMeetingManage/dfdL1.png"
+        allowPop={true}
+        client:load
+      />
+    </div>
+
+    <div className="flex flex-col gap-4 mt-6">
+      <IconBlock
+        title="系統規格書"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/1svdIQLUVO5-AF-cirV8XNvexPLyFgCc0/view"
+        icon="FileText"
+        client:visible
+      />
+      <IconBlock
+        title="Figma 設計界面稿"
+        subtitle="Figma"
+        href="https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94"
+        icon="FigmaLogo"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>ER Model</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/hsCloudMeetingManage/erModel.png"
+      allowPop={true}
+      client:load
+    />
+  </CardContent>
+</Card>

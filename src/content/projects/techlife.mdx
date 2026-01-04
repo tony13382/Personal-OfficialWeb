@@ -1,0 +1,133 @@
+---
+title: TechLife 讓科技充滿生活 - Photopea 講師
+description: 因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。
+startDate: 2021-10-01
+endDate: 2021-12-31
+status: closed
+theme: green
+cover: /assets/imgs/projects/techlife/cover.png
+pin: true
+skillTypes: [plan]
+tags: [教案設計, PowerPoint 設計]
+links:
+  - content: 企劃書網址
+    href: https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view
+    icon: FileArrowDown
+    openInTab: true
+scores:
+  - title: 1092 中原大學資管系資訊管理競賽
+    award: 第一名
+tools:
+  - name: Photopea
+    description: 修圖
+  - name: Powerpoint
+    description: 教案設計
+seo:
+  metaTitle: TechLife 讓科技充滿生活 - Photopea 講師 - 呂亮進的專案作品
+  metaDescription: 因應網路時代，教育孩子具備資訊素養與科技應用能力，能為未來發展打下堅實基礎。
+  ogImage: /assets/imgs/projects/techlife/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+
+<Card>
+  <CardContent className="pt-6 gap-4">
+    <div className="grid gap-2">
+      <p>`方案名稱`：TechLife 讓科技充滿生活</p>
+      <p>`團隊名稱`：中原資管總動員</p>
+      <p>`服務日期`：2021 年 6 月 11～12 日</p>
+      <p>`預計服務地點及對象`：台東縣延平鄉桃源國小(15～20 位小朋友)</p>
+    </div>
+
+    <IconBlock
+      title="教案文件"
+      subtitle="PDF (Google Drive)"
+      href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing"
+      icon="FileText"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <Youtube
+        embedUrl="https://www.youtube.com/embed/mOWnXJHIqIY"
+        client:visible
+      />
+  </CardHeader>
+  <CardContent className="gap-4">
+    ## 教案：圖像創作不設限
+    <IconBlock
+      title="圖像創作不設限"
+      subtitle="PPT 教案"
+      href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1"
+      icon="MicrosoftPowerpointLogo"
+      client:visible
+    />
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "圖像創作不設限(簡報資源預覽)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG35mSwP18/DR5c7o5yWyfYZ3jgg3RnGg/view?embed",
+              title: "圖像創作不設限簡報"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <Youtube
+        embedUrl="https://www.youtube.com/embed/R_vsL1NFWN8"
+        client:visible
+      />
+  </CardHeader>
+  <CardContent className="gap-4">
+    ## 教案：10 分鐘學會製作 Linebot
+    <IconBlock
+      title="教案：10 分鐘學會製作 Linebot"
+      subtitle="PPT 教案"
+      href="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit#slide=id.p1"
+      icon="MicrosoftPowerpointLogo"
+      client:visible
+    />
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "教案：10 分鐘學會製作 Linebot (簡報資源預覽)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG3_U2O5UM/7BineOJpAOxa4MRyZv8opA/view?embed",
+              title: "教案：10 分鐘學會製作 Linebot 簡報"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+

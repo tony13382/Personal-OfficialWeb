@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { themes } from "@/lib/themes";
+import { JobsFall } from "@/components/react/JobsFall";
+
+const allJobs = await getCollection("jobs");
+
+// 按日期排序（正在進行中的工作排最前面，然後按開始日期倒序）
+const sortedJobs = allJobs.sort((a, b) => {
+  // 正在進行中的工作（endDate 為 null）排在最前面
+  const aIsActive = !a.data.endDate;
+  const bIsActive = !b.data.endDate;
+
+  if (aIsActive && !bIsActive) return -1;
+  if (!aIsActive && bIsActive) return 1;
+
+  // 都是進行中或都已結束，按開始日期倒序排列
+  const aDate = a.data.startDate?.getTime() || 0;
+  const bDate = b.data.startDate?.getTime() || 0;
+  return bDate - aDate;
+});
+
+---
+
+<BaseLayout
+  title="工作經歷 | 呂亮進"
+  description="呂亮進的工作經歷 - AI 工程師、產品設計師、全端開發者"
+  ogImage="/assets/MetaTagCover.png"
+  headerType="main"
+>
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
+    <!-- Jobs Section -->
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">工作經歷</h2>
+
+        <JobsFall jobs={sortedJobs} themes={themes} />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

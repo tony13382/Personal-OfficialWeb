@@ -1,0 +1,509 @@
+---
+title: Songla 音樂智慧創作小幫手
+description: 哼唱即可作曲，讓創作音樂不再是遙不可及的夢想
+subdescription: "擔任：CTO, Product Designer<br>負責：軟體架構設計、產品介面設計、UX 優化、簡報設計"
+startDate: 2022-01-01
+endDate: 2023-09-30
+status: closed
+theme: green
+cover: /assets/imgs/projects/songla/cover.png
+pin: true
+skillTypes: [design]
+tags: [介面設計, 產品規劃, UX 優化]
+links:
+  - content: 公司網站(封存)
+    href: https://tony13382.github.io/Songla-OfficialWeb/
+    icon: Buildings
+    openInTab: true
+  - content: Figma 原型展示連結
+    href: https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=321-262&t=BiEbxhMaInIN0bkG-1&starting-point-node-id=321:262
+    icon: FigmaLogo
+    openInTab: true
+scores:
+  - title: 通過教育部青年署 U-start 創新創業第一階段計畫
+    award: 取得 50 萬資金
+  - title: 2021 全國大專校院智慧創新暨跨域整合創作競賽
+    award: 佳作
+  - title: 2021 桃園新創之星創天下實作競賽
+    award: 佳作
+tools:
+  - name: Figma
+    description: UI 設計與產品原型設計
+  - name: PowerPoint
+    description: 資訊設計與簡報文案編輯
+  - name: Notion
+    description: 企業時程控管、檔案管理、多團隊協作系統
+seo:
+  metaTitle: Songla 音樂智慧創作小幫手 - 呂亮進的專案作品
+  metaDescription: 哼唱即可作曲，讓創作音樂不再是遙不可及的夢想
+  ogImage: /assets/imgs/projects/songla/cover.png
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import { TabsBlock } from '@/components/react/TabsBlock'
+
+
+<Card>
+  <CardHeader>
+    <Youtube
+      embedUrl="https://www.youtube.com/embed/QMBos6hJSsg"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent>
+    <p>
+      即時行樂「 Song la -音樂創作智慧小幫手」，是一款`結合社群功能的音樂創作手機軟體`，藉由哼唱人聲，系統能夠根據旋律智慧編曲，將編曲樂器轉換成 275 種不同音色，並且產出樂譜，錄製曲子上傳至分享平台，完成屬於使用者獨創的曲子，達到音樂創作直覺化、音色呈現多元化、樂譜產生自動化、音樂傳播數位化等效益，「即時行樂 Song la」 讓創作音樂不再是遙不可及的夢想，幫助更多人跨入音樂創作的世界，讓腦中的新創意能夠具體化展現在生活中。
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>產品架構「公開版」</h2>
+
+    <div className="space-y-4 mt-4">
+      <ImageWithLightbox
+        src="/assets/imgs/projects/songla/systemFrame2.png"
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src="/assets/imgs/projects/songla/systemFrame.png"
+        allowPop={true}
+        client:load
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <UiImageCarousel
+      images={[
+        "/assets/imgs/projects/songla/UI01.png",
+        "/assets/imgs/projects/songla/UI02.png",
+        "/assets/imgs/projects/songla/UI03.png",
+        "/assets/imgs/projects/songla/UI04.png",
+      ]}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6 gap-4">
+    <h2>Figma 原型展示連結</h2>
+
+    <IconBlock
+      title="Figma 原型展示連結"
+      subtitle="Figma"
+      href="https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=306-8&t=BiEbxhMaInIN0bkG-1"
+      icon="FigmaLogo"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+    導航列設計
+  </CardTitle>
+  <CardContent className="gap-4">
+    <ImageWithLightbox
+      src="/assets/imgs/projects/songla/ux/Navbar.png"
+      allowPop={false}
+      client:load
+    />
+    <hr/>
+    <TabsBlock
+      tabs={[
+        {
+          value: "nav-explorer",
+          label: "探索",
+          embed: [
+            {
+              type: "div",
+              className:"",
+              elements: [{
+                type: "html",
+                content: `
+                <div class="py-8 space-y-4 text-center">
+                  <p class="text-lg">根據用戶訪談，有</p>
+                  <p class="text-2xl">高達
+                    <span class="px-1 text-5xl font-bold text-[var(--theme-primary)]"> 89 </span>
+                    <span class="font-bold text-[var(--theme-primary)] pe-1">%</span>的用戶
+                  </p>
+                  <p class="text-lg">認為沒有靈感阻礙了他們創作</p>
+                </div>`
+              },]
+            },
+            {type: "hr"},
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className: "text-2xl",
+                  content: "在`探索`我們可以"
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "利用風格篩選的音樂，透過他人作品找尋靈感",
+                    icon: "Broadcast"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "精選與你相關的熱門音樂，了解你創作的最新趨勢",
+                    icon: "Fire"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "瀏覽社群，聆聽朋友的作品來思考作品",
+                    icon: "ShareNetwork"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-dynamic",
+          label: "動態",
+          embed: [
+            {
+              type: "div",
+              className:"",
+              elements: [{
+                type: "html",
+                content: `
+                <div class="py-8 space-y-4 text-center">
+                  <p class="text-lg">根據用戶訪談</p>
+                  <p class="text-2xl">
+                    有<span class="ps-1 text-5xl font-bold text-[var(--theme-primary)]">2/3</span>
+                    <span class="font-bold text-[var(--theme-primary)] pe-1">以上</span>的用戶
+                  </p>
+                  <p class="text-lg">對於<span class="mx-1 font-bold">社群＋音樂</span>提出支持</p>
+                </div>`
+              },]
+            },
+            {type: "hr"},
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className:"text-xl",
+                  content: "因此在`動態`中我們提供社群相關屬性"
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "音樂創作挑戰",
+                    subtitle:"你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！",
+                    icon: "Flag"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "分享音樂作品",
+                    subtitle:"分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音",
+                    icon: "Headphones"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "生活照片紀錄",
+                    subtitle:"與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動",
+                    icon: "Image"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "文章",
+                    subtitle:"你可以分享心情、活動，可以用文字表達的都可以書寫",
+                    icon: "Pencil"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-studio",
+          label: "錄音室",
+          embed: [
+            {
+              type: "text",
+              content:"即時行樂 Songla `結合音樂創作功能與社群`功能，使用者不需會任何樂器或樂理知識，只要會哼唱就能透過產品的「`智慧編曲`」功能完成屬於自己的音樂，並且上傳至即時行樂分享平台或下載保存至手機，`大幅降低創作所需門檻`。"
+            },
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "音樂創作",
+                    subtitle: "打開Songla 錄音室，按下錄音鍵開始哼唱旋律",
+                    icon: "Microphone"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "智慧編曲",
+                    subtitle: "交給 Songla 讓 AI 幫你編出獨一無二的曲子",
+                    icon: "Sparkle"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "選擇音色",
+                    subtitle: "從 275 種音色裡面任選喜歡音色演奏自己的創作",
+                    icon: "PianoKeys"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "瀏覽樂譜",
+                    subtitle: "Songla 幫你編寫樂譜，誰說需要樂理才能當音樂家？",
+                    icon: "Playlist"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "與世界共享",
+                    subtitle: "按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！",
+                    icon: "Export"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-coins",
+          label: "點數",
+          embed: [
+            {
+              type: "image",
+              src: "/assets/imgs/projects/songla/laCoin.png",
+              allowPop: true,
+              className: "rounded-2xl overflow-hidden"
+            },
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className: "text-2xl",
+                  content: "在`點數`我們可以",
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "蒐集樂幣",
+                    icon: "HandCoins"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "轉換樂幣",
+                    icon: "CoinVertical"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "消費樂幣",
+                    icon: "Cardholder"
+                  }
+                ]
+              },]
+            },
+          ]
+        },
+      ]}
+      defaultValue="nav-explorer"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+
+{/* <Card>
+  <CardContent className="pt-6">
+    <h2>音樂封面照</h2>
+
+    <hr className="my-4" />
+
+    <div className="space-y-6">
+      <div>
+        <h3>寬版音樂封面照</h3>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/Music Wider.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">多用於需要給予較多資訊內容的場景，如：工作室、搜尋結果。</p>
+        <hr className="my-4" />
+        <p>`呈現內容包含：`<br />音樂標題、封面照片、封面照片、音樂介紹、音樂分類、音樂長度、播放次數、授權方式。</p>
+      </div>
+
+      <div>
+        <h3>標準音樂封面照</h3>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/Music List.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">運用於預設場景，如：首頁推播音樂、分類排行榜、搜尋預覽。</p>
+        <hr className="my-4" />
+        <p>`呈現內容包含：`<br />音樂標題、封面照片、封面照片、音樂分類、音樂長度、播放次數、授權方式。</p>
+      </div>
+
+      <div>
+        <h3>窄版音樂封面照</h3>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/Music Thin.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">多用於不重於資訊內容的場景，如：社群附加音樂、播放紀錄。</p>
+        <hr className="my-4" />
+        <p>`呈現內容包含：`<br />音樂標題、音樂長度、播放次數。</p>
+      </div>
+    </div>
+  </CardContent>
+</Card> */}
+
+<Card>
+  <CardTitle>設計上的思考</CardTitle>
+  <CardContent>
+    <TabsBlock 
+      tabs={[
+        {
+          value: "think-color",
+          label: "色彩",
+          embed: [
+            {
+              type: "div",
+              className: "py-8 mx-auto",
+              elements: [
+                {
+                  type: "image",
+                  className: "max-w-md",
+                  src: "/assets/imgs/projects/songla/ux/colortheme.png",
+                },
+              ]
+            },
+            {
+              type: "text",
+              className: "text-center",
+              content: "運用多彩色系營造活潑的感覺"
+            }
+          ]
+        },
+        {
+          value: "think-bg",
+          label: "蒙版漸層背景設計",
+          embed: [
+            {
+              type: "div",
+              className: "py-8 mx-auto",
+              elements: [
+                {
+                  type: "image",
+                  className: "max-w-md",
+                  src: "/assets/imgs/projects/songla/ux/colorBG.png",
+                },
+              ]
+            },
+            {
+              type: "text",
+              className: "text-center",
+              content: "運用漸層營造立體的感覺"
+            }
+          ]
+        },
+        {
+          value: "think-icon",
+          label: "圖示設計",
+          embed: [
+            {
+              type: "div",
+              className: "py-8 mx-auto",
+              elements: [
+                {
+                  type: "image",
+                  className: "max-w-md",
+                  src: "/assets/imgs/projects/songla/ux/iconpack.png",
+                },
+              ]
+            },
+            {
+              type: "text",
+              className: "text-center",
+              content: "依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標"
+            },
+            {
+              type: "text",
+              className: "text-center",
+              content: "上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計"
+            }
+          ]
+        },
+      ]}
+      defaultValue="think-color"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+{/* 
+
+      <TabsContent value="color" className="space-y-4">
+        <hr className="my-4" />
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/colortheme.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="text-center">運用多彩色系營造活潑的感覺</p>
+      </TabsContent>
+
+      <TabsContent value="gradient" className="space-y-4">
+        <hr className="my-4" />
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/colorBG.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="text-center">運用漸層營造立體的感覺</p>
+      </TabsContent>
+
+      <TabsContent value="icons" className="space-y-4">
+        <hr className="my-4" />
+        <ImageWithLightbox
+          src="/assets/imgs/projects/songla/ux/iconpack.png"
+          allowPop={false}
+          client:load
+        />
+        <p className="text-center">依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標</p>
+        <p className="text-center">上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計，</p>
+      </TabsContent>
+    </Tabs>
+  </CardContent>
+</Card> */}

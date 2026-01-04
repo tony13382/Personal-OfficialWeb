@@ -1,0 +1,160 @@
+---
+import {
+  BookIcon,
+  BookmarkSimpleIcon,
+  ArchiveIcon,
+  CoffeeIcon,
+  InstagramLogoIcon,
+  InfoIcon,
+  FacebookLogoIcon,
+  EnvelopeIcon,
+  WalletIcon,
+  MessengerLogoIcon,
+} from "@phosphor-icons/react";
+---
+
+<footer class="rounded-t-3xl bg-background border-t border-0">
+  <div class="max-w-8xl mx-auto px-4 md:px-12 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Links Section -->
+      <div class="col-span-2">
+        <h4 class="text-xl text-muted-foreground font-semibold mb-4 px-4">
+          連結 Links
+        </h4>
+        <a
+          href="https://learn.lianglu.uk/"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <BookIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>知識推薦獲取來源</span>
+        </a>
+        <a
+          href="https://bm.lianglu.uk/"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <BookmarkSimpleIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>推薦工作書籤</span>
+        </a>
+        <a
+          href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <ArchiveIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>學習資源庫</span>
+        </a>
+        <a
+          href="https://www.instagram.com/digi.ocean/?hl=zh-tw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <InstagramLogoIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>旗下知識帳號（DigiOcean）</span>
+        </a>
+      </div>
+
+      <div>
+        <!-- Donate Section -->
+        <div class="grid grid-cols-2">
+          <h4
+            class="col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
+          >
+            贊助 Donate
+          </h4>
+          <a
+            href="https://www.buymeacoffee.com/liangchinml"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+          >
+            <CoffeeIcon
+              className="size-5 group-hover:scale-110 transition-transform"
+            />
+            <span>Buy Me A Coffee</span>
+          </a>
+          <a
+            href="https://portaly.cc/liang_chin_ml/support"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+          >
+            <WalletIcon
+              className="size-5 group-hover:scale-110 transition-transform"
+            />
+            <span>Portaly 贊助</span>
+          </a>
+        </div>
+
+        <!-- Connections Section -->
+        <div>
+          <h4
+            class="text-xl text-muted-foreground font-semibold mt-8 mb-2 px-4"
+          >
+            聯絡 Connections
+          </h4>
+          <div class="flex px-1">
+            <a
+              href="mailto:liangchinlu@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            >
+              <EnvelopeIcon
+                className="size-5 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/liang_chin_ml/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            >
+              <InstagramLogoIcon
+                className="size-5 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://www.facebook.com/tony13382/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            >
+              <MessengerLogoIcon
+                className="size-5 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://portaly.cc/liang_chin_ml"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            >
+              <InfoIcon
+                className="size-5 group-hover:scale-110 transition-transform"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <p
+      class="py-4 mt-6 bg-muted rounded-md text-muted-foreground text-center text-xs"
+    >
+      Copyright © 2026 Liang-Chin, Lu 版權所有
+    </p>
+  </div>
+</footer>

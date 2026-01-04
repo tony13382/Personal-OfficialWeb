@@ -1,0 +1,110 @@
+---
+title: 食材外送專家 - Foodome
+description: 本產品提供客戶食譜教學的服務,並且以銷售食材為主要的收入來源。
+subdescription: "擔任:Product Designer, 行銷策劃<br>負責:產品介面設計、行銷企劃"
+startDate: 2020-07-01
+endDate: 2020-08-31
+status: closed
+theme: purple
+cover: /assets/imgs/projects/foodome/cover.png
+pin: false
+skillTypes: [design, plan]
+tags: [介面設計, 企劃書製作]
+links:
+  - content: 企劃書網址
+    href: https://drive.google.com/file/d/1cK0o97WPkW5v2Z6mb2eFtH3JYOkN6VJ8/view
+    icon: Cloud
+    openInTab: true
+tools:
+  - name: Figma
+    description: UI Design
+  - name: Word
+    description: 企劃書撰寫
+seo:
+  metaTitle: 食材外送專家 - Foodome - 呂亮進的專案作品
+  metaDescription: 本產品提供客戶食譜教學的服務,並且以銷售食材為主要的收入來源。
+  ogImage: /assets/imgs/projects/foodome/cover.png
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+
+<Card>
+  <CardContent>
+    <h2>專案文檔</h2>
+    <div className="flex flex-col gap-4 mt-4">
+      <IconBlock
+        title="系統規格書"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/1cK0o97WPkW5v2Z6mb2eFtH3JYOkN6VJ8/view"
+        icon="FileDown"
+        client:visible
+      />
+      <IconBlock
+        title="Figma 設計界面稿"
+        subtitle="Figma"
+        href="https://www.figma.com/proto/5cHIjh7jgfmHkaxREPKY3D/-2020-%E8%A1%8C%E9%8A%B7%E7%AE%A1%E7%90%86--Foodome-Prototype?node-id=4-288&scaling=min-zoom"
+        icon="PanelLeft"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent>
+    <h2>UI 設計展示</h2>
+
+    <div className="space-y-6 mt-6">
+      <div className="space-y-3">
+        <Badge variant="secondary" className="text-base">1</Badge>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/foodome/ui01.png"
+          allowPop={true}
+          client:load
+        />
+        <p className="text-gray-700">
+          快速的提供用戶食譜的教學可以減輕煮菜的徬徨,並且吸引用戶,增加購買食材意願,因此觀賞食譜在這項軟體中佔有極高的優先級,於是我們設計在標準的導航欄上方放置了觀賞食譜的按鈕,而客戶除了使用觀賞食譜的按鈕以外也可以進行客服一對一問答,快速解決客人的問題。
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <Badge variant="secondary" className="text-base">2</Badge>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/foodome/ui02.png"
+          allowPop={true}
+          client:load
+        />
+        <p className="text-gray-700">
+          在商品詳細頁的時候,除了會提供普通的商品說明,還會提供產品圖增加購買慾,並且在底下一方塊來提供所用到的食材,方便讓消費者了解說會購買到哪些食材。
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <Badge variant="secondary" className="text-base">3</Badge>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/foodome/ui03.png"
+          allowPop={true}
+          client:load
+        />
+        <p className="text-gray-700">
+          在運送詳情頁的時候,除了會附上你所購買的食材明細之外,還會有即時路況讓你看看你現在的食材運輸到那裡,以方便使用者進行規劃。
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <Badge variant="secondary" className="text-base">4</Badge>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/foodome/ui04.png"
+          allowPop={true}
+          client:load
+        />
+        <p className="text-gray-700">
+          在食材影片教學的影片下方,會提供快速大綱以供選擇,只要點選文字就會自動的將影片跳轉到文字所標註的時間點,讓使用者可以快速依照文字找到所需要的部分進行觀看。
+        </p>
+      </div>
+    </div>
+  </CardContent>
+</Card>

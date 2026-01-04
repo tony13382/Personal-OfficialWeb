@@ -1,0 +1,263 @@
+---
+title: Trello 知識小幫手 2.0
+description: "[ 作品＆論文 ] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。"
+subdescription: "擔任：教育系統 RD 工程師<br>負責：軟體架構設計、API 設計、資料庫設計、軟體開發"
+startDate: 2023-07-01
+endDate: 2024-07-31
+status: switch
+theme: blue
+cover: /assets/imgs/projects/trelloFinder/cover.png
+pin: true
+skillTypes: ["dev"]
+tags: [文本探勘, 搜尋算法, LLM, 向量資料管理, 後端, 佇列系統]
+links:
+  - content: 專案網址
+    href: https://github.com/tony13382/Tools-TrelloFinderV2
+    icon: GithubLogo
+    openInTab: true
+scores:
+  - title: TWELF 2024 第十九屆台灣數位學習發展研討會
+    award: 最佳論文獎
+    category: AIES 組
+tools:
+  - name: Flask
+    description: Webhook APIs 開發與建立
+  - name: RabbitMQ
+    description: 建立任務佇列處理系統，處理大量用戶請求時不會造成服務阻塞
+  - name: MongoDB
+    description: 主要系統資料庫，紀錄所有學生互動資料
+  - name: Milvus
+    description: 系統知識向量資料庫，用於建置與管理 RAG 知識搜尋
+  - name: Sentence-BERT
+    description: 文本向量化技術、模型訓練與微調
+seo:
+  metaTitle: Trello 知識小幫手 2.0 - 呂亮進的專案作品
+  metaDescription: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。"
+  ogImage: /assets/imgs/projects/trelloFinder/cover.png
+---
+
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Canva } from '@/components/react/Canva'
+
+
+<Card>
+  <CardTitle className="pb-4 border-b">系統使用說明</CardTitle>
+  <CardHeader>
+    <Canva
+      src="https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
+      title="系統使用說明"
+      client:visible
+    />
+  </CardHeader>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowPerpareData.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    ## 知識文本資料前處理
+    取得文章的標題、內文與連結後會以純文本的形式儲存至 mongoDB 的文章文本資料庫進行管理，為了滿足 RAG 的文章搜尋需求，標題與內文會合併成索引文本，索引文本會在透過 Sentence-BERT 的 paraphrase-multilingual-mpnet-base-v2 多語言模型轉換成固定長度的向量並儲存至文章向量資料庫。
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowModule.png" 
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    ## 模組建立
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**搜索架構**</p>
+        融合 `BM25(詞頻)`、TF-IDF、共現分析 與 SBERT `Embeding 技術`打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
+      </div>
+      <div className="space-y-1.5">
+        <p>**回應架構**</p>
+        基於 `RAG` 與`鏈式提示策略設計`，使用大型語言模型(GPT-4 Turbo)生成適切的回應與延伸提問。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/trelloFinder/workflowTrello.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    <h2>Trello 資料建立流程</h2>
+  </CardContent>
+</Card>
+
+export const accordionItems = [
+  {
+    value: "item-1",
+    trigger: "萃取提示詞・基於 GPT 3.5、溫度設定為 0",
+    contentClassName: "p-0",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">role</th>
+                <th class="border-y text-left font-bold px-4 py-2">prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2">system</td>
+                <td class="border-y px-4 py-2">
+                  #zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究
+                  <span class="text-theme font-bold">研究主題</span>，而你需要幫助學生瞭解相關知識，因此你需要生成回答並追問學生讓學生回答以促進學生對
+                  <span class="text-theme font-bold">研究主題</span> 深度思考。輸出的文本需要基於 Markdown 語法。
+                </td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2">user</td>
+                <td class="border-y px-4 py-2">*聊天文本(舊～新)*</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "item-2",
+    trigger: "回應提示詞・基於 GPT 4 turbo、溫度設定為 0.1",
+    contentClassName: "p-0",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">role</th>
+                <th class="border-y text-left font-bold px-4 py-2">prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2">system</td>
+                <td class="border-y px-4 py-2">
+                  #zh_tw 你是一位使用繁體中文的自然科學中學老師，正在跟剛接觸研究領域的學生交談，首先學生正在研究
+                      <span className="text-theme font-bold">研究主題</span>
+                      而你需要幫助學生瞭解相關知識，因此你需要1. 基於參考資料嘗試回答學生的問題，並在回答之中強制標注[文章編號]。2.
+                      如果參考資料無法解答問題則只告知現有資料無法回答問題。3. 根據對話紀錄生成回應。輸出的文本需要基於 Markdown 語法。
+                </td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2">user</td>
+                <td class="border-y px-4 py-2">*聊天文本(舊～新)*</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardTitle>
+    提示詞列表
+  </CardTitle>
+  <CardContent>
+    <AccordionBlock
+      items={accordionItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="gap-4 pt-4">
+    ## 回應模組資料前處理
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**聊天文本處理**</p>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/trelloFinder/workflowPrepareChat.png"
+          allowPop={true}
+          client:load
+        />
+      </div>
+      <hr className="my-6" />
+      <div className="space-y-1.5">
+        <p>**知識文本處理**</p>
+        <ImageWithLightbox
+          src="/assets/imgs/projects/trelloFinder/workflowPrepareKnow.png"
+          allowPop={true}
+          client:load
+        />
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <Canva
+      src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed"
+      title="使用自然語言技術建構自主學習資源推薦系統"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent className="gap-4">
+    <div><Badge variant="secondary" className="text-base">搜尋模組</Badge></div>
+    <div className="flex flex-col gap-2">
+      ## 使用自然語言技術建構自主學習資源推薦系統
+      融合 BM25(詞頻)、TF-IDF、SBERT Embeding 技術打造的資源推薦算法，透過使用者輸入的關鍵字，進行科普資源搜尋。
+    </div>
+    <div className="flex flex-col gap-2">
+      <IconBlock
+        title="研究會議簡報連結"
+        subtitle="Canva"
+        href="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view"
+        icon="MicrosoftPowerpointLogo"
+        client:visible
+      />
+      <IconBlock
+        title="研討會論文文件"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk"
+        icon="FileText"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+

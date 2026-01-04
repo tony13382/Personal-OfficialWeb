@@ -1,0 +1,295 @@
+---
+title: 測試專案 - Astro + shadcn/ui
+description: 這是一個測試專案，用於驗證 Astro + shadcn/ui + MDX 的整合效果。
+startDate: 2024-12-01
+endDate: 2024-12-28
+status: active
+theme: orange
+cover: /assets/imgs/projects/mindReader/cover.png
+pin: true
+skillTypes: [dev, design, plan]
+tags: [Astro, React, shadcn/ui, MDX]
+links:
+  - content: GitHub
+    href: https://github.com
+    icon: GithubLogo
+tools:
+  - name: Astro
+    description: 靜態網站生成器
+  - name: shadcn/ui
+    description: UI 組件庫
+  - name: Tailwind CSS
+    description: CSS 框架
+scores:
+  - title: 2024 全國競賽
+    award: 金獎
+    category: 網頁設計組
+  - title: 另一個獎項
+    award: 優選
+---
+
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+import { TabsBlock } from '@/components/react/TabsBlock'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { Canva } from '@/components/react/Canva'
+import { ImageCarousel } from '@/components/react/ImageCarousel'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+
+
+
+
+<Card>
+  <CardHeader className="p-6">
+    ## Card 組件
+    <p className="text-gray-600">測試 Card 組件的渲染效果</p>
+  </CardHeader>
+  <CardContent>
+    <p>這是 Card 的內容區域。可以包含任何內容，包括：</p>
+    <ul className="list-disc pl-6 mt-2">
+      <li>列表項目 1</li>
+      <li>列表項目 2</li>
+      <li>列表項目 3</li>
+    </ul>
+  </CardContent>
+  <CardFooter>
+    <div className="flex gap-2">
+      <Badge>測試標籤 1</Badge>
+      <Badge variant="secondary">測試標籤 2</Badge>
+    </div>
+  </CardFooter>
+</Card>
+
+
+<Card>
+  <CardTitle>
+    <h2 className="m-0">IconBlock 組件</h2>
+  </CardTitle>
+  <CardContent>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <IconBlock
+        title="Figma 原型設計"
+        subtitle="設計工具"
+        icon="Smartphone"
+        client:visible
+      />
+      <IconBlock
+        title="GitHub 代碼庫"
+        subtitle="版本控制"
+        href="https://github.com"
+        icon="Github"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+
+
+
+<Card>
+  <CardTitle className="pb-4">
+    Youtube 組件
+  </CardTitle>
+  <CardContent className="p-0">
+    <Youtube
+      embedUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>
+    文本測試
+  </CardTitle>
+  <CardContent>
+    這是一段包含 `高亮文本` 的測試內容。
+
+    ## 列表測試
+
+    - 第一項
+    - 第二項包含 `高亮`
+    - 第三項
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+    Button 組件
+  </CardTitle>
+  <CardContent>
+    <div className="flex gap-3">
+      <Button>預設按鈕</Button>
+      <Button variant="secondary">次要按鈕</Button>
+      <Button variant="outline">外框按鈕</Button>
+      <Button variant="destructive">危險按鈕</Button>
+    </div>
+  </CardContent>
+</Card>
+
+export const accordionItems = [
+  {
+    value: "item-1",
+    trigger: "什麼是 Astro？",
+    content: "Astro 是一個現代化的靜態網站生成器，專為快速、以內容為中心的網站設計。它支持 Islands Architecture，讓你可以只在需要的地方使用 JavaScript。"
+  },
+  {
+    value: "item-2",
+    trigger: "什麼是 shadcn/ui？",
+    contentClassName: "p-0",
+    embed: [
+      {
+        type: "text",
+        content: "shadcn/ui 是一個基於 Radix UI 和 Tailwind CSS 構建的可重用組件集合。它不是傳統的組件庫，而是提供可以直接複製到專案中的組件代碼。",
+        className: "p-4"
+      },
+      {
+        type: "Canva",
+        src: "https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed",
+        title: "shadcn/ui 介紹簡報"
+      },
+    ]
+  },
+  {
+    value: "item-3",
+    trigger: "為什麼使用 MDX？",
+    content: `import { Card } from '@/components/ui/card'
+
+<Card>
+  <CardContent>
+    Hello, Astro!
+  </CardContent>
+</Card>`
+  }
+]
+
+<Card>
+  <CardTitle>
+    Accordion 組件
+  </CardTitle>
+  <CardContent>
+    <AccordionBlock
+      items={accordionItems}
+      type="single"
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+export const tabsData = [
+  {
+    value: "overview",
+    label: "概覽",
+    title: "專案概覽",
+    description: "這個測試專案展示了 Astro、React 和 shadcn/ui 的完美整合。透過 MDX，我們可以在 Markdown 中直接使用 React 組件。"
+  },
+  {
+    value: "features",
+    label: "功能",
+    title: "主要功能",
+    listItems: [
+      "靜態網站生成（SSG）",
+      "Islands Architecture",
+      "完整的 TypeScript 支持",
+      "shadcn/ui 組件庫",
+      "Tailwind CSS v4"
+    ]
+  },
+  {
+    value: "code",
+    label: "程式碼",
+    title: "範例代碼",
+    code: `import { Card } from '@/components/ui/card'
+
+<Card>
+  <CardContent>
+    Hello, Astro!
+  </CardContent>
+</Card>`
+  }
+]
+
+<Card>
+  <CardTitle>
+    Tabs 組件
+  </CardTitle>
+  <CardContent>
+    <TabsBlock
+      tabs={tabsData}
+      defaultValue="overview"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+    ImageCarousel 組件
+  </CardTitle>
+  <CardContent className="gap-4">
+    <ImageCarousel
+      images={[
+        { src: "https://picsum.photos/800/400?random=1", alt: "隨機圖片 1" },
+        { src: "https://picsum.photos/800/400?random=2", alt: "隨機圖片 2" },
+        { src: "https://picsum.photos/800/400?random=3", alt: "隨機圖片 3" }
+      ]}
+      client:visible
+    />
+    <Card>
+      <CardHeader>
+        <ImageWithLightbox
+          src="https://picsum.photos/800/400?random=1" 
+          allowPop={true}
+          client:load
+        />
+      </CardHeader>
+    </Card>
+
+    <ImageWithLightbox
+          src="https://picsum.photos/800/400?random=5" 
+          allowPop={true}
+          client:load
+        />
+
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <UiImageCarousel
+      images={[
+        "https://picsum.photos/800/400?random=1",
+        "https://picsum.photos/800/400?random=2",
+        "https://picsum.photos/800/400?random=3"
+      ]}
+      autoplaySpeed={3000}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+  ## Canva
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <Canva
+      src="https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
+      title="測試簡報"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent>
+  ## Canva
+  </CardContent>
+</Card>

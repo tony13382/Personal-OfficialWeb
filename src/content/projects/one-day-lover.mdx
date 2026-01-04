@@ -1,0 +1,64 @@
+---
+title: 一日情人後端
+description: 大學專案，基於 JSP 所建構商城後端(純資料庫交互，無金流，具備後台)。
+subdescription: "擔任：後端工程師<br>負責：後端開發"
+startDate: 2020-09-01
+endDate: 2021-01-31
+status: closed
+theme: red
+cover: /assets/imgs/projects/oneDayLover/cover.png
+pin: false
+skillTypes: [dev]
+tags: [後端開發]
+links:
+  - content: GitHub・前端版本
+    href: https://github.com/ziyihong/ziyihong.github.io
+    icon: GithubLogo
+    openInTab: true
+  - content: GitHub・JSP 版本
+    href: https://github.com/ziyihong/ziyihong.github.io/tree/master/final
+    icon: GithubLogo
+    openInTab: true
+tools:
+  - name: Apache Tomcat
+    description: 後端處理
+  - name: MySQL
+    description: 資料庫交互與設計
+seo:
+  metaTitle: 一日情人後端 - 呂亮進的專案作品
+  metaDescription: 大學專案，基於 JSP 所建構商城後端(純資料庫交互，無金流，具備後台)。
+  ogImage: /assets/imgs/projects/oneDayLover/cover.png
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+
+<Card>
+  <CardTitle>ER Model</CardTitle>
+  <CardHeader className='p-2'>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/oneDayLover/er-model.png"
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <div className="flex flex-col gap-4 mt-4">
+      <IconBlock
+        title="SQL File (預設資料庫)"
+        subtitle=".SQL"
+        href="/assets/file/oneDayLover/mydata.sql"
+        icon="Table"
+        client:visible
+      />
+      <IconBlock
+        title="ZIP File (JSP 程式碼備份)"
+        subtitle="ZIP"
+        href="https://drive.google.com/file/d/1SFD0cc5bJYFFNuvxcoyXMdBAoDrOWUFh/view"
+        icon="FileDown"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
