@@ -60,7 +60,7 @@ export const JobProjectCard = ({
             )}
             <CardContent className="space-y-4">
                 <div className="flex items-start justify-between gap-3">
-                    <h2>{name}</h2>
+                    <p className="text-2xl font-bold text-foreground">{name}</p>
                     {link && (
                         <Button variant="outline" size="sm" asChild>
                             <a href={link} className="flex items-center gap-1.5">
@@ -73,7 +73,7 @@ export const JobProjectCard = ({
                 <hr />
                 {timeStr && <p className="text-muted-foreground">{timeStr}</p>}
                 {descriptions.length > 0 && (
-                    <ul className="space-y-2 list-disc ps-4">
+                    <ul className="space-y-2 list-disc ps-5">
                         {descriptions.map((desc, index) => {
                             const isHeading = desc.startsWith("## ");
                             const content = isHeading ? desc.replace(/^##\s+/, "") : desc;
@@ -82,7 +82,7 @@ export const JobProjectCard = ({
                                     key={index}
                                     className={
                                         isHeading
-                                            ? "font-bold text-foreground list-none pt-2"
+                                            ? "font-bold text-foreground list-none pt-4 -ms-5"
                                             : undefined
                                     }
                                 >

@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { ArrowDownIcon, AtomIcon, CaretDoubleRightIcon, ChartLineUpIcon, ClockUserIcon, DatabaseIcon, FigmaLogoIcon, GlobeHemisphereEastIcon, ListMagnifyingGlassIcon, PlugsIcon, RocketLaunchIcon, SquaresFourIcon, StarIcon, WechatLogoIcon } from '@phosphor-icons/react'
+import { ArrowDownIcon, AtomIcon, CaretDoubleRightIcon, CaretDownIcon, CaretUpIcon, ChartLineUpIcon, ClockUserIcon, DatabaseIcon, FigmaLogoIcon, GlobeHemisphereEastIcon, ListMagnifyingGlassIcon, PlugsIcon, RocketLaunchIcon, SquaresFourIcon, StarIcon, WechatLogoIcon } from '@phosphor-icons/react'
 import { Card, CardContent, CardHeader } from '../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
+import { Button } from '../ui/button'
 
 type SkillType = 'dev' | 'design' | 'plan'
 
@@ -815,6 +816,11 @@ const filterDescriptions: Record<string, React.ReactNode> = {
 
 export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
   const [activeSection, setActiveSection] = useState<SkillType>('dev')
+  const [expandedSections, setExpandedSections] = useState<Record<SkillType, boolean>>({
+    dev: false,
+    design: false,
+    plan: false
+  })
   const sectionRefs = useRef<Record<SkillType, HTMLElement | null>>({
     dev: null,
     design: null,
@@ -862,10 +868,23 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
     }
   }
 
+  const toggleSection = (filter: SkillType) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [filter]: !prev[filter]
+    }))
+  }
+
   const filterProjects = (filter: SkillType) => {
     return projects.filter(project =>
       project.data.skillTypes.includes(filter)
     )
+  }
+
+  const getDisplayProjects = (filter: SkillType) => {
+    const filtered = filterProjects(filter)
+    const isExpanded = expandedSections[filter]
+    return isExpanded ? filtered : filtered.slice(0, 6)
   }
 
   const renderProjectCard = (project: ProjectData) => {
@@ -961,6 +980,9 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
       <div className="space-y-12">
         {(Object.entries(filterLabels) as [SkillType, string][]).map(([filter, label]) => {
           const filteredProjects = filterProjects(filter)
+          const displayProjects = getDisplayProjects(filter)
+          const hasMore = filteredProjects.length > 6
+          const isExpanded = expandedSections[filter]
 
           return (
             <section
@@ -977,8 +999,30 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
 
               {/* Projects Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredProjects.map(renderProjectCard)}
+                {displayProjects.map(renderProjectCard)}
               </div>
+
+              {/* View More Button */}
+              {hasMore && (
+                <div className="flex justify-center pt-4">
+                  <Button
+                    onClick={() => toggleSection(filter)}
+                    variant="outline"
+                  >
+                    {isExpanded ? (
+                      <>
+                        收起
+                        <CaretUpIcon className='size-6' />
+                      </>
+                    ) : (
+                      <>
+                        查看更多 ({filteredProjects.length - 6} 個專案)
+                        <CaretDownIcon className='size-6' />
+                      </>
+                    )}
+                  </Button>
+                </div>
+              )}
 
               {/* Empty State */}
               {filteredProjects.length === 0 && (

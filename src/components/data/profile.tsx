@@ -93,7 +93,7 @@ export function ProfileCardModal() {
 
     return (
         <div
-            className="fixed inset-0 bg-foreground/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease-out]"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease-out]"
             onClick={() => setIsOpen(false)}
         >
             <div
@@ -104,7 +104,7 @@ export function ProfileCardModal() {
                 <div className="animate-[slideUp_0.3s_ease-out]">
                     <Card className="mt-8 transition-all duration-300 pb-4 inline-flex">
                         <CardContent className="gap-6 items-center pt-3 pb-2">
-                            <div className="h-4 w-10 my-2 border rounded-full bg-foreground/50" />
+                            <div className="h-4 w-10 my-2 border rounded-full bg-black/50" />
                             <img
                                 src="/assets/imgs/index/myHead.webp"
                                 alt={`${profileData.name}的頭像`}

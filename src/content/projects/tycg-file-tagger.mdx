@@ -1,0 +1,53 @@
+---
+title: 專案文件管理系統
+description: "[桃園市政府交通局委託] 透過文件標註管理、透過儀表板提升作業效率"
+startDate: 2025-03-01
+endDate: 2025-05-16
+status: switch
+theme: green
+cover: /assets/imgs/projects/tycgFileTaggerWeb/cover.png
+pin: false
+skillTypes: [dev]
+tags: [全端開發, Jinja2]
+tools:
+  - name: PostgreSQL
+    description: 微型資料庫（搭配 alembic 管理）
+  - name: Fastapi + Jinja2
+    description: 全端網路服務／網頁模版服務
+  - name: Bootstrap
+    description: 前端 CSS 框架
+  - name: Docker Compose
+    description: 部屬工具
+---
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+
+
+
+<Card>
+  <CardTitle>
+  DB
+  </CardTitle>
+  <CardContent className='gap-4'>
+    <image src="/assets/imgs/projects/tycgFileTaggerWeb/db.png"/>
+    <div className='grid gap-2'>
+      資料庫採用雙表架構設計，以 `Project` 和 `Document` 建立一對多關係。
+      
+      `Project` 表儲存專案基本資訊，包含專案名稱、聯絡電話、申請地址等欄位；
+      
+      `Document` 表則記錄文件詳細資料，如文件名稱、發送機關、檔案路徑、審核狀態及上傳時間。
+      
+      兩表透過 `project_id 外鍵關聯，實現專案與文件的層級化管理，確保資料結構清晰且易於追蹤。
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+  檔案處理工作流
+  </CardTitle>
+  <CardContent className='gap-4'>
+    <image src="/assets/imgs/projects/tycgFileTaggerWeb/crudFile.png"/>
+  </CardContent>
+</Card>
