@@ -3,27 +3,34 @@
  * React version of Python UiImageCarousel component
  * Features: autoplay, dot indicators, Fancybox lightbox, navigation buttons
  */
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useId } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
 
 interface UiImage {
   image: string
-  desc: string
+  desc?: string
+  title?: string
 }
 
 interface UiImageCarouselProps {
   images: (string | UiImage)[]
   autoplaySpeed?: number
   className?: string
+  galleryId?: string
+  allowPop?: boolean
 }
 
 export function UiImageCarousel({
   images,
   autoplaySpeed = 3000,
-  className = ''
+  className = '',
+  galleryId,
+  allowPop = true
 }: UiImageCarouselProps) {
+  const uniqueId = useId()
+  const fancyboxGalleryId = galleryId || `gallery-${uniqueId}`
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
     [Autoplay({ delay: autoplaySpeed, stopOnInteraction: false })]
@@ -64,23 +71,39 @@ export function UiImageCarousel({
       {/* Carousel viewport */}
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
+          <div className="flex items-center">
             {images.map((item, index) => {
               const imageUrl = typeof item === 'string' ? item : item.image
               const imageDesc = typeof item === 'string' ? `` : item.desc
+              const imageTitle = typeof item === 'string' ? `` : item.title
+
+              const content = (
+                <>
+                  {imageTitle && (<p className='text-center mb-4 text-xl text-foreground font-bold'>
+                    {imageTitle}
+                  </p>)}
+                  <img
+                    src={imageUrl}
+                    alt={imageDesc ? imageDesc : `Slide ${index}`}
+                    className="w-full h-auto object-contain rounded-inline-basic"
+                  />
+                  {imageDesc && (<p className='text-center mt-4 text-muted-foreground whitespace-pre-line'>
+                    {imageDesc}
+                  </p>)}
+                </>
+              )
 
               return (
                 <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
-                  <a href={imageUrl} data-fancybox="gallery" className=''>
-                    <img
-                      src={imageUrl}
-                      alt={imageDesc ? imageDesc : `Slide ${index}`}
-                      className="w-full h-auto object-contain rounded-inline-basic"
-                    />
-                    {imageDesc && (<p className='text-center mt-4 text-muted-foreground'>
-                      {imageDesc}
-                    </p>)}
-                  </a>
+                  {allowPop ? (
+                    <a href={imageUrl} data-fancybox={fancyboxGalleryId} className='my-auto'>
+                      {content}
+                    </a>
+                  ) : (
+                    <div className='my-auto'>
+                      {content}
+                    </div>
+                  )}
                 </div>
               )
             })}

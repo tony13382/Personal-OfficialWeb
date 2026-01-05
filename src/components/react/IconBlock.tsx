@@ -24,7 +24,21 @@ import {
   SparkleIcon,
   TextboxIcon,
   WebhooksLogoIcon,
-  type Icon
+  type Icon,
+  FireIcon,
+  BroadcastIcon,
+  ShareNetworkIcon,
+  CardholderIcon,
+  CoinVerticalIcon,
+  HandCoinsIcon,
+  ExportIcon,
+  PlaylistIcon,
+  PianoKeysIcon,
+  MicrophoneIcon,
+  PencilIcon,
+  ImageIcon,
+  HeadphonesIcon,
+  FlagIcon
 } from "@phosphor-icons/react"
 
 interface IconBlockProps {
@@ -39,9 +53,11 @@ interface IconBlockProps {
 // Icon mapping - only includes icons actually used in the project
 const iconMap: Record<string, Icon> = {
   AcornIcon,
+  BroadcastIcon,
   ChatTeardropTextIcon,
   ClockIcon,
   DatabaseIcon,
+  FireIcon,
   FileArchiveIcon,
   FilePdfIcon,
   FileSqlIcon,
@@ -58,9 +74,21 @@ const iconMap: Record<string, Icon> = {
   NumberCircleOneIcon,
   NumberCircleThreeIcon,
   NumberCircleTwoIcon,
+  ShareNetworkIcon,
   SparkleIcon,
   TextboxIcon,
   WebhooksLogoIcon,
+  CardholderIcon,
+  CoinVerticalIcon,
+  HandCoinsIcon,
+  ExportIcon,
+  PlaylistIcon,
+  PianoKeysIcon,
+  MicrophoneIcon,
+  PencilIcon,
+  ImageIcon,
+  HeadphonesIcon,
+  FlagIcon
 }
 
 export function IconBlock({

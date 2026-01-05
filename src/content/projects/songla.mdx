@@ -160,17 +160,17 @@ import { TabsBlock } from '@/components/react/TabsBlock'
                   {
                     type: "IconBlock",
                     title: "利用風格篩選的音樂，透過他人作品找尋靈感",
-                    icon: "Broadcast"
+                    icon: "BroadcastIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "精選與你相關的熱門音樂，了解你創作的最新趨勢",
-                    icon: "Fire"
+                    icon: "FireIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "瀏覽社群，聆聽朋友的作品來思考作品",
-                    icon: "ShareNetwork"
+                    icon: "ShareNetworkIcon"
                   },
                 ]
               },]
@@ -215,25 +215,25 @@ import { TabsBlock } from '@/components/react/TabsBlock'
                     type: "IconBlock",
                     title: "音樂創作挑戰",
                     subtitle:"你可以發起自訂主題或風格的創作挑戰，當然也可以加入其他人的競賽，用作品來交流！",
-                    icon: "Flag"
+                    icon: "FlagIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "分享音樂作品",
                     subtitle:"分享你喜愛的音樂作品，讓你的追隨者也能聽見你聽到的好聲音",
-                    icon: "Headphones"
+                    icon: "HeadphonesIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "生活照片紀錄",
                     subtitle:"與追隨者分享生活或者也能發布活動消息，讓你與你的追隨者更進一步互動",
-                    icon: "Image"
+                    icon: "ImageIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "文章",
                     subtitle:"你可以分享心情、活動，可以用文字表達的都可以書寫",
-                    icon: "Pencil"
+                    icon: "PencilIcon"
                   },
                 ]
               },]
@@ -260,7 +260,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
                     type: "IconBlock",
                     title: "音樂創作",
                     subtitle: "打開Songla 錄音室，按下錄音鍵開始哼唱旋律",
-                    icon: "Microphone"
+                    icon: "MicrophoneIcon"
                   },
                   {
                     type: "IconBlock",
@@ -272,19 +272,19 @@ import { TabsBlock } from '@/components/react/TabsBlock'
                     type: "IconBlock",
                     title: "選擇音色",
                     subtitle: "從 275 種音色裡面任選喜歡音色演奏自己的創作",
-                    icon: "PianoKeys"
+                    icon: "PianoKeysIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "瀏覽樂譜",
                     subtitle: "Songla 幫你編寫樂譜，誰說需要樂理才能當音樂家？",
-                    icon: "Playlist"
+                    icon: "PlaylistIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "與世界共享",
                     subtitle: "按下分享鍵，讓自己的音樂跟來自世界各地的朋友們分享吧！",
-                    icon: "Export"
+                    icon: "ExportIcon"
                   },
                 ]
               },]
@@ -317,17 +317,17 @@ import { TabsBlock } from '@/components/react/TabsBlock'
                   {
                     type: "IconBlock",
                     title: "蒐集樂幣",
-                    icon: "HandCoins"
+                    icon: "HandCoinsIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "轉換樂幣",
-                    icon: "CoinVertical"
+                    icon: "CoinVerticalIcon"
                   },
                   {
                     type: "IconBlock",
                     title: "消費樂幣",
-                    icon: "Cardholder"
+                    icon: "CardholderIcon"
                   }
                 ]
               },]
@@ -391,119 +391,27 @@ import { TabsBlock } from '@/components/react/TabsBlock'
 
 <Card>
   <CardTitle>設計上的思考</CardTitle>
-  <CardContent>
-    <TabsBlock 
-      tabs={[
+  <CardContent className='px-0'>
+    <UiImageCarousel 
+      images={[
         {
-          value: "think-color",
-          label: "色彩",
-          embed: [
-            {
-              type: "div",
-              className: "py-8 mx-auto",
-              elements: [
-                {
-                  type: "image",
-                  className: "max-w-md",
-                  src: "/assets/imgs/projects/songla/ux/colortheme.png",
-                },
-              ]
-            },
-            {
-              type: "text",
-              className: "text-center",
-              content: "運用多彩色系營造活潑的感覺"
-            }
-          ]
+          image: "/assets/imgs/projects/songla/ux/colortheme.png",
+          title:"色彩",
+          desc:"運用多彩色系營造活潑的感覺"
         },
         {
-          value: "think-bg",
-          label: "蒙版漸層背景設計",
-          embed: [
-            {
-              type: "div",
-              className: "py-8 mx-auto",
-              elements: [
-                {
-                  type: "image",
-                  className: "max-w-md",
-                  src: "/assets/imgs/projects/songla/ux/colorBG.png",
-                },
-              ]
-            },
-            {
-              type: "text",
-              className: "text-center",
-              content: "運用漸層營造立體的感覺"
-            }
-          ]
+          image: "/assets/imgs/projects/songla/ux/colorBG.png",
+          title:"蒙版漸層背景設計",
+          desc:"運用漸層營造立體感"
         },
         {
-          value: "think-icon",
-          label: "圖示設計",
-          embed: [
-            {
-              type: "div",
-              className: "py-8 mx-auto",
-              elements: [
-                {
-                  type: "image",
-                  className: "max-w-md",
-                  src: "/assets/imgs/projects/songla/ux/iconpack.png",
-                },
-              ]
-            },
-            {
-              type: "text",
-              className: "text-center",
-              content: "依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標"
-            },
-            {
-              type: "text",
-              className: "text-center",
-              content: "上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計"
-            }
-          ]
-        },
+          image: "/assets/imgs/projects/songla/ux/iconpack.png",
+          title:"圖示設計",
+          desc:`依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標\n上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計`
+        }
       ]}
-      defaultValue="think-color"
+      allowPop={false}
       client:visible
     />
   </CardContent>
 </Card>
-
-{/* 
-
-      <TabsContent value="color" className="space-y-4">
-        <hr className="my-4" />
-        <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/colortheme.png"
-          allowPop={false}
-          client:load
-        />
-        <p className="text-center">運用多彩色系營造活潑的感覺</p>
-      </TabsContent>
-
-      <TabsContent value="gradient" className="space-y-4">
-        <hr className="my-4" />
-        <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/colorBG.png"
-          allowPop={false}
-          client:load
-        />
-        <p className="text-center">運用漸層營造立體的感覺</p>
-      </TabsContent>
-
-      <TabsContent value="icons" className="space-y-4">
-        <hr className="my-4" />
-        <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/iconpack.png"
-          allowPop={false}
-          client:load
-        />
-        <p className="text-center">依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標</p>
-        <p className="text-center">上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計，</p>
-      </TabsContent>
-    </Tabs>
-  </CardContent>
-</Card> */}

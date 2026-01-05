@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { CaretLeft, CaretLeftIcon, CaretRight, CaretRightIcon } from '@phosphor-icons/react'
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
 
 interface ImageItem {
   src: string
