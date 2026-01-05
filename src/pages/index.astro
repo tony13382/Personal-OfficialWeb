@@ -1,26 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import {
   ArrowRightIcon,
   DownloadSimpleIcon,
-  EnvelopeIcon,
   GithubLogoIcon,
-  InfoIcon,
-  InstagramLogoIcon,
-  LinkedinLogoIcon,
-  MessengerLogoIcon,
   PaperPlaneTiltIcon,
 } from "@phosphor-icons/react";
-import { ProjectsFall } from "@/components/react/ProjectsFall";
-import { JobsFall } from "@/components/react/JobsFall";
+import { ProjectsFall } from "@/components/projects/ProjectsFall";
+import { JobsFall } from "@/components/jobs/JobsFall";
 import { Button } from "@/components/ui/button";
-import { PhoneIcon } from "@phosphor-icons/react";
 import { Card, CardContent } from "@/components/ui/card";
-import { socialLinks } from "@/components/data/social";
 import { SocialLinks } from "@/components/footer/SocialLinksLite";
+import { ActionBtnLinks } from "@/components/data/actionBtn";
+import { profileData } from "@/components/data/profile";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序
@@ -46,7 +40,7 @@ const sortedJobs = allJobs
     const bDate = b.data.startDate?.getTime() || 0;
     return bDate - aDate;
   })
-  .splice(0, 3);
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -63,7 +57,7 @@ const sortedJobs = allJobs
           <h1
             class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent tracking-wider leading-[1.5]"
           >
-            結合 AI 技術與設計思維的全端工程師
+            具 AI 技術與設計思維的全端工程師
           </h1>
           <div class="overflow-hidden">
             <div class="overflow-hidden">
@@ -77,34 +71,20 @@ const sortedJobs = allJobs
                   </div>
                   <img
                     src="/assets/imgs/index/myHead.webp"
-                    alt="呂亮進頭像"
+                    alt=`${profileData.name}的頭像`
                     class="size-32 rounded-full overflow-hidden"
                   />
                   <div class="px-4">
                     <p
                       class="text-xl md:text-2xl text-foreground font-bold mb-3"
                     >
-                      呂亮進
+                      {profileData.name}
                     </p>
                     <p class="text-muted-foreground mb-3">
-                      AI 工程師、產品設計師、全端開發者
+                      {profileData.jobTitle}
                     </p>
                   </div>
-                  <div class="flex gap-4">
-                    <a href="https://github.com/tony13382" target="_blank">
-                      <Button>
-                        <GithubLogoIcon className="size-12" /> Github
-                      </Button>
-                    </a>
-                    <a
-                      href="https://drive.google.com/file/d/1vN6BVqPXcnAzDVIDNJvWqHbNMjirxx0D/view?usp=sharing"
-                      target="_blank"
-                    >
-                      <Button>
-                        <DownloadSimpleIcon className="size-12" /> 下載履歷
-                      </Button>
-                    </a>
-                  </div>
+                  <ActionBtnLinks />
                   <div>
                     <div class="flex px-1">
                       <SocialLinks />

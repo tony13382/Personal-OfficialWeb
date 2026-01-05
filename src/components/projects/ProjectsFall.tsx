@@ -795,7 +795,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='p-2 border rounded-xl'>
                     <img src="/assets/imgs/appIcons/Notion.png" alt="Notion" className='size-14' />
                   </div>
-                  <p className='text-muted-foreground text-center'>學習資源共享</p>
+                  <p className='text-muted-foreground text-center'>資源共享</p>
                 </div>
                 <CaretDoubleRightIcon className='size-12 text-border animate-pulse' />
                 <div className='inline-flex flex-col items-center gap-2'>

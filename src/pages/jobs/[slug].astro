@@ -4,6 +4,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { themes } from "@/lib/themes";
 import { JobDescription } from "@/components/jobs/JobDescription";
+import { ProfileCard, profileData } from "@/components/data/profile";
+import { ActionBtnLinks } from "@/components/data/actionBtn";
+import { SocialLinks } from "@/components/footer/SocialLinksLite";
 
 export async function getStaticPaths() {
   const jobs = await getCollection("jobs");
@@ -95,6 +98,7 @@ const timeStr =
                 </div>
               </CardContent>
             </Card>
+            <ProfileCard />
           </div>
         </div>
 

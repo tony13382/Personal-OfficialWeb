@@ -1,4 +1,4 @@
-import { EnvelopeIcon, LinkedinLogoIcon, LaptopIcon, MedalIcon, BriefcaseIcon, MessengerLogoIcon, InfoIcon, InstagramLogoIcon } from '@phosphor-icons/react'
+import { MedalIcon, BriefcaseIcon } from '@phosphor-icons/react'
 
 export interface NavLink {
     href: string

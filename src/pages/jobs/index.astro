@@ -2,7 +2,8 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { themes } from "@/lib/themes";
-import { JobsFall } from "@/components/react/JobsFall";
+import { JobsFall } from "@/components/jobs/JobsFall";
+import { ProfileCard } from "@/components/data/profile";
 
 const allJobs = await getCollection("jobs");
 
@@ -20,7 +21,6 @@ const sortedJobs = allJobs.sort((a, b) => {
   const bDate = b.data.startDate?.getTime() || 0;
   return bDate - aDate;
 });
-
 ---
 
 <BaseLayout
@@ -32,10 +32,21 @@ const sortedJobs = allJobs.sort((a, b) => {
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
     <!-- Jobs Section -->
     <section class="container mx-auto px-4 py-12">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8">工作經歷</h2>
+      <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="relative">
+          <div class="sticky top-0 pt-16">
+            <ProfileCard />
+          </div>
+        </div>
+        <div class="col-span-1 lg:col-span-2">
+          <div class="mb-8 mt-5">
+            <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">
+              得獎紀錄
+            </h1>
+          </div>
 
-        <JobsFall jobs={sortedJobs} themes={themes} />
+          <JobsFall jobs={sortedJobs} themes={themes} />
+        </div>
       </div>
     </section>
   </div>
