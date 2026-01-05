@@ -235,20 +235,29 @@ const canonicalURL = new URL(
 
         <!-- Fancybox initialization -->
         <script>
-            import { Fancybox } from "@fancyapps/ui";
+            // Dynamic import Fancybox only when needed
+            const initFancybox = async () => {
+                // Check if there are any Fancybox elements on the page
+                if (document.querySelector("[data-fancybox]")) {
+                    const { Fancybox } = await import("@fancyapps/ui");
 
-            // Initialize Fancybox for image lightbox
-            Fancybox.bind("[data-fancybox]", {
-                Carousel: {
-                    Toolbar: {
-                        display: {
-                            left: ["counter"],
-                            middle: [],
-                            right: ["close"],
+                    // Initialize Fancybox for image lightbox
+                    Fancybox.bind("[data-fancybox]", {
+                        Carousel: {
+                            Toolbar: {
+                                display: {
+                                    left: ["counter"],
+                                    middle: [],
+                                    right: ["close"],
+                                },
+                            },
                         },
-                    },
-                },
-            });
+                    });
+                }
+            };
+
+            // Initialize on page load
+            initFancybox();
         </script>
 
         <!-- Back to Top functionality -->

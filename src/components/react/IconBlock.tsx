@@ -1,6 +1,31 @@
 import { cn } from "@/lib/utils"
-import * as PhosphorIcons from "@phosphor-icons/react"
 import { formatHighlight } from "@/lib/formatters"
+import {
+  AcornIcon,
+  ChatTeardropTextIcon,
+  ClockIcon,
+  DatabaseIcon,
+  FileArchiveIcon,
+  FilePdfIcon,
+  FileSqlIcon,
+  FileTextIcon,
+  FigmaLogoIcon,
+  GithubLogoIcon,
+  IdentificationBadgeIcon,
+  KeyboardIcon,
+  LaptopIcon,
+  LinkIcon,
+  MicrosoftExcelLogoIcon,
+  MicrosoftPowerpointLogoIcon,
+  MicrosoftWordLogoIcon,
+  NumberCircleOneIcon,
+  NumberCircleThreeIcon,
+  NumberCircleTwoIcon,
+  SparkleIcon,
+  TextboxIcon,
+  WebhooksLogoIcon,
+  type Icon
+} from "@phosphor-icons/react"
 
 interface IconBlockProps {
   title?: string
@@ -11,6 +36,33 @@ interface IconBlockProps {
   iconClassName?: string
 }
 
+// Icon mapping - only includes icons actually used in the project
+const iconMap: Record<string, Icon> = {
+  AcornIcon,
+  ChatTeardropTextIcon,
+  ClockIcon,
+  DatabaseIcon,
+  FileArchiveIcon,
+  FilePdfIcon,
+  FileSqlIcon,
+  FileTextIcon,
+  FigmaLogoIcon,
+  GithubLogoIcon,
+  IdentificationBadgeIcon,
+  KeyboardIcon,
+  LaptopIcon,
+  LinkIcon,
+  MicrosoftExcelLogoIcon,
+  MicrosoftPowerpointLogoIcon,
+  MicrosoftWordLogoIcon,
+  NumberCircleOneIcon,
+  NumberCircleThreeIcon,
+  NumberCircleTwoIcon,
+  SparkleIcon,
+  TextboxIcon,
+  WebhooksLogoIcon,
+}
+
 export function IconBlock({
   title,
   subtitle,
@@ -19,8 +71,8 @@ export function IconBlock({
   className,
   iconClassName
 }: IconBlockProps) {
-  // Dynamically get the Phosphor icon component
-  const IconComponent = (icon && PhosphorIcons[icon as keyof typeof PhosphorIcons] as PhosphorIcons.Icon) || PhosphorIcons.AcornIcon
+  // Get icon from mapping or use default
+  const IconComponent = (icon && iconMap[icon]) || AcornIcon
 
   const content = (
     <div className={cn(

@@ -18,7 +18,7 @@ export const profileData: ProfileData = {
 export function ProfileCard() {
     return (
         <Card
-            className="mt-8 transition-all duration-300 pb-4 hidden lg:inline-flex"
+            className="mt-8 transition-all duration-300 pb-4 hidden lg:flex"
         >
             <CardContent className="gap-6 items-center pt-3 pb-2">
                 <div
@@ -30,19 +30,19 @@ export function ProfileCard() {
                     alt={`${profileData.name}的頭像`}
                     className="size-32 rounded-full overflow-hidden"
                 />
-                <div className="">
+                <div className="grid gap-3">
                     <p
-                        className="text-xl md:text-2xl text-center text-foreground font-bold mb-3"
+                        className="text-xl md:text-2xl text-center text-foreground font-bold"
                     >
                         {profileData.name}
                     </p>
-                    <p className="text-muted-foreground text-center mb-3">
+                    <p className="text-muted-foreground text-center">
                         {profileData.jobTitle}
                     </p>
                 </div>
                 <ActionBtnLinks />
                 <div>
-                    <div className="flex px-1">
+                    <div className="flex px-1 flex-wrap justify-center">
                         <SocialLinksLite />
                     </div>
                 </div>
@@ -56,7 +56,7 @@ export function ProfileCardModal() {
     const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
-        const handleEscape = (e: KeyboardEvent) => {
+        const handleEscape = (e: KeyboardIconEvent) => {
             if (e.key === "Escape" && isOpen) {
                 setIsOpen(false)
             }
