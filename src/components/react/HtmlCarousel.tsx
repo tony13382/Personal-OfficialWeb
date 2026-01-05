@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
 import type { ReactNode } from 'react'
 
 interface HtmlCarouselProps {
@@ -79,7 +79,7 @@ export function HtmlCarousel({
               aria-label="Previous slide"
               title="Previous slide"
             >
-              <CaretLeft className="w-6 h-6" />
+              <CaretLeftIcon className="w-6 h-6" />
             </button>
             <button
               onClick={scrollNext}
@@ -88,7 +88,7 @@ export function HtmlCarousel({
               aria-label="Next slide"
               title="Next slide"
             >
-              <CaretRight className="w-6 h-6" />
+              <CaretRightIcon className="w-6 h-6" />
             </button>
           </>
         )}
@@ -101,11 +101,10 @@ export function HtmlCarousel({
             <button
               key={index}
               onClick={() => scrollTo(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === selectedIndex
-                  ? 'bg-[var(--theme-primary,var(--color-primary))] scale-125'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${index === selectedIndex
+                ? 'bg-[var(--theme-primary,var(--color-primary))] scale-125'
+                : 'bg-gray-300 hover:bg-gray-400'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
               title={`Go to slide ${index + 1}`}
             />

@@ -1,4 +1,4 @@
-import { EnvelopeIcon, LinkedinLogoIcon, MessengerLogoIcon, InfoIcon, InstagramLogoIcon, GithubLogoIcon } from '@phosphor-icons/react'
+import { EnvelopeIcon, LinkedinLogoIcon, InfoIcon, InstagramLogoIcon, GithubLogoIcon, CalendarPlusIcon } from '@phosphor-icons/react'
 import { type NavLink } from "@/components/header/index"
 
 export const socialLinks: NavLink[] = [
@@ -24,6 +24,12 @@ export const socialLinks: NavLink[] = [
         href: 'https://www.instagram.com/liang_chin_ml/',
         label: 'Instagram',
         icon: <InstagramLogoIcon className="size-5" />,
+        external: true,
+    },
+    {
+        href: 'https://calendar.notion.so/meet/liangchin/onehour',
+        label: '預約會議',
+        icon: <CalendarPlusIcon className="size-5" />,
         external: true,
     },
     // {

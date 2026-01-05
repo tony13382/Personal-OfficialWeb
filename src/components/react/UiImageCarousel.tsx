@@ -6,10 +6,15 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { CaretLeft, CaretLeftIcon, CaretRight, CaretRightIcon } from '@phosphor-icons/react'
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
+
+interface UiImage {
+  image: string
+  desc: string
+}
 
 interface UiImageCarouselProps {
-  images: string[]
+  images: (string | UiImage)[]
   autoplaySpeed?: number
   className?: string
 }
@@ -60,17 +65,25 @@ export function UiImageCarousel({
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {images.map((image, index) => (
-              <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
-                <a href={image} data-fancybox="gallery" className=''>
-                  <img
-                    src={image}
-                    alt={`Slide ${index + 1}`}
-                    className="w-full h-auto object-contain rounded-inline-basic"
-                  />
-                </a>
-              </div>
-            ))}
+            {images.map((item, index) => {
+              const imageUrl = typeof item === 'string' ? item : item.image
+              const imageDesc = typeof item === 'string' ? `` : item.desc
+
+              return (
+                <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
+                  <a href={imageUrl} data-fancybox="gallery" className=''>
+                    <img
+                      src={imageUrl}
+                      alt={imageDesc ? imageDesc : `Slide ${index}`}
+                      className="w-full h-auto object-contain rounded-inline-basic"
+                    />
+                    {imageDesc && (<p className='text-center mt-4 text-muted-foreground'>
+                      {imageDesc}
+                    </p>)}
+                  </a>
+                </div>
+              )
+            })}
           </div>
         </div>
 
