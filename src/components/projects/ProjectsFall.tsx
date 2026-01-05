@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { ArrowDownIcon, AtomIcon, CaretDoubleRightIcon, CaretDownIcon, CaretUpIcon, ChartLineUpIcon, ClockIconUserIcon, DatabaseIconIcon, FigmaLogoIconIcon, GlobeHemisphereEastIcon, ListMagnifyingGlassIcon, PlugsIcon, RocketLaunchIcon, SquaresFourIcon, StarIcon, WechatLogoIcon } from '@phosphor-icons/react'
+import { ArrowDownIcon, AtomIcon, CaretDoubleRightIcon, CaretDownIcon, CaretUpIcon, ChartLineUpIcon, ClockIcon, DatabaseIcon, FigmaLogoIcon, GlobeHemisphereEastIcon, ListMagnifyingGlassIcon, PlugsIcon, RocketLaunchIcon, SquaresFourIcon, StarIcon, WechatLogoIcon } from '@phosphor-icons/react'
 import { Card, CardContent, CardHeader } from '../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
 import { Button } from '../ui/button'
@@ -602,7 +602,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             </div>
             <div className='flex items-center justify-center gap-4'>
               <div className='p-4 rounded-full bg-rose-50 text-rose-500'>
-                <FigmaLogoIconIcon className='size-8' />
+                <FigmaLogoIcon className='size-8' />
               </div>
               <div className='flex-1'>
                 <p className='font-bold'>Figma</p>
@@ -633,7 +633,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </div>
               <div className='flex flex-col items-center gap-3'>
                 <div className='p-4 rounded-full bg-green-600 text-background'>
-                  <ClockIconUserIcon className='size-8' />
+                  <ClockIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>生產力管理</p>
               </div>
@@ -645,7 +645,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </div>
               <div className='flex flex-col items-center gap-3'>
                 <div className='p-4 rounded-full bg-cyan-600 text-background'>
-                  <DatabaseIconIcon className='size-8' />
+                  <DatabaseIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>資料洞察</p>
               </div>
