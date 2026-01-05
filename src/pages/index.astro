@@ -2,19 +2,14 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { themes } from "@/lib/themes";
-import {
-  ArrowRightIcon,
-  DownloadSimpleIcon,
-  GithubLogoIcon,
-  PaperPlaneTiltIcon,
-} from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react";
 import { ProjectsFall } from "@/components/projects/ProjectsFall";
 import { JobsFall } from "@/components/jobs/JobsFall";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { SocialLinks } from "@/components/footer/SocialLinksLite";
+import { SocialLinksLite } from "@/components/data/social";
 import { ActionBtnLinks } from "@/components/data/actionBtn";
-import { profileData } from "@/components/data/profile";
+import { profileData, ProfileCardModal } from "@/components/data/profile";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序
@@ -84,10 +79,10 @@ const sortedJobs = allJobs
                       {profileData.jobTitle}
                     </p>
                   </div>
-                  <ActionBtnLinks />
+                  <ActionBtnLinks client:load />
                   <div>
                     <div class="flex px-1">
-                      <SocialLinks />
+                      <SocialLinksLite client:load />
                     </div>
                   </div>
                 </CardContent>
@@ -127,13 +122,18 @@ const sortedJobs = allJobs
       </section>
     </section>
 
-    <a href="mailto:liangchinlu@gmail.com">
-      <button
-        class="fixed bottom-28 right-6 w-16 h-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-300 ease-in-out z-[1000] cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
-        title="通知我"
-      >
-        <PaperPlaneTiltIcon className="size-8" />
-      </button>
-    </a>
+    <button
+      id="profile-modal-btn"
+      class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+      title="通知我"
+    >
+      <img
+        src="/assets/imgs/index/myHead.webp"
+        alt={`${profileData.name}的頭像`}
+        class="size-16 rounded-full overflow-hidden"
+      />
+    </button>
+
+    <ProfileCardModal client:load />
   </div>
 </BaseLayout>

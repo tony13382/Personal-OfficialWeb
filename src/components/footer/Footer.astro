@@ -5,14 +5,9 @@ import {
   ArchiveIcon,
   CoffeeIcon,
   InstagramLogoIcon,
-  InfoIcon,
-  FacebookLogoIcon,
-  EnvelopeIcon,
   WalletIcon,
-  MessengerLogoIcon,
-  LinkedinLogoIcon,
 } from "@phosphor-icons/react";
-import { SocialLinks } from "./SocialLinksLite";
+import { SocialLinksLite } from "../data/social";
 ---
 
 <footer class="rounded-t-3xl bg-background border-t border-0">
@@ -107,7 +102,7 @@ import { SocialLinks } from "./SocialLinksLite";
             聯絡 Connections
           </h4>
           <div class="flex px-1">
-            <SocialLinks />
+            <SocialLinksLite client:load />
           </div>
         </div>
       </div>

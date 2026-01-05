@@ -3,7 +3,7 @@ import {
   ArrowLeftIcon,
 } from "@phosphor-icons/react";
 import { MobileNav } from "@/components/header/MobileNav";
-import { SocialLinks } from "@/components/header/SocialLinks";
+import { HeaderSocialLinks } from "@/components/data/social";
 import { mainLinks } from "@/components/header/index";
 
 interface Props {
@@ -78,7 +78,7 @@ const { type = "main", themeColor } = Astro.props;
         }
 
         <!-- Social Links -->
-        <SocialLinks client:load />
+        <HeaderSocialLinks client:load />
       </div>
 
       <!-- Mobile Navigation (Sheet) -->
