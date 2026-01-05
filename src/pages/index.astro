@@ -19,6 +19,8 @@ import { JobsFall } from "@/components/react/JobsFall";
 import { Button } from "@/components/ui/button";
 import { PhoneIcon } from "@phosphor-icons/react";
 import { Card, CardContent } from "@/components/ui/card";
+import { socialLinks } from "@/components/data/social";
+import { SocialLinks } from "@/components/footer/SocialLinksLite";
 
 const allProjects = await getCollection("projects");
 // 按 pin 和日期排序
@@ -105,56 +107,7 @@ const sortedJobs = allJobs
                   </div>
                   <div>
                     <div class="flex px-1">
-                      <a
-                        href="mailto:liangchinlu@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-                      >
-                        <EnvelopeIcon
-                          className="size-5 group-hover:scale-110 transition-transform"
-                        />
-                      </a>
-                      <a
-                        href="https://www.linkedin.com/in/liang-chin-lu/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-                      >
-                        <LinkedinLogoIcon
-                          className="size-5 group-hover:scale-110 transition-transform"
-                        />
-                      </a>
-                      <a
-                        href="https://www.instagram.com/liang_chin_ml/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-                      >
-                        <InstagramLogoIcon
-                          className="size-5 group-hover:scale-110 transition-transform"
-                        />
-                      </a>
-                      <a
-                        href="https://www.facebook.com/tony13382/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-                      >
-                        <MessengerLogoIcon
-                          className="size-5 group-hover:scale-110 transition-transform"
-                        />
-                      </a>
-                      <a
-                        href="https://portaly.cc/liang_chin_ml"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-                      >
-                        <InfoIcon
-                          className="size-5 group-hover:scale-110 transition-transform"
-                        />
-                      </a>
+                      <SocialLinks />
                     </div>
                   </div>
                 </CardContent>

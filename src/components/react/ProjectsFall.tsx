@@ -113,7 +113,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             <div className='flex items-center justify-center relative my-4'>
               {/* Outer Circle Border with Continuous Animation */}
               <div className='absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-0 z-0'></div>
+                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
               </div>
 
               {/* Inner Circle with Icon */}
@@ -253,7 +253,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             <div className='flex items-center justify-center relative my-4'>
               {/* Outer Circle Border with Continuous Animation */}
               <div className='animate-circle absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-0 z-0'></div>
+                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
               </div>
 
               {/* Inner Circle with Icon */}
@@ -377,7 +377,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             <div className='flex items-center justify-center relative my-4'>
               {/* Outer Circle Border with Continuous Animation */}
               <div className='absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-0 z-0'></div>
+                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
               </div>
 
               {/* Inner Circle with Icon */}

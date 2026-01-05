@@ -7,7 +7,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { ListIcon } from '@phosphor-icons/react'
-import { mainLinks, socialLinks, type NavLink } from "@/components/header/index"
+import { mainLinks, type NavLink } from "@/components/header/index"
+import { socialLinks } from "@/components/data/social"
 
 
 interface MobileNavProps {

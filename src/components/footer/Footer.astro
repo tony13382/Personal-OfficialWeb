@@ -12,6 +12,7 @@ import {
   MessengerLogoIcon,
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
+import { SocialLinks } from "./SocialLinksLite";
 ---
 
 <footer class="rounded-t-3xl bg-background border-t border-0">
@@ -62,7 +63,7 @@ import {
           <InstagramLogoIcon
             className="size-5 group-hover:scale-110 transition-transform"
           />
-          <span>旗下知識帳號（DigiOcean）</span>
+          <span>知識帳號（DigiOcean）</span>
         </a>
       </div>
 
@@ -106,56 +107,7 @@ import {
             聯絡 Connections
           </h4>
           <div class="flex px-1">
-            <a
-              href="mailto:liangchinlu@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-            >
-              <EnvelopeIcon
-                className="size-5 group-hover:scale-110 transition-transform"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/liang-chin-lu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-            >
-              <LinkedinLogoIcon
-                className="size-5 group-hover:scale-110 transition-transform"
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/liang_chin_ml/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-            >
-              <InstagramLogoIcon
-                className="size-5 group-hover:scale-110 transition-transform"
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/tony13382/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-            >
-              <MessengerLogoIcon
-                className="size-5 group-hover:scale-110 transition-transform"
-              />
-            </a>
-            <a
-              href="https://portaly.cc/liang_chin_ml"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center p-3 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-            >
-              <InfoIcon
-                className="size-5 group-hover:scale-110 transition-transform"
-              />
-            </a>
+            <SocialLinks />
           </div>
         </div>
       </div>
