@@ -51,6 +51,23 @@ export function ProfileCard() {
     )
 }
 
+export function ProfileCardTigger() {
+    return (
+        <button
+            id="profile-modal-btn"
+            className="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
+            title="通知我"
+        >
+            <img
+                src="/assets/imgs/index/myHead.webp"
+                alt={`${profileData.name}的頭像`}
+                className="size-16 rounded-full overflow-hidden"
+            />
+        </button>
+    )
+}
+
+
 
 export function ProfileCardModal() {
     const [isOpen, setIsOpen] = useState(false)

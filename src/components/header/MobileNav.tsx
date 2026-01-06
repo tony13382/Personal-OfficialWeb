@@ -46,7 +46,7 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
         </SheetHeader>
         <nav className="flex flex-col gap-4 flex-1 min-h-0">
           {/* Navigation Links */}
-          <div className="flex-1 flex flex-col gap-2 overflow-y-auto">
+          <div className="relative flex-1 flex flex-col gap-2 overflow-y-auto">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -58,6 +58,11 @@ export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
                 <span>{link.label}</span>
               </a>
             ))}
+            <img
+              src="/assets/imgs/index/sign.svg"
+              alt="Logo"
+              className="absolute bottom-0 right-4 opacity-25 text-primary max-h-7 mt-2"
+            />
           </div>
 
           {/* Divider */}

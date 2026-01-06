@@ -14,11 +14,6 @@ interface Props {
 const { type = "main", themeColor } = Astro.props;
 ---
 
-<!-- Google Font - Nav Logo -->
-<link
-  href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva&display=swap"
-  rel="stylesheet"
-/>
 
 <header
   class="fixed top-0 left-0 right-0 z-40 py-2 bg-background border-b"
@@ -40,12 +35,11 @@ const { type = "main", themeColor } = Astro.props;
               height="36"
               class="flex-shrink-0 bg-foreground/80 p-1 rounded-full"
             />
-            <span
-              class="text-base font-normal"
-              style="font-family: 'Playwrite HR Lijeva', cursive;"
-            >
-              Liang Chin Lu
-            </span>
+            <img
+              src="/assets/imgs/index/sign.svg"
+              alt="Logo"
+              class="text-primary max-h-7 mt-2"
+            />
           </a>
         ) : (
           <button
