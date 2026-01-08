@@ -11,11 +11,11 @@ interface ActionLink {
 
 
 const actionLinks: ActionLink[] = [
-    // {
-    //     href: "https://github.com/tony13382",
-    //     label: "Github",
-    //     icon: <GithubLogoIcon className="size-12" />
-    // },
+    {
+        href: "https://github.com/tony13382",
+        label: "Github",
+        icon: <GithubLogoIcon className="size-12" />
+    },
     {
         href: "https://drive.google.com/file/d/1vN6BVqPXcnAzDVIDNJvWqHbNMjirxx0D/view?usp=sharing",
         label: "下載履歷",

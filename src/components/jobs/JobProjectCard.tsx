@@ -61,14 +61,6 @@ export const JobProjectCard = ({
             <CardContent className="space-y-4">
                 <div className="flex items-start justify-between gap-3">
                     <p className="text-2xl font-bold text-foreground">{name}</p>
-                    {link && (
-                        <Button variant="outline" size="sm" asChild>
-                            <a href={link} className="flex items-center gap-1.5">
-                                <ArrowUpRightIcon className="size-4" />
-                                查看專案
-                            </a>
-                        </Button>
-                    )}
                 </div>
                 <hr />
                 {timeStr && <p className="text-muted-foreground">{timeStr}</p>}
@@ -91,6 +83,14 @@ export const JobProjectCard = ({
                             );
                         })}
                     </ul>
+                )}
+                {link && (
+                    <Button variant="outline" asChild>
+                        <a href={link} className="flex items-center gap-1.5">
+                            <ArrowUpRightIcon className="size-4" />
+                            查看專案
+                        </a>
+                    </Button>
                 )}
             </CardContent>
             {tags.length > 0 && (
