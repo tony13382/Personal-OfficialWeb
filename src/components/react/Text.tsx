@@ -38,7 +38,7 @@ export function Text({
   // Apply backtick highlighting
   const formattedContent = formatHighlight(content)
 
-  const Element = tag as keyof JSX.IntrinsicElements
+  const Element = tag as keyof React.JSX.IntrinsicElements
 
   if (pillType) {
     return (

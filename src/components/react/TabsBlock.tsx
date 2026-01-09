@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { Card, CardContent } from '@/components/ui/card'
+
 import { renderEmbedComponent, type EmbedComponent } from './Basic'
 
 interface TabData {

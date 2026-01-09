@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
+
 import { Canva } from './Canva'
 import { Youtube } from './Youtube'
 import { ImageWithLightbox } from './ImageWithLightbox';

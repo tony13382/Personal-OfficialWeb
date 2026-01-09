@@ -18,7 +18,7 @@ interface MobileNavProps {
 
 
 
-export function MobileNav({ type = 'main', themeColor }: MobileNavProps) {
+export function MobileNav({ type = 'main' }: MobileNavProps) {
   const [open, setOpen] = useState(false)
 
   const projectLinks: NavLink[] = [{ href: '/', label: '首頁' }]
