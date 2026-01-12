@@ -29,7 +29,7 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="lg:hidden bg-transparent border-0 text-gray-900 dark:text-white cursor-pointer  hover:bg-foreground/20 p-4 rounded-full"
+          className="lg:hidden bg-transparent border-0 cursor-pointer  hover:bg-muted p-4 rounded-full"
           aria-label="Toggle navigation"
         >
           <ListIcon className="size-6" />
@@ -40,7 +40,7 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
         className="w-[300px] sm:w-[400px] bg-background flex flex-col px-4 py-6"
       >
         <SheetHeader>
-          <SheetTitle className="text-left text-gray-900 dark:text-white">
+          <SheetTitle className="text-left">
             選單
           </SheetTitle>
         </SheetHeader>
