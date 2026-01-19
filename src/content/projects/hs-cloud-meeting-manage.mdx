@@ -1,23 +1,23 @@
 ---
 title: 華新雲會議管理系統
-description: 大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+description: "[ 產學合作專案 ] 提供使用者線上開會與開會管理的一條龍解決方案，除基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。"
 subdescription: "擔任：CTO, Product Designer<br>負責：軟體架構設計、產品介面設計、軟體開發、技術總負責人"
 startDate: 2020-09-01
 endDate: 2021-01-31
-status: closed
+status: switch
 theme: purple
 cover: /assets/imgs/projects/hsCloudMeetingManage/cover.png
 pin: true
 skillTypes: [dev, design]
 tags: [介面設計, 產品規劃, 全端開發]
 links:
-  - content: GitHub 代碼
-    href: https://github.com/tony13382/CycuSA-MeetManagement
-    icon: GithubLogoIcon
-    openInTab: true
   - content: Figma 設計界面稿
     href: https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94
     icon: FigmaLogoIcon
+    openInTab: true
+  - content: GitHub 代碼
+    href: https://github.com/tony13382/CycuSA-MeetManagement
+    icon: GithubLogoIcon
     openInTab: true
 tools:
   - name: Figma
@@ -34,7 +34,7 @@ tools:
     description: 前端模板管理套件
 seo:
   metaTitle: 華新雲會議管理系統 - 呂亮進的專案作品
-  metaDescription: 大學系統分析專案，利用 mongodb 與 jisti 提供使用者線上開會與開會管理的解決方案，除了基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。
+  metaDescription: "[ 產學合作專案 ] 提供使用者線上開會與開會管理的一條龍解決方案，除基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。"
   ogImage: /assets/imgs/projects/hsCloudMeetingManage/cover.png
 ---
 
@@ -50,6 +50,104 @@ import { IconBlock } from '@/components/react/IconBlock'
       client:load
     />
   </CardHeader>
+</Card>
+
+
+<Card>
+  <CardTitle className='pb-4'>ER Model</CardTitle>
+  <CardContent className='bg-[#FBFBFB]'>
+    <ImageWithLightbox
+      src="/assets/imgs/projects/hsCloudMeetingManage/erModel.png"
+      allowPop={true}
+      client:load
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>系統設計亮點</CardTitle>
+  <CardContent className='gap-3'>
+    ---
+
+    ### 三層式架構
+    採用 `MVC 分層設計`，將路由、業務邏輯、資料存取完全分離，提升程式碼的可維護性與可測試性。
+    
+    ---
+
+    ### 雙軌並行簽核流程
+    會議建立後同時啟動兩條獨立的審核流程：
+    - 主持人審核
+    - 會議室負責人審核
+    
+    兩者並行處理、互不阻塞，全部通過後自動進入下一階段。這種設計加速了審批效率，同時確保雙重確認機制。
+
+    ---
+    ### 狀態機驅動
+    使用狀態碼管理簽核進度與出席模式，狀態變化自動觸發對應的業務動作（如發送通知、開放編輯權限等），確保流程的一致性與可追溯性。
+
+    ---
+    ### 事件驅動通知
+    系統在`關鍵節點`自動發送 Email 通知：
+    - 建立會議 → 通知審核者
+    - 審核通過 → 發送 iCalendar 行事曆邀請
+    - 審核駁回 → 通知申請者修改
+    - 上傳會議記錄 → 通知相關人員
+
+    ---
+    ### 多角色視圖
+    同一份會議資料`根據使用者角色呈現不同介面`：
+    - 參與者看到自己參與的會議
+    - 主持人看到自己主持的會議
+    - 建立者可編輯自己建立的會議
+    - 審核者看到待簽核清單
+
+    ---
+    ### 成本自動計算
+    系統根據與會人數與會議室單價，自動計算並記錄每場會議的人力成本與場地成本。
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>功能模組</CardTitle>
+  <CardContent className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+    <IconBlock
+      title="開會流程管理"
+      icon="TreeStructureIcon"
+      client:visible
+    />
+    <IconBlock
+      title="會議室資源管理"
+      icon="ChalkboardTeacherIcon"
+      iconClassName='mt-0.5'
+      client:visible
+    />
+    <IconBlock
+      title="雙軌簽核審批流程"
+      icon="SignatureIcon"
+      client:visible
+    />
+    <IconBlock
+      title="與會者管理"
+      icon="AddressBookTabsIcon"
+      client:visible
+    />
+    <IconBlock
+      title="會議記錄上傳與下載"
+      icon="FileTextIcon"
+      client:visible
+    />
+    <IconBlock
+      title="通知中心與已讀追蹤"
+      icon="BellRingingIcon"
+      client:visible
+    />
+    <IconBlock
+      title="自動郵件通知與行事曆邀請"
+      subtitle='Nodemailer'
+      icon="EnvelopeOpenIcon"
+      client:visible
+    />
+  </CardContent>
 </Card>
 
 <Card>
@@ -90,13 +188,3 @@ import { IconBlock } from '@/components/react/IconBlock'
   </CardContent>
 </Card>
 
-<Card>
-  <CardTitle>ER Model</CardTitle>
-  <CardContent>
-    <ImageWithLightbox
-      src="/assets/imgs/projects/hsCloudMeetingManage/erModel.png"
-      allowPop={true}
-      client:load
-    />
-  </CardContent>
-</Card>

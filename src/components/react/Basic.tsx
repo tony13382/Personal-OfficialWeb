@@ -21,7 +21,7 @@ export const parseTextWithHighlight = (text: string) => {
 export type EmbedComponent =
     | { type: 'Canva'; src: string; title?: string }
     | { type: "Youtube"; embedUrl: string; className?: string }
-    | { type: 'IconBlock'; title?: string; subtitle?: string; href?: string; icon?: string; className?: string; }
+    | { type: 'IconBlock'; title?: string; subtitle?: string; href?: string; icon?: string; className?: string; iconClassName?: string; }
     | { type: 'text'; content: string; className?: string }
     | { type: 'image'; src: string; className?: string; allowPop?: boolean }
     | { type: 'hr'; className?: string }
@@ -41,7 +41,7 @@ export const renderEmbedComponent = (embed: EmbedComponent) => {
                 <Youtube embedUrl={embed.embedUrl} />
             </div>
         case 'IconBlock':
-            return <IconBlock title={embed.title} subtitle={embed.subtitle} href={embed.href} icon={embed.icon} className={embed.className} />
+            return <IconBlock title={embed.title} subtitle={embed.subtitle} href={embed.href} icon={embed.icon} className={embed.className} iconClassName={embed.iconClassName} />
         case 'text':
             return <p className={embed.className}>{parseTextWithHighlight(embed.content)}</p>
         case 'image':

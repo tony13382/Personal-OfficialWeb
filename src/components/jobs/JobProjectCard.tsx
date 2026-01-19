@@ -74,7 +74,7 @@ export const JobProjectCard = ({
                                     key={index}
                                     className={
                                         isHeading
-                                            ? "font-bold text-foreground list-none pt-4 -ms-5"
+                                            ? "font-bold text-foreground list-none pt-1.5 -ms-5"
                                             : undefined
                                     }
                                 >
@@ -86,7 +86,7 @@ export const JobProjectCard = ({
                 )}
                 {link && (
                     <Button variant="outline" asChild>
-                        <a href={link} className="flex items-center gap-1.5">
+                        <a href={link} className="flex items-center gap-1.5 mt-3">
                             <ArrowUpRightIcon className="size-4" />
                             查看專案
                         </a>

@@ -51,17 +51,25 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
   name="雲端會議管理系統"
   link="/projects/hs-cloud-meeting-manage"
   descriptions={[
-    "涵蓋設計與全端開發工作。",
-    "基於 Node.js＋Jitsi Meet 作為會議系統後端核心。",
-    "結合 Bootstrap 打造 RWD 響應式網頁。",
+    "## 前端設計與整合",
+    "基於 `Bootstrap` UI 庫 於 `Figma` 設計響應式網頁。",
+    "前端採用 `handlebars 模版語言`，並搭配 Bootstrap 打造 RWD 響應式網頁。",
+    "採用 `MVC 分層設計`，將路由、業務邏輯、資料存取完全分離。",
+    "## 後端設計",
+    "基於 `Node.js ＋ mongoDB` 作為會議管理系統後端核心。",
+    "`串接 Gmail` 作為自動化發信系統",
+    "Jitsi Meet 作為線上會議系統核心。",
   ]}
-  tags={["全端開發","NodeJs","UI Design"]}
+  tags={["Figma","NodeJs","Bootstrap","UI Design"]}
 />
 
 <JobProjectCard
   imageSrc="/assets/imgs/projects/hsVmi/cover.png"
   imageAlt="華新 VMI 庫存管理遊戲"
   name="華新 VMI 庫存管理遊戲"
+  descriptions={[
+    "基於 `Tomcat (JSP)` 結合 `Bootstrap` UI 庫於 Windows 環境本地部屬網頁服務。"
+  ]}
   link="/projects/hs-vmi"
   tags={["Java Page","MySQL"]}
 />

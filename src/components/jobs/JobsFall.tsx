@@ -50,7 +50,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
                 <div className="flex-1 grid gap-2">
                   <h3
                     className="text-xl font-bold group-hover:text-opacity-80 transition-colors line-clamp-2"
-                    style={{ color: themeColors.primary }}
+                  // style={{ color: themeColors.primary }}
                   >
                     {job.data.title}
                   </h3>

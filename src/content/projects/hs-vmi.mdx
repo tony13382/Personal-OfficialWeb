@@ -1,9 +1,9 @@
 ---
 title: 華新 VMI 庫存管理遊戲
-description: 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。
+description: "[ 產學合作專案 ] 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。"
 startDate: 2020-10-01
 endDate: 2020-12-31
-status: closed
+status: switch
 theme: blue
 cover: /assets/imgs/projects/hsVmi/cover.png
 pin: false
@@ -23,15 +23,17 @@ tools:
     description: 前端元件套件
 seo:
   metaTitle: 華新 VMI 庫存管理遊戲 - 呂亮進的專案作品
-  metaDescription: 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。
+  metaDescription: "[ 產學合作專案 ] 模擬物流系統，利用華新麗華歷史資訊來推算庫存，並依照使用者操作來預估未來的成本，協助員工規劃銷售與庫存管理。"
   ogImage: /assets/imgs/projects/hsVmi/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { TabsBlock } from '@/components/react/TabsBlock'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
 
 <Card>
+  <CardTitle className='mb-2'>技術文件</CardTitle>
   <CardHeader>
     <ImageWithLightbox
       src="/assets/imgs/projects/hsVmi/ErModal.png"
@@ -40,38 +42,52 @@ import { IconBlock } from '@/components/react/IconBlock'
     />
   </CardHeader>
   <CardContent className="pt-6">
-    <h2>技術文件</h2>
-
-    <div className="flex flex-col gap-4 mt-4">
-      <IconBlock
-        title="系統規格書(1)"
-        subtitle="PDF"
-        href="/assets/file/hsVmi/供應商庫存管理系統規格.pdf"
-        icon="FilePdfIcon"
-        iconClassName='-mb-1'
-        client:visible
-      />
-      <IconBlock
-        title="系統規格書(2)"
-        subtitle="DOCX"
-        href="/assets/file/hsVmi/VMI個案遊戲.docx"
-        icon="MicrosoftWordLogoIcon"
-        client:visible
-      />
-      <IconBlock
-        title="預設資料集(1)"
-        subtitle="XLSX"
-        href="/assets/file/hsVmi/VMI起始資料.xlsx"
-        icon="MicrosoftExcelLogoIcon"
-        client:visible
-      />
-      <IconBlock
-        title="預設資料集(2)"
-        subtitle="XLSX"
-        href="/assets/file/hsVmi/VMIDATA2020.xlsx"
-        icon="MicrosoftExcelLogoIcon"
-        client:visible
-      />
-    </div>
+    <TabsBlock
+      tabs={[
+        {
+          value: "系統規格書",
+          label: "系統規格書",
+          embed: [
+            { 
+              type: 'IconBlock', 
+              title: "系統規格書(1)", 
+              subtitle: "PDF",
+              href: "/assets/file/hsVmi/供應商庫存管理系統規格.pdf",
+              icon: "FilePdfIcon",
+              iconClassName: "-mb-1"
+            },
+            { 
+              type: 'IconBlock', 
+              title: "系統規格書(2)", 
+              subtitle: "DOCX",
+              href: "/assets/file/hsVmi/VMI個案遊戲.docx",
+              icon: "MicrosoftWordLogoIcon"
+            },
+          ]
+        },
+        {
+          value: "預設資料集",
+          label: "預設資料集",
+          embed: [
+            { 
+              type: 'IconBlock', 
+              title: "預設資料集(1)", 
+              subtitle: "XLSX",
+              href: "/assets/file/hsVmi/VMI起始資料.xlsx",
+              icon: "MicrosoftExcelLogoIcon",
+            },
+            { 
+              type: 'IconBlock', 
+              title: "預設資料集(2)", 
+              subtitle: "XLSX",
+              href: "/assets/file/hsVmi/VMIDATA2020.xlsx",
+              icon: "MicrosoftExcelLogoIcon"
+            },
+          ]
+        },
+      ]}
+      defaultValue="系統規格書"
+      client:visible
+    />
   </CardContent>
 </Card>

@@ -38,7 +38,13 @@ import {
   PencilIcon,
   ImageIcon,
   HeadphonesIcon,
-  FlagIcon
+  FlagIcon,
+  TreeStructureIcon,
+  ChalkboardTeacherIcon,
+  SignatureIcon,
+  AddressBookTabsIcon,
+  BellRingingIcon,
+  EnvelopeOpenIcon
 } from "@phosphor-icons/react"
 
 interface IconBlockProps {
@@ -88,7 +94,13 @@ const iconMap: Record<string, Icon> = {
   PencilIcon,
   ImageIcon,
   HeadphonesIcon,
-  FlagIcon
+  FlagIcon,
+  TreeStructureIcon,
+  ChalkboardTeacherIcon,
+  SignatureIcon,
+  AddressBookTabsIcon,
+  BellRingingIcon,
+  EnvelopeOpenIcon
 }
 
 export function IconBlock({
