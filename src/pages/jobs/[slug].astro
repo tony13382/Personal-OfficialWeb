@@ -9,6 +9,7 @@ import {
   ProfileCardModal,
   profileData,
 } from "@/components/data/profile";
+import { Badge } from "@/components/ui/badge";
 
 export async function getStaticPaths() {
   const jobs = await getCollection("jobs");
@@ -67,9 +68,25 @@ const timeStr =
       <div class="relative flex items-center pb-2 w-full min-h-60">
         <div class="container grid grid-cols-1 mx-auto">
           <div class="flex flex-col gap-4">
-            <h1 class="text-4xl text-center font-bold text-white notoFont">
+            <h1 class="text-4xl text-center text-background font-bold">
               {job.data.title}
             </h1>
+            <p class="text-center text-background">{timeStr}</p>
+            {
+              job.data.tags.length > 0 && (
+                <div class="flex gap-2 pb-2 justify-center">
+                  {job.data.tags.map((tag: string) => (
+                    <Badge
+                      variant="outline"
+                      className="text-xs bg-background/60"
+                      client:load
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
@@ -91,13 +108,37 @@ const timeStr =
                     />
                   )
                 }
-                <div class="grid items-center">
-                  <p
-                    class="font-bold text-lg text-center notoFont"
-                    set:html={job.data.company}
-                  />
-                  <p class="text-muted-foreground text-center">{timeStr}</p>
+                <div class="grid items-center gap-1">
+                  {
+                    job.data.company && (
+                      <p class="font-bold text-lg text-center">
+                        {job.data.company}
+                      </p>
+                    )
+                  }
+                  {
+                    job.data.location && (
+                      <p class="text-muted-foreground text-center">
+                        {job.data.location}
+                      </p>
+                    )
+                  }
                 </div>
+                {
+                  job.data.description && job.data.description.length > 0 && (
+                    <div class="border-t pt-4">
+                      {job.data.description &&
+                        job.data.description.length > 0 && (
+                          <div class="">
+                            <JobDescription
+                              descriptions={job.data.description}
+                              client:load
+                            />
+                          </div>
+                        )}
+                    </div>
+                  )
+                }
               </CardContent>
             </Card>
             <ProfileCard />
@@ -108,22 +149,6 @@ const timeStr =
           <div class="hidden lg:block h-[calc(var(--spacing)*(23-8))]"></div>
 
           <!-- 工作描述 -->
-          {
-            job.data.description && job.data.description.length > 0 && (
-              <Card>
-                <CardContent className="space-y-3">
-                  {job.data.description && job.data.description.length > 0 && (
-                    <div class="">
-                      <JobDescription
-                        descriptions={job.data.description}
-                        client:load
-                      />
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )
-          }
 
           <!-- MDX 內容 -->
           <article class="flex flex-col gap-8">

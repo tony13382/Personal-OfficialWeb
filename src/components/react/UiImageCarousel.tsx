@@ -17,14 +17,23 @@ interface UiImage {
 interface UiImageCarouselProps {
   images: (string | UiImage)[]
   autoplaySpeed?: number
+  alignBody?: 'top' | 'center' | 'bottom'
+
   className?: string
   galleryId?: string
   allowPop?: boolean
 }
 
+const alignBodyClasses = {
+  top: 'items-start',
+  center: 'items-center',
+  bottom: 'items-end'
+}
+
 export function UiImageCarousel({
   images,
   autoplaySpeed = 3000,
+  alignBody = 'top',
   className = '',
   galleryId,
   allowPop = true
@@ -71,7 +80,7 @@ export function UiImageCarousel({
       {/* Carousel viewport */}
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex items-center">
+          <div className={`flex ${alignBodyClasses[alignBody]}`}>
             {images.map((item, index) => {
               const imageUrl = typeof item === 'string' ? item : item.image
               const imageDesc = typeof item === 'string' ? `` : item.desc

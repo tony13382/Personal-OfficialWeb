@@ -63,6 +63,8 @@ const jobsCollection = defineCollection({
     // 基本資訊
     title: z.string(),
     company: z.string(),
+    location: z.string().optional().nullable(),
+    tags: z.array(z.string()).default([]),
 
     // 時間
     startDate: z.coerce.date().optional().nullable(),

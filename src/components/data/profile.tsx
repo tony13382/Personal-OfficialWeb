@@ -18,7 +18,7 @@ export const profileData: ProfileData = {
 export function ProfileCard() {
   return (
     <Card
-      className="mt-8 transition-all duration-300 pb-4 hidden lg:flex  justify-center"
+      className="mt-8 transition-all duration-300 pb-4 hidden lg:flex justify-center"
     >
       <CardContent className="gap-6 items-center pt-3 pb-2">
         <div
