@@ -45,8 +45,6 @@ const getStatusBadge = (statusStr: string) => {
       return { text: "未知", class: "" };
   }
 };
-
-
 ---
 
 <BaseLayout
@@ -64,7 +62,7 @@ const getStatusBadge = (statusStr: string) => {
     >
       <div
         class="absolute top-0 start-0 w-full h-full"
-        style=`background: linear-gradient(0deg, ${themeColors.primary}70, ${themeColors.secondary}50); backdrop-filter: blur(40px);`
+        style="background: linear-gradient(0deg, var(--theme-primary-90), var(--theme-secondary-50)); backdrop-filter: blur(40px);"
       >
       </div>
       <div class="relative flex items-center pb-2 w-full min-h-60">
@@ -86,6 +84,21 @@ const getStatusBadge = (statusStr: string) => {
                   : " ~ 現在"
               }
             </p>
+            {
+              project.data.tags.length > 0 && (
+                <div class="flex gap-2 pb-2 justify-center">
+                  {project.data.tags.map((tag: string) => (
+                    <Badge
+                      variant="outline"
+                      className="text-xs bg-background/60"
+                      client:load
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
@@ -113,14 +126,6 @@ const getStatusBadge = (statusStr: string) => {
                 <p class="notoFont msf-info-s">
                   {project.data.description}
                 </p>
-                <!-- 標籤 -->
-                <div class="flex flex-wrap gap-2">
-                  {
-                    project.data.tags.map((tag: string) => (
-                      <Badge variant="secondary">{tag}</Badge>
-                    ))
-                  }
-                </div>
                 <!-- 連結按鈕 -->
                 {
                   project.data.links && project.data.links.length > 0 && (
@@ -232,7 +237,7 @@ const getStatusBadge = (statusStr: string) => {
     title="通知我"
   >
     <img
-      src="/assets/imgs/index/myHead.webp"
+      src="/assets/imgs/index/profileAnimate.png"
       alt={`${profileData.name}的頭像`}
       class="size-16 rounded-full overflow-hidden"
     />

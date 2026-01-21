@@ -943,7 +943,7 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
           {/* Tags */}
           <div className="flex flex-wrap gap-2 my-1">
             {project.data.tags.map((tag: string) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
+              <Badge key={tag} variant="outline" className="text-xs">
                 {tag}
               </Badge>
             ))}

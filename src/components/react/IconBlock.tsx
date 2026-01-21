@@ -44,7 +44,9 @@ import {
   SignatureIcon,
   AddressBookTabsIcon,
   BellRingingIcon,
-  EnvelopeOpenIcon
+  EnvelopeOpenIcon,
+  FilePptIcon,
+  FileXlsIcon
 } from "@phosphor-icons/react"
 
 interface IconBlockProps {
@@ -66,6 +68,8 @@ const iconMap: Record<string, Icon> = {
   FireIcon,
   FileArchiveIcon,
   FilePdfIcon,
+  FilePptIcon,
+  FileXlsIcon,
   FileSqlIcon,
   FileTextIcon,
   FigmaLogoIcon,
@@ -113,7 +117,9 @@ export function IconBlock({
 }: IconBlockProps) {
   // Get icon from mapping or use default
   const IconComponent = (icon && iconMap[icon]) || AcornIcon
-
+  if (["FilePptIcon", "FilePdfIcon", "FileXlsIcon"].includes(icon ?? "")) {
+    iconClassName = (iconClassName ?? "") + " -mb-1"
+  }
   const content = (
     <div className={cn(
       "flex items-center gap-3 p-2 border rounded-lg transition-shadow",
@@ -125,7 +131,7 @@ export function IconBlock({
         className="flex items-center justify-center size-12 rounded-lg text-white flex-shrink-0"
         style={{ backgroundColor: 'var(--theme-primary)' }}
       >
-        <IconComponent className={`size-6 ${iconClassName}`} />
+        <IconComponent className={cn("size-6", iconClassName)} />
       </div>)}
       <div className="flex-1 min-w-0">
         {title && <p className="font-bold m-0 break-words" dangerouslySetInnerHTML={{ __html: formatHighlight(title) }} />}
