@@ -68,10 +68,10 @@ const getStatusBadge = (statusStr: string) => {
       <div class="relative flex items-center pb-2 w-full min-h-60">
         <div class="container grid grid-cols-1 mx-auto">
           <div class="flex flex-col gap-4">
-            <h1 class="text-4xl text-center font-bold text-white notoFont">
+            <h1 class="text-4xl text-center font-bold text-white">
               {project.data.title}
             </h1>
-            <p class="text-center text-white m-0 notoFont">
+            <p class="text-center text-background/80">
               {
                 project.data.startDate.toLocaleDateString("zh-TW", {
                   year: "numeric",
@@ -90,7 +90,7 @@ const getStatusBadge = (statusStr: string) => {
                   {project.data.tags.map((tag: string) => (
                     <Badge
                       variant="outline"
-                      className="text-xs bg-background/60"
+                      className="text-sm bg-background/10 text-background"
                       client:load
                     >
                       {tag}

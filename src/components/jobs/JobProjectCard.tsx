@@ -54,8 +54,11 @@ export const JobProjectCard = ({
     return (
         <Card>
             {imageSrc && (
-                <CardHeader>
+                <CardHeader className="relative">
                     <img src={imageSrc} alt={imageAlt || name} className="img-fluid" />
+                    {timeStr && (
+                        <Badge className="absolute bottom-4 right-4" variant="secondary">{timeStr}</Badge>
+                    )}
                 </CardHeader>
             )}
             <CardContent className="space-y-4">
@@ -63,7 +66,20 @@ export const JobProjectCard = ({
                     <p className="text-2xl font-bold text-foreground">{name}</p>
                 </div>
                 <hr />
-                {timeStr && <p className="text-muted-foreground">{timeStr}</p>}
+                {tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                        {tags.map((tag, index) => {
+                            const label = tag.trim().startsWith("#")
+                                ? tag.trim()
+                                : `# ${tag.trim()}`;
+                            return (
+                                <Badge key={index} variant="outline" className="text-muted-foreground">
+                                    {label}
+                                </Badge>
+                            );
+                        })}
+                    </div>
+                )}
                 {descriptions.length > 0 && (
                     <ul className="space-y-2 list-disc ps-5">
                         {descriptions.map((desc, index) => {
@@ -93,20 +109,6 @@ export const JobProjectCard = ({
                     </Button>
                 )}
             </CardContent>
-            {tags.length > 0 && (
-                <CardFooter className="flex flex-wrap gap-2">
-                    {tags.map((tag, index) => {
-                        const label = tag.trim().startsWith("#")
-                            ? tag.trim()
-                            : `# ${tag.trim()}`;
-                        return (
-                            <Badge key={index} variant="secondary">
-                                {label}
-                            </Badge>
-                        );
-                    })}
-                </CardFooter>
-            )}
         </Card>
     );
 };

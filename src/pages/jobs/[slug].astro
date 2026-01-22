@@ -71,14 +71,14 @@ const timeStr =
             <h1 class="text-4xl text-center text-background font-bold">
               {job.data.title}
             </h1>
-            <p class="text-center text-background">{timeStr}</p>
+            <p class="text-center text-background/80">{timeStr}</p>
             {
               job.data.tags.length > 0 && (
                 <div class="flex gap-2 pb-2 justify-center">
                   {job.data.tags.map((tag: string) => (
                     <Badge
                       variant="outline"
-                      className="text-xs bg-background/60"
+                      className="text-sm bg-background/10 text-background"
                       client:load
                     >
                       {tag}
