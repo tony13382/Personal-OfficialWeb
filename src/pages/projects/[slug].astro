@@ -140,7 +140,7 @@ const getStatusBadge = (statusStr: string) => {
                           <Button variant="outline">
                             <a
                               href={link.href}
-                              target="_blank"
+                              target={link.openInTab ? "_blank" : "_self"}
                               rel="noopener noreferrer"
                               class="flex gap-1.5 items-center"
                             >

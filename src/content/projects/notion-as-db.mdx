@@ -2,17 +2,21 @@
 title: 知識庫與精選書籤
 description: "[Notion As DB 實驗專案] 基於 Notion API, Cloudflare Pages 所打造的靜態網頁流程"
 startDate: 2022-03-01
-status: active
+status: closed
 theme: natural
 cover: /assets/imgs/projects/notionAsDb/cover.png
-pin: true
-skillTypes: [dev, plan]
-tags: [網站架設, Notion, 靜態網頁]
+pin: false
+skillTypes: [dev]
+tags: [網站架設, Notion, 靜態網頁, Cloudflare]
 links:
   - content: 知識推薦獲取來源
-    href: https://learn.lianglu.uk/
+    href: https://go.lianglu.uk/learn
     icon: GraduationCap
     openInTab: true
+  - content: Kit - 書籤管理工具 專案
+    href: /projects/kit
+    icon: LinkIcon
+    openInTab: false
 tools:
   - name: Notion
     description: 網頁資料庫
@@ -26,9 +30,22 @@ seo:
   ogImage: /assets/imgs/projects/notionAsDb/cover.png
 ---
 
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
+
+<Card>
+  <CardTitle>提醒</CardTitle>
+  <CardContent>
+    <IconBlock
+        title="專案已停用"
+        subtitle="改為 `Kit - 書籤管理工具` 專案"
+        icon="FlagIcon"
+        href='/projects/kit'
+        client:visible
+      />
+  </CardContent>
+</Card>
 
 <Card>
   <CardHeader>
