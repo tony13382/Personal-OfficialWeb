@@ -1,6 +1,6 @@
 ---
 title: Kit - 書籤管理工具
-description: 基於 Remix + Cloudflare 的現代化書籤管理系統，支援多層級資料夾、標籤分類與拖曳排序
+description: 基於 React Router v7 + Cloudflare 的現代化書籤管理系統，支援多層級資料夾、標籤分類與拖曳排序
 subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、資料庫設計、前後端開發、部署"
 startDate: 2024-06-01
 status: active
@@ -39,7 +39,7 @@ tools:
     description: 拖曳排序功能實作
 seo:
   metaTitle: Kit - 書籤管理工具 - 呂亮進的專案作品
-  metaDescription: 基於 Remix + Cloudflare 的現代化書籤管理系統，支援多層級資料夾、標籤分類與拖曳排序
+  metaDescription: 基於 React Router v7 + Cloudflare 的現代化書籤管理系統，支援多層級資料夾、標籤分類與拖曳排序
   ogImage: /assets/imgs/projects/kit/cover.png
 ---
 
@@ -67,7 +67,7 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
       </div>
       <div className="space-y-1.5">
         <p>**拖曳排序**</p>
-        基於 `@dnd-kit` 實現 Tab、Folder、Bookmark 的拖曳排序，使用浮點數 sort_order 策略避免頻繁重排。
+        基於 `@dnd-kit` 實現 Tab、Folder、Bookmark、Tag Group 的拖曳排序，使用浮點數 sort_order 策略避免頻繁重排。
       </div>
       <div className="space-y-1.5">
         <p>**書籤分享**</p>
