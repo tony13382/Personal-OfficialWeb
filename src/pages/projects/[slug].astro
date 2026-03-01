@@ -6,7 +6,7 @@ import { themes } from "@/lib/themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import * as PhosphorIcons from "@phosphor-icons/react";
 import { StarIcon } from "@phosphor-icons/react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ProfileCardModal, profileData } from "@/components/data/profile";
 
 export async function getStaticPaths() {
@@ -68,7 +68,7 @@ const getStatusBadge = (statusStr: string) => {
       <div class="relative flex items-center pb-2 w-full min-h-60">
         <div class="container grid grid-cols-1 mx-auto">
           <div class="flex flex-col gap-4">
-            <h1 class="text-4xl text-center font-bold text-white">
+            <h1 class="px-3 text-4xl text-center font-bold text-white">
               {project.data.title}
             </h1>
             <p class="text-center text-background/80">
@@ -137,19 +137,17 @@ const getStatusBadge = (statusStr: string) => {
                             ] as PhosphorIcons.Icon) || null
                           : null;
                         return (
-                          <Button variant="outline">
-                            <a
-                              href={link.href}
-                              target={link.openInTab ? "_blank" : "_self"}
-                              rel="noopener noreferrer"
-                              class="flex gap-1.5 items-center"
-                            >
-                              {IconComponent && (
-                                <IconComponent className="size-4" />
-                              )}
-                              {link.content}
-                            </a>
-                          </Button>
+                          <a
+                            href={link.href}
+                            target={link.openInTab ? "_blank" : "_self"}
+                            rel="noopener noreferrer"
+                            class={buttonVariants({ variant: "outline" })}
+                          >
+                            {IconComponent && (
+                              <IconComponent className="size-4" />
+                            )}
+                            {link.content}
+                          </a>
                         );
                       })}
                     </div>
