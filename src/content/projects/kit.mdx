@@ -246,9 +246,16 @@ export const dbItems = [
 ]
 
 <Card>
+  <CardHeader>
+    <ImageWithLightbox
+        src="/assets/imgs/projects/kit/db.png"
+        allowPop={true}
+        client:load
+      />
+  </CardHeader>
   <CardTitle>資料庫設計</CardTitle>
   <CardContent className="gap-3 pt-4">
-    <p>使用 **Cloudflare D1 (SQLite)** 搭配 **Drizzle ORM**，共 9 張資料表、7 次 Migration，涵蓋使用者、工作區、書籤內容、標籤系統與分享機制。</p>
+    <p>使用 **Cloudflare D1 (SQLite)** 搭配 **Drizzle ORM**，涵蓋使用者、工作區、書籤內容、標籤系統與分享機制。</p>
     <AccordionBlock
       items={dbItems}
       type="single"
