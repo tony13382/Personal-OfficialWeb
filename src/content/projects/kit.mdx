@@ -101,6 +101,56 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
   </CardContent>
 </Card>
 
+<Card>
+  <CardTitle>智慧緩存加速設計</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>針對公開分享頁面設計了一套基於 **Hash 比對** 的客戶端快取機制，大幅減少重複訪問時的資料庫查詢負擔。</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Hash 驅動的失效策略**</p>
+        在 `users` 資料表上維護 `data_hash` 欄位（UUID），每當任何寫入操作（書籤、資料夾、標籤、工作區等）成功後，皆透過 `bumpUserDataHash()` 重新產生 UUID，作為資料版本的唯一標識。
+      </div>
+      <div className="space-y-1.5">
+        <p>**輕量級 Hash 探針**</p>
+        提供 `/api/data-hash` 端點，僅需 1–2 次 D1 查詢即可回傳目前的 Hash 值。相較於完整載入分享頁面所需的 7+ 次資料庫查詢，探針成本極低。
+      </div>
+      <div className="space-y-1.5">
+        <p>**clientLoader 快取流程**</p>
+        利用 React Router v7 的 `clientLoader` 在瀏覽器端攔截請求：先檢查 `localStorage` 中是否有快取 → 若有，向 Hash 探針確認資料是否變更 → Hash 一致則直接返回快取資料，跳過完整的伺服器載入；Hash 不一致或無快取時才執行完整查詢，並將結果連同新 Hash 寫入快取。
+      </div>
+      <div className="space-y-1.5">
+        <p>**快取管理**</p>
+        快取以 `bk-cache:{route}:{sorted-params}` 為 Key 存儲於 `localStorage`，設有 7 天硬性過期。當儲存空間不足時自動清除所有快取並重試，確保不影響頁面正常運作。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>跨工作區全文搜尋</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>內建 `Cmd/Ctrl + K` 快速搜尋功能，可即時在**當前 Workspace 的所有 Tab** 中進行全文檢索，不受單一分頁限制。</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**多欄位聯合搜尋**</p>
+        每筆書籤會將標題、URL、備註、資料夾路徑、分頁名稱與標籤名稱合併為搜尋範圍，確保無論記得哪個片段都能找到目標。
+      </div>
+      <div className="space-y-1.5">
+        <p>**多關鍵字 AND 邏輯**</p>
+        輸入以空白分隔的多個關鍵字時，系統採用 AND 邏輯——所有關鍵字必須同時出現才會匹配。例如搜尋 `react hooks` 會找到同時包含「react」與「hooks」的書籤。
+      </div>
+      <div className="space-y-1.5">
+        <p>**智慧結果呈現**</p>
+        搜尋結果中匹配的關鍵字會以高亮標示；資料夾模式的書籤會顯示完整的麵包屑路徑（如 `Programming / JavaScript / Frameworks`）；標籤模式則會帶出彩色標籤徽章，顏色繼承自所屬 Tag Group。
+      </div>
+      <div className="space-y-1.5">
+        <p>**流暢的操作體驗**</p>
+        搜尋輸入設有 200ms 防抖機制避免過度運算，並支援 `↑` `↓` 鍵盤導航與 `Enter` 直接開啟書籤，從搜尋到抵達目標一氣呵成。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
 export const dbItems = [
   {
     value: "core-tables",
