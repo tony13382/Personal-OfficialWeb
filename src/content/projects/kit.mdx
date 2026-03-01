@@ -7,7 +7,7 @@ status: active
 theme: orange
 cover: /assets/imgs/projects/kit/cover.png
 pin: true
-skillTypes: [dev]
+skillTypes: [dev, design]
 tags: [全端開發, 資料庫設計, Serverless, Cloudflare]
 links:
   - content: 專案介紹
@@ -51,9 +51,9 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
 <Card>
   <CardContent className="gap-4">
     ## 專案介紹
-    Kit 是一款**自架式書籤管理工具**，解決瀏覽器書籤管理混亂的痛點。透過 Workspace、Tab、Folder 三層架構搭配標籤系統，讓使用者能以直覺的方式整理大量網路資源。
+    Kit 是一款`自架式書籤管理工具`，解決瀏覽器書籤管理混亂的痛點。透過 Workspace、Tab、Folder 三層架構搭配標籤系統，讓使用者能以直覺的方式整理大量網路資源。
 
-    全端架構部署於 **Cloudflare Pages**，搭配 **D1 Serverless SQLite** 資料庫，實現零伺服器維護成本與全球邊緣運算的快速存取體驗。
+    全端架構部署於 `Cloudflare Pages`，搭配 `D1 Serverless SQLite` 資料庫，實現零伺服器維護成本與全球邊緣運算的快速存取體驗。
   </CardContent>
 </Card>
 
@@ -87,15 +87,15 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
     <div className="space-y-4">
       <div className="space-y-1.5">
         <p>**前端**</p>
-        以 **Remix (React Router v7)** 為核心框架，搭配 **shadcn/ui** 元件庫與 **Tailwind CSS** 建構現代化介面。使用 **Phosphor Icons** 作為圖示系統，**@dnd-kit** 處理拖曳交互。
+        以 `Remix (React Router v7)` 為核心框架，搭配 `shadcn/ui` 元件庫與 `Tailwind CSS` 建構現代化介面。使用 `Phosphor Icons` 作為圖示系統，`@dnd-kit` 處理拖曳交互。
       </div>
       <div className="space-y-1.5">
         <p>**後端**</p>
-        執行於 **Cloudflare Workers** 邊緣運算環境，使用 **Cloudflare D1 (SQLite)** 作為資料庫，透過 **Drizzle ORM** 進行 Type-safe 的資料操作與 Migration 管理。
+        執行於 `Cloudflare Workers` 邊緣運算環境，使用 `Cloudflare D1 (SQLite)` 作為資料庫，透過 `Drizzle ORM` 進行 Type-safe 的資料操作與 Migration 管理。
       </div>
       <div className="space-y-1.5">
         <p>**認證系統**</p>
-        自建 JWT 認證機制（jose），密碼使用 **PBKDF2-SHA256**（100,000 次迭代）進行雜湊，Cookie-based Session 管理，支援註冊白名單機制。
+        自建 JWT 認證機制（jose），密碼使用 `PBKDF2-SHA256`（100,000 次迭代）進行雜湊，Cookie-based Session 管理，支援註冊白名單機制。
       </div>
     </div>
   </CardContent>
@@ -255,7 +255,7 @@ export const dbItems = [
   </CardHeader>
   <CardTitle>資料庫設計</CardTitle>
   <CardContent className="gap-3 pt-4">
-    <p>使用 **Cloudflare D1 (SQLite)** 搭配 **Drizzle ORM**，涵蓋使用者、工作區、書籤內容、標籤系統與分享機制。</p>
+    <p>使用 `Cloudflare D1 (SQLite)` 搭配 `Drizzle ORM`，涵蓋使用者、工作區、書籤內容、標籤系統與分享機制。</p>
     <AccordionBlock
       items={dbItems}
       type="single"

@@ -1,5 +1,5 @@
 ---
-title: SoEasyEdu Speak - AI 英語口說練習平台
+title: 巨匠 AI 英語口說練習平台
 description: 結合 AI 對話與語音辨識的英語口說練習系統，提供即時發音評估、學習分析報告與多層級互動練習
 subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、資料庫設計、前後端開發、部署"
 startDate: 2024-07-01
@@ -27,7 +27,7 @@ tools:
   - name: Tailwind CSS
     description: Utility-first CSS 框架
 seo:
-  metaTitle: SoEasyEdu Speak - AI 英語口說練習平台 - 呂亮進的專案作品
+  metaTitle: 巨匠 AI 英語口說練習平台 - 呂亮進的專案作品
   metaDescription: 結合 AI 對話與語音辨識的英語口說練習系統，提供即時發音評估、學習分析報告與多層級互動練習
   ogImage: /assets/imgs/projects/soeasyeduSpeak/cover.png
 ---
@@ -40,9 +40,9 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
 <Card>
   <CardContent className="gap-4">
     ## 專案介紹
-    SoEasyEdu Speak 是一款 **AI 驅動的英語口說練習平台**，讓使用者透過與 AI 即時對話來練習英語口說能力。系統整合 **OpenAI GPT** 進行智慧對話與內容評估，搭配 **Azure Speech Services** 實現語音辨識與發音分析，並提供詳細的學習成績報告。
+    SoEasyEdu Speak 是一款 `AI 驅動的英語口說練習平台`，讓使用者透過與 AI 即時對話來練習英語口說能力。系統整合 `OpenAI GPT` 進行智慧對話與內容評估，搭配 `Azure Speech Services` 實現語音辨識與發音分析，並提供詳細的學習成績報告。
 
-    後端採用 **FastAPI** 全非同步架構搭配 **PostgreSQL** 資料庫，前端使用 **React 19 + Vite** 建構，透過 **Docker Compose** 實現多環境容器化部署。
+    後端採用 `FastAPI` 全非同步架構搭配 `PostgreSQL` 資料庫，前端使用 `React 19 + Vite` 建構，透過 `Docker Compose` 實現多環境容器化部署。
   </CardContent>
 </Card>
 
@@ -80,15 +80,15 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
     <div className="space-y-4">
       <div className="space-y-1.5">
         <p>**前端**</p>
-        以 **React 19** 搭配 **Vite** 為核心，使用 **React Router v7** 管理路由，**Tailwind CSS** 建構自訂主題介面（紫色主色調 + 橘色輔助色），**Axios** 處理 API 通訊。
+        以 `React 19` 搭配 `Vite` 為核心，使用 `React Router v7` 管理路由，`Tailwind CSS` 建構自訂主題介面（紫色主色調 + 橘色輔助色），`Axios` 處理 API 通訊。
       </div>
       <div className="space-y-1.5">
         <p>**後端**</p>
-        採用 **FastAPI** 全非同步框架，透過 **SQLAlchemy 2.0** 搭配 **asyncpg** 驅動進行非同步資料庫操作，使用 **Alembic** 管理 Migration，**Poetry** 管理 Python 依賴。
+        採用 `FastAPI` 全非同步框架，透過 `SQLAlchemy 2.0` 搭配 `asyncpg` 驅動進行非同步資料庫操作，使用 `Alembic` 管理 Migration，`Poetry` 管理 Python 依賴。
       </div>
       <div className="space-y-1.5">
         <p>**AI 與語音服務**</p>
-        對話引擎與內容評估使用 **OpenAI API**（GPT + TTS），語音辨識整合 **Azure Cognitive Services Speech SDK**，音訊處理使用 **SoundFile** 與 **PyDub** 進行格式轉換。
+        對話引擎與內容評估使用 `OpenAI API`（GPT + TTS），語音辨識整合 `Azure Cognitive Services Speech SDK`，音訊處理使用 `SoundFile` 與 `PyDub` 進行格式轉換。
       </div>
       <div className="space-y-1.5">
         <p>**認證與安全**</p>
