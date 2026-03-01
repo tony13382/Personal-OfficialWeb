@@ -29,16 +29,15 @@ export function ActionBtnLinks() {
     return (
         <div className="flex gap-3">
             {actionLinks.map((link) => (
-                <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <Button>
+                <Button key={link.href} asChild>
+                    <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         {link.icon} {link.label}
-                    </Button>
-                </a>
+                    </a>
+                </Button>
             ))}
         </div>
     )
