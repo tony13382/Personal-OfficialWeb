@@ -1,4 +1,4 @@
-import { MedalIcon, BriefcaseIcon } from '@phosphor-icons/react'
+import { BriefcaseIcon } from '@phosphor-icons/react'
 
 export interface NavLink {
     href: string
@@ -8,7 +8,5 @@ export interface NavLink {
 }
 
 export const mainLinks: NavLink[] = [
-    // { href: '/projects/', label: '所有作品', icon: <LaptopIcon className='size-8 me-2' /> },
-    { href: '/awards/', label: '得獎紀錄', icon: <MedalIcon className='size-6 me-1' /> },
-    { href: '/jobs/', label: '工作經歷', icon: <BriefcaseIcon className='size-6 me-1' /> },
+    { href: '/experience/', label: '經歷', icon: <BriefcaseIcon className='size-6 me-1' /> },
 ]

@@ -1,11 +1,13 @@
 ---
 import {
-  BookIcon,
   BookmarkSimpleIcon,
   ArchiveIcon,
   CoffeeIcon,
   InstagramLogoIcon,
   WalletIcon,
+  BookBookmarkIcon,
+  GraduationCapIcon,
+  CalculatorIcon,
 } from "@phosphor-icons/react";
 import { SocialLinksLite } from "../data/social";
 ---
@@ -14,22 +16,47 @@ import { SocialLinksLite } from "../data/social";
   <div class="max-w-8xl mx-auto px-4 md:px-12 py-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Links Section -->
-      <div class="col-span-1 lg:col-span-2">
-        <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">
+      <div class="grid col-span-1 lg:col-span-2 grid-cols-1 md:grid-cols-2">
+        <h4
+          class="md:col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
+        >
           連結 Links
         </h4>
+        <a
+          href="https://kit.lianglu.uk/intro"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <BookBookmarkIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>Kit - 書籤管理工具</span>
+        </a>
+        <a
+          href="https://stockcal.lianglu.uk/"
+          rel="noopener noreferrer"
+          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+        >
+          <CalculatorIcon
+            className="size-5 group-hover:scale-110 transition-transform"
+          />
+          <span>股票試算小工具</span>
+        </a>
+        <div class="md:col-span-2">
+          <hr class="my-2 mx-3" />
+        </div>
         <a
           href="https://go.lianglu.uk/learn"
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <BookIcon
+          <GraduationCapIcon
             className="size-5 group-hover:scale-110 transition-transform"
           />
           <span>知識推薦獲取來源</span>
         </a>
         <a
-          href="https://bm.lianglu.uk/"
+          href="https://go.lianglu.uk/bm"
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
@@ -49,7 +76,7 @@ import { SocialLinksLite } from "../data/social";
           />
           <span>學習資源庫</span>
         </a>
-        <a
+        <!-- <a
           href="https://www.instagram.com/digi.ocean/?hl=zh-tw"
           target="_blank"
           rel="noopener noreferrer"
@@ -59,14 +86,14 @@ import { SocialLinksLite } from "../data/social";
             className="size-5 group-hover:scale-110 transition-transform"
           />
           <span>知識帳號（DigiOcean）</span>
-        </a>
+        </a> -->
       </div>
 
       <div>
         <!-- Donate Section -->
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
           <h4
-            class="col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
+            class="col-span-1 lg:col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
           >
             贊助 Donate
           </h4>
@@ -74,7 +101,7 @@ import { SocialLinksLite } from "../data/social";
             href="https://www.buymeacoffee.com/liangchinml"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            class="col-span-1 flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
           >
             <CoffeeIcon
               className="size-5 group-hover:scale-110 transition-transform"
@@ -85,7 +112,7 @@ import { SocialLinksLite } from "../data/social";
             href="https://portaly.cc/liang_chin_ml/support"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+            class="col-span-1 flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
           >
             <WalletIcon
               className="size-5 group-hover:scale-110 transition-transform"
