@@ -1,0 +1,282 @@
+---
+title: Mac 軟體．開發篇
+description: 分享我在 Mac 上開發時使用的編輯器、終端機、容器與設計工具
+date: 2026-03-26
+category: 軟體工具
+tags: [軟體, Mac, 開發]
+cover: /og/toolbox-mactools-dev.png
+seo:
+  ogImage: /og/toolbox-mactools-dev.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import zed from '@/assets/imgs/toolbox/mactools-dev/zed.png'
+import vscode from '@/assets/imgs/toolbox/mactools-dev/vscode.png'
+import antigravity from '@/assets/imgs/toolbox/mactools-dev/antigravity.png'
+import claudeCode from '@/assets/imgs/toolbox/mactools-dev/claude-code.png'
+import codex from '@/assets/imgs/toolbox/mactools-dev/codex.png'
+import tabby from '@/assets/imgs/toolbox/mactools-dev/tabby.png'
+import ghostty from '@/assets/imgs/toolbox/mactools-dev/ghostty.png'
+import iterm2 from '@/assets/imgs/toolbox/mactools-dev/iterm2.png'
+import fork from '@/assets/imgs/toolbox/mactools-dev/fork.png'
+import orbstack from '@/assets/imgs/toolbox/mactools-dev/orbstack.png'
+import postman from '@/assets/imgs/toolbox/mactools-dev/postman.png'
+import figma from '@/assets/imgs/toolbox/mactools-dev/figma.png'
+import pencil from '@/assets/imgs/toolbox/mactools-dev/pencil.png'
+import drawio from '@/assets/imgs/toolbox/mactools-dev/drawio.png'
+
+## 編輯器與 IDE
+
+### Zed
+
+<Image src={zed} alt="Zed" />
+
+我在快速瀏覽程式碼時會用的編輯器。它用 Rust 寫的，啟動速度非常快，差不多兩三秒就能開完一整個專案。因為 VS Code 在插件裝比較多的時候，開啟速度會明顯變慢，所以需要快速看一下程式碼的時候我會先用 Zed 開，等要更精細地編輯或除錯時再切到 VS Code。
+
+<span class="pricing-tag">免費</span>
+<a href="https://zed.dev" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask zed
+```
+
+### VS Code
+
+<Image src={vscode} alt="VS Code" />
+
+我最主要的程式碼編輯器，大部分的開發工作都在這裡完成。最大的優勢就是插件生態非常豐富，不管是 Python 開發還是前端開發，都能找到很好用的套件。需要深入看程式碼、搭配各種工具做開發的時候，VS Code 還是我的首選。
+
+<span class="pricing-tag">免費</span>
+<a href="https://code.visualstudio.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask visual-studio-code
+```
+
+## AI 開發工具
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" />
+
+我目前最主要用於開發的 AI 工具，主要使用 Opus 模型來進行開發。綜合速度跟完成度來說，是我個人體感最舒適的 AI 模型。
+
+#### 使用方式
+
+基本上是透過 VS Code 或終端機打開，然後在特定的專案資料夾裡進行工作。日常的程式碼撰寫、重構、除錯都可以直接在裡面完成。
+
+#### Review 流程
+
+需要做 Review 的時候，我會清空它的記憶體，讓它用全新的狀態去做完整的程式碼審查，這樣可以避免先前的對話脈絡影響判斷，Review 出來的結果會比較客觀。
+
+<span class="pricing-tag freemium">可訂閱制或依用量付費</span>
+<a href="https://claude.ai/code" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Codex
+
+<Image src={codex} alt="Codex" />
+
+OpenAI 推出的 AI 開發工具，我主要拿它來做程式碼的 Review。
+
+#### Review 流程
+
+我的使用流程是：當 Claude Code 完成開發之後，我會讓 Codex 去看這個分支上所有的修改內容。把它的模式提升到最高層級去做思考，讓它完完整整看完差異後，針對裡面的寫法進行 Review 並產出報告。
+
+接著我會把報告內容餵回給 Claude Code 去修正，來回到 Codex 的 Review 結果是 OK 的狀態，才會推送到遠端。這樣等於是用兩個不同的 AI 互相檢查，程式碼的品質會比只靠單一模型好不少。
+
+<span class="pricing-tag freemium">可訂閱制或依用量付費</span>
+<a href="https://chatgpt.com/codex" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+npm install -g @openai/codex
+```
+
+### Antigravity
+
+<Image src={antigravity} alt="Antigravity" />
+
+Google 出品的 AI IDE，內建會附贈一些 Claude 的使用額度。我比較偏向把它當作備用工具，在需要用到 AI 輔助但主力工具不方便的時候才會切過來用。
+
+<span class="pricing-tag freemium">App 免費，AI 功能需訂閱</span>
+<a href="https://idx.google.com" target="_blank" class="official-link">官方網站</a>
+
+## 終端機與 Shell
+
+### Tabby
+
+<Image src={tabby} alt="Tabby" />
+
+我用來管理 SSH 連線的終端機工具，算是開箱即用，設定項目不多，管理 SSH 連線蠻簡單的。可以把常用的伺服器連線存成不同的 profile，不用每次都手動輸入。
+
+#### Raycast 整合
+
+Tabby 有 Raycast 插件，所以我可以直接在 Raycast 裡面查看目前建好的 SSH profile，按下 Enter 就能快速連線，不用先打開 Tabby 再去找。整個流程非常快，幾秒就能連上伺服器。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://tabby.sh" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask tabby
+```
+
+### Ghostty
+
+<Image src={ghostty} alt="Ghostty" />
+
+我蠻常拿它來配合 Claude Code 進行使用的，比較不會出現一些顯示上的錯誤，整體效能也很不錯。
+
+#### Raycast 整合
+
+Ghostty 也有 Raycast 插件，可以直接從 Finder 目前所在的資料夾快速開啟終端機，不用再手動 cd 到對應的路徑，省了不少步驟。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://ghostty.org" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask ghostty
+```
+
+### iTerm2 + Oh My Zsh + Powerlevel10k
+
+<Image src={iterm2} alt="iTerm2" />
+
+iTerm2 算是我第一個使用的終端機軟體，搭配 Oh My Zsh 的插件生態跟 Powerlevel10k 的主題，整個使用體驗跟視覺效果都很不錯。
+
+它的客製化幅度非常大，可以調的項目也非常多，幾乎什麼都能按自己的喜好設定。不過也因為功能太豐富，比較適合願意花時間去折騰的人，相比 Ghostty 跟 Tabby，入手門檻會稍微高一點。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://iterm2.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask iterm2
+```
+
+## 版本控制與 Git
+
+### Fork
+
+<Image src={fork} alt="Fork" />
+
+我用的 Git GUI 工具，介面乾淨、操作流暢。比起純命令列，在處理複雜的分支操作、查看 diff 跟解衝突的時候會直覺很多。
+
+<span class="pricing-tag paid">付費買斷（也有免費的開源版本）</span>
+<a href="https://git-fork.com" target="_blank" class="official-link">官方網站</a>
+
+## 容器與虛擬化
+
+### OrbStack
+
+<Image src={orbstack} alt="OrbStack" />
+
+我用來取代 Docker Desktop 的容器化工具。
+
+#### 效能與資源佔用
+
+跟 Docker Desktop 比起來，OrbStack 的資源佔用省非常多，啟動速度也快上不少。在 Mac 上跑容器不會像 Docker Desktop 那樣吃掉一大堆記憶體，整體體驗輕量很多。
+
+#### 簡潔的 UI 介面
+
+介面設計比 Docker Desktop 更簡潔，在查閱 log 或查看服務狀態的時候，畫面更清晰好用，不會被一堆用不到的功能干擾。
+
+<span class="pricing-tag freemium">個人免費，商用需付費</span>
+<a href="https://orbstack.dev" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask orbstack
+```
+
+## API 與測試
+
+### Postman
+
+<Image src={postman} alt="Postman" />
+
+非常老牌的 API 除錯工具，免費版就很好用了，只是少了部分團隊協作的功能而已。
+
+#### Collection 管理
+
+可以針對特定的專案，把所有的 API 端點收集並組織成一個 Collection，方便分類跟反覆測試，不用每次都重新輸入。
+
+#### 變數與自動化
+
+支援變數（Variables）的概念，可以搭配 Script 達成自動化的流程。像是執行登入腳本後，Token 會自動存到特定的變數裡，其他 API 就能直接引用來做驗證，不需要手動複製貼上，整個流程非常順暢。
+
+<span class="pricing-tag freemium">免費使用，團隊功能需訂閱</span>
+<a href="https://www.postman.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask postman
+```
+
+## 設計與原型
+
+### draw.io
+
+<Image src={drawio} alt="draw.io" />
+
+非常適合單機個人使用的流程圖繪製工具，我主要拿來設計跟繪製資料表架構。它內建了非常大量的圖庫，可以輕鬆拉出各種設計圖，而且可調整的項目也非常多。只要願意花時間做比較細微的調整，幾乎任何想要的圖都能完成。
+
+<span class="pricing-tag">免費</span>
+<a href="https://app.diagrams.net" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask drawio
+```
+
+### Figma
+
+<Image src={figma} alt="Figma" />
+
+非常老牌的 UI 繪製工具，算是我使用時間最長的一套。
+
+#### 原子設計
+
+除了基本的 UI 繪製之外，Figma 的元件設計讓它很適合拿來實作原子設計（Atomic Design）。透過這個方式，我可以設計出更有結構、更有規範的設計文件，維護起來也比較有系統。
+
+#### MCP 整合與 AI 對接
+
+最新的 Figma 還能結合 MCP 功能跟 AI 做對接。像是使用 shadcn/ui 這類元件庫的時候，Figma 上的設計數值可以直接對應到 Tailwind 的值，從設計到開發的銜接更順暢。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://www.figma.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask figma
+```
+
+### Pencil
+
+<Image src={pencil} alt="Pencil" />
+
+一款 AI UI 設計工具，比較像是 VS Code 的插件形式。可以透過文字敘述的方式讓 AI 幫你做設計，操作上比 Figma 更直接且直覺。我主要是讓 AI 利用這個工具去做 UI 上的繪製，自己則是以瀏覽產出的設計稿為主，比較少會再進一步去修改裡面的內容。
+
+<span class="pricing-tag freemium">免費使用，部分功能需付費</span>
+<a href="https://pencil.li" target="_blank" class="official-link">官方網站</a>
