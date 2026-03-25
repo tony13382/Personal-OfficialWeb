@@ -29,6 +29,10 @@ export function ProfileCard() {
           src="/assets/imgs/index/myHead.webp"
           alt={`${profileData.name}的頭像`}
           className="size-32 rounded-full overflow-hidden"
+          width={128}
+          height={128}
+          loading="lazy"
+          decoding="async"
         />
         <div className="grid gap-3">
           <p
@@ -62,6 +66,10 @@ export function ProfileCardTigger() {
         src="/assets/imgs/index/myHead.webp"
         alt={`${profileData.name}的頭像`}
         className="size-16 rounded-full overflow-hidden"
+        width={64}
+        height={64}
+        loading="lazy"
+        decoding="async"
       />
     </button>
   )

@@ -1,0 +1,166 @@
+---
+title: 裝備清單 — 硬體設備篇
+description: 介紹我目前日常工作與開發所使用的硬體設備，以及選擇它們的理由
+date: 2026-03-25
+category: 硬體設備
+tags: [硬體]
+cover: /og/toolbox-my-hardware.png
+seo:
+  ogImage: /og/toolbox-my-hardware.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import iphone16ProMax from '@/assets/imgs/toolbox/my-hardware/iphone-16-pro-max.png'
+import googlePixel7 from '@/assets/imgs/toolbox/my-hardware/google-pixel-7.png'
+import ipadProM2 from '@/assets/imgs/toolbox/my-hardware/ipad-pro-m2.png'
+import macbookPro14 from '@/assets/imgs/toolbox/my-hardware/macbook-pro-14.png'
+import wobWave75 from '@/assets/imgs/toolbox/my-hardware/wob-wave75.jpg'
+import logitechMxAnywhere2s from '@/assets/imgs/toolbox/my-hardware/logitech-mx-anywhere-2s.jpg'
+import leopoldFc900c from '@/assets/imgs/toolbox/my-hardware/leopold-fc900c.jpg'
+
+## 電腦
+
+### MacBook Pro 14 吋（M1 Pro 配置）
+這是我目前的主力開發機，日常的編碼、編譯跟測試都在這臺上完成。
+
+<Image src={macbookPro14} alt="MacBook Pro 14 吋" />
+
+#### 出色的能源效率
+
+M1 Pro 晶片的低功耗設計讓這臺 MacBook Pro 有非常優秀的續航表現。即便同時開著編輯器、模擬器、終端機和瀏覽器，電池也能撐上相當長的時間。這對我來說是很實際的好處——不管是在咖啡廳工作還是外出開會，都不必時刻擔心找插座，可以更專注在手上的事情。
+
+#### 統一記憶體架構
+
+Apple Silicon 的統一記憶體架構（Unified Memory Architecture）讓 CPU 跟 GPU 共享同一塊記憶體，不需要在兩者之間來回搬運資料。對我來說最有感的是，不管是跑模擬器、編譯專案還是同時開一堆開發工具，記憶體的使用效率都比傳統架構好上不少。
+
+#### 雙平臺開發的最佳選擇
+
+身為一個用 Flutter 做跨平臺開發的人，macOS 是唯一能同時建構 iOS 跟 Android 應用的作業系統。有了這臺 MacBook Pro，兩個平臺的開發、測試跟除錯都能在同一臺機器上搞定，省去切換設備的麻煩。
+
+#### Docker 支援度良好
+
+Apple Silicon 剛推出的時候，Docker 的相容性曾經是不少開發者的顧慮。不過經過這幾年的更新跟優化，Docker Desktop 在 ARM 架構上的支援已經很成熟了。日常開發需要的映像檔大多都有 ARM 原生版本，就算遇到只有 x86 版本的映像，透過 Rosetta 2 轉譯也能順利跑起來。
+
+### WOB Wave75 機械式鍵盤（凱華雪青軸）
+我在家裡使用的鍵盤，軸體搭配的是原廠預裝的凱華雪青軸。
+
+<Image src={wobWave75} alt="WOB Wave75 機械式鍵盤" />
+
+#### 打感與音色
+
+手感不會很重手，按壓起來相當清脆。聲音表現偏悶，是大眾比較能接受的那種音質，不會太吵。另外值得一提的是，大鍵的調教在同價位中表現非常划算，整體敲擊回饋感令人滿意。
+
+#### 結構與配置
+
+鍵盤採用鋁製外殼（鋁座），整體輸入感非常扎實，不會有廉價的空洞感。配列方面是 75% 的設計，在維持小巧體積的同時沒有犧牲太多功能，日常開發的實用性很高。
+
+#### 自訂化功能
+
+支援 VIA 驅動軟體，可以高度自定義鍵位跟快捷鍵設置。對於像我這樣需要頻繁使用快捷鍵的開發工作來說，用起來非常方便。
+
+### Leopold FC900RBT（Cherry 靜音紅軸）
+我在辦公室用的鍵盤，也是我第一把機械式鍵盤，用了大約兩三年，依然非常穩定耐用。
+
+<Image src={leopoldFc900c} alt="Leopold FC900RBT" />
+
+#### 極為安靜的聲音表現
+
+靜音紅軸最大的特點就是聲音非常安靜。在辦公室這種需要顧及他人的環境中，不會因為敲鍵盤而打擾到同事，使用起來毫無壓力。
+
+#### 輕盈且有彈性的手感
+
+按壓的力道不重手，同時保有足夠的彈性回饋，長時間打字也不容易感到疲勞。對於每天在辦公室需要大量輸入的場景來說，是個非常舒適的選擇。
+
+#### 細節與相容性
+
+大鍵的調校等細節都處理得相當到位，整體品質在同級產品中表現優秀。雖然沒有像 VIA 那樣豐富的驅動軟體可以自訂鍵位，但背面設有撥桿可以切換 Mac 模式，對 macOS 使用者來說相容性不成問題。
+
+### Logitech MX Anywhere 2S
+我日常搭配使用的滑鼠，體積小巧，很適合指握操作。
+
+<Image src={logitechMxAnywhere2s} alt="Logitech MX Anywhere 2S" style="padding: 2px 20px; max-width:200px; margin:0px auto;" />
+
+#### 指握友好的小巧體積
+
+我個人不習慣整隻手移動去操作滑鼠，而是只靠手指來控制，屬於「指握」的握法。Anywhere 系列的體積夠小巧，握在手中可以輕鬆用指尖完成所有操作，對我這種握法來說非常合適。
+
+#### 雙模式滾輪
+
+它的滾輪可以在「有段落」跟「無段落」兩種模式之間切換。平時瀏覽網頁用有段落模式精準控制，閱讀比較長的文檔時切到無段落的自由滾動，快速翻頁非常方便。
+
+#### 按鍵自訂與快捷鍵
+
+中間的按鍵可以透過羅技的驅動軟體來自訂快捷鍵組合。我主要拿來做視窗管理，像是切換桌面、排列視窗這些操作，不用離開滑鼠就能搞定。
+
+## 平板
+
+### iPad Pro 11 吋（M2 配置）+ Apple Pencil 二代
+主要用來擴充手寫相關的需求，像是手寫筆記、簽署文件，閒暇時也拿來當娛樂工具。
+
+<Image src={ipadProM2} alt="iPad Pro 11 吋 M2" style="padding:20px 40px;"/>
+
+#### Apple Pencil 的書寫體驗
+
+搭配 Apple Pencil 二代，不管是日常的手寫筆記還是簽名簽合約，書寫體驗都非常流暢。筆觸的延遲感極低，用起來幾乎跟紙筆一樣自然，這也是我選擇 iPad Pro 作為筆記跟文件處理工具的關鍵原因。
+
+不過 iPad 的螢幕畢竟是玻璃材質，Apple Pencil 直接寫在上面會有明顯的滑溜感，缺少紙張那種適度的阻力。為了改善這點，我另外貼了一張類紙膜，讓筆尖寫起來有更接近紙筆的摩擦手感，長時間書寫也更舒適。
+
+#### 手寫筆記
+
+筆記軟體的選擇上，一開始我是 Notability 跟 GoodNotes 雙棲使用，兩款各有優勢，交替搭配了一段時間。後來轉移到一款叫做 Noteful 的筆記軟體——它是買斷制的，不用擔心訂閱費用，功能上也足以滿足日常需求。至於我具體怎麼做筆記、有哪些習慣和方法，會在之後的章節再詳細分享。
+
+#### 文件簽署
+
+簽合約或處理 PDF 文件時，我習慣用 PDF Expert 來完成簽名跟文件整理。搭配 Apple Pencil 可以直接在文件上手寫簽名，從開啟文件、標註重點到完成簽署都能在 iPad 上一氣呵成，省去列印和掃描的麻煩。
+
+#### 娛樂
+
+11 吋的尺寸對我來說剛剛好——不會大到難以攜帶，隨手放進包包就能帶著走。我習慣在上面閱讀電子書和玩遊戲，M2 晶片的效能讓這些體驗都很流暢，翻頁順滑、遊戲畫面表現也都相當令人滿意。
+
+## 手機
+
+### iPhone 16 Pro Max
+我的主力手機，搭配 MacBook 使用可以充分享受蘋果生態系的串聯功能。
+
+<Image src={iphone16ProMax} alt="iPhone 16 Pro Max" />
+
+主要因為我的開發主機是 MacBook，用 iPhone 可以充分享受蘋果生態系的串聯功能，像是 AirDrop、接力（Handoff）、通用剪貼簿等等，手機跟電腦之間的協作非常順暢。選擇 16 Pro Max 這個型號，還有以下幾個原因：
+
+#### 旗艦級的拍照表現
+
+既然都是旗艦機等級了，拍照表現自然不在話下，不管是日常隨手拍還是需要高畫質的場景都能輕鬆應對。
+
+#### 大尺寸螢幕的習慣
+
+我上一支手機是 Samsung Galaxy Note 20 Ultra，一直以來都習慣用大螢幕的手機，所以這次換機也毫不猶豫選了 Pro Max 的尺寸。
+
+#### 密鑰與密碼管理
+
+在密碼管理上，我沒有使用 Google 原生的管理工具，而是選擇 Bitwarden 來統一管理密鑰（Passkey）跟密碼。iOS 對這類第三方管理工具的系統整合設計得比較完善，用起來相對穩定順暢。
+
+#### 生態系與 App 需求
+
+我有一些 iOS 獨佔的 App 需要透過 iCloud 同步，用 iOS 會比較方便，也能跟 MacBook 和 iPad 之間無縫銜接。另外像 Instagram，在 iOS 上的使用體驗也明顯比 Android 版來得好。
+
+### Google Pixel 7
+我的第二支手機，主要作為 Android 端的日常使用跟開發測試機。
+
+<Image src={googlePixel7} alt="Google Pixel 7" />
+
+#### 舒適的握持手感
+
+Pixel 7 的機身偏瘦長，握持手感非常不錯，加上價格親民，作為第二支手機來說是相當實惠的選擇。
+
+#### 原生多使用者功能
+
+Android 原生就支援多使用者功能，可以根據不同的使用情境切換模式，兩邊的 App 和資料完全獨立，不會互相干擾，用起來非常乾淨。比起我之前在三星上用的「安全資料夾」，隔離性感覺更為徹底。
+
+#### LDAC 高音質藍牙支援
+
+因為 Pixel 搭載的是原生 Android 系統，內建支援 LDAC 高解析藍牙音訊編碼，用藍牙耳機聽音樂時的音質表現會比一般的 SBC 或 AAC 來得更好。
+
+#### 低成本的開發測試
+
+在實機測試方面，Android 可以直接輸出 APK 安裝到裝置上測試，流程簡單快速。相比之下，iOS 如果不透過 App Store 分發，就只能靠有效期有限的 IPA 簽名來側載，流程繁瑣不少。手邊有一支 Pixel，讓 Android 端的實機測試方便很多。

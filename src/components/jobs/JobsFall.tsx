@@ -43,8 +43,12 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
                   <div className="flex-shrink-0">
                     <img
                       src={job.data.logo}
-                      alt=""
+                      alt={`${job.data.company} logo`}
                       className="size-12 mt-0.5 rounded-lg"
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 )}

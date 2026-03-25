@@ -10,6 +10,8 @@ import {
   profileData,
 } from "@/components/data/profile";
 import { Badge } from "@/components/ui/badge";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
 
 export async function getStaticPaths() {
   const jobs = await getCollection("jobs");
@@ -103,8 +105,12 @@ const timeStr =
                   job.data.logo && (
                     <img
                       src={job.data.logo}
-                      alt=""
+                      alt={`${job.data.company} logo`}
                       class="h-20 w-20 rounded-xl"
+                      width="80"
+                      height="80"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )
                 }
@@ -163,10 +169,12 @@ const timeStr =
     class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
     title="通知我"
   >
-    <img
-      src="/assets/imgs/index/profileAnimate.png"
+    <Image
+      src={profileImg}
       alt={`${profileData.name}的頭像`}
       class="size-16 rounded-full overflow-hidden"
+      width={64}
+      height={64}
     />
   </button>
 

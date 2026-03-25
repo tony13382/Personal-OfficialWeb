@@ -57,7 +57,8 @@ export function HeaderSocialLinks() {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted hover:[&>span]:block"
+          aria-label={link.label}
+          className="flex items-center gap-2 px-4 py-2 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted hover:[&>span]:inline whitespace-nowrap"
         >
           {link.icon}
           <span className='hidden'>{link.label}</span>
@@ -77,6 +78,7 @@ export function SocialLinksLite() {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={link.label}
           className="flex items-center gap-2 p-3 text-muted-foreground rounded-full transition-all hover:text-foreground hover:bg-muted hover:[&>span]:block"
         >
           {link.icon}

@@ -1,0 +1,469 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ProfileCardModal, profileData } from "@/components/data/profile";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("toolbox");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+
+// 只取 h1, h2 做大綱
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+
+const seo = {
+  title: post.data.seo?.metaTitle || `${post.data.title} | 呂亮進`,
+  description: post.data.seo?.metaDescription || post.data.description,
+  ogImage: post.data.seo?.ogImage || post.data.cover,
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  headerType="project"
+>
+  <!-- Hero Section -->
+  <div
+    class="relative pt-20 pb-8 w-full"
+    style="background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);"
+  >
+    <div class="relative flex items-center py-8 w-full min-h-24">
+      <div class="container grid grid-cols-1 mx-auto">
+        <div class="flex flex-col gap-3">
+          <div class="flex justify-center">
+            <Badge
+              variant="outline"
+              className="bg-black/10 text-gray-900 border-gray-900/20"
+              >{post.data.category}</Badge
+            >
+          </div>
+          <h1 class="px-3 text-4xl text-center font-bold text-gray-900">
+            {post.data.title}
+          </h1>
+          <p class="text-center text-gray-700">
+            {post.data.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent">
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-12 gap-8">
+          <!-- Main Content (left on lg) -->
+          <div class="col-span-12 lg:col-span-8 grid gap-8">
+            <!-- Cover Image -->
+            {
+              post.data.cover && (
+                <Card className="overflow-hidden">
+                  <div class="aspect-[1200/630]">
+                    <img
+                      src={post.data.cover}
+                      alt={post.data.title}
+                      class="w-full h-full object-cover"
+                      width="1200"
+                      height="630"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </div>
+                </Card>
+              )
+            }
+
+            <!-- MDX Content wrapped in Card -->
+            <Card>
+              <CardContent>
+                <article class="flex flex-col gap-2">
+                  <Content />
+                </article>
+              </CardContent>
+            </Card>
+          </div>
+
+          <!-- Sidebar: TOC (right on lg) -->
+          <div class="hidden lg:block col-span-4 relative">
+            <div class="sticky top-24">
+              <Card>
+                <CardContent className="space-y-3">
+                  <p class="text-sm font-bold text-foreground">目錄</p>
+                  <nav
+                    id="toc-nav"
+                    class="grid gap-0.5 max-h-[60vh] overflow-y-auto"
+                  >
+                    {
+                      tocHeadings.map((heading) => (
+                        <a
+                          href={`#${heading.slug}`}
+                          class:list={[
+                            "toc-link block py-1 text-sm no-underline rounded-md transition-all duration-200",
+                            heading.depth === 2
+                              ? "ps-3 font-medium text-muted-foreground hover:text-foreground"
+                              : "ps-6 text-muted-foreground/70 hover:text-muted-foreground",
+                          ]}
+                          data-slug={heading.slug}
+                        >
+                          {heading.text}
+                        </a>
+                      ))
+                    }
+                  </nav>
+
+                  <hr />
+
+                  <!-- Tags -->
+                  {
+                    post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1.5">
+                        {post.data.tags.map((tag: string) => (
+                          <Badge variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    )
+                  }
+
+                  <!-- Date -->
+                  <div class="text-xs text-muted-foreground space-y-1">
+                    <p>
+                      發佈於{" "}
+                      {
+                        post.data.date.toLocaleDateString("zh-TW", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      }
+                    </p>
+                    {
+                      post.data.updatedDate && (
+                        <p>
+                          更新於{" "}
+                          {post.data.updatedDate.toLocaleDateString("zh-TW", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </p>
+                      )
+                    }
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Mobile TOC Button -->
+  <button
+    id="mobile-toc-btn"
+    class="floatbtn fixed bottom-8 left-6 size-16 md:bottom-30 md:left-8 rounded-full bg-gray-800 text-white flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-gray-700 hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
+    title="目錄"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+      fill="currentColor"
+      class="size-7"
+    >
+      <path
+        d="M228,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H220A8,8,0,0,1,228,128ZM40,72H220a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM220,184H40a8,8,0,0,0,0,16H220a8,8,0,0,0,0-16Z"
+      ></path>
+    </svg>
+  </button>
+
+  <!-- Mobile TOC Modal -->
+  <div id="mobile-toc-modal" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div id="mobile-toc-overlay" class="absolute inset-0 bg-black/50"></div>
+    <div
+      class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white rounded-t-2xl overflow-hidden animate-slide-up"
+    >
+      <div class="flex items-center justify-between p-4 border-b">
+        <p class="text-sm font-bold">目錄</p>
+        <button
+          id="mobile-toc-close"
+          class="text-muted-foreground hover:text-foreground cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            fill="currentColor"
+            class="size-5"
+          >
+            <path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="p-4 overflow-y-auto max-h-[60vh] grid gap-0.5">
+        {
+          tocHeadings.map((heading) => (
+            <a
+              href={`#${heading.slug}`}
+              class:list={[
+                "mobile-toc-link block py-2 text-sm no-underline rounded-md transition-all duration-200",
+                heading.depth === 2
+                  ? "ps-3 font-medium text-foreground"
+                  : "ps-6 text-muted-foreground",
+              ]}
+              data-slug={heading.slug}
+            >
+              {heading.text}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+
+  <button
+    id="profile-modal-btn"
+    class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+    title="通知我"
+  >
+    <Image
+      src={profileImg}
+      alt={`${profileData.name}的頭像`}
+      class="size-16 rounded-full overflow-hidden"
+      width={64}
+      height={64}
+    />
+  </button>
+
+  <ProfileCardModal client:load />
+
+  <!-- Scrollspy Script -->
+  <script>
+    function initScrollspy() {
+      const tocLinks =
+        document.querySelectorAll<HTMLAnchorElement>(".toc-link");
+      if (tocLinks.length === 0) return;
+
+      const headingEls: HTMLElement[] = [];
+      tocLinks.forEach((link) => {
+        const slug = link.dataset.slug;
+        if (slug) {
+          const el = document.getElementById(slug);
+          if (el) headingEls.push(el);
+        }
+      });
+
+      if (headingEls.length === 0) return;
+
+      const ACTIVE_CLASS = "toc-active";
+
+      function setActive(slug: string) {
+        tocLinks.forEach((link) => {
+          if (link.dataset.slug === slug) {
+            link.classList.add(ACTIVE_CLASS);
+            link.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          } else {
+            link.classList.remove(ACTIVE_CLASS);
+          }
+        });
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          // Find the first visible heading
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+              return;
+            }
+          }
+        },
+        {
+          rootMargin: "-80px 0px -60% 0px",
+          threshold: 0,
+        },
+      );
+
+      headingEls.forEach((el) => observer.observe(el));
+
+      // Set initial active based on scroll position
+      const scrollY = window.scrollY + 100;
+      let currentSlug = headingEls[0]?.id;
+      for (const el of headingEls) {
+        if (el.offsetTop <= scrollY) {
+          currentSlug = el.id;
+        }
+      }
+      if (currentSlug) setActive(currentSlug);
+    }
+
+    initScrollspy();
+
+    // Mobile TOC Modal
+    const tocBtn = document.getElementById("mobile-toc-btn");
+    const tocModal = document.getElementById("mobile-toc-modal");
+    const tocOverlay = document.getElementById("mobile-toc-overlay");
+    const tocClose = document.getElementById("mobile-toc-close");
+    const mobileTocLinks =
+      document.querySelectorAll<HTMLAnchorElement>(".mobile-toc-link");
+
+    function openTocModal() {
+      tocModal?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeTocModal() {
+      tocModal?.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    tocBtn?.addEventListener("click", openTocModal);
+    tocOverlay?.addEventListener("click", closeTocModal);
+    tocClose?.addEventListener("click", closeTocModal);
+    mobileTocLinks.forEach((link) => {
+      link.addEventListener("click", closeTocModal);
+    });
+  </script>
+
+  <style>
+    .toc-active {
+      color: var(--theme-primary) !important;
+      background: var(--theme-primary-10);
+      font-weight: 600;
+    }
+
+    article :global(h2),
+    article :global(h3),
+    article :global(h4) {
+      scroll-margin-top: 6rem;
+    }
+
+    article :global(h2),
+    article :global(h3),
+    article :global(h4) {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    article :global(h2) {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    article :global(h3) {
+      margin-top: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    article :global(h4) {
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px rgb(233, 233, 233) solid;
+      font-weight: 700;
+    }
+
+    article :global(h2 svg) {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    article :global(h3 svg) {
+      width: 1.375rem;
+      height: 1.375rem;
+      flex-shrink: 0;
+    }
+
+    article :global(h4 svg) {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    article :global(p) {
+      margin-bottom: 0.5rem;
+    }
+
+    article :global(img) {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+    }
+
+    article :global(a.official-link) {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      color: #f6f7f9;
+      background: #404041;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    article :global(a.official-link:hover) {
+      color: #ffffff;
+      background: #151414;
+    }
+
+    article :global(span.pricing-tag) {
+      display: inline-flex;
+      align-items: center;
+      align-self: stretch;
+      justify-content: center;
+      padding: 0.25rem 0.75rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 9999px;
+    }
+
+    article :global(span.pricing-tag.paid) {
+      color: #d97706;
+      background: #fffbeb;
+      border-color: #fde68a;
+    }
+
+    article :global(span.pricing-tag.freemium) {
+      color: #2563eb;
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.3s ease-out;
+    }
+  </style>
+</BaseLayout>

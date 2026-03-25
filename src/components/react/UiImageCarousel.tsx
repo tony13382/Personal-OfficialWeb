@@ -95,6 +95,8 @@ export function UiImageCarousel({
                     src={imageUrl}
                     alt={imageDesc ? imageDesc : `Slide ${index}`}
                     className="w-full h-auto object-contain rounded-inline-basic"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {imageDesc && (<p className='text-center mt-4 text-muted-foreground whitespace-pre-line'>
                     {imageDesc}
@@ -105,7 +107,7 @@ export function UiImageCarousel({
               return (
                 <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
                   {allowPop ? (
-                    <a href={imageUrl} data-fancybox={fancyboxGalleryId} className='my-auto'>
+                    <a href={imageUrl} data-fancybox={fancyboxGalleryId} aria-label={imageDesc || `檢視第 ${index + 1} 張大圖`} className='my-auto'>
                       {content}
                     </a>
                   ) : (

@@ -1,0 +1,46 @@
+---
+/**
+ * Phosphor Icon component for Astro (zero JS, pure SVG)
+ *
+ * Usage:
+ *   <Icon name="caret-up" class="size-8" />
+ *   <Icon name="arrow-left" class="size-6" weight="bold" />
+ */
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+interface Props {
+  name: string;
+  weight?: "regular" | "bold" | "thin" | "light" | "fill" | "duotone";
+  class?: string;
+}
+
+const { name, weight = "regular", class: className } = Astro.props;
+
+// Normalize: "CaretUpIcon" / "CaretUp" → "caret-up", "caret-up" stays as-is
+const normalized = name
+  .replace(/Icon$/, "")
+  .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+  .toLowerCase();
+
+const svgPath = resolve(
+  `node_modules/@phosphor-icons/core/assets/${weight}/${normalized}.svg`,
+);
+
+let svgContent = "";
+try {
+  const raw = readFileSync(svgPath, "utf-8");
+  // Strip outer <svg> wrapper, keep inner paths only
+  svgContent = raw.replace(/<svg[^>]*>/, "").replace(/<\/svg>/, "");
+} catch {
+  console.warn(`[Icon] Icon not found: ${name} (weight: ${weight})`);
+}
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 256 256"
+  fill="currentColor"
+  class={className}
+  set:html={svgContent}
+/>

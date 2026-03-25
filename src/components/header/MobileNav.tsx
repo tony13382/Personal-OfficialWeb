@@ -62,6 +62,8 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
               src="/assets/imgs/index/sign.svg"
               alt="Logo"
               className="absolute bottom-0 right-4 opacity-25 text-primary max-h-7 mt-2"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

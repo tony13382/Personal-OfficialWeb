@@ -51,7 +51,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Python.png" alt="Python" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Python.png" alt="Python" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Python</p>
@@ -59,7 +59,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/FastAPI.png" alt="FastAPI" className='size-14' />
+                        <img src="/assets/imgs/appIcons/FastAPI.png" alt="FastAPI" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>FastAPI</p>
@@ -67,7 +67,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Supabase.png" alt="Supabase" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Supabase.png" alt="Supabase" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Supabase</p>
@@ -75,7 +75,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/NodeJs.png" alt="NodeJs" className='size-14' />
+                        <img src="/assets/imgs/appIcons/NodeJs.png" alt="NodeJs" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>NodeJs</p>
@@ -83,7 +83,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Golang.png" alt="Golang" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Golang.png" alt="Golang" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Golang</p>
@@ -91,7 +91,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Php.png" alt="Php" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Php.png" alt="Php" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Php</p>
@@ -99,7 +99,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/RubyOnrRils.png" alt="RubyOnrRils" className='size-14' />
+                        <img src="/assets/imgs/appIcons/RubyOnrRils.png" alt="RubyOnrRils" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Ruby On Rils</p>
@@ -131,7 +131,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/PostgreSQL.png" alt="PostgreSQL" className='size-14' />
+                        <img src="/assets/imgs/appIcons/PostgreSQL.png" alt="PostgreSQL" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>PostgreSQL</p>
@@ -139,7 +139,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/MongoDB.png" alt="MongoDB" className='size-14' />
+                        <img src="/assets/imgs/appIcons/MongoDB.png" alt="MongoDB" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>MongoDB</p>
@@ -147,7 +147,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Firebase.png" alt="Firebase" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Firebase.png" alt="Firebase" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Firebase</p>
@@ -155,7 +155,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/SQLite.png" alt="SQLite" className='size-14' />
+                        <img src="/assets/imgs/appIcons/SQLite.png" alt="SQLite" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>SQLite</p>
@@ -163,7 +163,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Redis.png" alt="Redis" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Redis.png" alt="Redis" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Redis</p>
@@ -171,7 +171,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Cloudflare.png" alt="Cloudflare" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Cloudflare.png" alt="Cloudflare" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Cloudflare</p>
@@ -199,7 +199,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/React.png" alt="React" className='size-14' />
+                        <img src="/assets/imgs/appIcons/React.png" alt="React" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>React</p>
@@ -207,7 +207,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/ReactRouter.png" alt="ReactRouter" className='size-14' />
+                        <img src="/assets/imgs/appIcons/ReactRouter.png" alt="ReactRouter" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>React Router</p>
@@ -215,7 +215,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/NextJs.png" alt="NextJs" className='size-14' />
+                        <img src="/assets/imgs/appIcons/NextJs.png" alt="NextJs" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>NextJs</p>
@@ -223,7 +223,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/JavaServerPage.png" alt="JavaServerPage" className='size-14' />
+                        <img src="/assets/imgs/appIcons/JavaServerPage.png" alt="JavaServerPage" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Java Page (Tomcat)</p>
@@ -231,7 +231,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Astro.png" alt="Astro" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Astro.png" alt="Astro" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Astro</p>
@@ -239,7 +239,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Remix.png" alt="Remix" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Remix.png" alt="Remix" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Remix</p>
@@ -271,7 +271,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Vite.png" alt="Vite" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Vite.png" alt="Vite" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Vite</p>
@@ -279,7 +279,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Tailwind.png" alt="Tailwind" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Tailwind.png" alt="Tailwind" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Tailwind CSS</p>
@@ -287,7 +287,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/ShadcnUi.png" alt="ShadcnUi" className='size-14' />
+                        <img src="/assets/imgs/appIcons/ShadcnUi.png" alt="ShadcnUi" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Shadcn UI Kit</p>
@@ -295,7 +295,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Bootstrap.png" alt="Bootstrap" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Bootstrap.png" alt="Bootstrap" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Bootstrap</p>
@@ -303,7 +303,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Streamlit.png" alt="Streamlit" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Streamlit.png" alt="Streamlit" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Streamlit</p>
@@ -311,7 +311,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Java.png" alt="Java" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Java.png" alt="Java" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Java</p>
@@ -319,7 +319,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Flutter.png" alt="Flutter" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Flutter.png" alt="Flutter" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Flutter</p>
@@ -347,7 +347,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Cloudflare.png" alt="Cloudflare" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Cloudflare.png" alt="Cloudflare" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Cloudflare Worker</p>
@@ -355,7 +355,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Linode.png" alt="Linode" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Linode.png" alt="Linode" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Linode</p>
@@ -363,7 +363,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/AWS.png" alt="AWS" className='size-14' />
+                        <img src="/assets/imgs/appIcons/AWS.png" alt="AWS" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>AWS</p>
@@ -395,7 +395,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Docker.png" alt="Docker" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Docker.png" alt="Docker" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Docker</p>
@@ -403,7 +403,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/GithubAction.png" alt="GithubAction" className='size-14' />
+                        <img src="/assets/imgs/appIcons/GithubAction.png" alt="GithubAction" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Github Action</p>
@@ -411,7 +411,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/AppScript.png" alt="AppScript" className='size-14' />
+                        <img src="/assets/imgs/appIcons/AppScript.png" alt="AppScript" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>AppScript</p>
@@ -441,7 +441,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                 <div className='flex flex-wrap justify-center gap-4'>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <img src="/assets/imgs/appIcons/Python.png" alt="Python" className='size-14' />
+                      <img src="/assets/imgs/appIcons/Python.png" alt="Python" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Python</p>
@@ -449,7 +449,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <img src="/assets/imgs/appIcons/R.png" alt="R" className='size-14' />
+                      <img src="/assets/imgs/appIcons/R.png" alt="R" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>R</p>
@@ -457,7 +457,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <img src="/assets/imgs/appIcons/Excel.png" alt="Excel" className='size-14' />
+                      <img src="/assets/imgs/appIcons/Excel.png" alt="Excel" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Excel</p>
@@ -465,7 +465,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <img src="/assets/imgs/appIcons/GoogleSheet.png" alt="GoogleSheet" className='size-14' />
+                      <img src="/assets/imgs/appIcons/GoogleSheet.png" alt="GoogleSheet" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Google Sheet</p>
@@ -482,7 +482,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Canva.png" alt="Canva" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Canva.png" alt="Canva" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Canva</p>
@@ -490,7 +490,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Powerpoint.png" alt="Powerpoint" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Powerpoint.png" alt="Powerpoint" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Powerpoint</p>
@@ -498,7 +498,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/GoogleSlide.png" alt="GoogleSlide" className='size-14' />
+                        <img src="/assets/imgs/appIcons/GoogleSlide.png" alt="GoogleSlide" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Google Slides</p>
@@ -506,7 +506,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Figma.png" alt="Figma" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Figma.png" alt="Figma" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Figma Slides</p>
@@ -521,7 +521,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   <div className='flex flex-wrap justify-center gap-4'>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/PoewrBI.png" alt="PoewrBI" className='size-14' />
+                        <img src="/assets/imgs/appIcons/PoewrBI.png" alt="PoewrBI" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>PoewrBI</p>
@@ -529,7 +529,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/GoogleLookerStudio.png" alt="GoogleLookerStudio" className='size-14' />
+                        <img src="/assets/imgs/appIcons/GoogleLookerStudio.png" alt="GoogleLookerStudio" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Looker Studio</p>
@@ -537,7 +537,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Excel.png" alt="Excel" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Excel.png" alt="Excel" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>IBM Cognos</p>
@@ -545,7 +545,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/IbmCognos.png" alt="IbmCognos" className='size-14' />
+                        <img src="/assets/imgs/appIcons/IbmCognos.png" alt="IbmCognos" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>IBM Cognos</p>
@@ -553,7 +553,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <img src="/assets/imgs/appIcons/Ggplot2.png" alt="Ggplot2" className='size-14' />
+                        <img src="/assets/imgs/appIcons/Ggplot2.png" alt="Ggplot2" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>GGPlot 2</p>
@@ -726,7 +726,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                     <div className='flex flex-wrap justify-center gap-4'>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <img src="/assets/imgs/appIcons/GoogleDocs.png" alt="GoogleDocs" className='size-14' />
+                          <img src="/assets/imgs/appIcons/GoogleDocs.png" alt="GoogleDocs" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Google Docs</p>
@@ -734,7 +734,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                       </Tooltip>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <img src="/assets/imgs/appIcons/Notion.png" alt="Notion" className='size-14' />
+                          <img src="/assets/imgs/appIcons/Notion.png" alt="Notion" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Notion</p>
@@ -742,7 +742,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                       </Tooltip>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <img src="/assets/imgs/appIcons/Wordpress.png" alt="Wordpress" className='size-14' />
+                          <img src="/assets/imgs/appIcons/Wordpress.png" alt="Wordpress" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Wordpress</p>
@@ -750,7 +750,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                       </Tooltip>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <img src="/assets/imgs/appIcons/GoogleAnalytics.png" alt="GoogleAnalytics" className='size-14' />
+                          <img src="/assets/imgs/appIcons/GoogleAnalytics.png" alt="GoogleAnalytics" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Google Analytics</p>
@@ -794,14 +794,14 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               <div className='p-2 flex items-center justify-center gap-6 h-[calc(100%-56px)]'>
                 <div className='inline-flex flex-col items-center gap-2'>
                   <div className='p-2 border rounded-xl'>
-                    <img src="/assets/imgs/appIcons/Notion.png" alt="Notion" className='size-14' />
+                    <img src="/assets/imgs/appIcons/Notion.png" alt="Notion" className='size-14' loading="lazy" decoding="async" width={56} height={56} />
                   </div>
                   <p className='text-muted-foreground text-center'>資源共享</p>
                 </div>
                 <CaretDoubleRightIcon className='size-12 text-border animate-pulse' />
                 <div className='inline-flex flex-col items-center gap-2'>
                   <div className='p-1 border rounded-xl'>
-                    <img src="/assets/imgs/appIcons/Instagram.png" alt="Instagram" className='size-16' />
+                    <img src="/assets/imgs/appIcons/Instagram.png" alt="Instagram" className='size-16' loading="lazy" decoding="async" width={64} height={64} />
                   </div>
                   <p className='text-muted-foreground text-center'>知識輸出</p>
                 </div>
@@ -902,6 +902,8 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
             src={project.data.cover}
             alt={project.data.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            decoding="async"
           />
           {project.data.pin && (
             <div

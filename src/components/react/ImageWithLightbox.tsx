@@ -25,12 +25,14 @@ export function ImageWithLightbox({
 
   if (allowPop) {
     return (
-      <a href={src} data-fancybox="gallery" className={`mx-auto block ${roundedClass} ${className}`}>
+      <a href={src} data-fancybox="gallery" aria-label={alt || '檢視大圖'} className={`mx-auto block ${roundedClass} ${className}`}>
         <img
           src={src}
           className="img-fluid mx-auto"
           alt={alt}
           style={maxWidthStyle}
+          loading="lazy"
+          decoding="async"
         />
       </a>
     )
@@ -43,6 +45,8 @@ export function ImageWithLightbox({
         className={`img-fluid mx-auto ${roundedClass}`}
         alt={alt}
         style={maxWidthStyle}
+        loading="lazy"
+        decoding="async"
       />
     </div>
   )

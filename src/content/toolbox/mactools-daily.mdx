@@ -1,0 +1,543 @@
+---
+title: Mac 軟體．日常篇
+description: 分享我在 Mac 上日常使用的輸入、效率與瀏覽工具
+date: 2026-03-25
+category: 軟體工具
+tags: [軟體, Mac]
+cover: /og/toolbox-my-software-daily.png
+seo:
+  ogImage: /og/toolbox-my-software-daily.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import typeless from '@/assets/imgs/toolbox/mactools-daily/typeless.png'
+import sayit from '@/assets/imgs/toolbox/mactools-daily/sayit.png'
+import capslocknodelay from '@/assets/imgs/toolbox/mactools-daily/capslocknodelay.png'
+import vchewing from '@/assets/imgs/toolbox/mactools-daily/vchewing.png'
+import mcbopomofo from '@/assets/imgs/toolbox/mactools-daily/mcbopomofo.png'
+import raycast from '@/assets/imgs/toolbox/mactools-daily/raycast.png'
+import rectangle from '@/assets/imgs/toolbox/mactools-daily/rectangle.png'
+import shottr from '@/assets/imgs/toolbox/mactools-daily/shottr.png'
+import ice from '@/assets/imgs/toolbox/mactools-daily/ice.png'
+import alttab from '@/assets/imgs/toolbox/mactools-daily/alttab.png'
+import bob from '@/assets/imgs/toolbox/mactools-daily/bob.png'
+import dropover from '@/assets/imgs/toolbox/mactools-daily/dropover.png'
+import blip from '@/assets/imgs/toolbox/mactools-daily/blip.png'
+import localsend from '@/assets/imgs/toolbox/mactools-daily/localsend.png'
+import rclone from '@/assets/imgs/toolbox/mactools-daily/rclone.png'
+import bitwarden from '@/assets/imgs/toolbox/mactools-daily/bitwarden.png'
+import enteAuth from '@/assets/imgs/toolbox/mactools-daily/ente-auth.png'
+import tailscale from '@/assets/imgs/toolbox/mactools-daily/tailscale.png'
+import lemon from '@/assets/imgs/toolbox/mactools-daily/lemon.png'
+import amphetamine from '@/assets/imgs/toolbox/mactools-daily/amphetamine.png'
+import homebrew from '@/assets/imgs/toolbox/mactools-daily/homebrew.png'
+import arc from '@/assets/imgs/toolbox/mactools-daily/arc.png'
+import firefox from '@/assets/imgs/toolbox/mactools-daily/firefox.png'
+import velja from '@/assets/imgs/toolbox/mactools-daily/velja.png'
+import spark from '@/assets/imgs/toolbox/mactools-daily/spark.png'
+import notionCalendar from '@/assets/imgs/toolbox/mactools-daily/notion-calendar.png'
+
+## 打字與輸入
+
+### Typeless
+
+<Image src={typeless} alt="Typeless" />
+
+一款語音輸入工具，但不只是單純的語音轉文字而已。
+
+#### 智慧修飾
+
+Typeless 在轉譯語音之後，還會自動幫你去除贅字跟語氣詞，把口語化的內容修飾成更通順的書面文字。不用再花時間回頭刪掉那些「嗯」「然後」「就是」之類的東西。
+
+#### 內容整理
+
+更強大的是，它可以把一大段比較零散、發散的想法，整理成有條理、好閱讀的格式。最後產出的文案不會看起來像是隨口說說的逐字稿，而是一段結構清晰、可以直接拿去用的內容。
+
+#### 全平臺支援
+
+比較特別的是，Typeless 幾乎支援所有主流平臺——Android、iPhone、Mac 都能用。不管在哪個裝置上，都可以隨時用語音輸入來快速產出文字。
+
+<span class="pricing-tag freemium">免費試用，後續訂閱制</span>
+<a href="https://www.typeless.com/zh-tw/downloads" target="_blank" class="official-link">官方網站</a>
+
+### SayIt
+
+<Image src={sayit} alt="SayIt" />
+
+同樣是語音輸入工具，我主要把它當作 Typeless 免費額度用盡時的備援方案。
+
+#### API 計價模式
+
+跟 Typeless 一定要繳訂閱費不同，SayIt 可以直接用 API 計價的方式付費，用多少付多少。對於使用量不那麼大、或是想控制成本的人來說，彈性比較高。
+
+#### 與 Typeless 的差異
+
+在動效跟操作體驗上，SayIt 已經有 Typeless 七、八成的表現，日常使用沒什麼問題。不過比較明顯的差距在於：處理非常長的語音文本時表現會弱一些，而且它比較不會去讀取你目前螢幕上的內容來輔助判斷，所以在某些情境下精準度會稍微差一點。
+
+<span class="pricing-tag">程式免費，API 用量計費</span>
+<a href="https://jackle.pro/tools/sayIt" target="_blank" class="official-link">官方網站</a>
+
+### CapsLockNoDelay
+
+<Image src={capslocknodelay} alt="CapsLockNoDelay" />
+
+一個很小的工具，專門修正 Mac 上按 CapsLock 切換輸入語言時會有的延遲問題。裝了之後切換變得即時反應，打字節奏不會被打斷。如果你也覺得 Mac 原生的切換延遲很煩，這個工具裝上去就對了。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://github.com/gkpln3/CapsLockNoDelay" target="_blank" class="official-link">GitHub</a>
+
+### 唯音輸入法
+
+<Image src={vchewing} alt="唯音輸入法" />
+
+一款開源的注音輸入法，整體的輸入體驗跟選字邏輯都蠻不錯的，打起來很流暢。不過偶爾會遇到一些小 Bug，穩定性上還有進步的空間。
+
+#### 高度自訂化
+
+支援就地加詞、刪詞、調整詞頻等功能，還可以透過 JSON 匯入匯出偏好設定，讓你完全掌控自己的詞庫跟輸入行為。
+
+#### 打字行為學習
+
+內建打字行為記憶模組（POM），會根據你的打字習慣自動調整選字結果，用越久越懂你的選字偏好。
+
+#### 多種鍵盤排列
+
+除了標準注音之外，也支援漢語拼音等多種鍵盤配置，甚至可以搭配行列等其他輸入方案使用。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://vchewing.github.io" target="_blank" class="official-link">官方網站</a>
+
+### 小麥輸入法（少用）
+
+<Image src={mcbopomofo} alt="小麥輸入法" />
+
+同樣是開源的注音輸入法，走的是輕巧簡潔的路線，安裝容易、操作直覺。
+
+#### 智慧選字
+
+使用自行開發的 Gramambular2 斷字引擎，透過 n-gram 語言模型來做選字判斷，準確度蠻高的。
+
+#### 跨平臺支援
+
+除了 macOS 之外，還有 Linux 版（fcitx5）跟 Chrome OS 版，如果你同時有在用 Chromebook 或 Linux 也能無縫銜接。
+
+#### 多種鍵盤配置
+
+支援標準注音、倚天、許氏、倚天 26 鍵、IBM 以及漢語拼音等六種鍵盤排列方式，選擇蠻豐富的。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://mcbopomofo.openvanilla.org" target="_blank" class="official-link">官方網站</a>
+
+## 效率工具
+
+### Raycast
+
+<Image src={raycast} alt="Raycast" />
+
+我用來取代 Mac 內建 Spotlight 的啟動器工具，幾乎可以把很多日常操作都集中在這裡完成。
+
+#### 剪貼簿管理
+
+內建的剪貼簿歷史功能，可以回溯之前複製過的內容，不用再擔心不小心覆蓋掉剪貼簿裡的東西。
+
+#### Snippets 快捷輸入
+
+可以自訂常用的文字片段，設定觸發關鍵字後就能快速輸入。像是常用的 email 地址、固定回覆的文字模板之類的，打幾個字就能展開，省下不少重複打字的時間。
+
+#### Store 插件生態
+
+Raycast 有自己的 Store，裡面有各式各樣的插件可以裝。我自己比較常用的幾個：
+
+- **Window Management**：Raycast 原生的視窗管理，可快速調整視窗位置跟大小
+- **Homebrew**：不用開終端機就能執行安裝跟管理 service
+- **Bitwarden**：快速查詢密碼
+- **Ente Auth**：直接從 Raycast 搜尋並複製 2FA 驗證碼
+- **Calendar**：整合行事曆搜尋，快速查看接下來的行程
+- **Easy New File**：快速建立各種格式的文件
+- **Google Translate**：快速翻譯
+- **Amphetamine**：快速開關防休眠功能
+- **TinyPNG**：快速壓縮圖片
+- **Visual Studio Code**：快速開啟最近的專案或檔案
+- **Tabby**：快速操作 SSH 終端機連線管理
+- **Ghostty**：快速操作終端機
+
+<span class="pricing-tag freemium">免費使用，部分功能需訂閱</span>
+<a href="https://raycast.com" target="_blank" class="official-link">官方網站</a>
+
+### Rectangle
+
+<Image src={rectangle} alt="Rectangle" />
+
+免費的視窗管理工具，可以用快捷鍵快速把視窗排列到螢幕的各個位置，像是左半邊、右半邊、四分之一等等。我平常同時開很多視窗工作，有了它整理起來快很多。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://rectangleapp.com" target="_blank" class="official-link">官方網站</a>
+
+### Shottr
+
+<Image src={shottr} alt="Shottr" />
+
+我主要用的截圖與標註工具，用原生 Swift 開發，啟動速度極快、記憶體佔用極低，不會拖慢系統。
+
+#### 捲動截圖
+
+支援擷取超出螢幕可視範圍的長頁面內容，自動拼接成完整的長截圖。這是 macOS 內建截圖工具做不到的，遇到需要截整頁的場景非常好用。
+
+#### 像素級測量與取色
+
+提供精確的尺寸測量跟顏色取樣功能，可以直接在截圖上量距離、吸顏色，我在做前端開發或看設計稿的時候會用到。
+
+#### 快速馬賽克
+
+可以一鍵對截圖中的敏感資訊進行模糊處理或馬賽克遮蔽，像是個人資料、密碼之類的，操作非常快速。
+
+#### OCR 文字辨識
+
+內建光學字元辨識功能，可以直接從截圖中擷取文字，不用再另外裝其他工具。
+
+#### 截圖釘選
+
+支援把截圖釘選在螢幕最上層，方便對照參考，不用反覆切換視窗。
+
+<span class="pricing-tag freemium">大部分功能免費，付費可去廣告</span>
+<a href="https://shottr.cc" target="_blank" class="official-link">官方網站</a>
+
+### Ice
+
+<Image src={ice} alt="Ice" />
+
+用來管理 Mac 右上角選單列圖示的工具。裝的軟體越來越多之後，選單列會變得很擁擠，Ice 可以把不常用的圖示收起來，讓畫面保持乾淨。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://github.com/jordanbaird/Ice" target="_blank" class="official-link">GitHub</a>
+
+### AltTab
+
+<Image src={alttab} alt="AltTab" />
+
+讓 Mac 的視窗切換行為更接近 Windows 的 Alt+Tab 體驗，可以預覽每個視窗的縮圖，切換時更直覺。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://alt-tab-macos.netlify.app" target="_blank" class="official-link">官方網站</a>
+
+### Bob
+
+<Image src={bob} alt="Bob" />
+
+我在 Mac 上用的翻譯跟 OCR 工具，幾乎在任何場景下都能快速完成翻譯，不用離開當前的工作視窗。
+
+#### 劃詞翻譯
+
+選取任意文字後就能快速翻譯，支援幾乎所有 Mac 應用程式。不需要切換視窗、不需要開瀏覽器，選起來就能翻。
+
+#### 截圖翻譯
+
+透過截圖的方式辨識畫面中的文字並翻譯，特別適合翻譯圖片、影片字幕或那些沒辦法直接複製的文字。
+
+#### 多引擎翻譯
+
+支援 Google、DeepL、OpenAI 等多種翻譯引擎，還可以同時顯示多個翻譯結果進行比對，選出最合適的翻譯。
+
+#### OCR 文字辨識
+
+內建離線 OCR 功能，可以從圖片中擷取文字並直接翻譯，處理無法選取的文字內容時非常方便。
+
+#### 輸入翻譯
+
+也支援手動輸入文字進行翻譯，可以當作獨立的翻譯視窗來使用，適合需要主動查詢的情境。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://bobtranslate.com" target="_blank" class="official-link">官方網站</a>
+
+## 檔案管理與傳輸
+
+### Dropover
+
+<Image src={dropover} alt="Dropover" />
+
+拖放暫存工具，拖曳檔案時可以先放到一個浮動的暫存架上，再從暫存架拖到目標位置。我在跨視窗、跨桌面搬移檔案的時候特別常用。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://dropoverapp.com" target="_blank" class="official-link">官方網站</a>
+
+### Blip
+
+<Image src={blip} alt="Blip" />
+
+一款跨平臺的檔案傳輸工具。
+
+#### 跨網路傳輸
+
+跟 LocalSend 只能在同一個區域網路下使用不同，Blip 安裝並登入帳號之後，可以透過它自己的網路在不同地點的裝置之間傳輸檔案，不受區域網路的限制。
+
+#### 全平臺支援
+
+支援 Mac、Windows、Android、iOS 等主流平臺，基本上不管你手邊用的是什麼裝置都能互傳，不會有什麼太大的限制。
+
+<span class="pricing-tag freemium">免費使用，部分功能需訂閱</span>
+<a href="https://blip.net" target="_blank" class="official-link">官方網站</a>
+
+### LocalSend
+
+<Image src={localsend} alt="LocalSend" />
+
+開源的區域網路檔案傳輸工具，只要在同一個網路環境下就能互傳檔案。
+
+#### 區域網路直傳
+
+不需要經過任何第三方伺服器，檔案直接在裝置之間傳輸。相比於 Blip 需要透過雲端中轉，LocalSend 在同一個網路下的傳輸速度會更快一些。
+
+#### 跨平臺支援
+
+支援 Mac、Windows、Android、iOS 等主流平臺，而且是開源免費的，不用擔心訂閱或付費的問題。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://localsend.org" target="_blank" class="official-link">官方網站</a>
+
+### rclone
+
+<Image src={rclone} alt="rclone" />
+
+一款命令列的雲端儲存管理工具，支援的雲端服務非常多，像是 Google Drive、OneDrive、S3 等等。
+
+#### 同步與備份
+
+可以用來在本機跟雲端之間同步、備份、搬移檔案，一行指令就能搞定。對於需要定期備份或在不同雲端之間搬資料的人來說非常實用。
+
+#### 掛載雲端硬碟
+
+我自己比較常用的功能是把雲端硬碟直接掛載到本機的檔案系統上，這樣就可以像操作本地檔案一樣直接編輯雲端上的檔案，不用先下載、改完再上傳，整個流程順暢很多。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://rclone.org" target="_blank" class="official-link">官方網站</a>
+
+## 安全與隱私
+
+### Bitwarden
+
+<Image src={bitwarden} alt="Bitwarden" />
+
+開源的密碼管理工具，用來統一管理所有的密碼跟密鑰（Passkey）。
+
+#### 密碼與 Passkey 管理
+
+主要用來儲存各種網站跟服務的密碼，也支援新一代的 Passkey。搭配瀏覽器擴充套件，自動填入的體驗很順暢，不用再記一堆密碼。
+
+#### 資料夾分類
+
+可以用資料夾來分類管理不同類型的帳號，像是工作、個人、金融等等，帳號一多的時候找起來比較方便。
+
+#### 幾乎免費的成本
+
+Bitwarden 是少數可以用很低成本使用的密碼管理工具，免費方案就已經涵蓋了大部分日常需求，跟其他動輒年費上千的密碼管理工具比起來親民很多。
+
+#### 為什麼不用內建的 2FA？
+
+雖然 Bitwarden 本身也有提供 2FA 驗證碼的功能，但我個人覺得把密碼跟兩步驟驗證碼放在同一個地方不太安全——如果 Bitwarden 被攻破，等於兩道防線同時失守。所以我另外用了 Ente Auth 來獨立管理 2FA 驗證碼。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://bitwarden.com" target="_blank" class="official-link">官方網站</a>
+
+### Ente Auth
+
+<Image src={enteAuth} alt="Ente Auth" />
+
+一款開源且免費的兩步驟驗證（2FA）工具，用來獨立管理各種服務的驗證碼。
+
+#### 開源且免費
+
+Ente Auth 完全開源，而且免費就能使用全部功能，包含端對端加密跟雲端備份。換裝置的時候不用擔心驗證碼遺失，也不用為了基本功能付費。
+
+#### 標籤分類
+
+支援用 Tag 的方式來分類管理驗證碼，像是工作、個人、社群等等，帳號多的時候可以快速篩選，找起來很方便。
+
+#### Raycast 整合
+
+支援 Raycast 的插件系統，可以直接透過 Raycast 快速搜尋並取得驗證碼，複製後直接貼上，不用另外打開 Ente Auth 的視窗，整個流程非常快。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://ente.io/auth" target="_blank" class="official-link">官方網站</a>
+
+### Tailscale
+
+<Image src={tailscale} alt="Tailscale" />
+
+基於 WireGuard 的私有網路工具，可以把不同地點的裝置串成一個安全的虛擬區域網路。
+
+#### 內網服務管理
+
+我自己沒有公網 IP，所以會用 Tailscale 來存取內網的服務。設定好之後，不管人在哪裡都能安全地連回家裡或辦公室的裝置，就像在同一個區域網路下一樣。
+
+#### Windows 遠端連線
+
+搭配 Windows 的遠端桌面連線（RDP）使用，透過 Tailscale 建立的虛擬網路，即使沒有公網 IP 也能順利連上遠端的 Windows 電腦，連線穩定、設定也很簡單。
+
+#### 全平臺支援且免費額度大方
+
+Tailscale 幾乎全平臺都能安裝——Mac、Windows、Linux、iOS、Android 通通支援。而且免費方案的額度非常大方，個人使用基本上不太會碰到限制，可以輕鬆把所有裝置串在一起。
+
+<span class="pricing-tag freemium">免費額度大方，企業方案需付費</span>
+<a href="https://tailscale.com" target="_blank" class="official-link">官方網站</a>
+
+## 系統維護
+
+### Homebrew
+
+<Image src={homebrew} alt="Homebrew" />
+
+Mac 上最主流的套件管理工具，可以用命令列快速安裝、更新跟移除各種軟體。我裝的很多開發者工具跟日常軟體都是透過 Homebrew 一行指令搞定的。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://brew.sh" target="_blank" class="official-link">官方網站</a>
+
+### Amphetamine
+
+<Image src={amphetamine} alt="Amphetamine" />
+
+防止 Mac 自動休眠的工具，可以根據不同情境設定保持喚醒的條件。像是在下載大檔案或跑長時間任務的時候，不用擔心電腦突然睡著。
+
+<span class="pricing-tag">免費</span>
+<a href="https://apps.apple.com/app/amphetamine/id937984704" target="_blank" class="official-link">App Store</a>
+
+### 騰訊 Lemon
+
+<Image src={lemon} alt="騰訊 Lemon" />
+
+我在用的 Mac 系統清理工具，免費、介面簡潔、操作直覺，日常清理會用到的功能大部分都有。
+
+#### 垃圾檔案清理
+
+一鍵掃描並清除系統垃圾、應用程式快取跟殘留檔案，釋放磁碟空間，讓 Mac 保持流暢。
+
+#### 大型檔案掃描
+
+可以快速找出佔用大量空間的檔案，方便你檢視並決定要不要刪掉，在磁碟快滿的時候特別好用。
+
+#### 重複檔案偵測
+
+掃描磁碟中的重複檔案，像是照片、文件、音樂等等，幫你移除多餘的副本，避免空間浪費。
+
+#### 應用程式完整移除
+
+卸載應用程式時會同時清除關聯的設定檔、快取跟殘留資料，確保移除乾淨不留痕跡。比起直接拖到垃圾桶，清得更徹底。
+
+<span class="pricing-tag">免費</span>
+<a href="https://lemon.qq.com" target="_blank" class="official-link">官方網站</a>
+
+## 網路與通訊
+
+### Spark
+
+<Image src={spark} alt="Spark" />
+
+我主要用的郵件管理工具，介面設計得很乾淨，處理大量郵件時效率很高。
+
+#### 多帳號統一管理
+
+可以同時整合 Gmail、Outlook、iCloud 等多個郵件帳號，在同一個介面裡管理所有信件，不用再一個一個切換。
+
+#### 智慧收件匣
+
+自動把郵件分類成「個人」「通知」「電子報」等類別，讓你可以優先處理重要的信件，減少被大量通知信淹沒的感覺。
+
+#### 排程寄送與稍後提醒
+
+支援預約排程寄信，也可以把已讀的郵件暫時隱藏，設定在指定時間重新出現在收件匣頂部，確保不會忘記要處理的事情。
+
+#### 行事曆整合與會議提醒
+
+Spark 會自動讀取信箱中的行事曆資訊，如果有像 Google Meet 這類的會議，會在會議前五分鐘在電腦上跳出通知提醒你參加，不用另外開行事曆也不怕漏掉會議。
+
+#### 跨平臺支援
+
+提供 macOS、iOS、Android 跟 Windows 版本，不管在哪個裝置上都能用同一個介面管理郵件。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://sparkmailapp.com" target="_blank" class="official-link">官方網站</a>
+
+### Notion Calendar
+
+<Image src={notionCalendar} alt="Notion Calendar" />
+
+我用來管理行事曆的工具，介面簡潔好看，而且完全免費。
+
+#### 多帳號整合
+
+可以統一管理多個不同的 Google Calendar 帳號，只要登入 Notion 帳號就能直接帶出所有關聯帳號的行事曆，不需要額外設定，所有行程都能在同一個畫面上看到。
+
+#### 與 Notion 資料庫串接
+
+我自己在 Notion 上有規劃一套叫 LifeOS 的系統，Notion Calendar 可以直接跟這些資料庫串接，方便我在行事曆上直接管理跟追蹤相關的任務跟行程。
+
+#### 快速建立會議連結
+
+可以快速建立會議連結並安排日程，支援多個日曆系統。以目前市面上免費的行事曆工具來說，它在建立會議跟排程上的體驗非常不錯。
+
+<span class="pricing-tag">免費</span>
+<a href="https://www.notion.so/product/calendar" target="_blank" class="official-link">官方網站</a>
+
+### Arc
+
+<Image src={arc} alt="Arc" />
+
+一款重新設計瀏覽體驗的瀏覽器，跟傳統瀏覽器的思路很不一樣，用起來更像是一個以工作流為核心的工具。
+
+#### 側邊欄分頁管理
+
+捨棄了傳統頂部的分頁列，改用左側邊欄來管理所有分頁。而且分頁會自動歸檔過期的頁面，不用手動整理，減少分頁越開越多的問題。
+
+#### 空間（Spaces）
+
+可以建立多個獨立的工作空間，每個 Space 有各自的分頁跟書籤。我會把工作、個人、專案等不同情境分開，切換的時候一目了然，不會互相干擾。
+
+#### 分割畫面（Split View）
+
+支援在同一個視窗內並排顯示多個網頁，方便同時參考資料或比較內容，不用在分頁之間來回切換。
+
+#### Little Arc
+
+點擊外部連結時會以輕量的小視窗快速開啟網頁，適合快速預覽後關閉，不會干擾主視窗的工作流程。
+
+#### 命令列（Command Bar）
+
+按下快捷鍵就能呼叫類似 Spotlight 的搜尋列，快速搜尋分頁、切換 Space、開啟書籤，鍵盤操作的效率很高。
+
+<span class="pricing-tag">免費</span>
+<a href="https://arc.net" target="_blank" class="official-link">官方網站</a>
+
+### Firefox
+
+<Image src={firefox} alt="Firefox" />
+
+Mozilla 開發的開源瀏覽器，主打隱私保護，是我除了 Arc 之外會搭配使用的瀏覽器。
+
+#### 強化隱私保護
+
+內建「加強型追蹤保護」功能，預設就會封鎖第三方 Cookie、社群媒體追蹤器跟數位指紋辨識，不用額外裝套件就能有不錯的隱私防護。
+
+#### 豐富的擴充套件
+
+Firefox 的附加元件生態系很成熟，從廣告封鎖到開發者工具應有盡有，可以根據自己的需求自由擴充瀏覽器功能。
+
+#### 容器分頁（Container Tabs）
+
+可以在同一個瀏覽器裡用不同身分隔離分頁，例如把工作、個人、購物分開，各容器的 Cookie 跟登入狀態彼此獨立。這個功能我覺得蠻實用的，不用再為了切換帳號開無痕視窗。
+
+#### 跨平臺同步
+
+透過 Firefox 帳號可以在不同裝置間同步書籤、歷史紀錄、密碼跟開啟的分頁，桌面跟手機之間的瀏覽體驗可以無縫銜接。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://www.mozilla.org/firefox" target="_blank" class="official-link">官方網站</a>
+
+### Velja
+
+<Image src={velja} alt="Velja" />
+
+瀏覽器選擇器工具，點擊連結時可以自動根據規則決定要用哪個瀏覽器開啟。因為我同時在用 Arc 跟 Firefox，靠 Velja 就能把工作跟個人的瀏覽自動分流。
+
+<span class="pricing-tag">免費</span>
+<a href="https://sindresorhus.com/velja" target="_blank" class="official-link">官方網站</a>

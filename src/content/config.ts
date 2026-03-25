@@ -87,7 +87,37 @@ const jobsCollection = defineCollection({
   })
 })
 
+// Toolbox Collection
+const toolboxCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // 基本資訊
+    title: z.string(),
+    description: z.string(),
+
+    // 時間
+    date: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+
+    // 分類
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    pin: z.boolean().default(false),
+
+    // 視覺
+    cover: z.string().optional(),
+
+    // SEO
+    seo: z.object({
+      metaTitle: z.string().optional(),
+      metaDescription: z.string().optional(),
+      ogImage: z.string().optional()
+    }).optional()
+  })
+})
+
 export const collections = {
   projects: projectsCollection,
   jobs: jobsCollection,
+  toolbox: toolboxCollection,
 }

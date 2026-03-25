@@ -1,0 +1,152 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import {
+  ProfileCard,
+  ProfileCardModal,
+  profileData,
+} from "@/components/data/profile";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Icon from "@/components/Icon.astro";
+
+const allPosts = await getCollection("toolbox");
+const sortedPosts = allPosts.sort((a, b) => {
+  if (a.data.pin && !b.data.pin) return -1;
+  if (!a.data.pin && b.data.pin) return 1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+// 取得所有 category（保留出現順序）
+const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
+---
+
+<BaseLayout
+  title="分享專欄 | 呂亮進"
+  description="按用途分類的工具推薦與使用心得"
+  headerType="main"
+>
+  <div
+    class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20"
+  >
+    <section class="container mx-auto px-4 py-12">
+      <div class="flex gap-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block relative">
+          <div class="sticky top-24 grid">
+            <ProfileCard />
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+          <div class="mb-8 mt-5">
+            <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">
+              分享專欄
+            </h1>
+            <p class="text-muted-foreground">
+              按用途分類的工具推薦與使用心得
+            </p>
+          </div>
+
+          <!-- Post List -->
+          <div class="space-y-4">
+            {
+              categories.map((category) => {
+                const categoryPosts = sortedPosts.filter(
+                  (p) => p.data.category === category,
+                );
+                return (
+                  <div>
+                    <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-8 first:mt-0">
+                      {category}
+                    </h2>
+                    <div class="space-y-4">
+                      {categoryPosts.map((post) => (
+                        <a
+                          href={`/toolbox/${post.slug}/`}
+                          class="group block no-underline"
+                        >
+                          <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                              <div class="flex items-stretch">
+                                <div class="flex-1 grid gap-1 p-5">
+                                  <div class="flex items-center gap-2">
+                                    <time class="text-sm text-muted-foreground">
+                                      {post.data.date.toLocaleDateString(
+                                        "zh-TW",
+                                        {
+                                          year: "numeric",
+                                          month: "long",
+                                          day: "numeric",
+                                        },
+                                      )}
+                                    </time>
+                                    {post.data.updatedDate && (
+                                      <span class="text-xs text-muted-foreground">
+                                        （已更新）
+                                      </span>
+                                    )}
+                                  </div>
+                                  <h3 class="text-xl font-bold group-hover:text-[var(--theme-primary)] transition-colors">
+                                    {post.data.title}
+                                  </h3>
+                                  <p class="text-muted-foreground line-clamp-2">
+                                    {post.data.description}
+                                  </p>
+                                </div>
+                                {post.data.cover && (
+                                  <div class="w-64 aspect-[1200/630] flex-shrink-0 hidden md:block">
+                                    <img
+                                      src={post.data.cover}
+                                      alt={post.data.title}
+                                      class="w-full h-full object-cover"
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                          </Card>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })
+            }
+          </div>
+
+          {
+            sortedPosts.length === 0 && (
+              <div class="text-center py-12">
+                <Icon
+                  name="toolbox"
+                  class="size-16 mx-auto mb-4 text-gray-300"
+                />
+                <p class="text-gray-500">尚未發佈文章</p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <button
+    id="profile-modal-btn"
+    class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
+    title="通知我"
+  >
+    <Image
+      src={profileImg}
+      alt={`${profileData.name}的頭像`}
+      class="size-16 rounded-full overflow-hidden"
+      width={64}
+      height={64}
+    />
+  </button>
+
+  <ProfileCardModal client:load />
+</BaseLayout>

@@ -48,6 +48,8 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
                 src={image.src}
                 alt={image.alt || `Image ${index + 1}`}
                 className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}

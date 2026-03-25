@@ -1,14 +1,6 @@
 ---
-import {
-  BookmarkSimpleIcon,
-  ArchiveIcon,
-  CoffeeIcon,
-  InstagramLogoIcon,
-  WalletIcon,
-  BookBookmarkIcon,
-  GraduationCapIcon,
-  CalculatorIcon,
-} from "@phosphor-icons/react";
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
 ---
 
@@ -29,8 +21,9 @@ import { SocialLinksLite } from "../data/social";
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <BookBookmarkIcon
-            className="size-5 group-hover:scale-110 transition-transform"
+          <Icon
+            name="book-bookmark"
+            class="size-5 group-hover:scale-110 transition-transform"
           />
           <span>Kit - 書籤管理工具</span>
         </a>
@@ -39,8 +32,9 @@ import { SocialLinksLite } from "../data/social";
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <CalculatorIcon
-            className="size-5 group-hover:scale-110 transition-transform"
+          <Icon
+            name="calculator"
+            class="size-5 group-hover:scale-110 transition-transform"
           />
           <span>股票試算小工具</span>
         </a>
@@ -52,8 +46,9 @@ import { SocialLinksLite } from "../data/social";
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <GraduationCapIcon
-            className="size-5 group-hover:scale-110 transition-transform"
+          <Icon
+            name="graduation-cap"
+            class="size-5 group-hover:scale-110 transition-transform"
           />
           <span>知識推薦獲取來源</span>
         </a>
@@ -62,8 +57,9 @@ import { SocialLinksLite } from "../data/social";
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <BookmarkSimpleIcon
-            className="size-5 group-hover:scale-110 transition-transform"
+          <Icon
+            name="bookmark-simple"
+            class="size-5 group-hover:scale-110 transition-transform"
           />
           <span>推薦工作書籤</span>
         </a>
@@ -73,8 +69,9 @@ import { SocialLinksLite } from "../data/social";
           rel="noopener noreferrer"
           class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
         >
-          <ArchiveIcon
-            className="size-5 group-hover:scale-110 transition-transform"
+          <Icon
+            name="archive"
+            class="size-5 group-hover:scale-110 transition-transform"
           />
           <span>學習資源庫</span>
         </a>
@@ -105,8 +102,9 @@ import { SocialLinksLite } from "../data/social";
             rel="noopener noreferrer"
             class="col-span-1 flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
           >
-            <CoffeeIcon
-              className="size-5 group-hover:scale-110 transition-transform"
+            <Icon
+              name="coffee"
+              class="size-5 group-hover:scale-110 transition-transform"
             />
             <span>Buy Me A Coffee</span>
           </a>
@@ -116,8 +114,9 @@ import { SocialLinksLite } from "../data/social";
             rel="noopener noreferrer"
             class="col-span-1 flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
           >
-            <WalletIcon
-              className="size-5 group-hover:scale-110 transition-transform"
+            <Icon
+              name="wallet"
+              class="size-5 group-hover:scale-110 transition-transform"
             />
             <span>Portaly 贊助</span>
           </a>

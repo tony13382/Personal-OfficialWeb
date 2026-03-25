@@ -4,10 +4,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Badge } from "@/components/ui/badge";
 import { themes } from "@/lib/themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import * as PhosphorIcons from "@phosphor-icons/react";
-import { StarIcon } from "@phosphor-icons/react";
+import Icon from "@/components/Icon.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { ProfileCardModal, profileData } from "@/components/data/profile";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -117,7 +118,7 @@ const getStatusBadge = (statusStr: string) => {
                   {
                     project.data.pin && (
                       <Badge variant="outline">
-                        <StarIcon className="size-3 me-2" />
+                        <Icon name="star" class="size-3 me-2" />
                         精選
                       </Badge>
                     )
@@ -130,26 +131,19 @@ const getStatusBadge = (statusStr: string) => {
                 {
                   project.data.links && project.data.links.length > 0 && (
                     <div class="flex flex-col flex-wrap gap-3 mt-4">
-                      {project.data.links.map((link: any) => {
-                        const IconComponent = link.icon
-                          ? (PhosphorIcons[
-                              link.icon as keyof typeof PhosphorIcons
-                            ] as PhosphorIcons.Icon) || null
-                          : null;
-                        return (
-                          <a
-                            href={link.href}
-                            target={link.openInTab ? "_blank" : "_self"}
-                            rel="noopener noreferrer"
-                            class={buttonVariants({ variant: "outline" })}
-                          >
-                            {IconComponent && (
-                              <IconComponent className="size-4" />
-                            )}
-                            {link.content}
-                          </a>
-                        );
-                      })}
+                      {project.data.links.map((link: any) => (
+                        <a
+                          href={link.href}
+                          target={link.openInTab ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          class={buttonVariants({ variant: "outline" })}
+                        >
+                          {link.icon && (
+                            <Icon name={link.icon} class="size-4" />
+                          )}
+                          {link.content}
+                        </a>
+                      ))}
                     </div>
                   )
                 }
@@ -167,6 +161,8 @@ const getStatusBadge = (statusStr: string) => {
                 src={project.data.cover}
                 alt={project.data.title}
                 class="img-fluid"
+                loading="lazy"
+                decoding="async"
               />
             </CardHeader>
           </Card>
@@ -234,10 +230,12 @@ const getStatusBadge = (statusStr: string) => {
     class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
     title="通知我"
   >
-    <img
-      src="/assets/imgs/index/profileAnimate.png"
+    <Image
+      src={profileImg}
       alt={`${profileData.name}的頭像`}
       class="size-16 rounded-full overflow-hidden"
+      width={64}
+      height={64}
     />
   </button>
 

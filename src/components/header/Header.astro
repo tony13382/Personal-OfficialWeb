@@ -1,10 +1,11 @@
 ---
-import {
-  ArrowLeftIcon,
-} from "@phosphor-icons/react";
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon.astro";
 import { MobileNav } from "@/components/header/MobileNav";
 import { HeaderSocialLinks } from "@/components/data/social";
 import { mainLinks } from "@/components/header/index";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+
 
 interface Props {
   type?: "main" | "project";
@@ -28,12 +29,13 @@ const { type = "main", themeColor } = Astro.props;
             href="/#topCover"
             class="flex items-center gap-3 py-3 text-gray-900 dark:text-white font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
           >
-            <img
+            <Image
               id="headerLogo"
-              src="/assets/imgs/index/profileAnimate.png"
+              src={profileImg}
               alt="Logo"
-              width="40"
-              height="40"
+              width={40}
+              height={40}
+              loading="eager"
               class="flex-shrink-0 rounded-full"
             />
             <img
@@ -47,7 +49,7 @@ const { type = "main", themeColor } = Astro.props;
             onclick="history.back()"
             class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-muted p-4 rounded-full cursor-pointer border-0 bg-transparent"
           >
-            <ArrowLeftIcon className="size-6" />
+            <Icon name="arrow-left" class="size-6" />
           </button>
         )
       }

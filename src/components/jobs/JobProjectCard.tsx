@@ -55,7 +55,7 @@ export const JobProjectCard = ({
         <Card>
             {imageSrc && (
                 <CardHeader className="relative">
-                    <img src={imageSrc} alt={imageAlt || name} className="img-fluid" />
+                    <img src={imageSrc} alt={imageAlt || name} className="img-fluid" loading="lazy" decoding="async" />
                     {timeStr && (
                         <Badge className="absolute bottom-4 right-4" variant="secondary">{timeStr}</Badge>
                     )}
