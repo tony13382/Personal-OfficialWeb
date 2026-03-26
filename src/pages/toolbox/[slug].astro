@@ -86,7 +86,7 @@ const seo = {
             }
 
             <!-- MDX Content - will be split into cards per H2 section -->
-            <article id="toolbox-article" class="flex flex-col gap-2">
+            <article id="toolbox-article" class="flex flex-col gap-2 min-w-0">
               <Content />
             </article>
           </div>
@@ -358,10 +358,7 @@ const seo = {
       let current: Node[] = [];
 
       children.forEach((node) => {
-        if (
-          node instanceof HTMLElement &&
-          node.tagName === "H2"
-        ) {
+        if (node instanceof HTMLElement && node.tagName === "H2") {
           if (current.length > 0) {
             sections.push(current);
           }
@@ -393,7 +390,8 @@ const seo = {
           "rounded-2xl bg-card text-card-foreground shadow-md overflow-hidden";
 
         const cardContent = document.createElement("div");
-        cardContent.className = "p-6 flex flex-col gap-2";
+        cardContent.className =
+          "p-6 flex flex-col gap-2 min-w-0 overflow-hidden";
 
         nodes.forEach((node) => cardContent.appendChild(node));
         card.appendChild(cardContent);
@@ -559,26 +557,94 @@ const seo = {
       margin: -1rem 0.25rem 0rem 0.25rem;
     }
 
+    article :global(.callout) {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin: 0.5rem 0;
+    }
+
+    article :global(.callout.info) {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+
+    article :global(.callout.warning) {
+      background: #fff1f2;
+      border-left: 4px solid #fb7185;
+      color: #9f1239;
+    }
+
+    article :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    article :global(th) {
+      text-align: left;
+      padding: 0.625rem 0.75rem;
+      border-bottom: 2px solid #d1d5db;
+      font-weight: 600;
+      color: var(--color-foreground);
+    }
+
+    article :global(td) {
+      padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      color: var(--color-foreground);
+    }
+
+    article :global(tr:last-child td) {
+      border-bottom: none;
+    }
+
+    article :global(p.code-title) {
+      margin-bottom: -0.75rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+      color: #999;
+      background: #282c34;
+      border-radius: 0.75rem 0.75rem 0 0;
+      border-bottom: 1px solid #3a3f4b;
+    }
+
+    article :global(p.code-title + div.code-block-wrapper pre),
+    article :global(p.code-title + pre) {
+      border-radius: 0 0 0.75rem 0.75rem !important;
+    }
+
     :global(.code-block-wrapper) {
       position: relative;
       align-self: stretch;
+      min-width: 0;
+      overflow-x: auto;
     }
 
     :global(.code-block-wrapper pre) {
       margin: 0 !important;
-      padding: 0.75rem 3rem 0.75rem 1.1rem !important;
+      padding: 0.75rem 3rem 0.75rem 1rem !important;
       background: #282c34 !important;
       color: #d4d4d4 !important;
       border-radius: 0.75rem !important;
       font-size: 0.85rem;
       overflow-x: auto;
+      max-width: 100%;
+    }
+
+    :global(.code-block-wrapper pre code) {
+      white-space: pre;
+      word-break: normal;
+      overflow-wrap: normal;
     }
 
     :global(.code-copy-btn) {
       position: absolute;
-      top: 50%;
+      top: 0.5rem;
       right: 0.75rem;
-      transform: translateY(-50%);
       display: flex;
       align-items: center;
       justify-content: center;
