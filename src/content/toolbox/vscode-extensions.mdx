@@ -1,0 +1,398 @@
+---
+title: VS Code 擴充功能推薦
+description: 整理我在 VS Code 上針對不同開發語言與日常工作所使用的擴充功能
+date: 2026-03-26
+category: 軟體工具
+tags: [VS Code, 擴充功能, 開發]
+cover: /og/toolbox-vscode-extensions.png
+seo:
+  ogImage: /og/toolbox-vscode-extensions.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import materialIconTheme from '@/assets/imgs/toolbox/vscode-extensions/material-icon-theme.png'
+import oneDarkPro from '@/assets/imgs/toolbox/vscode-extensions/one-dark-pro.png'
+import zhHant from '@/assets/imgs/toolbox/vscode-extensions/zh-hant.png'
+import prettier from '@/assets/imgs/toolbox/vscode-extensions/prettier.png'
+import eslint from '@/assets/imgs/toolbox/vscode-extensions/eslint.png'
+import gitlens from '@/assets/imgs/toolbox/vscode-extensions/gitlens.png'
+import gitGraph from '@/assets/imgs/toolbox/vscode-extensions/git-graph.png'
+import pathIntellisense from '@/assets/imgs/toolbox/vscode-extensions/path-intellisense.png'
+import autoCloseTag from '@/assets/imgs/toolbox/vscode-extensions/auto-close-tag.png'
+import todoTree from '@/assets/imgs/toolbox/vscode-extensions/todo-tree.png'
+import indentRainbow from '@/assets/imgs/toolbox/vscode-extensions/indent-rainbow.png'
+import bookmarks from '@/assets/imgs/toolbox/vscode-extensions/bookmarks.png'
+import vscodeColor from '@/assets/imgs/toolbox/vscode-extensions/vscode-color.png'
+import filesize from '@/assets/imgs/toolbox/vscode-extensions/filesize.png'
+import claudeCode from '@/assets/imgs/toolbox/vscode-extensions/claude-code.png'
+import restClient from '@/assets/imgs/toolbox/vscode-extensions/rest-client.png'
+import remoteSsh from '@/assets/imgs/toolbox/vscode-extensions/remote-ssh.png'
+import drawio from '@/assets/imgs/toolbox/vscode-extensions/drawio.png'
+import astro from '@/assets/imgs/toolbox/vscode-extensions/astro.png'
+import mdx from '@/assets/imgs/toolbox/vscode-extensions/mdx.png'
+import tailwindcss from '@/assets/imgs/toolbox/vscode-extensions/tailwindcss.png'
+import tailwindSnippets from '@/assets/imgs/toolbox/vscode-extensions/tailwind-snippets.png'
+import postcss from '@/assets/imgs/toolbox/vscode-extensions/postcss.png'
+import jsSnippets from '@/assets/imgs/toolbox/vscode-extensions/js-snippets.png'
+import liveSass from '@/assets/imgs/toolbox/vscode-extensions/live-sass.png'
+import figma from '@/assets/imgs/toolbox/vscode-extensions/figma.png'
+import pencil from '@/assets/imgs/toolbox/vscode-extensions/pencil.png'
+import i18nAlly from '@/assets/imgs/toolbox/vscode-extensions/i18n-ally.png'
+import python from '@/assets/imgs/toolbox/vscode-extensions/python.png'
+import blackFormatter from '@/assets/imgs/toolbox/vscode-extensions/black-formatter.png'
+import ruff from '@/assets/imgs/toolbox/vscode-extensions/ruff.png'
+import jupyter from '@/assets/imgs/toolbox/vscode-extensions/jupyter.png'
+import postman from '@/assets/imgs/toolbox/vscode-extensions/postman.png'
+import rooCode from '@/assets/imgs/toolbox/vscode-extensions/roo-code.png'
+import codex from '@/assets/imgs/toolbox/vscode-extensions/codex.png'
+import coderabbit from '@/assets/imgs/toolbox/vscode-extensions/coderabbit.png'
+import markdownPdf from '@/assets/imgs/toolbox/vscode-extensions/markdown-pdf.png'
+
+## 外觀與介面
+
+### Material Icon Theme
+
+<Image src={materialIconTheme} alt="Material Icon Theme" style="max-width: 96px;" />
+
+讓 VS Code 的檔案圖示更好辨識，不同類型的檔案跟資料夾都有對應的 Material Design 風格圖示，在專案結構複雜的時候可以更快找到目標檔案。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### One Dark Pro
+
+<Image src={oneDarkPro} alt="One Dark Pro" style="max-width: 96px;" />
+
+我在用的佈景主題，配色舒適、對比適中，長時間看程式碼不容易疲勞。是從 Atom 編輯器經典的 One Dark 主題移植過來的。搭配的字體是 Roboto Mono，這是我自己用網站測試過各種等寬字體後，覺得視覺效果最舒服的選擇。如果你也想找到最適合自己的字體，可以試試 <a href="https://devfonts.gafi.dev/" target="_blank">Dev Fonts</a> 跟 <a href="https://www.codingfont.com/" target="_blank">Coding Font</a> 這兩個網站來比較。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Chinese (Traditional) Language Pack
+
+<Image src={zhHant} alt="繁體中文語言包" style="max-width: 96px;" />
+
+VS Code 的繁體中文語言包，把介面翻譯成中文，降低操作上的語言門檻。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hant" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Indent Rainbow
+
+<Image src={indentRainbow} alt="Indent Rainbow" style="max-width: 96px;" />
+
+用不同顏色標示程式碼的縮排層級，在巢狀結構比較深的時候可以更快辨識目前在哪一層，減少縮排錯誤。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## 通用
+
+### GitLens
+
+<Image src={gitlens} alt="GitLens" style="max-width: 96px;" />
+
+Git 增強擴充，可以在程式碼旁邊直接看到每一行是誰在什麼時候改的（blame），也能快速查看檔案的完整修改歷史，在追蹤問題來源的時候很實用。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Git Graph
+
+<Image src={gitGraph} alt="Git Graph" style="max-width: 96px;" />
+
+用圖形化的方式呈現 Git 分支的歷史，可以清楚看到分支的合併、分叉跟提交紀錄。在處理比較複雜的分支流程時，比純命令列直覺很多。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Path Intellisense
+
+<Image src={pathIntellisense} alt="Path Intellisense" style="max-width: 96px;" />
+
+在輸入檔案路徑時會自動補全，不用記住完整的路徑或手動翻資料夾結構，import 檔案的時候特別方便。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Todo Tree
+
+<Image src={todoTree} alt="Todo Tree" style="max-width: 96px;" />
+
+會掃描專案裡所有的 TODO、FIXME 等標記，用樹狀結構整理在側邊欄裡，方便追蹤還沒處理完的待辦事項，不會遺漏。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Bookmarks
+
+<Image src={bookmarks} alt="Bookmarks" style="max-width: 96px;" />
+
+可以在程式碼裡標記書籤，快速跳轉到標記的位置。在閱讀大型專案或需要頻繁切換不同段落時很好用。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.bookmarks" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### filesize
+
+<Image src={filesize} alt="filesize" style="max-width: 96px;" />
+
+在狀態列顯示目前開啟檔案的大小，對於需要注意檔案體積的場景（像是圖片、打包後的檔案）很實用。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Remote - SSH
+
+<Image src={remoteSsh} alt="Remote - SSH" style="max-width: 96px;" />
+
+透過 SSH 連線到遠端伺服器，直接在 VS Code 裡編輯遠端的檔案，操作體驗跟在本地開發幾乎一樣。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Draw.io Integration
+
+<Image src={drawio} alt="Draw.io Integration" style="max-width: 96px;" />
+
+直接在 VS Code 裡開啟跟編輯 Draw.io 的圖表，不用切換到瀏覽器。畫流程圖、架構圖的時候可以跟程式碼放在一起管理。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Markdown PDF
+
+<Image src={markdownPdf} alt="Markdown PDF" style="max-width: 96px;" />
+
+可以直接在 VS Code 裡把 Markdown 檔案轉成 PDF，算是目前做 Markdown 轉 PDF 效果最好的套件。排版跟格式的還原度很高，需要產出文件的時候非常方便。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## AI 開發工具
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" style="max-width: 96px;" />
+
+Anthropic 的 AI 開發工具，可以直接在 VS Code 裡使用 Claude 進行程式碼撰寫、重構跟除錯。是我目前主力使用的 AI 開發工具。
+
+<span class="pricing-tag freemium">可訂閱制或依用量付費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Codex
+
+<Image src={codex} alt="Codex" style="max-width: 96px;" />
+
+OpenAI 推出的 AI 開發工具，可以直接在 VS Code 裡使用。我主要拿它來做程式碼的 Review，搭配 Claude Code 互相檢查，確保程式碼品質。
+
+<span class="pricing-tag freemium">可訂閱制或依用量付費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=openai.chatgpt" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Roo Code
+
+<Image src={rooCode} alt="Roo Code" style="max-width: 96px;" />
+
+開源的 AI 編碼助手，支援多種 AI 模型，可以在 VS Code 裡進行程式碼生成、編輯跟對話。彈性很高，可以自由選擇要使用的模型跟 API。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=rooveterinaryinc.roo-cline" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### CodeRabbit
+
+<Image src={coderabbit} alt="CodeRabbit" style="max-width: 96px;" />
+
+AI 驅動的程式碼 Review 工具，可以自動對 Pull Request 進行審查，提供程式碼品質、安全性跟效能方面的建議。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=coderabbit.coderabbit-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## React 前端
+
+### Prettier
+
+<Image src={prettier} alt="Prettier" style="max-width: 96px;" />
+
+程式碼格式化工具，支援 JavaScript、TypeScript、CSS、HTML 等多種語言。儲存時自動排版，統一程式碼風格，不用再花時間手動調整格式。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### ESLint
+
+<Image src={eslint} alt="ESLint" style="max-width: 96px;" />
+
+JavaScript / TypeScript 的靜態分析工具，可以在編輯時即時標示出潛在的錯誤跟不符合規範的寫法，搭配 Prettier 一起用效果最好。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind CSS IntelliSense
+
+<Image src={tailwindcss} alt="Tailwind CSS IntelliSense" style="max-width: 96px;" />
+
+Tailwind CSS 的官方擴充，輸入 class 名稱時會自動補全，滑鼠懸停還能預覽對應的 CSS 屬性。搭配 Tailwind 開發時幾乎是必裝的。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind Snippets
+
+<Image src={tailwindSnippets} alt="Tailwind Snippets" style="max-width: 96px;" />
+
+提供常用的 Tailwind CSS 程式碼片段，可以快速插入常見的樣式組合，加速開發效率。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=zarifprogrammer.tailwind-snippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### PostCSS Language Support
+
+<Image src={postcss} alt="PostCSS Language Support" style="max-width: 96px;" />
+
+提供 PostCSS 的語法高亮支援，讓 VS Code 能正確辨識 PostCSS 的語法，不會出現錯誤標記。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=csstools.postcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### JavaScript (ES6) code snippets
+
+<Image src={jsSnippets} alt="JavaScript (ES6) code snippets" style="max-width: 96px;" />
+
+提供 ES6+ 語法的程式碼片段，像是箭頭函式、解構賦值、Promise 等常用模式，可以用縮寫快速產生。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Live Sass Compiler
+
+<Image src={liveSass} alt="Live Sass Compiler" style="max-width: 96px;" />
+
+可以即時編譯 Sass / SCSS 檔案，儲存後自動產生對應的 CSS，不需要額外設定建構工具。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Auto Close Tag
+
+<Image src={autoCloseTag} alt="Auto Close Tag" style="max-width: 96px;" />
+
+輸入 HTML / XML 的開始標籤後，會自動補上對應的結束標籤，減少手動輸入跟標籤漏關的問題。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Color Picker
+
+<Image src={vscodeColor} alt="Color Picker" style="max-width: 96px;" />
+
+在程式碼裡遇到顏色值時，可以直接用視覺化的選色器來挑選或調整顏色，不用再去外部工具轉換色碼。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### i18n Ally
+
+<Image src={i18nAlly} alt="i18n Ally" style="max-width: 96px;" />
+
+國際化（i18n）管理工具，可以在程式碼裡直接預覽翻譯結果，管理多語系的翻譯鍵值。做多語系專案的時候，不用頻繁切換翻譯檔案。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Figma for VS Code
+
+<Image src={figma} alt="Figma for VS Code" style="max-width: 96px;" />
+
+Figma 的官方擴充，可以直接在 VS Code 裡瀏覽 Figma 的設計稿，查看元件的尺寸、間距跟色碼，從設計到開發的銜接更順暢。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=figma.figma-vscode-extension" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Pencil
+
+<Image src={pencil} alt="Pencil" style="max-width: 96px;" />
+
+AI UI 設計工具的 VS Code 擴充，可以直接在編輯器裡透過文字描述產生設計稿，搭配開發流程使用非常方便。
+
+<span class="pricing-tag freemium">免費使用，部分功能需付費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=highagency.pencildev" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## Python
+
+我使用 Python 主要是在後端開發跟資料處理這兩個方向，以下是搭配這些工作場景所使用的擴充。
+
+### Python
+
+<Image src={python} alt="Python" style="max-width: 96px;" />
+
+微軟官方的 Python 擴充，提供 IntelliSense、程式碼導覽、除錯、測試等基本功能。開發 Python 專案時的基礎必裝擴充。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Black Formatter
+
+<Image src={blackFormatter} alt="Black Formatter" style="max-width: 96px;" />
+
+Python 的程式碼格式化工具，風格統一且不可配置（opinionated），省去團隊之間討論格式的時間，儲存時自動排版。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Ruff
+
+<Image src={ruff} alt="Ruff" style="max-width: 96px;" />
+
+用 Rust 寫的 Python Linter 跟 Formatter，速度非常快，可以取代 Flake8、isort 等多個工具。即時標示出程式碼中的問題並提供自動修復建議，是我目前主要使用的 Python 程式碼檢查工具。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Jupyter
+
+<Image src={jupyter} alt="Jupyter" style="max-width: 96px;" />
+
+讓 VS Code 可以直接開啟跟編輯 Jupyter Notebook，不需要另外啟動 Jupyter 的網頁介面。在做資料分析或快速驗證想法的時候很方便。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Postman
+
+<Image src={postman} alt="Postman" style="max-width: 96px;" />
+
+Postman 的 VS Code 擴充，可以直接在編輯器裡用 UI 介面的方式發送 API 請求跟查看回應結果，操作直覺，不需要切換到 Postman 的桌面應用程式。在開發後端 API 的時候可以快速驗證。
+
+<span class="pricing-tag freemium">免費使用，團隊功能需訂閱</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=Postman.postman-for-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### REST Client
+
+<Image src={restClient} alt="REST Client" style="max-width: 96px;" />
+
+如果覺得用 UI 介面操作 API 請求比較麻煩，也可以選擇自己手寫 `.http` 檔案來發送請求。好處是這些檔案可以跟專案一起做版本控制，方便團隊共享跟重複使用。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## Astro
+
+### Astro
+
+<Image src={astro} alt="Astro" style="max-width: 96px;" />
+
+Astro 框架的官方擴充，提供 `.astro` 檔案的語法高亮、IntelliSense、格式化等功能。開發 Astro 專案時的必備擴充。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### MDX
+
+<Image src={mdx} alt="MDX" style="max-width: 96px;" />
+
+提供 MDX 檔案的語法高亮跟 IntelliSense 支援。在 Astro 專案裡用 MDX 來寫內容的時候，編輯體驗會好很多。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx" target="_blank" class="official-link">VS Code Marketplace</a>
