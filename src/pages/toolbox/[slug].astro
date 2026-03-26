@@ -493,6 +493,17 @@ const seo = {
       border-radius: 0.75rem;
     }
 
+    article :global(p a:not(.official-link)) {
+      color: var(--theme-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: opacity 0.2s;
+    }
+
+    article :global(p a:not(.official-link):hover) {
+      opacity: 0.7;
+    }
+
     article :global(a.official-link) {
       display: flex;
       align-items: center;
