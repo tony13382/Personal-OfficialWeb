@@ -1,0 +1,185 @@
+---
+title: 開發環境．前端篇
+description: 分享我在前端開發中的套件管理、格式化工具與 Tailwind CSS 配置方式
+date: 2026-03-26
+category: 開發環境
+tags: [前端, 開發環境, React]
+cover: /og/toolbox-dev-env-frontend.png
+seo:
+  ogImage: /og/toolbox-dev-env-frontend.png
+---
+
+import { Image } from 'astro:assets'
+
+import shadcnUi from '@/assets/imgs/toolbox/dev-env-frontend/shadcn-ui.png'
+
+我的前端專案主要使用 React 生態系，框架上會根據需求選擇 Astro、Remix（React Router）或 Vite。這篇整理了我在前端開發時的環境配置，包含套件管理、程式碼格式化、Tailwind CSS 設定等面向。
+
+## 套件管理
+
+### npm
+
+大部分的前端專案我使用 npm 來管理依賴，它是 Node.js 內建的套件管理工具，不需要額外安裝，對大多數專案來說已經夠用了。
+
+### pnpm
+
+在一些比較大型的專案或 monorepo 架構的專案裡，我會改用 <a href="https://pnpm.io" target="_blank">pnpm</a>。它的安裝速度比 npm 快，而且透過硬連結的方式共享套件，磁碟空間的使用效率更好。在 `package.json` 裡可以透過 `packageManager` 欄位指定版本：
+
+<p class="code-title">package.json</p>
+
+```json
+{
+  "packageManager": "pnpm@10.14.0"
+}
+```
+
+## 程式碼格式化
+
+### Prettier
+
+我在前端專案裡統一使用 <a href="https://prettier.io" target="_blank">Prettier</a> 來做程式碼格式化。常用的設定如下：
+
+<p class="code-title">.prettierrc</p>
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+```
+
+主要的設定邏輯：
+
+- **semi: true**：語句結尾加分號，減少 ASI（自動分號插入）帶來的潛在問題。
+- **singleQuote: true**：字串用單引號，這是 JavaScript 社群比較常見的慣例。
+- **tabWidth: 2**：縮排用 2 個空格，前端專案的主流設定。
+- **trailingComma: "es5"**：在 ES5 允許的地方加上尾隨逗號，方便 diff 跟新增項目。
+
+部分專案我也會搭配 `@trivago/prettier-plugin-sort-imports` 來自動排序 import 語句，保持檔案開頭的整潔。
+
+### ESLint
+
+搭配 Prettier 一起使用的靜態分析工具，目前我的專案已經升級到 ESLint 9+ 的 flat config 格式：
+
+<p class="code-title">eslint.config.js</p>
+
+```js
+import js from '@eslint/js'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+    },
+  }
+)
+```
+
+Flat config 的好處是設定結構更清晰，也更容易做條件式的規則配置。
+
+## Tailwind CSS
+
+我的前端專案幾乎都使用 Tailwind CSS 來處理樣式。目前有兩種版本在使用：
+
+### Tailwind CSS v4
+
+較新的專案（像是這個官方網站）使用 Tailwind v4，透過 Vite 插件整合：
+
+<p class="code-title">astro.config.mjs</p>
+
+```js
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+})
+```
+
+v4 的設定直接寫在 CSS 裡，不再需要 `tailwind.config.js`：
+
+<p class="code-title">src/styles/global.css</p>
+
+```css
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+```
+
+### Tailwind CSS v3
+
+較早期的專案則是使用 Tailwind v3，透過 `tailwind.config.js` 來做配置。我習慣在裡面定義專案的主題色跟自訂的設計 token：
+
+<p class="code-title">tailwind.config.js</p>
+
+```js
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: { /* 自訂色票 */ },
+        secondary: { /* 自訂色票 */ },
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+}
+```
+
+## TypeScript
+
+所有前端專案都使用 TypeScript，通常會開啟 strict 模式，並設定路徑別名來簡化 import：
+
+<p class="code-title">tsconfig.json</p>
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+路徑別名讓 import 可以用 `@/components/Button` 取代 `../../components/Button`，專案結構變動時也不用大量修改路徑。
+
+## UI 元件庫
+
+### shadcn/ui + Radix UI
+
+<Image src={shadcnUi} alt="shadcn/ui Dashboard 範例" />
+
+我的大部分專案都使用 <a href="https://ui.shadcn.com" target="_blank">shadcn/ui</a> 搭配 Radix UI 作為基礎元件庫。shadcn/ui 的好處是元件直接複製到專案裡，可以完全客製化，不會受到第三方套件更新的影響。
+
+搭配 Tailwind CSS 的 CSS 變數做主題管理，可以很方便地實作深色模式跟自訂品牌色。
+
+## 主要技術棧
+
+總結一下我在前端開發中常用的技術組合：
+
+- **框架**：Astro / Remix（React Router）/ Vite + React
+- **語言**：TypeScript（strict mode）
+- **樣式**：Tailwind CSS（v3 / v4）
+- **UI 元件**：shadcn/ui + Radix UI
+- **圖示**：Phosphor Icons / Lucide React
+- **套件管理**：npm（主要）/ pnpm（monorepo）
+- **格式化**：Prettier + ESLint（flat config）
+- **部署**：Cloudflare Workers / 靜態部署
