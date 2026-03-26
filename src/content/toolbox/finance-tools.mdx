@@ -1,0 +1,134 @@
+---
+title: 個人財務管理工具
+description: 分享我在記帳、股票投資與發票管理上使用的 APP 與方法
+date: 2026-03-26
+category: 軟體工具
+tags: [財務, 記帳, 投資]
+cover: /og/toolbox-finance-tools.png
+seo:
+  ogImage: /og/toolbox-finance-tools.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import qianji from '@/assets/imgs/toolbox/finance-tools/qianji.png'
+import moneyManager from '@/assets/imgs/toolbox/finance-tools/money-manager.png'
+import sinopac from '@/assets/imgs/toolbox/finance-tools/sinopac.png'
+import fugle from '@/assets/imgs/toolbox/finance-tools/fugle.png'
+import minimalStock from '@/assets/imgs/toolbox/finance-tools/minimal-stock.png'
+import invoiceGov from '@/assets/imgs/toolbox/finance-tools/invoice-gov.png'
+import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passbook.png'
+
+這篇整理了我在個人財務管理上使用的工具跟方法，涵蓋記帳方式、流水帳 APP、股票投資 APP 跟發票管理。
+
+## 記帳方法論
+
+在記帳這件事上，我嘗試過不同的方法，最後歸納出兩種比較適合我的方式。
+
+### 流水帳
+
+最直覺的記帳方式，每一筆支出跟收入都逐筆記錄下來。帳務資料是最即時的，可以精確掌握每一筆錢的去向。
+
+這個方法比較適合剛開始養成記帳習慣的人，透過每天記錄來建立對金錢流向的意識。
+
+### 每月記帳法
+
+這是我參考<a href="https://www.youtube.com/playlist?list=PLrZrfGLGySzcQda_-_KT6BKdudDL_Ohzu" target="_blank">柴鼠兄弟的記帳方法</a>所使用的方式。跟流水帳不同，每月記帳法不需要逐筆記錄每一筆消費，而是以月為單位，透過帳戶餘額的變化來回推當月的整體收支狀況。
+
+這個方法的好處是不需要每天花時間記帳，只要每個月固定花一點時間整理就好，比較容易長期維持。不過需要注意的是，建議搭配分帳戶的方式來管理，每個帳戶盡量只對應一個用途。如果同一個帳戶裡面混了投資跟日常消費，在回推資金流向的時候容易出問題。
+
+### 兩種方法的比較
+
+| | 流水帳 | 每月記帳法 |
+|------|------|------|
+| **精細度** | 高，每筆都有紀錄 | 中，以月為單位估算 |
+| **時間成本** | 高，每天都需要記錄 | 低，每月盤點一次 |
+| **即時性** | 即時掌握帳務狀態 | 月底才能看到全貌 |
+| **維持難度** | 較高，容易因繁瑣而放棄 | 較低，容易長期維持 |
+| **適合對象** | 剛開始養成記帳習慣的人 | 有基本財務意識、追求效率的人 |
+| **注意事項** | 漏記會影響準確性 | 需搭配分帳戶管理 |
+
+## 流水帳 APP
+
+在挑選記帳 APP 的時候，我有幾個比較重要的考量：
+
+- **帳戶分類的彈性**：因為我的帳戶數量比較多，需要能靈活設定跟分類不同的帳戶。
+- **多平台同步**：我有多支手機，希望在不同裝置上都能同步查看帳務資料。
+- **備註功能**：可以針對每一筆記錄加上備註，方便之後回頭查閱。
+- **買斷制**：不希望有訂閱費的負擔。
+
+### 錢跡
+
+<Image src={qianji} alt="錢跡" />
+
+我目前主要使用的記帳 APP，可以完全滿足上述所有需求。帳戶分類的彈性很高，多平台同步也做得很好，輸入體驗流暢，而且是買斷制的。
+
+<div class="callout warning">需要留意的是，錢跡是由中國開發者製作的 APP，如果對大陸系軟體的資安有顧慮的話，這點需要自行評估。</div>
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://qianjiapp.com" target="_blank" class="official-link">官方網站</a>
+
+### Money Manager
+
+<Image src={moneyManager} alt="Money Manager" />
+
+我使用很長一段時間的記帳 APP，在帳戶的精細度跟輸入體驗上都做得不錯，大約可以完成八、九成的需求。唯一的缺點是缺乏多平台同步功能，沒辦法在多支手機之間同步資料，這也是我後來轉向錢跡的主要原因。
+
+如果你只用一支手機記帳，Money Manager 其實就很夠用了。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://www.realbyteapps.com" target="_blank" class="official-link">官方網站</a>
+
+## 看股票 APP
+
+### 永豐大戶投
+
+<Image src={sinopac} alt="永豐大戶投" />
+
+我目前主要的投資戶頭是在永豐，所以大戶投是我最常用的看盤跟下單工具。整合了帳戶管理、即時報價跟交易功能，日常操作都在這裡完成。
+
+<span class="pricing-tag">免費</span>
+<a href="https://apps.apple.com/tw/app/%E6%B0%B8%E8%B1%90%E9%87%91%E8%AD%89%E5%88%B8%E5%A4%A7%E6%88%B6%E6%8A%95-%E6%99%BA%E8%83%BD%E7%B1%8C%E7%A2%BC%E6%AC%8A%E5%A8%81%E5%8D%87%E7%B4%9A/id1551600164" target="_blank" class="official-link">App Store</a>
+<a href="https://play.google.com/store/apps/details?id=com.sinopac.ismartstock&hl=zh_TW" target="_blank" class="official-link">Google Play</a>
+
+### 富果股市
+
+<Image src={fugle} alt="富果股市" />
+
+提供豐富的股票資訊跟數據分析，介面設計比傳統券商的 APP 好看很多。我主要拿來做研究跟查看個股的基本面資料，是很好的輔助工具。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://www.fugle.tw" target="_blank" class="official-link">官方網站</a>
+
+### 極簡股市
+
+<Image src={minimalStock} alt="極簡股市" />
+
+如同它的名字，介面非常簡潔。適合快速查看股價跟自選清單，不需要太多複雜的功能，就是單純看盤的時候很方便。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://ez.nstock.tw" target="_blank" class="official-link">官方網站</a>
+
+## 發票管理
+
+### 財政部統一發票兌獎
+
+<Image src={invoiceGov} alt="財政部統一發票兌獎" />
+
+國稅局官方推出的發票 APP，可以歸戶載具、自動對獎跟領獎。把手機條碼綁定之後，消費時直接出示條碼就能存發票，不用再收紙本發票。比較特別的是可以預先設定中獎發票的匯款帳戶，中獎後獎金會自動轉入指定帳戶，完全不用跑銀行或郵局。作為官方工具，資料的正確性跟安全性都有保障。
+
+<span class="pricing-tag">免費</span>
+<a href="https://apps.apple.com/tw/app/%E7%B5%B1%E4%B8%80%E7%99%BC%E7%A5%A8%E5%85%8C%E7%8D%8E/id1445981329" target="_blank" class="official-link">App Store</a>
+<a href="https://play.google.com/store/apps/details?id=tw.gov.invoice&hl=zh_TW" target="_blank" class="official-link">Google Play</a>
+
+### 發票存摺
+
+<Image src={invoicePassbook} alt="發票存摺" />
+
+第三方的發票管理 APP，介面比國稅局的官方 APP 好用很多，查看發票明細跟消費統計都更直覺。同樣可以歸戶載具跟自動對獎，在使用體驗上是比較舒適的選擇。
+
+比較特別的是它還支援會員卡管理功能，可以把各家會員卡的 QR Code 輸入到 APP 裡面，這樣就能用單一個 APP 管理所有的會員卡，結帳的時候不用再翻找各家的 APP。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://invoice.tw/news/" target="_blank" class="official-link">官方網站</a>
