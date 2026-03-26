@@ -1,0 +1,244 @@
+---
+title: 瀏覽器擴充功能推薦
+description: 精選 22 個我在工作開發、日常瀏覽與閱讀學習中實際使用的 Chrome 擴充功能
+date: 2026-03-26
+category: 軟體工具
+tags: [瀏覽器, 擴充功能]
+cover: /og/toolbox-browser-extensions.png
+seo:
+  ogImage: /og/toolbox-browser-extensions.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import reactDevtools from '@/assets/imgs/toolbox/browser-extensions/react-devtools.png'
+import wappalyzer from '@/assets/imgs/toolbox/browser-extensions/wappalyzer.png'
+import jsonViewer from '@/assets/imgs/toolbox/browser-extensions/json-viewer.png'
+import saveImageAsType from '@/assets/imgs/toolbox/browser-extensions/save-image-as-type.png'
+import bitwarden from '@/assets/imgs/toolbox/browser-extensions/bitwarden.png'
+import checkerPlusGmail from '@/assets/imgs/toolbox/browser-extensions/checker-plus-gmail.png'
+import claude from '@/assets/imgs/toolbox/browser-extensions/claude.png'
+import ublockOrigin from '@/assets/imgs/toolbox/browser-extensions/ublock-origin.png'
+import darkReader from '@/assets/imgs/toolbox/browser-extensions/dark-reader.png'
+import sponsorblock from '@/assets/imgs/toolbox/browser-extensions/sponsorblock.png'
+import returnYoutubeDislike from '@/assets/imgs/toolbox/browser-extensions/return-youtube-dislike.jpg'
+import onetab from '@/assets/imgs/toolbox/browser-extensions/onetab.jpg'
+import qrCodeGenerator from '@/assets/imgs/toolbox/browser-extensions/qr-code-generator.png'
+import bookmarkSidebar from '@/assets/imgs/toolbox/browser-extensions/bookmark-sidebar.png'
+import panguSpacing from '@/assets/imgs/toolbox/browser-extensions/pangu-spacing.png'
+import immersiveTranslate from '@/assets/imgs/toolbox/browser-extensions/immersive-translate.png'
+import glotdojo from '@/assets/imgs/toolbox/browser-extensions/glotdojo.png'
+import contentFarmTerminator from '@/assets/imgs/toolbox/browser-extensions/content-farm-terminator.png'
+import readwise from '@/assets/imgs/toolbox/browser-extensions/readwise.png'
+import saveToNotion from '@/assets/imgs/toolbox/browser-extensions/save-to-notion.png'
+import notionWebClipper from '@/assets/imgs/toolbox/browser-extensions/notion-web-clipper.png'
+import notionBoost from '@/assets/imgs/toolbox/browser-extensions/notion-boost.jpg'
+
+這篇整理了我目前實際在用的 Chrome 擴充功能，涵蓋工作開發、日常瀏覽到閱讀學習各個面向。我目前主要搭配的瀏覽器是 **Arc**，它本身基於 Chromium，所以所有 Chrome 擴充功能都可以直接安裝使用。
+
+<a href="https://arc.net" target="_blank" class="official-link">Arc 瀏覽器官方網站</a>
+
+## 工作與開發
+
+### React DevTools
+
+<Image src={reactDevtools} alt="React DevTools" />
+
+開發 React 專案時必備的擴充，可以直接在瀏覽器的開發者工具裡檢視 React 元件樹、props 跟 state，除錯的時候非常方便。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Wappalyzer
+
+<Image src={wappalyzer} alt="Wappalyzer" />
+
+可以分析任何網站背後使用了哪些技術，像是前端框架、CMS、伺服器、分析工具等等。我在研究別人的網站或評估技術方案的時候會用到。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg" target="_blank" class="official-link">Chrome Web Store</a>
+
+### JSON Viewer
+
+<Image src={jsonViewer} alt="JSON Viewer" />
+
+讓瀏覽器可以直接把 JSON 格式化成好閱讀的樣式，不用再把 JSON 貼到其他工具去排版。在除錯 API 回傳結果的時候很實用。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Claude
+
+<Image src={claude} alt="Claude" />
+
+Anthropic 的 Claude AI 擴充，可以在瀏覽器裡直接跟 Claude 對話，不用另外開分頁到 Claude 的網站。在工作中需要快速問問題或整理想法的時候很方便。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Save image as Type
+
+<Image src={saveImageAsType} alt="Save image as Type" />
+
+可以在儲存圖片的時候選擇要存成什麼格式，像是 PNG、JPG、WebP 之間互轉，不用再額外用工具做格式轉換。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/save-image-as-type/aninmieokgdbdcgoiglchhhhbpnpolja" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Bitwarden
+
+<Image src={bitwarden} alt="Bitwarden" />
+
+密碼管理擴充，搭配 Bitwarden 主程式使用，可以在瀏覽器上自動填入密碼跟 Passkey，登入各種服務的時候不用再手動輸入。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/bitwarden-password-manage/nngceckbapebfimnlniiiahkandclblb" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Checker Plus for Gmail
+
+<Image src={checkerPlusGmail} alt="Checker Plus for Gmail" />
+
+可以直接在瀏覽器右上角查看 Gmail 的新郵件，不用另外開 Gmail 的分頁。有新信的時候會即時通知，快速預覽後決定要不要點進去看。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/checker-plus-for-gmail/oeopbcgkkoapgobdbedcemjljbihmemj" target="_blank" class="official-link">Chrome Web Store</a>
+
+## 日常
+
+### uBlock Origin
+
+<Image src={ublockOrigin} alt="uBlock Origin" />
+
+我用的廣告封鎖擴充，開源免費，效能也很好。裝了之後瀏覽體驗乾淨很多，也能減少一些追蹤器。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm" target="_blank" class="official-link">Chrome Web Store</a>
+
+### SponsorBlock
+
+<Image src={sponsorblock} alt="SponsorBlock" />
+
+看 YouTube 的時候可以自動跳過贊助片段、開頭動畫、結尾推廣等等。資料都是社群貢獻的，用起來省了不少時間。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Return YouTube Dislike
+
+<Image src={returnYoutubeDislike} alt="Return YouTube Dislike" />
+
+把 YouTube 隱藏的倒讚數量顯示回來，在判斷影片品質的時候多一個參考指標。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/return-youtube-dislike/gebbhagfogifgggkldgodflihgfeippi" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Dark Reader
+
+<Image src={darkReader} alt="Dark Reader" />
+
+可以把幾乎所有網頁都轉成深色模式，晚上瀏覽的時候眼睛比較舒服。它會智慧分析網頁的配色去做轉換，大部分網站的效果都還不錯。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### OneTab
+
+<Image src={onetab} alt="OneTab" />
+
+可以一鍵把目前所有的分頁收成一個列表，釋放記憶體。以前用 Chrome 的時候我很常用它來整理分頁，不過換到 Arc 之後，因為它原生的分頁管理機制已經很好地解決了這個問題，所以現在比較少用到。如果你是 Chrome 使用者，這個擴充還是蠻推薦的。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" target="_blank" class="official-link">Chrome Web Store</a>
+
+### 書籤側邊欄
+
+<Image src={bookmarkSidebar} alt="書籤側邊欄" />
+
+讓書籤用側邊欄的方式顯示，比起瀏覽器內建的書籤管理器更方便存取跟整理。不過如果你跟我一樣用 Arc 的話，它內建的側邊欄體驗其實更好，不一定需要額外裝這個擴充。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/bookmark-sidebar/jdbnofccmhefkmjbkkdkfiicjkgofkdh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### QR Code Generator
+
+<Image src={qrCodeGenerator} alt="QR Code Generator" />
+
+可以快速把目前頁面的網址產生成 QR Code，需要在手機上開同一個頁面的時候掃一下就好，不用再手動輸入網址。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/qr-code-generator/afpbjjgbdimpioenaedcjgkaigggcdpp" target="_blank" class="official-link">Chrome Web Store</a>
+
+## 閱讀
+
+### 沉浸式翻譯
+
+<Image src={immersiveTranslate} alt="沉浸式翻譯" />
+
+我最常用的網頁翻譯擴充，可以在保留原文的情況下，把翻譯結果以雙語對照的方式顯示在下方。閱讀外文文章的時候非常好用，不會像 Google 翻譯那樣整頁替換掉原文。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://chromewebstore.google.com/detail/immersive-translate-web-p/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### GlotDojo
+
+<Image src={glotdojo} alt="GlotDojo" />
+
+即時翻譯字幕的擴充，看外語影片的時候可以同時顯示原文跟翻譯字幕，方便學習外語或理解內容。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/glot-extension/dbnjpielondlkmdjbembloegkaabfakc" target="_blank" class="official-link">Chrome Web Store</a>
+
+### 為什麼你們就是不能加個空格呢？
+
+<Image src={panguSpacing} alt="為什麼你們就是不能加個空格呢？" />
+
+自動在中英文之間加上空格，讓網頁上的文字排版更好看、更好閱讀。裝了之後看中英混排的內容會舒服很多。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd" target="_blank" class="official-link">Chrome Web Store</a>
+
+### 封鎖內容農場
+
+<Image src={contentFarmTerminator} alt="封鎖內容農場" />
+
+自動偵測並封鎖內容農場網站，在搜尋結果裡直接過濾掉這些低品質的內容，省去誤點進去浪費時間。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/%E5%B0%81%E9%8E%96%E5%85%A7%E5%AE%B9%E8%BE%B2%E5%A0%B4/opjaibbmmpldcncnbbglondckfnokfpm" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Save to Notion
+
+<Image src={saveToNotion} alt="Save to Notion" />
+
+可以把網頁內容快速儲存到 Notion 的資料庫裡，我會用它來收集有參考價值的文章跟資料，方便之後回頭查閱。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/save-to-notion/ldmmifpegigmeammaeckplhnjbbpccmm" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Notion Web Clipper
+
+<Image src={notionWebClipper} alt="Notion Web Clipper" />
+
+Notion 官方的網頁擷取工具，可以把整個網頁的內容擷取到 Notion 裡。跟 Save to Notion 比起來，它擷取的內容會更完整。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Notion Boost
+
+<Image src={notionBoost} alt="Notion Boost" />
+
+增強 Notion 使用體驗的擴充，可以自訂一些 Notion 原生沒有的功能，像是調整字體大小、隱藏不需要的 UI 元素等等。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/notion-boost/eciepnnimnjaojlkcpdpcgbfkpcagahd" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Readwise
+
+<Image src={readwise} alt="Readwise" />
+
+我用來收集跟管理閱讀筆記的工具，搭配瀏覽器擴充可以直接在網頁上做標註跟摘錄，這些內容會自動同步到 Readwise 裡統一管理。
+
+<span class="pricing-tag paid">訂閱制</span>
+<a href="https://chromewebstore.google.com/detail/readwise-highlighter/jjhefcfhmnkfeepcpnilbbkaadhngkbi" target="_blank" class="official-link">Chrome Web Store</a>
