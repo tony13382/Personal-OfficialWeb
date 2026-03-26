@@ -1,0 +1,182 @@
+---
+title: Mac 軟體．設計篇
+description: 分享我在 Mac 上使用的簡報、UI、圖片、平面與影片設計工具
+date: 2026-03-26
+category: 軟體工具
+tags: [軟體, Mac, 設計]
+cover: /og/toolbox-mactools-design.png
+seo:
+  ogImage: /og/toolbox-mactools-design.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import keynote from '@/assets/imgs/toolbox/mactools-design/keynote.png'
+import canva from '@/assets/imgs/toolbox/mactools-design/canva.png'
+import figma from '@/assets/imgs/toolbox/mactools-design/figma.png'
+import pencil from '@/assets/imgs/toolbox/mactools-design/pencil.png'
+import photoscapex from '@/assets/imgs/toolbox/mactools-design/photoscapex.png'
+import upscayl from '@/assets/imgs/toolbox/mactools-design/upscayl.png'
+import affinity from '@/assets/imgs/toolbox/mactools-design/affinity.png'
+import pixelmatorPro from '@/assets/imgs/toolbox/mactools-design/pixelmator-pro.png'
+import davinciResolve from '@/assets/imgs/toolbox/mactools-design/davinci-resolve.png'
+import screenStudio from '@/assets/imgs/toolbox/mactools-design/screen-studio.png'
+import obs from '@/assets/imgs/toolbox/mactools-design/obs.png'
+import arctimePro from '@/assets/imgs/toolbox/mactools-design/arctime-pro.png'
+import recordly from '@/assets/imgs/toolbox/mactools-design/recordly.png'
+
+## 簡報設計
+
+### Keynote
+
+<Image src={keynote} alt="Keynote" />
+
+Apple 內建的簡報工具，在 Mac 上的動畫效果跟轉場表現非常流暢，視覺質感很好。我在需要做比較精緻的簡報時會用 Keynote，它的動畫編輯器比 PowerPoint 直覺很多，可以做出很細膩的過場效果。
+
+<span class="pricing-tag">免費</span>
+<a href="https://www.apple.com/tw/keynote/" target="_blank" class="official-link">官方網站</a>
+
+### Canva
+
+<Image src={canva} alt="Canva" />
+
+除了做圖之外，Canva 的簡報功能也很實用。它的模板庫非常豐富，可以快速產出有設計感的投影片，適合時間比較趕或不想從零開始排版的場景。詳細的介紹可以參考服務與訂閱篇。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://www.canva.com" target="_blank" class="official-link">官方網站</a>
+
+## UI 設計
+
+### Figma
+
+<Image src={figma} alt="Figma" />
+
+非常老牌的 UI 設計工具，也是我使用時間最長的一套。支援元件化的設計方式，很適合拿來實作原子設計（Atomic Design），設計出有結構、有規範的設計文件。最新的 Figma 還能結合 MCP 功能跟 AI 做對接，從設計到開發的銜接更順暢。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://www.figma.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask figma
+```
+
+### Pencil
+
+<Image src={pencil} alt="Pencil" />
+
+AI UI 設計工具，可以透過文字敘述的方式讓 AI 幫你做設計，操作上比 Figma 更直接且直覺。我主要是讓 AI 利用這個工具去做 UI 上的繪製，自己則是以瀏覽產出的設計稿為主。
+
+<span class="pricing-tag freemium">免費使用，部分功能需付費</span>
+<a href="https://pencil.li" target="_blank" class="official-link">官方網站</a>
+
+## 圖片與平面設計
+
+### Pixelmator Pro
+
+<Image src={pixelmatorPro} alt="Pixelmator Pro" />
+
+Mac 原生的圖片編輯工具，現在已經被 Apple 收購。介面設計很符合 macOS 的風格，操作起來很流暢。內建不少 AI 功能，像是自動去背、智慧修復等等，日常的圖片編輯需求都能輕鬆處理。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://www.pixelmator.com/pro/" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask pixelmator-pro
+```
+
+### Affinity
+
+<Image src={affinity} alt="Affinity" />
+
+Serif 出品的專業設計套件，包含 Designer（向量設計）、Photo（圖片編輯）跟 Publisher（排版）三個工具。買斷制的定價對比 Adobe 的訂閱制來說很有吸引力，功能上也足以應付大部分的專業需求。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://affinity.serif.com" target="_blank" class="official-link">官方網站</a>
+
+### PhotoScapeX
+
+<Image src={photoscapex} alt="PhotoScapeX" />
+
+輕量級的圖片編輯工具，操作簡單直覺。日常需要做一些快速的圖片裁切、調色、加文字或拼貼的時候會用到，不用為了小事去開 Photoshop 等級的軟體。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://apps.apple.com/tw/app/photoscape-x/id929507092" target="_blank" class="official-link">Mac App Store</a>
+
+### Upscayl
+
+<Image src={upscayl} alt="Upscayl" />
+
+開源的 AI 圖片放大工具，可以在不損失畫質的情況下把低解析度的圖片放大。處理老照片或需要高解析度素材的時候非常好用，效果比傳統的插值放大好很多。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://upscayl.org" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask upscayl
+```
+
+## 影片設計
+
+### DaVinci Resolve
+
+<Image src={davinciResolve} alt="DaVinci Resolve" />
+
+Blackmagic Design 出品的專業影片剪輯軟體，免費版的功能就已經非常強大。它的調色功能是業界標準等級的，剪輯、特效、音訊處理也都很完整。對於不想付 Adobe Premiere 訂閱費的人來說，DaVinci Resolve 是最好的替代方案。
+
+<span class="pricing-tag freemium">免費使用，Studio 版需付費</span>
+<a href="https://www.blackmagicdesign.com/tw/products/davinciresolve" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask davinci-resolve
+```
+
+### Screen Studio
+
+<Image src={screenStudio} alt="Screen Studio" />
+
+專門用來錄製產品展示影片的工具，錄完之後會自動加上縮放、跟隨滑鼠等動態效果，讓畫面看起來很專業。做產品 Demo 或教學影片的時候非常好用，省去後製的時間。
+
+<span class="pricing-tag paid">付費買斷</span>
+<a href="https://www.screen.studio" target="_blank" class="official-link">官方網站</a>
+
+### Recordly
+
+<Image src={recordly} alt="Recordly" />
+
+輕量的螢幕錄影工具，操作簡單，錄完可以快速匯出。適合需要快速錄一段操作畫面的場景，不用像 OBS 那樣做複雜的設定。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://recordly.co" target="_blank" class="official-link">官方網站</a>
+
+### OBS
+
+<Image src={obs} alt="OBS" />
+
+開源的直播跟錄影軟體，功能非常全面。我主要拿來做螢幕錄影，它的場景管理跟來源設定很靈活，可以同時錄製多個畫面來源。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://obsproject.com" target="_blank" class="official-link">官方網站</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask obs
+```
+
+### ArcTime Pro
+
+<Image src={arctimePro} alt="ArcTime Pro" />
+
+字幕製作工具，可以快速為影片加上字幕。支援時間軸對齊跟批次編輯，做字幕的效率比用剪輯軟體內建的字幕功能高不少。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://arctime.org" target="_blank" class="official-link">官方網站</a>
