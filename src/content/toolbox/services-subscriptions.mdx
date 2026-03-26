@@ -1,0 +1,239 @@
+---
+title: 服務與訂閱
+description: 整理我目前使用的線上服務與訂閱方案，涵蓋 AI 工具、生產力平台與開發相關服務
+date: 2026-03-26
+category: 軟體工具
+tags: [服務, 訂閱, AI]
+cover: /og/toolbox-services-subscriptions.png
+seo:
+  ogImage: /og/toolbox-services-subscriptions.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import claude from '@/assets/imgs/toolbox/services-subscriptions/claude.png'
+import codex from '@/assets/imgs/toolbox/services-subscriptions/codex.png'
+import gemini from '@/assets/imgs/toolbox/services-subscriptions/gemini.png'
+import grok from '@/assets/imgs/toolbox/services-subscriptions/grok.png'
+import notion from '@/assets/imgs/toolbox/services-subscriptions/notion.png'
+import googleOne from '@/assets/imgs/toolbox/services-subscriptions/google-one.png'
+import readwise from '@/assets/imgs/toolbox/services-subscriptions/readwise.png'
+import cloudflare from '@/assets/imgs/toolbox/services-subscriptions/cloudflare.png'
+import bitwarden from '@/assets/imgs/toolbox/services-subscriptions/bitwarden.png'
+import appleMusic from '@/assets/imgs/toolbox/services-subscriptions/apple-music.png'
+import youtubePremium from '@/assets/imgs/toolbox/services-subscriptions/youtube-premium.png'
+import deepnote from '@/assets/imgs/toolbox/services-subscriptions/deepnote.png'
+import canva from '@/assets/imgs/toolbox/services-subscriptions/canva.png'
+
+這篇整理了我目前有在使用的線上服務跟訂閱方案，包含 AI 開發工具、生產力平台、設計工具跟其他開發相關的服務。
+
+## AI 工具
+
+### Claude
+
+<Image src={claude} alt="Claude"  />
+
+我目前主力使用的 AI 服務，訂閱的是 Max 方案（$100/月）。選擇 Claude 的原因是，在程式碼的表現上，它的速度跟準確性是目前最均衡的選擇。主要搭配 Claude Code 在 VS Code 裡進行開發、Review 跟日常的問題討論。
+
+之所以會升級到 $100 的 Max 方案，是因為 Opus 模型在 $20 的 Pro 方案下其實很常達到 Rate Limit，用到一半被限速的體驗不太好。以個人用戶來說，Max 方案已經算是高頻率使用都不太會撞到限制的程度，如果你也是重度使用者的話蠻推薦的。
+
+<div class="callout warning">Claude 的訂閱方案僅限個人使用，不能用於非人類操作的第三方服務，例如透過 OpenRouter 或 Openclaw 之類的平台來串接。違反使用條款的話帳號會被封停，這點務必留意。</div>
+
+<span class="pricing-tag paid">$100 / 月</span>
+<a href="https://claude.ai" target="_blank" class="official-link">Claude</a>
+
+### ChatGPT / Codex
+
+<Image src={codex} alt="ChatGPT / Codex"  />
+
+OpenAI 的 AI 服務，訂閱的是 Plus 方案（$20/月）。我主要拿 Codex 來做程式碼 Review 的二次檢查，跟 Claude Code 搭配進行交互式的程式碼審查。因為用途集中在 Review，使用頻率不會太高，$20 的方案就很夠用了。
+
+個人覺得這樣 Claude 主力開發 + ChatGPT 輔助 Review 的混合方案，效果蠻不錯的，兩個不同模型互相檢查可以抓到更多問題。
+
+<span class="pricing-tag paid">$20 / 月</span>
+<a href="https://chatgpt.com" target="_blank" class="official-link">ChatGPT</a>
+
+### Gemini Advanced
+
+<Image src={gemini} alt="Gemini Advanced"  />
+
+隨 Google One 2TB 方案附帶的 AI 服務。Gemini 比較突出的能力在於它跟 Google 生態系的深度整合，我的日曆服務主要是使用 Google Calendar，透過 Gemini 可以直接操作日曆，像是建立行程、查詢排程等等。
+
+另外 Gemini 可以處理錄音檔，直接把語音內容轉成文字或進行摘要，這是目前 Claude 跟 ChatGPT 都還不太能做到的事情。Gemini 的圖片生成效果也非常好，基於圖片的二次創作我會用它來處理。
+
+<span class="pricing-tag freemium">隨 Google One 2TB 方案附帶</span>
+<a href="https://gemini.google.com" target="_blank" class="official-link">Gemini</a>
+
+### Grok
+
+<Image src={grok} alt="Grok"  />
+
+xAI 推出的 AI 服務，最大的特點是可以直接讀取 X（Twitter）上的即時訊息並做匯總。對我來說，它是快速獲取 AI 相關新知的一個小手段，因為 AI 領域的消息更新非常快，很多第一手的資訊跟討論都是在 X 上發布的，透過 Grok 可以快速掌握最新動態。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://grok.com" target="_blank" class="official-link">Grok</a>
+
+| 服務 | 方案 | 主要用途 |
+|------|------|----------|
+| Claude | Max · $100/月 | 程式碼開發、重構、除錯 |
+| ChatGPT / Codex | Plus · $20/月 | 程式碼 Review、二次檢查 |
+| Gemini Advanced | 隨 Google One 附帶 | 錄音檔處理、圖片生成、Google 生態系操作 |
+| Grok | 免費使用 | AI 新知匯總、X 即時資訊 |
+
+## 生產力工具
+
+### Notion
+
+<Image src={notion} alt="Notion"  />
+
+我用來做專案管理跟日程管理的主要平台。目前使用的是透過教育版轉成的 Personal Pro 方案，功能上跟付費版一樣完整。
+
+#### Database 與專案管理
+
+我主要使用的是 Notion 的 Database 功能，把每個專案的需求、文件跟進度都集中管理。付費版比較特別的是 Button 功能，可以做一些快速的小型自動化，像是一鍵建立固定格式的頁面或更新狀態，日常使用起來蠻方便的。
+
+#### API 與自動化
+
+除此之外，我也會透過 Notion API 去做更進一步的自動化操作，或是把 Notion 當作微型資料庫來管理資料。
+
+#### Notion Calendar
+
+在日程管理的部分，主要是透過 Notion Calendar 這條產品線來使用。我會串接 Google Calendar，這樣就可以在 Notion Calendar 裡一次看到所有行程，不管是工作室的行程還是個人的行程，都能統一管理。
+
+<span class="pricing-tag freemium">教育版轉 Personal Pro</span>
+<a href="https://www.notion.so" target="_blank" class="official-link">Notion</a>
+
+### Canva
+
+<Image src={canva} alt="Canva" />
+
+設計跟內容製作的工具，同樣是透過教育版轉成的 Pro 方案。我主要用來做圖、簡報製作跟 Instagram 貼文的管理與繪製。在所有的網路服務中，Canva 的操作體驗算是比較優秀的那一檔。
+
+#### 品牌模板
+
+可以在模板功能區建立品牌色彩與字型系統，常用的模板跟素材都能預先設定好，之後製作新的內容時直接套用就好，不用每次重新設定，非常方便。
+
+#### 多人協作與素材整合
+
+支援多人協作，搜尋素材的時候不需要另外開視窗，直接在介面內就能完成。付費方案提供的素材也更加多元，基本上不太需要額外去找外部素材。
+
+#### 分享與部署
+
+做好的設計可以很容易地部署成網頁瀏覽的形式，插入到網頁中也非常容易，不太會產生相容性的問題。
+
+#### 跨裝置支援
+
+具備資料夾組織功能，管理上相當方便。同時支援手機跟平板的 App，不一定要在電腦前，隨時隨地都能作圖。
+
+<span class="pricing-tag freemium">教育版轉 Pro</span>
+<a href="https://www.canva.com" target="_blank" class="official-link">Canva</a>
+
+## 雲端儲存
+
+### Google One 2TB
+
+<Image src={googleOne} alt="Google One"  />
+
+我目前使用 Google One 的 2TB 方案，除了儲存空間之外，還附帶不少額外的服務，整體來說可以當作一個小型 Workspace 帳號來使用。
+
+#### Google 雲端硬碟
+
+2TB 的容量非常夠用，我大部分的備用資源跟學術文件都會丟在上面統一管理。而且 Google Drive 是跨平台的，不像 iCloud 只能在 iOS 生態裡使用，Google Drive 可以橫跨 Windows 跟 Mac，兼容性非常高。
+
+#### Google 相簿
+
+Google 相簿是我覺得整個方案裡最好用的部分。它的圖片分析能力非常強，尤其是臉部辨識跟自動分類，目前比較少有這麼成熟的方案。搭配 2TB 的空間，基本上可以把所有照片都丟上去，不用擔心容量問題。
+
+#### Google Meet 進階功能
+
+方案還包含 Google Meet 的錄影跟進階會議功能，對於需要開會錄影的場景來說很實用。
+
+#### 其他附帶權益
+
+除了以上這些之外，Google One 還會附帶一些免費的 AI 額度（Gemini Advanced），時不時也會推送一些額外的小功能跟福利。
+
+<span class="pricing-tag paid">訂閱制</span>
+<a href="https://one.google.com" target="_blank" class="official-link">Google One</a>
+
+## 閱讀與知識管理
+
+### Readwise
+
+<Image src={readwise} alt="Readwise"  />
+
+我目前訂閱的是 Readwise + Readwise Reader 的統合方案。最主要的使用場景是，我會用 iPad 搭配 Apple Books 來閱讀電子書，所有標記的重點跟畫記都會透過 Readwise 的服務自動同步到 Notion 裡做統一管理。
+
+搭配瀏覽器擴充的話，也可以直接在網頁上做標註跟摘錄，閱讀筆記的收集流程很順暢。
+
+<div class="callout warning">近期 Readwise 已被列入取消訂閱的考量名單，因為我打算自己建一套系統來負責知識管理跟萃取的流程，會更符合個人的使用需求。</div>
+
+<span class="pricing-tag paid">訂閱制</span>
+<a href="https://readwise.io" target="_blank" class="official-link">Readwise</a>
+
+## 開發相關服務
+
+### Cloudflare
+
+<Image src={cloudflare} alt="Cloudflare"  />
+
+我目前主要的網域跟部署服務都集中在 Cloudflare 上。只要買一個 Domain，就能享有以下這些免費的服務，整體來說非常值得。
+
+#### 網域費用透明
+
+在 Cloudflare 上購買網域的費用非常公開透明，不會有第一年便宜、第二年突然漲價的情況，價格就是成本價，長期持有很安心。
+
+#### Workers 與免費額度
+
+免費的 Cloudflare Workers 額度非常給力，個人使用或小型專案的開發基本上不用花錢。搭配 Cloudflare Pages 做靜態網站的託管也是免費的。
+
+#### 資料庫與儲存
+
+提供 D1（SQLite 資料庫）、KV（快取資料庫）跟 R2（物件儲存）等服務，都有免費額度。R2 可以拿來放圖片或靜態資源，不用另外付費找圖床。
+
+#### Cloudflare Tunnel
+
+Tunnel 讓我在沒有公網 IP 的情況下，也能做網路穿透來存取內網裡特定 Port 的服務。我有好幾個管理服務都是透過這個方式在運行的。
+
+搭配 Cloudflare Access 還可以做使用者層級的存取控制，限定只有我指定的特定帳號能存取這些服務，其他人無法直接連到，安全性上多了一層保障。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://www.cloudflare.com" target="_blank" class="official-link">Cloudflare</a>
+
+### Deepnote
+
+<Image src={deepnote} alt="Deepnote" />
+
+線上的 Jupyter Notebook 環境，在需要用雲端環境做資料處理的時候會使用。適合在不同裝置上快速開始作業或跟團隊協作。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://deepnote.com" target="_blank" class="official-link">Deepnote</a>
+
+### Bitwarden
+
+<Image src={bitwarden} alt="Bitwarden"  />
+
+開源的密碼管理服務，搭配瀏覽器擴充跟手機 App 使用，統一管理所有的密碼跟 Passkey。跨平台同步的體驗很穩定。
+
+<span class="pricing-tag">免費</span>
+<a href="https://bitwarden.com" target="_blank" class="official-link">Bitwarden</a>
+
+## 影音與娛樂
+
+### Apple Music
+
+<Image src={appleMusic} alt="Apple Music"  />
+
+我使用的音樂串流服務。選擇 Apple Music 的主要原因是，在有高音質（Lossless / Hi-Res）需求的前提下，Apple Music 的方案價格相對其他平台來得便宜，性價比很高。
+
+<span class="pricing-tag paid">訂閱制</span>
+<a href="https://www.apple.com/tw/apple-music/" target="_blank" class="official-link">Apple Music</a>
+
+### YouTube Premium
+
+<Image src={youtubePremium} alt="YouTube Premium"  />
+
+在 iOS 生態系裡，YouTube Premium 是最方便的免廣告方式。iOS 上沒辦法像桌面版那樣透過擴充來擋廣告，訂閱 Premium 是最直接的解決方案，同時也能背景播放跟離線下載。
+
+<span class="pricing-tag paid">訂閱制</span>
+<a href="https://www.youtube.com/premium" target="_blank" class="official-link">YouTube Premium</a>
