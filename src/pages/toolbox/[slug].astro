@@ -85,14 +85,10 @@ const seo = {
               )
             }
 
-            <!-- MDX Content wrapped in Card -->
-            <Card>
-              <CardContent>
-                <article class="flex flex-col gap-2">
-                  <Content />
-                </article>
-              </CardContent>
-            </Card>
+            <!-- MDX Content - will be split into cards per H2 section -->
+            <article id="toolbox-article" class="flex flex-col gap-2">
+              <Content />
+            </article>
           </div>
 
           <!-- Sidebar: TOC (right on lg) -->
@@ -313,6 +309,22 @@ const seo = {
 
     initScrollspy();
 
+    // Prevent TOC links from polluting browser history
+    document
+      .querySelectorAll<HTMLAnchorElement>(".toc-link, .mobile-toc-link")
+      .forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const slug = link.dataset.slug;
+          if (!slug) return;
+          const target = document.getElementById(slug);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+            history.replaceState(null, "", `#${slug}`);
+          }
+        });
+      });
+
     // Mobile TOC Modal
     const tocBtn = document.getElementById("mobile-toc-btn");
     const tocModal = document.getElementById("mobile-toc-modal");
@@ -337,6 +349,57 @@ const seo = {
     mobileTocLinks.forEach((link) => {
       link.addEventListener("click", closeTocModal);
     });
+
+    // Split article content by H2 into separate cards
+    const article = document.getElementById("toolbox-article");
+    if (article) {
+      const children = Array.from(article.childNodes);
+      const sections: Node[][] = [];
+      let current: Node[] = [];
+
+      children.forEach((node) => {
+        if (
+          node instanceof HTMLElement &&
+          node.tagName === "H2"
+        ) {
+          if (current.length > 0) {
+            sections.push(current);
+          }
+          current = [node];
+        } else {
+          current.push(node);
+        }
+      });
+      if (current.length > 0) {
+        sections.push(current);
+      }
+
+      // Clear article and rebuild with cards
+      article.innerHTML = "";
+      article.classList.remove("gap-2");
+      article.classList.add("gap-8");
+
+      sections.forEach((nodes) => {
+        // Skip sections that only contain empty text nodes or whitespace
+        const hasContent = nodes.some(
+          (node) =>
+            node instanceof HTMLElement ||
+            (node.textContent && node.textContent.trim() !== ""),
+        );
+        if (!hasContent) return;
+
+        const card = document.createElement("div");
+        card.className =
+          "rounded-2xl bg-card text-card-foreground shadow-md overflow-hidden";
+
+        const cardContent = document.createElement("div");
+        cardContent.className = "p-6 flex flex-col gap-2";
+
+        nodes.forEach((node) => cardContent.appendChild(node));
+        card.appendChild(cardContent);
+        article.appendChild(card);
+      });
+    }
 
     // Code block copy buttons
     document.querySelectorAll("article pre").forEach((pre) => {
@@ -386,7 +449,7 @@ const seo = {
     }
 
     article :global(h2) {
-      margin-top: 2rem;
+      margin-top: 0;
       margin-bottom: 1rem;
     }
 
