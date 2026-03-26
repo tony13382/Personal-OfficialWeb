@@ -1,0 +1,285 @@
+---
+title: 開發環境．Python 篇
+description: 分享我在 Python 後端開發與資料處理中的環境配置、套件管理與部署方式
+date: 2026-03-26
+category: 開發環境
+tags: [Python, 開發環境, Docker]
+cover: /og/toolbox-dev-env-python.png
+seo:
+  ogImage: /og/toolbox-dev-env-python.png
+---
+
+我使用 Python 主要集中在後端開發跟資料處理兩個方向，框架上以 FastAPI 為主。這篇整理了我在開發 Python 專案時的環境配置，包含套件管理、程式碼品質工具、容器化部署等面向。
+
+## 套件管理
+
+### UV
+
+目前我主要使用的 Python 套件管理工具是 <a href="https://docs.astral.sh/uv/" target="_blank">UV</a>，它用 Rust 開發，安裝跟解析依賴的速度非常快，體感上比 pip 跟 Poetry 快很多。搭配 `uv.lock` 可以鎖定依賴版本，確保不同環境之間的一致性。
+
+基本的使用流程大概是這樣：
+
+```bash
+# 初始化專案
+uv init
+
+# 新增依賴
+uv add fastapi sqlalchemy
+
+# 同步環境
+uv sync
+```
+
+### Poetry（備用）
+
+在轉向 UV 之前，我一直使用 <a href="https://python-poetry.org/" target="_blank">Poetry</a> 來管理套件。目前一些比較早期的專案還是維持用 Poetry，但新專案已經都改用 UV 了。Poetry 的好處是生態成熟、文件完善，如果還沒用過 UV 的話，Poetry 也是很好的選擇。
+
+```bash
+# 初始化專案
+poetry init
+
+# 新增依賴
+poetry add fastapi sqlalchemy
+
+# 新增開發依賴
+poetry add --group dev pytest black ruff
+
+# 安裝所有依賴
+poetry install
+
+# 在虛擬環境中執行指令
+poetry run uvicorn app.main:app
+```
+
+## 虛擬環境
+
+搭配 UV 使用時，虛擬環境會自動建立在專案目錄下的 `.venv` 資料夾裡。我習慣用 `.python-version` 檔案來指定專案的 Python 版本，目前大部分專案統一使用 Python 3.10。
+
+```bash
+# 建立虛擬環境（UV 會自動讀取 .python-version）
+uv venv
+
+# 啟動虛擬環境
+source .venv/bin/activate
+
+# 指定 Python 版本建立
+uv venv --python 3.10
+
+# 退出虛擬環境
+deactivate
+```
+
+## pyproject.toml 設定
+
+`pyproject.toml` 是我管理 Python 專案配置的核心檔案，除了依賴管理之外，Ruff 跟 Black 的設定也會寫在裡面。以下是我常用的設定範例：
+
+<p class="code-title">pyproject.toml</p>
+
+```toml
+[project]
+name = "my-project"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "sqlalchemy",
+    "uvicorn",
+    "pydantic",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+```
+
+## 程式碼品質
+
+### Ruff
+
+我目前主要使用的 Python Linter 跟 Formatter 是 <a href="https://docs.astral.sh/ruff/" target="_blank">Ruff</a>，同樣是用 Rust 開發的，速度非常快。它可以取代 Flake8、isort 等多個工具，一個就搞定程式碼檢查跟 import 排序。
+
+在 `pyproject.toml` 裡的設定通常是：
+
+- `line-length: 100`：行寬設為 100，比預設的 79 寬鬆一些，在現代螢幕上比較好閱讀。
+- `select: ["E", "F", "I"]`：開啟基本的錯誤檢查（E）、pyflakes 檢查（F）跟 import 排序（I）。
+
+```bash
+# 檢查程式碼問題
+ruff check .
+
+# 自動修復可修正的問題
+ruff check --fix .
+
+# 格式化程式碼（Ruff 內建的 formatter）
+ruff format .
+```
+
+### Black
+
+搭配 Ruff 一起使用的格式化工具，風格統一且不可配置（opinionated），省去討論程式碼格式的時間。儲存時自動排版，確保整個專案的程式碼風格一致。
+
+```bash
+# 格式化整個專案
+black .
+
+# 檢查但不修改（僅顯示差異）
+black --check .
+
+# 格式化特定檔案
+black app/main.py
+```
+
+### 格式化 CI/CD
+
+在 CI/CD 流程裡，我會加上格式化跟 Lint 的檢查步驟，確保合併到主分支的程式碼都符合規範。如果檢查沒通過，Pipeline 就會直接失敗，避免不符合格式的程式碼進入正式環境。
+
+<p class="code-title">GitHub Actions · CI/CD — .github/workflows/lint.yml</p>
+
+```yaml
+name: Code Quality
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+      - run: uv sync
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run black --check .
+```
+
+透過這樣的設定，每次 push 或發 PR 的時候都會自動檢查，省去人工 Review 格式問題的時間。
+
+## 容器化與部署
+
+### Docker Compose
+
+我的 Python 專案都會使用 Docker Compose 來管理開發跟部署環境。一個典型的配置會包含：
+
+- **應用容器**：Python 應用本身，使用 `python:3.10-slim` 或 `python:3.12-slim` 作為基底映像。
+- **PostgreSQL 16**：主要使用的資料庫，映像用 `postgres:16-alpine`。
+- **Redis 7**：用於快取或任務佇列，映像用 `redis:7-alpine`。
+
+容器之間透過自定義的 Docker 網路進行通訊，確保服務隔離。
+
+### Uvicorn
+
+FastAPI 專案的部署主要透過 Uvicorn 來啟動 ASGI 伺服器。在 Docker 容器裡通常會這樣啟動：
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+### Dockerfile 慣用模式
+
+在正式環境的 Dockerfile 裡，我會使用 UV 搭配 frozen lockfile 來安裝依賴，確保安裝的版本跟開發環境完全一致。同時也會建立非 root 使用者來執行應用，提升安全性：
+
+<p class="code-title">Dockerfile</p>
+
+```dockerfile
+FROM python:3.10-slim
+
+# 安裝系統依賴
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev curl gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安裝 UV
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# 建立非 root 使用者
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g $GID appuser && useradd -u $UID -g $GID -m appuser
+
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen
+
+COPY . .
+USER appuser
+
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+## 開發流程
+
+### 資料處理
+
+在資料處理方面，我主要使用 Jupyter Notebook 來進行工作。Notebook 的好處是可以逐步執行程式碼，每一步都能即時看到結果，非常適合用來做檔案輸入、資料測試跟處理的流程。
+
+我自己主要是透過 VS Code 裡的 Jupyter 擴充套件來開啟 `.ipynb` 檔案，不需要另外啟動 Jupyter Server，直接在編輯器裡就能執行，跟其他開發工作的切換也比較順暢。如果是在雲端環境，我會使用 <a href="https://deepnote.com" target="_blank">Deepnote</a>，它提供線上的 Notebook 環境，適合在不同裝置上快速開始作業或跟團隊協作。
+
+#### Pandas
+
+資料處理的核心工具，幾乎所有的資料讀取、清洗、轉換跟分析都透過 Pandas 來完成。不管是 CSV、Excel 還是 JSON 格式的資料，都可以用 Pandas 快速載入並進行操作。
+
+#### 視覺化工具
+
+資料處理完之後，通常會需要做視覺化來呈現結果。我主要搭配以下兩個工具：
+
+- **Matplotlib**：Python 最基礎的繪圖工具，可以畫出各種基本的圖表。彈性很高，幾乎任何圖表都能客製化，但語法相對繁瑣。
+- **plotnine**：基於 ggplot2 語法的 Python 視覺化套件。如果熟悉 R 語言的 ggplot2，用 plotnine 會非常上手。它的語法結構更直覺，透過圖層疊加的方式來建構圖表，程式碼的可讀性也比 Matplotlib 好。
+
+### API 開發
+
+在後端開發上，我習慣依照以下的順序來推進：
+
+#### 1. 規劃資料庫結構
+
+開發的第一步是先規劃好資料庫的結構，確定各個資料表之間的關聯。規劃完成後，用 SQLAlchemy 撰寫對應的 ORM Model。
+
+#### 2. 資料庫遷移
+
+ORM Model 寫好後，使用 Alembic 來管理資料庫的遷移（Migration）。透過版本控制的方式追蹤每一次的結構變更，確保開發環境跟正式環境的資料庫結構一致。
+
+```bash
+# 產生遷移腳本
+alembic revision --autogenerate -m "add users table"
+
+# 執行遷移
+alembic upgrade head
+```
+
+#### 3. API 開發
+
+資料庫遷移完成後，才進入 API 層的程式碼開發。以 FastAPI 為基礎，搭配 Pydantic 做請求跟回應的資料驗證。
+
+#### 4. 流程測試
+
+API 開發完畢後，會先用 Postman 進行最基礎的流程測試，確認各個端點的請求跟回應都符合預期。
+
+#### 5. 單元測試
+
+流程測試通過後，撰寫單元測試腳本，針對各個功能模組做更細緻的測試，確保程式碼的穩定性跟正確性。
+
+#### 6. 文件交付
+
+所有測試完成後，整理 API 文件交付給前端開發人員。FastAPI 本身內建 OpenAPI 文件（Swagger UI），可以直接提供給前端參考跟測試。
+
+## 主要技術棧
+
+總結一下我在 Python 開發中常用的技術組合：
+
+**後端開發：**
+- **框架**：FastAPI
+- **ORM**：SQLAlchemy（搭配 AsyncIO）
+- **資料庫**：PostgreSQL 16
+- **快取**：Redis 7
+- **資料驗證**：Pydantic
+- **資料庫遷移**：Alembic
+- **套件管理**：UV（備用 Poetry）
+- **程式碼品質**：Ruff + Black
+- **部署**：Docker Compose + Uvicorn
+
+**資料處理：**
+- **開發環境**：Jupyter Notebook
+- **資料處理**：Pandas
+- **視覺化**：Matplotlib / plotnine（ggplot2）
