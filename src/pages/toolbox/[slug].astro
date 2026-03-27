@@ -171,7 +171,7 @@ const seo = {
   <!-- Mobile TOC Button -->
   <button
     id="mobile-toc-btn"
-    class="floatbtn fixed bottom-8 left-6 size-16 md:bottom-30 md:left-8 rounded-full bg-gray-800 text-white flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-gray-700 hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
+    class="floatbtn fixed bottom-8 left-6 size-16 md:bottom-8 md:left-8 rounded-full bg-[var(--theme-primary)] hover:bg-[var(--theme-secondary)] text-white flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
     title="目錄"
   >
     <svg
@@ -448,12 +448,12 @@ const seo = {
 
     article :global(h2) {
       margin-top: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     article :global(h3) {
-      margin-top: 1.4rem;
-      margin-bottom: 0.5rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.25rem;
     }
 
     article :global(h4) {
@@ -482,7 +482,8 @@ const seo = {
     }
 
     article :global(p) {
-      margin-bottom: 0.5rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
     }
 
     article :global(code) {
@@ -581,23 +582,40 @@ const seo = {
     }
 
     article :global(.callout) {
-      padding: 0.75rem 1rem;
+      position: relative;
+      padding: 0.75rem 1rem 0.75rem 1.25rem;
       border-radius: 0.75rem;
       font-size: 0.875rem;
       line-height: 1.6;
       margin: 0.5rem 0;
+      overflow: hidden;
+    }
+
+    article :global(.callout::before) {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
     }
 
     article :global(.callout.info) {
       background: #eff6ff;
-      border-left: 4px solid #3b82f6;
       color: #1e40af;
+    }
+
+    article :global(.callout.info::before) {
+      background: #3b82f6;
     }
 
     article :global(.callout.warning) {
       background: #fff1f2;
-      border-left: 4px solid #fb7185;
       color: #9f1239;
+    }
+
+    article :global(.callout.warning::before) {
+      background: #fb7185;
     }
 
     article :global(table) {

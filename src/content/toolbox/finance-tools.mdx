@@ -16,7 +16,7 @@ import qianji from '@/assets/imgs/toolbox/finance-tools/qianji.png'
 import moneyManager from '@/assets/imgs/toolbox/finance-tools/money-manager.png'
 import sinopac from '@/assets/imgs/toolbox/finance-tools/sinopac.png'
 import fugle from '@/assets/imgs/toolbox/finance-tools/fugle.png'
-import minimalStock from '@/assets/imgs/toolbox/finance-tools/minimal-stock.png'
+import futu from '@/assets/imgs/toolbox/finance-tools/futu.png'
 import invoiceGov from '@/assets/imgs/toolbox/finance-tools/invoice-gov.png'
 import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passbook.png'
 
@@ -36,7 +36,9 @@ import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passboo
 
 這是我參考<a href="https://www.youtube.com/playlist?list=PLrZrfGLGySzcQda_-_KT6BKdudDL_Ohzu" target="_blank">柴鼠兄弟的記帳方法</a>所使用的方式。跟流水帳不同，每月記帳法不需要逐筆記錄每一筆消費，而是以月為單位，透過帳戶餘額的變化來回推當月的整體收支狀況。
 
-這個方法的好處是不需要每天花時間記帳，只要每個月固定花一點時間整理就好，比較容易長期維持。不過需要注意的是，建議搭配分帳戶的方式來管理，每個帳戶盡量只對應一個用途。如果同一個帳戶裡面混了投資跟日常消費，在回推資金流向的時候容易出問題。
+這個方法的好處是不需要每天花時間記帳，只要每個月固定花一點時間整理就好，比較容易長期維持。柴鼠兄弟也有提供<a href="https://docs.google.com/spreadsheets/d/1Qc2tZdLpNMHQQorLm0Mk5uorvynqGOu1/edit?gid=1953126934#gid=1953126934" target="_blank">記帳表格範本</a>可以直接使用。
+
+不過需要注意的是，建議搭配分帳戶的方式來管理，每個帳戶盡量只對應一個用途。如果同一個帳戶裡面混了投資跟日常消費，在回推資金流向的時候容易出問題。
 
 ### 兩種方法的比較
 
@@ -62,9 +64,13 @@ import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passboo
 
 <Image src={qianji} alt="錢跡" />
 
-我目前主要使用的記帳 APP，可以完全滿足上述所有需求。帳戶分類的彈性很高，多平台同步也做得很好，輸入體驗流暢，而且是買斷制的。
+我目前主要使用的記帳 APP，可以完全滿足上述所有需求。帳戶分類的彈性很高，多平台同步也做得很好，輸入體驗流暢，而且是買斷制的。除此之外還有幾個蠻實用的功能：
 
-<div class="callout warning">需要留意的是，錢跡是由中國開發者製作的 APP，如果對大陸系軟體的資安有顧慮的話，這點需要自行評估。</div>
+- **借入／借出管理**：可以記錄借貸往來，追蹤誰還沒還錢或自己還欠多少，不需要另建虛擬帳戶管理。
+- **報銷管理**：可以標記哪些支出是需要報銷的，方便之後統一整理跟核對。
+- **自定義 Tag 搜尋**：可以針對帳單加上自定義的標籤，之後用 Tag 快速篩選跟搜尋，找特定類型的消費很方便。
+
+<div class="callout warning">需要留意的是，錢跡是由中國開發者製作的 APP，同步功能採用的是官方私有伺服器，而非 iCloud 同步。官方表示資料會加密存儲在雲端，伺服器對資料有嚴格的校驗機制。不過畢竟是將財務資料存放在第三方伺服器上，資安方面的考量還是需要自行審慎評估。</div>
 
 <span class="pricing-tag paid">付費買斷</span>
 <a href="https://qianjiapp.com" target="_blank" class="official-link">官方網站</a>
@@ -88,6 +94,13 @@ import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passboo
 
 我目前主要的投資戶頭是在永豐，所以大戶投是我最常用的看盤跟下單工具。整合了帳戶管理、即時報價跟交易功能，日常操作都在這裡完成。
 
+選擇永豐主要有兩個原因：
+
+- **大戶活儲利率**：DAWHO 數位帳戶提供 1.5% 的活儲利率（30 萬內），對於資金停泊來說表現不錯。
+- **手續費優惠**：台股電子交易手續費 2 折起，豐存股定期定額台股 1 萬以下手續費只要 1 元；美股定期定額手續費為買入金額的 0.03% 或台幣 1 元，在複委託中算是很低的方案。
+
+<div class="callout info">手續費與利率優惠會隨時間調整，建議以<a href="https://dawho.tw" target="_blank">永豐 DAWHO 官網</a>公告為準。</div>
+
 <span class="pricing-tag">免費</span>
 <a href="https://apps.apple.com/tw/app/%E6%B0%B8%E8%B1%90%E9%87%91%E8%AD%89%E5%88%B8%E5%A4%A7%E6%88%B6%E6%8A%95-%E6%99%BA%E8%83%BD%E7%B1%8C%E7%A2%BC%E6%AC%8A%E5%A8%81%E5%8D%87%E7%B4%9A/id1551600164" target="_blank" class="official-link">App Store</a>
 <a href="https://play.google.com/store/apps/details?id=com.sinopac.ismartstock&hl=zh_TW" target="_blank" class="official-link">Google Play</a>
@@ -101,14 +114,14 @@ import invoicePassbook from '@/assets/imgs/toolbox/finance-tools/invoice-passboo
 <span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
 <a href="https://www.fugle.tw" target="_blank" class="official-link">官方網站</a>
 
-### 極簡股市
+### 富途
 
-<Image src={minimalStock} alt="極簡股市" />
+<Image src={futu} alt="富途" />
 
-如同它的名字，介面非常簡潔。適合快速查看股價跟自選清單，不需要太多複雜的功能，就是單純看盤的時候很方便。
+香港上市的券商平台，資訊介面足夠清晰，資訊量也很豐富。我通常用它來看國際股市的走向，尤其是美國股市的部分，盤前盤後的數據跟新聞整合都做得不錯。圖表的呈現非常清晰，在瀏覽國際新聞的時候有足夠多的資訊量，而且相關聯的話題、產業或個股都可以很輕鬆地追蹤跟查看變化。
 
-<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
-<a href="https://ez.nstock.tw" target="_blank" class="official-link">官方網站</a>
+<span class="pricing-tag freemium">免費使用，交易需開戶</span>
+<a href="https://www.futunn.com" target="_blank" class="official-link">官方網站</a>
 
 ## 發票管理
 
