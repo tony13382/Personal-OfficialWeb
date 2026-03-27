@@ -12,6 +12,10 @@ export default defineConfig({
   site: 'https://lianglu.uk',
   integrations: [react(), mdx(), sitemap()],
 
+  image: {
+    quality: 90,
+  },
+
   vite: {
     plugins: [tailwindcss()],
     build: {

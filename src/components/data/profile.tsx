@@ -66,8 +66,8 @@ export function ProfileCardTigger() {
         src="/assets/imgs/index/myHead.webp"
         alt={`${profileData.name}的頭像`}
         className="size-16 rounded-full overflow-hidden"
-        width={64}
-        height={64}
+        width={128}
+        height={128}
         loading="lazy"
         decoding="async"
       />
