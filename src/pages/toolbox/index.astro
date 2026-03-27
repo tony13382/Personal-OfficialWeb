@@ -28,9 +28,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
   description="按用途分類的工具推薦與使用心得"
   headerType="main"
 >
-  <div
-    class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20"
-  >
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
     <section class="container mx-auto px-4 py-12">
       <div class="flex gap-8">
         <!-- Sidebar -->
@@ -46,9 +44,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
             <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">
               分享專欄
             </h1>
-            <p class="text-muted-foreground">
-              按用途分類的工具推薦與使用心得
-            </p>
+            <p class="text-muted-foreground">按用途分類的工具推薦與使用心得</p>
           </div>
 
           <!-- Post List -->
@@ -59,8 +55,8 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                   (p) => p.data.category === category,
                 );
                 return (
-                  <div>
-                    <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-8 first:mt-0">
+                  <div class="mb-12">
+                    <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-0">
                       {category}
                     </h2>
                     <div class="space-y-4">
@@ -70,44 +66,44 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                           class="group block no-underline"
                         >
                           <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                              <div class="flex items-stretch">
-                                <div class="flex-1 grid gap-1 p-5">
-                                  <div class="flex items-center gap-2">
-                                    <time class="text-sm text-muted-foreground">
-                                      {post.data.date.toLocaleDateString(
-                                        "zh-TW",
-                                        {
-                                          year: "numeric",
-                                          month: "long",
-                                          day: "numeric",
-                                        },
-                                      )}
-                                    </time>
-                                    {post.data.updatedDate && (
-                                      <span class="text-xs text-muted-foreground">
-                                        （已更新）
-                                      </span>
+                            <div class="flex items-stretch">
+                              <div class="flex-1 grid gap-1 p-5">
+                                <div class="flex items-center gap-2">
+                                  <time class="text-sm text-muted-foreground">
+                                    {post.data.date.toLocaleDateString(
+                                      "zh-TW",
+                                      {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                      },
                                     )}
-                                  </div>
-                                  <h3 class="text-xl font-bold group-hover:text-[var(--theme-primary)] transition-colors">
-                                    {post.data.title}
-                                  </h3>
-                                  <p class="text-muted-foreground line-clamp-2">
-                                    {post.data.description}
-                                  </p>
+                                  </time>
+                                  {post.data.updatedDate && (
+                                    <span class="text-xs text-muted-foreground">
+                                      （已更新）
+                                    </span>
+                                  )}
                                 </div>
-                                {post.data.cover && (
-                                  <div class="w-64 aspect-[1200/630] flex-shrink-0 hidden md:block">
-                                    <img
-                                      src={post.data.cover}
-                                      alt={post.data.title}
-                                      class="w-full h-full object-cover"
-                                      loading="lazy"
-                                      decoding="async"
-                                    />
-                                  </div>
-                                )}
+                                <h3 class="text-xl font-bold group-hover:text-[var(--theme-primary)] transition-colors">
+                                  {post.data.title}
+                                </h3>
+                                <p class="text-muted-foreground line-clamp-2">
+                                  {post.data.description}
+                                </p>
                               </div>
+                              {post.data.cover && (
+                                <div class="w-64 aspect-[1200/630] flex-shrink-0 hidden md:block">
+                                  <img
+                                    src={post.data.cover}
+                                    alt={post.data.title}
+                                    class="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                  />
+                                </div>
+                              )}
+                            </div>
                           </Card>
                         </a>
                       ))}

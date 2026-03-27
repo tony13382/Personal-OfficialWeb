@@ -135,7 +135,7 @@ const seo = {
                   }
 
                   <!-- Date -->
-                  <div class="text-xs text-muted-foreground space-y-1">
+                  <div class="mt-4 text-xs text-muted-foreground space-y-1">
                     <p>
                       發佈於{" "}
                       {
@@ -454,6 +454,10 @@ const seo = {
     article :global(h3) {
       margin-top: 1.75rem;
       margin-bottom: 0.25rem;
+    }
+
+    article :global(h2 + h3) {
+      margin-top: 0.25rem;
     }
 
     article :global(h4) {
