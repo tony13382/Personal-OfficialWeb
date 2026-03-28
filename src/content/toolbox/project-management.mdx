@@ -1,6 +1,6 @@
 ---
 title: 專案管理與任務安排
-description: 分享我在私人專案、公司協作與日常工作中的任務管理方法與工具選擇
+description: 分享我在私人專案與日常工作中的任務管理方法與工具選擇
 date: 2026-03-27
 category: 軟體工具
 tags: [專案管理, 生產力, Notion]
@@ -12,6 +12,8 @@ seo:
 import { Image } from 'astro:assets'
 
 import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-schedule.png'
+import notionLifeos from '@/assets/imgs/toolbox/project-management/notion-lifeos.png'
+import calendarList from '@/assets/imgs/toolbox/project-management/calendar-list.png'
 
 這篇整理了我在不同場景下的任務管理方式跟工具選擇。我會根據任務的規模跟性質，搭配不同的工具來處理，而不是把所有事情都塞進同一個系統裡。
 
@@ -20,11 +22,27 @@ import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-sc
 ### 行動準則
 **短時間的任務優先行動，大型任務優先規劃才行動**。小事情不要拖，想到就立刻處理掉；大事情不要急，先拆解清楚再開始做，避免做到一半才發現方向不對。
 
-根據這個原則，我會依任務的時間跟複雜度，搭配不同的工具來處理：
+在評估任務時間的時候，有一個重要的原則是**估大不估小**。寧可預留多一點時間，也不要把時間壓得太緊，因為實際執行中幾乎都會遇到預期外的狀況。
+
+另外，我會記錄每個任務實際花費的時長作為參考，在每個 Sprint 完成後回頭分析，慢慢建立對不同類型任務的時間感。這不是一開始就能估準的事，而是透過持續累積跟修正，逐步校準自己的判斷。
+
+### 時間塊
+
+時間塊是我最常用的時間管理單位，每一塊以 **1 小時**為基本單位。每天扣除睡眠後大約有 16 小時，但不會全部排滿——其中大約 3 小時以上是日常飲食時間（午餐跟晚餐），另外會保留 2-3 小時作為緩衝，實際可安排的時間塊大約是 10 個。
+
+在行事曆上，我會用不同顏色的日曆來區分不同類型的日程：
+
+**生活日常**、**社交**、**專案開發**、**會議**、**自我學習**等。
+
+<Image src={calendarList} alt="Notion Calendar 日曆分類" />
+
+透過顏色一眼就能看出今天的時間分配是否合理，避免某個類型佔掉太多時間而忽略其他面向。每個不同類型的日曆也會設定不同的預設通知參數，建立行程時不用每次手動調整提醒時間，直接套用對應日曆就好。
+
+有了時間塊的概念之後，接下來根據任務的規模，我會搭配不同的工具來處理：
 
 #### 5 分鐘內的小任務
 
-透過 Siri 快速建立 Apple Reminder 來記錄。這類任務通常是臨時想到的待辦事項，像是「回覆某封信」、「買某個東西」之類的，不需要額外打開任何 APP，直接語音建立就好，重點是不讓它從腦中溜走。
+透過 Siri 快速建立 Apple Reminder 來記錄。這類任務通常是臨時想到的待辦事項，像是「回覆某封信」、「買某個東西」之類的，不需要額外打開任何 APP，直接語音建立就好，重點是不讓它從腦中溜走。口述時可以直接指定具體時間，例如「明天下午三點提醒我回覆信件」，Siri 會自動設定好時間提醒。搭配 iPhone 的桌面小工具，今日的待辦事項會直接顯示在主畫面上，隨時可以查看。
 
 #### 1 小時左右的中型任務
 
@@ -36,20 +54,39 @@ import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-sc
 
 ### Notion LifeOS
 
-這是我自己在 Notion 上規劃的一套個人管理系統，用來處理超過 2 小時的大型任務跟長期目標。核心架構如下：
+<Image src={notionLifeos} alt="Notion LifeOS 專案與任務清單" />
+
+這是我自己在 Notion 上規劃的一套個人管理系統，用來處理超過 2 小時的大型任務跟長期目標。
+
+#### Database View 配置
+
+在 Notion 裡，我會根據不同的檢視需求來設定 View：
+
+**專案（Projects）**
+- 使用 **Gallery View**，以類似卡片的方式呈現每個專案的封面跟摘要。
+- 排序依據目前的專案狀態（State），方便快速辨識哪些專案正在進行、哪些已暫停。
+
+**行動項目（Action）**
+- 使用 **Table View** 呈現，透過 Sprint 的 Relation 欄位進行 **Group by** 分組，方便查看每個迭代底下有哪些行動項目，未排入 Sprint 的項目也會獨立顯示。
+
+**總表**
+- **進行中總表**：只篩選出目前還需要人為介入的階段，專注在當下該處理的事情。
+- **全部總表**：不做篩選，可以回顧所有專案跟行動的歷史紀錄。
+
+核心架構如下：
 
 ```
 願景（Vision）
 └── 專案（Project）
-    ├── Sprint 1
-    │   ├── 行動計畫（Action Plan）
-    │   │   ├── 子計畫（Sub Plan）
-    │   │   └── 子計畫（Sub Plan）
-    │   └── 行動計畫（Action Plan）
-    └── Sprint 2
-        └── 行動計畫（Action Plan）
-            └── 子計畫（Sub Plan）
+    ├── 行動計畫 A → 連結到 Sprint 1
+    │   ├── 子計畫（Sub Plan）
+    │   └── 子計畫（Sub Plan）
+    ├── 行動計畫 B → 連結到 Sprint 1
+    ├── 行動計畫 C → 連結到 Sprint 2
+    └── 行動計畫 D →（尚未排入 Sprint）
 ```
+
+行動計畫直接隸屬於專案，Sprint 則透過可選連結（Notion Relation）來關聯。這樣的好處是行動計畫不會被綁死在特定的 Sprint 裡，如果某個任務這個 Sprint 沒做完，可以直接改連結到下一個 Sprint，不需要搬移資料。尚未排入 Sprint 的行動計畫也能先建立好等待排程。
 
 #### 願景與專案
 
@@ -77,6 +114,7 @@ import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-sc
 
 - **任務完成率檢視**：回顧這次安排的任務裡有多少個如期完成、有多少個卡住了，藉此調整下一個 Sprint 的任務量跟優先級。
 - **困難點與資源評估**：針對卡住的任務，評估是拆解不夠細、前置條件沒到位、還是手頭資源不足，確保專案在現有條件下可以繼續推進。
+- **效率提升思考**：回顧不只是檢討失敗，也要思考哪些地方可以做得更快更好。例如有沒有可以自動化的重複工作、有沒有更好的工具或流程可以導入，持續優化整體的執行效率。流程優化不一定能短期見效，自動化流程的研究與建構本身也會花費不少時間，但長期來看可視為一種戰略投資。一個簡單的判斷標準是：如果某個流程會執行 3 次以上，就應該考慮研究自動化的可能性。
 
 ## 會議管理
 
@@ -94,11 +132,24 @@ import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-sc
 
 除了 Notion Calendar 之外，市面上也有一些專門做會議排程的工具：
 
-| | Notion Calendar | Calendly | SimplyMeet.me |
-|------|---------------|----------|---------------|
-| **可串接日曆數量** | 不限制 | 1 個 | 2 個 |
-| **自訂頁面外觀** | 制式頁面，無法自訂 | 付費方案可自訂品牌色、Logo、Banner | 支援自訂色彩配置 |
-| **定價** | 免費 | 免費使用，進階需訂閱 | 免費使用，進階需訂閱 |
+<div style="overflow-x: auto;">
+<table style="min-width: 628px;">
+<colgroup>
+<col style="width: 88px;" />
+<col style="width: 180px;" />
+<col style="width: 180px;" />
+<col style="width: 180px;" />
+</colgroup>
+<thead>
+<tr><th></th><th>Notion Calendar</th><th>Calendly</th><th>SimplyMeet.me</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>可串接日曆數量</strong></td><td>不限制</td><td>1 個</td><td>2 個</td></tr>
+<tr><td><strong>自訂頁面外觀</strong></td><td>制式頁面，無法自訂</td><td>付費方案可自訂品牌色、Logo、Banner</td><td>支援自訂色彩配置</td></tr>
+<tr><td><strong>定價</strong></td><td>免費</td><td>免費使用，進階需訂閱</td><td>免費使用，進階需訂閱</td></tr>
+</tbody>
+</table>
+</div>
 
 我個人選擇 Notion Calendar 的原因：
 
