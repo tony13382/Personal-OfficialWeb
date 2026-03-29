@@ -15,6 +15,115 @@ import shadcnUi from '@/assets/imgs/toolbox/dev-env-frontend/shadcn-ui.png'
 
 我的前端專案主要使用 React 生態系，框架上會根據需求選擇 Astro、Remix（React Router）或 Vite。這篇整理了我在前端開發時的環境配置，包含套件管理、程式碼格式化、Tailwind CSS 設定等面向。
 
+## VS Code 擴充功能
+
+以下是我在 VS Code 裡開發前端時搭配使用的擴充功能：
+
+### Prettier
+
+程式碼格式化工具，支援 JavaScript、TypeScript、CSS、HTML 等多種語言。儲存時自動排版，統一程式碼風格，不用再花時間手動調整格式。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### ESLint
+
+JavaScript / TypeScript 的靜態分析工具，可以在編輯時即時標示出潛在的錯誤跟不符合規範的寫法，搭配 Prettier 一起用效果最好。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind CSS IntelliSense
+
+Tailwind CSS 的官方擴充，輸入 class 名稱時會自動補全，滑鼠懸停還能預覽對應的 CSS 屬性。搭配 Tailwind 開發時幾乎是必裝的。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind Snippets
+
+提供常用的 Tailwind CSS 程式碼片段，可以快速插入常見的樣式組合，加速開發效率。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=zarifprogrammer.tailwind-snippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### PostCSS Language Support
+
+提供 PostCSS 的語法高亮支援，讓 VS Code 能正確辨識 PostCSS 的語法，不會出現錯誤標記。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=csstools.postcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### JavaScript (ES6) code snippets
+
+提供 ES6+ 語法的程式碼片段，像是箭頭函式、解構賦值、Promise 等常用模式，可以用縮寫快速產生。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Live Sass Compiler
+
+可以即時編譯 Sass / SCSS 檔案，儲存後自動產生對應的 CSS，不需要額外設定建構工具。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Auto Close Tag
+
+輸入 HTML / XML 的開始標籤後，會自動補上對應的結束標籤，減少手動輸入跟標籤漏關的問題。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Color Picker
+
+在程式碼裡遇到顏色值時，可以直接用視覺化的選色器來挑選或調整顏色，不用再去外部工具轉換色碼。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### i18n Ally
+
+國際化（i18n）管理工具，可以在程式碼裡直接預覽翻譯結果，管理多語系的翻譯鍵值。做多語系專案的時候，不用頻繁切換翻譯檔案。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Figma for VS Code
+
+Figma 的官方擴充，可以直接在 VS Code 裡瀏覽 Figma 的設計稿，查看元件的尺寸、間距跟色碼，從設計到開發的銜接更順暢。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=figma.figma-vscode-extension" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Pencil
+
+AI UI 設計工具的 VS Code 擴充，可以直接在編輯器裡透過文字描述產生設計稿，搭配開發流程使用非常方便。
+
+<span class="pricing-tag freemium">免費使用，部分功能需付費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=highagency.pencildev" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Astro
+
+Astro 框架的官方擴充，提供 `.astro` 檔案的語法高亮、IntelliSense、格式化等功能。開發 Astro 專案時的必備擴充。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### MDX
+
+提供 MDX 檔案的語法高亮跟 IntelliSense 支援。在 Astro 專案裡用 MDX 來寫內容的時候，編輯體驗會好很多。
+
+<span class="pricing-tag">免費</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx" target="_blank" class="official-link">VS Code Marketplace</a>
+
+更多 VS Code 擴充功能推薦可以參考：
+
+<a href="/toolbox/vscode-extensions">
+  <img src="/og/toolbox-vscode-extensions.png" alt="VS Code 擴充功能推薦" style="border-radius: 0.75rem;" />
+</a>
+<a href="/toolbox/vscode-extensions" class="official-link">VS Code 擴充功能推薦</a>
+
 ## 套件管理
 
 ### npm
