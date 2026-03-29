@@ -1,0 +1,270 @@
+---
+title: AI 工具使用策略
+description: 分享我在知識搜集、軟體開發與日常工作中如何搭配不同 AI 工具的使用方式
+date: 2026-03-28
+category: 軟體工具
+tags: [AI, 工具, 開發]
+cover: /og/toolbox-ai-tools-strategy.png
+seo:
+  ogImage: /og/toolbox-ai-tools-strategy.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import grok from '@/assets/imgs/toolbox/ai-tools-strategy/grok.png'
+import notebookLM from '@/assets/imgs/toolbox/ai-tools-strategy/notebooklm.png'
+import claudeCode from '@/assets/imgs/toolbox/ai-tools-strategy/claude-code.png'
+import codex from '@/assets/imgs/toolbox/ai-tools-strategy/codex.png'
+import gemini from '@/assets/imgs/toolbox/ai-tools-strategy/gemini.png'
+
+這篇整理了我目前在不同場景下使用 AI 工具的策略跟搭配方式。不同的 AI 工具各有擅長的領域，與其只用一個，不如根據需求選擇最適合的工具。
+
+## 知識搜集
+
+在了解新知跟掌握最新動態方面，我主要搭配 Grok 跟 NotebookLM 來使用。
+
+### Grok
+
+<Image src={grok} alt="Grok" />
+
+<a href="https://grok.com" target="_blank" class="official-link">Grok</a>
+
+Grok 最大的優勢是可以直接讀取 X（Twitter）上的即時資訊並做匯總。AI 領域的消息更新非常快，很多第一手的資訊跟討論都是在 X 上發布的，透過 Grok 可以快速掌握最新動態。
+
+我在使用時習慣搭配 **Axios Smart Brevity** 的敘事法來下提示詞，讓 AI 產出的內容更精練、更好吸收。Smart Brevity 的核心原則是：
+
+- **What's new**：先說最新的重點是什麼
+- **Why it matters**：為什麼這件事重要
+- **The big picture**：放在更大的脈絡下來看
+- **What's next**：接下來會怎麼發展
+
+以下是我常用的提示詞範例，提供給讀者參考：
+
+```
+請用 Axios Smart Brevity 的格式，幫我整理過去一週 AI 領域最重要的 5 個進展：
+
+1. What's new：用一句話說明發生了什麼
+2. Why it matters：為什麼這件事重要
+3. The big picture：這件事在產業中的脈絡
+4. What's next：後續可能的發展方向
+```
+
+### NotebookLM
+
+<Image src={notebookLM} alt="NotebookLM" />
+
+<a href="https://notebooklm.google.com" target="_blank" class="official-link">NotebookLM</a>
+
+Google 推出的 AI 知識工具，可以上傳文件、網頁、影片等資料來源，讓 AI 基於這些資料進行分析跟問答。跟一般的 AI 聊天不同，NotebookLM 的回答會嚴格基於你提供的資料，不會產生幻覺。
+
+我主要用它來整理跟消化比較長的技術文件或研究報告，把大量的資訊快速提煉成重點，加速知識吸收的效率。
+
+## 軟體開發
+
+在開發工作上，我採用 Claude Code 主力開發、Codex 輔助 Review 的混合策略。
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" />
+
+<a href="https://claude.ai/code" target="_blank" class="official-link">Claude Code</a>
+
+我目前主力使用的 AI 開發工具。在程式碼的表現上，Claude 的速度跟準確性是目前最均衡的選擇。主要使用場景包含：
+
+- **程式碼撰寫**：日常的功能開發、重構跟除錯都在 Claude Code 裡完成。
+- **架構討論**：在開始一個新功能之前，會先跟 Claude 討論架構跟實作方向。
+- **文件生成**：讓 Claude 根據程式碼自動產生技術文件跟 API 說明。
+
+### Codex
+
+<Image src={codex} alt="Codex" />
+
+<a href="https://chatgpt.com/codex" target="_blank" class="official-link">Codex</a>
+
+OpenAI 的 AI 開發工具，我主要拿它來做程式碼的 Review。工作流程是：
+
+1. Claude Code 完成開發後，讓 Codex 去看這個分支上的所有修改。
+2. 把 Codex 的模式提升到最高層級進行思考，讓它完整看完差異後產出 Review 報告。
+3. 把報告內容餵回 Claude Code 去修正。
+4. 來回直到 Codex 的 Review 結果 OK，才推送到遠端。
+
+這樣用兩個不同的 AI 互相檢查，程式碼的品質會比只靠單一模型好不少。
+
+### 提示詞策略與使用技巧
+
+在使用 AI 開發工具時，提示詞的品質直接決定了輸出的品質。以下是我整理的幾個核心原則：
+
+#### 先思考，再輸入
+
+大多數人拿到 AI 工具後第一件事就是開始打字，但這往往是最大的錯誤。正確的做法是先進入規劃模式（Plan Mode），想清楚架構跟實作方向後再開始。花 5 分鐘規劃，可以省下後續數小時的除錯時間。
+
+#### 具體優於模糊
+
+模糊的指令會讓 AI 有太多自由發揮的空間，產出的結果通常不是你想要的。比較以下兩種提示詞的差異：
+
+```
+❌ 幫我建立一個身份驗證系統
+
+✅ 使用現有的 User Model 建立 Email/Password 驗證，
+   將 Session 儲存在 Redis 中並設定 24 小時過期，
+   新增 Middleware 保護 /api/protected 底下的所有路由
+```
+
+#### 說明為什麼，不只是做什麼
+
+當你給 AI 解釋指令背後的原因時，它的執行效果會明顯更好。例如「使用 TypeScript strict mode」是可以的，但「使用 TypeScript strict mode，因為我們遇過隱式 any 類型導致的線上 bug」更好。原因能幫助 AI 在你沒預料到的情況下做出更好的判斷。
+
+#### 告訴它不要做什麼
+
+AI 有過度設計的傾向，特別容易產生額外的檔案跟不必要的抽象層。如果你要的是簡單的實作，明確告訴它：「保持簡單，不要加我沒要求的抽象層，盡量用一個檔案完成。」
+
+#### CLAUDE.md 是你的槓桿點
+
+CLAUDE.md 是 Claude Code 每次對話前都會讀取的設定檔，寫好它能大幅提升每次互動的品質：
+
+- **保持簡短**：Claude 一次大約只能可靠地執行 150-200 條指令，系統提示已佔約 50 條，每一條你加的指令都在競爭注意力。
+- **只寫專案特有的東西**：不用解釋什麼是 components 資料夾，Claude 知道。告訴它你的專案裡那些特殊的部分。
+- **持續更新**：每次發現自己糾正 Claude 同一件事兩次，就該把它寫進 CLAUDE.md。
+
+<div class="callout info">好的 CLAUDE.md 像是你知道自己明天會失憶時留給自己的筆記，而不是寫給新人的入職文件。</div>
+
+#### 管理上下文視窗
+
+AI 模型的上下文品質大約在使用 30% 左右就會開始下降，而不是 100%。幾個實用的做法：
+
+- **一個對話只處理一個任務**：不要在同一個對話裡又建功能又重構資料庫。
+- **善用外部記憶**：讓 Claude 把計畫跟進度寫到實際檔案裡（例如 SCRATCHPAD.md），這些內容會跨對話保留。
+- **適時清除重來**：如果對話已經偏離或累積太多無關內容，直接 `/clear` 重新開始，比硬撐著繼續更好。
+
+#### 卡住時換個方式
+
+如果解釋了三遍 Claude 還是不理解，再解釋也沒用。這時應該：
+
+- 清除對話，用全新的上下文重試
+- 把複雜任務拆成更小的步驟
+- 自己寫一個最小範例，讓 Claude 照著模式去做
+- 換個角度重新描述問題
+
+<div class="callout info">記住：輸出源自於輸入。如果輸出結果不好，問題幾乎都在輸入端。</div>
+
+## 日常使用
+
+日常生活中，我最常使用 Gemini，主要是因為它跟 Google 生態系的深度整合。
+
+### Gemini
+
+<Image src={gemini} alt="Gemini" />
+
+<a href="https://gemini.google.com" target="_blank" class="official-link">Gemini</a>
+
+#### 語音轉文字（STT）
+
+Gemini 可以處理錄音檔，直接把語音內容轉成文字並提煉重點大綱。這是目前 Claude 跟 ChatGPT 都還不太能做到的事情。我在會議結束後或錄完語音備忘錄時，會把錄音檔丟給 Gemini 整理成結構化的筆記。
+
+#### Google 生態系操作
+
+因為我的日曆、郵件、雲端硬碟都在 Google 生態系裡，Gemini 可以直接操作這些服務。像是建立行程、查詢排程、搜尋雲端文件等等，不需要切換不同的 App。
+
+## 設計與簡報
+
+### Gemini 圖片生成
+
+Gemini 的圖片生成效果很好，基於圖片的二次創作我會用它來處理。我在生成圖片時的技巧是：
+
+- **先用 AI 分析圖片結構**：在生成之前，先讓 AI 分析參考圖片的構圖、色調跟排版，產出文字描述。
+- **視覺效果用文本敘述**：背景、風格、氛圍等視覺元素用文字來描述，比直接給圖片更精準，因為文字能明確傳達你想要的方向，避免 AI 誤讀圖片的意圖。也可以先提供參考圖片讓 AI 分析後產出優化的文字描述，再用這段描述去生成。
+- **只有需要保持現實的素材才提供圖片**：例如 Logo、產品照片等必須還原的元素，才在生成時附上原始圖片，其餘都交給文字描述。
+
+這樣做的好處是 AI 有足夠的創作空間，同時關鍵的視覺元素又能維持一致性。
+
+### Upscayl 圖片放大
+
+生成的圖片如果解析度不夠，可以搭配 Upscayl 做 AI 放大，在不損失畫質的情況下提升解析度。詳細介紹可以參考 Mac 軟體．設計篇。
+
+<a href="/toolbox/mactools-design#upscayl" class="official-link">Mac 軟體．設計篇 — Upscayl</a>
+
+### AI 簡報製作
+
+用 AI 製作簡報時，我目前會根據需求使用三種不同的方式：
+
+#### 1. Canva — 模板化設計
+
+最傳統也最容易編輯的方式。我會先用 AI 整理每個章節需要呈現的內容大綱，再到 Canva 裡套用模板完成設計。適合需要快速產出、後續還要反覆修改的場景。
+
+#### 2. AI 圖片生成 — 客製化風格
+
+用 Gemini 之類的 AI 圖片生成工具，直接產出每一頁簡報的圖片。這種方式可以做到高度客製化的視覺風格，效果比模板好看很多，但缺點是產出的是圖片，後續要修改文字或內容比較困難。
+
+#### 3. AI 簡報網頁 — 兼顧美觀與可編輯
+
+直接請 AI 生成 16:9 的簡報網頁。跟圖片生成一樣可以做到客製化的視覺效果，但因為是網頁，修改文字、內容跟樣式都變得更簡單可控。唯一需要多處理的是網頁轉成 PDF 的這一段，如果需要交付文檔的話。
+
+#### 三種方式的比較
+
+| | Canva | AI 圖片生成 | AI 簡報網頁 |
+|------|------|-----------|-----------|
+| **編輯性** | 高，隨時可改 | 低，圖片難修改 | 高，直接改 HTML |
+| **視覺風格** | 受模板限制 | 高度客製化 | 高度客製化 |
+| **動態效果** | 基本動畫 | 無 | 豐富，支援 CSS 動畫與互動 |
+| **輸出格式** | PPT / PDF | 圖片 | 網頁 / PDF（需轉檔） |
+| **適合場景** | 快速產出、反覆修改 | 追求視覺風格、不需修改 | 現場展示、Demo |
+
+我的流程通常是兩步驟：先讓 AI 分析文件整理大綱，再用大綱生成簡報（同時定義風格）。以下是提示詞範例：
+
+**步驟一：分析文件，整理簡報大綱**
+
+```
+請分析以下文件內容，整理成簡報大綱。
+每一頁列出：
+1. 頁面標題
+2. 核心訊息（一句話）
+3. 需要呈現的重點（3-5 個）
+4. 建議搭配的視覺元素（圖表、圖片、icon 等）
+
+文件內容：
+（貼上文件）
+```
+
+**步驟二 — Canva：用大綱到 Canva 套模板製作**
+
+拿到大綱後直接到 Canva 裡依照每頁的內容套用模板完成設計。
+
+**步驟二 — AI 圖片生成：大綱轉簡報圖片**
+
+```
+根據以下大綱，逐頁生成 16:9 的簡報頁面圖片：
+- 視覺風格：簡約、深色背景、白色文字、圓角卡片排版
+- 字體風格：現代無襯線體
+- 配色：以___為主色調
+
+大綱：
+（貼上步驟一的結果）
+```
+
+**步驟二 — AI 簡報網頁：大綱轉互動網頁**
+
+```
+根據以下大綱，生成一個 16:9 的簡報網頁（HTML）：
+- 使用全螢幕切換的方式呈現每一頁
+- 支援鍵盤左右鍵換頁
+- 視覺風格：___
+
+大綱：
+（貼上步驟一的結果）
+```
+
+<div class="callout info">如果簡報的目的是現場展示而非交付文檔，簡報網頁在動態效果跟視覺表現上都優於傳統方式。如果需要交付 PDF，網頁也可以透過瀏覽器列印轉換。</div>
+
+## 工具搭配總覽
+
+| 場景 | 工具 | 用途 |
+|------|------|------|
+| **知識搜集** | Grok | X 即時資訊匯總、AI 新知追蹤 |
+| **知識搜集** | NotebookLM | 文件分析、知識提煉 |
+| **開發** | Claude Code | 主力開發、架構討論、文件生成 |
+| **開發** | Codex | 程式碼 Review、品質檢查 |
+| **日常** | Gemini | 語音轉文字、Google 生態系操作 |
+| **設計** | Gemini | 圖片生成、二次創作 |
+| **設計** | Upscayl | AI 圖片放大 |
+| **設計** | AI 簡報網頁 | 16:9 動態簡報，取代傳統 PPT |
