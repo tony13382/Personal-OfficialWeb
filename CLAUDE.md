@@ -1,0 +1,79 @@
+# CLAUDE.md
+
+## 專案概覽
+
+個人官方網站，使用 Astro 5 + React + Tailwind CSS v4 建構。部署在 Cloudflare Pages。
+
+## 技術棧
+
+- **框架**：Astro 5（SSG）+ React（互動元件）
+- **樣式**：Tailwind CSS v4（透過 @tailwindcss/vite 整合）
+- **UI 元件**：shadcn/ui + Radix UI
+- **圖示**：Phosphor Icons + Lucide React
+- **內容**：MDX（文章、專案、經歷）
+- **部署**：Cloudflare Pages
+- **圖片**：Astro Image（Sharp，quality: 90）
+
+## 常用指令
+
+```bash
+npm run dev      # 啟動開發伺服器
+npm run build    # 建構正式版本
+npm run preview  # 預覽建構結果
+```
+
+## 專案結構
+
+```
+src/
+├── content/          # MDX 內容
+│   ├── toolbox/      # 分享專欄文章
+│   ├── projects/     # 專案頁面
+│   └── jobs/         # 經歷頁面
+├── pages/            # Astro 頁面路由
+├── components/       # React + Astro 元件
+├── layouts/          # 頁面佈局
+├── assets/imgs/      # 圖片資源（由 Astro Image 處理）
+└── styles/           # 全域樣式
+public/
+└── og/               # OG Cover 圖片（不經過 Astro Image 處理）
+```
+
+## 分享專欄（Toolbox）寫作指引
+
+### 定位
+
+目標讀者是廣泛的科技愛好者。核心價值是讓讀者帶走「工具 + 方法」的組合。
+
+### 每篇文章必須回答三個問題
+
+1. **用什麼工具** — 工具本身的介紹
+2. **為什麼選它** — 選擇的理由跟比較過的替代方案
+3. **怎麼搭配使用** — 工具之間的串接方式、具體的工作流程
+
+### 寫作風格
+
+- 第一人稱、口語化，像在跟朋友分享經驗
+- 用「跟」不用「與」
+- 不用 emoji
+- 交代選擇脈絡：「因為我同時在用 A 跟 B，所以...」
+- 方法論搭配具體操作步驟跟提示詞範例
+
+### MDX 特殊元件
+
+- **Pricing Tag**：`<span class="pricing-tag">免費</span>`（綠）、`.paid`（橘）、`.freemium`（藍）
+- **Callout**：`<div class="callout info">...</div>`（藍）、`.warning`（粉）
+- **Code Title**：`<p class="code-title">檔案名稱</p>`
+- **Official Link**：`<a href="..." target="_blank" class="official-link">文字</a>`
+
+### Commit 規範
+
+使用 `/commit-generate` skill 來產生 commit message。不加 Co-Authored-By。
+
+## 注意事項
+
+- toolbox 頁面的 inline code 樣式是程式碼風格（灰底紅字），其他頁面是 highlight 風格（主題色底線）
+- H2 區塊會被 JS 拆成獨立卡片，每個 H2 是一張卡片
+- TOC 連結使用 replaceState 避免污染瀏覽器歷史
+- 圖片品質設定為 90（astro.config.mjs）
+- `.gitignore` 已排除 `design/` 跟 `*.ttf`
