@@ -1,0 +1,109 @@
+---
+title: 跨裝置檔案互傳
+description: 分享我在 Apple 生態圈、跨平台跟分享給他人時使用的檔案傳輸工具跟選擇邏輯
+date: 2026-04-03
+category: 軟體工具
+tags: [檔案傳輸, AirDrop, LocalSend]
+cover: /og/toolbox-file-transfer.png
+seo:
+  ogImage: /og/toolbox-file-transfer.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import airdropImg from '@/assets/imgs/toolbox/file-transfer/airdrop.png'
+import localsendImg from '@/assets/imgs/toolbox/file-transfer/localsend.png'
+import blipImg from '@/assets/imgs/toolbox/file-transfer/blip.png'
+import sendanywhereImg from '@/assets/imgs/toolbox/file-transfer/sendanywhere.png'
+
+跨裝置傳檔案這件事聽起來很簡單，但當你手上的裝置橫跨 Apple 跟 Android、有時候在同一個 Wi-Fi 底下、有時候不在，每次要傳檔案都得想一下「現在應該用哪個工具」其實蠻煩的。這篇整理了我目前在用的四個傳輸工具，以及我怎麼根據不同情境來決定用哪一個。
+
+## 怎麼選工具
+
+傳檔案之前我會先問自己兩個問題，答案決定了該用哪個工具：
+
+**第一個問題：傳給誰？**
+
+如果是傳到自己的另一台裝置，走的是「自用」路線——不需要產生連結、不需要對方做任何操作，裝置之間直接互傳就好。如果是要分享給別人，走的是「分享」路線——對方不一定有裝特定 App，所以需要一個通用的方式讓對方能收到。
+
+**第二個問題：網路環境是什麼？**
+
+這個問題只有在「自用」路線才需要考慮。如果兩台裝置在同一個區域網路底下（同一個 Wi-Fi 或熱點），用區網傳輸最快、最穩定。如果不在同一個網路，就需要走外網的方案。
+
+整理起來就是三條路：
+
+| 情境 | 條件 | 工具 |
+|------|------|------|
+| 自用 + Apple 裝置 | 兩台都是 Apple | AirDrop |
+| 自用 + 跨平台 + 同網路 | 在同一個區網底下 | LocalSend |
+| 自用 + 跨平台 + 不同網路 | 不在同一個網路 | Blip |
+| 分享給別人 | 對方不一定有裝 App | Send Anywhere |
+
+## 自己裝置之間
+
+我目前主要在用的裝置是 MacBook Pro、iPhone、iPad 跟一台 Android（Pixel 7），日常最常遇到的場景是在這些裝置之間互傳照片、截圖跟文件。根據裝置組合跟網路環境，我會用不同的工具。
+
+### AirDrop
+
+<Image src={airdropImg} alt="AirDrop" />
+
+Apple 裝置之間傳東西，AirDrop 還是最無腦的選擇。不需要在同一個 Wi-Fi、不需要開任何 App、不需要輸入配對碼，選好檔案按分享就送出去了。速度很快，而且傳完之後檔案會直接進到對應的 App 裡（照片進相簿、文件進檔案）。
+
+我在 Mac、iPhone、iPad 之間傳東西幾乎都是用 AirDrop，沒有理由用別的。唯一的限制就是它只能在 Apple 生態圈裡用——所以當我要傳東西到 Pixel 的時候，就需要其他工具了。
+
+<span class="pricing-tag">免費</span>
+
+### LocalSend
+
+<Image src={localsendImg} alt="LocalSend" />
+
+LocalSend 是一個開源的跨平台傳輸工具，支援 Windows、macOS、Linux、Android 跟 iOS。核心概念很簡單：只要兩台裝置在同一個區域網路底下，就能直接互傳檔案，不經過任何雲端伺服器。
+
+我主要用它來處理 Mac 跟 Pixel 之間的傳輸。因為 AirDrop 不支援 Android，而 LocalSend 在區網內的傳輸速度幾乎跟 AirDrop 一樣快，體驗上很接近。打開 App 之後會自動發現同網路的其他裝置，選好檔案送出，對方確認接收就完成了。
+
+因為是走區網直連，所有資料都不會離開你的本地網路，隱私上比較放心。不過也因為這樣，它只能在同一個網路底下使用——如果你在外面用行動網路，就沒辦法用 LocalSend 了。
+
+<span class="pricing-tag">免費</span>
+<a href="https://localsend.org" target="_blank" class="official-link">官方網站</a>
+
+### Blip
+
+<Image src={blipImg} alt="Blip" />
+
+Blip 補上的是「跨平台 + 不同網路」這塊缺口。當我在外面、Mac 跟 Pixel 不在同一個 Wi-Fi 底下的時候，LocalSend 用不了，這時候就輪到 Blip 上場。
+
+Blip 的操作體驗跟 AirDrop 很像——登入同一個帳號之後，你的所有裝置會自動出現在列表裡，選好檔案送出就完成了，不需要掃碼或輸入配對碼。它走的是外網傳輸，所以不受區網限制，在任何網路環境下都能用。
+
+我把 Blip 定位成「AirDrop 的跨平台外網版」。在家裡有 Wi-Fi 的時候我還是會優先用 LocalSend（速度更快、完全本地），但出門在外就切換到 Blip。
+
+<span class="pricing-tag">免費</span>
+<a href="https://blip.net" target="_blank" class="official-link">官方網站</a>
+
+## 傳給別人
+
+自己的裝置之間傳檔案，因為每台都有裝對應的 App，所以不管用哪個工具都很順。但要傳給別人就不一樣了——你不能假設對方有裝 LocalSend 或 Blip，需要一個對方不用安裝任何東西就能收檔案的方式。
+
+### Send Anywhere
+
+<Image src={sendanywhereImg} alt="Send Anywhere" />
+
+Send Anywhere 解決的就是這個問題。傳檔案的時候它會產生一組六位數的配對碼，對方只要在網頁上輸入這組號碼就能下載，不需要註冊帳號、不需要安裝 App。
+
+我通常會在需要傳檔案給朋友或同事的時候用它。操作流程很簡單：選好檔案、點送出、把六位數配對碼傳給對方（Line、Slack 什麼都行），對方打開 Send Anywhere 的網頁輸入號碼就能下載。
+
+跟 Google Drive 分享連結比起來，Send Anywhere 的好處是不需要先上傳到雲端再產生連結，傳輸是即時的，而且配對碼有時效性，過期就失效，不會留下一個永久的分享連結在那邊。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://send-anywhere.com" target="_blank" class="official-link">官方網站</a>
+
+## 工具總覽
+
+| 工具 | 適用場景 | 平台 | 網路需求 | 對方需安裝 |
+|------|----------|------|----------|------------|
+| AirDrop | Apple 裝置互傳 | Apple 限定 | 不需同網路 | 不需要（內建） |
+| LocalSend | 跨平台，同網路 | 全平台 | 需同區網 | 需要 |
+| Blip | 跨平台，不同網路 | 全平台 | 不限 | 需要 |
+| Send Anywhere | 傳給別人 | 全平台 | 不限 | 不需要（網頁收） |
+
+四個工具各守一個場景，沒有重疊。AirDrop 顧 Apple 生態圈、LocalSend 顧跨平台區網、Blip 顧跨平台外網、Send Anywhere 顧分享給別人。記住「傳給誰」跟「在什麼網路」這兩個問題，自然就知道該開哪個 App。
