@@ -14,6 +14,8 @@ import { Image } from 'astro:assets'
 import meetingSchedule from '@/assets/imgs/toolbox/project-management/meeting-schedule.png'
 import notionLifeos from '@/assets/imgs/toolbox/project-management/notion-lifeos.png'
 import calendarList from '@/assets/imgs/toolbox/project-management/calendar-list.png'
+import when2meetImg from '@/assets/imgs/toolbox/project-management/when2meet.png'
+import timefulImg from '@/assets/imgs/toolbox/project-management/timeful.png'
 
 這篇整理了我在不同場景下的任務管理方式跟工具選擇。我會根據任務的規模跟性質，搭配不同的工具來處理，而不是把所有事情都塞進同一個系統裡。
 
@@ -156,3 +158,23 @@ import calendarList from '@/assets/imgs/toolbox/project-management/calendar-list
 - **不限制串接 Google 日曆數量**：公司有公司的 Google 日曆，個人也有自己的 Google 日曆，需要同時串接管理，這點其他工具的免費方案做不到。
 - **完全免費**：核心功能不需要付費，對個人使用來說已經很夠用。
 - **易於操作**：介面簡潔直覺，跟 Notion 生態系整合在一起，不需要額外學習成本。
+
+### 多人時段協調
+
+前面講的排程工具解決的是「別人找你約時間」的一對一場景。但還有另一種常見的情況：一群人要找出大家都有空的時段，例如社團開會、朋友聚餐、團隊活動。這種時候來回在群組裡問「你禮拜幾有空」效率很低，需要一個讓每個人各自填寫可用時段、再自動比對的工具。
+
+這類工具我推薦兩個，各有特色：
+
+<Image src={when2meetImg} alt="When2meet" />
+
+**When2meet** 是最多人知道的選項，操作很單純——建立活動、選候選日期跟時間範圍，把連結丟到群組裡，每個人點進去用拖曳的方式標記自己有空的時段。填完之後系統會用顏色深淺顯示重疊程度，一眼就能看出哪個時段最多人有空。最大的優點是完全不用註冊，打開連結、輸入名字就能填，對不熟悉工具的人來說門檻最低。
+
+<span class="pricing-tag">免費</span>
+<a href="https://www.when2meet.com" target="_blank" class="official-link">When2meet</a>
+
+<Image src={timefulImg} alt="Timeful" />
+
+**Timeful**（前身是 Schej）則是介面更現代的替代方案。它可以串接 Google Calendar 跟 Outlook，參與者登入後系統會自動抓取行事曆上的忙碌時段，不用手動填寫。確認好時間之後還能直接在 Timeful 裡建立日曆事件，不用再切到其他 App。如果你的團隊成員都有用 Google Calendar，用 Timeful 會順很多。
+
+<span class="pricing-tag">免費</span>
+<a href="https://timeful.app" target="_blank" class="official-link">Timeful</a>
