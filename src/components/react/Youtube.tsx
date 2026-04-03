@@ -5,7 +5,7 @@ interface YoutubeProps {
 
 export function Youtube({ embedUrl, title = "YouTube video player" }: YoutubeProps) {
   return (
-    <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+    <div className="youtube relative w-full overflow-hidden" style={{ paddingBottom: '56.25%' }}>
       <iframe
         className="absolute top-0 left-0 w-full h-full"
         src={embedUrl}
