@@ -1,0 +1,249 @@
+---
+title: CloudBio - Bio Link 管理工具
+description: 基於 Cloudflare 的私人 Bio Link 管理方案，支援視覺化編輯、多種區塊類型與外觀自訂
+subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、資料庫設計、前後端開發、部署"
+startDate: 2025-01-01
+status: active
+theme: pink
+cover: /assets/imgs/projects/cloudBio/cover.png
+pin: true
+skillTypes: [dev, design]
+tags: [全端開發, 資料庫設計, Serverless, Cloudflare]
+links:
+  - content: 專案介紹
+    href: https://cloudbio.lumakes.com/
+    icon: LinkIcon
+    openInTab: true
+  - content: GitHub 專案
+    href: https://github.com/tony13382/CloudBio
+    icon: GithubLogoIcon
+    openInTab: true
+tools:
+  - name: Hono
+    description: 輕量高效的 Web 框架，運行於 Cloudflare Workers
+  - name: React 19
+    description: 前端 UI 框架，搭配 SWR 進行資料同步
+  - name: Cloudflare Workers
+    description: Serverless 邊緣運算平台
+  - name: Cloudflare D1
+    description: Serverless SQLite 資料庫
+  - name: Cloudflare R2
+    description: 物件儲存，處理圖片上傳與存取
+  - name: Cloudflare KV
+    description: 鍵值快取，加速頁面渲染
+  - name: Drizzle ORM
+    description: Type-safe 資料庫操作與 Migration 管理
+  - name: shadcn/ui
+    description: 基於 Radix UI 的高品質元件庫
+  - name: Tailwind CSS
+    description: Utility-first CSS 框架
+  - name: dnd-kit
+    description: 拖曳排序功能實作
+seo:
+  metaTitle: CloudBio - Bio Link 管理工具 - 呂亮進的專案作品
+  metaDescription: 基於 Cloudflare 的私人 Bio Link 管理方案，支援視覺化編輯、多種區塊類型與外觀自訂
+  ogImage: /assets/imgs/projects/cloudBio/cover.png
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+
+<Card>
+  <CardContent className="gap-4">
+    ## 專案介紹
+    CloudBio 是一款`自架式 Bio Link 管理工具`，類似 Linktree / Portaly 的開源替代方案。使用者可透過視覺化編輯器，以拖曳方式自由組合文字按鈕、輪播橫幅、影片播放器等多種區塊，打造個人化的 Bio Link 頁面。
+
+    全端架構基於 `Hono` 運行於 `Cloudflare Workers`，搭配 `D1 SQLite` 資料庫、`R2` 物件儲存與 `KV` 快取，實現零伺服器維護成本的完整 Bio Link 服務。
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>核心功能</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**七種區塊類型**</p>
+        支援文字按鈕（含副標題、圖片、動畫效果）、輪播橫幅、方形面板、雙欄方格、影片播放器（YouTube）、分隔線與富文本區塊，滿足多樣化的內容展示需求。
+      </div>
+      <div className="space-y-1.5">
+        <p>**拖曳式編輯器**</p>
+        基於 `@dnd-kit` 實現 Notion 風格的區塊拖曳排序，搭配手機模擬預覽框，即時檢視編輯效果。
+      </div>
+      <div className="space-y-1.5">
+        <p>**外觀自訂系統**</p>
+        支援純色、漸層、圖片三種背景模式，可自訂按鈕樣式、字型、文字顏色，並提供融入式與卡片式兩種個人資訊佈局。進階使用者可透過自訂 CSS 進一步調整。
+      </div>
+      <div className="space-y-1.5">
+        <p>**社群平台整合**</p>
+        內建 13 種社群平台圖示（Instagram、GitHub、LinkedIn、X、Threads 等），一鍵設定社群連結。
+      </div>
+      <div className="space-y-1.5">
+        <p>**圖片管理**</p>
+        透過 `Cloudflare R2` 處理圖片上傳，支援客戶端 WebP 壓縮與裁切工具，減少頻寬消耗與儲存成本。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>技術架構</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**前端**</p>
+        以 `React 19` 搭配 `shadcn/ui` 元件庫與 `Tailwind CSS v4` 建構現代化介面。使用 `SWR` 進行資料同步，`@dnd-kit` 處理拖曳交互，`react-easy-crop` 實現圖片裁切功能。
+      </div>
+      <div className="space-y-1.5">
+        <p>**後端**</p>
+        以 `Hono` 為 Web 框架，運行於 `Cloudflare Workers` 邊緣運算環境。使用 `Cloudflare D1 (SQLite)` 作為資料庫，`R2` 儲存圖片資源，`KV` 快取已渲染的頁面 HTML。透過 `Drizzle ORM` 進行 Type-safe 的資料操作。
+      </div>
+      <div className="space-y-1.5">
+        <p>**認證系統**</p>
+        自建 JWT 認證機制，密碼使用 `PBKDF2-SHA256`（100,000 次迭代）進行雜湊，採用 HttpOnly + Secure + SameSite Cookie 管理 Session，支援 Email 白名單邀請制。
+      </div>
+      <div className="space-y-1.5">
+        <p>**SSR 渲染**</p>
+        公開 Bio 頁面採用伺服器端渲染，並將結果快取至 `KV`，避免重複的資料庫查詢，提升訪客端的載入速度。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+export const dbItems = [
+  {
+    value: "users-table",
+    trigger: "使用者資料表：users",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
+                <th class="border-y text-left font-bold px-4 py-2">說明</th>
+                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">users</td>
+                <td class="border-y px-4 py-2">使用者帳號與個人資訊</td>
+                <td class="border-y px-4 py-2">id, email, username, password_hash, display_name, bio, avatar_url, social_links</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "blocks-table",
+    trigger: "區塊資料表：blocks",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
+                <th class="border-y text-left font-bold px-4 py-2">說明</th>
+                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">blocks</td>
+                <td class="border-y px-4 py-2">Bio 頁面的內容區塊（七種類型）</td>
+                <td class="border-y px-4 py-2">id, user_id, type, config (JSON), is_active, sort_order</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "appearances-table",
+    trigger: "外觀設定：appearances",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
+                <th class="border-y text-left font-bold px-4 py-2">說明</th>
+                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">appearances</td>
+                <td class="border-y px-4 py-2">使用者的外觀主題設定</td>
+                <td class="border-y px-4 py-2">id, user_id, background, button_style, font_family, text_color, custom_css</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardTitle>資料庫設計</CardTitle>
+  <CardContent className="gap-3 pt-4">
+    <p>使用 `Cloudflare D1 (SQLite)` 搭配 `Drizzle ORM`，以精簡的三張資料表涵蓋使用者、區塊內容與外觀設定。區塊採用 JSON config 欄位儲存各類型的設定資料，實現靈活的多型區塊架構。</p>
+    <AccordionBlock
+      items={dbItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>API 設計</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>基於 Hono 路由設計 RESTful API，所有需認證的端點皆透過 JWT Middleware 保護：</p>
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p>**認證系統** `/api/auth`</p>
+        使用者註冊與登入，JWT Token 簽發與驗證
+      </div>
+      <div className="space-y-1.5">
+        <p>**個人檔案** `/api/profile`</p>
+        顯示名稱、簡介、頭像與社群連結的更新管理
+      </div>
+      <div className="space-y-1.5">
+        <p>**區塊管理** `/api/blocks`</p>
+        支援七種區塊類型的 CRUD 操作與拖曳排序更新
+      </div>
+      <div className="space-y-1.5">
+        <p>**外觀設定** `/api/appearance`</p>
+        背景、按鈕、字型、顏色與自訂 CSS 的儲存與讀取
+      </div>
+      <div className="space-y-1.5">
+        <p>**圖片上傳** `/api/upload`</p>
+        圖片上傳至 R2，並透過 `/api/img/*` 提供長期快取的圖片存取
+      </div>
+      <div className="space-y-1.5">
+        <p>**公開頁面** `/api/bio/:username`</p>
+        無需認證的公開端點，供訪客取得使用者的 Bio 頁面資料
+      </div>
+    </div>
+  </CardContent>
+</Card>
