@@ -27,7 +27,7 @@ export const socialLinks: NavLink[] = [
     external: true,
   },
   {
-    href: 'https://calendar.notion.so/meet/liangchin/onehour',
+    href: 'https://calendar.notion.so/meet/liangchin/short',
     label: '預約會議',
     icon: <CalendarPlusIcon className="size-5" />,
     external: true,
@@ -39,7 +39,7 @@ export const socialLinks: NavLink[] = [
   //     external: true,
   // },
   {
-    href: 'https://portaly.cc/liang_chin_ml',
+    href: 'https://cloudbio.lumakes.com/liang',
     label: '更多資料',
     icon: <InfoIcon className="size-5" />,
     external: true,
