@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 import Icon from "@/components/Icon.astro";
 import { MobileNav } from "@/components/header/MobileNav";
-import { HeaderSocialLinks } from "@/components/data/social";
 import { mainLinks } from "@/components/header/index";
+import { SearchDialog } from "@/components/search/SearchDialog";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 
 
@@ -74,8 +74,7 @@ const { type = "main", themeColor } = Astro.props;
           )
         }
 
-        <!-- Social Links -->
-        <HeaderSocialLinks client:load />
+        <SearchDialog client:load />
       </div>
 
       <!-- Mobile Navigation (Sheet) -->

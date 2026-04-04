@@ -59,7 +59,7 @@ export function ProfileCardTigger() {
   return (
     <button
       id="profile-modal-btn"
-      className="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5 lg:hidden"
+      className="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
       title="通知我"
     >
       <img
@@ -74,6 +74,7 @@ export function ProfileCardTigger() {
     </button>
   )
 }
+
 
 
 

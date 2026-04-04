@@ -6,6 +6,7 @@ import Icon from "@/components/Icon.astro";
 import { ProjectsFall } from "@/components/projects/ProjectsFall";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ProfileCardTigger, ProfileCardModal } from "@/components/data/profile";
 
 const allProjects = await getCollection("projects");
 const sortedProjects = allProjects.sort((a, b) => {
@@ -197,6 +198,9 @@ const sortedPosts = allPosts
       </div>
     </section>
   </div>
+
+  <ProfileCardTigger client:load />
+  <ProfileCardModal client:load />
 
   <style>
     .fade-in {
