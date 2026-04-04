@@ -9,8 +9,15 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lianglu.uk',
+  site: 'https://lumakes.com',
   integrations: [react(), mdx(), sitemap()],
+
+  redirects: {
+    '/experience/': '/about/',
+    '/experience': '/about/',
+    '/toolbox/': '/articles/',
+    '/toolbox': '/articles/',
+  },
 
   image: {
     quality: 90,

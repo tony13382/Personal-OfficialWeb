@@ -87,8 +87,8 @@ const jobsCollection = defineCollection({
   })
 })
 
-// Toolbox Collection
-const toolboxCollection = defineCollection({
+// Articles Collection
+const articlesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     // 基本資訊
@@ -119,5 +119,5 @@ const toolboxCollection = defineCollection({
 export const collections = {
   projects: projectsCollection,
   jobs: jobsCollection,
-  toolbox: toolboxCollection,
+  articles: articlesCollection,
 }

@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/Icon.astro";
 
-const allPosts = await getCollection("toolbox");
+const allPosts = await getCollection("articles");
 const sortedPosts = allPosts.sort((a, b) => {
   if (a.data.pin && !b.data.pin) return -1;
   if (!a.data.pin && b.data.pin) return 1;
@@ -54,7 +54,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-category-grid>
                       {categoryPosts.map((post, index) => (
                         <a
-                          href={`/toolbox/${post.slug}/`}
+                          href={`/articles/${post.slug}/`}
                           class:list={["group block no-underline", index >= 6 && "hidden"]}
                           data-card-index={index}
                         >

@@ -1,4 +1,4 @@
-import { BriefcaseIcon, MegaphoneIcon } from '@phosphor-icons/react'
+import { UserIcon, MegaphoneIcon } from '@phosphor-icons/react'
 
 export interface NavLink {
     href: string
@@ -8,6 +8,6 @@ export interface NavLink {
 }
 
 export const mainLinks: NavLink[] = [
-    { href: '/experience/', label: '經歷', icon: <BriefcaseIcon className='size-6 me-1' /> },
-    { href: '/toolbox/', label: '分享專欄', icon: <MegaphoneIcon className='size-6 me-1' /> },
+    { href: '/about/', label: '關於', icon: <UserIcon className='size-6 me-1' /> },
+    { href: '/articles/', label: '文章', icon: <MegaphoneIcon className='size-6 me-1' /> },
 ]

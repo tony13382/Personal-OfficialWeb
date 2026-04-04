@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lianglu.uk/sitemap-index.xml
+Sitemap: https://lumakes.com/sitemap-index.xml

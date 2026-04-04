@@ -8,7 +8,7 @@ import { Image } from "astro:assets";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("toolbox");
+  const posts = await getCollection("articles");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -86,7 +86,7 @@ const seo = {
             }
 
             <!-- MDX Content - will be split into cards per H2 section -->
-            <article id="toolbox-article" class="flex flex-col gap-2 min-w-0">
+            <article id="article-content" class="flex flex-col gap-2 min-w-0">
               <Content />
             </article>
           </div>
@@ -351,7 +351,7 @@ const seo = {
     });
 
     // Split article content by H2 into separate cards
-    const article = document.getElementById("toolbox-article");
+    const article = document.getElementById("article-content");
     if (article) {
       const children = Array.from(article.childNodes);
       const sections: Node[][] = [];
