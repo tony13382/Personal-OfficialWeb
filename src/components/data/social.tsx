@@ -39,7 +39,7 @@ export const socialLinks: NavLink[] = [
   //     external: true,
   // },
   {
-    href: 'https://cloudbio.lumakes.com/liang',
+    href: 'https://bio.lumakes.com/liang',
     label: '更多資料',
     icon: <InfoIcon className="size-5" />,
     external: true,

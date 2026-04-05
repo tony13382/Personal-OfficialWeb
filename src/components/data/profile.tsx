@@ -119,15 +119,15 @@ export function ProfileCardModal() {
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease-out]"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={() => setIsOpen(false)}
+      style={{ animation: "profileFadeIn 0.2s ease-out" }}
     >
       <div
         className="flex flex-col items-center gap-6 max-w-md w-full"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* ProfileCard */}
-        <div className="animate-[slideUp_0.3s_ease-out]">
+        <div style={{ animation: "profileSlideUp 0.3s ease-out" }}>
           <Card className="mt-8 transition-all duration-300 pb-4 inline-flex">
             <CardContent className="gap-6 items-center pt-3 pb-2">
               <div className="h-4 w-10 my-2 border rounded-full bg-black/50" />
@@ -154,7 +154,6 @@ export function ProfileCardModal() {
           </Card>
         </div>
 
-        {/* Close Button */}
         <button
           onClick={() => setIsOpen(false)}
           className="w-14 h-14 rounded-full bg-white text-gray-800 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-110 active:scale-95"
@@ -177,27 +176,6 @@ export function ProfileCardModal() {
           </svg>
         </button>
       </div>
-
-      <style>{`
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-                @keyframes slideUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `}</style>
     </div>
   )
 }
