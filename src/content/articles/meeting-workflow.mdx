@@ -1,7 +1,7 @@
 ---
 title: 從困惑到行動：Notion 為中心的會議工作流
 description: 分享我從會前 agenda、會中討論到會後結論的一整套會議工作流程，讓每一場會議都能對標到具體行動
-date: 2026-04-05
+date: 2026-04-06
 category: 工作流程
 tags: [會議, 生產力, Notion]
 cover: /og/toolbox-meeting-workflow.png
@@ -14,6 +14,8 @@ import { Image } from 'astro:assets'
 {/* Images */}
 import googleMeet from '@/assets/imgs/toolbox/meeting-workflow/google-meet.png'
 import miro from '@/assets/imgs/toolbox/meeting-workflow/miro.png'
+import figjam from '@/assets/imgs/toolbox/meeting-workflow/figjam.png'
+import canva from '@/assets/imgs/toolbox/meeting-workflow/canva.png'
 
 進入大學之後，我開會的頻率變得非常高。社團、系學會、專案團隊、課堂分組，幾乎每週都有好幾場會議要跑。但開多了之後我發現一個很常見的問題——很多會議其實是「為了開會而開會」，會前帶著困惑走進會議室，會後依然帶著困惑走出來，中間那一兩個小時像是憑空消失了一樣。
 
@@ -46,6 +48,10 @@ import miro from '@/assets/imgs/toolbox/meeting-workflow/miro.png'
 **3. 會議結論**
 
 這個區塊**不是邊開邊寫**，這點很重要。結論是在會議最後留 5 分鐘，根據前面的 Memo 跟討論內容做整體收尾整理之後，才正式寫下來的。這個「留 5 分鐘收尾」的動作，是整套工作流裡最關鍵的一個儀式，後面 Part 3 會再展開講。
+
+<div class="callout info">
+如果想直接參考或複製我的模板來用，可以從這裡開始：<a href="https://meowlu.notion.site/33957efa8a9b80cda149d39c29dbe750" target="_blank" class="official-link mt-2">Notion 會議管理模板</a>
+</div>
 
 ### 進度同步型會議：四提問框架
 
@@ -88,12 +94,80 @@ import miro from '@/assets/imgs/toolbox/meeting-workflow/miro.png'
 
 <Image src={miro} alt="Miro" />
 
-需要視覺化討論的時候我會搭配 Miro——像是畫流程圖、跑腦力激盪、做使用者旅程地圖之類的場景，純文字討論效率很差，拉到白板上大家一起動手比較快。
-
-白板工具其實 FigJam 也很好用，兩個在功能上差異不算大，選一個順手的就好。我選 Miro 純粹是因為最早接觸的是它，模板生態比較熟，也沒有切換的理由。
+需要視覺化討論的時候我會搭配 Miro——像是畫流程圖、跑腦力激盪、做使用者旅程地圖之類的場景，純文字討論效率很差，拉到白板上大家一起動手比較快。我選 Miro 純粹是因為最早接觸的是它，模板生態最豐富，加上沒有切換的理由就一路用到現在。
 
 <span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
 <a href="https://miro.com" target="_blank" class="official-link">Miro</a>
+
+#### 其他值得一試的白板工具
+
+白板這個類別其實選擇不少，Miro 不一定適合每個團隊。如果你的團隊本來就在用 Figma，**FigJam** 會是最無縫的選擇，同一套帳號跟權限系統，討論完還能直接搬到 Figma 繼續深化。如果成員對工具性的介面比較無感、或是美感需求高，**Canva Whiteboard** 則是另一個親切的選擇，會議結束後可以直接把白板內容轉成簡報或其他設計檔。
+
+<div class="flex gap-4 items-center justify-center my-6">
+  <Image src={figjam} alt="FigJam" style="max-width: 96px;" />
+  <Image src={canva} alt="Canva Whiteboard" style="max-width: 96px;" />
+</div>
+
+因為這三套的基本功能（無限畫布、便利貼、協作游標、模板）差異不大，我挑幾個**會議場景會用到**的功能來比較：
+
+<div style="overflow-x: auto;">
+  <table>
+    <colgroup>
+      <col style="min-width: 120px;" />
+      <col style="min-width: 160px;" />
+      <col style="min-width: 160px;" />
+      <col style="min-width: 160px;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>會議功能</th>
+        <th>Miro</th>
+        <th>FigJam</th>
+        <th>Canva Whiteboard</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>投票</td>
+        <td>內建投票，可匿名、限票數、結束揭曉</td>
+        <td>投票會話，可隱藏過程、結束揭曉</td>
+        <td>貼紙反應即時投票</td>
+      </tr>
+      <tr>
+        <td>計時器</td>
+        <td>基本倒數</td>
+        <td>最長 99:59，結束時全員同步提醒</td>
+        <td>團隊同步倒數，可搭配播放清單</td>
+      </tr>
+      <tr>
+        <td>背景音樂</td>
+        <td>無內建</td>
+        <td>內建多種 BGM</td>
+        <td>可在計時器中選播放清單</td>
+      </tr>
+      <tr>
+        <td>語音／視訊</td>
+        <td>付費方案內建</td>
+        <td>內建語音聊天</td>
+        <td>無內建</td>
+      </tr>
+      <tr>
+        <td>模板生態</td>
+        <td>最豐富，偏工具性</td>
+        <td>中等，偏協作引導</td>
+        <td>最少但視覺設計感最強</td>
+      </tr>
+      <tr>
+        <td>官網</td>
+        <td><a href="https://miro.com" target="_blank" class="official-link">Miro</a></td>
+        <td><a href="https://www.figma.com/figjam/" target="_blank" class="official-link">FigJam</a></td>
+        <td><a href="https://www.canva.com/" target="_blank" class="official-link">Canva</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+三套的定價都是 <span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>。
 
 <div class="callout info">
 如果你想知道我平常是怎麼「約到會議」的，可以參考 <a href="/articles/project-management#會議管理">專案管理與任務安排</a> 裡面分享的 Notion Calendar 跟多人時段協調工具。那篇偏會議前的時間協調，這篇則專注在會議本身的工作流程。
