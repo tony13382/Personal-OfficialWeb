@@ -22,7 +22,7 @@ const { Content, headings } = await post.render();
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 const seo = {
-  title: post.data.seo?.metaTitle || `${post.data.title} | 呂亮進`,
+  title: post.data.seo?.metaTitle || `${post.data.title}．呂亮進`,
   description: post.data.seo?.metaDescription || post.data.description,
   ogImage: post.data.seo?.ogImage || post.data.cover,
 };
@@ -86,7 +86,7 @@ const seo = {
             }
 
             <!-- MDX Content - will be split into cards per H2 section -->
-            <article id="article-content" class="flex flex-col gap-2 min-w-0">
+            <article id="article-content" data-pagefind-body class="flex flex-col gap-2 min-w-0">
               <Content />
             </article>
           </div>

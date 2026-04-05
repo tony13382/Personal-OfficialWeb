@@ -26,7 +26,7 @@ const { Content } = await job.render();
 
 // SEO
 const seo = {
-  title: job.data.seo?.metaTitle || `${job.data.title} | 呂亮進`,
+  title: job.data.seo?.metaTitle || `${job.data.title}．呂亮進`,
   description:
     job.data.seo?.metaDescription || job.data.description[0] || job.data.title,
   ogImage: job.data.seo?.ogImage || job.data.cover,

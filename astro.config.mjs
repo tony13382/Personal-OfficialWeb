@@ -6,11 +6,12 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import pagefind from 'astro-pagefind';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://lumakes.com',
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [react(), mdx(), sitemap(), pagefind()],
 
   redirects: {
     '/experience/': '/about/',
@@ -27,6 +28,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       rollupOptions: {
+        external: ['/pagefind/pagefind.js'],
         output: {
           manualChunks: {
             // React core
