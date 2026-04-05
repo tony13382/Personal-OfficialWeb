@@ -24,7 +24,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
 ---
 
 <BaseLayout
-  title="分享專欄．呂亮進"
+  title="分享專欄・呂亮進"
   description="按用途分類的工具推薦與使用心得"
   headerType="main"
 >
@@ -51,11 +51,17 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                     <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-0">
                       {category}
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-category-grid>
+                    <div
+                      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                      data-category-grid
+                    >
                       {categoryPosts.map((post, index) => (
                         <a
                           href={`/articles/${post.slug}/`}
-                          class:list={["group block no-underline", index >= 6 && "hidden"]}
+                          class:list={[
+                            "group block no-underline",
+                            index >= 6 && "hidden",
+                          ]}
                           data-card-index={index}
                         >
                           <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full">
@@ -73,14 +79,11 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                             <div class="grid gap-1 p-5">
                               <div class="flex items-center gap-2">
                                 <time class="text-sm text-muted-foreground">
-                                  {post.data.date.toLocaleDateString(
-                                    "zh-TW",
-                                    {
-                                      year: "numeric",
-                                      month: "long",
-                                      day: "numeric",
-                                    },
-                                  )}
+                                  {post.data.date.toLocaleDateString("zh-TW", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  })}
                                 </time>
                                 {post.data.updatedDate && (
                                   <span class="text-xs text-muted-foreground">
@@ -146,11 +149,11 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
   <ProfileCardModal client:load />
 
   <script>
-    document.querySelectorAll('[data-expand-btn]').forEach((btn) => {
-      btn.addEventListener('click', () => {
+    document.querySelectorAll("[data-expand-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
         const grid = btn.previousElementSibling;
-        grid?.querySelectorAll('[data-card-index]').forEach((card) => {
-          card.classList.remove('hidden');
+        grid?.querySelectorAll("[data-card-index]").forEach((card) => {
+          card.classList.remove("hidden");
         });
         btn.remove();
       });

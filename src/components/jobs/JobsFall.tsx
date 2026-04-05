@@ -60,7 +60,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
                       {job.data.company}
                       {job.data.location && (
                         <span className="text-md font-normal text-muted-foreground">
-                          ．{job.data.location}
+                          ・{job.data.location}
                         </span>)}
                     </p>
 
@@ -69,7 +69,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
                     <p>
                       {job.data.title}
                       <span className="text-sm font-normal text-muted-foreground">
-                        ．{timeStr}
+                        ・{timeStr}
                       </span>
                     </p>
                   </div>
