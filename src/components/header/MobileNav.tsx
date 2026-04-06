@@ -21,9 +21,7 @@ interface MobileNavProps {
 export function MobileNav({ type = 'main' }: MobileNavProps) {
   const [open, setOpen] = useState(false)
 
-  const projectLinks: NavLink[] = [{ href: '/', label: '首頁' }]
-
-  const navLinks = type === 'main' ? [...mainLinks] : [...projectLinks]
+  const navLinks = [...mainLinks]
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>

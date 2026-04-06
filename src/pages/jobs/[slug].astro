@@ -59,7 +59,7 @@ const timeStr =
   headerType="project"
   themeColor={themeColors.primary}
 >
-  <div>
+  <div data-pagefind-body data-pagefind-meta={`type:經歷, title:${job.data.title}`}>
     <!-- Header Section -->
     <div class="relative py-20 w-full">
       <div
@@ -147,7 +147,7 @@ const timeStr =
                 }
               </CardContent>
             </Card>
-            <ProfileCard />
+            <div data-pagefind-ignore><ProfileCard /></div>
           </div>
         </div>
 
