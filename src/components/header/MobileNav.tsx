@@ -44,6 +44,11 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
           </SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col gap-4 flex-1 min-h-0">
+          {/* Search */}
+          <div className="px-4 [&_button]:w-full [&_button]:justify-center [&_button]:rounded-lg [&_button]:border [&_button]:border-gray-200 [&_button]:dark:border-gray-700 [&_button]:py-3">
+            <SearchDialog />
+          </div>
+
           {/* Navigation Links */}
           <div className="relative flex-1 flex flex-col gap-2 overflow-y-auto">
             {navLinks.map((link) => (
@@ -64,11 +69,6 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
               loading="lazy"
               decoding="async"
             />
-          </div>
-
-          {/* Search */}
-          <div className="px-4 [&_button]:w-full [&_button]:justify-center [&_button]:rounded-lg [&_button]:border [&_button]:border-gray-200 [&_button]:dark:border-gray-700 [&_button]:py-3">
-            <SearchDialog />
           </div>
 
           {/* Divider */}
