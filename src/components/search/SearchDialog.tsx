@@ -16,6 +16,15 @@ interface Pagefind {
 
 const TYPE_ORDER = ["文章", "專案", "經歷"];
 
+function resolveType(result: SearchResult): string {
+  const url = result.url || "";
+  if (url.startsWith("/articles/")) return "文章";
+  if (url.startsWith("/projects/")) return "專案";
+  if (url.startsWith("/jobs/")) return "經歷";
+  if (url.startsWith("/apps/")) return "APP";
+  return "其他";
+}
+
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -26,13 +35,13 @@ export function SearchDialog() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  // Group results by type
+  // Group results by type (based on URL path)
   const grouped = useMemo(() => {
     const groups: { type: string; items: SearchResult[] }[] = [];
     const map = new Map<string, SearchResult[]>();
 
     for (const r of results) {
-      const type = r.meta?.type || "其他";
+      const type = resolveType(r);
       if (!map.has(type)) map.set(type, []);
       map.get(type)!.push(r);
     }

@@ -9,6 +9,7 @@ import {
 import { ListIcon } from '@phosphor-icons/react'
 import { mainLinks, type NavLink } from "@/components/header/index"
 import { socialLinks } from "@/components/data/social"
+import { SearchDialog } from "@/components/search/SearchDialog"
 
 
 interface MobileNavProps {
@@ -63,6 +64,11 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
               loading="lazy"
               decoding="async"
             />
+          </div>
+
+          {/* Search */}
+          <div className="px-4 [&_button]:w-full [&_button]:justify-center [&_button]:rounded-lg [&_button]:border [&_button]:border-gray-200 [&_button]:dark:border-gray-700 [&_button]:py-3">
+            <SearchDialog />
           </div>
 
           {/* Divider */}
