@@ -25,6 +25,7 @@ interface ProjectData {
 interface ProjectsFallProps {
   projects: ProjectData[]
   themes: Record<string, { primary: string; secondary: string }>
+  compact?: boolean
 }
 
 const filterLabels = {
@@ -814,7 +815,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
   )
 }
 
-export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
+export function ProjectsFall({ projects, themes, compact = false }: ProjectsFallProps) {
   const [activeSection, setActiveSection] = useState<SkillType>('dev')
   const [expandedSections, setExpandedSections] = useState<Record<SkillType, boolean>>({
     dev: false,
@@ -997,7 +998,7 @@ export function ProjectsFall({ projects, themes }: ProjectsFallProps) {
               <h3 className="text-2xl font-bold text-foreground">{label}</h3>
 
               {/* Description */}
-              {filterDescriptions[filter]}
+              {!compact && filterDescriptions[filter]}
 
               {/* Projects Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

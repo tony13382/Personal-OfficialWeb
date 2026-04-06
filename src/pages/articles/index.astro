@@ -28,26 +28,69 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
   description="按用途分類的工具推薦與使用心得"
   headerType="main"
 >
-  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent pt-20">
-    <section class="container mx-auto px-4 py-12">
-      <div>
-        <div>
-          <div class="mb-8 mt-5">
-            <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">
-              分享專欄
-            </h1>
-            <p class="text-muted-foreground">按用途分類的工具推薦與使用心得</p>
+  <div class="min-h-screen pt-20">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-[var(--theme-primary-5)] via-transparent to-transparent"
+      >
+      </div>
+      <div
+        class="container mx-auto px-4 pt-24 pb-20 md:pt-40 md:pb-32 relative"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <p
+            class="fade-in text-sm font-medium tracking-widest uppercase text-[var(--theme-primary)] mb-6"
+          >
+            Articles
+          </p>
+          <h1
+            class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
+          >
+            分享專欄
+          </h1>
+          <p
+            class="fade-in text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            按用途分類的工具推薦與使用心得
+          </p>
+          <div class="fade-in flex flex-wrap justify-center gap-2 mt-8">
+            {
+              categories.map((category) => (
+                <a
+                  href={`#${category}`}
+                  class="px-4 py-1.5 text-sm font-medium text-muted-foreground bg-white border border-gray-200 rounded-full no-underline transition-all hover:border-[var(--theme-primary)] hover:text-[var(--theme-primary)] hover:shadow-sm"
+                  data-category-link
+                >
+                  {category}
+                </a>
+              ))
+            }
           </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
+      >
+      </div>
+    </section>
 
-          <!-- Post List -->
-          <div class="space-y-4">
+    <!-- Post List -->
+    <section class="relative">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-primary-5)] to-transparent"
+      >
+      </div>
+      <div class="container mx-auto px-4 py-20 md:py-32 relative">
+        <div class="max-w-6xl mx-auto">
+          <div class="fade-in space-y-4">
             {
               categories.map((category) => {
                 const categoryPosts = sortedPosts.filter(
                   (p) => p.data.category === category,
                 );
                 return (
-                  <div class="mb-12">
+                  <div class="mb-12 scroll-mt-24" id={category}>
                     <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-0">
                       {category}
                     </h2>
@@ -60,7 +103,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                           href={`/articles/${post.slug}/`}
                           class:list={[
                             "group block no-underline",
-                            index >= 6 && "hidden",
+                            index >= 8 && "hidden",
                           ]}
                           data-card-index={index}
                         >
@@ -102,9 +145,9 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                         </a>
                       ))}
                     </div>
-                    {categoryPosts.length > 6 && (
+                    {categoryPosts.length > 8 && (
                       <button
-                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground border rounded-xl transition-colors cursor-pointer"
+                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-white border border-gray-200 rounded-xl transition-all cursor-pointer hover:shadow-sm hover:border-gray-300"
                         data-expand-btn
                       >
                         顯示更多（共 {categoryPosts.length} 篇）
@@ -132,6 +175,20 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
     </section>
   </div>
 
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
   <button
     id="profile-modal-btn"
     class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
@@ -149,6 +206,28 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
   <ProfileCardModal client:load />
 
   <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    );
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+    document.querySelectorAll<HTMLAnchorElement>("[data-category-link]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href")!.slice(1);
+        const target = document.getElementById(id);
+        target?.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
     document.querySelectorAll("[data-expand-btn]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const grid = btn.previousElementSibling;

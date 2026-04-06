@@ -153,8 +153,8 @@ export function SearchDialog() {
         >
           <MagnifyingGlass className="size-5" />
           <span className="hidden md:inline text-sm">搜尋</span>
-          <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-gray-400 bg-gray-100 border border-gray-200 rounded">
-            ⌘K
+          <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-gray-400 bg-gray-100 border border-gray-200 rounded-full">
+            ⌘ K
           </kbd>
         </button>
       </Dialog.Trigger>
