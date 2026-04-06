@@ -161,7 +161,7 @@ export function SearchDialog() {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-[fade-in_150ms]" />
-        <Dialog.Content className="fixed z-50 top-[15vh] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-[scale-in_150ms]">
+        <Dialog.Content className="fixed z-50 top-[15vh] inset-x-0 mx-auto w-[calc(100%-2rem)] max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-[slide-up_200ms_ease-out]">
           <Dialog.Title className="sr-only">搜尋</Dialog.Title>
 
           {/* Search Input */}
