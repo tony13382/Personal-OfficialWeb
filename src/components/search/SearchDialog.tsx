@@ -183,7 +183,7 @@ export function SearchDialog() {
                   setActiveIndex((prev) =>
                     prev > 0 ? prev - 1 : flatResults.length - 1
                   );
-                } else if (e.key === "Enter" && activeIndex >= 0 && flatResults[activeIndex]) {
+                } else if (e.key === "Enter" && !e.nativeEvent.isComposing && activeIndex >= 0 && flatResults[activeIndex]) {
                   e.preventDefault();
                   handleOpenChange(false);
                   window.location.href = flatResults[activeIndex].url;
