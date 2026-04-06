@@ -240,4 +240,31 @@ const getStatusBadge = (statusStr: string) => {
   </button>
 
   <ProfileCardModal client:load />
+
+  <style>
+    article :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    article :global(th) {
+      text-align: left;
+      padding: 0.625rem 0.75rem;
+      border-bottom: 2px solid #d1d5db;
+      font-weight: 600;
+      color: var(--color-foreground);
+    }
+
+    article :global(td) {
+      padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      color: var(--color-foreground);
+    }
+
+    article :global(tr:last-child td) {
+      border-bottom: none;
+    }
+  </style>
 </BaseLayout>

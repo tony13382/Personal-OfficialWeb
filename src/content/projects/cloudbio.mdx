@@ -52,7 +52,8 @@ seo:
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
-import { AccordionBlock } from '@/components/react/AccordionBlock'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+
 
 <Card>
   <CardContent className="gap-4">
@@ -80,6 +81,10 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
         支援純色、漸層、圖片三種背景模式，可自訂按鈕樣式、字型、文字顏色，並提供融入式與卡片式兩種個人資訊佈局。進階使用者可透過自訂 CSS 進一步調整。
       </div>
       <div className="space-y-1.5">
+        <p>**多頁面管理**</p>
+        支援在同一個帳號下建立多個子頁面，每個頁面有獨立的區塊配置。按鈕區塊可以直接連結到其他子頁面，讓使用者用分頁的方式組織更複雜的內容結構，同時保持操作上的簡單直覺。
+      </div>
+      <div className="space-y-1.5">
         <p>**社群平台整合**</p>
         內建 13 種社群平台圖示（Instagram、GitHub、LinkedIn、X、Threads 等），一鍵設定社群連結。
       </div>
@@ -89,6 +94,30 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
       </div>
     </div>
   </CardContent>
+  <CardHeader className="py-4">
+    <UiImageCarousel
+      images={[
+        {
+          image: "/assets/imgs/projects/cloudBio/drag-sort.png",
+          title: "拖曳排序體驗",
+          desc: "基於 @dnd-kit 實現的拖曳排序，快速點擊（300ms 以內）開啟編輯，長按才進入拖曳模式。滑鼠操作移動超過 8px 才觸發拖曳，避免誤操作。手機跟電腦上都很直覺，不需要額外的拖曳把手或模式切換。"
+        },
+        {
+          image: "/assets/imgs/projects/cloudBio/live-preview.png",
+          title: "即時預覽",
+          desc: "編輯器內建手機模擬預覽框，所有修改即時反映在預覽畫面上。後臺看到的效果跟前臺訪客完全一致，不需要來回切換確認。"
+        },
+        {
+          image: "/assets/imgs/projects/cloudBio/image-compress.png",
+          title: "圖片壓縮",
+          desc: "圖片上傳前在客戶端進行 WebP 壓縮與裁切，減少傳輸量跟 R2 儲存空間。上傳後透過長期快取 header 提供存取，降低重複請求的頻寬消耗。"
+        }
+      ]}
+      autoplaySpeed={5000}
+      allowPop={false}
+      client:visible
+    />
+  </CardHeader>
 </Card>
 
 <Card>
@@ -115,107 +144,75 @@ import { AccordionBlock } from '@/components/react/AccordionBlock'
   </CardContent>
 </Card>
 
-export const dbItems = [
-  {
-    value: "users-table",
-    trigger: "使用者資料表：users",
-    contentClassName:"p-0 pb-4",
-    embed: [
-      {
-        type: "html",
-        content: `
-          <table class="table-auto w-full border-collapse text-sm">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
-                <th class="border-y text-left font-bold px-4 py-2">說明</th>
-                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border-y px-4 py-2 font-mono">users</td>
-                <td class="border-y px-4 py-2">使用者帳號與個人資訊</td>
-                <td class="border-y px-4 py-2">id, email, username, password_hash, display_name, bio, avatar_url, social_links</td>
-              </tr>
-            </tbody>
-          </table>
-        `,
-        className: "overflow-x-auto"
-      }
-    ]
-  },
-  {
-    value: "blocks-table",
-    trigger: "區塊資料表：blocks",
-    contentClassName:"p-0 pb-4",
-    embed: [
-      {
-        type: "html",
-        content: `
-          <table class="table-auto w-full border-collapse text-sm">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
-                <th class="border-y text-left font-bold px-4 py-2">說明</th>
-                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border-y px-4 py-2 font-mono">blocks</td>
-                <td class="border-y px-4 py-2">Bio 頁面的內容區塊（七種類型）</td>
-                <td class="border-y px-4 py-2">id, user_id, type, config (JSON), is_active, sort_order</td>
-              </tr>
-            </tbody>
-          </table>
-        `,
-        className: "overflow-x-auto"
-      }
-    ]
-  },
-  {
-    value: "appearances-table",
-    trigger: "外觀設定：appearances",
-    contentClassName:"p-0 pb-4",
-    embed: [
-      {
-        type: "html",
-        content: `
-          <table class="table-auto w-full border-collapse text-sm">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="border-y text-left font-bold px-4 py-2">資料表</th>
-                <th class="border-y text-left font-bold px-4 py-2">說明</th>
-                <th class="border-y text-left font-bold px-4 py-2">關鍵欄位</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border-y px-4 py-2 font-mono">appearances</td>
-                <td class="border-y px-4 py-2">使用者的外觀主題設定</td>
-                <td class="border-y px-4 py-2">id, user_id, background, button_style, font_family, text_color, custom_css</td>
-              </tr>
-            </tbody>
-          </table>
-        `,
-        className: "overflow-x-auto"
-      }
-    ]
-  }
-]
+<Card>
+  <CardTitle>工具選擇</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>整個專案建立在 Cloudflare 生態系上，工具的選擇也是圍繞這個前提展開的。</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**為什麼用 Hono 而不是 Express**</p>
+        Express 設計上是給 Node.js 環境用的，要跑在 Cloudflare Workers 上需要額外的適配層，效能跟相容性都會打折扣。`Hono` 從一開始就是為邊緣運算環境設計的，原生支援 Workers 的 Request / Response API，不需要任何轉換。加上它的路由系統跟 Middleware 設計都很直覺，開發體驗跟 Express 接近，但完全沒有相容性問題。
+      </div>
+      <div className="space-y-1.5">
+        <p>**為什麼用 D1 而不是其他資料庫**</p>
+        跟選 Hono 的理由一樣，既然整個架構都跑在 Cloudflare 上，資料庫選 `D1` 是最自然的搭配。D1 是 Cloudflare 原生的 SQLite 服務，跟 Workers 之間的連線是零延遲的，不需要處理外部資料庫的連線池或冷啟動問題。搭配 `Drizzle ORM` 做 Type-safe 的資料操作跟 Migration 管理，開發流程非常順暢。
+      </div>
+      <div className="space-y-1.5">
+        <p>**R2 + KV 的分工**</p>
+        `R2` 負責圖片這類靜態資源的持久化儲存，`KV` 則用來快取已渲染的頁面 HTML。兩者各司其職：R2 處理大檔案、KV 處理高頻讀取的小資料，都是 Cloudflare 原生服務，不需要額外設定或維護。
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
 <Card>
   <CardTitle>資料庫設計</CardTitle>
   <CardContent className="gap-3 pt-4">
-    <p>使用 `Cloudflare D1 (SQLite)` 搭配 `Drizzle ORM`，以精簡的三張資料表涵蓋使用者、區塊內容與外觀設定。區塊採用 JSON config 欄位儲存各類型的設定資料，實現靈活的多型區塊架構。</p>
-    <AccordionBlock
-      items={dbItems}
-      type="single"
-      firstActive={true}
-      collapsible
-      client:visible
-    />
+    <p>使用 `Cloudflare D1 (SQLite)` 搭配 `Drizzle ORM`，以四張資料表涵蓋使用者、頁面、區塊內容與外觀設定。區塊採用 JSON config 欄位儲存各類型的設定資料，實現靈活的多型區塊架構。</p>
+
+    | 資料表 | 說明 | 關鍵欄位 |
+    |--------|------|----------|
+    | `users` | 使用者帳號與個人資訊 | id, email, username, password_hash, display_name, bio, avatar_url, social_links |
+    | `pages` | 多頁面管理，支援主頁與子頁面 | id, user_id, slug, title, sort_order, is_default |
+    | `blocks` | Bio 頁面的內容區塊（七種類型） | id, user_id, type, config (JSON), is_active, sort_order |
+    | `appearances` | 使用者的外觀主題設定 | id, user_id, background, button_style, font_family, text_color, custom_css |
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>資料庫設計細節</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**JSON Config 多型設計**</p>
+        每種區塊需要的屬性差異很大：按鈕需要連結、副標題、動畫效果；輪播橫幅需要多張圖片跟標籤設定；影片只需要一個 YouTube URL。如果為每種類型各開一張表或加一堆 nullable 欄位，資料庫會變得很難維護。所以 blocks 表只保留通用欄位（type、is_active、sort_order），所有類型特有的設定都收進一個 `config` JSON 欄位。新增區塊類型時，只需要定義新的 Config 介面跟預設值，不需要改資料庫結構。
+      </div>
+      <div className="space-y-1.5">
+        <p>**Fractional Sort Order**</p>
+        拖曳排序用的是浮點數 `sortOrder`，而不是整數序號。把區塊從位置 A 移到 B 跟 C 之間時，新的 sortOrder 就是 `(B + C) / 2`。這樣每次排序只需要更新一筆資料，不用重新編號整個列表。即使經過大量排序操作，浮點數的精度也足以應付實際使用場景。
+      </div>
+      <div className="space-y-1.5">
+        <p>**多頁面支援**</p>
+        pages 表透過 `slug` 欄位區分主頁（空字串）跟子頁面，並以 `(userId, slug)` 建立唯一索引，確保同一個使用者不會有重複的頁面路徑。區塊透過 `pageId` 關聯到所屬頁面，刪除頁面時會 cascade 刪除底下所有區塊。
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>快取機制</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>公開的 Bio 頁面採用 SSR 渲染後快取到 `Cloudflare KV`，避免每次訪問都重新查詢資料庫。</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**快取策略**</p>
+        頁面 HTML 的 TTL 設為 5 分鐘，在快取期間內的訪問完全不需要碰資料庫。Key 的格式是 `page:{username}` 跟 `page:{username}:{slug}`，分別對應主頁跟子頁面。
+      </div>
+      <div className="space-y-1.5">
+        <p>**Index 追蹤與精準失效**</p>
+        為了在使用者更新內容時能正確清除快取，系統維護了一個 `pages-idx:{username}` 索引，記錄該使用者所有被快取的子頁面 slug。這樣在需要全量失效時，可以透過索引找到所有 key 一次清除，不用猜測或掃描。單一區塊的修改則只失效該區塊所屬頁面的快取，避免不必要的全量清除。
+      </div>
+    </div>
   </CardContent>
 </Card>
 
