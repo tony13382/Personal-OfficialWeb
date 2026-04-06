@@ -1,0 +1,79 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/header/Header.astro";
+import { apps } from "@/data/apps";
+import { themes } from "@/lib/themes";
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+const { app } = Astro.props;
+const themeColors = themes.natural;
+
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "http://localhost:4321",
+);
+---
+
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{app.name} - {app.description}</title>
+    <meta name="description" content={app.description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${app.name} - ${app.description}`} />
+    <meta property="og:description" content={app.description} />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="Liang Lu" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-165132NHTH"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-165132NHTH");
+    </script>
+
+    <style
+      define:vars={{
+        "theme-primary": themeColors.primary,
+        "theme-secondary": themeColors.secondary,
+      }}
+    ></style>
+  </head>
+  <body class="font-sans bg-background m-0 overflow-hidden h-dvh flex flex-col">
+    <Header
+      type="app"
+      themeColor={themeColors.primary}
+      appName={app.name}
+      projectHref={app.projectSlug
+        ? `/projects/${app.projectSlug}/`
+        : undefined}
+    />
+    <div class="flex-1 pt-18">
+      <iframe
+        src={app.url}
+        title={app.name}
+        class="w-full h-full border-0"
+        allow="clipboard-read; clipboard-write"></iframe>
+    </div>
+  </body>
+</html>
