@@ -14,6 +14,7 @@ import { Image } from 'astro:assets'
 {/* Images */}
 import statuslineResult from '@/assets/imgs/toolbox/claude-code-setup/statusline-result.png'
 import awesomeDesignMd from '@/assets/imgs/toolbox/claude-code-setup/awesome-design-md.png'
+import codeckIntro from '@/assets/imgs/toolbox/claude-code-setup/codeck-intro.png'
 
 Claude Code 是我目前主要的開發工具，用了一段時間之後發現，預設的狀態其實只發揮了它一半的能力。透過 Status Line、CLAUDE.md 專案指令跟自訂 Skill，可以把整個開發體驗拉到完全不同的層次。這篇會是一個長期更新的筆記，把我覺得值得分享的設定跟技巧陸續整理進來。
 
@@ -207,7 +208,9 @@ Skill 還支援一些進階功能：用 `$ARGUMENTS` 接收參數（像 `/fix-is
 
 <div class="callout info">Skill 有兩種觸發方式：手動輸入 /skill-name，或是讓 Claude 根據 description 自動判斷要不要觸發。如果你的 Skill 有副作用（像 commit、deploy），建議在 frontmatter 加上 disable-model-invocation: true，避免 Claude 自作主張。</div>
 
-### /commit-generate：自動產生 commit 並推送
+### 開發類
+
+#### /commit-generate：自動產生 commit 並推送
 
 這是我用最頻繁的 Skill。改完程式碼之後直接打 `/commit-generate`，它會自動讀取 staged changes、判斷 commit type（feat / fix / refactor 等）、產生英文 commit message，然後直接 push 到 remote。
 
@@ -232,17 +235,17 @@ Skill 還支援一些進階功能：用 `$ARGUMENTS` 接收參數（像 `/fix-is
 3. **Create the commit and push to remote**
 ```
 
-### /simplify：寫完之後的第二雙眼睛
+#### /simplify：寫完之後的第二雙眼睛
 
 寫完一段比較複雜的邏輯之後，用 `/simplify` 讓 Claude 回頭審查剛才改過的程式碼。它會同時開三個 agent 掃描，檢查有沒有可以重用的邏輯、有沒有多餘的抽象、效能上有沒有明顯的問題，然後直接修正。
 
 自己寫的時候容易陷入局部思維，讓 Claude 用全局視角掃一遍，常常能抓到一些自己沒注意到的地方。這個 Skill 是 Claude Code 內建的，不需要自己寫。
 
-### /frontend-design：生成有設計感的前端介面
+#### /frontend-design：生成有設計感的前端介面
 
 需要快速做出一個頁面或元件的時候，`/frontend-design` 可以直接生成有設計感的前端程式碼。比起直接跟 Claude 說「幫我做一個登入頁面」，這個 Skill 內建了一套設計原則跟品質標準，產出的結果會更有質感，不會是那種一看就知道是 AI 生的 generic 風格。這個是透過 Plugin 安裝的，在 settings 裡面啟用就能用。
 
-### Awesome DESIGN.md：讓 AI 生出像樣的 UI
+#### Awesome DESIGN.md：讓 AI 生出像樣的 UI
 
 這個嚴格來說不是 Skill，但搭配 `/frontend-design` 一起用效果很好。
 
@@ -254,9 +257,27 @@ DESIGN.md 的概念很簡單：用 Markdown 把一個網站的設計系統寫成
 
 我自己比較常參考的是 Linear 跟 Vercel 的 DESIGN.md，乾淨俐落的設計語言很適合開發工具類的介面。
 
-### /batch：大規模平行修改
+#### /batch：大規模平行修改
 
 當你需要對整個 codebase 做大範圍的修改（像是把所有元件從一個框架遷移到另一個），`/batch` 會用 git worktree 開出多個獨立的工作環境，平行處理不同的檔案。這個 Skill 適合那種「改動範圍大但每個檔案的改法類似」的情境，像是重命名、API 遷移、或是批量加上 TypeScript 型別。
+
+### 文件類
+
+#### /codeck：把資料夾變成一份簡報
+
+<a href="https://github.com/hiyeshu/codeck" target="_blank"><Image src={codeckIntro} alt="Codeck AI 簡報生成工具" /></a>
+
+如果你有一堆筆記、文件、數據或圖片，想快速整理成一份有結構的簡報，[Codeck](https://github.com/hiyeshu/codeck) 可以幫你一鍵搞定。它會分析你指定資料夾裡的素材，自動產生一個完整的 HTML 簡報檔案，支援鍵盤導航、全螢幕、講者備註計時器，甚至還能匯出 PDF 跟 PPTX。
+
+安裝方式：
+
+```bash
+npx skills add hiyeshu/codeck
+```
+
+裝完之後整個流程是這樣的：先打 `/codeck` 讓它分析素材，接著用 `/codeck-outline` 整理大綱，`/codeck-design` 產生視覺設計，最後用 `/codeck-export` 匯出成品。每一步都是獨立的 Skill，你可以在任何一步停下來手動調整。
+
+比較特別的是它的設計邏輯不是套模板，而是根據你的內容結構去「對應」視覺形式——比如論證有三層，它就會用三段式的視覺節奏來呈現。產出的簡報比一般 AI 生成的投影片有質感不少。
 
 ### 找更多 Skill
 
