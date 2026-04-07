@@ -1,0 +1,282 @@
+---
+title: 折騰數位音樂：從 Plex 到自建標籤管理系統
+description: 分享我如何用 Navidrome 搭配自建的標籤管理系統，打造一套完整的數位音樂伺服器
+date: 2026-04-07
+category: 工作流程
+tags: [音樂, 自架服務, Docker]
+cover: /og/toolbox-music-server.png
+seo:
+  ogImage: /og/toolbox-music-server.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import plex from '@/assets/imgs/toolbox/music-server/plex.png'
+import jellyfin from '@/assets/imgs/toolbox/music-server/jellyfin.png'
+import navidrome from '@/assets/imgs/toolbox/music-server/navidrome.png'
+import symfonium from '@/assets/imgs/toolbox/music-server/symfonium.png'
+import arpeggi from '@/assets/imgs/toolbox/music-server/arpeggi.png'
+import feishin from '@/assets/imgs/toolbox/music-server/feishin.png'
+import arpeggiUi from '@/assets/imgs/toolbox/music-server/arpeggi-ui.png'
+import symfoniumUi from '@/assets/imgs/toolbox/music-server/symfonium-ui.png'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+
+我有買數位音樂的習慣，主要從 [mora](https://mora.jp/index_hires) 這類平台購入 Hi-Res 音源。串流平台很方便，但如果你跟我一樣會買歌、會在意音質跟標籤資訊的完整性，那管理這些音樂檔案就會是一個持續要面對的問題。這幾年我從 Plex 開始，經過 Jellyfin，最後落腳在 Navidrome，再加上自己寫了一套標籤管理系統，才算把整個流程理順。這篇就來聊聊這條折騰之路，跟我最後的架構長什麼樣子。
+
+## 從 Plex 到 Navidrome 的選擇過程
+
+### Plex：入門最簡單的選擇
+
+<Image src={plex} alt="Plex" style="max-width: 96px;" />
+
+一開始我用的是 Plex。它的優點很明確——直接下載安裝檔就能跑，不用折騰網路結構就有基本的音樂管理服務，內建的遠端存取功能讓你在外面也能連回家聯歌。如果你想要更進階的功能，繳訂閱費就可以了。對剛開始想自架音樂服務的人來說，Plex 的門檻是最低的。
+
+Plex 有推出專門的音樂播放器 Plexamp，介面跟播放體驗的優化都做得不錯。但底層的問題還是在：標籤掃描速度偏慢，想自定義修改標籤欄位也很麻煩。
+
+<div class="callout info">如果選擇 Plex，推薦搭配 Plexamp 作為播放器，音樂體驗比 Plex 本體好很多。</div>
+
+### Jellyfin：功能很多，但有些問題
+
+<Image src={jellyfin} alt="Jellyfin" style="max-width: 96px;" />
+
+後來我跳到 Jellyfin，一個完全開源的替代方案。它的功能同樣很豐富，也支援直接用安裝檔部署，可以設定多個資料夾來管理不同的音樂資料庫。我用了蠻長一段時間，整體來說堪用。
+
+但讓我最後決定離開的原因是**標籤掃描的問題**。Jellyfin 的掃描速度真的太慢了，而且會有一些很惱人的快取問題——有些我明明已經更新過的標籤，Jellyfin 那邊就是讀不到新的，像是被快取住了一樣。對於一個很在意標籤正確性的人來說，這個問題很致命。
+
+<div class="callout info">如果選擇 Jellyfin，推薦搭配 Finamp 作為手機端播放器，體驗比 Jellyfin 內建的好上不少。</div>
+
+### Navidrome：專注做好音樂這件事
+
+<Image src={navidrome} alt="Navidrome" style="max-width: 96px;" />
+
+最後我選擇了 Navidrome。跟前兩者比起來，它有幾個明確的取捨：
+
+- **只做音樂**：沒有影片功能，但音樂的體驗做得更專注
+- **必須用 Docker 部署**：不像 Plex 跟 Jellyfin 可以直接裝，但對已經有 Docker 環境的人來說不是問題
+- **標籤掃描快又準**：這是我跳過來的最大理由，更新完標籤後幾乎是即時反映，不會有 Jellyfin 那種快取卡住的狀況
+
+至於遠端存取的部分，我用 Cloudflare Tunnel 來做網路穿透，所以 Plex 內建遠端連線的優勢對我來說已經不重要了。
+
+Navidrome 有一個限制是只支援單一音樂資料夾，如果想分開管理不同類型的音樂，可以跑多個 instance 搭配 Nginx 反向代理。詳細的配置方式我放在文末。
+
+<div class="callout info">Navidrome 的新版本已經開始支援多資料庫功能，未來不需要跑多個 instance 也能分開管理不同類型的音樂了。</div>
+
+<a href="#部署方式" class="official-link">Navidrome 部署方式</a>
+
+### 三者比較
+
+|  | Plex | Jellyfin | Navidrome |
+|---|---|---|---|
+| 安裝方式 | 安裝檔直接執行 | 安裝檔直接執行 | Docker |
+| 功能定位 | 多媒體平台 | 多媒體平台 | 純音樂串流 |
+| 多資料夾支援 | 支援 | 支援 | 單一資料夾 |
+| 標籤掃描即時性 | 普通 | 慢，有快取問題 | 快速且即時 |
+| 遠端存取 | 內建 | 需自行處理 | 需自行處理 |
+| 費用 | 免費 / 訂閱制 | 完全免費 | 完全免費 |
+
+## 為什麼要自建標籤管理系統
+
+Navidrome 解決了音樂串流跟播放的問題，但標籤管理這一塊還是得靠其他工具。市面上有 MusicBrainz Picard、Mp3tag 這類桌面軟體，功能都很完整，尤其 Mp3tag 在批量處理標籤的效率很高。但有兩個對我來說比較根本的問題：
+
+第一，**它們都是桌面應用程式**。
+
+我的音樂檔案放在那台 Windows 小主機上，每次要改標籤就得遠端連線進去操作。Windows 遠端桌面的體驗本來就不算好，加上我日常用的是 Mac，來回切換很不順手。
+
+第二，**像曲風、語言這類欄位，每次都要手動輸入**。這些欄位的值其實是有限的，但在 Mp3tag 裡你只能一個一個打字填，沒辦法用選單快速選取。自建系統的話，這些欄位可以做成下拉選單，選一下就好，效率差很多。
+
+我想要的是一套**透過瀏覽器就能操作的 Web 介面**，在任何裝置上打開網頁就能管理標籤，同時把重複性高的欄位用選單簡化操作。另外，自建系統還有一個好處是可以串接 AI 來整理歌詞文本跟翻譯，這在現成的桌面工具上是做不到的。
+
+找了一圈發現沒有現成的工具能滿足這個需求，所以我自己建了一套。
+
+<UiImageCarousel
+  images={[
+    { image: "/assets/imgs/toolbox/music-server/song-list-filtered.png", desc: "歌曲管理列表" },
+    { image: "/assets/imgs/toolbox/music-server/tag-editor.png", desc: "標籤編輯介面" },
+  ]}
+  className='-mx-6'
+  client:load
+/>
+
+## 新音樂入庫流程
+
+這是整套系統最核心的功能。買完音樂之後，從上傳到歸檔的完整流程大致是這樣的：
+
+### 1. 上傳與轉檔
+
+透過 Web 介面把音樂檔案拉上去。如果上傳的是 M4A 格式，系統會自動用 FFmpeg 轉成 FLAC。
+
+### 2. 提取標籤與音量標準化
+
+系統會用 Mutagen 讀取檔案裡現有的標籤資訊，同時用 r128gain 計算 ReplayGain 數值，確保不同來源的音樂在播放時音量是一致的。
+
+### 3. 編輯標籤
+
+進入標籤編輯介面，可以調整歌名、歌手、專輯、曲風等所有欄位。這一步是整個流程裡最需要人工介入的地方，因為不同來源買到的音樂，標籤的完整度跟格式都不太一樣。
+
+### 4. 檢查歌手資料夾
+
+系統會檢查目標歌手的資料夾是否已經存在。如果是新歌手，會自動建立資料夾，也可以在這一步上傳歌手的封面圖片。
+
+### 5. 歸檔
+
+按下確認後，系統會根據標籤資訊自動把檔案搬到對應的位置，遵照 `歌手/專輯/曲目.flac` 的標準資料夾結構。專輯封面也會從音樂檔案中自動提取出來放到專輯資料夾裡。整個過程跑完之後，Navidrome 那邊很快就會掃描到新檔案。
+
+{/* 操作截圖待補 */}
+
+## 拼音排序與智慧播放清單
+
+標籤管理之外，這套系統還有兩個我覺得很實用的功能。
+
+### 拼音排序
+
+很多播放器在排序中文歌曲時會出問題，因為中文字沒有天然的字母順序。我的系統會用 pypinyin 把中文標題轉換成拼音，寫入標籤的 SortedTitle 欄位。這樣在支援這個欄位的播放器上，中文歌曲就能按照拼音正確排序了。
+
+### 智慧播放清單
+
+可以透過語言、曲風、收藏狀態等條件做複合篩選，自動產生播放清單。設定好條件之後，系統會輸出 M3U 格式的播放清單檔案，大部分的播放器都能直接讀取。
+
+這兩個功能解決的是「檔案整理好之後，怎麼更方便地找到想聽的歌」這個問題。入庫流程處理的是音樂進來的那一刻，而排序跟播放清單處理的是之後每一次想聽歌的時候。
+
+<UiImageCarousel
+  images={[
+    { image: "/assets/imgs/toolbox/music-server/playlist.png", desc: "播放清單管理" },
+    { image: "/assets/imgs/toolbox/music-server/playlist-create.png", desc: "新增播放清單" },
+    { image: "/assets/imgs/toolbox/music-server/playlist-detail.png", desc: "播放清單詳情" },
+  ]}
+  className='-mx-6'
+  client:load
+/>
+
+
+## 備份架構
+
+我的音樂伺服器跑在一台 Windows 小主機上。音樂檔案存在本機，透過 rclone 腳本備份到 Google Drive。需要備份的時候執行一下腳本就會自動把音樂資料夾同步上去，算是一個簡單但夠用的備份方案。
+
+## 整體架構
+
+最後整理一下整套系統的全貌。所有服務都跑在同一台 Windows 小主機上，透過 Docker Compose 管理：
+
+- **Navidrome**：負責音樂串流跟播放
+- **Music Manager**：負責標籤管理跟入庫流程（React + FastAPI + PostgreSQL + Redis）
+- **Cloudflare Tunnel**：負責網路穿透，讓外部裝置可以連進來
+- **rclone**：負責備份，把音樂檔案同步到 Google Drive
+
+{/* 架構圖待補 */}
+
+## 播放器推薦
+
+伺服器跟標籤管理都搞定之後，最後一塊拼圖就是播放器。Navidrome 本身有內建的 Web 介面可以直接聽歌，但如果你想要更好的播放體驗，可以搭配專門的播放器使用。Navidrome 支援 Subsonic API，所以市面上大部分相容 Subsonic 的播放器都能連上。
+
+我目前在用的組合是：
+
+- **Android**：[Symfonium](https://symfonium.app/) <span class="pricing-tag paid">付費</span>，介面乾淨、支援離線下載，是我用過體驗最好的手機端播放器
+
+<Image src={symfoniumUi} alt="Symfonium" />
+<p style="text-align: center; color: var(--color-muted-foreground); font-size: 0.875rem; margin-top: -8px;">Symfonium 播放器介面</p>
+- **iOS**：[Arpeggi](https://testflight.apple.com/join/LDWqgjAs) <span class="pricing-tag">免費</span>，目前透過 TestFlight 提供，支援 CarPlay、離線緩存穩定，UI 走 iOS 原生風格，操作起來很順手
+
+<Image src={arpeggiUi} alt="Arpeggi" />
+<p style="text-align: center; color: var(--color-muted-foreground); font-size: 0.875rem; margin-top: -8px;">Arpeggi 播放器介面</p>
+- **電腦**：Feishin <span class="pricing-tag">免費</span>，開源的桌面播放器，支援 Navidrome 跟 Jellyfin，可以用 Docker 部署成 Web 版，在任何裝置的瀏覽器上使用
+
+<Image src={feishin} alt="Feishin" />
+<p style="text-align: center; color: var(--color-muted-foreground); font-size: 0.875rem; margin-top: -8px;">Feishin 播放器介面</p>
+
+從最早用 Plex 單純聽歌，到現在有一整套自動化的入庫跟管理流程，中間確實折騰了不少。但現在買完一首歌，打開瀏覽器上傳、調整標籤、按下確認，幾分鐘就能搞定歸檔，之後在任何裝置上打開播放器就能聽到。對我來說，這套系統最大的價值不是技術上有多複雜，而是它讓「管理音樂」這件事變得不再是一個負擔。
+
+## 部署方式
+
+如果你跟我一樣想把不同類型的音樂分開管理（例如純音樂跟人聲），可以跑多個 Navidrome instance，再用 Nginx 做反向代理，透過不同的路徑來區分。
+
+<p class="code-title">docker-compose.yml</p>
+
+```yaml
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8900:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+    depends_on:
+      - navidrome-a
+      - navidrome-b
+    restart: unless-stopped
+
+  navidrome-a:
+    image: deluan/navidrome:latest
+    user: 1000:1000
+    expose:
+      - "4533"
+    restart: unless-stopped
+    environment:
+      ND_BASEURL: "/music-a/"
+      ND_ENABLETRANSCODINGCONFIG: "true"
+      ND_LOGLEVEL: "info"
+    volumes:
+      - "./data/a:/data"
+      - "/path/to/your/music-a:/music:ro"
+
+  navidrome-b:
+    image: deluan/navidrome:latest
+    user: 1000:1000
+    expose:
+      - "4533"
+    restart: unless-stopped
+    environment:
+      ND_BASEURL: "/music-b/"
+      ND_ENABLETRANSCODINGCONFIG: "true"
+      ND_LOGLEVEL: "info"
+    volumes:
+      - "./data/b:/data"
+      - "/path/to/your/music-b:/music:ro"
+```
+
+<p class="code-title">nginx.conf</p>
+
+```nginx
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    upstream navidrome_a {
+        server navidrome-a:4533;
+    }
+
+    upstream navidrome_b {
+        server navidrome-b:4533;
+    }
+
+    server {
+        listen 80;
+
+        location /music-a/ {
+            proxy_pass http://navidrome_a;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /music-b/ {
+            proxy_pass http://navidrome_b;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+```
+
+幾個新手容易踩到的地方：
+
+- `user: 1000:1000` 要對應到你主機上音樂資料夾的擁有者，權限不對的話 Navidrome 會讀不到檔案
+- `ND_BASEURL` 設定每個 instance 的路徑前綴，搭配 Nginx 的 `location` 做路由分流
+- 音樂資料夾掛載建議用 `:ro`（唯讀），Navidrome 只需要讀取權限，不需要寫入你的音樂檔案
+- 如果你有 Last.fm 的 API Key，可以透過環境變數 `ND_LASTFM_APIKEY` 跟 `ND_LASTFM_SECRET` 設定，Navidrome 會自動抓取專輯封面跟歌手資訊
