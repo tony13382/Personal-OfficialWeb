@@ -1,0 +1,271 @@
+---
+title: 我的 Claude Code 調教筆記
+description: 長期更新的 Claude Code 設定指南，從 Status Line、CLAUDE.md 到自訂 Skill，分享怎麼把 Claude Code 調到最順手
+date: 2026-04-07
+category: 開發環境
+tags: [Claude Code, AI 工具, 終端機]
+cover: /og/toolbox-claude-code-setup.png
+seo:
+  ogImage: /og/toolbox-claude-code-setup.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import statuslineResult from '@/assets/imgs/toolbox/claude-code-setup/statusline-result.png'
+import awesomeDesignMd from '@/assets/imgs/toolbox/claude-code-setup/awesome-design-md.png'
+
+Claude Code 是我目前主要的開發工具，用了一段時間之後發現，預設的狀態其實只發揮了它一半的能力。透過 Status Line、CLAUDE.md 專案指令跟自訂 Skill，可以把整個開發體驗拉到完全不同的層次。這篇會是一個長期更新的筆記，把我覺得值得分享的設定跟技巧陸續整理進來。
+
+<Image src={statuslineResult} alt="Claude Code Status Line 實際效果" />
+
+先看我目前的 Claude Code 長什麼樣子：底部兩行即時顯示模型、專案分支、用量百分比跟上下文資訊。這只是其中一個設定，後面會一個一個拆開來聊。
+
+## Status Line：即時掌握使用狀態
+
+Claude Code 底部有一條狀態列叫 Status Line，預設是關的。開啟之後，它會定期把當前狀態以 JSON 格式丟給你指定的腳本，腳本處理完輸出文字，就會顯示在畫面底部。
+
+整個設定分三步：寫腳本、給權限、改設定檔。
+
+### 建立腳本
+
+先在 `~/.claude/` 底下建立一個 `statusline.sh`：
+
+<p class="code-title">~/.claude/statusline.sh</p>
+
+```bash
+#!/usr/bin/env bash
+input=$(cat)
+
+# Helper: format seconds to relative time (3h12m, 2d22h)
+format_reset() {
+  local now=$(date +%s) diff=$(( $1 - $(date +%s) ))
+  [ "$diff" -lt 0 ] && diff=0
+  local days=$(( diff / 86400 )) hrs=$(( (diff % 86400) / 3600 )) mins=$(( (diff % 3600) / 60 ))
+  if [ "$days" -gt 0 ]; then printf "%dd%dh" "$days" "$hrs"
+  elif [ "$hrs" -gt 0 ]; then printf "%dh%dm" "$hrs" "$mins"
+  else printf "%dm" "$mins"; fi
+}
+
+# Line 1: model | project (branch)
+model=$(echo "$input" | jq -r '.model.display_name // empty')
+cwd=$(echo "$input" | jq -r '.cwd // empty')
+project=$(basename "$cwd" 2>/dev/null)
+branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
+
+left=""
+[ -n "$model" ] && left="$model"
+if [ -n "$project" ]; then
+  proj="$project"
+  [ -n "$branch" ] && proj="$proj ($branch)"
+  [ -n "$left" ] && left="$left | $proj" || left="$proj"
+fi
+
+# Line 2: Session | Weekly | ctx
+five_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+five_rst=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+week_rst=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+input_tok=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // empty')
+
+parts=()
+[ -n "$five_pct" ] && { l="Session: $(printf '%.0f' "$five_pct")%"; [ -n "$five_rst" ] && l="$l ($(format_reset "$five_rst"))"; parts+=("$l"); }
+[ -n "$week_pct" ] && { l="Weekly: $(printf '%.0f' "$week_pct")%"; [ -n "$week_rst" ] && l="$l ($(format_reset "$week_rst"))"; parts+=("$l"); }
+if [ -n "$used_pct" ]; then
+  ctx="ctx: $(printf '%.1f' "$used_pct")%"
+  [ -n "$input_tok" ] && [ "$input_tok" -gt 0 ] 2>/dev/null && {
+    tok=$(echo "$input_tok" | awk '{ if($1>=1e6) printf "%.1fm",$1/1e6; else if($1>=1e3) printf "%.1fk",$1/1e3; else printf "%d",$1 }')
+    ctx="$ctx · ${tok} tokens"
+  }
+  parts+=("$ctx")
+fi
+
+right=""
+for p in "${parts[@]}"; do [ -z "$right" ] && right="$p" || right="$right | $p"; done
+
+# Output
+[ -n "$left" ] && [ -n "$right" ] && printf "%s\n%s" "$left" "$right" || printf "%s" "${left}${right}"
+```
+
+這個腳本輸出兩行：第一行是模型名稱、專案資料夾跟 Git 分支；第二行是 Session / Weekly 用量百分比（含重置倒數）跟上下文視窗使用率。<div class="callout info">如果你覺得哪邊不夠好或想加新欄位，直接把腳本貼給 Claude Code 說「幫我改」就行了，它看得懂整個結構。</div>
+
+### 啟用設定
+
+給腳本執行權限，然後在 `~/.claude/settings.json` 加上設定：
+
+```bash
+chmod +x ~/.claude/statusline.sh
+```
+
+<p class="code-title">~/.claude/settings.json</p>
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline.sh",
+    "padding": 0
+  }
+}
+```
+
+`padding` 設成 `0` 讓狀態列更緊湊。設定完重啟 Claude Code 就會生效。
+
+
+## CLAUDE.md：讓 AI 讀懂你的專案
+
+CLAUDE.md 是 Claude Code 最核心的客製化機制。它是一個放在專案裡的 Markdown 檔案，每次啟動 session 都會自動載入，等於是你預先寫好的一份「專案說明書」——技術棧、程式碼風格、地雷清單，全部寫在這裡面，Claude 就不會每次都從零開始猜。
+
+### 沒有它會怎樣
+
+沒有 CLAUDE.md 的話，每次開新 session 都要重新跟 Claude 解釋一次專案脈絡。比如「我們用 Tailwind v4 不是 v3」「commit message 要用英文」「不要加 emoji」這些，講一次兩次還好，講十次就很煩。更麻煩的是，Claude 可能會用舊版的 API 寫法、把檔案建到錯的地方、或是生出跟專案風格完全不搭的程式碼。CLAUDE.md 就是為了解決這個問題——寫一次，每次都自動套用。
+
+### 層級結構
+
+CLAUDE.md 不只能放在專案根目錄，它支援多層結構，從全域到局部都能覆蓋：
+
+| 層級 | 路徑 | 用途 |
+|---|---|---|
+| 全域 | `~/.claude/CLAUDE.md` | 個人偏好，適用所有專案 |
+| 專案 | `./CLAUDE.md` | 團隊共用規則，commit 到 git |
+| 局部 | `./CLAUDE.local.md` | 個人的專案設定，加進 .gitignore |
+
+Claude 啟動時會從工作目錄往上走，把每一層的 CLAUDE.md 都載入。越具體的層級越後面讀取，所以局部規則可以覆寫全域規則。子目錄的 CLAUDE.md 則是在 Claude 讀取該目錄檔案時才會動態載入，不會一開始就全部吃進去。
+
+### 我會放什麼進去
+
+以我自己的專案為例，CLAUDE.md 裡面大概會涵蓋這些：
+
+- **技術棧**：框架版本、樣式方案、UI 元件庫，讓 Claude 生成的程式碼跟專案一致
+- **常用指令**：`npm run dev`、`npm run build` 這類，Claude 需要跑指令的時候不用猜
+- **專案結構**：哪個資料夾放什麼，避免 Claude 把檔案建到錯的地方
+- **寫作風格**：如果專案有內容產出（像我的文章區），口吻、用詞、格式規範都可以定義
+- **Commit 規範**：prefix 用什麼、語言用英文還是中文、要不要加 Co-Authored-By
+- **地雷清單**：容易搞混的設定、特殊的樣式行為、不能動的檔案
+
+<p class="code-title">CLAUDE.md（節錄）</p>
+
+```markdown
+## 技術棧
+
+- **框架**：Astro 5（SSG）+ React（互動元件）
+- **樣式**：Tailwind CSS v4（透過 @tailwindcss/vite 整合）
+- **部署**：Cloudflare Pages
+
+## 注意事項
+
+- toolbox 頁面的 inline code 樣式是程式碼風格（灰底紅字），
+  其他頁面是 highlight 風格（主題色底線）
+- H2 區塊會被 JS 拆成獨立卡片，每個 H2 是一張卡片
+- 圖片品質設定為 90（astro.config.mjs）
+```
+
+### 寫好 CLAUDE.md 的關鍵
+
+- **只寫 Claude 容易搞錯的事**：不用把整份技術文件貼進去，重點是那些 Claude 猜不到或容易搞混的部分。每個 CLAUDE.md 盡量控制在 200 行以內，太長反而會降低遵守度
+- **規則要具體可驗證**：「寫好一點」沒用，「用『跟』不用『與』，不用 emoji」才有用
+- **適時更新**：專案在演進，CLAUDE.md 也要跟著改，過時的規則比沒有規則更危險
+- **善用 import**：如果規則太多，可以用 `@path/to/file` 語法引入其他檔案，或是把細節拆到 `.claude/rules/` 目錄下，還能用 `paths` frontmatter 限定特定檔案路徑才載入
+
+<div class="callout info">CLAUDE.md 裡的 HTML 註解（&lt;!-- --&gt;）會在載入前被移除，所以你可以放給人看的備註而不會消耗 token。</div>
+
+## 精選 Skill：一個指令搞定重複工作
+
+Skill 是 Claude Code 的自訂指令系統。你把一套完整的指令寫成 Markdown 檔案，之後只要在對話中打 `/skill-name` 就能一鍵觸發。比起每次都要跟 Claude 解釋一遍「幫我 commit 然後 push」「幫我檢查剛才改的程式碼」，Skill 把這些溝通成本壓縮成一行指令。
+
+### 什麼時候該包成 Skill
+
+不是所有操作都適合包成 Skill。在介紹具體的 Skill 之前，先聊一下我的判斷標準：
+
+- **重複頻率高**：每天或每幾天就會做一次的操作
+- **步驟固定**：每次的流程幾乎一樣，不太需要因情境調整
+- **溝通成本高**：如果不用 Skill，每次都要打一大段指令跟 Claude 解釋
+
+反過來說，如果某個操作每次的做法都不太一樣、需要很多判斷跟討論，那直接跟 Claude 對話反而更有效率，硬包成 Skill 只會綁手綁腳。
+
+### 怎麼建立一個 Skill
+
+每個 Skill 就是一個 Markdown 檔案，放在 `~/.claude/skills/{skill-name}/SKILL.md`（全域）或 `.claude/skills/{skill-name}/SKILL.md`（專案層級）。檔案用 frontmatter 定義名稱跟描述，正文就是給 Claude 的指令。
+
+<p class="code-title">~/.claude/skills/my-skill/SKILL.md</p>
+
+```markdown
+---
+name: my-skill
+description: 這個 skill 做什麼的一句話描述
+---
+
+# Skill 標題
+
+## Instructions
+
+你想要 Claude 執行的步驟...
+```
+
+Skill 還支援一些進階功能：用 `$ARGUMENTS` 接收參數（像 `/fix-issue 123`）、用 `` !`command` `` 在載入時動態注入 shell 指令的輸出、用 `context: fork` 在獨立的 subagent 裡執行避免污染主對話。不過大部分情境下，基本的結構就很夠用了。
+
+<div class="callout info">Skill 有兩種觸發方式：手動輸入 /skill-name，或是讓 Claude 根據 description 自動判斷要不要觸發。如果你的 Skill 有副作用（像 commit、deploy），建議在 frontmatter 加上 disable-model-invocation: true，避免 Claude 自作主張。</div>
+
+### /commit-generate：自動產生 commit 並推送
+
+這是我用最頻繁的 Skill。改完程式碼之後直接打 `/commit-generate`，它會自動讀取 staged changes、判斷 commit type（feat / fix / refactor 等）、產生英文 commit message，然後直接 push 到 remote。
+
+整個流程不用自己想 commit message、不用手動 push，特別適合那種改了一小段就想快速提交的節奏。
+
+<p class="code-title">~/.claude/skills/commit-generate/SKILL.md（節錄）</p>
+
+```markdown
+## Instructions
+
+1. **Read staged changes**
+   - Run `git status` to check the current state
+   - Run `git diff --cached` to see staged changes
+
+2. **Generate commit message following these rules**
+   - feat: New features or functionality
+   - fix: Bug fixes or issue resolution
+   - refactor: Code refactoring (no functionality change)
+   - Write message in English, use present tense
+   - Focus on WHAT and WHY, not HOW
+
+3. **Create the commit and push to remote**
+```
+
+### /simplify：寫完之後的第二雙眼睛
+
+寫完一段比較複雜的邏輯之後，用 `/simplify` 讓 Claude 回頭審查剛才改過的程式碼。它會同時開三個 agent 掃描，檢查有沒有可以重用的邏輯、有沒有多餘的抽象、效能上有沒有明顯的問題，然後直接修正。
+
+自己寫的時候容易陷入局部思維，讓 Claude 用全局視角掃一遍，常常能抓到一些自己沒注意到的地方。這個 Skill 是 Claude Code 內建的，不需要自己寫。
+
+### /frontend-design：生成有設計感的前端介面
+
+需要快速做出一個頁面或元件的時候，`/frontend-design` 可以直接生成有設計感的前端程式碼。比起直接跟 Claude 說「幫我做一個登入頁面」，這個 Skill 內建了一套設計原則跟品質標準，產出的結果會更有質感，不會是那種一看就知道是 AI 生的 generic 風格。這個是透過 Plugin 安裝的，在 settings 裡面啟用就能用。
+
+### Awesome DESIGN.md：讓 AI 生出像樣的 UI
+
+這個嚴格來說不是 Skill，但搭配 `/frontend-design` 一起用效果很好。
+
+<a href="https://github.com/VoltAgent/awesome-design-md" target="_blank"><Image src={awesomeDesignMd} alt="Awesome DESIGN.md Collection" /></a>
+
+[Awesome DESIGN.md](https://github.com/VoltAgent/awesome-design-md) 是一個社群整理的設計系統文件集合，裡面收錄了 58 個知名網站的 DESIGN.md——包括 Linear、Vercel、Stripe、Notion 這些設計水準公認很高的產品。
+
+DESIGN.md 的概念很簡單：用 Markdown 把一個網站的設計系統寫成 AI 看得懂的格式，涵蓋色彩、字體、元件樣式、間距系統、響應式斷點等九個面向。你只要把某個網站的 DESIGN.md 丟進專案根目錄，然後跟 Claude 說「照這個風格做」，它就能生出跟那個設計系統一致的 UI，而不是每次都給你一個 generic 的預設風格。
+
+我自己比較常參考的是 Linear 跟 Vercel 的 DESIGN.md，乾淨俐落的設計語言很適合開發工具類的介面。
+
+### /batch：大規模平行修改
+
+當你需要對整個 codebase 做大範圍的修改（像是把所有元件從一個框架遷移到另一個），`/batch` 會用 git worktree 開出多個獨立的工作環境，平行處理不同的檔案。這個 Skill 適合那種「改動範圍大但每個檔案的改法類似」的情境，像是重命名、API 遷移、或是批量加上 TypeScript 型別。
+
+### 找更多 Skill
+
+上面介紹的只是冰山一角。社群已經有不少人在整理跟分享好用的 Skill，如果你想找靈感或是直接裝來用，可以看看這些資源：
+
+| 資源 | 說明 |
+|---|---|
+| [Awesome Claude Code](https://github.com/hesreallyhim/awesome-claude-code) | 社群維護的精選清單，涵蓋 Skill、Hook、Plugin 跟教學 |
+| [Awesome Claude Skills](https://github.com/travisvn/awesome-claude-skills) | 專門收錄 Skill 的策展清單 |
+| [Claude Code Plugins Marketplace](https://claudemarketplaces.com/) | 社群市集，有評分跟安裝數，方便挑選 |
+
+大部分社群 Skill 的安裝方式就是把檔案複製到 `~/.claude/skills/` 底下，結構跟前面介紹的一樣。挑選的時候建議先看一下 SKILL.md 的內容，確認指令邏輯符合你的需求再裝。

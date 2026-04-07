@@ -64,7 +64,8 @@ public/
 - **Pricing Tag**：`<span class="pricing-tag">免費</span>`（綠）、`.paid`（橘）、`.freemium`（藍）
 - **Callout**：`<div class="callout info">...</div>`（藍）、`.warning`（粉）
 - **Code Title**：`<p class="code-title">檔案名稱</p>`
-- **Official Link**：`<a href="..." target="_blank" class="official-link">文字</a>`
+- **Official Link（大按鈕）**：`<a href="..." target="_blank" class="official-link">文字</a>`，只用在獨立一行的 CTA，不要嵌在句子裡
+- **行內連結**：用一般 Markdown 連結語法 `[文字](url)`，用在段落內文中的超連結
 
 ### Commit 規範
 

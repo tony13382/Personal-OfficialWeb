@@ -404,13 +404,16 @@ const seo = {
       });
     }
 
-    // Code block copy buttons
+    // Code block copy buttons + collapsible long code blocks
+    const LINE_THRESHOLD = 10;
+
     document.querySelectorAll("article pre").forEach((pre) => {
       const wrapper = document.createElement("div");
       wrapper.className = "code-block-wrapper";
       pre.parentNode?.insertBefore(wrapper, pre);
       wrapper.appendChild(pre);
 
+      // Copy button
       const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg>`;
       const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>`;
       const btn = document.createElement("button");
@@ -427,6 +430,22 @@ const seo = {
         });
       });
       wrapper.appendChild(btn);
+
+      // Collapsible for long code blocks
+      const codeEl = pre.querySelector("code") || pre;
+      const lineCount = (codeEl.textContent || "").split("\n").length;
+      if (lineCount > LINE_THRESHOLD) {
+        wrapper.classList.add("code-collapsed");
+
+        const expandBtn = document.createElement("button");
+        expandBtn.className = "code-expand-btn";
+        expandBtn.textContent = `View all (${lineCount} lines)`;
+        expandBtn.addEventListener("click", () => {
+          wrapper.classList.remove("code-collapsed");
+          expandBtn.remove();
+        });
+        pre.appendChild(expandBtn);
+      }
     });
   </script>
 
@@ -740,6 +759,45 @@ const seo = {
     :global(.code-copy-btn svg) {
       width: 1rem;
       height: 1rem;
+    }
+
+    :global(.code-block-wrapper.code-collapsed pre) {
+      max-height: 16rem;
+      overflow: hidden;
+    }
+
+    :global(.code-block-wrapper.code-collapsed)::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5rem;
+      background: linear-gradient(transparent, #282c34);
+      pointer-events: none;
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+
+    :global(.code-expand-btn) {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.375rem 1rem;
+      background: #fff;
+      color: #282c34;
+      border: none;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1;
+      transition: background 0.2s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    :global(.code-expand-btn:hover) {
+      background: #e5e5e5;
     }
 
     @keyframes slide-up {
