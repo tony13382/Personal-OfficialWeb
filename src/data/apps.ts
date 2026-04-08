@@ -31,6 +31,7 @@ export const apps: AppInfo[] = [
         description: '自架音樂資料庫管理系統',
         url: 'https://github.com/tony13382/NexTags',
         cover: '/og/apps-nextags.png',
+        projectSlug: 'nextags',
         mode: 'page',
     },
 ]
