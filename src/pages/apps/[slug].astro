@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Header from "@/components/header/Header.astro";
 import { apps } from "@/data/apps";
 import { themes } from "@/lib/themes";
+import NexTagsLanding from "@/components/apps/nextags/Landing";
 
 export function getStaticPaths() {
   return apps.map((app) => ({
@@ -13,11 +14,13 @@ export function getStaticPaths() {
 
 const { app } = Astro.props;
 const themeColors = themes.natural;
+const isPageMode = app.mode === "page";
 
 const canonicalURL = new URL(
   Astro.url.pathname,
   Astro.site || "http://localhost:4321",
 );
+
 ---
 
 <!doctype html>
@@ -59,7 +62,12 @@ const canonicalURL = new URL(
       }}
     ></style>
   </head>
-  <body class="font-sans bg-background m-0 overflow-hidden h-dvh flex flex-col">
+  <body
+    class:list={[
+      "font-sans bg-background m-0 flex flex-col",
+      isPageMode ? "min-h-dvh" : "overflow-hidden h-dvh",
+    ]}
+  >
     <Header
       type="app"
       themeColor={themeColors.primary}
@@ -68,12 +76,21 @@ const canonicalURL = new URL(
         ? `/projects/${app.projectSlug}/`
         : undefined}
     />
-    <div class="flex-1 pt-18">
-      <iframe
-        src={app.url}
-        title={app.name}
-        class="w-full h-full border-0"
-        allow="clipboard-read; clipboard-write"></iframe>
-    </div>
+    {
+      isPageMode && app.slug === "nextags" ? (
+        <div class="flex-1 pt-18">
+          <NexTagsLanding client:load />
+        </div>
+      ) : (
+        <div class="flex-1 pt-18">
+          <iframe
+            src={app.url}
+            title={app.name}
+            class="w-full h-full border-0"
+            allow="clipboard-read; clipboard-write"
+          />
+        </div>
+      )
+    }
   </body>
 </html>
