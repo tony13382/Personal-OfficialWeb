@@ -9,13 +9,17 @@ import {
   GithubLogo,
 } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
+import nextTagsSonglist from "@/assets/imgs/apps/nextags-songlist.png";
+import nextTagsTagEditor from "@/assets/imgs/apps/nextags-tageditor.png";
+import nextTagsPlaylist from "@/assets/imgs/apps/nextags-playlist.png";
+import nextTagsHeroBg from "@/assets/imgs/apps/nextags-hero-bg.avif";
 
 const GITHUB_URL = "https://github.com/tony13382/NexTags";
 
 const screenshots = {
-  hero: "/assets/imgs/apps/nextags-songlist.png",
-  tagEditor: "/assets/imgs/apps/nextags-tageditor.png",
-  playlist: "/assets/imgs/apps/nextags-playlist.png",
+  hero: nextTagsSonglist.src,
+  tagEditor: nextTagsTagEditor.src,
+  playlist: nextTagsPlaylist.src,
 };
 
 interface Feature {
@@ -104,7 +108,7 @@ export default function Landing() {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/assets/imgs/apps/nextags-hero-bg.avif')" }}
+          style={{ backgroundImage: `url('${nextTagsHeroBg.src}')` }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" />
