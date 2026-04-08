@@ -101,16 +101,16 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardContent className="gap-4 pt-4">
     <div className="space-y-4">
       <div className="space-y-1.5">
-        <p>**前端**</p>
-        以 `Remix (React Router v7)` 為核心框架，搭配 `shadcn/ui` 元件庫與 `Tailwind CSS` 建構現代化介面。使用 `Phosphor Icons` 作為圖示系統，`@dnd-kit` 處理拖曳交互。
+        <p><strong>前端</strong></p>
+        <p>以 `Remix (React Router v7)` 為核心框架，搭配 `shadcn/ui` 元件庫與 `Tailwind CSS` 建構現代化介面。使用 `Phosphor Icons` 作為圖示系統，`@dnd-kit` 處理拖曳交互。</p>
       </div>
       <div className="space-y-1.5">
-        <p>**後端**</p>
-        執行於 `Cloudflare Workers` 邊緣運算環境，使用 `Cloudflare D1 (SQLite)` 作為資料庫，透過 `Drizzle ORM` 進行 Type-safe 的資料操作與 Migration 管理。
+        <p><strong>後端</strong></p>
+        <p>執行於 `Cloudflare Workers` 邊緣運算環境，使用 `Cloudflare D1 (SQLite)` 作為資料庫，透過 `Drizzle ORM` 進行 Type-safe 的資料操作與 Migration 管理。</p>
       </div>
       <div className="space-y-1.5">
-        <p>**認證系統**</p>
-        自建 JWT 認證機制（jose），密碼使用 `PBKDF2-SHA256`（100,000 次迭代）進行雜湊，Cookie-based Session 管理，支援註冊白名單機制。
+        <p><strong>認證系統</strong></p>
+        <p>自建 JWT 認證機制（jose），密碼使用 `PBKDF2-SHA256`（100,000 次迭代）進行雜湊，Cookie-based Session 管理，支援註冊白名單機制。</p>
       </div>
     </div>
   </CardContent>
@@ -287,24 +287,24 @@ export const dbItems = [
     <p>基於 Remix Action Handler 設計 RESTful 風格的 API 端點，透過 FormData 傳遞參數：</p>
     <div className="space-y-3">
       <div className="space-y-1.5">
-        <p>**書籤管理** `api.bookmarks`</p>
-        支援 CRUD、跨資料夾移動、批次排序更新
+        <p><strong>書籤管理</strong> <code>api.bookmarks</code></p>
+        <p>支援 CRUD、跨資料夾移動、批次排序更新</p>
       </div>
       <div className="space-y-1.5">
-        <p>**資料夾管理** `api.folders`</p>
-        支援 CRUD、巢狀子資料夾、摺疊狀態切換
+        <p><strong>資料夾管理</strong> <code>api.folders</code></p>
+        <p>支援 CRUD、巢狀子資料夾、摺疊狀態切換</p>
       </div>
       <div className="space-y-1.5">
-        <p>**標籤系統** `api.tags` / `api.tag-groups` / `api.bookmark-tags`</p>
-        標籤群組管理、標籤 CRUD、書籤標籤關聯操作
+        <p><strong>標籤系統</strong> <code>api.tags</code> / <code>api.tag-groups</code> / <code>api.bookmark-tags</code></p>
+        <p>標籤群組管理、標籤 CRUD、書籤標籤關聯操作</p>
       </div>
       <div className="space-y-1.5">
-        <p>**工作區與分頁** `api.workspaces` / `api.tabs`</p>
-        多工作區切換、分頁模式管理（folders / tags）
+        <p><strong>工作區與分頁</strong> <code>api.workspaces</code> / <code>api.tabs</code></p>
+        <p>多工作區切換、分頁模式管理（folders / tags）</p>
       </div>
       <div className="space-y-1.5">
-        <p>**分享系統** `api.shares`</p>
-        產生唯讀分享連結、自訂短連結與額外按鈕
+        <p><strong>分享系統</strong> <code>api.shares</code></p>
+        <p>產生唯讀分享連結、自訂短連結與額外按鈕</p>
       </div>
     </div>
   </CardContent>

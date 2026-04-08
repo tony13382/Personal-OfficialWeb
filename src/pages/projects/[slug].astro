@@ -107,7 +107,7 @@ const getStatusBadge = (statusStr: string) => {
     <!-- Main Content -->
     <div class="container mx-auto -mt-40 pb-20 min-h-screen max-w-5xl">
       <div class="row grid grid-cols-12 align-items-start gap-8 px-4">
-        <div class="relative lg:col-span-4 col-span-12 z-10">
+        <div class="relative lg:col-span-4 col-span-12 z-10 min-w-0">
           <div class="sticky top-0 pt-23">
             <Card>
               <CardContent className="space-y-4">
@@ -152,7 +152,7 @@ const getStatusBadge = (statusStr: string) => {
           </div>
         </div>
 
-        <div class="grid col-span-12 lg:col-span-8 pb-5 gap-8 z-10">
+        <div class="grid col-span-12 lg:col-span-8 pb-5 gap-8 z-10 min-w-0">
           <div class="hidden lg:block h-[calc(var(--spacing)*(23-8))]"></div>
           <!-- Tools Card -->
           <Card>
@@ -171,7 +171,7 @@ const getStatusBadge = (statusStr: string) => {
             project.data.scores && project.data.scores.length > 0 && (
               <Card>
                 <CardTitle>
-                  <h2 style="color: var(--foreground);">獲獎紀錄</h2>
+                  獲獎紀錄
                 </CardTitle>
                 <CardContent className="pt-4">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -201,9 +201,7 @@ const getStatusBadge = (statusStr: string) => {
           {
             project.data.tools && project.data.tools.length > 0 && (
               <Card>
-                <CardTitle>
-                  <h2>採用技術</h2>
-                </CardTitle>
+                <CardTitle>採用技術</CardTitle>
                 <CardContent className="pt-4">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.data.tools.map((tool: any) => (
@@ -218,7 +216,7 @@ const getStatusBadge = (statusStr: string) => {
             )
           }
           <!-- MDX 內容 -->
-          <article class="flex flex-col gap-8">
+          <article class="flex flex-col gap-8 min-w-0">
             <Content />
           </article>
         </div>
@@ -242,6 +240,10 @@ const getStatusBadge = (statusStr: string) => {
   <ProfileCardModal client:load />
 
   <style>
+    article > :global(*) {
+      min-width: 0;
+    }
+
     article :global(table) {
       width: 100%;
       border-collapse: collapse;
