@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
+import signUrl from "@/assets/imgs/index/sign.svg?url";
 ---
 
 <footer class="rounded-t-3xl bg-background border-t border-0">
@@ -154,7 +154,7 @@ import { SocialLinksLite } from "../data/social";
       class="py-4 mt-6 bg-muted rounded-md text-muted-foreground text-center text-xs"
     >
       <img
-        src="/assets/imgs/index/sign.svg"
+        src={signUrl}
         alt="Logo"
         class="max-h-7 opacity-75 mx-auto my-4"
       />

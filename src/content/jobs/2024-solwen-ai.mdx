@@ -5,20 +5,24 @@ location: 臺北（遠端）
 startDate: 2024-08-01
 endDate: null
 theme: green
-cover: /assets/imgs/jobs/2024_SolwenAi/cover.png
-logo: /assets/imgs/jobs/2024_SolwenAi/logo.png
+cover: ../../assets/imgs/jobs/2024_SolwenAi/cover.png
+logo: ../../assets/imgs/jobs/2024_SolwenAi/logo.png
 description:
   - 開發與整合 `AI 解決方案`，涵蓋`多模態模型`（語音識別、NLP、計算機視覺）、`RAG 知識庫`及`語音合成`系統，以 FastAPI 建構 API 服務並結合 `Docker Compose` 與 CI/CD 自動部署於 Linode 伺服器。
 tags: ["AI 應用","網頁全端","API 開發"]
 seo:
   metaDescription: 專注於開發與整合 AI 解決方案，提升企業的運營效率與競爭力。
-  ogImage: /assets/imgs/jobs/2024_SolwenAi/cover.png
 ---
 
 import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import wellyGeoCover from '@/assets/imgs/projects/wellyGeo/cover.png'
+import soeasyeduSpeakCover from '@/assets/imgs/projects/soeasyeduSpeak/cover.png'
+import longtengInvoiceCover from '@/assets/imgs/projects/longtengInvoice/cover.png'
+import pandaChineseCover from '@/assets/imgs/projects/pandaChinese/cover.png'
+import enterpriseKnowledgeBaseCover from '@/assets/imgs/projects/enterpriseKnowledgeBase/cover.png'
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/wellyGeo/cover.png"
+  imageSrc={wellyGeoCover}
   imageAlt="WellyGeo - AI 品牌能見度追蹤平台"
   name="WellyGeo - AI 品牌能見度追蹤平台"
   startDate="2025/11"
@@ -34,7 +38,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/soeasyeduSpeak/cover.png"
+  imageSrc={soeasyeduSpeakCover}
   imageAlt="巨匠英語口說 AI 學習系統"
   name="巨匠英語口說 AI 學習系統"
   startDate="2024/11"
@@ -50,7 +54,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/longtengInvoice/cover.png"
+  imageSrc={longtengInvoiceCover}
   imageAlt="龍騰發票視覺處理系統"
   name="龍騰發票視覺處理系統"
   startDate="2025/02"
@@ -63,7 +67,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/pandaChinese/cover.png"
+  imageSrc={pandaChineseCover}
   imageAlt="Panda Chinese・中文口說 AI 學習系統"
   name="Panda Chinese・中文口說 AI 學習系統"
   startDate="2024/11"
@@ -79,7 +83,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/enterpriseKnowledgeBase/cover.png"
+  imageSrc={enterpriseKnowledgeBaseCover}
   imageAlt="企業 RAG 對話知識庫"
   name="企業 RAG 對話知識庫"
   startDate="2024/08"

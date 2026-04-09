@@ -6,7 +6,7 @@ startDate: 2022-01-01
 endDate: 2023-09-30
 status: closed
 theme: green
-cover: /assets/imgs/projects/songla/cover.png
+cover: ../../assets/imgs/projects/songla/cover.png
 pin: true
 skillTypes: [design]
 tags: [介面設計, 產品規劃, UX 優化]
@@ -35,7 +35,6 @@ tools:
     description: 企業時程控管、檔案管理、多團隊協作系統
 seo:
   metaDescription: 哼唱即可作曲，讓創作音樂不再是遙不可及的夢想
-  ogImage: /assets/imgs/projects/songla/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
@@ -45,6 +44,20 @@ import { IconBlock } from '@/components/react/IconBlock'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 import { TabsBlock } from '@/components/react/TabsBlock'
+import songlaSystemFrame2 from '@/assets/imgs/projects/songla/systemFrame2.png'
+import songlaSystemFrame from '@/assets/imgs/projects/songla/systemFrame.png'
+import songlaUi01 from '@/assets/imgs/projects/songla/UI01.png'
+import songlaUi02 from '@/assets/imgs/projects/songla/UI02.png'
+import songlaUi03 from '@/assets/imgs/projects/songla/UI03.png'
+import songlaUi04 from '@/assets/imgs/projects/songla/UI04.png'
+import songlaNavbar from '@/assets/imgs/projects/songla/ux/Navbar.png'
+import songlaLaCoin from '@/assets/imgs/projects/songla/laCoin.png'
+import songlaMusicWider from '@/assets/imgs/projects/songla/ux/Music Wider.png'
+import songlaMusicList from '@/assets/imgs/projects/songla/ux/Music List.png'
+import songlaMusicThin from '@/assets/imgs/projects/songla/ux/Music Thin.png'
+import songlaColorTheme from '@/assets/imgs/projects/songla/ux/colortheme.png'
+import songlaColorBg from '@/assets/imgs/projects/songla/ux/colorBG.png'
+import songlaIconPack from '@/assets/imgs/projects/songla/ux/iconpack.png'
 
 
 <Card>
@@ -66,7 +79,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
   <CardContent className="pt-6 px-2">
     <div className="space-y-4 mt-4">
       <ImageWithLightbox
-        src="/assets/imgs/projects/songla/systemFrame2.png"
+        src={songlaSystemFrame2}
         allowPop={true}
         client:load
       />
@@ -76,7 +89,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
       </div>
 
       <ImageWithLightbox
-        src="/assets/imgs/projects/songla/systemFrame.png"
+        src={songlaSystemFrame}
         allowPop={true}
         client:load
       />
@@ -88,10 +101,10 @@ import { TabsBlock } from '@/components/react/TabsBlock'
   <CardHeader>
     <UiImageCarousel
       images={[
-        "/assets/imgs/projects/songla/UI01.png",
-        "/assets/imgs/projects/songla/UI02.png",
-        "/assets/imgs/projects/songla/UI03.png",
-        "/assets/imgs/projects/songla/UI04.png",
+        songlaUi01,
+        songlaUi02,
+        songlaUi03,
+        songlaUi04,
       ]}
       client:load
     />
@@ -116,7 +129,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
   </CardTitle>
   <CardContent className="gap-4">
     <ImageWithLightbox
-      src="/assets/imgs/projects/songla/ux/Navbar.png"
+      src={songlaNavbar}
       allowPop={false}
       client:load
     />
@@ -297,7 +310,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
           embed: [
             {
               type: "image",
-              src: "/assets/imgs/projects/songla/laCoin.png",
+              src: songlaLaCoin,
               allowPop: true,
               className: "rounded-2xl overflow-hidden"
             },
@@ -353,7 +366,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
       <div>
         <h3>寬版音樂封面照</h3>
         <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/Music Wider.png"
+          src={songlaMusicWider}
           allowPop={false}
           client:load
         />
@@ -365,7 +378,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
       <div>
         <h3>標準音樂封面照</h3>
         <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/Music List.png"
+          src={songlaMusicList}
           allowPop={false}
           client:load
         />
@@ -377,7 +390,7 @@ import { TabsBlock } from '@/components/react/TabsBlock'
       <div>
         <h3>窄版音樂封面照</h3>
         <ImageWithLightbox
-          src="/assets/imgs/projects/songla/ux/Music Thin.png"
+          src={songlaMusicThin}
           allowPop={false}
           client:load
         />
@@ -395,17 +408,17 @@ import { TabsBlock } from '@/components/react/TabsBlock'
     <UiImageCarousel 
       images={[
         {
-          image: "/assets/imgs/projects/songla/ux/colortheme.png",
+          image: songlaColorTheme,
           title:"色彩",
           desc:"運用多彩色系營造活潑的感覺"
         },
         {
-          image: "/assets/imgs/projects/songla/ux/colorBG.png",
+          image: songlaColorBg,
           title:"蒙版漸層背景設計",
           desc:"運用漸層營造立體感"
         },
         {
-          image: "/assets/imgs/projects/songla/ux/iconpack.png",
+          image: songlaIconPack,
           title:"圖示設計",
           desc:`依據漸層色設計風格結合主色調與圖標進行融合成為獨一無二的專屬圖標\n上述所述圖標取得於 IconPark 釋出之開源圖標庫、官方 Material Icons 與呂亮進本人設計`
         }

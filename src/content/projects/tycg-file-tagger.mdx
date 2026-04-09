@@ -5,7 +5,7 @@ startDate: 2025-03-01
 endDate: 2025-05-16
 status: switch
 theme: red
-cover: /assets/imgs/projects/tycgFileTaggerWeb/cover.png
+cover: ../../assets/imgs/projects/tycgFileTaggerWeb/cover.png
 pin: false
 skillTypes: [dev]
 tags: [全端開發, Jinja2]
@@ -21,6 +21,9 @@ tools:
 ---
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import tycgFileTaggerDb from '@/assets/imgs/projects/tycgFileTaggerWeb/db.png'
+import tycgFileTaggerCrudFile from '@/assets/imgs/projects/tycgFileTaggerWeb/crudFile.png'
 
 
 
@@ -29,7 +32,7 @@ import { Badge } from '@/components/ui/badge'
   DB
   </CardTitle>
   <CardContent className='gap-4'>
-    <image src="/assets/imgs/projects/tycgFileTaggerWeb/db.png"/>
+    <ImageWithLightbox src={tycgFileTaggerDb} allowPop={true} client:load />
     <div className='grid gap-2'>
       資料庫採用雙表架構設計，以 `Project` 和 `Document` 建立一對多關係。
       
@@ -48,6 +51,6 @@ import { Badge } from '@/components/ui/badge'
   檔案處理工作流
   </CardTitle>
   <CardContent className='gap-4'>
-    <image src="/assets/imgs/projects/tycgFileTaggerWeb/crudFile.png"/>
+    <ImageWithLightbox src={tycgFileTaggerCrudFile} allowPop={true} client:load />
   </CardContent>
 </Card>

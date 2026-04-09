@@ -5,20 +5,23 @@ location: 遠端
 startDate: 2021-07-20
 endDate: null
 theme: natural
-cover: /assets/imgs/jobs/0000_Developer/cover.png
-logo: /assets/imgs/jobs/0000_Developer/logo.png
+cover: ../../assets/imgs/jobs/0000_Developer/cover.png
+logo: ../../assets/imgs/jobs/0000_Developer/logo.png
 description:
   - 具備`全端開發`能力，前端熟悉 React SPA 與 RWD 網頁，後端運用 FastAPI、Flask、Node.js 等框架，並整合 PostgreSQL、MySQL、MongoDB 等資料庫進行系統開發。
 tags: ["AI 應用","網頁全端"]
 seo:
   metaDescription: 全端網頁開發與 AI 系統開發經驗，涵蓋前端、後端與資料庫技術。
-  ogImage: /assets/imgs/jobs/0000_Developer/cover.png
 ---
 
 import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import tycgFileTaggerCover from '@/assets/imgs/projects/tycgFileTaggerWeb/cover.png'
+import chenmkoCover from '@/assets/imgs/projects/chenmko/cover.png'
+import hsCloudMeetingManageCover from '@/assets/imgs/projects/hsCloudMeetingManage/cover.png'
+import hsVmiCover from '@/assets/imgs/projects/hsVmi/cover.png'
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/tycgFileTaggerWeb/cover.png"
+  imageSrc={tycgFileTaggerCover}
   imageAlt="專案文件管理系統"
   name="專案文件管理系統"
   link="/projects/tycg-file-tagger"
@@ -32,7 +35,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/chenmko/cover.png"
+  imageSrc={chenmkoCover}
   imageAlt="Chenmko 全端網頁開發"
   name="Chenmko 全端網頁開發"
   link="/projects/chenmko"
@@ -45,7 +48,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/hsCloudMeetingManage/cover.png"
+  imageSrc={hsCloudMeetingManageCover}
   imageAlt="雲端會議管理系統"
   name="雲端會議管理系統"
   link="/projects/hs-cloud-meeting-manage"
@@ -63,7 +66,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/hsVmi/cover.png"
+  imageSrc={hsVmiCover}
   imageAlt="華新 VMI 供應鏈管理模擬遊戲"
   name="華新 VMI 供應鏈管理模擬遊戲"
   descriptions={[

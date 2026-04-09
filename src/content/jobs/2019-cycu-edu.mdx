@@ -5,20 +5,27 @@ location: 桃園
 startDate: 2019-07-01
 endDate: 2022-07-31
 theme: blue
-cover: /assets/imgs/jobs/2019_CycuEdu/cover.png
-logo: /assets/imgs/jobs/2019_CycuEdu/logo.png
+cover: ../../assets/imgs/jobs/2019_CycuEdu/cover.png
+logo: ../../assets/imgs/jobs/2019_CycuEdu/logo.png
 description:
   - 熟悉 UI/UX 設計 (Figma)、全端網頁開發 (Node.js, Bootstrap, MySQL)、API 開發 (Django, Flask)、資料視覺化 (Data Studio) 及多媒體製作，並具備行銷企劃與專案競賽經驗。
 tags: ["Figma","網頁全端","行銷企劃"]
 seo:
   metaDescription: UI/UX 設計、全端網頁開發、API 開發、資料處理與視覺化。
-  ogImage: /assets/imgs/jobs/2019_CycuEdu/cover.png
 ---
 
 import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import mindReaderCover from '@/assets/imgs/projects/mindReader/cover.png'
+import hsCloudMeetingManageCover from '@/assets/imgs/projects/hsCloudMeetingManage/cover.png'
+import hsVmiCover from '@/assets/imgs/projects/hsVmi/cover.png'
+import techlifeCover from '@/assets/imgs/projects/techlife/cover.png'
+import foodomeCover from '@/assets/imgs/projects/foodome/cover.png'
+import noDrinkNoDrunkCover from '@/assets/imgs/projects/noDrinkNoDrunk/cover.png'
+import jobAnalytics2020Cover from '@/assets/imgs/projects/jobAnalytics2020/cover.png'
+import oneDayLoverCover from '@/assets/imgs/projects/oneDayLover/cover.png'
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/mindReader/cover.png"
+  imageSrc={mindReaderCover}
   imageAlt="Mind Reader"
   name="Mind Reader"
   link="/projects/mind-reader"
@@ -31,7 +38,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/hsCloudMeetingManage/cover.png"
+  imageSrc={hsCloudMeetingManageCover}
   imageAlt="華新雲會議管理系統"
   name="華新雲會議管理系統"
   link="/projects/hs-cloud-meeting-manage"
@@ -44,7 +51,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/hsVmi/cover.png"
+  imageSrc={hsVmiCover}
   imageAlt="華新 VMI 供應鏈管理模擬遊戲"
   name="華新 VMI 供應鏈管理模擬遊戲"
   link="/projects/hs-vmi"
@@ -57,7 +64,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/techlife/cover.png"
+  imageSrc={techlifeCover}
   imageAlt="TechLife - Photopea 講師"
   name="TechLife - Photopea 講師"
   link="/projects/techlife"
@@ -68,7 +75,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/foodome/cover.png"
+  imageSrc={foodomeCover}
   imageAlt="食材外送專家 - Foodome"
   name="食材外送專家 - Foodome"
   link="/projects/foodome"
@@ -79,7 +86,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/noDrinkNoDrunk/cover.png"
+  imageSrc={noDrinkNoDrunkCover}
   imageAlt="No Drink No Drunk"
   name="No Drink No Drunk"
   descriptions={[
@@ -90,7 +97,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/jobAnalytics2020/cover.png"
+  imageSrc={jobAnalytics2020Cover}
   imageAlt="2020年臺灣各行業別員工薪資統計分析"
   name="2020年臺灣各行業別員工薪資統計分析"
   link="https://datastudio.google.com/s/rcRR2G3x4VI"
@@ -102,7 +109,7 @@ import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/projects/oneDayLover/cover.png"
+  imageSrc={oneDayLoverCover}
   imageAlt="One Day Lover"
   name="One Day Lover"
   descriptions={[

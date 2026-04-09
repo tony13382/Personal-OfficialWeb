@@ -6,7 +6,7 @@ startDate: 2023-07-01
 endDate: 2024-07-31
 status: switch
 theme: blue
-cover: /assets/imgs/projects/trelloFinder/cover.png
+cover: ../../assets/imgs/projects/trelloFinder/cover.png
 pin: true
 skillTypes: ["dev"]
 tags: [文本探勘, 搜尋算法, LLM, 向量資料管理, 後端, 佇列系統]
@@ -32,7 +32,6 @@ tools:
     description: 文本向量化技術、模型訓練與微調
 seo:
   metaDescription: "[作品＆論文] 在 Trello 平台結合大型語言模型協助學生進行自主學習資源搜索與互動。"
-  ogImage: /assets/imgs/projects/trelloFinder/cover.png
 ---
 
 import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
@@ -47,6 +46,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Canva } from '@/components/react/Canva'
+import workflowPrepareData from '@/assets/imgs/projects/trelloFinder/workflowPerpareData.png'
+import workflowModule from '@/assets/imgs/projects/trelloFinder/workflowModule.png'
+import workflowTrello from '@/assets/imgs/projects/trelloFinder/workflowTrello.png'
+import workflowPrepareChat from '@/assets/imgs/projects/trelloFinder/workflowPrepareChat.png'
+import workflowPrepareKnow from '@/assets/imgs/projects/trelloFinder/workflowPrepareKnow.png'
 
 
 <Card>
@@ -64,7 +68,7 @@ import { Canva } from '@/components/react/Canva'
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/trelloFinder/workflowPerpareData.png"
+      src={workflowPrepareData}
       allowPop={true}
       client:load
     />
@@ -78,7 +82,7 @@ import { Canva } from '@/components/react/Canva'
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/trelloFinder/workflowModule.png" 
+      src={workflowModule} 
       allowPop={true}
       client:load
     />
@@ -102,7 +106,7 @@ import { Canva } from '@/components/react/Canva'
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/trelloFinder/workflowTrello.png"
+      src={workflowTrello}
       allowPop={true}
       client:load
     />
@@ -208,7 +212,7 @@ export const accordionItems = [
       <div className="space-y-1.5">
         <p>**聊天文本處理**</p>
         <ImageWithLightbox
-          src="/assets/imgs/projects/trelloFinder/workflowPrepareChat.png"
+          src={workflowPrepareChat}
           allowPop={true}
           client:load
         />
@@ -217,7 +221,7 @@ export const accordionItems = [
       <div className="space-y-1.5">
         <p>**知識文本處理**</p>
         <ImageWithLightbox
-          src="/assets/imgs/projects/trelloFinder/workflowPrepareKnow.png"
+          src={workflowPrepareKnow}
           allowPop={true}
           client:load
         />
@@ -258,5 +262,3 @@ export const accordionItems = [
     </div>
   </CardContent>
 </Card>
-
-

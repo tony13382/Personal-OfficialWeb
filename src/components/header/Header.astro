@@ -5,6 +5,7 @@ import { MobileNav } from "@/components/header/MobileNav";
 import { mainLinks } from "@/components/header/index";
 import { SearchDialog } from "@/components/search/SearchDialog";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import signUrl from "@/assets/imgs/index/sign.svg?url";
 
 
 interface Props {
@@ -41,7 +42,7 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
               class="flex-shrink-0 rounded-full"
             />
             <img
-              src="/assets/imgs/index/sign.svg"
+              src={signUrl}
               alt="Logo"
               class="text-primary max-h-7 mt-2"
             />

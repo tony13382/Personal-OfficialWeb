@@ -3,6 +3,7 @@ import { SocialLinksLite } from "../data/social"
 import { Card, CardContent } from "../ui/card"
 import { ActionBtnLinks } from "./actionBtn"
 import myHeadImg from "@/assets/imgs/index/myHead.webp"
+import { getImageSrc } from "../react/image-source"
 
 interface ProfileData {
   name: string
@@ -27,7 +28,7 @@ export function ProfileCard() {
         >
         </div>
         <img
-          src={myHeadImg.src}
+          src={getImageSrc(myHeadImg)}
           alt={`${profileData.name}的頭像`}
           className="size-32 rounded-full overflow-hidden"
           width={128}
@@ -64,7 +65,7 @@ export function ProfileCardTigger() {
       title="通知我"
     >
       <img
-        src={myHeadImg.src}
+        src={getImageSrc(myHeadImg)}
         alt={`${profileData.name}的頭像`}
         className="size-16 rounded-full overflow-hidden"
         width={128}
@@ -133,7 +134,7 @@ export function ProfileCardModal() {
             <CardContent className="gap-6 items-center pt-3 pb-2">
               <div className="h-4 w-10 my-2 border rounded-full bg-black/50" />
               <img
-                src={myHeadImg.src}
+                src={getImageSrc(myHeadImg)}
                 alt={`${profileData.name}的頭像`}
                 className="size-32 rounded-full overflow-hidden"
               />

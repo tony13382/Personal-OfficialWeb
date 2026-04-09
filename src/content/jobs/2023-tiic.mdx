@@ -5,22 +5,25 @@ location: 臺北
 startDate: 2023-03-01
 endDate: 2024-02-28
 theme: green
-cover: /assets/imgs/jobs/2023_Tiic/cover.png
-logo: /assets/imgs/jobs/2023_Tiic/logo.png
+cover: ../../assets/imgs/jobs/2023_Tiic/cover.png
+logo: ../../assets/imgs/jobs/2023_Tiic/logo.png
 description:
   - 擔任`行銷部組長`，帶領 3 位夥伴執行社群策略`吸引 280 人加入`，管理 `13 位學員`培訓進度，並負責 Discord 社群經營與用戶體驗優化以提升留存率。
 tags: ["行銷企劃","團隊領導"]
 seo:
   metaDescription: 擔任行銷部組長，負責團隊與行銷策略管理，協助團隊進行內部培訓。
-  ogImage: /assets/imgs/jobs/2023_Tiic/cover.png
 ---
 
 import { JobProjectCard } from '@/components/jobs/JobProjectCard'
 import { Card, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import tiic1 from '@/assets/imgs/jobs/2023_Tiic/tiic1.webp'
+import tiic2 from '@/assets/imgs/jobs/2023_Tiic/tiic2.webp'
+import tiic3 from '@/assets/imgs/jobs/2023_Tiic/tiic3.webp'
+import tiic4 from '@/assets/imgs/jobs/2023_Tiic/tiic4.webp'
 
 <JobProjectCard
-  imageSrc="/assets/imgs/jobs/2023_Tiic/tiic3.webp"
+  imageSrc={tiic3}
   imageAlt="行銷部組長"
   name="行銷部組長"
   startDate="2023/03"
@@ -34,7 +37,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 />
 
 <JobProjectCard
-  imageSrc="/assets/imgs/jobs/2023_Tiic/tiic1.webp"
+  imageSrc={tiic1}
   imageAlt="行銷部組長"
   name="行銷部組長"
   startDate="2023/03"
@@ -56,8 +59,8 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
   <CardContent className="space-y-4">
     ## 證書
     <div className="space-y-4">
-      <ImageWithLightbox src="/assets/imgs/jobs/2023_Tiic/tiic4.webp" alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
-      <ImageWithLightbox src="/assets/imgs/jobs/2023_Tiic/tiic2.webp" alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
+      <ImageWithLightbox src={tiic4} alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
+      <ImageWithLightbox src={tiic2} alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
     </div>
   </CardContent>
 </Card>

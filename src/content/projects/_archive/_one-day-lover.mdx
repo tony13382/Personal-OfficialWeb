@@ -6,7 +6,7 @@ startDate: 2020-09-01
 endDate: 2021-01-31
 status: closed
 theme: red
-cover: /assets/imgs/projects/oneDayLover/cover.png
+cover: ../../../assets/imgs/projects/oneDayLover/cover.png
 pin: false
 skillTypes: [dev]
 tags: [後端開發]
@@ -26,18 +26,18 @@ tools:
     description: 資料庫交互與設計
 seo:
   metaDescription: 大學專案，基於 JSP 所建構商城後端(純資料庫交互，無金流，具備後台)。
-  ogImage: /assets/imgs/projects/oneDayLover/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
+import oneDayLoverErModel from '@/assets/imgs/projects/oneDayLover/er-model.png'
 
 <Card>
   <CardTitle>ER Model</CardTitle>
   <CardHeader className='p-2'>
     <ImageWithLightbox
-      src="/assets/imgs/projects/oneDayLover/er-model.png"
+      src={oneDayLoverErModel}
       allowPop={true}
       client:load
     />

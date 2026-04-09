@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { parseTextWithHighlight } from "../react/Basic";
+import type { ImageSource } from "../react/image-source";
+import { getImageSrc } from "../react/image-source";
 
 interface JobProjectCardProps {
     name: string;
@@ -11,7 +13,7 @@ interface JobProjectCardProps {
     link?: string;
     descriptions?: string[];
     tags?: string[];
-    imageSrc?: string;
+    imageSrc?: ImageSource;
     imageAlt?: string;
 }
 
@@ -55,7 +57,7 @@ export const JobProjectCard = ({
         <Card>
             {imageSrc && (
                 <CardHeader className="relative">
-                    <img src={imageSrc} alt={imageAlt || name} className="img-fluid" loading="lazy" decoding="async" />
+                    <img src={getImageSrc(imageSrc)} alt={imageAlt || name} className="img-fluid" loading="lazy" decoding="async" />
                     {timeStr && (
                         <Badge className="absolute bottom-4 right-4" variant="secondary">{timeStr}</Badge>
                     )}

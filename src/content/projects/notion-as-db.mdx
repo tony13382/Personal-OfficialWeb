@@ -5,7 +5,7 @@ startDate: 2022-03-01
 endDate: 2026-02-12
 status: closed
 theme: natural
-cover: /assets/imgs/projects/notionAsDb/cover.png
+cover: ../../assets/imgs/projects/notionAsDb/cover.png
 pin: false
 skillTypes: [dev]
 tags: [網站架設, Notion, 靜態網頁, Cloudflare]
@@ -27,12 +27,12 @@ tools:
     description: 靜態網頁部署
 seo:
   metaDescription: "[Notion As DB 實驗專案] 基於 Notion API, Cloudflare Pages 所打造的靜態網頁流程"
-  ogImage: /assets/imgs/projects/notionAsDb/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
+import notionAsDbWorkflow from '@/assets/imgs/projects/notionAsDb/workflow.png'
 
 <Card>
   <CardTitle>提醒</CardTitle>
@@ -50,7 +50,7 @@ import { IconBlock } from '@/components/react/IconBlock'
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/notionAsDb/workflow.png"
+      src={notionAsDbWorkflow}
       allowPop={true}
       client:load
     />

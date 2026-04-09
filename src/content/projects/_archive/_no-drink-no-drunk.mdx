@@ -6,7 +6,7 @@ startDate: 2020-09-01
 endDate: 2021-01-31
 status: closed
 theme: orange
-cover: /assets/imgs/projects/noDrinkNoDrunk/cover.png
+cover: ../../../assets/imgs/projects/noDrinkNoDrunk/cover.png
 pin: false
 skillTypes: [dev]
 tags: [前端靜態網頁]
@@ -34,11 +34,14 @@ tools:
     description: 前端網頁靜態部署工具
 seo:
   metaDescription: 大學開發專案，純 HTML5 & CSS3 製作酒類銷售網頁。
-  ogImage: /assets/imgs/projects/noDrinkNoDrunk/cover.png
 ---
 
 import { Card, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import noDrinkNoDrunkIndex from '@/assets/imgs/projects/noDrinkNoDrunk/nodrinkIndex.jpeg'
+import noDrinkNoDrunkInfo from '@/assets/imgs/projects/noDrinkNoDrunk/info.png'
+import noDrinkNoDrunkList from '@/assets/imgs/projects/noDrinkNoDrunk/list.png'
+import noDrinkNoDrunkKnowledge from '@/assets/imgs/projects/noDrinkNoDrunk/knowledge.png'
 
 <Card>
   <CardContent className="pt-6">
@@ -46,7 +49,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 
     <div className="space-y-4 mt-4">
       <ImageWithLightbox
-        src="/assets/imgs/projects/noDrinkNoDrunk/nodrinkIndex.jpeg"
+        src={noDrinkNoDrunkIndex}
         className="rounded-xl overflow-hidden"
         allowPop={true}
         client:load
@@ -55,7 +58,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       <hr className="my-4" />
 
       <ImageWithLightbox
-        src="/assets/imgs/projects/noDrinkNoDrunk/info.png"
+        src={noDrinkNoDrunkInfo}
         className="rounded-xl overflow-hidden"
         allowPop={true}
         client:load
@@ -64,7 +67,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       <hr className="my-4" />
 
       <ImageWithLightbox
-        src="/assets/imgs/projects/noDrinkNoDrunk/list.png"
+        src={noDrinkNoDrunkList}
         className="rounded-xl overflow-hidden"
         allowPop={true}
         client:load
@@ -73,7 +76,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
       <hr className="my-4" />
 
       <ImageWithLightbox
-        src="/assets/imgs/projects/noDrinkNoDrunk/knowledge.png"
+        src={noDrinkNoDrunkKnowledge}
         className="rounded-xl overflow-hidden"
         allowPop={true}
         client:load

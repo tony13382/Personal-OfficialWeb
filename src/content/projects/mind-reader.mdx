@@ -6,7 +6,7 @@ startDate: 2019-11-01
 endDate: 2020-12-31
 status: closed
 theme: orange
-cover: /assets/imgs/projects/mindReader/cover.png
+cover: ../../assets/imgs/projects/mindReader/cover.png
 pin: true
 skillTypes: [dev, design]
 tags: [UI/UX, API 開發, NLP, Azure]
@@ -47,7 +47,6 @@ tools:
     description: 簡繁轉換文字處理
 seo:
   metaDescription: 透過 NLP 技術打造的智慧聊天輔助系統，獲得 2021 大專校院資訊應用服務創新競賽佳作
-  ogImage: /assets/imgs/projects/mindReader/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
@@ -56,6 +55,12 @@ import { Youtube } from '@/components/react/Youtube'
 import { IconBlock } from '@/components/react/IconBlock'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import mindReaderSystemFrame from '@/assets/imgs/projects/mindReader/systemFrame.png'
+import mindReaderKeyboard01 from '@/assets/imgs/projects/mindReader/keybroad01.png'
+import mindReaderKeyboard02 from '@/assets/imgs/projects/mindReader/keybroad02.png'
+import mindReaderKeyboard03 from '@/assets/imgs/projects/mindReader/keybroad03.png'
+import mindReaderKeyboard04 from '@/assets/imgs/projects/mindReader/keybroad04.png'
+import mindReaderApiFlow from '@/assets/imgs/projects/mindReader/apiFlow (1).jpg'
 
 
 <Card>
@@ -103,7 +108,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>系統設計架構圖</CardTitle>
   <CardContent className="pt-6">
     <ImageWithLightbox
-      src="/assets/imgs/projects/mindReader/systemFrame.png" 
+      src={mindReaderSystemFrame}
       allowPop={true}
       client:load
     />
@@ -115,10 +120,10 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardHeader>
   <UiImageCarousel
     images={[
-        "/assets/imgs/projects/mindReader/keybroad01.png",
-        "/assets/imgs/projects/mindReader/keybroad02.png",
-        "/assets/imgs/projects/mindReader/keybroad03.png",
-        "/assets/imgs/projects/mindReader/keybroad04.png",
+        mindReaderKeyboard01,
+        mindReaderKeyboard02,
+        mindReaderKeyboard03,
+        mindReaderKeyboard04,
       ]}
       client:load
   />
@@ -151,7 +156,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardContent>
     ## 輸入文本轉換流程
     <ImageWithLightbox
-      src="/assets/imgs/projects/mindReader/apiFlow (1).jpg" 
+      src={mindReaderApiFlow}
       allowPop={true}
       client:load
     />

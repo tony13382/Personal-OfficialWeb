@@ -25,7 +25,7 @@ const { Content } = await project.render();
 const seo = {
   title: project.data.seo?.metaTitle || `${project.data.title}・呂亮進`,
   description: project.data.seo?.metaDescription || project.data.description,
-  ogImage: project.data.seo?.ogImage || project.data.cover,
+  ogImage: project.data.cover.src,
 };
 
 // 主題顏色
@@ -59,7 +59,7 @@ const getStatusBadge = (statusStr: string) => {
     <!-- Header Section -->
     <div
       class="relative py-20 w-full"
-      style={`background:url(${project.data.cover}); background-repeat:no-repeat; background-size:cover; background-attachment:local;`}
+      style={`background:url(${project.data.cover.src}); background-repeat:no-repeat; background-size:cover; background-attachment:local;`}
     >
       <div
         class="absolute top-0 start-0 w-full h-full"
@@ -157,12 +157,10 @@ const getStatusBadge = (statusStr: string) => {
           <!-- Tools Card -->
           <Card>
             <CardHeader>
-              <img
+              <Image
                 src={project.data.cover}
                 alt={project.data.title}
                 class="img-fluid"
-                loading="lazy"
-                decoding="async"
               />
             </CardHeader>
           </Card>

@@ -22,7 +22,7 @@ const ScoreSchema = z.object({
 // Projects Collection
 const projectsCollection = defineCollection({
   type: 'content',  // MDX 內容
-  schema: z.object({
+  schema: ({ image }) => z.object({
     // 基本資訊
     title: z.string(),
     description: z.string(),
@@ -35,7 +35,7 @@ const projectsCollection = defineCollection({
 
     // 視覺與分類
     theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
-    cover: z.string(),
+    cover: image(),
     pin: z.boolean().default(false),
 
     // 分類與標籤
@@ -50,8 +50,7 @@ const projectsCollection = defineCollection({
     // SEO
     seo: z.object({
       metaTitle: z.string().optional(),
-      metaDescription: z.string().optional(),
-      ogImage: z.string().optional()
+      metaDescription: z.string().optional()
     }).optional()
   })
 })
@@ -59,7 +58,7 @@ const projectsCollection = defineCollection({
 // Jobs Collection
 const jobsCollection = defineCollection({
   type: 'content',  // MDX 內容
-  schema: z.object({
+  schema: ({ image }) => z.object({
     // 基本資訊
     title: z.string(),
     company: z.string(),
@@ -72,8 +71,8 @@ const jobsCollection = defineCollection({
 
     // 視覺
     theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
-    cover: z.string(),
-    logo: z.string().optional(),
+    cover: image(),
+    logo: image().optional(),
 
     // 工作描述
     description: z.array(z.string()).default([]),
@@ -81,8 +80,7 @@ const jobsCollection = defineCollection({
     // SEO
     seo: z.object({
       metaTitle: z.string().optional(),
-      metaDescription: z.string().optional(),
-      ogImage: z.string().optional()
+      metaDescription: z.string().optional()
     }).optional()
   })
 })

@@ -5,7 +5,7 @@ subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、
 startDate: 2024-10-01
 status: active
 theme: natural
-cover: /assets/imgs/projects/nexTags/cover.png
+cover: ../../assets/imgs/projects/nexTags/cover.png
 pin: false
 skillTypes: [dev, design]
 tags: [全端開發, 資料庫設計, Docker, AI 整合]
@@ -33,12 +33,14 @@ tools:
     description: 基於 Radix UI 的元件庫，搭配 Tailwind CSS
 seo:
   metaDescription: 基於 FastAPI + React 的自架音樂庫管理工具，支援 metadata 批次編輯、智慧播放清單、AI 歌詞處理與自動化匯入流程
-  ogImage: /assets/imgs/projects/nextags-cover.png
 ---
 
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import nextTagsSonglist from '@/assets/imgs/apps/nextags-songlist.png'
+import nextTagsTagEditor from '@/assets/imgs/apps/nextags-tageditor.png'
+import nextTagsPlaylist from '@/assets/imgs/apps/nextags-playlist.png'
 
 <Card>
   <CardContent className="gap-4">
@@ -50,23 +52,28 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 </Card>
 
 <Card>
-  <CardTitle>歌曲管理</CardTitle>
-  <CardContent className="gap-4 pt-4">
-  <ImageWithLightbox
-      src="/assets/imgs/apps/nextags-songlist.png"
+  <CardHeader className="p-6 pb-0">
+    <ImageWithLightbox
+      src={nextTagsSonglist}
       allowPop={true}
-      className='border rounded-xl' 
+      rounded={true}
+      className="border-1"
       client:load
     />
+  </CardHeader>
+  <CardTitle>歌曲管理</CardTitle>
+  <CardContent className="gap-4 pt-4">
     音樂庫主頁面支援多條件篩選與即時搜尋，可依`資料夾`、`語言`、`最愛`等條件快速定位歌曲。支援 MP3、FLAC、M4A、OGG、WAV 等主流格式，分頁瀏覽大型音樂庫也不卡頓。
   </CardContent>
 </Card>
 
 <Card>
-  <CardHeader>
+  <CardHeader className="p-6 pb-0">
     <ImageWithLightbox
-      src="/assets/imgs/apps/nextags-tageditor.png"
+      src={nextTagsTagEditor}
       allowPop={true}
+      rounded={true}
+      className="border-1"
       client:load
     />
   </CardHeader>
@@ -79,10 +86,12 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 </Card>
 
 <Card>
-  <CardHeader>
+  <CardHeader className="p-6 pb-0">
     <ImageWithLightbox
-      src="/assets/imgs/apps/nextags-playlist.png"
+      src={nextTagsPlaylist}
       allowPop={true}
+      rounded={true}
+      className="border-1"
       client:load
     />
   </CardHeader>

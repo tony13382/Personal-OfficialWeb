@@ -1,9 +1,11 @@
 import { useState, useCallback, useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
+import type { ImageSource } from './image-source'
+import { getImageSrc } from './image-source'
 
 interface ImageItem {
-  src: string
+  src: ImageSource
   alt?: string
 }
 
@@ -45,7 +47,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           {images.map((image, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <img
-                src={image.src}
+                src={getImageSrc(image.src)}
                 alt={image.alt || `Image ${index + 1}`}
                 className="w-full h-auto object-contain"
                 loading="lazy"

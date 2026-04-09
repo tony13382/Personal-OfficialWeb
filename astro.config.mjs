@@ -20,10 +20,6 @@ export default defineConfig({
     '/toolbox': '/articles/',
   },
 
-  image: {
-    quality: 90,
-  },
-
   vite: {
     plugins: [tailwindcss()],
     build: {

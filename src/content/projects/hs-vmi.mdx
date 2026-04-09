@@ -5,7 +5,7 @@ startDate: 2020-10-01
 endDate: 2020-12-31
 status: switch
 theme: blue
-cover: /assets/imgs/projects/hsVmi/cover.png
+cover: ../../assets/imgs/projects/hsVmi/cover.png
 pin: false
 skillTypes: [dev]
 tags: [全端開發]
@@ -23,7 +23,6 @@ tools:
     description: 前端元件套件
 seo:
   metaDescription: "[ 產學合作專案 ] 與華新麗華合作開發的供應鏈管理教學模擬遊戲。玩家扮演 VMI 專案負責人，管理三家經銷商的電線產品庫存策略，系統基於歷史銷售數據自動模擬每日營運，結算月度損益與年度分紅，藉此學習供應商庫存管理（VMI）的決策邏輯。"
-  ogImage: /assets/imgs/projects/hsVmi/cover.png
 ---
 
 import { TabsBlock } from '@/components/react/TabsBlock'
@@ -31,6 +30,7 @@ import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
 import { AccordionBlock } from '@/components/react/AccordionBlock'
+import hsVmiErModal from '@/assets/imgs/projects/hsVmi/ErModal.png'
 
 <Card>
   <CardContent className="gap-4">
@@ -181,7 +181,7 @@ export const dbItems = [
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/hsVmi/ErModal.png"
+      src={hsVmiErModal}
       allowPop={true}
       client:load
     />

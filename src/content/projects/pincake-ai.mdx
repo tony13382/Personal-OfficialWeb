@@ -5,7 +5,7 @@ startDate: 2023-09-01
 endDate: 2023-12-31
 status: closed
 theme: red
-cover: /assets/imgs/projects/pincakeAi/cover.png
+cover: ../../assets/imgs/projects/pincakeAi/cover.png
 pin: false
 skillTypes: [design, plan]
 tags: [介面設計, 行銷企劃]
@@ -16,21 +16,24 @@ links:
     openInTab: true
 seo:
   metaDescription: Pincake 針對求職新鮮人的產品。主要產品為 AI 求職助手平台,根據求職者提供的公司職缺與工作描述等內容為用戶提供求職整合服務。
-  ogImage: /assets/imgs/projects/pincakeAi/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { IconBlock } from '@/components/react/IconBlock'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import pincakeAiUiHome from '@/assets/imgs/projects/pincakeAi/uiHome.png'
+import pincakeAiUiInfo from '@/assets/imgs/projects/pincakeAi/uiInfo.png'
+import pincakeAiUiMeet from '@/assets/imgs/projects/pincakeAi/uiMeet.png'
+import pincakeAiWorkflowUser from '@/assets/imgs/projects/pincakeAi/workflowUser.png'
 
 <Card>
   <CardHeader>
     <UiImageCarousel
       images={[
-        "/assets/imgs/projects/pincakeAi/uiHome.png",
-        "/assets/imgs/projects/pincakeAi/uiInfo.png",
-        "/assets/imgs/projects/pincakeAi/uiMeet.png",
+        pincakeAiUiHome,
+        pincakeAiUiInfo,
+        pincakeAiUiMeet,
       ]}
       client:load
     />
@@ -64,7 +67,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>系統使用流程</CardTitle>
   <CardContent>
     <ImageWithLightbox
-      src="/assets/imgs/projects/pincakeAi/workflowUser.png"
+      src={pincakeAiWorkflowUser}
       allowPop={true}
       client:load
     />

@@ -6,7 +6,7 @@ startDate: 2020-09-01
 endDate: 2021-01-31
 status: switch
 theme: purple
-cover: /assets/imgs/projects/hsCloudMeetingManage/cover.png
+cover: ../../assets/imgs/projects/hsCloudMeetingManage/cover.png
 pin: false
 skillTypes: [dev, design]
 tags: [介面設計, 產品規劃, 全端開發]
@@ -34,17 +34,20 @@ tools:
     description: 前端模板管理套件
 seo:
   metaDescription: "[ 產學合作專案 ] 提供使用者線上開會與開會管理的一條龍解決方案，除基本網頁通知，也串接了信箱系統，以確保用戶信息不漏接。"
-  ogImage: /assets/imgs/projects/hsCloudMeetingManage/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { IconBlock } from '@/components/react/IconBlock'
+import hsCloudMeetingManageAd from '@/assets/imgs/projects/hsCloudMeetingManage/ad.png'
+import hsCloudMeetingManageErModel from '@/assets/imgs/projects/hsCloudMeetingManage/ER-Model.png'
+import hsCloudMeetingManageDfdL0 from '@/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png'
+import hsCloudMeetingManageDfdL1 from '@/assets/imgs/projects/hsCloudMeetingManage/dfdL1.png'
 
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/hsCloudMeetingManage/ad.png"
+      src={hsCloudMeetingManageAd}
       allowPop={true}
       client:load
     />
@@ -56,7 +59,7 @@ import { IconBlock } from '@/components/react/IconBlock'
   <CardTitle className='pb-4'>ER Model</CardTitle>
   <CardContent className='bg-[#FBFBFB]'>
     <ImageWithLightbox
-      src="/assets/imgs/projects/hsCloudMeetingManage/ER-Model.png"
+      src={hsCloudMeetingManageErModel}
       allowPop={true}
       client:load
     />
@@ -154,7 +157,7 @@ import { IconBlock } from '@/components/react/IconBlock'
   <CardContent>
     <div className="space-y-4 mt-4">
       <ImageWithLightbox
-        src="/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png"
+        src={hsCloudMeetingManageDfdL0}
         allowPop={true}
         client:load
       />
@@ -162,7 +165,7 @@ import { IconBlock } from '@/components/react/IconBlock'
       <hr className="my-4" />
 
       <ImageWithLightbox
-        src="/assets/imgs/projects/hsCloudMeetingManage/dfdL1.png"
+        src={hsCloudMeetingManageDfdL1}
         allowPop={true}
         client:load
       />
@@ -186,4 +189,3 @@ import { IconBlock } from '@/components/react/IconBlock'
     </div>
   </CardContent>
 </Card>
-

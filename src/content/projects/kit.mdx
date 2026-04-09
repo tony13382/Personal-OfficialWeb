@@ -5,7 +5,7 @@ subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、
 startDate: 2024-06-01
 status: active
 theme: orange
-cover: /assets/imgs/projects/kit/cover.png
+cover: ../../assets/imgs/projects/kit/cover.png
 pin: true
 skillTypes: [dev, design]
 tags: [全端開發, 資料庫設計, Serverless, Cloudflare]
@@ -39,7 +39,6 @@ tools:
     description: 拖曳排序功能實作
 seo:
   metaDescription: 基於 React Router v7 + Cloudflare 的現代化書籤管理系統，支援多層級資料夾、標籤分類與拖曳排序
-  ogImage: /assets/imgs/projects/kit/cover.png
 ---
 
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
@@ -47,6 +46,12 @@ import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { AccordionBlock } from '@/components/react/AccordionBlock'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import kitDualMode from '@/assets/imgs/projects/kit/dual-mode.png'
+import kitDragSort from '@/assets/imgs/projects/kit/drag-sort.png'
+import kitSearch from '@/assets/imgs/projects/kit/search.png'
+import kitShare from '@/assets/imgs/projects/kit/share.png'
+import kitCache from '@/assets/imgs/projects/kit/cache.png'
+import kitDb from '@/assets/imgs/projects/kit/db.png'
 
 <Card>
   <CardContent className="gap-4">
@@ -64,27 +69,27 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
       images={[
         {
           title: "雙模式分類系統",
-          image: "/assets/imgs/projects/kit/dual-mode.png",
+          image: kitDualMode,
           desc: "每個 Tab 可選擇「資料夾模式」或「標籤模式」。資料夾模式提供傳統樹狀結構；標籤模式支援 Tag Group 與 AND / OR / SINGLE 三種篩選邏輯。"
         },
         {
           title: "拖曳排序體驗",
-          image: "/assets/imgs/projects/kit/drag-sort.png",
+          image: kitDragSort,
           desc: "基於 @dnd-kit 實現 Tab、Folder、Bookmark、Tag Group 的拖曳排序，使用浮點數 sort_order 策略避免頻繁重排，操作流暢不卡頓。"
         },
         {
           title: "跨工作區全文搜尋",
-          image: "/assets/imgs/projects/kit/search.png",
+          image: kitSearch,
           desc: "內建 Cmd/Ctrl + K 快速搜尋，可在當前 Workspace 所有 Tab 中進行多欄位全文檢索，支援多關鍵字 AND 邏輯、高亮標示與鍵盤導航。"
         },
         {
           title: "書籤分享",
-          image: "/assets/imgs/projects/kit/share.png",
+          image: kitShare,
           desc: "產生 Share Token 建立唯讀公開連結，支援自訂短連結與額外按鈕配置，方便將整理好的書籤分享給他人。"
         },
         {
           title: "智慧緩存加速設計",
-          image: "/assets/imgs/projects/kit/cache.png",
+          image: kitCache,
           desc: "針對公開分享頁面設計 Hash 比對快取機制，透過輕量級探針確認資料版本，命中快取時跳過 7+ 次資料庫查詢，大幅降低重複訪問負擔。"
         }
       ]}
@@ -263,7 +268,7 @@ export const dbItems = [
 <Card>
   <CardHeader>
     <ImageWithLightbox
-        src="/assets/imgs/projects/kit/db.png"
+        src={kitDb}
         allowPop={true}
         client:load
       />

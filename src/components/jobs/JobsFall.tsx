@@ -1,6 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import { JobDescription } from "@/components/jobs/JobDescription";
 import { Badge } from "../ui/badge";
+import { getImageSrc } from "../react/image-source";
 
 type JobData = CollectionEntry<"jobs">;
 
@@ -42,7 +43,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
                 {job.data.logo && (
                   <div className="flex-shrink-0">
                     <img
-                      src={job.data.logo}
+                      src={getImageSrc(job.data.logo)}
                       alt={`${job.data.company} logo`}
                       className="size-12 mt-0.5 rounded-lg"
                       width={48}

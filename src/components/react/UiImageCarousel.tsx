@@ -7,15 +7,17 @@ import { useState, useCallback, useEffect, useId } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react'
+import type { ImageSource } from './image-source'
+import { getImageSrc } from './image-source'
 
 interface UiImage {
-  image: string
+  image: ImageSource
   desc?: string
   title?: string
 }
 
 interface UiImageCarouselProps {
-  images: (string | UiImage)[]
+  images: (ImageSource | UiImage)[]
   autoplaySpeed?: number
   alignBody?: 'top' | 'center' | 'bottom'
 
@@ -29,6 +31,9 @@ const alignBodyClasses = {
   center: 'items-center',
   bottom: 'items-end'
 }
+
+const isUiImage = (item: ImageSource | UiImage): item is UiImage =>
+  typeof item === 'object' && item !== null && 'image' in item
 
 export function UiImageCarousel({
   images,
@@ -82,9 +87,10 @@ export function UiImageCarousel({
         <div className="overflow-hidden" ref={emblaRef}>
           <div className={`flex ${alignBodyClasses[alignBody]}`}>
             {images.map((item, index) => {
-              const imageUrl = typeof item === 'string' ? item : item.image
-              const imageDesc = typeof item === 'string' ? `` : item.desc
-              const imageTitle = typeof item === 'string' ? `` : item.title
+              const imageSource = isUiImage(item) ? item.image : item
+              const imageUrl = getImageSrc(imageSource)
+              const imageDesc = isUiImage(item) ? item.desc : ``
+              const imageTitle = isUiImage(item) ? item.title : ``
 
               const content = (
                 <>

@@ -13,13 +13,14 @@ import nextTagsSonglist from "@/assets/imgs/apps/nextags-songlist.png";
 import nextTagsTagEditor from "@/assets/imgs/apps/nextags-tageditor.png";
 import nextTagsPlaylist from "@/assets/imgs/apps/nextags-playlist.png";
 import nextTagsHeroBg from "@/assets/imgs/apps/nextags-hero-bg.avif";
+import { getImageSrc } from "@/components/react/image-source";
 
 const GITHUB_URL = "https://github.com/tony13382/NexTags";
 
 const screenshots = {
-  hero: nextTagsSonglist.src,
-  tagEditor: nextTagsTagEditor.src,
-  playlist: nextTagsPlaylist.src,
+  hero: nextTagsSonglist,
+  tagEditor: nextTagsTagEditor,
+  playlist: nextTagsPlaylist,
 };
 
 interface Feature {
@@ -108,7 +109,7 @@ export default function Landing() {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${nextTagsHeroBg.src}')` }}
+          style={{ backgroundImage: `url('${getImageSrc(nextTagsHeroBg)}')` }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" />
@@ -149,7 +150,7 @@ export default function Landing() {
         <div className="mx-auto max-w-5xl">
           <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
             <img
-              src={screenshots.hero}
+              src={getImageSrc(screenshots.hero)}
               alt="NexTags 音樂庫瀏覽介面"
               className="block h-auto w-full"
               loading="eager"
@@ -240,7 +241,7 @@ export default function Landing() {
             </div>
             <div className="overflow-hidden rounded-xl border border-neutral-200 shadow-lg shadow-neutral-200/50">
               <img
-                src={screenshots.tagEditor}
+                src={getImageSrc(screenshots.tagEditor)}
                 alt="NexTags 標籤編輯器"
                 className="block h-auto w-full"
                 loading="lazy"
@@ -258,7 +259,7 @@ export default function Landing() {
             <div className="order-2 md:order-1">
               <div className="overflow-hidden rounded-xl border border-neutral-200 shadow-lg shadow-neutral-200/50">
                 <img
-                  src={screenshots.playlist}
+                  src={getImageSrc(screenshots.playlist)}
                   alt="NexTags 播放清單管理"
                   className="block h-auto w-full"
                   loading="lazy"

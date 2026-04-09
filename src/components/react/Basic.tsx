@@ -4,6 +4,7 @@ import { Youtube } from './Youtube'
 import { ImageWithLightbox } from './ImageWithLightbox';
 import { IconBlock } from './IconBlock';
 import { Fragment } from 'react';
+import type { ImageSource } from './image-source';
 
 // 將反引號包裹的文字轉換為 highlight span
 export const parseTextWithHighlight = (text: string) => {
@@ -23,7 +24,7 @@ export type EmbedComponent =
     | { type: "Youtube"; embedUrl: string; className?: string }
     | { type: 'IconBlock'; title?: string; subtitle?: string; href?: string; icon?: string; className?: string; iconClassName?: string; }
     | { type: 'text'; content: string; className?: string }
-    | { type: 'image'; src: string; className?: string; allowPop?: boolean }
+    | { type: 'image'; src: ImageSource; className?: string; allowPop?: boolean }
     | { type: 'hr'; className?: string }
     | { type: 'html'; content: string; className?: string }
     | { type: 'div'; elements: EmbedComponent[]; className?: string }

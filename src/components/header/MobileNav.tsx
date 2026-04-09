@@ -7,9 +7,10 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { ListIcon } from '@phosphor-icons/react'
-import { mainLinks, type NavLink } from "@/components/header/index"
+import { mainLinks } from "@/components/header/index"
 import { socialLinks } from "@/components/data/social"
 import { SearchDialog } from "@/components/search/SearchDialog"
+import signUrl from "@/assets/imgs/index/sign.svg?url"
 
 
 interface MobileNavProps {
@@ -19,7 +20,7 @@ interface MobileNavProps {
 
 
 
-export function MobileNav({ type = 'main' }: MobileNavProps) {
+export function MobileNav({ type: _type = 'main' }: MobileNavProps) {
   const [open, setOpen] = useState(false)
 
   const navLinks = [...mainLinks]
@@ -63,7 +64,7 @@ export function MobileNav({ type = 'main' }: MobileNavProps) {
               </a>
             ))}
             <img
-              src="/assets/imgs/index/sign.svg"
+              src={signUrl}
               alt="Logo"
               className="absolute bottom-0 right-4 opacity-25 text-primary max-h-7 mt-2"
               loading="lazy"

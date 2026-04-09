@@ -29,7 +29,7 @@ const seo = {
   title: job.data.seo?.metaTitle || `${job.data.title}・呂亮進`,
   description:
     job.data.seo?.metaDescription || job.data.description[0] || job.data.title,
-  ogImage: job.data.seo?.ogImage || job.data.cover,
+  ogImage: job.data.cover.src,
 };
 
 // 主題顏色
@@ -103,14 +103,12 @@ const timeStr =
               <CardContent className="gap-4 items-center">
                 {
                   job.data.logo && (
-                    <img
+                    <Image
                       src={job.data.logo}
                       alt={`${job.data.company} logo`}
                       class="h-20 w-20 rounded-xl"
-                      width="80"
-                      height="80"
-                      loading="lazy"
-                      decoding="async"
+                      width={80}
+                      height={80}
                     />
                   )
                 }

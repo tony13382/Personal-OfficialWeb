@@ -5,7 +5,7 @@ subdescription: "擔任：Full-Stack Developer<br>負責：軟體架構設計、
 startDate: 2026-04-05
 status: active
 theme: pink
-cover: /assets/imgs/projects/cloudBio/cover.png
+cover: ../../assets/imgs/projects/cloudBio/cover.png
 pin: true
 skillTypes: [dev, design]
 tags: [全端開發, 資料庫設計, Serverless, Cloudflare]
@@ -45,13 +45,15 @@ tools:
     description: 拖曳排序功能實作
 seo:
   metaDescription: 基於 Cloudflare 的私人 Bio Link 管理方案，支援視覺化編輯、多種區塊類型與外觀自訂
-  ogImage: /assets/imgs/projects/cloudBio/cover.png
 ---
 
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import cloudBioDragSort from '@/assets/imgs/projects/cloudBio/drag-sort.png'
+import cloudBioLivePreview from '@/assets/imgs/projects/cloudBio/live-preview.png'
+import cloudBioImageCompress from '@/assets/imgs/projects/cloudBio/image-compress.png'
 
 
 <Card>
@@ -97,17 +99,17 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
     <UiImageCarousel
       images={[
         {
-          image: "/assets/imgs/projects/cloudBio/drag-sort.png",
+          image: cloudBioDragSort,
           title: "拖曳排序體驗",
           desc: "基於 @dnd-kit 實現的拖曳排序，快速點擊（300ms 以內）開啟編輯，長按才進入拖曳模式。滑鼠操作移動超過 8px 才觸發拖曳，避免誤操作。手機跟電腦上都很直覺，不需要額外的拖曳把手或模式切換。"
         },
         {
-          image: "/assets/imgs/projects/cloudBio/live-preview.png",
+          image: cloudBioLivePreview,
           title: "即時預覽",
           desc: "編輯器內建手機模擬預覽框，所有修改即時反映在預覽畫面上。後臺看到的效果跟前臺訪客完全一致，不需要來回切換確認。"
         },
         {
-          image: "/assets/imgs/projects/cloudBio/image-compress.png",
+          image: cloudBioImageCompress,
           title: "圖片壓縮",
           desc: "圖片上傳前在客戶端進行 WebP 壓縮與裁切，減少傳輸量跟 R2 儲存空間。上傳後透過長期快取 header 提供存取，降低重複請求的頻寬消耗。"
         }

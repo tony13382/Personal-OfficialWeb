@@ -5,7 +5,7 @@ startDate: 2023-03-01
 endDate: 2023-06-30
 status: switch
 theme: blue
-cover: /assets/imgs/projects/chenmko/cover.png
+cover: ../../assets/imgs/projects/chenmko/cover.png
 pin: false
 skillTypes: [dev]
 tags: [網站架設, 資料庫設計, 前端開發, 後端開發]
@@ -25,18 +25,26 @@ tools:
     description: 內容編輯工具
 seo:
   metaDescription: Chenmko 企業委託專案，根據客戶提供的設計圖和需求，為企業提供一個完整的官網和後台系統管理產品。
-  ogImage: /assets/imgs/projects/chenmko/cover.png
 ---
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
 import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import chenmkoCover from '@/assets/imgs/projects/chenmko/cover.png'
+import chenmkoBannerManage2 from '@/assets/imgs/projects/chenmko/banner_manage_2.webp'
+import chenmkoBannerManage1 from '@/assets/imgs/projects/chenmko/banner_manage_1.webp'
+import chenmkoCompManage from '@/assets/imgs/projects/chenmko/comp_manage.webp'
+import chenmkoCompHistory from '@/assets/imgs/projects/chenmko/comp_history.webp'
+import chenmkoTableCols from '@/assets/imgs/projects/chenmko/table_cols.webp'
+import chenmkoProductsEdit1 from '@/assets/imgs/projects/chenmko/products_edit_1.webp'
+import chenmkoProductsEdit2 from '@/assets/imgs/projects/chenmko/products_edit_2.webp'
+import chenmkoDbErModel from '@/assets/imgs/projects/chenmko/db_ErModel.png'
 
 <Card>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/cover.webp"
+      src={chenmkoCover}
       allowPop={false}
       client:load
     />
@@ -61,8 +69,8 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardHeader>
     <UiImageCarousel
       images={[
-        "/assets/imgs/projects/chenmko/banner_manage_2.webp",
-        "/assets/imgs/projects/chenmko/banner_manage_1.webp",
+        chenmkoBannerManage2,
+        chenmkoBannerManage1,
       ]}
       client:load
     />
@@ -76,7 +84,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>後端・公司資訊管理</CardTitle>
   <CardContent>
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/comp_manage.webp"
+      src={chenmkoCompManage}
       allowPop={true}
       client:load
     />
@@ -95,7 +103,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>後端・公司沿革資訊管理</CardTitle>
   <CardContent>
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/comp_history.webp"
+      src={chenmkoCompHistory}
       allowPop={true}
       client:load
     />
@@ -114,7 +122,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>後端・分類表格欄位管理</CardTitle>
   <CardContent>
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/table_cols.webp"
+      src={chenmkoTableCols}
       allowPop={true}
       client:load
     />
@@ -137,7 +145,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
   <CardTitle>後端・產品管理</CardTitle>
   <CardContent>
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/products_edit_1.webp"
+      src={chenmkoProductsEdit1}
       allowPop={true}
       client:load
     />
@@ -151,7 +159,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
     </p>
 
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/products_edit_2.webp"
+      src={chenmkoProductsEdit2}
       allowPop={true}
       client:load
     />
@@ -169,7 +177,7 @@ import { UiImageCarousel } from '@/components/react/UiImageCarousel'
 <Card>
   <CardHeader className="p-3">
     <ImageWithLightbox
-      src="/assets/imgs/projects/chenmko/db_ErModel.png"
+      src={chenmkoDbErModel}
       allowPop={true}
       client:load
     />

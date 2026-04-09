@@ -4,7 +4,7 @@ description: 輕鬆好用的股票交易試算工具
 startDate: 2020-10-01
 status: active
 theme: red
-cover: /assets/imgs/projects/stockCalc/cover.png
+cover: ../../assets/imgs/projects/stockCalc/cover.png
 pin: false
 skillTypes: [dev]
 tags: [介面設計, 產品規劃, 前端開發]
@@ -24,17 +24,19 @@ tools:
     description: 邏輯計算與 Dom 交互
 seo:
   metaDescription: 輕鬆好用的股票交易試算工具
-  ogImage: /assets/imgs/projects/stockCalc/cover.png
 ---
 
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import stockCalcPriceCalc from '@/assets/imgs/projects/stockCalc/priceCalc.png'
+import stockCalcTrendCalc from '@/assets/imgs/projects/stockCalc/trendCalc.png'
+import stockCalcQuickCalc from '@/assets/imgs/projects/stockCalc/quickCalc.png'
 
 <Card>
   <CardTitle className="pb-5">試算交易手續費</CardTitle>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/stockCalc/priceCalc.png"
+      src={stockCalcPriceCalc}
       allowPop={true}
       client:load
     />
@@ -45,7 +47,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
   <CardTitle className="pb-5">預估漲跌目標股價</CardTitle>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/stockCalc/trendCalc.png"
+      src={stockCalcTrendCalc}
       allowPop={true}
       client:load
     />
@@ -56,7 +58,7 @@ import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
   <CardTitle className="pb-5">快速加減計算</CardTitle>
   <CardHeader>
     <ImageWithLightbox
-      src="/assets/imgs/projects/stockCalc/quickCalc.png"
+      src={stockCalcQuickCalc}
       allowPop={true}
       client:load
     />
