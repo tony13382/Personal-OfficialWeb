@@ -9,10 +9,10 @@ import {
   GithubLogo,
 } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
-import nextTagsSonglist from "@/assets/imgs/apps/nextags-songlist.png";
-import nextTagsTagEditor from "@/assets/imgs/apps/nextags-tageditor.png";
-import nextTagsPlaylist from "@/assets/imgs/apps/nextags-playlist.png";
-import nextTagsHeroBg from "@/assets/imgs/apps/nextags-hero-bg.avif";
+import nextTagsSonglist from "./assets/nextags-songlist.png";
+import nextTagsTagEditor from "./assets/nextags-tageditor.png";
+import nextTagsPlaylist from "./assets/nextags-playlist.png";
+import nextTagsHeroBg from "./assets/nextags-hero-bg.avif";
 import { getImageSrc } from "@/components/react/image-source";
 
 const GITHUB_URL = "https://github.com/tony13382/NexTags";

@@ -13,13 +13,6 @@ export default defineConfig({
   site: 'https://lumakes.com',
   integrations: [react(), mdx(), sitemap(), pagefind()],
 
-  redirects: {
-    '/experience/': '/about/',
-    '/experience': '/about/',
-    '/toolbox/': '/articles/',
-    '/toolbox': '/articles/',
-  },
-
   vite: {
     plugins: [tailwindcss()],
     build: {
