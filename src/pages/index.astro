@@ -188,15 +188,13 @@ const sortedPosts = allPosts
               為了解決自己的需求而打造的小工具
             </p>
           </div>
-          <div
-            class="fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5"
-          >
+          <div class="fade-in grid grid-cols-1 gap-5">
             {
               apps.map((app) => (
                 <a href={`/apps/${app.slug}/`} class="group block no-underline">
                   <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full bg-background/80 backdrop-blur-sm">
-                    {/* Mobile / Tablet: stacked */}
-                    <div class="lg:hidden">
+                    {/* Mobile: stacked */}
+                    <div class="md:hidden">
                       <div class="overflow-hidden bg-gradient-to-br from-[var(--theme-primary-10)] to-[var(--theme-primary-5)]">
                         {app.cover ? (
                           <img
@@ -234,8 +232,8 @@ const sortedPosts = allPosts
                       </div>
                     </div>
 
-                    {/* Desktop: row with gradient */}
-                    <div class="hidden lg:flex flex-row items-stretch">
+                    {/* Desktop / Tablet: row with gradient */}
+                    <div class="hidden md:flex flex-row items-stretch">
                       <div class="relative flex-[2] overflow-hidden">
                         {app.cover ? (
                           <img
