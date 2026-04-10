@@ -51,7 +51,9 @@ import Icon from "@/components/Icon.astro";
       </div>
       <div class="container mx-auto px-4 py-20 md:py-32 relative">
         <div class="max-w-6xl mx-auto">
-          <div class="fade-in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
+          <div
+            class="fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5"
+          >
             {
               apps.map((app) => (
                 <a href={`/apps/${app.slug}/`} class="group block no-underline">
@@ -114,7 +116,10 @@ import Icon from "@/components/Icon.astro";
                             />
                           </div>
                         )}
-                        <div class="absolute inset-0" style="background: linear-gradient(to right, transparent 80%, white 100%)" />
+                        <div
+                          class="absolute inset-0"
+                          style="background: linear-gradient(to right, transparent 80%, white 100%)"
+                        />
                       </div>
                       <div class="flex-[1] flex flex-col justify-center gap-2 px-6">
                         {app.icon && (

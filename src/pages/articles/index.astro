@@ -95,7 +95,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                       {category}
                     </h2>
                     <div
-                      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                       data-category-grid
                     >
                       {categoryPosts.map((post, index) => (
@@ -219,14 +219,16 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
     );
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
-    document.querySelectorAll<HTMLAnchorElement>("[data-category-link]").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const id = link.getAttribute("href")!.slice(1);
-        const target = document.getElementById(id);
-        target?.scrollIntoView({ behavior: "smooth" });
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-category-link]")
+      .forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = link.getAttribute("href")!.slice(1);
+          const target = document.getElementById(id);
+          target?.scrollIntoView({ behavior: "smooth" });
+        });
       });
-    });
 
     document.querySelectorAll("[data-expand-btn]").forEach((btn) => {
       btn.addEventListener("click", () => {
