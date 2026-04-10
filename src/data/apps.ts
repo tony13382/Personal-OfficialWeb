@@ -20,8 +20,8 @@ export interface AppInfo {
 export const apps: AppInfo[] = [
   {
     slug: "cloudbio",
-    name: "CloudBio",
-    description: "開源 Link In Bio 建置工具，支援多種模塊與頁面顯示",
+    name: "CloudBio・Bio Link 工具",
+    description: "Bio 建置工具，支援多模塊與頁面，手機即可輕鬆編輯",
     url: "https://bio.lumakes.com/",
     cover: cloudBioCover,
     icon: cloudBioIcon,
@@ -29,7 +29,7 @@ export const apps: AppInfo[] = [
   },
   {
     slug: "kit",
-    name: "Kit",
+    name: "Kit・書籤管理工具",
     description: "支援多層級資料夾與標籤分類的現代化書籤管理系統",
     url: "https://kit.lumakes.com/intro",
     cover: kitCover,
@@ -38,7 +38,7 @@ export const apps: AppInfo[] = [
   },
   {
     slug: "nextags",
-    name: "NexTags",
+    name: "NexTags・音樂整理工具",
     description: "多功能音樂管理系統：匯入、修改、智慧播放清單一站完成",
     url: "https://github.com/tony13382/NexTags",
     cover: nextTagsCover,
