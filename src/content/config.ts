@@ -36,6 +36,7 @@ const projectsCollection = defineCollection({
     // 視覺與分類
     theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
     cover: image(),
+    icon: image().optional(),
     pin: z.boolean().default(false),
 
     // 分類與標籤
