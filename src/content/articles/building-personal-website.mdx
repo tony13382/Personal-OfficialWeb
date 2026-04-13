@@ -2,7 +2,7 @@
 title: 三次重寫才搞懂：個人網站的選型跟管理流程
 description: 從 Bootstrap 手刻、Python 模板到 Astro，分享我個人網站重建三次之後定下來的框架選擇、部署方式、網域命名邏輯跟日常管理流程
 date: 2026-04-13
-category: 開發環境
+category: 工作流程
 tags: [個人網站, Astro, Cloudflare, 靜態網站]
 cover: /og/articles/building-personal-website.png
 seo:
@@ -12,151 +12,106 @@ seo:
 import { Image } from 'astro:assets'
 
 {/* Images */}
+import cloudflareSetup1 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-1-git.png'
+import cloudflareSetup2 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-2-repo.png'
+import cloudflareSetup3 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-3-config.png'
+import cloudflareBuildSettings from '@/assets/imgs/articles/building-personal-website/cloudflare-build-settings.png'
+import cloudflareCustomDomain from '@/assets/imgs/articles/building-personal-website/cloudflare-custom-domain.png'
 
-個人網站這件事我前後搞了三次。第一次用 Bootstrap 從頭刻，第二次自己寫 Python 腳本生成 HTML，第三次才終於停在 Astro 上。每一次重寫都不是因為前一版壞了，而是因為我對「網站該怎麼管」的理解變了——從最早把它當成作品集，到後來當成內容平台，需求完全不一樣。這篇把這段演進整理出來，順便聊聊我怎麼選框架、怎麼選部署平台、網域怎麼命名，最後是現在用 Claude Code 搭配 MDX 的日常管理流程。
+個人網站這件事我前後搞了三次。第一次用 Bootstrap 從頭刻，第二次自己寫 Python 腳本生成 HTML，第三次才終於停在 Astro 上。每一次重寫都不是因為前一版壞了，而是因為我對「網站該怎麼管」的理解變了——從最早把它當成作品集，到後來當成內容平台，需求完全不一樣。
 
-## 三個版本的演進史
+這篇重點不是技術選型清單，而是三次重寫之後定下來的一套流程跟心法，以及支撐它的框架跟平台選擇。先從三個版本一路怎麼演進講起。
 
-### 第一版：Bootstrap 手刻靜態頁
+**第一版：Bootstrap 一頁式靜態站**。當時只想要一個能放進履歷的連結，改內容靠複製貼上 HTML，換版型要動每張卡片——內容跟結構綁在一起，越疊越難維護。
 
-最早的版本就是一頁式的 Bootstrap 靜態網站。那時候我還在學前端，目的很單純——想要一個能放在履歷上的連結，內容就是自我介紹、作品集、聯絡方式，全部塞在一個 `index.html` 裡面。
+**第二版：Python 腳本自己生 HTML**。把每個區塊包成 class 物件再 render 出來，開始摸到「資料跟渲染分離」的概念，但模板改起來超硬，加互動元件更麻煩。所有基礎建設（圖片壓縮、路由、SEO、RSS）都得自己寫，後來花在維護生成器的時間比寫內容還多。
 
-這種做法對當時的我很剛好。Bootstrap 的 grid 跟元件可以讓一個新手快速刻出看起來不難看的版面，也不用碰任何建置工具，改完直接丟上 GitHub Pages 就能看到結果。
+**第三版：Astro + React，就是現在這個站**。這次的轉變不只是換工具，是把網站定位從「放作品的單頁名片」改成「持續累積內容的平台」。重點變成——**怎麼讓寫內容這件事變得夠輕**。
 
-但問題也很快浮現——**每次想新增一個作品，我就要複製一段 HTML、貼到正確的位置、改裡面的圖片連結跟文字**。內容跟結構綁在一起，久了就是一坨很難維護的 HTML。當我想要換一個卡片樣式，得手動改每一張卡片，根本不想動它。
+## 框架跟部署都選在 Astro + Cloudflare
 
-### 第二版：Python 模板自己生
+### 為什麼選 Astro
 
-第二版是我自己寫了一套 Python 腳本在管網站。做法比較特別——**我把 HTML 包裝成一層一層的巢狀物件**，每個區塊、每張卡片、每個按鈕都是一個 Python class，整個頁面靠物件組合出來，最後一次性 render 成 HTML。這個架構讓我可以用程式邏輯去操作版面，新增一個作品就是 new 一個物件丟進 list 裡，概念上比第一版的複製貼上乾淨很多。
+選 Astro 主要是因為它剛好踩在「內容驅動」跟「元件化」的交會點——內容用 MDX 寫，靜態部分編譯成純 HTML，真正需要互動的地方再用 React 元件包成 island 嵌進去。
 
-這一版開始讓我摸到「內容驅動」的感覺——**資料歸資料、渲染歸渲染**，改一次物件的樣板所有地方都會一起更新。但用一陣子之後問題就來了：**模板非常難改**。因為樣式跟結構都寫死在 Python class 裡面，想調一個 padding 得回去翻 class 的 render 方法，想換一個版型就要把整層物件重新設計。要加互動元件（例如可篩選的作品列表、可展開的時間軸）更麻煩，純靜態輸出每次都得手刻一小段 JavaScript 拼上去。
+挑框架時我的四個硬需求是：
 
-另外就是所有基礎建設都要自己寫——圖片壓縮、路由、SEO、RSS、OG Image，每一樣都要自己補。寫到後來我花在維護「網站生成器」的時間比寫內容還多。工具是自己做的沒錯，但成本也是自己扛。
+- 能輕鬆部署到靜態平台（尤其 Cloudflare，因為我網域跟 DNS 都在那）
+- 不需要 SSR、不需要 API server
+- 能混合 React 互動元件
+- 內容能用 MDX 寫
 
-### 第三版：Astro + React
+比較過 Next.js（功能太全、重心在 SSR、不想綁 Vercel）、Hugo（不支援 MDX，自訂元件要用 Shortcodes）、Nuxt（我 Vue 不熟），只有 Astro 四點全中。
 
-第三版就是目前這個站。看過幾個候選之後選定 Astro，核心理由是它剛好踩在「內容驅動」跟「元件化」這兩條線的交會點——內容用 MDX 寫，靜態部分由 Astro 編譯成純 HTML，真正需要互動的地方再用 React 元件包進去。
+用下來真正最有感的是 **Content Collections**。每個 collection 都有 Zod schema，寫 MDX 時欄位漏填或格式錯，build 前 IDE 就紅線提醒。以 articles collection 為例：
 
-這次的重寫對我來說不只是換工具，而是把網站的定位重新想過一次。從「放作品的單頁名片」變成「持續累積內容的平台」，文章、專案、經歷三種不同的內容類型各自用 collection 管理，每一類都有自己的 schema 跟頁面模板。加上 Tailwind 跟 shadcn/ui，我現在要加一個新元件、調一個樣式、發一篇文章，都是很輕的動作。
+<p class="code-title">src/content/config.ts</p>
 
-## 為什麼最後選了 Astro
+```ts
+const articlesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    pin: z.boolean().default(false),
+    cover: z.string().optional(),
+  })
+})
+```
 
-### 我在意的四件事
+`date` 打成 `2024-13-40` 這種非法日期、或漏填 `category`，`astro dev` 當場就噴錯。以前第二版的 Python 生成器要等跑完才知道欄位錯了，現在寫的時候就擋下來。
 
-先講一個前置條件：**我的網域跟 DNS 本來就在 Cloudflare**。所以「部署平台能不能跟 Cloudflare 無痛接上」，在挑框架的時候已經是既定前提。下面的四個硬需求都是在這個前提下展開的：
+加上 MDX 本身就是「可互動的內容容器」——單篇可以 import React 元件，跨文章可以用 `getCollection('articles')` 把所有 frontmatter 當陣列操作，置頂、分類、標籤全部靠欄位驅動。發新文章的成本被壓到只剩「寫一個 MDX 檔」，列表頁、標籤頁會自動更新。
 
-- **能輕鬆部署到靜態平台（尤其 Cloudflare）**：不被特定廠商綁定，輸出是純靜態就能丟上任何 CDN
-- **無須複雜的後端功能**：個人站就是純內容，不需要 SSR、不需要 API server，靜態 HTML 就夠了
-- **能混合互動元件**：有些區塊需要 React 的互動性（可篩選列表、展開動畫），但不想為了這個改用全功能 SPA 框架
-- **內容要能用 Markdown/MDX 寫**：純靜態內容如果要用 JSX 或 HTML 手刻，長期下來一定會拖垮發文意願
+### 部署也走 Cloudflare
 
-符合這四點的其實不多。我認真比較過 Next.js、Nuxt、Hugo 跟 Astro。
+前兩版都跑在 GitHub Pages。兩邊對個人站都很夠用，我選遷過去主要是這幾點：
 
-### 比較過的替代方案
+- **Workers 生態**（D1、KV、R2、Durable Objects）讓未來要加動態功能時資源都現成
+- **網域本來就在 Cloudflare**，Pages 綁網域同一個儀表板點一下，HTTPS 自動發
+- 邊緣節點多，台灣延遲比 Vercel、Netlify 更順
 
-**Next.js**：功能最全，但它的重心在 SSR / App Router 這類動態場景，對我這種純內容站來說太重。而且我不想被綁在 Vercel 的生態圈裡。
+遷移時的第一次設定大概是三步：
 
-**Hugo**：純 Go 寫的，build 速度超快，Markdown 支援也很完整。但它**不支援 MDX**，要在文章裡放自訂元件只能用 Hugo 自己的 Shortcodes 語法（`{{< mycomponent >}}` 這種），不像 MDX 可以直接 import React 元件那麼直覺。
+**1. 連 Git 來源**：選「Continue with GitHub」授權 Cloudflare 讀 repo 列表。
 
-**Nuxt**：我本身 Vue 寫得不如 React 多，為了這個站再學 Vue 生態不划算。
+<Image src={cloudflareSetup1} alt="Cloudflare Workers & Pages 建立頁面，選 Continue with GitHub" />
 
-**Astro**：預設就是 MDX 友善，又能把 React、Vue、Svelte 元件當成 island 嵌入，build 出來是純靜態，Cloudflare Pages 有官方 adapter 一鍵接上。Content Collections 的 schema 驗證讓我寫文章的時候就能抓到欄位錯誤，不會等到 build 才出事。
+**2. 挑 repo**：下拉選擇帳號之後挑網站對應的 repo，按下一步。
 
-最後選 Astro 是因為它把我想要的四件事都做到了，而且**沒有額外成本**——不需要學新的模板語言、不需要放棄 React 元件、不需要 SSR server、部署到 Cloudflare 也順手。
+<Image src={cloudflareSetup2} alt="Cloudflare 選擇 GitHub repository 的畫面" />
 
-### 用下來的心得
+**3. 填建置指令**：組建命令輸入 `npm run build`，部署命令填 `npx wrangler deploy`（走 Workers 統一流程），按「部署」就會跑第一次 build。
 
-這個站上線快一年，真的讓我感受最深的是 **Content Collections**。我把文章、專案、經歷分成三個 collection，每一個都有自己的 Zod schema——文章要有 `date` 跟 `category`，專案要有 `theme` 跟 `status`，寫 MDX 的時候如果欄位漏填或格式錯，build 的時候直接噴錯誤。這個機制等於把「內容結構」這件事從運行時檢查提前到開發時檢查——以前第二版的 Python 生成器要等到跑出來才會發現某個欄位漏填，現在還沒 build 完 IDE 就先紅線提醒了。
+<Image src={cloudflareSetup3} alt="Cloudflare 建立應用程式時設定組建跟部署命令的畫面" />
 
-另外就是 Astro 的 `<Image>` 元件，丟進去就會自動產生多個尺寸、轉 WebP，SEO 跟效能該有的最佳化都內建了，我不用再寫一套圖片處理 pipeline。
+設定好之後，後台的建置頁面長這樣——之後要調 Node 版本、輸出目錄、分支名稱都在這邊：
 
-### MDX 最大的優勢：有變數概念
+- **Framework preset**：Astro（選下去 build command 跟 output 會自動帶好）
+- **Build command**：`npm run build`
+- **Build output directory**：`dist`
+- **Node version**：用 `NODE_VERSION=20` 環境變數鎖版本
 
-聊到這裡不得不特別講 MDX。很多人以為 MDX 就是 Markdown 加上能塞 JSX，但我覺得**它最強的地方是「變數」這個概念**。而這個變數概念其實可以拆成兩個層次來看——**文章內層**跟**文章間層**，兩者解鎖的玩法不太一樣。
+<Image src={cloudflareBuildSettings} alt="Cloudflare Pages 後台的建置設定畫面" />
 
-**層次一：文章內可以塞 React 元件跟 JavaScript**
+綁完之後推 main 分支自動 build、自動部署到 edge，整個流程 1–2 分鐘。自訂網域點一下「設定自訂網域」輸入名稱就好，CNAME 跟 HTTPS 憑證自動處理。
 
-第一個層次是**單篇文章內**的變數能力。你可以在 MDX 頂部 import React 元件或資料，然後在內文裡直接放元件、或用 JavaScript 表達式操作資料。這讓單篇文章的表達力完全不一樣：
+<Image src={cloudflareCustomDomain} alt="Cloudflare Pages 自訂網域設定畫面" />
 
-- **塞互動元件**：放一個 React 元件進去，就能在文章裡加 tag 篩選、展開收合、圖表；純 Markdown 做不到這件事
-- **資料跟文字混寫**：價格表、比較表、時間軸這種結構化內容，可以直接用 JavaScript 陣列寫，再 map 成表格，改資料不用手動動 HTML
-- **共用元件跨文章重用**：同一個元件可以在多篇文章裡共用，改一次就全站更新，不會像純 Markdown 一樣到處都是複製貼上的片段
+### 網域也在同一個平台
 
-**層次二：每篇文章本身就是一筆資料**
+網域我走 Cloudflare Registrar 註冊，理由是「成本價」模式——多少錢就收多少錢，不會有第一年便宜、續費翻倍的陷阱，WHOIS 隱私也免費內建。其他註冊商（GoDaddy、Namecheap）比較下來都有續費漲價、介面雜亂、加購推銷這些扣分項。
 
-第二個層次是**跨文章**的變數能力。每一份 MDX 的 frontmatter 就是一組結構化資料，整個 collection 可以當成一個陣列來操作——等於是把「所有文章」當成變數，不是只在單篇裡玩。
-
-我自己最有感的應用是**文章列表頁**。首頁的文章列表不是寫死的——我用 `getCollection('articles')` 把所有文章撈成一個陣列，再透過 `category`、`tags`、`pin`、`date` 這些 frontmatter 欄位去篩選跟排序。想讓某篇置頂就在它的 frontmatter 加 `pin: true`，想做分類切換就按 `category` 分組，想做標籤頁就用 `tags` 過濾。整個列表邏輯只寫一次，之後新增文章只要多一個 MDX 檔案，列表會自動更新。
-
-兩個層次合起來，MDX 就不只是「寫作格式」，而是「可互動的內容容器」。對一個會長期累積內容的個人站來說，這個能力比想像中值錢很多。
-
-## 部署平台：從 GitHub Pages 到 Cloudflare
-
-### 從 GitHub Pages 遷到 Cloudflare
-
-前兩版都是丟在 GitHub Pages 上跑。老實說 **GitHub Pages 跟 Cloudflare 兩邊都很優秀**——零設定、自動 HTTPS、免費額度都很夠用，對個人網站來說怎麼選其實都不會錯。但我還是選擇遷過去，有三個很具體的理由：
-
-**1. Cloudflare Workers 生態帶來的未來戰略資源**
-
-Cloudflare 這幾年把 Workers 打造成一個完整的邊緣運算平台，旁邊長出 **D1（SQLite 資料庫）、KV（鍵值儲存）、R2（物件儲存）、Durable Objects** 這些服務。對我來說，這意味著**未來想在個人站裡加東西，底層資源都已經準備好了**——想做一個留言板？接 D1。想加一層快取或 feature flag？用 KV。想放大檔案下載？丟 R2。這些服務全部在同一個儀表板、同一個計費體系裡。
-
-GitHub Pages 就純粹是靜態託管，想要任何動態功能都得外接其他服務，架構會越拉越散。遷到 Cloudflare 等於是**站在一個可以往上長的平台上**，不是只解決當下的託管問題。
-
-**2. 免費額度都很夠，成本上平手**
-
-兩邊對個人站來說實際上都是免費的。Cloudflare Pages 每月 500 次 build、無流量限制；Workers 每天 10 萬次請求。個人站的量根本打不到，在這件事上兩邊沒差。
-
-**3. 網域設定更乾淨、更順**
-
-我的網域本來就在 Cloudflare Registrar 註冊、DNS 也在 Cloudflare 管。遷到 Cloudflare Pages 之後，網域綁定是**同一個儀表板裡點一下就好**——不用去別的地方改 CNAME、不用等 DNS 傳遞、HTTPS 憑證自動發。之前在 GitHub Pages 綁自訂網域偶爾會遇到 HTTPS 卡住的狀況，現在這類瑣事全部消失。
-
-換過去之後，Cloudflare 直接連 GitHub repo 自動部署，build command 跟輸出目錄在 UI 裡設定就好；自訂網域、HTTPS、Analytics、redirect 規則全部集中在同一個地方處理。整個工作流變得很乾淨。
-
-### 為什麼不是 Vercel 或 Netlify
-
-Vercel 跟 Netlify 的 DX 其實也都很好，但對我來說有兩個點 Cloudflare 更合拍：
-
-- **邊緣節點多**：台灣的延遲體感比另外兩家更順
-- **免費額度沒什麼束縛感**：Vercel 的免費額度最近收緊得蠻明顯，Netlify 的 build 配額對我來說也有點緊，Cloudflare 這邊反而最寬鬆
-
-（「網域在 Cloudflare」這一點在上一小節已經講過，這邊就不重複了。）
-
-## 網域：命名邏輯跟註冊選擇
-
-### 網域的命名邏輯
-
-我主要的個人網域用的是姓名的英文拼音加一個短 TLD。選網域的時候我有幾個原則：
-
-- **好念好拼**：念一次對方就能拼出來。避免容易聽錯的字母組合跟同音字
-- **不要塞職業或領域**：`xxx-designer.com`、`xxx-dev.com` 這種在換跑道的時候會變得很尷尬，個人品牌要能跟著自己成長
-- **TLD 選單純的**：`.com`、`.me`、`.dev` 都行，但避開冷門 TLD，因為不是所有場合都認得
-- **長度壓在合理範圍**：連字號盡量不要，打起來容易漏
-
-另外我更傾向用**子網域**來放實驗性的小工具跟 side project，例如 `app.lumakes.com`、`lab.lumakes.com` 這種玩法，而不是再註冊一個新的 TLD。好處有幾個：
-
-- **維護一個品牌就好**：所有東西都長在同一棵網域樹上，不用分散經營多個網域
-- **不用多付註冊費**：子網域想開幾個都行，沒有額外成本
-- **DNS 管理集中**：一個 zone 裡處理所有子網域，不用來回切換
-
-主網域維持乾淨當作身份入口，**主站是身份，子站是實驗**。這樣的分離讓我敢隨便玩新東西，不用擔心搞壞主網站的 SEO 或形象。
-
-### 網域我直接在 Cloudflare 買
-
-註冊商我統一選 **Cloudflare Registrar**，理由很簡單：
-
-- **價格固定且透明**：Cloudflare 用的是所謂的「成本價」模式，多少錢就收多少錢，不加價、沒行銷優惠後漲價的陷阱。第一年幾十塊、第二年翻倍這種事不會發生，續費成本很好預期
-- **天生接上 Cloudflare 生態**：網域一註冊完就直接進到 Cloudflare 的 DNS、Pages、Workers、Analytics 生態裡，不用再做域名轉移或 DNS 指向的設定
-- **管理介面乾淨**：沒有到處彈出要你買 SSL、買信箱、買 WHOIS 隱私的推銷（WHOIS 隱私本身就免費內建）
-
-其他註冊商（像 GoDaddy、Namecheap）我有研究過，比較下來續費漲價、介面雜亂、加購推銷這些點都是扣分項。對個人站來說，**把網域、DNS、部署放在同一個平台上**是最省心的選擇。
+命名幾個原則：好念好拼、不要塞職業或領域（`xxx-designer.com` 換跑道會尷尬）、TLD 選單純的（`.com` / `.me` / `.dev`）、長度壓短避免連字號。實驗性的 side project 走子網域（`app.lumakes.com`、`lab.lumakes.com`）——**主站是身份，子站是實驗**，維護一個品牌樹就夠。
 
 ## 現在的管理流程：Claude Code 管樣式，MDX 寫內容
 
 ### 職責分離
 
 到了這一版，我慢慢摸出一個對自己最順的工作分工——**樣式跟結構用 Claude Code 管、內容用 MDX 自己寫**。
-
-兩邊的切分很清楚：
 
 | 類型 | 工具 | 為什麼這樣分 |
 |---|---|---|
@@ -167,9 +122,9 @@ Vercel 跟 Netlify 的 DX 其實也都很好，但對我來說有兩個點 Cloud
 
 ### 樣式這條線：交給 Claude Code
 
-版型、元件、CSS 這類工作是 Claude Code 最擅長的地方。它能一次讀完整個專案的上下文，理解我用的是 Tailwind v4 不是 v3、shadcn/ui 的元件放在哪、主題變數怎麼定的，改起來的一致性比我自己手動動還穩。
+版型、元件、CSS 這類工作是 Claude Code 最擅長的地方。它能一次讀完整個專案的上下文，理解我用的是 Tailwind v4 不是 v3、shadcn/ui 的元件放在哪、主題變數怎麼定，改起來的一致性比我自己動手還穩。
 
-關鍵是要寫好 `CLAUDE.md`。我在專案根目錄放了一份，涵蓋技術棧、資料夾結構、樣式規則、常見地雷。每次開新 session，Claude 一啟動就知道這個專案在幹嘛，不用再重複解釋。這份檔案是這一版能夠快速演進的關鍵，之前寫過一篇 [Claude Code 調教筆記](/articles/claude-code-setup)，細節都在那邊。
+關鍵是要寫好 `CLAUDE.md`。我在專案根目錄放了一份，涵蓋技術棧、資料夾結構、樣式規則、常見地雷。每次開新 session，Claude 一啟動就知道這個專案在幹嘛，不用重複解釋。之前寫過一篇 [Claude Code 調教筆記](/articles/claude-code-setup)，細節都在那邊。
 
 ### 內容這條線：從靈感到發佈
 
@@ -193,7 +148,24 @@ Vercel 跟 Netlify 的 DX 其實也都很好，但對我來說有兩個點 Cloud
 
 我把上面的流程包成一個叫 `new-article` 的自訂 Skill。指令裡面預先寫好文章的三種類型（工具推薦型、方法論型、經驗分享型）、每種類型該怎麼結構化、可用的特殊元件（pricing tag、callout、code title）長什麼樣、口吻規範。之後我只要打 `/new-article`，Claude 就會進入「文章撰寫模式」，按照這套 SOP 走一遍。
 
-把這套流程 Skill 化之後，**我每次的產出格式都一致、口吻都穩定**，也不用每篇文章都重新跟 Claude 溝通規則。整個站的文章區風格能維持一致，靠的就是這個 Skill。
+Skill 裡我覺得最關鍵的是「Writing Style Guide」這一節，直接把我希望 Claude 維持的口吻規則寫死：
+
+<p class="code-title">~/.claude/skills/new-article/skill.md</p>
+
+```md
+## Writing Style Guide
+
+- 口語化、像在跟朋友分享自己的經驗
+- 第一人稱帶入：「我自己」「我主要用」「我平常」
+- 交代選擇脈絡：「因為我同時在用 A 跟 B，所以...」
+- 用「跟」不用「與」
+- 不要用 emoji
+- 語尾自然收：「搞定」「方便很多」「用起來很順」
+```
+
+另外還有一張文章類型對照表，定義「工具推薦型 / 方法論型 / 經驗分享型」各自的重點，Claude 開工前會先問我這篇是哪一種，再挑對應的骨架走。這些規則如果每次開新對話都要重講一遍太耗神，包進 Skill 之後 `/new-article` 一打進去整套規則就自動 loaded。
+
+把這套流程 Skill 化之後，**我每次的產出格式都一致、口吻都穩定**，不用每篇文章都重新跟 Claude 溝通規則。整個站的文章區風格能維持一致，靠的就是這個 Skill。
 
 **MDX 直接寫，不走 CMS**
 
@@ -203,10 +175,24 @@ Vercel 跟 Netlify 的 DX 其實也都很好，但對我來說有兩個點 Cloud
 - 不用維護額外的後台服務，也不用擔心 CMS 供應商倒掉或漲價
 - 文章內容是純文字，未來要遷移到任何平台都很容易
 
-對只有我一個人寫的個人站來說，MDX 比任何 CMS 都輕，而且 MDX 本身就能混進 React 元件、Astro 的 `<Image>`，需要的表達力完全夠。
+對只有我一個人寫的個人站來說，MDX 比任何 CMS 都輕，而且本身就能混進 React 元件、Astro 的 `<Image>`，需要的表達力完全夠。
 
 ### 發佈節奏：讓 Git 推著跑
 
-流程的最後一環是發佈。我的做法就是——**Cloudflare Pages 盯著 main 分支，推上去就自動 build 跟上線**。沒有 staging、沒有 preview flow，因為這就是我自己的站，有錯就改完再推一次，不需要複雜的部署流程。小站就該有小站的管理節奏，過度工程化反而會讓自己不想寫東西。
+流程的最後一環是發佈。我的做法就是——**Cloudflare Pages 盯著 main 分支，推上去就自動 build 跟上線**。沒有 staging、沒有 preview flow，因為這就是我自己的站，有錯就改完再推一次，不需要複雜的部署流程。
 
-整套流程下來就是這樣：Claude Code 管樣式跟結構，我專心用 MDX 寫內容，Git push 自動部署。重新建一次網站這件事雖然重複三次才搞定，但這一版我大概能用很久了——因為卡住的部分不是技術，是我對「網站該怎麼存在」的理解。
+## 三次重寫學到的心法
+
+三次重寫下來，我把這些經驗濃縮成幾條會推給想做個人站朋友的心法：
+
+**一、定位決定一切，不是工具**。第一版當履歷、第二版當作品集、第三版當內容平台——每次「重建」不是因為舊工具壞了，是因為定位變了。先想清楚這個站對自己是什麼，再選工具。
+
+**二、內容跟結構要能分離**。第一版 HTML 手刻、第二版把樣式寫死在 Python class 裡，兩次都是敗在「換版型要動每一篇」。現在內容走 MDX、樣式走 Tailwind + 元件，兩邊可以各自演進。
+
+**三、別自己重造基礎建設**。第二版我花了一堆時間寫圖片處理、路由、SEO——這些 Astro 都內建了。自造工具看起來自由，其實每一樣都在消耗寫內容的力氣。
+
+**四、把重複的事 Skill 化**。發文章的節奏之所以能穩定，不是靠紀律，是靠 `new-article` Skill 把規則固化下來。想讓一件事持續做，要先降低它每次開始的摩擦。
+
+**五、小站就該有小站的節奏**。沒有 staging、沒有 preview flow、push main 就上線。過度工程化反而會讓自己不想寫東西——這個站是為了累積內容存在，不是為了展示架構能力。
+
+這一版我大概能用很久了——因為卡住的部分不是技術，是我對「網站該怎麼存在」的理解。
