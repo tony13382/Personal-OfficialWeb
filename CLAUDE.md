@@ -67,6 +67,12 @@ public/
 - **Official Link（大按鈕）**：`<a href="..." target="_blank" class="official-link">文字</a>`，只用在獨立一行的 CTA，不要嵌在句子裡
 - **行內連結**：用一般 Markdown 連結語法 `[文字](url)`，用在段落內文中的超連結
 
+#### 連結樣式選用原則（重要）
+
+- **文本較多的行內連結 → 一律用 Markdown 連結 `[文字](url)`**，不要用 `class="official-link"` 的大按鈕
+- **外連按鈕用小的就好**，只有獨立成行的 CTA、引導使用者點擊前往的明確入口才用大按鈕
+- 段落中提到其他文章、外部資源、工具名稱的連結，全部都用 Markdown 行內連結，不要把大按鈕塞在句子中間，會破壞閱讀節奏
+
 ### Commit 規範
 
 使用 `/commit-generate` skill 來產生 commit message。不加 Co-Authored-By。
