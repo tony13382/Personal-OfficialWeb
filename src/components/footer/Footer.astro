@@ -159,6 +159,17 @@ import signUrl from "@/assets/imgs/index/sign.svg?url";
             <SocialLinksLite client:load />
           </div>
         </div>
+
+        <div>
+          <h4
+            class="text-xl text-muted-foreground font-semibold mt-8 mb-2 px-4"
+          >
+            閱讀設定 Config
+          </h4>
+          <div class="flex flex-wrap px-4">
+            <ThemeToggle client:load />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -172,7 +183,7 @@ import signUrl from "@/assets/imgs/index/sign.svg?url";
         class="block h-7 opacity-75 mx-auto my-4 bg-foreground"
         style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
       ></span>
-      <ThemeToggle client:load />
+
       <p class="mt-6">Copyright © 2026 Liang-Chin, Lu 版權所有</p>
       <p class="mt-2">
         <a
