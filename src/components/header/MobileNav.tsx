@@ -29,7 +29,7 @@ export function MobileNav({ type: _type = 'main' }: MobileNavProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="lg:hidden bg-transparent border-0 cursor-pointer  hover:bg-muted p-4 rounded-full"
+          className="lg:hidden bg-transparent border-0 cursor-pointer text-foreground hover:bg-muted p-4 rounded-full"
           aria-label="Toggle navigation"
         >
           <ListIcon className="size-6" />
@@ -46,7 +46,7 @@ export function MobileNav({ type: _type = 'main' }: MobileNavProps) {
         </SheetHeader>
         <nav className="flex flex-col gap-4 flex-1 min-h-0">
           {/* Search */}
-          <div className="px-4 [&_button]:w-full [&_button]:justify-center [&_button]:rounded-lg [&_button]:border [&_button]:border-gray-200 [&_button]:dark:border-gray-700 [&_button]:py-3">
+          <div className="px-4 [&_button]:w-full [&_button]:justify-center [&_button]:rounded-lg [&_button]:border [&_button]:border-border [&_button]:py-3">
             <SearchDialog />
           </div>
 
@@ -57,26 +57,29 @@ export function MobileNav({ type: _type = 'main' }: MobileNavProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 px-4 py-3 text-gray-700 dark:text-gray-300 no-underline text-lg rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="flex items-center gap-2 px-4 py-3 text-foreground no-underline text-lg rounded-lg transition-all hover:bg-muted"
               >
                 {link.icon}
                 <span>{link.label}</span>
               </a>
             ))}
-            <img
-              src={signUrl}
-              alt="Logo"
-              className="absolute bottom-0 right-4 opacity-25 text-primary max-h-7 mt-2"
-              loading="lazy"
-              decoding="async"
+            <span
+              role="img"
+              aria-label="Liang Chin Lu signature"
+              className="absolute bottom-0 right-4 opacity-25 block h-7 mt-2 bg-foreground"
+              style={{
+                width: 'calc(7 * 2286 / 457 * 0.25rem)',
+                WebkitMask: `url(${signUrl}) no-repeat center / contain`,
+                mask: `url(${signUrl}) no-repeat center / contain`,
+              }}
             />
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-300 dark:border-gray-700 my-2"></div>
+          <div className="border-t border-border my-2"></div>
 
           {/* Social Links */}
-          <p className="px-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+          <p className="px-4 text-sm text-muted-foreground font-medium">
             聯絡方式
           </p>
           <div className="grid grid-cols-1 gap-2">
@@ -87,7 +90,7 @@ export function MobileNav({ type: _type = 'main' }: MobileNavProps) {
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-300 no-underline text-base rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="flex items-center gap-3 px-4 py-3 text-foreground no-underline text-base rounded-lg transition-all hover:bg-muted"
               >
                 {link.icon}
                 <span>{link.label}</span>

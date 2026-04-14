@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { apps } from "@/data/apps";
-import { Card } from "@/components/ui/card";
-import Icon from "@/components/Icon.astro";
+import AppCard from "@/components/apps/AppCard.astro";
 ---
 
 <BaseLayout
@@ -27,7 +26,7 @@ import Icon from "@/components/Icon.astro";
             Apps
           </p>
           <h1
-            class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
+            class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
           >
             自建應用
           </h1>
@@ -52,95 +51,7 @@ import Icon from "@/components/Icon.astro";
       <div class="container mx-auto px-4 py-20 md:py-32 relative">
         <div class="max-w-6xl mx-auto">
           <div class="fade-in grid grid-cols-1 gap-5">
-            {
-              apps.map((app) => (
-                <a href={`/apps/${app.slug}/`} class="group block no-underline">
-                  <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full bg-background/80 backdrop-blur-sm">
-                    {/* Mobile: stacked */}
-                    <div class="md:hidden">
-                      <div class="overflow-hidden bg-gradient-to-br from-[var(--theme-primary-10)] to-[var(--theme-primary-5)]">
-                        {app.cover ? (
-                          <img
-                            src={app.cover?.src}
-                            alt={app.name}
-                            class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <div class="w-full aspect-video flex items-center justify-center">
-                            <Icon
-                              name="app-window"
-                              class="size-12 text-[var(--theme-primary-30)]"
-                            />
-                          </div>
-                        )}
-                      </div>
-                      <div class="flex flex-col gap-1.5 px-6 py-4">
-                        {app.icon && (
-                          <img
-                            src={app.icon?.src}
-                            alt={`${app.name} icon`}
-                            class="size-12 rounded-xl mt-2 mb-1 shadow-md"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        )}
-                        <h3 class="font-bold leading-snug group-hover:text-[var(--theme-primary)] transition-colors">
-                          {app.name}
-                        </h3>
-                        <p class="text-xs text-muted-foreground leading-relaxed">
-                          {app.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Desktop / Tablet: row with gradient */}
-                    <div class="hidden md:flex flex-row items-stretch">
-                      <div class="relative flex-[2] overflow-hidden">
-                        {app.cover ? (
-                          <img
-                            src={app.cover?.src}
-                            alt={app.name}
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <div class="w-full h-full flex items-center justify-center bg-muted">
-                            <Icon
-                              name="app-window"
-                              class="size-12 text-[var(--theme-primary-30)]"
-                            />
-                          </div>
-                        )}
-                        <div
-                          class="absolute inset-0"
-                          style="background: linear-gradient(to right, transparent 80%, white 100%)"
-                        />
-                      </div>
-                      <div class="flex-[1] flex flex-col justify-center gap-2 px-6">
-                        {app.icon && (
-                          <img
-                            src={app.icon?.src}
-                            alt={`${app.name} icon`}
-                            class="size-14 rounded-2xl"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        )}
-                        <h3 class="text-xl font-bold leading-snug group-hover:text-[var(--theme-primary)] transition-colors">
-                          {app.name}
-                        </h3>
-                        <p class="text-sm text-muted-foreground leading-relaxed">
-                          {app.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                </a>
-              ))
-            }
+            {apps.map((app) => <AppCard app={app} />)}
           </div>
         </div>
       </div>

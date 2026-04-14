@@ -147,13 +147,13 @@ export function SearchDialog() {
     <Dialog.Root open={open} onOpenChange={handleOpenChange}>
       <Dialog.Trigger asChild>
         <button
-          className="flex items-center gap-2 px-3 py-2 text-gray-500 rounded-full transition-all hover:bg-gray-100 cursor-pointer bg-transparent border-0"
+          className="flex items-center gap-2 px-3 py-2 text-muted-foreground rounded-full transition-all hover:bg-muted cursor-pointer bg-transparent border-0"
           aria-label="搜尋"
           title="搜尋"
         >
           <MagnifyingGlass className="size-5" />
           <span className="hidden md:inline text-sm">搜尋</span>
-          <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-gray-400 bg-gray-100 border border-gray-200 rounded-full">
+          <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground bg-muted border border-border rounded-full">
             ⌘ K
           </kbd>
         </button>
@@ -161,12 +161,12 @@ export function SearchDialog() {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-[fade-in_150ms]" />
-        <Dialog.Content className="fixed z-50 top-[15vh] inset-x-0 mx-auto w-[calc(100%-2rem)] max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-[slide-up_200ms_ease-out]">
+        <Dialog.Content className="fixed z-50 top-[15vh] inset-x-0 mx-auto w-[calc(100%-2rem)] max-w-lg bg-background rounded-2xl shadow-2xl overflow-hidden animate-[slide-up_200ms_ease-out]">
           <Dialog.Title className="sr-only">搜尋</Dialog.Title>
 
           {/* Search Input */}
           <div className="flex items-center gap-3 px-4 border-b">
-            <MagnifyingGlass className="size-5 text-gray-400 flex-shrink-0" />
+            <MagnifyingGlass className="size-5 text-muted-foreground flex-shrink-0" />
             <input
               ref={inputRef}
               type="text"
@@ -190,7 +190,7 @@ export function SearchDialog() {
                 }
               }}
               placeholder="搜尋全站內容..."
-              className="flex-1 py-4 text-base bg-transparent border-0 outline-none placeholder:text-gray-400"
+              className="flex-1 py-4 text-base bg-transparent border-0 outline-none placeholder:text-muted-foreground"
               autoFocus
             />
             {query && (
@@ -199,7 +199,7 @@ export function SearchDialog() {
                   setQuery("");
                   inputRef.current?.focus();
                 }}
-                className="p-1 text-gray-400 hover:text-gray-600 cursor-pointer bg-transparent border-0"
+                className="p-1 text-muted-foreground hover:text-foreground cursor-pointer bg-transparent border-0"
               >
                 <X className="size-4" />
               </button>
@@ -209,19 +209,19 @@ export function SearchDialog() {
           {/* Results */}
           <div className="max-h-[50vh] overflow-y-auto">
             {!query.trim() && (
-              <div className="px-4 py-8 text-center text-sm text-gray-400">
+              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                 輸入關鍵字搜尋全站內容
               </div>
             )}
 
             {query.trim() && loading && (
-              <div className="px-4 py-8 text-center text-sm text-gray-400">
+              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                 搜尋中...
               </div>
             )}
 
             {query.trim() && !loading && results.length === 0 && (
-              <div className="px-4 py-8 text-center text-sm text-gray-400">
+              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                 找不到相關結果
               </div>
             )}
@@ -232,7 +232,7 @@ export function SearchDialog() {
                   return (
                     <li key={group.type} className="list-none">
                       <div className="px-4 pt-3 pb-1">
-                        <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                           {group.type}
                         </span>
                       </div>
@@ -243,7 +243,7 @@ export function SearchDialog() {
                             key={result.url}
                             data-search-item
                             href={result.url}
-                            className={`flex items-start gap-3 px-4 py-3 no-underline text-gray-900 transition-colors group ${activeIndex === flatIdx ? "bg-gray-100" : "hover:bg-gray-50"}`}
+                            className={`flex items-start gap-3 px-4 py-3 no-underline text-foreground transition-colors group ${activeIndex === flatIdx ? "bg-muted" : "hover:bg-muted/50"}`}
                             onClick={() => handleOpenChange(false)}
                             onMouseEnter={() => setActiveIndex(flatIdx)}
                           >
@@ -253,14 +253,14 @@ export function SearchDialog() {
                               </p>
                               {result.excerpt && (
                                 <p
-                                  className="text-xs text-gray-500 mt-1 line-clamp-2 [&_mark]:bg-yellow-100 [&_mark]:text-yellow-900 [&_mark]:rounded-sm [&_mark]:px-0.5"
+                                  className="text-xs text-muted-foreground mt-1 line-clamp-2 [&_mark]:bg-yellow-100 [&_mark]:text-yellow-900 dark:[&_mark]:bg-yellow-900/40 dark:[&_mark]:text-yellow-100 [&_mark]:rounded-sm [&_mark]:px-0.5"
                                   dangerouslySetInnerHTML={{
                                     __html: result.excerpt,
                                   }}
                                 />
                               )}
                             </div>
-                            <ArrowRight className="size-4 text-gray-300 group-hover:text-gray-500 mt-0.5 flex-shrink-0 transition-colors" />
+                            <ArrowRight className="size-4 text-muted-foreground/50 group-hover:text-muted-foreground mt-0.5 flex-shrink-0 transition-colors" />
                           </a>
                         );
                       })}
@@ -272,22 +272,22 @@ export function SearchDialog() {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between px-4 py-2 border-t text-[11px] text-gray-400 bg-gray-50">
+          <div className="flex items-center justify-between px-4 py-2 border-t text-[11px] text-muted-foreground bg-muted/50">
             <span className="flex items-center gap-2">
               <span>
-                <kbd className="px-1 py-0.5 bg-white border border-gray-200 rounded text-[10px] font-mono">
+                <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ESC
                 </kbd>{" "}
                 關閉
               </span>
               <span>
-                <kbd className="px-1 py-0.5 bg-white border border-gray-200 rounded text-[10px] font-mono">
+                <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ↑↓
                 </kbd>{" "}
                 選擇
               </span>
               <span>
-                <kbd className="px-1 py-0.5 bg-white border border-gray-200 rounded text-[10px] font-mono">
+                <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ↵
                 </kbd>{" "}
                 開啟

@@ -21,7 +21,6 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
 
 <header
   class="fixed top-0 left-0 right-0 z-40 py-2 bg-background border-b"
-  class:list={[!themeColor && "dark:bg-gray-900"]}
 >
   <nav class="max-w-8xl mx-auto px-4 md:px-12">
     <div class="flex items-center justify-between">
@@ -30,7 +29,7 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
         type === "main" ? (
           <a
             href="/#topCover"
-            class="flex items-center gap-3 py-3 text-gray-900 dark:text-white font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
+            class="flex items-center gap-3 py-3 text-foreground font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
           >
             <Image
               id="headerLogo"
@@ -41,28 +40,29 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
               loading="eager"
               class="flex-shrink-0 size-10 rounded-full"
             />
-            <img
-              src={signUrl}
-              alt="Logo"
-              class="text-primary max-h-7 mt-2"
+            <span
+              role="img"
+              aria-label="Liang Chin Lu signature"
+              class="block h-7 mt-2 bg-foreground"
+              style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
             />
           </a>
         ) : type === "app" ? (
           <div class="flex items-center gap-1">
             <button
               onclick="history.back()"
-              class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-muted p-4 rounded-full cursor-pointer border-0 bg-transparent"
+              class="flex items-center text-foreground font-bold no-underline transition-opacity hover:bg-muted p-4 rounded-full cursor-pointer border-0 bg-transparent"
             >
               <Icon name="arrow-left" class="size-6" />
             </button>
             {appName && (
-              <span class="text-gray-900 dark:text-white font-semibold text-lg">{appName}</span>
+              <span class="text-foreground font-semibold text-lg">{appName}</span>
             )}
           </div>
         ) : (
           <button
             onclick="history.back()"
-            class="flex items-center text-gray-900 dark:text-white font-bold no-underline transition-opacity hover:bg-muted p-4 rounded-full cursor-pointer border-0 bg-transparent"
+            class="flex items-center text-foreground font-bold no-underline transition-opacity hover:bg-muted p-4 rounded-full cursor-pointer border-0 bg-transparent"
           >
             <Icon name="arrow-left" class="size-6" />
           </button>
@@ -75,7 +75,7 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
           {projectHref && (
             <a
               href={projectHref}
-              class="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 no-underline text-base rounded-full transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap"
+              class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-base rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
             >
               <Icon name="projector-screen-chart" class="size-5" />
               專案介紹
@@ -88,12 +88,12 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
             {mainLinks.map((link) => (
               <a
                 href={link.href}
-                class="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap"
+                class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
-            <span class="text-gray-400 px-2">｜</span>
+            <span class="text-muted-foreground px-2">｜</span>
             <SearchDialog client:load />
           </div>
 

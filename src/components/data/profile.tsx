@@ -20,7 +20,7 @@ export const profileData: ProfileData = {
 export function ProfileCard() {
   return (
     <Card
-      className="mt-8 transition-all duration-300 pb-4 hidden lg:flex justify-center"
+      className="mt-8 transition-all duration-300 pb-4 hidden lg:flex justify-center dark:border dark:border-border"
     >
       <CardContent className="gap-6 items-center pt-3 pb-2">
         <div
@@ -130,7 +130,7 @@ export function ProfileCardModal() {
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ animation: "profileSlideUp 0.3s ease-out" }}>
-          <Card className="mt-8 transition-all duration-300 pb-4 inline-flex">
+          <Card className="mt-8 transition-all duration-300 pb-4 inline-flex dark:border dark:border-border">
             <CardContent className="gap-6 items-center pt-3 pb-2">
               <div className="h-4 w-10 my-2 border rounded-full bg-black/50" />
               <img

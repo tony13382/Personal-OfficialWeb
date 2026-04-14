@@ -1,0 +1,65 @@
+---
+import { Card } from "@/components/ui/card";
+import type { CollectionEntry } from "astro:content";
+
+type ArticlePost = CollectionEntry<"articles">;
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  post: ArticlePost;
+  class?: string;
+}
+
+const { post, class: className, ...rest } = Astro.props;
+---
+
+<a
+  href={`/articles/${post.slug}/`}
+  class:list={["group block no-underline", className]}
+  {...rest}
+>
+  <Card
+    className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full bg-background/80 backdrop-blur-sm"
+  >
+    {
+      post.data.cover && (
+        <div class="aspect-[1200/630] overflow-hidden">
+          <img
+            src={post.data.cover}
+            alt={post.data.title}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      )
+    }
+    <div class="grid gap-1.5 p-5">
+      <div class="flex items-center gap-2">
+        <time class="text-sm text-muted-foreground">
+          {
+            post.data.date.toLocaleDateString("zh-TW", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        {
+          post.data.updatedDate && (
+            <span class="text-xs text-muted-foreground">（已更新）</span>
+          )
+        }
+      </div>
+      <h3
+        class="text-lg font-bold group-hover:text-[var(--theme-primary)] transition-colors leading-snug"
+      >
+        {post.data.title}
+      </h3>
+      <p
+        class="text-sm text-muted-foreground line-clamp-2 leading-relaxed"
+      >
+        {post.data.description}
+      </p>
+    </div>
+  </Card>
+</a>

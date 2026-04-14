@@ -36,8 +36,7 @@ const seo = {
 >
   <!-- Hero Section -->
   <div
-    class="relative pt-20 pb-8 w-full"
-    style="background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);"
+    class="relative pt-20 pb-8 w-full bg-[linear-gradient(135deg,_#e5e7eb_0%,_#d1d5db_50%,_#9ca3af_100%)] dark:bg-[linear-gradient(135deg,_#27272a_0%,_#18181b_50%,_#0a0a0a_100%)]"
   >
     <div class="relative flex items-center py-8 w-full min-h-24">
       <div class="container grid grid-cols-1 mx-auto">
@@ -45,14 +44,14 @@ const seo = {
           <div class="flex justify-center">
             <Badge
               variant="outline"
-              className="bg-black/10 text-gray-900 border-gray-900/20"
+              className="bg-black/10 text-gray-900 border-gray-900/20 dark:bg-white/10 dark:text-gray-100 dark:border-white/20"
               >{post.data.category}</Badge
             >
           </div>
-          <h1 class="px-3 text-4xl text-center font-bold text-gray-900">
+          <h1 class="px-3 text-4xl text-center font-bold text-gray-900 dark:text-gray-100">
             {post.data.title}
           </h1>
-          <p class="text-center text-gray-700">
+          <p class="text-center text-gray-700 dark:text-gray-300">
             {post.data.description}
           </p>
         </div>
@@ -60,7 +59,7 @@ const seo = {
     </div>
   </div>
 
-  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-transparent">
+  <div class="min-h-screen bg-gradient-to-b from-muted/30 to-transparent">
     <section class="container mx-auto px-4 py-12">
       <div class="max-w-5xl mx-auto">
         <div class="grid grid-cols-12 gap-8">
@@ -195,7 +194,7 @@ const seo = {
   <div id="mobile-toc-modal" class="fixed inset-0 z-50 hidden lg:hidden">
     <div id="mobile-toc-overlay" class="absolute inset-0 bg-black/50"></div>
     <div
-      class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white rounded-t-2xl overflow-hidden animate-slide-up"
+      class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-background rounded-t-2xl overflow-hidden animate-slide-up"
     >
       <div class="flex items-center justify-between p-4 border-b">
         <p class="text-sm font-bold">目錄</p>
@@ -545,6 +544,11 @@ const seo = {
       border-radius: 0.25rem;
     }
 
+    :global(.dark) article :global(code) {
+      color: #fb7185;
+      background: #27272a;
+    }
+
     article :global(pre code) {
       font-size: inherit;
       font-weight: inherit;
@@ -559,6 +563,10 @@ const seo = {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       border-radius: 0.75rem;
+    }
+
+    :global(.dark) article :global(img) {
+      filter: brightness(0.9);
     }
 
     article :global(.youtube) {
@@ -615,16 +623,34 @@ const seo = {
       border-radius: 9999px;
     }
 
+    :global(.dark) article :global(span.pricing-tag) {
+      color: #6ee7b7;
+      background: rgba(6, 78, 59, 0.35);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
     article :global(span.pricing-tag.paid) {
       color: #d97706;
       background: #fffbeb;
       border-color: #fde68a;
     }
 
+    :global(.dark) article :global(span.pricing-tag.paid) {
+      color: #fcd34d;
+      background: rgba(120, 53, 15, 0.35);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+
     article :global(span.pricing-tag.freemium) {
       color: #2563eb;
       background: #eff6ff;
       border-color: #bfdbfe;
+    }
+
+    :global(.dark) article :global(span.pricing-tag.freemium) {
+      color: #93c5fd;
+      background: rgba(30, 58, 138, 0.35);
+      border-color: rgba(59, 130, 246, 0.35);
     }
 
     article :global(h3 span.pricing-tag) {
@@ -665,6 +691,11 @@ const seo = {
       color: #1e40af;
     }
 
+    :global(.dark) article :global(.callout.info) {
+      background: rgba(30, 58, 138, 0.25);
+      color: #bfdbfe;
+    }
+
     article :global(.callout.info::before) {
       background: #3b82f6;
     }
@@ -672,6 +703,11 @@ const seo = {
     article :global(.callout.warning) {
       background: #fff1f2;
       color: #9f1239;
+    }
+
+    :global(.dark) article :global(.callout.warning) {
+      background: rgba(136, 19, 55, 0.3);
+      color: #fecdd3;
     }
 
     article :global(.callout.warning::before) {
@@ -688,14 +724,14 @@ const seo = {
     article :global(th) {
       text-align: left;
       padding: 0.625rem 0.75rem;
-      border-bottom: 2px solid #d1d5db;
+      border-bottom: 2px solid var(--color-border);
       font-weight: 600;
       color: var(--color-foreground);
     }
 
     article :global(td) {
       padding: 0.625rem 0.75rem;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid var(--color-border);
       color: var(--color-foreground);
     }
 

@@ -42,7 +42,7 @@ export function TabsBlock({ tabs, defaultValue, className = '' }: TabsBlockProps
               </div>
             )}
             {tab.code && (
-              <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">
+              <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
                 {tab.code}
               </pre>
             )}

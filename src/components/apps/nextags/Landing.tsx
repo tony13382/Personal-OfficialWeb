@@ -103,7 +103,7 @@ const steps: Step[] = [
 
 export default function Landing() {
   return (
-    <div className="bg-white">
+    <div className="bg-background">
       {/* Hero */}
       <section className="relative overflow-hidden pb-40 md:pb-56">
         {/* Background image */}
@@ -114,7 +114,7 @@ export default function Landing() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" />
         {/* Bottom fade to white */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
         <div className="relative mx-auto max-w-5xl px-6 pt-20 md:pt-32">
           <div className="mx-auto max-w-3xl text-center">
             <h1
@@ -160,26 +160,26 @@ export default function Landing() {
       </section>
 
       {/* How it works */}
-      <section className="border-t border-neutral-100 bg-neutral-50/60">
+      <section className="border-t border-border bg-muted/40">
         <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           <div className="mb-14 text-center md:mb-20">
-            <p className="mb-3 text-sm font-medium tracking-wide text-neutral-400 uppercase">
+            <p className="mb-3 text-sm font-medium tracking-wide text-muted-foreground uppercase">
               How it works
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
               四步開始管理你的音樂
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => (
               <div key={step.number} className="relative">
-                <span className="mb-4 block font-semibold text-3xl tabular-nums text-neutral-200">
+                <span className="mb-4 block font-semibold text-3xl tabular-nums text-muted-foreground/40">
                   {step.number}
                 </span>
-                <h3 className="mb-2 text-base font-semibold text-neutral-900">
+                <h3 className="mb-2 text-base font-semibold text-foreground">
                   {step.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-neutral-500">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>
               </div>
@@ -189,16 +189,16 @@ export default function Landing() {
       </section>
 
       {/* Features */}
-      <section className="border-t border-neutral-100">
+      <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           <div className="mb-14 text-center md:mb-20">
-            <p className="mb-3 text-sm font-medium tracking-wide text-neutral-400 uppercase">
+            <p className="mb-3 text-sm font-medium tracking-wide text-muted-foreground uppercase">
               Features
             </p>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
               為音樂收藏打造的管理工具
             </h2>
-            <p className="mx-auto max-w-xl text-base text-neutral-500" style={{ lineHeight: 1.7 }}>
+            <p className="mx-auto max-w-xl text-base text-muted-foreground" style={{ lineHeight: 1.7 }}>
               從匯入到播放，每個環節都有對應的功能支援。
             </p>
           </div>
@@ -206,15 +206,15 @@ export default function Landing() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-xl border border-neutral-200 bg-white p-6 transition-colors hover:border-neutral-300"
+                className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-foreground/20"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground">
                   {feature.icon}
                 </div>
-                <h3 className="mb-2 text-base font-semibold text-neutral-900">
+                <h3 className="mb-2 text-base font-semibold text-foreground">
                   {feature.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-neutral-500">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>
@@ -224,22 +224,22 @@ export default function Landing() {
       </section>
 
       {/* Screenshot: Tag Editor */}
-      <section className="border-t border-neutral-100 bg-neutral-50/60">
+      <section className="border-t border-border bg-muted/40">
         <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div>
-              <p className="mb-3 text-sm font-medium tracking-wide text-neutral-400 uppercase">
+              <p className="mb-3 text-sm font-medium tracking-wide text-muted-foreground uppercase">
                 Metadata
               </p>
-              <h2 className="mb-4 text-2xl font-semibold tracking-tight text-neutral-900 md:text-3xl">
+              <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                 直覺的標籤編輯
               </h2>
-              <p className="text-base leading-relaxed text-neutral-500">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 在瀏覽器裡直接編輯 20+ 種 metadata
                 欄位，支援多種標籤格式。修改完即時寫入檔案，所見即所得。
               </p>
             </div>
-            <div className="overflow-hidden rounded-xl border border-neutral-200 shadow-lg shadow-neutral-200/50">
+            <div className="overflow-hidden rounded-xl border border-border shadow-lg shadow-foreground/5">
               <img
                 src={getImageSrc(screenshots.tagEditor)}
                 alt="NexTags 標籤編輯器"
@@ -253,11 +253,11 @@ export default function Landing() {
       </section>
 
       {/* Screenshot: Playlist */}
-      <section className="border-t border-neutral-100">
+      <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className="order-2 md:order-1">
-              <div className="overflow-hidden rounded-xl border border-neutral-200 shadow-lg shadow-neutral-200/50">
+              <div className="overflow-hidden rounded-xl border border-border shadow-lg shadow-foreground/5">
                 <img
                   src={getImageSrc(screenshots.playlist)}
                   alt="NexTags 播放清單管理"
@@ -268,13 +268,13 @@ export default function Landing() {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <p className="mb-3 text-sm font-medium tracking-wide text-neutral-400 uppercase">
+              <p className="mb-3 text-sm font-medium tracking-wide text-muted-foreground uppercase">
                 Playlist
               </p>
-              <h2 className="mb-4 text-2xl font-semibold tracking-tight text-neutral-900 md:text-3xl">
+              <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                 智慧播放清單
               </h2>
-              <p className="text-base leading-relaxed text-neutral-500">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 用動態篩選條件自動建立播放清單，支援多種排序邏輯。一鍵匯出
                 M3U，直接丟給你慣用的播放器。
               </p>
@@ -284,19 +284,19 @@ export default function Landing() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="border-t border-neutral-100 bg-neutral-50/60">
+      <section className="border-t border-border bg-muted/40">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center md:py-28">
-          <h2 className="mb-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+          <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
             開始管理你的音樂
           </h2>
-          <p className="mx-auto mb-8 max-w-lg text-base text-neutral-500" style={{ lineHeight: 1.7 }}>
+          <p className="mx-auto mb-8 max-w-lg text-base text-muted-foreground" style={{ lineHeight: 1.7 }}>
             NexTags 完全開源，透過 Docker 就能在自己的伺服器上部署。
           </p>
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-lg bg-neutral-900 px-6 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-neutral-800"
+            className="inline-flex items-center gap-2.5 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background no-underline transition-colors hover:bg-foreground/90"
           >
             <GithubLogo size={18} weight="fill" />
             View on GitHub

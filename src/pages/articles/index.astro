@@ -8,9 +8,8 @@ import {
   profileData,
 } from "@/components/data/profile";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/Icon.astro";
+import ArticleCard from "@/components/articles/ArticleCard.astro";
 
 const allPosts = await getCollection("articles");
 const sortedPosts = allPosts.sort((a, b) => {
@@ -45,7 +44,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
             Articles
           </p>
           <h1
-            class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
+            class="fade-in text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
           >
             分享專欄
           </h1>
@@ -59,7 +58,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
               categories.map((category) => (
                 <a
                   href={`#${category}`}
-                  class="px-4 py-1.5 text-sm font-medium text-muted-foreground bg-white border border-gray-200 rounded-full no-underline transition-all hover:border-[var(--theme-primary)] hover:text-[var(--theme-primary)] hover:shadow-sm"
+                  class="px-4 py-1.5 text-sm font-medium text-muted-foreground bg-card border border-border rounded-full no-underline transition-all hover:border-[var(--theme-primary)] hover:text-[var(--theme-primary)] hover:shadow-sm"
                   data-category-link
                 >
                   {category}
@@ -99,55 +98,16 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                       data-category-grid
                     >
                       {categoryPosts.map((post, index) => (
-                        <a
-                          href={`/articles/${post.slug}/`}
-                          class:list={[
-                            "group block no-underline",
-                            index >= 8 && "hidden",
-                          ]}
+                        <ArticleCard
+                          post={post}
+                          class={index >= 8 ? "hidden" : ""}
                           data-card-index={index}
-                        >
-                          <Card className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full">
-                            {post.data.cover && (
-                              <div class="aspect-[1200/630] overflow-hidden">
-                                <img
-                                  src={post.data.cover}
-                                  alt={post.data.title}
-                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                  loading="lazy"
-                                  decoding="async"
-                                />
-                              </div>
-                            )}
-                            <div class="grid gap-1 p-5">
-                              <div class="flex items-center gap-2">
-                                <time class="text-sm text-muted-foreground">
-                                  {post.data.date.toLocaleDateString("zh-TW", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  })}
-                                </time>
-                                {post.data.updatedDate && (
-                                  <span class="text-xs text-muted-foreground">
-                                    （已更新）
-                                  </span>
-                                )}
-                              </div>
-                              <h3 class="text-xl font-bold group-hover:text-[var(--theme-primary)] transition-colors">
-                                {post.data.title}
-                              </h3>
-                              <p class="text-muted-foreground line-clamp-2">
-                                {post.data.description}
-                              </p>
-                            </div>
-                          </Card>
-                        </a>
+                        />
                       ))}
                     </div>
                     {categoryPosts.length > 8 && (
                       <button
-                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-white border border-gray-200 rounded-xl transition-all cursor-pointer hover:shadow-sm hover:border-gray-300"
+                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-xl transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
                         data-expand-btn
                       >
                         顯示更多（共 {categoryPosts.length} 篇）
@@ -164,9 +124,9 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
               <div class="text-center py-12">
                 <Icon
                   name="toolbox"
-                  class="size-16 mx-auto mb-4 text-gray-300"
+                  class="size-16 mx-auto mb-4 text-muted-foreground/50"
                 />
-                <p class="text-gray-500">尚未發佈文章</p>
+                <p class="text-muted-foreground">尚未發佈文章</p>
               </div>
             )
           }

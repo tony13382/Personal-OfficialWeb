@@ -133,7 +133,7 @@ export function UiImageCarousel({
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
               aria-label="Previous slide"
               title="Previous slide"
             >
@@ -142,7 +142,7 @@ export function UiImageCarousel({
             <button
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background disabled:opacity-30 rounded-full p-2 shadow-lg transition-all z-10"
               aria-label="Next slide"
               title="Next slide"
             >
@@ -161,7 +161,7 @@ export function UiImageCarousel({
               onClick={() => scrollTo(index)}
               className={`w-2 h-2 rounded-full transition-all ${index === selectedIndex
                 ? 'bg-[var(--theme-primary,var(--color-primary))]'
-                : 'bg-gray-300 hover:bg-gray-400'
+                : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
               title={`Go to slide ${index + 1}`}

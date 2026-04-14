@@ -617,7 +617,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
         <CardContent className='flex-1 items-center justify-center'>
           <div className='grid gap-6'>
             <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-orange-50 text-orange-600'>
+              <div className='p-4 rounded-full bg-orange-50 text-orange-600 dark:bg-orange-950/40 dark:text-orange-300'>
                 <WechatLogoIcon className='size-8' />
               </div>
               <div className='flex-1'>
@@ -626,7 +626,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </div>
             </div>
             <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-sky-50 text-sky-600'>
+              <div className='p-4 rounded-full bg-sky-50 text-sky-600 dark:bg-sky-950/40 dark:text-sky-300'>
                 <ListMagnifyingGlassIcon className='size-8' />
               </div>
               <div className='flex-1'>
@@ -635,7 +635,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </div>
             </div>
             <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-teal-50 text-teal-600'>
+              <div className='p-4 rounded-full bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-300'>
                 <AtomIcon className='size-8' />
               </div>
               <div className='flex-1'>
@@ -644,7 +644,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               </div>
             </div>
             <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-rose-50 text-rose-500'>
+              <div className='p-4 rounded-full bg-rose-50 text-rose-500 dark:bg-rose-950/40 dark:text-rose-300'>
                 <FigmaLogoIcon className='size-8' />
               </div>
               <div className='flex-1'>
@@ -814,7 +814,7 @@ const filterDescriptions: Record<string, React.ReactNode> = {
         </CardHeader>
         <CardContent className='flex-1 justify-center p-0'>
           {/* Browser Window with Grid Background */}
-          <div className='relative w-full h-full min-h-80 overflow-hidden border border-gray-200'
+          <div className='relative w-full h-full min-h-80 overflow-hidden border border-border'
             style={{
               backgroundImage: `
                 repeating-linear-gradient(0deg, transparent, transparent 19px, #e5e7eb 19px, #e5e7eb 20px),
@@ -823,9 +823,9 @@ const filterDescriptions: Record<string, React.ReactNode> = {
               backgroundColor: '#f9fafb'
             }}>
             {/* Browser Window */}
-            <div className='browser-frame shadow-xl md:shadow-none absolute inset-4 bg-white rounded-lg overflow-hidden'>
+            <div className='browser-frame shadow-xl md:shadow-none absolute inset-4 bg-background rounded-lg overflow-hidden'>
               {/* Browser Title Bar */}
-              <div className='flex items-center gap-2 px-4 py-3 bg-gray-100 border-b border-gray-200'>
+              <div className='flex items-center gap-2 px-4 py-3 bg-muted border-b border-border'>
                 <div className='flex gap-2'>
                   <div className='w-3 h-3 rounded-full bg-red-500'></div>
                   <div className='w-3 h-3 rounded-full bg-yellow-500'></div>
@@ -937,10 +937,17 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
       <a
         key={project.slug}
         href={`/projects/${project.slug}/`}
-        className="group flex flex-col bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        data-card-theme
+        className="group flex flex-col bg-card rounded-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        style={{
+          '--card-primary-light': themeColors.primary,
+          '--card-primary-dark': themeColors.darkPrimary,
+          '--card-secondary-light': themeColors.secondary,
+          '--card-secondary-dark': themeColors.darkSecondary,
+        } as React.CSSProperties}
       >
         {/* Cover Image */}
-        <div className="relative h-auto overflow-hidden bg-gray-100">
+        <div className="relative h-auto overflow-hidden bg-muted">
           <img
             src={getImageSrc(project.data.cover)}
             alt={project.data.title}
@@ -951,21 +958,21 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
           {project.data.pin && (
             <div
               className="absolute top-3 right-3"
-              style={{ color: themeColors.secondary }}
+              style={{ color: 'var(--card-secondary)' }}
             >
               <StarIcon className="size-4" weight="fill" />
             </div>
           )}
           <div
             className="absolute bottom-0 left-0 right-0 h-1"
-            style={{ backgroundColor: themeColors.primary }}
+            style={{ backgroundColor: 'var(--card-primary)' }}
           />
         </div>
 
         {/* Content */}
         <div className="flex-1 flex flex-col p-5 pb-3">
           {/* Date */}
-          <p className="text-xs text-gray-400 mb-2">
+          <p className="text-xs text-muted-foreground mb-2">
             {project.data.startDate.toLocaleDateString('zh-TW', {
               year: 'numeric',
               month: '2-digit',
@@ -976,12 +983,12 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
           </p>
           <h3
             className="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
-            style={{ color: themeColors.primary }}
+            style={{ color: 'var(--card-primary)' }}
           >
             {project.data.title}
           </h3>
 
-          <p className="flex-1 text-gray-600 text-sm mb-4">
+          <p className="flex-1 text-muted-foreground text-sm mb-4">
             {project.data.description}
           </p>
 
@@ -1001,7 +1008,7 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
   return (
     <div className="w-full">
       {/* Sticky Navigation */}
-      <nav className="sticky top-20 z-20 bg-white/80 backdrop-blur-sm rounded-full mb-8 -mx-2 px-8">
+      <nav className="sticky top-20 z-20 bg-background/80 backdrop-blur-sm rounded-full mb-8 -mx-2 px-8">
         <div className="flex gap-6 py-4">
           {(Object.entries(filterLabels) as [SkillType, string][]).map(([filter, label]) => (
             <button
@@ -1071,7 +1078,7 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
 
               {/* Empty State */}
               {filteredProjects.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-muted-foreground">
                   目前沒有相關專案
                 </div>
               )}

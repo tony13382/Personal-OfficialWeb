@@ -64,7 +64,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
             aria-label="Previous image"
           >
             <CaretLeftIcon className="w-6 h-6" />
@@ -72,7 +72,7 @@ export function ImageCarousel({ images, className = '' }: ImageCarouselProps) {
           <button
             onClick={scrollNext}
             disabled={!canScrollNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background disabled:opacity-30 rounded-full p-2 shadow-lg transition-all"
             aria-label="Next image"
           >
             <CaretRightIcon className="w-6 h-6" />

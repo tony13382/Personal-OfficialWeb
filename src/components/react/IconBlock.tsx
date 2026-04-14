@@ -135,7 +135,7 @@ export function IconBlock({
       </div>)}
       <div className="flex-1 min-w-0">
         {title && <p className="font-bold m-0 break-words" dangerouslySetInnerHTML={{ __html: formatHighlight(title) }} />}
-        {subtitle && <p className="text-sm text-gray-500 m-0 break-words" dangerouslySetInnerHTML={{ __html: formatHighlight(subtitle) }} />}
+        {subtitle && <p className="text-sm text-muted-foreground m-0 break-words" dangerouslySetInnerHTML={{ __html: formatHighlight(subtitle) }} />}
       </div>
     </div>
   )

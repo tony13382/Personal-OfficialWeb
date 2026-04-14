@@ -86,7 +86,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #1E2023;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -125,10 +125,20 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
     font-family: 'Noto Sans TC', sans-serif;
   }
+}
+
+/* Per-card theme vars: components set --card-primary-light / --card-primary-dark
+   inline; this rule derives the active --card-primary in a way that the .dark
+   override can actually flip (inline-style vars would out-specificity it). */
+[data-card-theme] {
+  --card-primary: var(--card-primary-light);
+  --card-secondary: var(--card-secondary-light);
+}
+.dark [data-card-theme] {
+  --card-primary: var(--card-primary-dark);
+  --card-secondary: var(--card-secondary-dark);
 }
 
 /* Text highlight (對應 Python string_formator) */

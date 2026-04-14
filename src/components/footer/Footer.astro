@@ -1,6 +1,7 @@
 ---
 import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
+import ThemeToggle from "@/components/ThemeToggle";
 import signUrl from "@/assets/imgs/index/sign.svg?url";
 ---
 
@@ -165,10 +166,20 @@ import signUrl from "@/assets/imgs/index/sign.svg?url";
     <div
       class="py-4 mt-6 bg-muted rounded-md text-muted-foreground text-center text-xs"
     >
-      <img src={signUrl} alt="Logo" class="max-h-7 opacity-75 mx-auto my-4" />
-      <p>Copyright © 2026 Liang-Chin, Lu 版權所有</p>
+      <span
+        role="img"
+        aria-label="Liang Chin Lu signature"
+        class="block h-7 opacity-75 mx-auto my-4 bg-foreground"
+        style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
+      ></span>
+      <ThemeToggle client:load />
+      <p class="mt-6">Copyright © 2026 Liang-Chin, Lu 版權所有</p>
       <p class="mt-2">
-        <a href="/privacy/" class="hover:text-foreground underline-offset-4 hover:underline">隱私權政策</a>
+        <a
+          href="/privacy/"
+          class="hover:text-foreground underline-offset-4 hover:underline"
+          >隱私權政策</a
+        >
       </p>
     </div>
   </div>
