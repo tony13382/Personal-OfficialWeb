@@ -1,0 +1,69 @@
+---
+title: Arc 瀏覽器：我用過 UX 最好的瀏覽器
+description: 回顧 Arc 的 Peek、工作區、命令列跟垂直側邊欄等設計，為什麼這些細節組合起來是目前為止瀏覽器 UX 的天花板
+date: 2026-04-14
+category: 工具推薦
+tags: [瀏覽器, Arc, UX]
+cover: /og/articles/arc-workflow.png
+seo:
+  ogImage: /og/articles/arc-workflow.png
+---
+
+import { Image } from 'astro:assets'
+
+import peek from '@/assets/imgs/articles/arc-workflow/peek.png'
+import moreSpaces from '@/assets/imgs/articles/arc-workflow/more-spaces.png'
+
+這篇不是推薦文，是一篇整理筆記。[Arc](https://arc.net) 已經停止主要功能開發，但它仍然是我用過 UX 最好的瀏覽器——Peek、工作區、命令列、垂直側邊欄這幾個設計組合起來，直接改變了我對「瀏覽器該長什麼樣」的想像。我現在正在換到 [Zen Browser](https://zen-browser.app/)，但 Arc 留下來的這些 UX 概念還是值得記一下，也是我挑下一個瀏覽器的判準。
+
+<div class="callout warning">
+**Arc 已停止主要功能開發**：The Browser Company 把資源轉到新的 AI 瀏覽器 Dia，Arc 目前只做基本維護、不會再有新功能。下面介紹的功能目前都還能用，但如果你在評估要不要入坑，建議直接看 Zen Browser。
+</div>
+
+## Peek：快速看資料不用污染分頁
+
+<Image src={peek} alt="Arc 的 Peek 預覽模式" />
+
+Arc 的 **Peek** 是一個很聰明的預覽模式。點開一個連結——特別是從聊天軟體、社群、其他 app 丟過來的——Arc 不會直接塞一個新分頁給你，而是開一個大預覽層疊在當前視窗上。看完不需要就直接關掉、覺得要留下來就 pin 進側邊欄，整個流程乾淨俐落。
+
+以前點開連結就是直接開新 tab，看完忘記關、tab 就慢慢累積；有了 Peek 變成「預覽 → 關掉 or 保留」兩條路，主視窗的分頁環境完全不會被污染。
+
+## 左右切換工作區：換情境只要一下
+
+<Image src={moreSpaces} alt="Arc 多個工作區並排" />
+
+工作區是 Arc 的核心概念。不同情境（工作、個人、實驗、閱讀）各自開一個工作區，**左右滑動或按熱鍵就能快速切換**，整個視窗連同 pin 的分頁、開啟中的分頁一起換掉。這件事聽起來小，但實際用下來對專注力的幫助非常大——工作模式下看不到 YouTube，個人模式下看不到公司的 Notion，心智負擔直接降一層。
+
+以往要達到這種情境隔離，通常就是開一堆獨立的瀏覽器視窗，然後用 Mission Control 或 Alt+Tab 在視窗之間找來找去，既慢又容易亂。Arc 直接把這件事整合進單一視窗，切換成本從「跨視窗找來找去」降到「左右滑一下」，效率差很多。
+
+### 每個工作區的 pin 分頁獨立
+
+每個工作區有自己獨立的 pin 分頁，這點超讚。工作區放工作區的常用網站（公司內部工具、專案文件），個人區放個人的常用網站（信箱、音樂、購物），彼此不會混。需要固定訪問的東西直接 pin 住，要用就點，比傳統書籤欄還快。
+
+### 不同工作區可以登不同帳號
+
+這是我覺得 Arc 最精妙的一個設計——**同一個服務在不同工作區可以登入不同帳號**。像我 Gmail、Google Calendar、Notion 都有公司跟個人兩組帳號，過去要切換不是開無痕就是要裝分身，都很醜；在 Arc 裡直接靠工作區隔離，公司工作區永遠是公司帳號、個人工作區永遠是個人帳號，切過去不用重登、也不會串台。多帳號的體驗在 Arc 上是我用過最優秀的。
+
+## Command Bar（Cmd+T）：所有事情從這裡開始
+
+Arc 的 Command Bar 用 `Cmd+T`（Windows 是 `Ctrl+T`）叫出來，**搜尋、開新分頁、跳到已開的分頁、執行指令全部合成一個入口**。習慣之後你會發現瀏覽器的工具列、書籤列那些 UI 其實都不需要存在——需要的時候叫 Command Bar 就好。整個操作體驗變得像在用 Raycast 或 Alfred，手不會離開鍵盤。
+
+最常用的場景是「我記得有開過某個網頁但不知道在哪個工作區」——Cmd+T 打幾個關鍵字，它會直接跳去那個分頁，不用自己翻側邊欄找。
+
+## 垂直側邊欄：tab 再多也不會爆
+
+傳統瀏覽器的水平分頁列一旦開超過 10 個 tab 就只能靠 favicon 猜名字。Arc 把分頁放在左邊、垂直排列，每個分頁的標題看得清清楚楚，視覺上像在讀一個 side menu，**非常好讀**。對我來說這是離不開 Arc 最大的原因。
+
+搭配 Arc 的自動歸檔機制（超過一定時間沒碰的 tab 會自動收起來），分頁爆炸在 Arc 上根本不是問題。以前在 Chrome 上開到 30、40 個 tab 是常態，換到 Arc 之後日常大概就維持在個位數活躍 tab，其他都安靜地收在 archive 裡，要找再找。
+
+## 老實講的缺點：吃記憶體
+
+Arc 的缺點蠻明確：**吃記憶體**。底層是 Chromium 本身就不輕，加上 Arc 會常駐一些背景程序，長時間開著 RAM 用量會比 Chrome 還高一截。記憶體小一點的機器用起來會頓，這是要考慮的代價。
+
+## 結語：UX 仍然是最好的
+
+即使開發停擺、即使有記憶體問題，單就 UX 設計，Arc 仍然是我用過最好的瀏覽器。Peek、左右切換工作區、獨立 pin、獨立帳號、Command Bar、垂直側邊欄，這幾件事組合起來，建立了一個連 Chrome、Safari 到現在都沒有提供的瀏覽器工作流。
+
+我換到 [Zen Browser](https://zen-browser.app/) 最大的原因，就是 Zen 把這些 UX 概念幾乎原封不動搬到了 Firefox 上，而且還在持續開發。遷移的完整心得整理在 [從 Arc 換到 Zen Browser：三個月試用筆記](/articles/zen-browser-setup)。
+
+想看我在這套工作流上搭配的擴充組合，可以參考 [瀏覽器擴充功能推薦](/articles/browser-extensions)。

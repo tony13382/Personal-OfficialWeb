@@ -1,0 +1,96 @@
+---
+title: 從 Arc 換到 Zen Browser：三個月試用筆記
+description: 從 Arc 停更說起，完整介紹 Zen Browser 的工作區、Command Bar、Split View、Glance 等核心功能，最後跟 Arc 做個比較
+date: 2026-04-14
+category: 工具推薦
+tags: [瀏覽器, Zen, Arc]
+cover: /og/articles/zen-browser-setup.png
+seo:
+  ogImage: /og/articles/zen-browser-setup.png
+---
+
+import { Image } from 'astro:assets'
+
+import glance from '@/assets/imgs/articles/zen-browser-setup/glance.png'
+import commandBar from '@/assets/imgs/articles/zen-browser-setup/command-bar.png'
+import splitView from '@/assets/imgs/articles/zen-browser-setup/split-view.png'
+import moreSpaces from '@/assets/imgs/articles/zen-browser-setup/more-spaces.png'
+
+Arc 宣布停止主要功能開發之後，我就開始找接班的瀏覽器，最後落在 [Zen Browser](https://zen-browser.app/)。斷斷續續用了三個月左右，寫這篇的時候還沒完全把 Arc 關掉，但日常瀏覽已經有大半的時間都在 Zen 上。
+
+這篇會先介紹 Zen 的核心功能，最後再跟 Arc 做個比較——哪些地方承接得很好、哪些還有距離。如果你想先了解 Arc 的 UX 為什麼值得保留，可以看我另一篇 [Arc 瀏覽器：我用過 UX 最好的瀏覽器](/articles/arc-workflow)。
+
+## Zen 是什麼
+
+Zen Browser 是一個**基於 Firefox 的開源瀏覽器**，目標是把 Arc 那套以工作流為核心的瀏覽器 UX 重新實作一次，但建立在 Firefox 的底層之上。專案是社群驅動、活躍維護，GitHub 上可以看到每一版的進度，也可以直接去提 issue 跟 feature request。
+
+對我來說最大的意義是：**Arc 停止開發，Zen 還在長大**。這是我願意投入時間把工作流搬過去的根本原因——一個會持續迭代的工具，比一個已經定型的工具更值得投資。
+
+## 承接 Arc 工作流的核心功能
+
+Arc 那套以工作流為核心的瀏覽器 UX，Zen 幾乎是一比一搬過來。以下這四個是我最常用、也最有感的：
+
+### 工作區 + 垂直側邊欄
+
+<Image src={moreSpaces} alt="Zen Browser 多個工作區並排" />
+
+Zen 的工作區跟垂直側邊欄幾乎是把 Arc 的設計原封不動搬過來。**左右切換工作區、側邊欄看分頁**這些日常最高頻的操作，從 Arc 過來幾乎零學習成本，手指記憶直接延續。
+
+- **工作區獨立 pin**：每個工作區有自己的 pin 分頁，工作用工作的常用網站、個人用個人的，彼此不混
+- **多帳號容器隔離**：透過 Firefox 原生的 container 機制做帳號隔離，公司 Gmail 跟個人 Gmail 可以分別登在不同工作區，不用開無痕或裝分身
+
+### Command Bar：鍵盤操作入口
+
+<Image src={commandBar} alt="Zen Browser 的 Command Bar" />
+
+Zen 也有類似 Arc Command Bar 的入口，`Cmd+T`（Windows 是 `Ctrl+T`）叫出來，搜尋、開新分頁、跳到已開的分頁、執行指令全部從這裡做。Arc 時期養出來的「不碰滑鼠、所有事情走鍵盤」的操作習慣，在 Zen 上直接延續。
+
+### Split View：原生分割視窗
+
+<Image src={splitView} alt="Zen Browser 的 Split View 分割視窗" />
+
+Zen 原生支援 **Split View**——同一個視窗內把兩個（或更多）分頁並排顯示，不用再開兩個瀏覽器視窗手動排位置。拿來同時對照文件跟程式碼、或一邊看影片一邊查資料都很順。體感跟 Arc 的 Split View 基本一致，做得很到位。
+
+### Glance：Zen 版的 Peek
+
+<Image src={glance} alt="Zen Browser 的 Glance 預覽功能" />
+
+Zen 的 **Glance** 對應到 Arc 的 [Peek](/articles/arc-workflow)，功能一致：按住觸發鍵（預設是 `Ctrl`）再點連結，網頁會用預覽層疊在當前分頁上顯示，看完關掉就好、不會開新分頁。在 Essentials 跟 pin 分頁上點外部連結甚至不用按熱鍵，會自動開 Glance。**體感跟 Arc 完全一樣**——查資料不污染分頁這件事完整繼承下來。
+
+這是我從 Arc 切過去最無痛的一塊，因為互動邏輯跟肌肉記憶完全對得上。
+
+## 擴充跟手機
+
+### 擴充：去 Firefox Add-ons 找對應版本
+
+Zen 是基於 Firefox，擴充要到 Firefox Add-ons 安裝，不能直接裝 Chrome 擴充。我平常用的那套擴充大部分都有 Firefox 版本，搬遷時幾乎沒有功能斷層。少數沒有 Firefox 版的就改用替代方案，影響比想像中小。完整清單跟安裝連結整理在下面這篇：
+
+<img src="/og/articles/browser-extensions.png" alt="瀏覽器擴充功能推薦" />
+
+<a href="/articles/browser-extensions" class="official-link">瀏覽器擴充功能推薦</a>
+
+### 手機：沒有 app，靠 Firefox Sync 接
+
+這點可能是多數人最先問的——**Zen 目前沒有手機版**。我的解法是手機上用 Firefox，透過 Firefox Sync 接住。同步帳號是通用的，等於是 **Zen 桌面 + Firefox 手機**搭著用。
+
+要注意的是這種搭法**主要只能跨平台看歷史紀錄**——我在 Zen 桌面整理好的 Essentials、工作區 pin、書籤資料夾結構，在 Firefox 手機上沒辦法一比一還原出來。對我來說手機瀏覽器主要就是在路上查東西、看桌面推過去的連結，用 Firefox 接歷史紀錄就夠；但如果你很依賴手機上直接開書籤、重度跨裝置操作，這會是要先評估的點。
+
+這塊老實講是 **Arc 目前仍勝 Zen 一截**——Arc 當年的 Arc Search 是專門配 Arc 桌面設計的手機 app，書籤、Spaces、同步都一體串好；Zen 這邊要等官方做手機版，目前只能靠 Firefox Sync 做最低限度的銜接。
+
+不過對我個人來說還可以接受，因為我本來就不會在手機上做複雜操作。手機就是閱讀跟暫存用的——看到要收的內容就用 Safari 先讀、丟進「待整理」清單，回桌面再手動歸檔到對應的工作區或 Notion。這套流程本來就是 desktop-first，手機端做太多反而會讓整理邏輯散掉。
+
+## 跟 Arc 比起來：什麼補齊了、什麼還差
+
+用三個月下來，Zen 在**功能性上幾乎都補齊了 Arc 的工作流**：工作區、側邊欄、Command Bar、Split View、Glance、多帳號隔離、pin 分頁——Arc 日常在用的東西，Zen 都有對應實作。
+
+真正還有差距的是這些：
+
+- **介面精緻度**：動畫銜接、視覺一致性、某些邊角的操作回饋，都還看得出粗糙痕跡，跟 Arc 那種「每個動作都很絲滑」的體感比還差一段。這是體驗層面的差距，不是功能層面的
+- **擴充依工作區獨立啟用**：Arc 可以讓不同工作區掛不同的擴充組合（工作區用開發類、個人區用閱讀類），Zen 目前擴充還是全域共用，不同容器之間沒有獨立隔離。這個功能還沒做
+- **手機體驗 Arc 仍勝 Zen**：Arc Search 是專屬配套的手機 app，Zen 沒有官方手機版，只能靠 Firefox Sync 接最低限度的歷史紀錄同步，桌面整理的書籤、工作區 pin 過不去
+
+## 目前的狀態
+
+三個月下來，我兩邊都還留著。Arc 維持在「偶爾開來看歷史紀錄」的位置，Zen 是日常主要使用。等 Zen 再迭代幾版、把剩下的 workspace 跟 pin 都遷完，應該就可以正式退役 Arc 了。
+
+如果你也在找 Arc 的接班，Zen 是目前看起來最接近的選項——**核心工作流完整承接、還在積極開發、開源透明**。接受它的精緻度還差一點、願意等它長大的話，很值得投資時間。
