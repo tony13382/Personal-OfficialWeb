@@ -13,9 +13,10 @@ interface Props {
   themeColor?: string;
   appName?: string;
   projectHref?: string;
+  appUrl?: string;
 }
 
-const { type = "main", themeColor, appName, projectHref } = Astro.props;
+const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
 ---
 
 
@@ -28,7 +29,7 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
       {
         type === "main" ? (
           <a
-            href="/#topCover"
+            href="/"
             class="flex items-center gap-3 py-3 text-foreground font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
           >
             <Image
@@ -71,14 +72,25 @@ const { type = "main", themeColor, appName, projectHref } = Astro.props;
 
       <!-- Desktop Navigation -->
       {type === "app" ? (
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-0.5">
           {projectHref && (
             <a
               href={projectHref}
               class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-base rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
             >
               <Icon name="projector-screen-chart" class="size-5" />
-              專案介紹
+              介紹
+            </a>
+          )}
+          {appUrl && (
+            <a
+              href={appUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-base rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
+            >
+              <Icon name="arrow-square-out" class="size-5" />
+              開啟
             </a>
           )}
         </div>

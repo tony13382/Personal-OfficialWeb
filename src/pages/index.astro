@@ -62,7 +62,7 @@ const sortedPosts = allPosts
           <div class="fade-in flex items-center justify-center gap-4 mt-10">
             <a href="/articles/">
               <Button
-                className="px-6 py-5 text-base rounded-full bg-[var(--theme-primary)] hover:bg-[var(--theme-secondary)] text-white"
+                className="px-6 py-5 text-base rounded-full dark:bg-foreground text-white dark:text-background dark:opacity-75 dark:hover:opacity-100"
               >
                 瀏覽文章
               </Button>
@@ -147,7 +147,18 @@ const sortedPosts = allPosts
             </p>
           </div>
           <div class="fade-in grid grid-cols-1 gap-5">
-            {apps.map((app) => <AppCard app={app} />)}
+            {apps.slice(0, 3).map((app) => <AppCard app={app} />)}
+          </div>
+          <div class="fade-in mt-10 text-center">
+            <a href="/apps/">
+              <Button
+                variant="outline"
+                className="px-6 py-5 text-base rounded-full hover:[&>svg]:ms-1"
+              >
+                查看所有應用
+                <Icon name="arrow-right" class="transition-all duration-300" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
@@ -215,7 +226,7 @@ const sortedPosts = allPosts
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
       );
 
       document.querySelectorAll(".fade-in").forEach((el) => {

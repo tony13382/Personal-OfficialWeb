@@ -3,6 +3,7 @@ import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
 import ThemeToggle from "@/components/ThemeToggle";
 import signUrl from "@/assets/imgs/index/sign.svg?url";
+import { apps } from "@/data/apps";
 ---
 
 <footer class="rounded-t-3xl bg-background border-t border-0">
@@ -18,50 +19,21 @@ import signUrl from "@/assets/imgs/index/sign.svg?url";
           <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">
             產品 APPs
           </h4>
-          <a
-            href="/apps/kit/"
-            rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-          >
-            <Icon
-              name="book-bookmark"
-              class="size-5 group-hover:scale-110 transition-transform"
-            />
-            <span>Kit・書籤管理工具</span>
-          </a>
-          <a
-            href="/apps/cloudbio/"
-            rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-          >
-            <Icon
-              name="link"
-              class="size-5 group-hover:scale-110 transition-transform"
-            />
-            <span>CloudBio・Bio Link 工具</span>
-          </a>
-          <a
-            href="/apps/nextags/"
-            rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-          >
-            <Icon
-              name="playlist"
-              class="size-5 group-hover:scale-110 transition-transform"
-            />
-            <span>NexTags・音樂整理工具</span>
-          </a>
-          <a
-            href="https://stockcal.lumakes.com/"
-            rel="noopener noreferrer"
-            class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-          >
-            <Icon
-              name="calculator"
-              class="size-5 group-hover:scale-110 transition-transform"
-            />
-            <span>股票試算小工具</span>
-          </a>
+          {
+            apps.map((app) => (
+              <a
+                href={`/apps/${app.slug}/`}
+                rel="noopener noreferrer"
+                class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
+              >
+                <Icon
+                  name={app.footerIcon}
+                  class="size-5 group-hover:scale-110 transition-transform"
+                />
+                <span>{app.name}</span>
+              </a>
+            ))
+          }
         </div>
         <div class="col-span-1">
           <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">

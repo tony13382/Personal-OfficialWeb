@@ -75,6 +75,7 @@ const canonicalURL = new URL(
       projectHref={app.projectSlug
         ? `/projects/${app.projectSlug}/`
         : undefined}
+      appUrl={app.url}
     />
     {
       isPageMode && app.slug === "nextags" ? (

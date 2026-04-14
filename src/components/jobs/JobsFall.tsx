@@ -36,7 +36,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
           <a
             key={job.slug}
             href={`/jobs/${job.slug}/`}
-            className="group flex bg-card rounded-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="group flex bg-card dark:bg-transparent rounded-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
             <div className="flex-3 flex flex-col p-5 pb-3 gap-4">
               <div className="flex gap-3">

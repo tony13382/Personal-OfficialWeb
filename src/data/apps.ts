@@ -5,6 +5,8 @@ import nextTagsCover from "../assets/imgs/apps/nexTags/cover.png";
 import nextTagsIcon from "../assets/imgs/apps/nexTags/icon.png";
 import cloudBioCover from "../assets/imgs/apps/cloudBio/cover.png";
 import cloudBioIcon from "../assets/imgs/apps/cloudBio/icon.png";
+import stockCalcCover from "../assets/imgs/apps/stockCalc/cover.png";
+import stockCalcIcon from "../assets/imgs/apps/stockCalc/icon.png";
 
 export interface AppInfo {
   slug: string;
@@ -15,6 +17,7 @@ export interface AppInfo {
   icon?: ImageMetadata;
   projectSlug?: string;
   mode?: "iframe" | "page";
+  footerIcon: string;
 }
 
 export const apps: AppInfo[] = [
@@ -26,6 +29,7 @@ export const apps: AppInfo[] = [
     cover: cloudBioCover,
     icon: cloudBioIcon,
     projectSlug: "cloudbio",
+    footerIcon: "link",
   },
   {
     slug: "kit",
@@ -35,6 +39,7 @@ export const apps: AppInfo[] = [
     cover: kitCover,
     icon: kitIcon,
     projectSlug: "kit",
+    footerIcon: "book-bookmark",
   },
   {
     slug: "nextags",
@@ -45,5 +50,16 @@ export const apps: AppInfo[] = [
     icon: nextTagsIcon,
     projectSlug: "nextags",
     mode: "page",
+    footerIcon: "playlist",
+  },
+  {
+    slug: "stockcal",
+    name: "股票試算小工具",
+    description: "輕鬆好用的股票交易試算工具",
+    url: "https://stockcal.lumakes.com/",
+    cover: stockCalcCover,
+    icon: stockCalcIcon,
+    projectSlug: "stock-calc",
+    footerIcon: "calculator",
   },
 ];

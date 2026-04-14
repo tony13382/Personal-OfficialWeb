@@ -669,25 +669,25 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             {/* 四个类别 */}
             <div className='grid grid-cols-4 gap-6 pt-1'>
               <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-orange-500 text-background'>
+                <div className='p-4 rounded-full bg-orange-500 border border-transparent dark:border-orange-500 dark:bg-transparent text-background dark:text-orange-500'>
                   <ChartLineUpIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>市場分析</p>
               </div>
               <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-green-600 text-background'>
+                <div className='p-4 rounded-full bg-green-600 border border-transparent dark:border-green-600 dark:bg-transparent text-background dark:text-green-600'>
                   <ClockIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>生產力管理</p>
               </div>
               <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-pink-400 text-background'>
+                <div className='p-4 rounded-full bg-pink-400 border border-transparent dark:border-pink-400 dark:bg-transparent text-background dark:text-pink-400'>
                   <SquaresFourIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>工具教學</p>
               </div>
               <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-cyan-600 text-background'>
+                <div className='p-4 rounded-full bg-cyan-600 border border-transparent dark:border-cyan-600 dark:bg-transparent text-background dark:text-cyan-600'>
                   <DatabaseIcon className='size-8' />
                 </div>
                 <p className='text-sm text-muted-foreground text-center'>資料洞察</p>
@@ -814,13 +814,12 @@ const filterDescriptions: Record<string, React.ReactNode> = {
         </CardHeader>
         <CardContent className='flex-1 justify-center p-0'>
           {/* Browser Window with Grid Background */}
-          <div className='relative w-full h-full min-h-80 overflow-hidden border border-border'
+          <div className='relative w-full h-full min-h-80 overflow-hidden border border-border bg-muted'
             style={{
               backgroundImage: `
-                repeating-linear-gradient(0deg, transparent, transparent 19px, #e5e7eb 19px, #e5e7eb 20px),
-                repeating-linear-gradient(90deg, transparent, transparent 19px, #e5e7eb 19px, #e5e7eb 20px)
+                repeating-linear-gradient(0deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px),
+                repeating-linear-gradient(90deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px)
               `,
-              backgroundColor: '#f9fafb'
             }}>
             {/* Browser Window */}
             <div className='browser-frame shadow-xl md:shadow-none absolute inset-4 bg-background rounded-lg overflow-hidden'>
