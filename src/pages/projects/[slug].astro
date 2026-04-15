@@ -23,7 +23,8 @@ const { Content } = await project.render();
 
 // SEO
 const seo = {
-  title: project.data.seo?.metaTitle || `${project.data.title}・亮點研創 LuMakes`,
+  title:
+    project.data.seo?.metaTitle || `${project.data.title}・亮點創研 LuMakes`,
   description: project.data.seo?.metaDescription || project.data.description,
   ogImage: project.data.cover.src,
 };
@@ -56,7 +57,10 @@ const getStatusBadge = (statusStr: string) => {
   themeColor={themeColors.primary}
   themeColorDark={themeColors.darkPrimary}
 >
-  <div data-pagefind-body data-pagefind-meta={`type:專案, title:${project.data.title}`}>
+  <div
+    data-pagefind-body
+    data-pagefind-meta={`type:專案, title:${project.data.title}`}
+  >
     <!-- Header Section -->
     <div
       class="relative py-20 w-full"
@@ -169,9 +173,7 @@ const getStatusBadge = (statusStr: string) => {
           {
             project.data.scores && project.data.scores.length > 0 && (
               <Card>
-                <CardTitle>
-                  獲獎紀錄
-                </CardTitle>
+                <CardTitle>獲獎紀錄</CardTitle>
                 <CardContent className="pt-4">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.data.scores.map((score: any) => (

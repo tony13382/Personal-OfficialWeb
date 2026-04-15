@@ -17,7 +17,7 @@ const sortedProjects = allProjects.sort((a, b) => {
 ---
 
 <BaseLayout
-  title="專案作品・亮點研創 LuMakes"
+  title="專案作品・亮點創研 LuMakes"
   description="從構想到落地的完整紀錄，涵蓋 AI 應用、產品設計與全端開發。"
   ogImage="/assets/MetaTagCover.png"
   headerType="main"
@@ -65,7 +65,11 @@ const sortedProjects = allProjects.sort((a, b) => {
       <div class="container mx-auto px-4 py-20 md:py-32 relative">
         <div class="max-w-6xl mx-auto">
           <div class="fade-in">
-            <ProjectsFall projects={sortedProjects} themes={themes} client:load />
+            <ProjectsFall
+              projects={sortedProjects}
+              themes={themes}
+              client:load
+            />
           </div>
         </div>
       </div>

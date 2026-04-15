@@ -26,7 +26,7 @@ const { Content } = await job.render();
 
 // SEO
 const seo = {
-  title: job.data.seo?.metaTitle || `${job.data.title}・亮點研創 LuMakes`,
+  title: job.data.seo?.metaTitle || `${job.data.title}・亮點創研 LuMakes`,
   description:
     job.data.seo?.metaDescription || job.data.description[0] || job.data.title,
   ogImage: job.data.cover.src,
@@ -60,7 +60,10 @@ const timeStr =
   themeColor={themeColors.primary}
   themeColorDark={themeColors.darkPrimary}
 >
-  <div data-pagefind-body data-pagefind-meta={`type:經歷, title:${job.data.title}`}>
+  <div
+    data-pagefind-body
+    data-pagefind-meta={`type:經歷, title:${job.data.title}`}
+  >
     <!-- Header Section -->
     <div class="relative py-20 w-full">
       <div

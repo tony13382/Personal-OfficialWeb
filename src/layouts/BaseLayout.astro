@@ -7,328 +7,326 @@ import Footer from "@/components/footer/Footer.astro";
 import Icon from "@/components/Icon.astro";
 
 interface Props {
-    title: string;
-    description: string;
-    ogImage?: string;
-    headerType?: "main" | "project";
-    themeColor?: string;
-    themeColorDark?: string;
+  title: string;
+  description: string;
+  ogImage?: string;
+  headerType?: "main" | "project";
+  themeColor?: string;
+  themeColorDark?: string;
 }
 
 const {
-    title,
-    description,
-    ogImage = "/assets/MetaTagCover.png",
-    headerType = "main",
-    themeColor,
-    themeColorDark,
+  title,
+  description,
+  ogImage = "/assets/MetaTagCover.png",
+  headerType = "main",
+  themeColor,
+  themeColorDark,
 } = Astro.props;
 
 // 設置默認主題為 natural
 const themeColors: {
-    primary: string;
-    secondary: string;
-    darkPrimary: string;
-    darkSecondary: string;
+  primary: string;
+  secondary: string;
+  darkPrimary: string;
+  darkSecondary: string;
 } = themeColor
-    ? {
-          primary: themeColor,
-          secondary: themeColor,
-          // 未指定深色變體時，用 color-mix 自動提亮
-          darkPrimary:
-              themeColorDark ?? `color-mix(in oklab, ${themeColor} 55%, white)`,
-          darkSecondary:
-              themeColorDark ?? `color-mix(in oklab, ${themeColor} 55%, white)`,
-      }
-    : themes.natural;
+  ? {
+      primary: themeColor,
+      secondary: themeColor,
+      // 未指定深色變體時，用 color-mix 自動提亮
+      darkPrimary:
+        themeColorDark ?? `color-mix(in oklab, ${themeColor} 55%, white)`,
+      darkSecondary:
+        themeColorDark ?? `color-mix(in oklab, ${themeColor} 55%, white)`,
+    }
+  : themes.natural;
 
 const canonicalURL = new URL(
-    Astro.url.pathname,
-    Astro.site || "http://localhost:4321",
+  Astro.url.pathname,
+  Astro.site || "http://localhost:4321",
 );
 ---
 
 <!doctype html>
 <html lang="zh-Hant-TW" class="bg-background">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Theme init: must run synchronously before body renders to avoid FOUC -->
-        <script is:inline>
-            (function () {
-                try {
-                    var stored = localStorage.getItem("theme");
-                    var prefersDark = window.matchMedia(
-                        "(prefers-color-scheme: dark)",
-                    ).matches;
-                    var isDark =
-                        stored === "dark" ||
-                        ((stored === null || stored === "system") && prefersDark);
-                    if (isDark) document.documentElement.classList.add("dark");
-                } catch (_) {}
-            })();
-        </script>
+    <!-- Theme init: must run synchronously before body renders to avoid FOUC -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          var isDark =
+            stored === "dark" ||
+            ((stored === null || stored === "system") && prefersDark);
+          if (isDark) document.documentElement.classList.add("dark");
+        } catch (_) {}
+      })();
+    </script>
 
-        <!-- SEO -->
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalURL} />
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
 
-        <!-- Open Graph -->
-        <meta property="og:url" content={canonicalURL} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:image:alt" content={title} />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:locale" content="zh_TW" />
-        <meta property="og:site_name" content="亮點研創 LuMakes" />
+    <!-- Open Graph -->
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="亮點創研 LuMakes" />
 
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImage} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-165132NHTH"
-        ></script>
-        <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-165132NHTH"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-            gtag("config", "G-165132NHTH");
-        </script>
+      gtag("config", "G-165132NHTH");
+    </script>
 
-        <!-- 動態 CSS 變量 -->
-        <style
-            define:vars={{
-                "theme-primary-light": themeColors.primary,
-                "theme-secondary-light": themeColors.secondary,
-                "theme-primary-dark": themeColors.darkPrimary,
-                "theme-secondary-dark": themeColors.darkSecondary,
-            }}
-        >
-            :global(:root) {
-                /* Source colors injected as inline styles via define:vars.
+    <!-- 動態 CSS 變量 -->
+    <style
+      define:vars={{
+        "theme-primary-light": themeColors.primary,
+        "theme-secondary-light": themeColors.secondary,
+        "theme-primary-dark": themeColors.darkPrimary,
+        "theme-secondary-dark": themeColors.darkSecondary,
+      }}
+    >
+      :global(:root) {
+        /* Source colors injected as inline styles via define:vars.
                    Derive the active --theme-primary/--theme-secondary here so
                    the dark override below can swap them. (Inline-style vars
                    would otherwise out-specificity any external rule.) */
-                --theme-primary: var(--theme-primary-light);
-                --theme-secondary: var(--theme-secondary-light);
+        --theme-primary: var(--theme-primary-light);
+        --theme-secondary: var(--theme-secondary-light);
 
-                /* 透明度變體 - 使用 color-mix 動態計算 */
-                --theme-primary-5: color-mix(
-                    in srgb,
-                    var(--theme-primary) 5%,
-                    transparent
-                );
-                --theme-primary-10: color-mix(
-                    in srgb,
-                    var(--theme-primary) 10%,
-                    transparent
-                );
-                --theme-primary-20: color-mix(
-                    in srgb,
-                    var(--theme-primary) 20%,
-                    transparent
-                );
-                --theme-primary-30: color-mix(
-                    in srgb,
-                    var(--theme-primary) 30%,
-                    transparent
-                );
-                --theme-primary-40: color-mix(
-                    in srgb,
-                    var(--theme-primary) 40%,
-                    transparent
-                );
-                --theme-primary-50: color-mix(
-                    in srgb,
-                    var(--theme-primary) 50%,
-                    transparent
-                );
-                --theme-primary-60: color-mix(
-                    in srgb,
-                    var(--theme-primary) 60%,
-                    transparent
-                );
-                --theme-primary-70: color-mix(
-                    in srgb,
-                    var(--theme-primary) 70%,
-                    transparent
-                );
-                --theme-primary-80: color-mix(
-                    in srgb,
-                    var(--theme-primary) 80%,
-                    transparent
-                );
-                --theme-primary-90: color-mix(
-                    in srgb,
-                    var(--theme-primary) 90%,
-                    transparent
-                );
+        /* 透明度變體 - 使用 color-mix 動態計算 */
+        --theme-primary-5: color-mix(
+          in srgb,
+          var(--theme-primary) 5%,
+          transparent
+        );
+        --theme-primary-10: color-mix(
+          in srgb,
+          var(--theme-primary) 10%,
+          transparent
+        );
+        --theme-primary-20: color-mix(
+          in srgb,
+          var(--theme-primary) 20%,
+          transparent
+        );
+        --theme-primary-30: color-mix(
+          in srgb,
+          var(--theme-primary) 30%,
+          transparent
+        );
+        --theme-primary-40: color-mix(
+          in srgb,
+          var(--theme-primary) 40%,
+          transparent
+        );
+        --theme-primary-50: color-mix(
+          in srgb,
+          var(--theme-primary) 50%,
+          transparent
+        );
+        --theme-primary-60: color-mix(
+          in srgb,
+          var(--theme-primary) 60%,
+          transparent
+        );
+        --theme-primary-70: color-mix(
+          in srgb,
+          var(--theme-primary) 70%,
+          transparent
+        );
+        --theme-primary-80: color-mix(
+          in srgb,
+          var(--theme-primary) 80%,
+          transparent
+        );
+        --theme-primary-90: color-mix(
+          in srgb,
+          var(--theme-primary) 90%,
+          transparent
+        );
 
-                --theme-secondary-5: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 5%,
-                    transparent
-                );
-                --theme-secondary-10: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 10%,
-                    transparent
-                );
-                --theme-secondary-20: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 20%,
-                    transparent
-                );
-                --theme-secondary-30: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 30%,
-                    transparent
-                );
-                --theme-secondary-40: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 40%,
-                    transparent
-                );
-                --theme-secondary-50: color-mix(
-                    in srgb,
-                    var(--theme-secondary) 50%,
-                    transparent
-                );
+        --theme-secondary-5: color-mix(
+          in srgb,
+          var(--theme-secondary) 5%,
+          transparent
+        );
+        --theme-secondary-10: color-mix(
+          in srgb,
+          var(--theme-secondary) 10%,
+          transparent
+        );
+        --theme-secondary-20: color-mix(
+          in srgb,
+          var(--theme-secondary) 20%,
+          transparent
+        );
+        --theme-secondary-30: color-mix(
+          in srgb,
+          var(--theme-secondary) 30%,
+          transparent
+        );
+        --theme-secondary-40: color-mix(
+          in srgb,
+          var(--theme-secondary) 40%,
+          transparent
+        );
+        --theme-secondary-50: color-mix(
+          in srgb,
+          var(--theme-secondary) 50%,
+          transparent
+        );
 
-                h2 {
-                    color: var(--theme-primary);
-                }
-                .text-highlight {
-                    color: var(--theme-primary);
-                    margin: 0 2px;
-                    padding: 0 4px;
-                    font-weight: 800;
-                    background: linear-gradient(
-                        to top,
-                        var(--theme-primary-20) 30%,
-                        transparent 30%
-                    );
-                    background-position: bottom;
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                }
-                code {
-                    color: var(--theme-primary);
-                    margin: 0 2px;
-                    padding: 0 4px;
-                    font-weight: 800;
-                    background: linear-gradient(
-                        to top,
-                        var(--theme-primary-20) 30%,
-                        transparent 30%
-                    );
-                    background-position: bottom;
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                }
+        h2 {
+          color: var(--theme-primary);
+        }
+        .text-highlight {
+          color: var(--theme-primary);
+          margin: 0 2px;
+          padding: 0 4px;
+          font-weight: 800;
+          background: linear-gradient(
+            to top,
+            var(--theme-primary-20) 30%,
+            transparent 30%
+          );
+          background-position: bottom;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
+        code {
+          color: var(--theme-primary);
+          margin: 0 2px;
+          padding: 0 4px;
+          font-weight: 800;
+          background: linear-gradient(
+            to top,
+            var(--theme-primary-20) 30%,
+            transparent 30%
+          );
+          background-position: bottom;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
 
-                /* Back to Top Button - show state */
-                #back-to-top.show {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                }
+        /* Back to Top Button - show state */
+        #back-to-top.show {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
 
-                .floatbtn.show {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                }
-            }
+        .floatbtn.show {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+      }
 
-            /* Dark mode: swap theme-primary/secondary to the pre-tuned dark
+      /* Dark mode: swap theme-primary/secondary to the pre-tuned dark
                variants. All derived vars (--theme-primary-5, -10, ...) and
                usages of var(--theme-primary) update automatically. */
-            :global(:root.dark) {
-                --theme-primary: var(--theme-primary-dark);
-                --theme-secondary: var(--theme-secondary-dark);
-            }
-        </style>
-    </head>
-    <body class="font-sans bg-[var(--theme-primary-5)] dark:bg-gradient-to-b dark:from-[#23262A] dark:to-[#1E2023]">
-        <Header type={headerType} themeColor={themeColors.primary} />
-        <slot />
-        <Footer />
+      :global(:root.dark) {
+        --theme-primary: var(--theme-primary-dark);
+        --theme-secondary: var(--theme-secondary-dark);
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-[var(--theme-primary-5)] dark:bg-gradient-to-b dark:from-[#23262A] dark:to-[#1E2023]"
+  >
+    <Header type={headerType} themeColor={themeColors.primary} />
+    <slot />
+    <Footer />
 
-        <!-- Back to Top Button -->
-        <button
-            id="back-to-top"
-            class="floatbtn fixed bottom-8 right-6 w-16 h-16 md:bottom-8 md:right-8 rounded-full bg-background text-foreground border border-border flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-muted hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.12)] active:-translate-y-0.5"
-            aria-label="回到顶部"
-            title="回到顶部"
-        >
-            <Icon name="caret-up" class="size-8" />
-        </button>
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="floatbtn fixed bottom-8 right-6 w-16 h-16 md:bottom-8 md:right-8 rounded-full bg-background text-foreground border border-border flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-muted hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.12)] active:-translate-y-0.5"
+      aria-label="回到顶部"
+      title="回到顶部"
+    >
+      <Icon name="caret-up" class="size-8" />
+    </button>
 
-        <!-- Fancybox initialization -->
-        <script>
-            const initFancybox = async () => {
-                const { Fancybox } = await import("@fancyapps/ui");
+    <!-- Fancybox initialization -->
+    <script>
+      const initFancybox = async () => {
+        const { Fancybox } = await import("@fancyapps/ui");
 
-                Fancybox.bind("[data-fancybox]", {
-                    Carousel: {
-                        Toolbar: {
-                            display: {
-                                left: ["counter"],
-                                middle: [],
-                                right: ["close"],
-                            },
-                        },
-                    },
-                });
-            };
+        Fancybox.bind("[data-fancybox]", {
+          Carousel: {
+            Toolbar: {
+              display: {
+                left: ["counter"],
+                middle: [],
+                right: ["close"],
+              },
+            },
+          },
+        });
+      };
 
-            initFancybox();
-        </script>
+      initFancybox();
+    </script>
 
-        <!-- Back to Top functionality -->
-        <script>
-            const backToTopButton = document.getElementById("back-to-top");
-            const floatButtons = document.getElementsByClassName("floatbtn");
+    <!-- Back to Top functionality -->
+    <script>
+      const backToTopButton = document.getElementById("back-to-top");
+      const floatButtons = document.getElementsByClassName("floatbtn");
 
-            // Show/hide button based on scroll position
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 300) {
-                    backToTopButton?.classList.add("show");
-                    Array.from(floatButtons).forEach((btn) =>
-                        btn.classList.add("show"),
-                    );
-                } else {
-                    backToTopButton?.classList.remove("show");
-                    Array.from(floatButtons).forEach((btn) =>
-                        btn.classList.remove("show"),
-                    );
-                }
-            });
+      // Show/hide button based on scroll position
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton?.classList.add("show");
+          Array.from(floatButtons).forEach((btn) => btn.classList.add("show"));
+        } else {
+          backToTopButton?.classList.remove("show");
+          Array.from(floatButtons).forEach((btn) =>
+            btn.classList.remove("show"),
+          );
+        }
+      });
 
-            // Scroll to top when button is clicked
-            backToTopButton?.addEventListener("click", () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                });
-            });
-        </script>
-    </body>
+      // Scroll to top when button is clicked
+      backToTopButton?.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
 </html>
