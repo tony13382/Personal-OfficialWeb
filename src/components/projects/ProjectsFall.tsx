@@ -13,7 +13,7 @@ type ProjectData = CollectionEntry<"projects">
 
 interface ProjectsFallProps {
   projects: ProjectData[]
-  themes: Record<string, { primary: string; secondary: string }>
+  themes: Record<string, { primary: string; secondary: string; darkPrimary: string; darkSecondary: string }>
   compact?: boolean
 }
 

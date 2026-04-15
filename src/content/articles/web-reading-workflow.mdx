@@ -1,0 +1,161 @@
+---
+title: 網頁閱讀工作流
+description: 分享我怎麼讓網頁閱讀從「訊號進來」到「知識留下」——擷取、閱讀、收藏三段流程跟對應的瀏覽器擴充跟 app
+date: 2026-03-25
+category: 工作流程
+tags: [閱讀, 瀏覽器, Notion, RSS]
+cover: /og/articles/web-reading-workflow.png
+seo:
+  ogImage: /og/articles/web-reading-workflow.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import kagiNews from '@/assets/imgs/articles/web-reading-workflow/kagi-news.png'
+import folo from '@/assets/imgs/articles/web-reading-workflow/folo.png'
+import grokTasks from '@/assets/imgs/articles/web-reading-workflow/grok-tasks.png'
+import notion from '@/assets/imgs/articles/web-reading-workflow/notion.png'
+import immersiveTranslate from '@/assets/imgs/articles/browser-extensions/immersive-translate.png'
+import glotdojo from '@/assets/imgs/articles/browser-extensions/glotdojo.png'
+import panguSpacing from '@/assets/imgs/articles/browser-extensions/pangu-spacing.png'
+import saveToNotion from '@/assets/imgs/articles/browser-extensions/save-to-notion.png'
+import notionWebClipper from '@/assets/imgs/articles/browser-extensions/notion-web-clipper.png'
+import notionBoost from '@/assets/imgs/articles/browser-extensions/notion-boost.jpg'
+
+網頁閱讀最常見的誤區，是以為「讀了多少篇」代表「帶走多少東西」。真正決定閱讀品質的不是讀量，是一條從「訊號進來」到「知識留下」的完整流程——先決定什麼值得讀、再讓讀的當下門檻夠低、最後讓有價值的內容真的被保留下來。這篇分享我怎麼用工具組合把這條流程跑順。
+
+我每天大概會接觸三、四十篇內容——技術文章、新聞、研究、推薦閱讀。以前的做法是看完就關掉，剩下的印象大概兩天就淡了。後來慢慢摸索出一套「擷取 → 閱讀 → 收藏」的三段流程：**擷取**段決定什麼訊號進來、**閱讀**段讓內容門檻降到最低、**收藏**段決定什麼留下來變成長期知識。這篇就是我現在的配置，工具從瀏覽器擴充到 app 都有。
+
+<div class="callout info">
+如果想看我怎麼整體設定 Arc 或 Zen 瀏覽器，可以參考 [Arc 瀏覽器：我用過 UX 最好的瀏覽器](/articles/arc-workflow) 跟 [從 Arc 換到 Zen Browser：三個月試用筆記](/articles/zen-browser-setup)；前端開發用的瀏覽器擴充（React DevTools、Wappalyzer、JSON Viewer 等）則整理在 [開發環境・前端篇](/articles/dev-env-frontend)。
+</div>
+
+## 擷取與降噪
+
+第一段：決定什麼值得讀。大部分的閱讀內容品質問題，其實發生在「點進去之前」——訊號源頭選不好、演算法推的不是你真正想要的、RSS 訂閱沒整理。這一段的工具處理訊號入口，把雜訊濾在進入視線之前。
+
+### Kagi News
+
+<Image src={kagiNews} alt="Kagi News" />
+
+Kagi News 是 [Kagi 搜尋引擎](https://kagi.com) 推出的新聞服務，用一組經過人工篩選的來源清單產生每日新聞摘要，主打「不靠演算法、不靠廣告、只看來源本身的品質」。對我來說它解決的是「日常新聞基礎訊號」的問題——不用刷推特或臉書就能掌握當天的主要消息，而且那些來源本身品質夠高，不用再多做一層過濾。
+
+<span class="pricing-tag paid">需訂閱 Kagi</span>
+<a href="https://kagi.com/news" target="_blank" class="official-link">官方網站</a>
+
+### Folo
+
+<Image src={folo} alt="Folo" />
+
+[Folo](https://folo.is/) 是一個開源的 RSS reader，把各種來源——RSS、newsletter、YouTube 頻道、社群平台——整合到單一閱讀介面。它的設計讓你把「要看的人跟站」用訂閱的方式固定下來，而不是被演算法餵食。我用它處理更精準的個人興趣追蹤——技術部落格、特定創作者、Substack 訂閱——這些內容用演算法推薦幾乎接不到，靠 RSS 訂閱反而穩定。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://folo.is/" target="_blank" class="official-link">官方網站</a>
+
+### Grok Tasks
+
+<Image src={grokTasks} alt="Grok Tasks" />
+
+Grok Tasks 是 [xAI 的 Grok](https://grok.com) 提供的排程任務功能，可以預設 prompt 讓 Grok 每天自動執行一次。我的用法是讓它在每天清晨用 [Axios 新聞網](https://www.axios.com) 的 smart brevity 寫作風格整理昨日重要新聞——短句、分點、每條新聞先講結論再講 context，快速掃完就能對前一天的大事有基礎掌握。
+
+為什麼用 Axios 風格而不是讓它寫成長文？因為 smart brevity 的設計就是為了「一眼能吸收」，跟晨間快速掌握資訊的場景完美契合。真的需要深入的再手動查。
+
+Prompt 骨架大概像這樣：
+
+<p class="code-title">Grok Task Prompt</p>
+
+```
+用 Axios 新聞網的 smart brevity 風格整理昨日全球重要新聞 5–7 條。每條格式：
+1. 一句話標題
+2. "Why it matters:" 點出這件事為什麼重要
+3. "The big picture:" 給出一到兩句背景
+
+全部用繁體中文輸出。
+```
+
+<span class="pricing-tag freemium">免費可用但有額度上限，完整功能需訂閱 SuperGrok 或 X Premium+</span>
+<a href="https://grok.com" target="_blank" class="official-link">官方網站</a>
+
+三個工具並用，基本上把「今天要讀什麼」這件事從演算法手上收回來：Kagi News 負責「廣度」（主流新聞全覽、人工篩選來源）、Folo 負責「深度」（我主動 curate 的個人興趣來源）、Grok Tasks 負責「精煉」（AI 自動摘要成 smart brevity 格式）。
+
+## 閱讀
+
+第二段：讀的當下把門檻降到最低。外文要翻譯、影片字幕要跟得上、中英混排要有空格。這一段的工具負責降低「看得懂」的門檻。
+
+### 沉浸式翻譯
+
+<Image src={immersiveTranslate} alt="沉浸式翻譯" />
+
+我最常用的網頁翻譯擴充，可以在保留原文的情況下，把翻譯結果以雙語對照的方式顯示在下方。閱讀外文文章的時候非常好用，不會像 Google 翻譯那樣整頁替換掉原文。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://chromewebstore.google.com/detail/immersive-translate-web-p/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/immersive-translate/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### GlotDojo
+
+<Image src={glotdojo} alt="GlotDojo" />
+
+即時翻譯字幕的擴充，看外語影片的時候可以同時顯示原文跟翻譯字幕，方便學習外語或理解內容。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/glot-extension/dbnjpielondlkmdjbembloegkaabfakc" target="_blank" class="official-link">Chrome Web Store</a>
+
+### 為什麼你們就是不能加個空格呢？
+
+<Image src={panguSpacing} alt="為什麼你們就是不能加個空格呢？" />
+
+自動在中英文之間加上空格，讓網頁上的文字排版更好看、更好閱讀。裝了之後看中英混排的內容會舒服很多。
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://chromewebstore.google.com/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd" target="_blank" class="official-link">Chrome Web Store</a>
+
+## 收藏與筆記
+
+第三段：讓有用的內容留下來。看完的內容如果沒存下來，大概兩三天就會淡掉；存下來了如果沒再回去看，就跟沒存一樣。這一段的工具處理擷取跟典藏——擷取用 Notion 官方跟第三方擴充快速丟進去，典藏在 Notion app 裡長期保存，再用 Notion Boost 讓回頭翻閱變得舒服。
+
+### Save to Notion
+
+<Image src={saveToNotion} alt="Save to Notion" />
+
+快速擷取路徑。可以把網頁內容快速儲存到 Notion 的資料庫裡，我會用它來收集有參考價值的文章跟資料。重點是「快」——看到就存，不浪費時間整理欄位。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/save-to-notion/ldmmifpegigmeammaeckplhnjbbpccmm" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/save-to-notion/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Notion Web Clipper
+
+<Image src={notionWebClipper} alt="Notion Web Clipper" />
+
+完整擷取路徑。Notion 官方的網頁擷取工具，可以把整個網頁的內容擷取到 Notion 裡。跟 Save to Notion 比起來，它擷取的內容會更完整，適合長文或文檔型內容。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/notion-web-clipper/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Notion
+
+<Image src={notion} alt="Notion" />
+
+Notion 本身是我的知識典藏核心——所有從網頁剪下來的內容、閱讀筆記、研究資料都集中在這裡。重點不是 Notion 多強，而是「所有擷取最終流向同一個地方」這件事。以前試過 Pocket、Instapaper、Apple Notes 各擺一部分，要找的時候都不記得存去哪；現在統一進 Notion，搜尋、分類、雙向連結都可以串起來。
+
+我會在 Notion 裡用資料庫區分「待讀」「已讀有筆記」「參考資料」不同階段，配合 tags 做主題分類。擴充丟進來之後，我會週期性挑出值得寫筆記的條目深化成長期知識，其餘則留作可查詢資料。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://notion.so" target="_blank" class="official-link">官方網站</a>
+
+### Notion Boost
+
+<Image src={notionBoost} alt="Notion Boost" />
+
+如果你把 Notion 當成長期興趣知識的典藏庫，那回去翻閱的體驗就很重要。Notion Boost 讓你可以調整字體大小、隱藏不需要的 UI 元素、加入目錄側欄等 Notion 原生沒有的功能。典藏庫要被回看，Notion Boost 讓回看的那一刻更舒服。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/notion-boost/eciepnnimnjaojlkcpdpcgbfkpcagahd" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/notion-boost/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+## 收束
+
+網頁閱讀之所以容易「看完就忘」，不是因為讀得不夠多，而是因為「訊號進來」到「知識留下」這條流程沒被串起來。擷取段決定什麼值得讀、閱讀段讓讀的當下門檻夠低、收藏段讓有用的內容留得下來——三段缺一段，整條流就卡住。工具只是執行器，先建立流程，再配工具。

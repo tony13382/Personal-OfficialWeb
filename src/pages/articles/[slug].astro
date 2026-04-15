@@ -22,7 +22,7 @@ const { Content, headings } = await post.render();
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 const seo = {
-  title: post.data.seo?.metaTitle || `${post.data.title}・呂亮進`,
+  title: post.data.seo?.metaTitle || `${post.data.title}・亮點研創 LuMakes`,
   description: post.data.seo?.metaDescription || post.data.description,
   ogImage: post.data.seo?.ogImage || post.data.cover,
 };
