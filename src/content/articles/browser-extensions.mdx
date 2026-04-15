@@ -1,6 +1,6 @@
 ---
 title: 瀏覽器擴充功能推薦
-description: 精選 22 個我在工作開發、日常瀏覽與閱讀學習中實際使用的瀏覽器擴充功能
+description: 精選 19 個我在日常瀏覽、帳號管理跟閱讀學習中實際使用的瀏覽器擴充功能
 date: 2026-03-25
 category: 工具推薦
 tags: [瀏覽器, 擴充功能]
@@ -12,9 +12,6 @@ seo:
 import { Image } from 'astro:assets'
 
 {/* Images */}
-import reactDevtools from '@/assets/imgs/articles/browser-extensions/react-devtools.png'
-import wappalyzer from '@/assets/imgs/articles/browser-extensions/wappalyzer.png'
-import jsonViewer from '@/assets/imgs/articles/browser-extensions/json-viewer.png'
 import saveImageAsType from '@/assets/imgs/articles/browser-extensions/save-image-as-type.png'
 import bitwarden from '@/assets/imgs/articles/browser-extensions/bitwarden.png'
 import checkerPlusGmail from '@/assets/imgs/articles/browser-extensions/checker-plus-gmail.png'
@@ -37,10 +34,10 @@ import notionBoost from '@/assets/imgs/articles/browser-extensions/notion-boost.
 import extensionManager from '@/assets/imgs/articles/browser-extensions/extension-manager.png'
 import arc from '@/assets/imgs/articles/browser-extensions/arc.png'
 
-這篇整理了我目前實際在用的瀏覽器擴充功能，涵蓋工作開發、日常瀏覽到閱讀學習各個面向。不論你用的是 Chrome、Arc 還是 Zen，下面這些擴充大多都有對應版本——Chromium 系（Chrome、Arc、Edge、Brave）直接點 Chrome Web Store 連結安裝就好，Firefox 系（Zen、Firefox）則需要到 Firefox Add-ons 找對應版本。
+這篇整理了我日常實際在用的瀏覽器擴充功能，涵蓋帳號管理、瀏覽體驗到閱讀學習各個面向。不論你用的是 Chrome、Arc 還是 Zen，下面這些擴充大多都有對應版本——Chromium 系（Chrome、Arc、Edge、Brave）直接點 Chrome Web Store 連結安裝就好，Firefox 系（Zen、Firefox）則需要到 Firefox Add-ons 找對應版本。
 
 <div class="callout info">
-如果你想看我怎麼整體設定 Arc 或 Zen 瀏覽器，可以參考我另外寫的兩篇：[Arc 瀏覽器：我用過 UX 最好的瀏覽器](/articles/arc-workflow)、[從 Arc 換到 Zen Browser：三個月試用筆記](/articles/zen-browser-setup)。
+前端開發用的瀏覽器擴充（React DevTools、Wappalyzer、JSON Viewer 等）我把它們整理到另一篇 [開發環境・前端篇](/articles/dev-env-frontend) 裡，跟 VS Code 擴充跟工具鏈一起看更有脈絡。如果你想看我怎麼整體設定 Arc 或 Zen 瀏覽器，也可以參考 [Arc 瀏覽器：我用過 UX 最好的瀏覽器](/articles/arc-workflow) 跟 [從 Arc 換到 Zen Browser：三個月試用筆記](/articles/zen-browser-setup)。
 </div>
 
 ## 我怎麼管理擴充功能
@@ -62,38 +59,9 @@ import arc from '@/assets/imgs/articles/browser-extensions/arc.png'
 <span class="pricing-tag">免費</span>
 <a href="https://chromewebstore.google.com/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco" target="_blank" class="official-link">Chrome Web Store</a>
 
-## 工作與開發
+## 帳號與工具
 
-這些是我在做前端開發時會用到的擴充，從除錯工具到密碼管理，都是日常開發流程中不可或缺的。
-
-### React DevTools
-
-<Image src={reactDevtools} alt="React DevTools" />
-
-開發 React 專案時必備的擴充，可以直接在瀏覽器的開發者工具裡檢視 React 元件樹、props 跟 state，除錯的時候非常方便。
-
-<span class="pricing-tag">免費</span>
-<a href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank" class="official-link">Chrome Web Store</a>
-<a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/" target="_blank" class="official-link">Firefox Add-ons</a>
-
-### Wappalyzer
-
-<Image src={wappalyzer} alt="Wappalyzer" />
-
-可以分析任何網站背後使用了哪些技術，像是前端框架、CMS、伺服器、分析工具等等。我在研究別人的網站或評估技術方案的時候會用到。
-
-<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
-<a href="https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg" target="_blank" class="official-link">Chrome Web Store</a>
-<a href="https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/" target="_blank" class="official-link">Firefox Add-ons</a>
-
-### JSON Viewer
-
-<Image src={jsonViewer} alt="JSON Viewer" />
-
-讓瀏覽器可以直接把 JSON 格式化成好閱讀的樣式，不用再把 JSON 貼到其他工具去排版。在除錯 API 回傳結果的時候很實用。
-
-<span class="pricing-tag">免費</span>
-<a href="https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh" target="_blank" class="official-link">Chrome Web Store</a>
+這些是我日常會用到的帳號管理跟小工具，從密碼自動填入到圖片格式轉換，都是讓日常操作更順手的擴充。
 
 ### Claude
 
@@ -133,7 +101,7 @@ Anthropic 的 Claude AI 擴充，可以在瀏覽器裡直接跟 Claude 對話，
 <a href="https://chromewebstore.google.com/detail/checker-plus-for-gmail/oeopbcgkkoapgobdbedcemjljbihmemj" target="_blank" class="official-link">Chrome Web Store</a>
 <a href="https://addons.mozilla.org/en-US/firefox/addon/checker-plus-gmail/" target="_blank" class="official-link">Firefox Add-ons</a>
 
-## 日常
+## 瀏覽體驗
 
 日常瀏覽時用來提升體驗的擴充，從廣告封鎖、深色模式到分頁管理，讓瀏覽器用起來更順手。
 

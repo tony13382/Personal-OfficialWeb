@@ -26,6 +26,10 @@ import figmaExt from '@/assets/imgs/articles/dev-env-frontend/figma.png'
 import pencilExt from '@/assets/imgs/articles/dev-env-frontend/pencil.png'
 import astroExt from '@/assets/imgs/articles/dev-env-frontend/astro.png'
 import mdxExt from '@/assets/imgs/articles/dev-env-frontend/mdx.png'
+import reactDevtoolsExt from '@/assets/imgs/articles/dev-env-frontend/react-devtools.png'
+import wappalyzerExt from '@/assets/imgs/articles/dev-env-frontend/wappalyzer.png'
+import jsonViewerExt from '@/assets/imgs/articles/dev-env-frontend/json-viewer.png'
+import accessControlExt from '@/assets/imgs/articles/dev-env-frontend/access-control.png'
 
 我的前端專案主要使用 React 生態系，框架上會根據需求選擇 Astro、Remix（React Router）或 Vite。這篇整理了我在前端開發時的環境配置，包含套件管理、程式碼格式化、Tailwind CSS 設定等面向。
 
@@ -151,6 +155,52 @@ Astro 框架的官方擴充，提供 `.astro` 檔案的語法高亮、IntelliSen
   <img src="/og/articles/vscode-extensions.png" alt="VS Code 擴充功能推薦" style="border-radius: 0.75rem;" />
 </a>
 <a href="/articles/vscode-extensions" class="official-link">VS Code 擴充功能推薦</a>
+
+## 瀏覽器擴充功能
+
+除了 VS Code 擴充，我在瀏覽器上也會裝一組專門給前端開發用的擴充。日常瀏覽、帳號管理跟閱讀相關的擴充我整理在另一篇 [瀏覽器擴充功能推薦](/articles/browser-extensions) 裡，這邊只列跟開發流程比較直接相關的幾個。
+
+### React DevTools
+
+<Image src={reactDevtoolsExt} alt="React DevTools" />
+
+開發 React 專案時必備的擴充，可以直接在瀏覽器的開發者工具裡檢視 React 元件樹、props 跟 state，除錯的時候非常方便。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Wappalyzer
+
+<Image src={wappalyzerExt} alt="Wappalyzer" />
+
+可以分析任何網站背後使用了哪些技術，像是前端框架、CMS、伺服器、分析工具等等。我在研究別人的網站或評估技術方案的時候會用到。
+
+<span class="pricing-tag freemium">免費使用，進階功能需付費</span>
+<a href="https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### JSON Viewer
+
+<Image src={jsonViewerExt} alt="JSON Viewer" />
+
+讓瀏覽器可以直接把 JSON 格式化成好閱讀的樣式，不用再把 JSON 貼到其他工具去排版。在除錯 API 回傳結果的時候很實用。
+
+<span class="pricing-tag">免費</span>
+<a href="https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Access Control-Allow-Origin - Unblock
+
+<Image src={accessControlExt} alt="Access Control-Allow-Origin - Unblock" />
+
+開發時最常遇到的就是前端在 localhost 打後端 API 被 CORS 擋下來，後端還沒加好 CORS header 的時候就會卡住。這個擴充會幫你把 `Access-Control-Allow-Origin: *` 塞進回應 header 裡，繞開瀏覽器的 CORS 限制，預設是關閉的，只在要用的時候才按工具列上的按鈕開啟，開發完記得關掉。它也支援依網域設定、URL pattern 範圍限制，跟 SharedArrayBuffer 需要的 header 附加。
+
+<div class="callout warning">
+這個擴充只給開發用，不要平常一直開著。關閉 CORS 會讓任何網站都能對你的瀏覽器分頁發請求，在正常瀏覽時有安全風險。
+</div>
+
+<span class="pricing-tag">免費</span>
+<a href="https://webextension.org/listing/access-control.html" target="_blank" class="official-link">官方頁面</a>
 
 ## 套件管理
 
