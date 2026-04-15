@@ -51,7 +51,7 @@
 **現有範例**：
 - 方法論：file-management、meeting-workflow、project-management、password-management、building-personal-website、claude-code-setup、web-reading-workflow
 - 工具推薦：file-transfer、finance-tools
-- 工具合集：mactools-daily、mactools-design
+- 工具合集：mactools-daily、mactools-design、mactools-dev
 - 清單／分享：my-hardware、dev-env-frontend、dev-env-python、vscode-extensions
 
 ## Voice & Tone
@@ -86,3 +86,55 @@
 格式統一：`{主標——對應一個支柱的關鍵字}・亮點研創 LuMakes`
 
 **標題順序鐵則**：任何頁面的 `<title>` 一律「頁面主標在前、品牌名在後」，固定用 `・` 分隔。品牌名當作後綴標識，不放在最前面搶焦點。
+
+## Articles Frontmatter SEO 指引
+
+寫新文章或更新既有文章時，frontmatter 的 `title` 跟 `description` 是主要的 SEO 承載欄位，遵循以下規範：
+
+### Title 規範
+
+- **實際、具體、回答讀者心中的問題**：不要只寫主題名（「AI 工具使用策略」「服務與訂閱」這種泛型名詞 SEO 價值低、點擊率差）。要寫出讀者實際會搜尋的問題或目標，常用結構：
+  - 「如何 X：Y、Z、W」例：**如何調教 Claude Code：Status Line、CLAUDE.md、自訂 Skill 配置筆記**
+  - 「用 X 做到 Y」例：**用 Bitwarden、Ente Auth、Passkey 建立帳號安全系統**
+  - 「從 X 到 Y」例：**從 Arc 換到 Zen Browser：三個月試用筆記**
+  - 「X 該用什麼：Y、Z」例：**Mac 做設計該用什麼軟體：UI、簡報、修圖跟影片剪輯工具組**
+  - 「從困惑到行動：X 為中心的 Y」例：**從困惑到行動：Notion 為中心的會議工作流**
+- **主標 + 副標結構**：需帶多個具體分項時用「：」做雙層分隔（主問題／目標 + 具體內容）
+- **保持 ≤ 30 繁中字**（含 fallback 追加的 `・亮點研創 LuMakes` 後仍在搜尋結果完整顯示範圍內）
+- **不用疊加品牌名**（由 `[slug].astro` fallback 自動追加，寫到 title 會重複）
+- **動詞忠於事實**：只有文章真的講「自己從 0 建立某個系統／產品」才能用「打造 / 建構 / 設計」；選品、整理、設定、推薦類用「探索 / 精選 / 整理 / 組合 / 摸索 / 搭配 / 調教」
+
+### Description 規範
+
+- **前 60 字內至少含 1 個支柱關鍵詞**（從下方關鍵詞庫挑）
+- **保持 ≤ 80 繁中字**
+- 自然寫作、不堆砌關鍵詞（stuffing 反而扣分）
+- 寫出「讀者能帶走什麼」而不是「這篇在講什麼」
+- **動詞忠於事實**：同 title 規範，避免用「打造」描述探索／整理型內容
+- **跟 title 關鍵詞協調**：若 title 用到某個支柱關鍵詞或個人化語感詞（例如「調教」），description 也沿用同詞，強化排名集中度
+
+### 支柱關鍵詞庫
+
+| 支柱 | SEO 關鍵詞 |
+|---|---|
+| 外包重複 | AI 工作流、Agentic Workflow、AI 自動化、AI 記憶層 |
+| 簡單生活 | 數位生產力、極簡生活、個人知識管理 |
+| 輕鬆思考 | 第二大腦、RAG、決策框架、知識卸載 |
+| 多樣創造 | 全端開發、UI 設計、產品設計、Astro、React、Tailwind |
+
+### `seo.metaTitle` / `seo.metaDescription` 使用時機
+
+- **預設不用**：每篇文章自動吃 `[slug].astro` 的 fallback（title 追加品牌、description 用 frontmatter description）
+- **需要 override 才寫**：例如 title 要 SEO 專用版本、description 想跟文章內文用不同措辭
+- 若 override `metaTitle`，必須自己帶品牌後綴 `・亮點研創 LuMakes`
+
+### 寫完 frontmatter 的 SEO 檢查清單
+
+1. **title** 是否回答讀者心中的問題？（把 title 讀出來，是不是一句「我想知道 X」能命中的回答？）
+2. **title** 是否套用具體結構（「如何 X」「用 X 做到 Y」「從 X 到 Y」「X 該用什麼」等）？
+3. **title** 是否落在 ≤ 30 繁中字內？
+4. **description** 前 60 字內有沒有至少 1 個支柱關鍵詞？
+5. **description** 是否 ≤ 80 繁中字？
+6. **動詞忠於事實**？（選品／整理類沒誤用「打造／建構／設計」）
+7. title 跟 description 的關鍵詞有沒有協調（同主題詞在兩者都出現）？
+8. 有沒有不小心把品牌名寫進 title（跟 fallback 重複）？

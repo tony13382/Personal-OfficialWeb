@@ -23,8 +23,8 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
 ---
 
 <BaseLayout
-  title="分享專欄・亮點研創 LuMakes"
-  description="按用途分類的工具推薦與使用心得"
+  title="分享專欄・AI 工作流、數位生產力、全端開發筆記・亮點研創 LuMakes"
+  description="分享我在 AI 工作流自動化、數位生產力、個人知識管理跟全端開發的工具推薦、方法論跟實戰筆記。按用途分類，把「工具 + 方法」一次帶走。"
   headerType="main"
 >
   <div class="min-h-screen pt-20">
@@ -100,14 +100,14 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
                       {categoryPosts.map((post, index) => (
                         <ArticleCard
                           post={post}
-                          class={index >= 8 ? "hidden" : ""}
+                          class={index >= 6 ? "hidden" : ""}
                           data-card-index={index}
                         />
                       ))}
                     </div>
-                    {categoryPosts.length > 8 && (
+                    {categoryPosts.length > 6 && (
                       <button
-                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-xl transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
+                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-full transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
                         data-expand-btn
                       >
                         顯示更多（共 {categoryPosts.length} 篇）
