@@ -4,7 +4,7 @@ import Icon from "@/components/Icon.astro";
 import { MobileNav } from "@/components/header/MobileNav";
 import { getMainLinks } from "@/components/header/index";
 import { SearchDialog } from "@/components/search/SearchDialog";
-import brandLogoImg from "@/assets/imgs/index/brandLogoImg.svg";
+import brandFlatLogoImg from "@/assets/imgs/index/brandFlatLogoImg.svg?url";
 import brandSignUrl from "@/assets/imgs/index/brand-sign.svg?url";
 import { useTranslations, type Locale } from "@/i18n";
 
@@ -38,21 +38,20 @@ const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
             href={homeHref}
             class="flex items-center gap-3 py-3 text-foreground font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
           >
-            <Image
-              id="headerLogo"
-              src={brandLogoImg}
-              alt="LuMakes Logo"
-              width={40}
-              height={40}
-              loading="eager"
-              class="shrink-0 size-9 ms-2 rounded-full dark:bg-white"
-            />
-            <span
-              role="img"
-              aria-label="LuMakes brand sign"
-              class="block h-8 bg-foreground"
-              style={`width: calc(7 * 968 / 376 * 0.25rem); -webkit-mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain; mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain;`}
-            />
+              <div class="flex items-center justify-end gap-1.5">
+                <span
+                  role="img"
+                  aria-label="LuMakes signature"
+                  class="block h-11 w-auto opacity-75 rounded-full bg-foreground"
+                  style={`width: calc(11 * 100 / 100 * 0.25rem); -webkit-mask: url(${cssUrl(brandFlatLogoImg)}) no-repeat center / contain; mask: url(${cssUrl(brandFlatLogoImg)}) no-repeat center / contain;`}
+                ></span>
+                <span
+                  role="img"
+                  aria-label="LuMakes signature"
+                  class="block h-9 w-auto opacity-75 bg-foreground"
+                  style={`width: calc(9 * 7208 / 3200 * 0.25rem); -webkit-mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain; mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain;`}
+                ></span>
+              </div>
           </a>
         ) : type === "app" ? (
           <div class="flex items-center gap-1">
