@@ -1,0 +1,153 @@
+---
+title: "Managing Personal Finance with Digital Tools: Budgeting, Stocks, and Receipts"
+description: "My three-track personal finance system built with digital productivity tools — dedicated apps and methods for expense tracking, stock market watching, and receipt management"
+date: 2026-03-26
+category: Workflow
+tags: [Finance, Budgeting, Investing]
+cover: /og/articles/finance-tools.png
+seo:
+  ogImage: /og/articles/finance-tools.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import qianji from '@/assets/imgs/articles/finance-tools/qianji.png'
+import moneyManager from '@/assets/imgs/articles/finance-tools/money-manager.png'
+import sinopac from '@/assets/imgs/articles/finance-tools/sinopac.png'
+import fugle from '@/assets/imgs/articles/finance-tools/fugle.png'
+import futu from '@/assets/imgs/articles/finance-tools/futu.png'
+import invoiceGov from '@/assets/imgs/articles/finance-tools/invoice-gov.png'
+import invoicePassbook from '@/assets/imgs/articles/finance-tools/invoice-passbook.png'
+
+When people think about personal finance management, most immediately think "budgeting" — but tracking without reviewing is meaningless no matter how detailed the records are. What actually makes a finance system work is "record + regular review" — reviewing your spending, reviewing market movements, reviewing whether you've collected everything you're entitled to. This post breaks my system into three tracks, each addressing a different type of financial activity that deserves ongoing attention.
+
+The division of labor: **budgeting to understand where things stand, stock watching to absorb market data and inform investment decisions, and receipt management to make everyday purchases and prize redemptions easier (with loyalty cards folded in for good measure)**. I've gone through a fair number of tools and approaches over time — moved from Money Manager to Qianji for budgeting, tried both transaction-by-transaction logging and monthly tracking — but the habit of recording never broke. I was just always looking for the configuration I could sustain long-term. What I landed on is one to two tools per track. Here's the full breakdown.
+
+## Budgeting Methods
+
+I've experimented with different approaches to budgeting. Two have worked well for me.
+
+### Transaction-by-Transaction Logging
+
+The most intuitive method — record every expense and income as it happens. The data is as current as it gets and gives you an exact picture of where every dollar went.
+
+This method suits people who are just building the habit of budgeting. Daily recording builds awareness of money flow.
+
+### Monthly Tracking
+
+This is the approach I adapted from <a href="https://www.youtube.com/playlist?list=PLrZrfGLGySzcQda_-_KT6BKdudDL_Ohzu" target="_blank">the Chai Shu Brothers' budgeting method</a>. Unlike transaction logging, monthly tracking doesn't require recording each individual expense. Instead, you review account balances at the end of each month and work backward to estimate total income and spending for the period.
+
+The appeal is that you don't need to spend time tracking every day — just a fixed window each month to review. Much easier to maintain over the long run. The Chai Shu Brothers also provide a <a href="https://docs.google.com/spreadsheets/d/1Qc2tZdLpNMHQQorLm0Mk5uorvynqGOu1/edit?gid=1953126934#gid=1953126934" target="_blank">spreadsheet template</a> you can use directly.
+
+One important note: this method works best when paired with separate accounts for separate purposes. If investments and daily expenses share the same account, tracing the flow of money becomes unreliable.
+
+### Comparison
+
+| | Transaction Logging | Monthly Tracking |
+|---|---|---|
+| **Granularity** | High — every transaction recorded | Medium — estimated at the monthly level |
+| **Time cost** | High — daily recording required | Low — one review per month |
+| **Real-time visibility** | Immediate | Only visible at month-end |
+| **Sustainability** | Lower — easy to drop when it feels tedious | Higher — easier to maintain long-term |
+| **Best for** | People building a new budgeting habit | People with basic financial awareness who want efficiency |
+| **Watch out for** | Missing entries affect accuracy | Requires separate accounts by purpose |
+
+## Transaction Logging Apps
+
+When choosing a budgeting app, my main requirements were:
+
+- **Flexible account categorization**: I have multiple accounts and need to sort and label them freely.
+- **Multi-device sync**: I use more than one phone and need data accessible across all of them.
+- **Notes per entry**: I want to add a note to each transaction for easy lookup later.
+- **One-time purchase**: I don't want a subscription fee hanging over me.
+
+### Qianji
+
+<Image src={qianji} alt="Qianji" />
+
+My current main budgeting app. It meets all of the above requirements. Account categorization is highly flexible, multi-device sync works well, the input experience is smooth, and it's a one-time purchase. A few extras that I find genuinely useful:
+
+- **Debt tracking**: Record loans and borrowing, track who owes what and what you owe others — no need to set up dummy accounts to handle this.
+- **Reimbursement tracking**: Mark expenses that need to be reimbursed, so you can easily review and reconcile them later.
+- **Custom tag search**: Add your own tags to transactions and filter or search by them later. Makes finding specific types of expenses much easier.
+
+<div class="callout warning">Worth knowing: Qianji is developed by a Chinese developer. The sync function uses the developer's proprietary servers rather than iCloud. The developer states that data is encrypted and stored with strict validation mechanisms on their servers. That said, you're storing financial data on a third-party server, so it's worth evaluating the privacy and security trade-offs yourself before committing.</div>
+
+<span class="pricing-tag paid">Paid, one-time purchase</span>
+<a href="https://qianjiapp.com" target="_blank" class="official-link">Official site</a>
+
+### Money Manager
+
+<Image src={moneyManager} alt="Money Manager" />
+
+I used this app for a long time. It handles account granularity and the input experience well — covers about 80–90% of what I need. The one gap is multi-device sync: there's no way to sync data across multiple phones, which is why I eventually switched to Qianji.
+
+If you're budgeting on a single phone, Money Manager is more than capable.
+
+<span class="pricing-tag paid">Paid, one-time purchase</span>
+<a href="https://www.realbyteapps.com" target="_blank" class="official-link">Official site</a>
+
+## Stock Market Apps
+
+### Sinopac Dawho (永豐大戶投)
+
+<Image src={sinopac} alt="Sinopac Dawho" />
+
+My main brokerage account is with Sinopac, so Dawho is my primary tool for checking prices and placing orders. It integrates account management, real-time quotes, and trading in one place.
+
+Two main reasons I chose Sinopac:
+
+- **Dawho savings account rate**: The DAWHO digital account offers a 1.5% annual rate on savings (up to NT$300,000) — solid for parking idle cash.
+- **Fee discounts**: Taiwan stock electronic trades start at a 20% discount on commission; Dawho Stock regular investment in Taiwan stocks under NT$10,000 is NT$1 per trade; US stock regular investment is 0.03% of the purchase amount or NT$1 — very competitive among sub-brokerage options.
+
+<div class="callout info">Fee and rate promotions change over time. Always check the <a href="https://dawho.tw" target="_blank">Sinopac DAWHO official site</a> for current terms.</div>
+
+<span class="pricing-tag">Free</span>
+<a href="https://apps.apple.com/tw/app/%E6%B0%B8%E8%B1%90%E9%87%91%E8%AD%89%E5%88%B8%E5%A4%A7%E6%88%B6%E6%8A%95-%E6%99%BA%E8%83%BD%E7%B1%8C%E7%A2%BC%E6%AC%8A%E5%A8%81%E5%8D%87%E7%B4%9A/id1551600164" target="_blank" class="official-link">App Store</a>
+<a href="https://play.google.com/store/apps/details?id=com.sinopac.ismartstock&hl=zh_TW" target="_blank" class="official-link">Google Play</a>
+
+### Fugle (富果股市)
+
+<Image src={fugle} alt="Fugle" />
+
+Rich stock data and analysis with a much better-looking interface than most traditional brokerage apps. I mainly use it for research and checking fundamentals on individual stocks — a great supplementary tool.
+
+<span class="pricing-tag freemium">Free, with paid advanced features</span>
+<a href="https://www.fugle.tw" target="_blank" class="official-link">Official site</a>
+
+### Futu (富途)
+
+<Image src={futu} alt="Futu" />
+
+A Hong Kong-listed brokerage platform with a clean, information-dense interface. I mostly use it to follow international market trends — especially US markets — where the pre-market and after-hours data and news integration are well done. Charts are clear and there's plenty of depth, making it easy to follow related sectors, themes, and individual stocks while reading international financial news.
+
+<span class="pricing-tag freemium">Free to browse, account required to trade</span>
+<a href="https://www.futunn.com" target="_blank" class="official-link">Official site</a>
+
+## Receipt Management
+
+### Ministry of Finance Uniform Invoice App (財政部統一發票兌獎)
+
+<Image src={invoiceGov} alt="Ministry of Finance Uniform Invoice App" />
+
+The official invoice app from Taiwan's National Taxation Bureau. It lets you link your carrier barcode, automatically check for winning invoices, and claim prizes. After linking your phone's barcode, you just show the barcode when making purchases — no paper receipts needed. A particularly useful feature is the ability to pre-register a bank account for prize deposits, so if you win, the prize money is transferred to you automatically — no trips to the bank or post office. As the official government tool, accuracy and security are guaranteed.
+
+<span class="pricing-tag">Free</span>
+<a href="https://apps.apple.com/tw/app/%E7%B5%B1%E4%B8%80%E7%99%BC%E7%A5%A8%E5%85%8C%E7%8D%8E/id1445981329" target="_blank" class="official-link">App Store</a>
+<a href="https://play.google.com/store/apps/details?id=tw.gov.invoice&hl=zh_TW" target="_blank" class="official-link">Google Play</a>
+
+### Invoice Passbook (發票存摺)
+
+<Image src={invoicePassbook} alt="Invoice Passbook" />
+
+A third-party invoice management app with a much friendlier interface than the official one. Viewing receipt details and spending stats is more intuitive. It also supports carrier barcode linking and automatic prize checking — and the overall user experience is noticeably more comfortable.
+
+One thing worth highlighting: it includes a loyalty card manager. You can import QR codes for all your membership cards, so a single app handles all your loyalty cards at checkout. No more hunting through different apps.
+
+<span class="pricing-tag freemium">Free, with paid advanced features</span>
+<a href="https://invoice.tw/news/" target="_blank" class="official-link">Official site</a>
+
+## Wrapping Up
+
+Budgeting, stock watching, and receipt management are three independent information streams, each serving a different financial purpose — understanding money flow, absorbing market data to support decisions, and making everyday purchases and prize claims more convenient (with loyalty cards folded in as well). Each track gets one to two tools, keeping the mental overhead reserved for actual decisions rather than comparing apps.

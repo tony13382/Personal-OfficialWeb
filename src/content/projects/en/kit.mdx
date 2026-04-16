@@ -1,0 +1,316 @@
+---
+title: Kit - Bookmark Management Tool
+description: A modern bookmark management system based on React Router v7 + Cloudflare, supporting multi-level folders, tag classification, and drag-and-drop sorting
+subdescription: "Role: Full-Stack Developer<br>Responsibilities: Software architecture design, database design, frontend and backend development, deployment"
+startDate: 2024-06-01
+status: active
+theme: orange
+cover: imgs/projects/kit/cover.png
+pin: true
+skillTypes: [dev, design]
+tags: [Full-Stack Development, Database Design, Serverless, Cloudflare]
+links:
+  - content: Project Introduction
+    href: https://kit.lumakes.com/intro
+    icon: LinkIcon
+    openInTab: true
+  - content: GitHub Project
+    href: https://github.com/tony13382/Personal-BookmarksRemix
+    icon: GithubLogoIcon
+    openInTab: true
+  - content: Knowledge Source
+    href: https://go.lumakes.com/learn
+    icon: GraduationCap
+    openInTab: true
+tools:
+  - name: Remix (React Router v7)
+    description: Full-stack React framework handling SSR and API routes
+  - name: Cloudflare Pages
+    description: Serverless deployment platform with edge computing and zero cold starts
+  - name: Cloudflare D1
+    description: Serverless SQLite database
+  - name: Drizzle ORM
+    description: Type-safe database operations and migration management
+  - name: shadcn/ui
+    description: High-quality component library based on Radix UI
+  - name: Tailwind CSS
+    description: Utility-first CSS framework
+  - name: dnd-kit
+    description: Drag-and-drop sorting implementation
+seo:
+  metaDescription: A modern bookmark management system based on React Router v7 + Cloudflare, supporting multi-level folders, tag classification, and drag-and-drop sorting
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import kitDualMode from '@/assets/imgs/projects/kit/dual-mode.png'
+import kitDragSort from '@/assets/imgs/projects/kit/drag-sort.png'
+import kitSearch from '@/assets/imgs/projects/kit/search.png'
+import kitShare from '@/assets/imgs/projects/kit/share.png'
+import kitCache from '@/assets/imgs/projects/kit/cache.png'
+import kitDb from '@/assets/imgs/projects/kit/db.png'
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Overview
+    Kit is a `self-hosted bookmark management tool` designed to solve the pain of disorganized browser bookmarks. Through a three-tier architecture of Workspace, Tab, and Folder combined with a tag system, it lets users organize large numbers of web resources intuitively.
+
+    The full-stack application is deployed on `Cloudflare Pages` with a `D1 Serverless SQLite` database, achieving zero server maintenance costs and fast global edge-computing access.
+  </CardContent>
+</Card>
+
+<Card className="p-0 overflow-hidden">
+  <CardTitle>Core Features</CardTitle>
+  <CardContent className="gap-4 p-0">
+    <UiImageCarousel
+      images={[
+        {
+          title: "Dual-Mode Classification System",
+          image: kitDualMode,
+          desc: "Each Tab can choose between Folder Mode or Tag Mode. Folder Mode provides a traditional tree structure; Tag Mode supports Tag Groups with AND / OR / SINGLE filter logic."
+        },
+        {
+          title: "Drag-and-Drop Sorting",
+          image: kitDragSort,
+          desc: "Built on @dnd-kit to enable drag-and-drop sorting for Tabs, Folders, Bookmarks, and Tag Groups. Uses floating-point sort_order values to avoid frequent re-ordering, keeping interactions smooth and responsive."
+        },
+        {
+          title: "Cross-Workspace Full-Text Search",
+          image: kitSearch,
+          desc: "Built-in Cmd/Ctrl + K quick search enables multi-field full-text search across all Tabs in the current Workspace, supporting multi-keyword AND logic, highlighted matches, and keyboard navigation."
+        },
+        {
+          title: "Bookmark Sharing",
+          image: kitShare,
+          desc: "Generate a Share Token to create a read-only public link, with support for custom short links and additional button configurations, making it easy to share organized bookmarks with others."
+        },
+        {
+          title: "Smart Cache Acceleration",
+          image: kitCache,
+          desc: "A hash-based cache mechanism designed for public share pages uses a lightweight probe to verify the data version. On a cache hit, it skips 7+ database queries, significantly reducing the load from repeated visits."
+        }
+      ]}
+      autoplaySpeed={5000}
+      allowPop={true}
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>Technical Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p><strong>Frontend</strong></p>
+        <p>`Remix (React Router v7)` serves as the core framework, paired with the `shadcn/ui` component library and `Tailwind CSS` to build a modern interface. `Phosphor Icons` handles the icon system and `@dnd-kit` manages drag-and-drop interactions.</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Backend</strong></p>
+        <p>Runs on `Cloudflare Workers` edge computing environment, using `Cloudflare D1 (SQLite)` as the database and `Drizzle ORM` for type-safe data operations and migration management.</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Authentication</strong></p>
+        <p>Custom-built JWT authentication (jose), with passwords hashed using `PBKDF2-SHA256` (100,000 iterations), Cookie-based session management, and support for a registration allowlist.</p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+export const dbItems = [
+  {
+    value: "core-tables",
+    trigger: "Core Tables: users / workspaces / tabs",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Columns</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">users</td>
+                <td class="border-y px-4 py-2">User accounts</td>
+                <td class="border-y px-4 py-2">id, email, password_hash</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">workspaces</td>
+                <td class="border-y px-4 py-2">Workspaces (each user can create multiple)</td>
+                <td class="border-y px-4 py-2">id, user_id, title, sort_order</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">tabs</td>
+                <td class="border-y px-4 py-2">Tabs (supports folders / tags modes)</td>
+                <td class="border-y px-4 py-2">id, workspace_id, title, type</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "content-tables",
+    trigger: "Content Tables: folders / bookmarks",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Columns</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">folders</td>
+                <td class="border-y px-4 py-2">Folders (self-referencing parent_id supports infinite nesting)</td>
+                <td class="border-y px-4 py-2">id, tab_id, parent_id, title, is_collapsed</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">bookmarks</td>
+                <td class="border-y px-4 py-2">Bookmark entries</td>
+                <td class="border-y px-4 py-2">id, folder_id, tab_id, title, url, favicon_url, memo</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "tag-tables",
+    trigger: "Tag System: tag_groups / tags / bookmark_tags",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Columns</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">tag_groups</td>
+                <td class="border-y px-4 py-2">Tag groups (supports and/or/single filter modes)</td>
+                <td class="border-y px-4 py-2">id, tab_id, title, color, filter_mode</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">tags</td>
+                <td class="border-y px-4 py-2">Individual tags</td>
+                <td class="border-y px-4 py-2">id, tag_group_id, title</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">bookmark_tags</td>
+                <td class="border-y px-4 py-2">Many-to-many association between bookmarks and tags</td>
+                <td class="border-y px-4 py-2">bookmark_id, tag_id</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "share-table",
+    trigger: "Share System: shares",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Columns</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">shares</td>
+                <td class="border-y px-4 py-2">Bookmark share links (Token-based read-only access)</td>
+                <td class="border-y px-4 py-2">id, workspace_id, share_token, short_link, extra_btn_title</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+        src={kitDb}
+        allowPop={true}
+        client:load
+      />
+  </CardHeader>
+  <CardTitle>Database Design</CardTitle>
+  <CardContent className="gap-3 pt-4">
+    <p>Uses `Cloudflare D1 (SQLite)` with `Drizzle ORM`, covering users, workspaces, bookmark content, the tag system, and the sharing mechanism.</p>
+    <AccordionBlock
+      items={dbItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>API Design</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>RESTful-style API endpoints built on Remix Action Handlers, passing parameters via FormData:</p>
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p><strong>Bookmark Management</strong> <code>api.bookmarks</code></p>
+        <p>Supports CRUD, cross-folder moves, and batch sort-order updates</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Folder Management</strong> <code>api.folders</code></p>
+        <p>Supports CRUD, nested sub-folders, and collapsed-state toggling</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Tag System</strong> <code>api.tags</code> / <code>api.tag-groups</code> / <code>api.bookmark-tags</code></p>
+        <p>Tag group management, tag CRUD, and bookmark-tag association operations</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Workspaces and Tabs</strong> <code>api.workspaces</code> / <code>api.tabs</code></p>
+        <p>Multi-workspace switching and tab mode management (folders / tags)</p>
+      </div>
+      <div className="space-y-1.5">
+        <p><strong>Share System</strong> <code>api.shares</code></p>
+        <p>Generate read-only share links, custom short links, and additional buttons</p>
+      </div>
+    </div>
+  </CardContent>
+</Card>

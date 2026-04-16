@@ -1,0 +1,56 @@
+---
+title: Project Document Management System
+description: "[ Commissioned by Taoyuan City Government Transportation Bureau ] A document tagging and management system to improve overall operational efficiency through a web-based interface"
+startDate: 2025-03-01
+endDate: 2025-05-16
+status: switch
+theme: red
+cover: imgs/projects/tycgFileTaggerWeb/cover.png
+pin: false
+skillTypes: [dev]
+tags: [Full-Stack Development, Jinja2]
+tools:
+  - name: PostgreSQL
+    description: Lightweight database (managed with alembic)
+  - name: Fastapi + Jinja2
+    description: Full-stack web service / web template service
+  - name: Bootstrap
+    description: Frontend CSS framework
+  - name: Docker Compose
+    description: Deployment tool
+---
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import tycgFileTaggerDb from '@/assets/imgs/projects/tycgFileTaggerWeb/db.png'
+import tycgFileTaggerCrudFile from '@/assets/imgs/projects/tycgFileTaggerWeb/crudFile.png'
+
+
+
+<Card>
+  <CardTitle>
+  DB
+  </CardTitle>
+  <CardContent className='gap-4'>
+    <ImageWithLightbox src={tycgFileTaggerDb} allowPop={true} client:load />
+    <div className='grid gap-2'>
+      The database uses a dual-table architecture with a one-to-many relationship between `Project` and `Document`.
+      
+      The `Project` table stores basic project information, including project name, contact phone number, and application address;
+      
+      The `Document` table records detailed document data such as document name, issuing agency, file path, review status, and upload time.
+      
+      The two tables are linked via the `project_id` foreign key, enabling hierarchical management of projects and documents while keeping the data structure clear and easy to track.
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+  File Processing Workflow
+  </CardTitle>
+  <CardContent className='gap-4'>
+    <ImageWithLightbox src={tycgFileTaggerCrudFile} allowPop={true} client:load />
+  </CardContent>
+</Card>

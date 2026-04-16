@@ -1,0 +1,265 @@
+---
+title: Jujiang AI English Speaking Practice Platform
+description: An English speaking practice system combining AI conversation and speech recognition, providing real-time pronunciation assessment, learning analytics reports, and multi-level interactive exercises
+subdescription: "Role: Full-Stack Developer<br>Responsibilities: Software architecture design, database design, frontend and backend development, deployment"
+startDate: 2024-07-01
+status: switch
+theme: purple
+cover: imgs/projects/soeasyeduSpeak/cover.png
+pin: true
+skillTypes: [dev]
+tags: [Full-Stack Development, Database Design, AI Applications, Speech Recognition]
+tools:
+  - name: React 19
+    description: Frontend framework with Vite for building modern SPA interfaces
+  - name: FastAPI
+    description: Python async API framework handling backend business logic
+  - name: PostgreSQL
+    description: Relational database storing user and learning records
+  - name: SQLAlchemy 2.0
+    description: Fully async ORM with Alembic for database migration management
+  - name: OpenAI API
+    description: GPT-powered AI conversation engine and pronunciation assessment
+  - name: Azure Speech Services
+    description: Speech-to-text (STT) and pronunciation analysis
+  - name: Docker
+    description: Containerized deployment supporting multiple environment configurations
+  - name: Tailwind CSS
+    description: Utility-first CSS framework
+seo:
+  metaDescription: An English speaking practice system combining AI conversation and speech recognition, providing real-time pronunciation assessment, learning analytics reports, and multi-level interactive exercises
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { IconBlock } from '@/components/react/IconBlock'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Overview
+    SoEasyEdu Speak is an `AI-driven English speaking practice platform` that lets users practice their English speaking skills through real-time AI conversation. The system integrates `OpenAI GPT` for intelligent dialogue and content evaluation, `Azure Speech Services` for speech recognition and pronunciation analysis, and provides detailed learning score reports.
+
+    The backend uses a fully async `FastAPI` architecture with a `PostgreSQL` database. The frontend is built with `React 19 + Vite`, deployed in containerized multi-environment configurations via `Docker Compose`.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Core Features</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**AI Real-Time Conversation Practice**</p>
+        A conversation engine powered by OpenAI GPT, supporting two modes — "scenario-based" and "assessment test" — with difficulty dynamically adjusted to the learner's level.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Speech Recognition and Pronunciation Assessment**</p>
+        Integrates Azure Speech Services for real-time speech-to-text, with AI analyzing pronunciation accuracy and providing detailed feedback rated on a 50-60-80-100 scale.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Multi-Level Learning System**</p>
+        Supports multiple learning levels, each containing a structured conversation flow (ChatFlow) driven by JSON configuration to manage learning progress and Q&A content.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Learning Analytics Reports**</p>
+        Fully records scores, pronunciation feedback, and improvement trends for each session, providing learners and administrators with data-driven learning outcome analysis.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Admin Dashboard**</p>
+        Administrators can manage learning records, create and edit learning levels, view assessment group data, and monitor system status through the admin panel.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Technical Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Frontend**</p>
+        Built on `React 19` with `Vite`, using `React Router v7` for routing, `Tailwind CSS` for a custom-themed interface (purple primary + orange accent), and `Axios` for API communication.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Backend**</p>
+        Uses the fully async `FastAPI` framework with `SQLAlchemy 2.0` and the `asyncpg` driver for async database operations, `Alembic` for migration management, and `Poetry` for Python dependency management.
+      </div>
+      <div className="space-y-1.5">
+        <p>**AI and Speech Services**</p>
+        Conversation engine and content evaluation use `OpenAI API` (GPT + TTS). Speech recognition integrates `Azure Cognitive Services Speech SDK`. Audio processing uses `SoundFile` and `PyDub` for format conversion.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Authentication and Security**</p>
+        JWT token authentication with bcrypt password hashing, supporting a dual-role system for administrators and regular users.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Deployment**</p>
+        Docker Compose multi-environment deployment (Local / Dev / Prod) with Nginx reverse proxy, PostgreSQL database container, and PgWeb management interface.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+export const dbItems = [
+  {
+    value: "core-tables",
+    trigger: "Core Tables: users / managers",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Fields</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">users</td>
+                <td class="border-y px-4 py-2">Learner accounts (UUID-identified)</td>
+                <td class="border-y px-4 py-2">id, name, email</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">managers</td>
+                <td class="border-y px-4 py-2">Administrator accounts (password stored as hash)</td>
+                <td class="border-y px-4 py-2">id, username, password_hash</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "learning-tables",
+    trigger: "Learning Tables: records / messages",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Fields</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">records</td>
+                <td class="border-y px-4 py-2">Learning records (state-machine driven: created → chatting → finished → processing → graded)</td>
+                <td class="border-y px-4 py-2">id, user_id, chat_level_id, state, score</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">messages</td>
+                <td class="border-y px-4 py-2">Conversation messages (including audio file path and AI feedback)</td>
+                <td class="border-y px-4 py-2">id, record_id, role, content, feedback, score, audio_path</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "level-tables",
+    trigger: "Learning Levels: chat_levels / used_tokens",
+    contentClassName:"p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+                <th class="border-y text-left font-bold px-4 py-2">Key Fields</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">chat_levels</td>
+                <td class="border-y px-4 py-2">Learning levels (JSON ChatFlow config drives conversation flow)</td>
+                <td class="border-y px-4 py-2">id, title, type, chatflow, is_active</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">used_tokens</td>
+                <td class="border-y px-4 py-2">Token usage tracking (quota management)</td>
+                <td class="border-y px-4 py-2">id, user_id, token_count, created_at</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardTitle>Database Design</CardTitle>
+  <CardContent className="gap-3 pt-4">
+    <p>Uses **PostgreSQL** with **SQLAlchemy 2.0 (async)**, managing learning record lifecycles through a state-machine pattern — from creation, conversation, and completion through to scoring — fully tracking every learning session.</p>
+    <AccordionBlock
+      items={dbItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>API Design</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>RESTful API designed with FastAPI, fully async to support real-time voice conversation scenarios:</p>
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p>**Conversation and Voice** `/api/records`</p>
+        Create learning records, send voice messages, receive AI replies, speech-to-text processing
+      </div>
+      <div className="space-y-1.5">
+        <p>**Learning Levels** `/api/chat-levels`</p>
+        Level CRUD, ChatFlow JSON configuration management, batch import (Excel to API)
+      </div>
+      <div className="space-y-1.5">
+        <p>**Evaluation System** `/api/evaluate`</p>
+        AI pronunciation assessment, content accuracy analysis, tiered feedback generation
+      </div>
+      <div className="space-y-1.5">
+        <p>**User Management** `/api/users` / `/api/managers`</p>
+        Learner and administrator account management, JWT authentication, token quota tracking
+      </div>
+      <div className="space-y-1.5">
+        <p>**Utility Services** `/api/tools`</p>
+        Audio format conversion, TTS speech synthesis, system health check
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Deployment Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Multi-Environment Docker Compose Configuration**</p>
+        Supports three deployment environments — Local (direct connection), Development (Nginx + Hot Reload), and Production (Nginx reverse proxy + optimized build) — all including a PostgreSQL database container and PgWeb database management interface.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Service Components**</p>
+        Frontend (React SPA), Backend (FastAPI + Uvicorn), PostgreSQL 15, Nginx reverse proxy, PgWeb database management, shared audio file volume.
+      </div>
+    </div>
+  </CardContent>
+</Card>

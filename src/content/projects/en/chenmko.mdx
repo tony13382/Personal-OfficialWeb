@@ -1,0 +1,245 @@
+---
+title: Chenmko Full-Stack Web Development
+description: A corporate commission project for Chenmko. Based on client-provided designs and requirements, delivered a complete official website and backend management system.
+startDate: 2023-03-01
+endDate: 2023-06-30
+status: switch
+theme: blue
+cover: imgs/projects/chenmko/cover.png
+pin: false
+skillTypes: [dev]
+tags: [Website Development, Database Design, Frontend Development, Backend Development]
+links:
+  - content: Project Frontend Demo
+    href: https://tony13382.github.io/Chenmko-FrontEnd/pages/home.html
+    icon: Sidebar
+    openInTab: true
+tools:
+  - name: Bootstrap
+    description: RWD layout and frontend interface development
+  - name: php
+    description: Backend development (no framework)
+  - name: PostgreSQL
+    description: Database design and management
+  - name: ckeditor
+    description: Content editing tool
+seo:
+  metaDescription: A corporate commission project for Chenmko. Based on client-provided designs and requirements, delivered a complete official website and backend management system.
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import chenmkoCover from '@/assets/imgs/projects/chenmko/cover.png'
+import chenmkoBannerManage2 from '@/assets/imgs/projects/chenmko/banner_manage_2.webp'
+import chenmkoBannerManage1 from '@/assets/imgs/projects/chenmko/banner_manage_1.webp'
+import chenmkoCompManage from '@/assets/imgs/projects/chenmko/comp_manage.webp'
+import chenmkoCompHistory from '@/assets/imgs/projects/chenmko/comp_history.webp'
+import chenmkoTableCols from '@/assets/imgs/projects/chenmko/table_cols.webp'
+import chenmkoProductsEdit1 from '@/assets/imgs/projects/chenmko/products_edit_1.webp'
+import chenmkoProductsEdit2 from '@/assets/imgs/projects/chenmko/products_edit_2.webp'
+import chenmkoDbErModel from '@/assets/imgs/projects/chenmko/db_ErModel.png'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={chenmkoCover}
+      allowPop={false}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <p>Built an official website and backend management system based on the client's design files and product requirements.</p>
+
+    <ul className="list-disc space-y-2 mt-4 ps-4">
+      <li>The frontend uses Bootstrap to build a responsive (RWD) website, ensuring the site displays correctly across different devices.</li>
+      <li>The backend is built in PHP to facilitate future system handover as required by the client.</li>
+      <li>Website content is available in English, Japanese, and Traditional Chinese to ensure the company's target audience can understand the content.</li>
+    </ul>
+
+    <p className="mt-4">
+      Overall, the project goal was to build an efficient, easy-to-use official website and backend management system that showcases company information and allows straightforward product and content management.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Backend - Banner Image Management</CardTitle>
+  <CardHeader>
+    <UiImageCarousel
+      images={[
+        chenmkoBannerManage2,
+        chenmkoBannerManage1,
+      ]}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    This tool provides a simple interface for browsing carousel images and performing additions or deletions directly. You can upload new carousel images or delete unwanted ones at any time, keeping the site's carousel content fresh and appropriate.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Backend - Company Information Management</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src={chenmkoCompManage}
+      allowPop={true}
+      client:load
+    />
+
+    <p className="mt-4">
+      Provides functionality for managing company-related information such as basic company details and contact information. Through this system, businesses can conveniently manage their own information while also providing more details to customers and potential clients.
+    </p>
+
+    <p className="mt-3">
+      In addition to basic company information management, this solution also integrates Bootstrap Switches, allowing businesses to intuitively toggle whether relevant information is displayed on the Contact Us page and in the footer. This custom display toggle provides more flexibility, giving businesses better control over how their information is presented.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Backend - Company History Management</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src={chenmkoCompHistory}
+      allowPop={true}
+      client:load
+    />
+
+    <p className="mt-4">
+      Having an easy-to-use yet powerful editing interface is essential for content managers. To meet this need, ckeditor was chosen as the solution.
+    </p>
+
+    <p className="mt-3">
+      With ckeditor, content managers can easily create, edit, and format website content without requiring any programming skills. Its clean and intuitive interface makes it straightforward to use, even for beginners who can get up to speed quickly.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Backend - Category Table Column Management</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src={chenmkoTableCols}
+      allowPop={true}
+      client:load
+    />
+
+    <p className="mt-4">
+      The system uses toggle switches so administrators can easily customize which product columns are displayed, making product presentation more flexible and effective. Because different product categories may require different columns, this design lets you intuitively enable or disable columns to ensure only relevant attributes are shown.
+    </p>
+
+    <p className="mt-3">
+      This design only shows the columns you need, making product listings more focused, intuitive, and easier for customers to understand.
+    </p>
+
+    <p className="mt-3">
+      With this design, you can quickly switch between column configurations for different product categories. The toggle feature automatically hides columns that are not needed, ensuring you only see columns relevant to your current product category.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Backend - Product Management</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src={chenmkoProductsEdit1}
+      allowPop={true}
+      client:load
+    />
+
+    <p className="mt-4">
+      To help content managers edit category products and fields more quickly and conveniently, a quick-switch panel is provided on the side, allowing managers to easily navigate between different content areas. This tool saves time and improves workflow efficiency.
+    </p>
+
+    <p className="mt-3">
+      With this tool, content managers can edit products and fields without spending excessive time on repetitive navigation.
+    </p>
+
+    <ImageWithLightbox
+      src={chenmkoProductsEdit2}
+      allowPop={true}
+      client:load
+    />
+
+    <p className="mt-4">
+      Displayed fields are dynamically adjusted based on the product's category, so content managers are not distracted by fields that are not relevant to the current category when filling in content.
+    </p>
+
+    <p className="mt-3">
+      This content management system is designed to make it easier for content managers to fill in information. By hiding field options that are disabled for the current category, managers can stay more focused on the content itself.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader className="p-3">
+    <ImageWithLightbox
+      src={chenmkoDbErModel}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent>
+    <h2>Data Architecture Design (ER Model)</h2>
+
+    <div className="space-y-6 mt-4">
+      <div>
+        <p className="font-bold mb-3">Relational Table Design Rationale:</p>
+        <div className="space-y-3">
+          <p>
+            During development, a core challenge arose: different product categories require different fields for description, and the number and content of those fields vary, making it impossible to capture everything in a single product table. To solve this, a new design approach was adopted.
+          </p>
+          <p>
+            Three tables were designed: `cols_html`, `products`, and `category`.<br />
+            `cols_html` stores column/field data, `products` stores product data, and `category` stores product category data.
+          </p>
+          <p>
+            In addition, two relational tables were designed: `products_col_link` and `cols_congfigs`.<br />
+            `products_col_link` links products to their fields, and
+            `cols_congfigs` defines which fields need to be enabled for each category.
+          </p>
+          <p>
+            When a user queries products in a given category, the system retrieves product and field data based on the category. It then dynamically generates SQL statements to query the required fields. Finally, the system renders the query results on the frontend page.
+          </p>
+          <p>
+            Through this design approach, the challenge of describing product fields across different categories was successfully resolved. This approach not only improves system scalability and maintainability, but also handles complex query requirements effectively. In practice, this design can be further extended to meet even more complex needs.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p className="font-bold mb-3">Requirements:</p>
+        <ul className="list-disc space-y-2 ps-5">
+          <li>Each category has different table columns</li>
+          <li>Each category maps to multiple products</li>
+          <li>Up to 50 products per page (pagination required)</li>
+          <li>All products can be sorted by any field</li>
+          <li>Field data is a mix of numbers and text (numeric sorting required)</li>
+          <li>Cross-category data retrieval</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold mb-3">Implementation:</p>
+        <ul className="list-disc space-y-2 ps-5">
+          <li>Three tables designed to store fields `cols_html`, products `products`, and categories `category`</li>
+          <li>`products_col_link` designed to store field data; `cols_congfigs` to define which fields each category requires</li>
+          <li>Retrieve products and fields by category, dynamically generate SQL, then aggregate into a single product table using INNER JOIN / GROUP (aggregation) and SUBSTRING / ORDER (sorting)</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold mb-3">Standalone Tables:</p>
+        <ul className="list-disc space-y-2 ps-5">
+          <li>company: Company information records</li>
+          <li>banner: Homepage banner image management</li>
+          <li>backend_psw_config: Encrypted backend password verification</li>
+          <li>company_history: Company history information management</li>
+        </ul>
+      </div>
+    </div>
+  </CardContent>
+</Card>

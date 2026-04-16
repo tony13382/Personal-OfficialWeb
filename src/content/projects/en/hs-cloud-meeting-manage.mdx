@@ -1,0 +1,191 @@
+---
+title: Huaxin Cloud Meeting Management System
+description: "[ Industry-Academia Collaboration ] An end-to-end solution for online meetings and meeting management. In addition to basic web notifications, it integrates with email systems to ensure users never miss a message."
+subdescription: "Role: CTO, Product Designer<br>Responsibilities: Software architecture design, product interface design, software development, technical lead"
+startDate: 2020-09-01
+endDate: 2021-01-31
+status: switch
+theme: purple
+cover: imgs/projects/hsCloudMeetingManage/cover.png
+pin: false
+skillTypes: [dev, design]
+tags: [Interface Design, Product Planning, Full-Stack Development]
+links:
+  - content: Figma Design File
+    href: https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94
+    icon: FigmaLogoIcon
+    openInTab: true
+  - content: GitHub Code
+    href: https://github.com/tony13382/CycuSA-MeetManagement
+    icon: GithubLogoIcon
+    openInTab: true
+tools:
+  - name: Figma
+    description: UI design and product prototype design
+  - name: Node.js
+    description: Backend data processing and email sending server
+  - name: mongoDB
+    description: NoSQL database design and integration
+  - name: Jitsi Meet
+    description: Online meeting backend system
+  - name: Bootstrap V4.3
+    description: Frontend component library
+  - name: handlebars
+    description: Frontend template management library
+seo:
+  metaDescription: "[ Industry-Academia Collaboration ] An end-to-end solution for online meetings and meeting management. In addition to basic web notifications, it integrates with email systems to ensure users never miss a message."
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+import hsCloudMeetingManageAd from '@/assets/imgs/projects/hsCloudMeetingManage/ad.png'
+import hsCloudMeetingManageErModel from '@/assets/imgs/projects/hsCloudMeetingManage/ER-Model.png'
+import hsCloudMeetingManageDfdL0 from '@/assets/imgs/projects/hsCloudMeetingManage/dfdL0.png'
+import hsCloudMeetingManageDfdL1 from '@/assets/imgs/projects/hsCloudMeetingManage/dfdL1.png'
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={hsCloudMeetingManageAd}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+</Card>
+
+
+<Card>
+  <CardTitle className='pb-4'>ER Model</CardTitle>
+  <CardContent className='bg-[#FBFBFB]'>
+    <ImageWithLightbox
+      src={hsCloudMeetingManageErModel}
+      allowPop={true}
+      client:load
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>System Design Highlights</CardTitle>
+  <CardContent className='gap-3'>
+    ---
+
+    ### Three-Tier Architecture
+    Uses `MVC layered design` to fully separate routing, business logic, and data access, improving code maintainability and testability.
+    
+    ---
+
+    ### Dual-Track Parallel Approval Flow
+    After a meeting is created, two independent review processes are launched simultaneously:
+    - Host review
+    - Meeting room administrator review
+    
+    Both run in parallel without blocking each other — once both pass, the system automatically proceeds to the next stage. This design speeds up approvals while ensuring a double-confirmation mechanism.
+
+    ---
+    ### State Machine-Driven
+    Status codes manage approval progress and attendance modes. State changes automatically trigger corresponding business actions (such as sending notifications, granting edit permissions), ensuring process consistency and traceability.
+
+    ---
+    ### Event-Driven Notifications
+    The system automatically sends email notifications at `key checkpoints`:
+    - Meeting created → notify reviewers
+    - Review approved → send iCalendar invite
+    - Review rejected → notify applicant to revise
+    - Meeting minutes uploaded → notify relevant participants
+
+    ---
+    ### Multi-Role Views
+    The same meeting data is `presented with different interfaces based on user role`:
+    - Participants see meetings they are attending
+    - Hosts see meetings they are leading
+    - Creators can edit meetings they created
+    - Reviewers see their pending approval queue
+
+    ---
+    ### Automatic Cost Calculation
+    The system automatically calculates and records the labor cost and venue cost for each meeting based on the number of attendees and the meeting room unit price.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Feature Modules</CardTitle>
+  <CardContent className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+    <IconBlock
+      title="Meeting Workflow Management"
+      icon="TreeStructureIcon"
+      client:visible
+    />
+    <IconBlock
+      title="Meeting Room Resource Management"
+      icon="ChalkboardTeacherIcon"
+      iconClassName='mt-0.5'
+      client:visible
+    />
+    <IconBlock
+      title="Dual-Track Approval Flow"
+      icon="SignatureIcon"
+      client:visible
+    />
+    <IconBlock
+      title="Attendee Management"
+      icon="AddressBookTabsIcon"
+      client:visible
+    />
+    <IconBlock
+      title="Meeting Minutes Upload and Download"
+      icon="FileTextIcon"
+      client:visible
+    />
+    <IconBlock
+      title="Notification Center and Read Tracking"
+      icon="BellRingingIcon"
+      client:visible
+    />
+    <IconBlock
+      title="Automated Email Notifications and Calendar Invites"
+      subtitle='Nodemailer'
+      icon="EnvelopeOpenIcon"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>DFD Design</CardTitle>
+  <CardContent>
+    <div className="space-y-4 mt-4">
+      <ImageWithLightbox
+        src={hsCloudMeetingManageDfdL0}
+        allowPop={true}
+        client:load
+      />
+
+      <hr className="my-4" />
+
+      <ImageWithLightbox
+        src={hsCloudMeetingManageDfdL1}
+        allowPop={true}
+        client:load
+      />
+    </div>
+
+    <div className="flex flex-col gap-4 mt-6">
+      <IconBlock
+        title="System Specification Document"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/1svdIQLUVO5-AF-cirV8XNvexPLyFgCc0/view"
+        icon="FileTextIcon"
+        client:visible
+      />
+      <IconBlock
+        title="Figma Design File"
+        subtitle="Figma"
+        href="https://www.figma.com/design/TFvrAIjw0xeTr0HIvw942d/-2020-SA-%E8%B3%87%E7%AE%A1%E4%B8%89%E4%B9%99_%E7%AC%AC%E5%85%AD%E7%B5%84_%E8%8F%AF%E6%96%B0%E9%9B%B2%E6%9C%83%E8%AD%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E6%AA%94"
+        icon="FigmaLogoIcon"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>

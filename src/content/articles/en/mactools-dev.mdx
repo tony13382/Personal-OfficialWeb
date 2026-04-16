@@ -1,0 +1,306 @@
+---
+title: "Full-Stack Dev on Mac: Editors, Terminals, Containers, and Design Tools"
+description: A roundup of the editors, terminals, container managers, and design tools I use for full-stack development on Mac
+date: 2026-03-24
+category: Tool Roundups
+tags: [Software, Mac, Development]
+cover: /og/articles/mactools-dev.png
+seo:
+  ogImage: /og/articles/mactools-dev.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import zed from '@/assets/imgs/articles/mactools-dev/zed.png'
+import vscode from '@/assets/imgs/articles/mactools-dev/vscode.png'
+import antigravity from '@/assets/imgs/articles/mactools-dev/antigravity.png'
+import claudeCode from '@/assets/imgs/articles/mactools-dev/claude-code.png'
+import codex from '@/assets/imgs/articles/mactools-dev/codex.png'
+import tabby from '@/assets/imgs/articles/mactools-dev/tabby.png'
+import ghostty from '@/assets/imgs/articles/mactools-dev/ghostty.png'
+import iterm2 from '@/assets/imgs/articles/mactools-dev/iterm2.png'
+import fork from '@/assets/imgs/articles/mactools-dev/fork.png'
+import orbstack from '@/assets/imgs/articles/mactools-dev/orbstack.png'
+import postman from '@/assets/imgs/articles/mactools-dev/postman.png'
+import figma from '@/assets/imgs/articles/mactools-dev/figma.png'
+import pencil from '@/assets/imgs/articles/mactools-dev/pencil.png'
+import drawio from '@/assets/imgs/articles/mactools-dev/drawio.png'
+import codexbar from '@/assets/imgs/articles/mactools-dev/codexbar.png'
+
+This is a roundup of the tools I use for development work on Mac. My general dev workflow looks like this: VS Code as my primary editor paired with Claude Code for actual coding, Zed for quickly browsing code, Ghostty as my terminal alongside Claude Code, Fork for visual Git management, and OrbStack replacing Docker Desktop for containerization.
+
+## Editors and IDEs
+
+### Zed
+
+<Image src={zed} alt="Zed" />
+
+The editor I reach for when I need to quickly browse through code. It's written in Rust, so it starts up incredibly fast — a full project opens in a couple of seconds. Since VS Code can get noticeably slower to launch once you've installed a bunch of plugins, I'll open Zed first for a quick look, then switch to VS Code when I need to do more detailed editing or debugging.
+
+<span class="pricing-tag">Free</span>
+<a href="https://zed.dev" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask zed
+```
+
+### VS Code
+
+<Image src={vscode} alt="VS Code" />
+
+My main code editor — most of my development work happens here. The biggest advantage is its plugin ecosystem, which is incredibly rich. Whether it's Python or frontend work, you can always find great packages for whatever you need. When I need to dig deep into code and use a full suite of tools, VS Code is still my first choice.
+
+<span class="pricing-tag">Free</span>
+<a href="https://code.visualstudio.com" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/vscode-extensions" class="official-link">Further Reading: VS Code Extension Recommendations</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask visual-studio-code
+```
+
+## AI Dev Tools
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" />
+
+The AI tool I rely on most heavily for development right now. I mainly use the Opus model. In terms of the balance between speed and output quality, it's the model that personally feels the most comfortable to work with.
+
+#### How I Use It
+
+Basically, I open it through VS Code or the terminal and work inside a specific project directory. Daily coding, refactoring, and debugging can all be done directly within it.
+
+#### Review Workflow
+
+When I need to do a code review, I clear its memory so it approaches the codebase fresh. This avoids having previous conversation context influence its judgment — the review results end up being much more objective that way.
+
+<span class="pricing-tag freemium">Subscription or pay-as-you-go</span>
+<a href="https://claude.ai/code" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/claude-code-setup" class="official-link">Further Reading: My Claude Code Setup Notes</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Codex
+
+<Image src={codex} alt="Codex" />
+
+OpenAI's AI dev tool. I mainly use it for code review.
+
+#### Review Workflow
+
+My flow is: after Claude Code finishes development, I have Codex look at all the changes on the branch. I bump its reasoning mode up to the highest level, have it read through the entire diff carefully, and then produce a review report on the code.
+
+I then feed that report back to Claude Code for fixes, going back and forth until Codex's review comes back clean. It's essentially using two different AIs to cross-check each other — the code quality ends up being noticeably better than relying on a single model.
+
+<span class="pricing-tag freemium">Subscription or pay-as-you-go</span>
+<a href="https://chatgpt.com/codex" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/ai-tools-strategy" class="official-link">Further Reading: My AI Tools Strategy</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+npm install -g @openai/codex
+```
+
+### Antigravity
+
+<Image src={antigravity} alt="Antigravity" />
+
+Google's AI IDE, which comes bundled with some Claude usage credits. I treat it more as a backup tool — I'll switch to it when I need AI assistance but my primary tools aren't convenient to use.
+
+<span class="pricing-tag freemium">App is free, AI features require a subscription</span>
+<a href="https://idx.google.com" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/ai-tools-strategy" class="official-link">Further Reading: My AI Tools Strategy</a>
+
+### CodexBar
+
+<Image src={codexbar} alt="CodexBar" />
+
+A menu bar app that shows you the real-time usage status of various AI services — Claude, Codex, Gemini, Antigravity — including session and weekly quota remaining. You don't have to log into each platform separately to check your usage. For anyone juggling multiple AI services, this is a huge convenience.
+
+<span class="pricing-tag">Free</span>
+<a href="https://codexbar.app" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask steipete/tap/codexbar
+```
+
+## Terminal and Shell
+
+### Tabby
+
+<Image src={tabby} alt="Tabby" />
+
+The terminal I use for managing SSH connections. It works out of the box without much configuration, and SSH management is straightforward. You can save frequently used server connections as profiles so you don't have to type everything in manually each time.
+
+#### Raycast Integration
+
+Tabby has a Raycast plugin, so I can browse my saved SSH profiles directly from Raycast and connect with a single Enter key — no need to open Tabby first and hunt for the profile. The whole flow takes just a few seconds.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://tabby.sh" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask tabby
+```
+
+### Ghostty
+
+<Image src={ghostty} alt="Ghostty" />
+
+I use this one a lot alongside Claude Code. It tends to have fewer display glitches, and the overall performance is solid.
+
+#### Raycast Integration
+
+Ghostty also has a Raycast plugin that lets you open a terminal directly from whatever folder you're currently in on Finder — no more manually `cd`-ing to the right path. Saves a lot of steps.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://ghostty.org" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask ghostty
+```
+
+### iTerm2 + Oh My Zsh + Powerlevel10k
+
+<Image src={iterm2} alt="iTerm2" />
+
+iTerm2 was the first terminal I ever used. Paired with Oh My Zsh's plugin ecosystem and the Powerlevel10k theme, the experience and aesthetics are both great.
+
+The level of customization is enormous — you can tweak practically everything to your liking. That said, because it's so feature-rich, it's better suited for people willing to spend time tuning it. Compared to Ghostty and Tabby, the barrier to entry is a bit higher.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://iterm2.com" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask iterm2
+```
+
+## Version Control and Git
+
+### Fork
+
+<Image src={fork} alt="Fork" />
+
+The Git GUI I use. Clean interface, smooth to operate. Compared to pure command line, it's much more intuitive when dealing with complex branch operations, reviewing diffs, or resolving conflicts.
+
+<span class="pricing-tag paid">Paid (one-time purchase, with a free evaluation version)</span>
+<a href="https://git-fork.com" target="_blank" class="official-link">Official Website</a>
+
+## Containers and Virtualization
+
+### OrbStack
+
+<Image src={orbstack} alt="OrbStack" />
+
+The container tool I use as a replacement for Docker Desktop.
+
+#### Performance and Resource Usage
+
+Compared to Docker Desktop, OrbStack uses significantly fewer resources and starts up much faster. Running containers on Mac doesn't eat up nearly as much memory as Docker Desktop does — the whole experience feels much lighter.
+
+#### Clean UI
+
+The interface is cleaner than Docker Desktop. When you're reading logs or checking service status, everything is clearer and easier to navigate without getting lost in a sea of features you don't use.
+
+<span class="pricing-tag freemium">Free for personal use, commercial use requires payment</span>
+<a href="https://orbstack.dev" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask orbstack
+```
+
+## API and Testing
+
+### Postman
+
+<Image src={postman} alt="Postman" />
+
+A long-established API debugging tool. The free version is already very capable — you're really only missing some team collaboration features.
+
+#### Collection Management
+
+You can organize all the API endpoints for a specific project into a Collection, making it easy to categorize and repeatedly test them without re-entering everything each time.
+
+#### Variables and Automation
+
+It supports Variables, which you can pair with Scripts for automated workflows. For example, after running a login script, the token gets automatically stored in a variable that other API requests can reference for authentication — no manual copy-pasting needed. The whole flow is very smooth.
+
+<span class="pricing-tag freemium">Free to use, team features require a subscription</span>
+<a href="https://www.postman.com" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask postman
+```
+
+## Design and Prototyping
+
+### draw.io
+
+<Image src={drawio} alt="draw.io" />
+
+A great offline diagramming tool for solo use. I mainly use it for designing and drawing database schemas. It has an enormous built-in shape library — you can easily drag together all kinds of diagrams — and there are tons of adjustable settings. If you're willing to spend time on the finer details, you can build virtually any diagram you can imagine.
+
+<span class="pricing-tag">Free</span>
+<a href="https://app.diagrams.net" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask drawio
+```
+
+### Figma
+
+<Image src={figma} alt="Figma" />
+
+A long-established UI design tool — it's the one I've used the longest.
+
+#### Atomic Design
+
+Beyond basic UI drawing, Figma's component system makes it an excellent tool for implementing Atomic Design. This approach lets me produce more structured, well-documented design files that are much easier to maintain systematically.
+
+#### MCP Integration and AI Handoff
+
+The latest Figma also connects with MCP and AI. When working with component libraries like shadcn/ui, the design values in Figma can map directly to Tailwind values, making the transition from design to development much smoother.
+
+<span class="pricing-tag freemium">Free to use, advanced features require a subscription</span>
+<a href="https://www.figma.com" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/mactools-design" class="official-link">Further Reading: Mac Software — Design Edition</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask figma
+```
+
+### Pencil
+
+<Image src={pencil} alt="Pencil" />
+
+An AI UI design tool that works more like a VS Code plugin. You describe what you want in text and the AI builds the design — the interaction is more direct and intuitive than Figma. I mainly use it by letting AI handle the drawing, then reviewing the output. I rarely go in to make detailed edits myself.
+
+<span class="pricing-tag freemium">Free to use, some features require payment</span>
+<a href="https://www.pencil.dev" target="_blank" class="official-link">Official Website</a>
+<a href="/articles/mactools-design" class="official-link">Further Reading: Mac Software — Design Edition</a>

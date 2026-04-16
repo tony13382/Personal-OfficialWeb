@@ -1,0 +1,226 @@
+---
+title: Pincake AI Resume
+description: A Pincake product aimed at fresh job seekers. The main product is an AI job search assistant platform that provides integrated job-seeking services based on job listings and descriptions provided by applicants.
+startDate: 2023-09-01
+endDate: 2023-12-31
+status: closed
+theme: red
+cover: imgs/projects/pincakeAi/cover.png
+pin: false
+skillTypes: [design, plan]
+tags: [Interface Design, Marketing Planning]
+links:
+  - content: Business Plan URL
+    href: https://drive.google.com/file/d/1OlLW1L3FS_4KHjfdIIe_AVNtSnrNocFT/view?usp=sharing
+    icon: FileTextIcon
+    openInTab: true
+seo:
+  metaDescription: A Pincake product aimed at fresh job seekers. The main product is an AI job search assistant platform providing integrated job-seeking services based on job listings and descriptions.
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import pincakeAiUiHome from '@/assets/imgs/projects/pincakeAi/uiHome.png'
+import pincakeAiUiInfo from '@/assets/imgs/projects/pincakeAi/uiInfo.png'
+import pincakeAiUiMeet from '@/assets/imgs/projects/pincakeAi/uiMeet.png'
+import pincakeAiWorkflowUser from '@/assets/imgs/projects/pincakeAi/workflowUser.png'
+
+<Card>
+  <CardHeader>
+    <UiImageCarousel
+      images={[
+        pincakeAiUiHome,
+        pincakeAiUiInfo,
+        pincakeAiUiMeet,
+      ]}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <div className="space-y-4">
+      <div>
+        <p className="font-bold">AI Resume Assistant</p>
+        <p>Uses AI to generate a high-quality initial resume draft, saving time spent on writing content, layout, and visual design.</p>
+      </div>
+
+      <hr className="my-4" />
+
+      <div>
+        <p className="font-bold">AI Character Interview</p>
+        <p>Provides a realistic conversational interview simulation to replicate the experience of a real interview, improving interview skills and building confidence.</p>
+      </div>
+
+      <IconBlock
+        title="Figma Prototype Demo Link"
+        subtitle="Figma"
+        href="https://www.figma.com/proto/Pl8coAJTROnRdb5HVGBieY/202312--Pincake-Design?page-id=0:1&node-id=11-194&viewport=644,710,0.08&t=QndT068SEi3PAePE-1&scaling=scale-down&content-scaling=fixed"
+        icon="FigmaLogoIcon"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>System Usage Flow</CardTitle>
+  <CardContent>
+    <ImageWithLightbox
+      src={pincakeAiWorkflowUser}
+      allowPop={true}
+      client:load
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>Market Analysis</h2>
+
+    <p className="mt-4">
+      According to 104 Job Bank data, job openings in 2023 grew 94% compared to 2020, with just one job platform listing as many as 560,000 open positions. Additionally, the 2023 Future of Jobs Report projects at least 6 billion job opportunities globally, with growth rates in certain sectors expected to exceed 10%. This indicates that demand is growing not only in Taiwan but also in international talent markets, and resume-related services will benefit as a result.
+    </p>
+
+    <hr className="my-4" />
+
+    <p className="font-bold">The job-seeking product market falls into three main categories</p>
+
+    <ul className="list-disc space-y-2 mt-4 ps-5">
+      <li>`Online Resume Builders`: These tools offer various resume templates and customization features, allowing users to easily create resumes suited to their needs. Common online resume builders include Canva, Visual CV, and CakeResume. Observing from 2023, based on publicly available CakeResume user data, at least 2 million users in Taiwan have used such services, and this market continues to expand.</li>
+      <li>`Resume Analysis Tools`: These tools use artificial intelligence or machine learning to analyze resume content and provide suggestions, helping users improve resume quality. Common tools include the resume diagnostics offered by 104 Job Bank and 1111 Job Bank. Observing from 2023, based on publicly available user data from those platforms, at least 100,000 users have used these services and paid to optimize their resumes.</li>
+      <li>`AI Mock Interviews`: Most mock interview services are delivered by real people, and are largely tailored to applications for foreign companies or overseas study. In Taiwan, only job posting platforms like job banks offer similar services.</li>
+    </ul>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>STP Analysis</h2>
+
+    <div className="space-y-6 mt-4">
+      <div>
+        <p className="font-bold">Segmentation: Job Platform Market Segments</p>
+        <table className="table-auto w-full border-collapse border border-gray-300 mt-3">
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Education Level</td>
+              <td className="border border-gray-300 px-4 py-2">Undergraduate / Master's students / PhD students</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Employment Status</td>
+              <td className="border border-gray-300 px-4 py-2">Students in internships, recent graduates, employed individuals planning a career change, freelancers or unemployed</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Industry</td>
+              <td className="border border-gray-300 px-4 py-2">Any / Startup / Foreign companies / Mid-to-senior level</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Age Range</td>
+              <td className="border border-gray-300 px-4 py-2">20-25 / 26-30 / 31-35 / 36-40</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Key Platform Features</td>
+              <td className="border border-gray-300 px-4 py-2">Job listing / Resume building / Professional community / Interview simulation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <p className="font-bold">Targeting: Taiwanese fresh graduates aged 20-30 who have recently completed an undergraduate or master's degree and are applying for jobs</p>
+        <table className="table-auto w-full border-collapse border border-gray-300 mt-3">
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Key Pain Points</td>
+              <td className="border border-gray-300 px-4 py-2">
+                Fresh graduates often lack workplace experience and have limited confidence in meeting employer expectations for interviews and resumes. This group spends more time on social media than other age groups and has a relatively higher tendency toward anxiety and social apprehension.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Most Valued Product Attributes</td>
+              <td className="border border-gray-300 px-4 py-2">
+                High value for money: achieving goals efficiently without high costs; simple and easy to use; capable of protecting personal privacy; customized with personalized professional advice and services.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Information Gathering</td>
+              <td className="border border-gray-300 px-4 py-2">Major social media platforms, peers.</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Income</td>
+              <td className="border border-gray-300 px-4 py-2">During the post-graduation job search phase, income mainly comes from parents or part-time internships and is generally low.</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Motivation to Use Product / Service</td>
+              <td className="border border-gray-300 px-4 py-2">When starting to plan future career direction while peers are already submitting applications.</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Motivation to Purchase / Channel and Payment Method</td>
+              <td className="border border-gray-300 px-4 py-2">Experiencing product value and wanting access to higher-tier features; online channels; online payment tools.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <p className="font-bold">Positioning: A job-seeking platform that enables applicants to conduct professional mock interviews.</p>
+        <div className="space-y-3 mt-3">
+          <p>
+            Before applying, job seekers can receive an AI-powered realistic interview simulation tailored to the target company and role, with professional advice specific to the position, reducing the overwhelming uncertainty and anxiety that comes before a first interview.
+          </p>
+          <p>
+            Targeting young professionals, the platform offers intelligent generation to help those who don't know where to start. Through realistic interview scenarios and customized professional resume generation, users can also share their own experiences on the platform at any time. Once they select a position to apply for, the system automatically filters through shared content and generates a tailored resume.
+          </p>
+          <p>
+            Our competitive strategy in the job-seeking assistance market centers on extensive integration of artificial intelligence and text analysis technology, delivered through a smooth and low-friction experience. The goal is to provide flexible, simple, and effective job-seeking support — turning the process into one where users can naturally and intuitively present their own value, rather than an exhausting challenge of organizing complex information under anxiety.
+          </p>
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="pt-6">
+    <h2>SWOT</h2>
+
+    <div className="space-y-6 mt-4">
+      <div>
+        <p className="font-bold">Strengths</p>
+        <ul className="list-disc space-y-2 mt-2 ps-5">
+          <li>Focused mock interview service: As one of the few platforms on the market dedicated to mock interviews, we can offer unique value to job seekers by addressing the preparation and uncertainty involved in the interview process.</li>
+          <li>AI-powered generation: Leveraging artificial intelligence and text analysis to provide customized, intelligently generated resumes that lower the effort required from job seekers and simplify the process.</li>
+          <li>The team is young and diverse in background, which provides an opportunity to better understand the needs of the target demographic.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold">Weaknesses</p>
+        <ul className="list-disc space-y-2 mt-2 ps-5">
+          <li>In the early startup phase, brand recognition is limited and marketing and outreach efforts need to be strengthened.</li>
+          <li>The product prototype is not yet mature and may face user experience challenges.</li>
+          <li>The quality of resume writing advice needs to be verified and continuously improved to increase customer satisfaction.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold">Opportunities</p>
+        <ul className="list-disc space-y-2 mt-2 ps-5">
+          <li>Embracing the AI trend: Continuously improving mock interview and resume generation services using AI technology to meet evolving market demands.</li>
+          <li>Young professional positioning: Targeting young people entering the workforce aligns with the primary user group in today's job market, presenting an opportunity to build brand loyalty.</li>
+          <li>Growing competition in the job market is increasing demand for customized interview advice, allowing the product's value to keep improving.</li>
+          <li>Given the rising prevalence of social anxiety, offering virtual mock interview services lets users simulate real interview scenarios in a safe, low-pressure environment to reduce anxiety.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold">Threats</p>
+        <ul className="list-disc space-y-2 mt-2 ps-5">
+          <li>Numerous existing competitors and a rapidly changing market require constant innovation to remain competitive.</li>
+          <li>User data privacy and security concerns may pose potential risks, requiring strict data protection to build trust.</li>
+        </ul>
+      </div>
+    </div>
+  </CardContent>
+</Card>

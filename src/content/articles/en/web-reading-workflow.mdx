@@ -1,0 +1,161 @@
+---
+title: Web Reading Workflow
+description: "The entry point of personal knowledge management: a three-stage process of capture, read, and save — with the browser extensions and apps that make it work, turning web reading from signals coming in to knowledge sticking around"
+date: 2026-03-25
+category: Workflow
+tags: [Reading, Browser, Notion, RSS]
+cover: /og/articles/web-reading-workflow.png
+seo:
+  ogImage: /og/articles/web-reading-workflow.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import kagiNews from '@/assets/imgs/articles/web-reading-workflow/kagi-news.png'
+import folo from '@/assets/imgs/articles/web-reading-workflow/folo.png'
+import grokTasks from '@/assets/imgs/articles/web-reading-workflow/grok-tasks.png'
+import notion from '@/assets/imgs/articles/web-reading-workflow/notion.png'
+import immersiveTranslate from '@/assets/imgs/articles/browser-extensions/immersive-translate.png'
+import glotdojo from '@/assets/imgs/articles/browser-extensions/glotdojo.png'
+import panguSpacing from '@/assets/imgs/articles/browser-extensions/pangu-spacing.png'
+import saveToNotion from '@/assets/imgs/articles/browser-extensions/save-to-notion.png'
+import notionWebClipper from '@/assets/imgs/articles/browser-extensions/notion-web-clipper.png'
+import notionBoost from '@/assets/imgs/articles/browser-extensions/notion-boost.jpg'
+
+The most common mistake with web reading is thinking "how many articles I read" equals "how much I actually retained." What determines reading quality isn't volume — it's a complete pipeline from signals coming in to knowledge sticking around. First, deciding what's worth reading. Then, making the act of reading as frictionless as possible. Finally, making sure the valuable stuff actually gets kept. This article is about how I use a combination of tools to run that pipeline smoothly.
+
+On a given day I go through thirty or forty pieces of content — technical articles, news, research, recommended reads. My old approach was to read and close, and whatever impression was left would fade in about two days. Over time I worked out a three-stage flow: **Capture → Read → Save**. The capture stage decides what signals come in. The reading stage brings friction down to its lowest point. The save stage decides what stays and turns into long-term knowledge. Here's my current setup, from browser extensions to standalone apps.
+
+<div class="callout info">
+If you want to see how I set up Arc or Zen as a whole, check out [Arc Browser: The Best Browser UX I've Used](/articles/arc-workflow) and [Switching from Arc to Zen Browser: Three Months In](/articles/zen-browser-setup). Browser extensions for frontend development (React DevTools, Wappalyzer, JSON Viewer, etc.) are in [Dev Environment: Frontend](/articles/dev-env-frontend).
+</div>
+
+## Capture and Noise Reduction
+
+Stage one: deciding what's worth reading. Most content quality problems happen before you even click — bad signal sources, algorithms pushing things you don't actually want, RSS subscriptions left unmanaged. The tools in this stage handle the signal entry point and filter out noise before it ever reaches your eyes.
+
+### Kagi News
+
+<Image src={kagiNews} alt="Kagi News" />
+
+Kagi News is a news service from the [Kagi search engine](https://kagi.com). It generates a daily news digest from a curated, hand-picked source list — no algorithms, no advertising, quality judged purely by the source itself. For me it solves the "baseline daily news signal" problem — I can keep up with what's happening without scrolling through Twitter or Facebook, and the sources are high enough quality that I don't need to do extra filtering on top.
+
+<span class="pricing-tag paid">Requires Kagi subscription</span>
+<a href="https://kagi.com/news" target="_blank" class="official-link">Official Site</a>
+
+### Folo
+
+<Image src={folo} alt="Folo" />
+
+[Folo](https://folo.is/) is an open-source RSS reader that pulls various sources — RSS feeds, newsletters, YouTube channels, social platforms — into a single reading interface. The design philosophy is that you subscribe to the people and sites you want to follow, rather than being fed by an algorithm. I use it for more targeted personal interest tracking — technical blogs, specific creators, Substack subscriptions — content that almost never surfaces through algorithmic recommendations, but is reliably delivered through RSS.
+
+<span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+<a href="https://folo.is/" target="_blank" class="official-link">Official Site</a>
+
+### Grok Tasks
+
+<Image src={grokTasks} alt="Grok Tasks" />
+
+Grok Tasks is a scheduled automation feature from [xAI's Grok](https://grok.com) — you set a prompt and Grok runs it automatically once a day. My setup has it compile the previous day's important news every morning in the [Axios](https://www.axios.com) smart brevity style — short sentences, bullet points, conclusion-first with context after, designed to scan quickly for a baseline grasp of what happened.
+
+Why Axios style instead of long-form prose? Because smart brevity is designed for "absorb at a glance," which is exactly what a morning briefing needs. If something needs deeper reading, I follow up manually.
+
+The prompt skeleton looks roughly like this:
+
+<p class="code-title">Grok Task Prompt</p>
+
+```
+Summarize 5–7 major global news stories from yesterday in the Axios smart brevity style. Format for each:
+1. One-sentence headline
+2. "Why it matters:" explain the significance
+3. "The big picture:" one to two sentences of context
+
+Output everything in Traditional Chinese.
+```
+
+<span class="pricing-tag freemium">Free with usage limits; full features require SuperGrok or X Premium+ subscription</span>
+<a href="https://grok.com" target="_blank" class="official-link">Official Site</a>
+
+Using all three together essentially takes back control of "what to read today" from the algorithm: Kagi News handles breadth (mainstream news overview, curated sources), Folo handles depth (my personally curated interest feeds), and Grok Tasks handles refinement (AI-distilled into smart brevity format).
+
+## Reading
+
+Stage two: bringing friction down to its lowest point during reading itself. Foreign languages need translation, video subtitles need to keep up, mixed Chinese-English text needs spacing. The tools here lower the "I can actually understand this" barrier.
+
+### Immersive Translate
+
+<Image src={immersiveTranslate} alt="Immersive Translate" />
+
+The web translation extension I use most. It displays translation results beneath the original text in a bilingual side-by-side format, without replacing the source content — unlike Google Translate which swaps out the whole page. Extremely useful for reading foreign-language articles while still seeing the original.
+
+<span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+<a href="https://chromewebstore.google.com/detail/immersive-translate-web-p/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/immersive-translate/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### GlotDojo
+
+<Image src={glotdojo} alt="GlotDojo" />
+
+A real-time subtitle translation extension. When watching foreign language videos, it can display both the original and translated subtitles simultaneously — useful for language learning or just understanding content faster.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://chromewebstore.google.com/detail/glot-extension/dbnjpielondlkmdjbembloegkaabfakc" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Pangu Spacing (为什么你们就是不能加个空格呢？)
+
+<Image src={panguSpacing} alt="Pangu Spacing" />
+
+Automatically inserts spaces between Chinese and English characters on web pages, making mixed-language text much more readable. Once you have it installed, you'll notice the difference immediately.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://chromewebstore.google.com/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd" target="_blank" class="official-link">Chrome Web Store</a>
+
+## Save and Archive
+
+Stage three: making useful content stick around. Content you've read without saving will fade in two or three days. Content you've saved but never revisited is effectively the same as not saving. The tools in this stage handle clipping and archiving — quick capture into Notion via official and third-party extensions, long-term storage in the Notion app itself, with Notion Boost making it comfortable to browse back through later.
+
+### Save to Notion
+
+<Image src={saveToNotion} alt="Save to Notion" />
+
+The fast capture path. Saves web page content straight into a Notion database — I use it to collect articles and resources worth referencing later. The key is speed — see it, save it, don't spend time filling out fields right now.
+
+<span class="pricing-tag">Free</span>
+<a href="https://chromewebstore.google.com/detail/save-to-notion/ldmmifpegigmeammaeckplhnjbbpccmm" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/save-to-notion/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Notion Web Clipper
+
+<Image src={notionWebClipper} alt="Notion Web Clipper" />
+
+The complete capture path. Notion's official web clipper pulls the full content of a page into Notion. Compared to Save to Notion, it captures more completely — better suited for long articles or documentation-style content.
+
+<span class="pricing-tag">Free</span>
+<a href="https://chromewebstore.google.com/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/notion-web-clipper/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Notion
+
+<Image src={notion} alt="Notion" />
+
+Notion itself is the core of my knowledge archive — all clipped web content, reading notes, and research material ends up here. The point isn't that Notion is uniquely powerful; it's that all captures flow to the same place. I used to split things across Pocket, Instapaper, and Apple Notes — and when I needed something, I could never remember where I'd saved it. Now everything goes into Notion, and search, categorization, and cross-links all work together.
+
+I organize Notion with databases that separate "to read," "read with notes," and "reference material" stages, with tags for topic categorization. After things come in via extensions, I periodically pick out entries worth turning into real notes and develop them into long-term knowledge. The rest stays as searchable reference.
+
+<span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+<a href="https://notion.so" target="_blank" class="official-link">Official Site</a>
+
+### Notion Boost
+
+<Image src={notionBoost} alt="Notion Boost" />
+
+If you're using Notion as a long-term knowledge archive, the experience of going back to read it matters. Notion Boost lets you adjust font size, hide UI elements you don't need, add a table of contents sidebar, and other things Notion doesn't do natively. An archive is only useful if you actually revisit it — Notion Boost makes those return visits more comfortable.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://chromewebstore.google.com/detail/notion-boost/eciepnnimnjaojlkcpdpcgbfkpcagahd" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/notion-boost/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+## Closing Thoughts
+
+Web reading feels forgettable not because you're reading too little, but because the pipeline from "signals coming in" to "knowledge sticking around" was never connected. The capture stage decides what's worth reading, the reading stage brings friction down, the save stage makes useful content last — if any one of the three stages is missing, the whole flow stalls. Tools are just the execution layer. Build the pipeline first, then pick the tools to match.

@@ -1,0 +1,372 @@
+---
+title: "Setting Up a Frontend Dev Environment: React, Tailwind, Package Management, and Formatting"
+description: My setup for package management, formatting tools, and Tailwind CSS configuration in frontend development
+date: 2026-03-26
+category: Dev Environment
+tags: [Frontend, Dev Environment, React]
+cover: /og/articles/dev-env-frontend.png
+seo:
+  ogImage: /og/articles/dev-env-frontend.png
+---
+
+import { Image } from 'astro:assets'
+
+import shadcnUi from '@/assets/imgs/articles/dev-env-frontend/shadcn-ui.png'
+import prettierExt from '@/assets/imgs/articles/dev-env-frontend/prettier.png'
+import eslintExt from '@/assets/imgs/articles/dev-env-frontend/eslint.png'
+import tailwindcssExt from '@/assets/imgs/articles/dev-env-frontend/tailwindcss.png'
+import tailwindSnippetsExt from '@/assets/imgs/articles/dev-env-frontend/tailwind-snippets.png'
+import postcssExt from '@/assets/imgs/articles/dev-env-frontend/postcss.png'
+import jsSnippetsExt from '@/assets/imgs/articles/dev-env-frontend/js-snippets.png'
+import liveSassExt from '@/assets/imgs/articles/dev-env-frontend/live-sass.png'
+import autoCloseTagExt from '@/assets/imgs/articles/dev-env-frontend/auto-close-tag.png'
+import vscodeColorExt from '@/assets/imgs/articles/dev-env-frontend/vscode-color.png'
+import i18nAllyExt from '@/assets/imgs/articles/dev-env-frontend/i18n-ally.png'
+import figmaExt from '@/assets/imgs/articles/dev-env-frontend/figma.png'
+import pencilExt from '@/assets/imgs/articles/dev-env-frontend/pencil.png'
+import astroExt from '@/assets/imgs/articles/dev-env-frontend/astro.png'
+import mdxExt from '@/assets/imgs/articles/dev-env-frontend/mdx.png'
+import reactDevtoolsExt from '@/assets/imgs/articles/dev-env-frontend/react-devtools.png'
+import wappalyzerExt from '@/assets/imgs/articles/dev-env-frontend/wappalyzer.png'
+import jsonViewerExt from '@/assets/imgs/articles/dev-env-frontend/json-viewer.png'
+import accessControlExt from '@/assets/imgs/articles/dev-env-frontend/access-control.png'
+
+My frontend projects mainly use the React ecosystem, with the framework choice — Astro, Remix (React Router), or Vite — depending on the project's needs. This post covers my frontend dev environment setup: package management, code formatting, Tailwind CSS configuration, and more.
+
+## VS Code Extensions
+
+Here are the extensions I use alongside VS Code for frontend development:
+
+### Prettier
+
+<Image src={prettierExt} alt="Prettier" style="max-width: 96px;" />
+
+A code formatter that supports JavaScript, TypeScript, CSS, HTML, and more. Auto-formats on save to keep code style consistent — no more time spent on manual formatting.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### ESLint
+
+<Image src={eslintExt} alt="ESLint" style="max-width: 96px;" />
+
+A static analysis tool for JavaScript and TypeScript that highlights potential errors and style violations in real time as you edit. Works best paired with Prettier.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind CSS IntelliSense
+
+<Image src={tailwindcssExt} alt="Tailwind CSS IntelliSense" style="max-width: 96px;" />
+
+The official Tailwind CSS extension — autocompletes class names as you type and shows a preview of the corresponding CSS on hover. Essentially required when working with Tailwind.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Tailwind Snippets
+
+<Image src={tailwindSnippetsExt} alt="Tailwind Snippets" style="max-width: 96px;" />
+
+Provides code snippets for common Tailwind CSS patterns, letting you quickly insert frequently-used style combinations and speed up development.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=zarifprogrammer.tailwind-snippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### PostCSS Language Support
+
+<Image src={postcssExt} alt="PostCSS Language Support" style="max-width: 96px;" />
+
+Adds syntax highlighting for PostCSS, so VS Code correctly recognizes PostCSS syntax without flagging false errors.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=csstools.postcss" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### JavaScript (ES6) code snippets
+
+<Image src={jsSnippetsExt} alt="JavaScript (ES6) code snippets" style="max-width: 96px;" />
+
+Provides snippets for ES6+ syntax — arrow functions, destructuring, Promises, and other common patterns that you can expand from short abbreviations.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Live Sass Compiler
+
+<Image src={liveSassExt} alt="Live Sass Compiler" style="max-width: 96px;" />
+
+Compiles Sass/SCSS files in real time — save the file and the corresponding CSS is generated automatically. No extra build tool configuration required.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Auto Close Tag
+
+<Image src={autoCloseTagExt} alt="Auto Close Tag" style="max-width: 96px;" />
+
+Automatically adds the corresponding closing tag when you finish typing an HTML/XML opening tag, reducing manual input and missed closing tags.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Color Picker
+
+<Image src={vscodeColorExt} alt="Color Picker" style="max-width: 96px;" />
+
+When you encounter a color value in code, this lets you visually pick or adjust it directly in the editor — no more switching to an external tool to convert color codes.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### i18n Ally
+
+<Image src={i18nAllyExt} alt="i18n Ally" style="max-width: 96px;" />
+
+An internationalization (i18n) management tool that lets you preview translation results directly in the code and manage translation keys across multiple locales. When working on multilingual projects, it eliminates constant switching between translation files.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Figma for VS Code
+
+<Image src={figmaExt} alt="Figma for VS Code" style="max-width: 96px;" />
+
+Figma's official extension lets you browse Figma designs directly in VS Code — check component dimensions, spacing, and color values without leaving your editor. Makes the design-to-code handoff much smoother.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=figma.figma-vscode-extension" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Pencil
+
+<Image src={pencilExt} alt="Pencil" style="max-width: 96px;" />
+
+An AI UI design tool extension for VS Code that generates design mockups from text descriptions directly inside the editor — very convenient alongside a development workflow.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=highagency.pencildev" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Astro
+
+<Image src={astroExt} alt="Astro" style="max-width: 96px;" />
+
+The official Astro extension — provides syntax highlighting, IntelliSense, and formatting for `.astro` files. A must-have when working on Astro projects.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### MDX
+
+<Image src={mdxExt} alt="MDX" style="max-width: 96px;" />
+
+Provides syntax highlighting and IntelliSense for MDX files. Makes the editing experience much better when writing content in MDX inside an Astro project.
+
+<a href="https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx" target="_blank" class="official-link">VS Code Marketplace</a>
+
+For more VS Code extension recommendations, see:
+
+<a href="/articles/vscode-extensions">
+  <img src="/og/articles/vscode-extensions.png" alt="VS Code Extension Recommendations" style="border-radius: 0.75rem;" />
+</a>
+<a href="/articles/vscode-extensions" class="official-link">VS Code Extension Recommendations</a>
+
+## Browser Extensions
+
+In addition to VS Code extensions, I have a separate set of browser extensions specifically for frontend development. Extensions related to reading (translation, noise reduction, capture, review) are in [Web Reading Workflow](/articles/web-reading-workflow) — here I'm only listing the ones most directly relevant to the dev workflow.
+
+### React DevTools
+
+<Image src={reactDevtoolsExt} alt="React DevTools" />
+
+An essential extension for React development — inspect the React component tree, props, and state directly in the browser's developer tools. Invaluable for debugging.
+
+<span class="pricing-tag">Free</span>
+<a href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### Wappalyzer
+
+<Image src={wappalyzerExt} alt="Wappalyzer" />
+
+Analyzes the technology behind any website — frontend frameworks, CMS, servers, analytics tools, and more. I use it when researching other people's sites or evaluating tech options.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg" target="_blank" class="official-link">Chrome Web Store</a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/" target="_blank" class="official-link">Firefox Add-ons</a>
+
+### JSON Viewer
+
+<Image src={jsonViewerExt} alt="JSON Viewer" />
+
+Formats JSON into a readable structure directly in the browser — no need to paste JSON into an external tool to pretty-print it. Very useful when debugging API responses.
+
+<span class="pricing-tag">Free</span>
+<a href="https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh" target="_blank" class="official-link">Chrome Web Store</a>
+
+### Access Control-Allow-Origin - Unblock
+
+<Image src={accessControlExt} alt="Access Control-Allow-Origin - Unblock" />
+
+The most common issue in development is hitting a CORS block when the frontend on localhost tries to call a backend API before the backend has its CORS headers set up. This extension injects `Access-Control-Allow-Origin: *` into response headers to bypass the browser's CORS restriction. It's disabled by default — only enable it via the toolbar button when you actually need it, and remember to disable it when you're done. It also supports per-domain configuration, URL pattern scoping, and the additional headers required for SharedArrayBuffer.
+
+<div class="callout warning">
+This extension is for development use only — don't leave it enabled all the time. Disabling CORS allows any website to make requests to your browser tab, which is a security risk during normal browsing.
+</div>
+
+<span class="pricing-tag">Free</span>
+<a href="https://webextension.org/listing/access-control.html" target="_blank" class="official-link">Official Page</a>
+
+## Package Management
+
+### npm
+
+For most frontend projects I use npm to manage dependencies. It's built into Node.js and requires no additional installation — more than enough for the majority of projects.
+
+### pnpm
+
+For larger projects or monorepo setups, I switch to <a href="https://pnpm.io" target="_blank">pnpm</a>. It installs faster than npm and uses hard links to share packages across projects, making disk space usage much more efficient. You can specify the version in `package.json` using the `packageManager` field:
+
+<p class="code-title">package.json</p>
+
+```json
+{
+  "packageManager": "pnpm@10.14.0"
+}
+```
+
+## Code Formatting
+
+### Prettier
+
+I use <a href="https://prettier.io" target="_blank">Prettier</a> across all my frontend projects for code formatting. My common configuration:
+
+<p class="code-title">.prettierrc</p>
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+```
+
+The reasoning behind the main settings:
+
+- **semi: true**: Semicolons at the end of statements, reducing potential issues from ASI (automatic semicolon insertion).
+- **singleQuote: true**: Single quotes for strings — the more common convention in the JavaScript community.
+- **tabWidth: 2**: 2-space indentation — the standard for frontend projects.
+- **trailingComma: "es5"**: Trailing commas wherever ES5 allows them, making diffs cleaner and additions easier.
+
+For some projects I also add `@trivago/prettier-plugin-sort-imports` to automatically sort import statements and keep file headers tidy.
+
+### ESLint
+
+The static analysis tool I use alongside Prettier. My projects are now on ESLint 9+'s flat config format:
+
+<p class="code-title">eslint.config.js</p>
+
+```js
+import js from '@eslint/js'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+    },
+  }
+)
+```
+
+Flat config makes the configuration structure cleaner and conditional rule setup much easier.
+
+## Tailwind CSS
+
+Nearly all my frontend projects use Tailwind CSS for styling. I currently work with two versions:
+
+### Tailwind CSS v4
+
+Newer projects (like this site) use Tailwind v4, integrated via the Vite plugin:
+
+<p class="code-title">astro.config.mjs</p>
+
+```js
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+})
+```
+
+v4 configuration lives directly in CSS — no more `tailwind.config.js` needed:
+
+<p class="code-title">src/styles/global.css</p>
+
+```css
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+```
+
+### Tailwind CSS v3
+
+Older projects still use Tailwind v3 configured via `tailwind.config.js`. I typically define the project's theme colors and custom design tokens there:
+
+<p class="code-title">tailwind.config.js</p>
+
+```js
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: { /* custom color palette */ },
+        secondary: { /* custom color palette */ },
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+}
+```
+
+## TypeScript
+
+All my frontend projects use TypeScript with strict mode enabled, plus path aliases to simplify imports:
+
+<p class="code-title">tsconfig.json</p>
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+Path aliases let imports use `@/components/Button` instead of `../../components/Button`, and they stay valid even when the project structure changes.
+
+## UI Component Library
+
+### shadcn/ui + Radix UI
+
+<Image src={shadcnUi} alt="shadcn/ui Dashboard example" />
+
+Most of my projects use <a href="https://ui.shadcn.com" target="_blank">shadcn/ui</a> with Radix UI as the base component library. The advantage of shadcn/ui is that components get copied directly into your project — fully customizable, and unaffected by third-party package updates.
+
+Combined with Tailwind CSS variables for theming, dark mode and custom brand colors become straightforward to implement.
+
+## Main Tech Stack Summary
+
+A quick summary of the tech combinations I use for frontend development:
+
+- **Framework**: Astro / Remix (React Router) / Vite + React
+- **Language**: TypeScript (strict mode)
+- **Styles**: Tailwind CSS (v3 / v4)
+- **UI Components**: shadcn/ui + Radix UI
+- **Icons**: Phosphor Icons / Lucide React
+- **Package Management**: npm (primary) / pnpm (monorepo)
+- **Formatting**: Prettier + ESLint (flat config)
+- **Deployment**: Cloudflare Workers / static deployment

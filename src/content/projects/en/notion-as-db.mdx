@@ -1,0 +1,88 @@
+---
+title: Knowledge Base and Curated Bookmarks
+description: "[Notion As DB Experimental Project] A static website workflow built on Notion API and Cloudflare Pages"
+startDate: 2022-03-01
+endDate: 2026-02-12
+status: closed
+theme: natural
+cover: imgs/projects/notionAsDb/cover.png
+pin: false
+skillTypes: [dev]
+tags: [Website Development, Notion, Static Website, Cloudflare]
+links:
+  - content: Knowledge Recommendation Source
+    href: https://go.lumakes.com/learn
+    icon: GraduationCap
+    openInTab: true
+  - content: Kit - Bookmark Management Tool Project
+    href: /projects/kit
+    icon: LinkIcon
+    openInTab: false
+tools:
+  - name: Notion
+    description: Web database
+  - name: App Script
+    description: Scheduled automated deployment triggers
+  - name: Cloudflare Pages
+    description: Static website deployment
+seo:
+  metaDescription: "[Notion As DB Experimental Project] A static website workflow built on Notion API and Cloudflare Pages"
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+import notionAsDbWorkflow from '@/assets/imgs/projects/notionAsDb/workflow.png'
+
+<Card>
+  <CardTitle>Notice</CardTitle>
+  <CardContent>
+    <IconBlock
+        title="Project Discontinued"
+        subtitle="Replaced by the `Kit - Bookmark Management Tool` project"
+        icon="FlagIcon"
+        href='/projects/kit'
+        client:visible
+      />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={notionAsDbWorkflow}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6">
+    <h2>Workflow</h2>
+
+    <div className="flex flex-col gap-4 mt-4">
+      <IconBlock
+        title="Step 1: Set Up the Notion Database"
+        subtitle="Create a Notion database and configure API permissions"
+        icon="NumberCircleOneIcon"
+        client:visible
+      />
+      <IconBlock
+        title="Step 2: Connect to Notion via Python Script on Cloudflare Pages to Generate HTML"
+        subtitle="Use Requests to fetch data from the Notion API, then generate static web pages"
+        icon="NumberCircleTwoIcon"
+        client:visible
+      />
+      <IconBlock
+        title="Step 3: Deploy the Static HTML Pages"
+        subtitle="Deploy the static pages via Cloudflare Pages and bind a custom domain"
+        icon="NumberCircleThreeIcon"
+        client:visible
+      />
+      <IconBlock
+        title="Background Task: Run the Generation Script via Cloudflare Hook Every 20 Minutes"
+        subtitle="Handles image path update limitations"
+        icon="ClockIcon"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>

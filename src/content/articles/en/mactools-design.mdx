@@ -1,0 +1,184 @@
+---
+title: "Design Tools on Mac: UI, Presentations, Photo Editing, and Video"
+description: A roundup of the tools I use on Mac for UI design, product design, presentations, image editing, and video production
+date: 2026-03-24
+category: Tool Roundups
+tags: [Software, Mac, Design]
+cover: /og/articles/mactools-design.png
+seo:
+  ogImage: /og/articles/mactools-design.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import keynote from '@/assets/imgs/articles/mactools-design/keynote.png'
+import canva from '@/assets/imgs/articles/mactools-design/canva.png'
+import figma from '@/assets/imgs/articles/mactools-design/figma.png'
+import pencil from '@/assets/imgs/articles/mactools-design/pencil.png'
+import photoscapex from '@/assets/imgs/articles/mactools-design/photoscapex.png'
+import upscayl from '@/assets/imgs/articles/mactools-design/upscayl.png'
+import affinity from '@/assets/imgs/articles/mactools-design/affinity.png'
+import pixelmatorPro from '@/assets/imgs/articles/mactools-design/pixelmator-pro.png'
+import davinciResolve from '@/assets/imgs/articles/mactools-design/davinci-resolve.png'
+import screenStudio from '@/assets/imgs/articles/mactools-design/screen-studio.png'
+import obs from '@/assets/imgs/articles/mactools-design/obs.png'
+import arctimePro from '@/assets/imgs/articles/mactools-design/arctime-pro.png'
+import recordly from '@/assets/imgs/articles/mactools-design/recordly.png'
+
+This is a roundup of all the design-related tools I use on Mac, covering presentations, UI design, image editing, and video production. My typical design workflow goes something like this: UI work in Figma or Pencil, image assets processed in Pixelmator Pro, upscaling done in Upscayl, presentations built in Keynote or Canva, and video editing handled in DaVinci Resolve.
+
+## Presentations
+
+### Keynote
+
+<Image src={keynote} alt="Keynote" />
+
+Apple's built-in presentation tool. The animations and transitions on Mac are incredibly smooth — the visual quality is just on another level. Whenever I need to put together a more polished presentation, Keynote is my go-to. Its animation editor is far more intuitive than PowerPoint's, and you can pull off some really refined transition effects with it.
+
+<span class="pricing-tag">Free</span>
+<a href="https://www.apple.com/tw/keynote/" target="_blank" class="official-link">Official Website</a>
+
+### Canva
+
+<Image src={canva} alt="Canva" />
+
+Beyond making graphics, Canva's presentation feature is genuinely useful. The template library is massive, so you can quickly put together something that actually looks designed — perfect when you're in a hurry or don't want to start from a blank slate. For a more detailed breakdown, check out the services and subscriptions article.
+
+<span class="pricing-tag freemium">Free to use, advanced features require a subscription</span>
+<a href="https://www.canva.com" target="_blank" class="official-link">Official Website</a>
+
+## UI Design
+
+### Figma
+
+<Image src={figma} alt="Figma" />
+
+A long-established UI design tool and the one I've used the longest. It supports component-based design, which makes it a great fit for Atomic Design — building structured, well-documented design systems. The latest Figma also integrates with MCP and AI, making the handoff from design to development a lot smoother.
+
+<span class="pricing-tag freemium">Free to use, advanced features require a subscription</span>
+<a href="https://www.figma.com" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask figma
+```
+
+### Pencil
+
+<Image src={pencil} alt="Pencil" />
+
+An AI-powered UI design tool that lets you describe what you want and have the AI build the design for you. The interaction feels more direct and intuitive than Figma. I mostly use it to let AI handle the UI drawing work, and I review the output rather than doing detailed edits myself.
+
+<span class="pricing-tag freemium">Free to use, some features require payment</span>
+<a href="https://www.pencil.dev" target="_blank" class="official-link">Official Website</a>
+
+## Image and Graphic Design
+
+### Pixelmator Pro
+
+<Image src={pixelmatorPro} alt="Pixelmator Pro" />
+
+A native Mac image editor that's now been acquired by Apple. The interface fits right in with macOS, and everything feels smooth to use. It comes with a solid set of AI features — background removal, smart repair, that sort of thing — so everyday image editing is a breeze.
+
+<span class="pricing-tag paid">Paid (one-time purchase)</span>
+<a href="https://www.pixelmator.com/pro/" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask pixelmator-pro
+```
+
+### Affinity
+
+<Image src={affinity} alt="Affinity" />
+
+A professional design suite that includes Designer (vector), Photo (image editing), and Publisher (layout). After being acquired by Canva, it went free. The feature set is more than enough for most professional work — it's honestly one of the best value-for-money design tools out there right now.
+
+<span class="pricing-tag">Free</span>
+<a href="https://affinity.serif.com" target="_blank" class="official-link">Official Website</a>
+
+### PhotoScapeX
+
+<Image src={photoscapex} alt="PhotoScapeX" />
+
+A lightweight image editor that's simple and intuitive to use. I reach for it when I need to quickly crop, color-correct, add text, or collage images — no need to fire up something Photoshop-level for small tasks.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://apps.apple.com/tw/app/photoscape-x/id929507092" target="_blank" class="official-link">Mac App Store</a>
+
+### Upscayl
+
+<Image src={upscayl} alt="Upscayl" />
+
+An open-source AI image upscaler that can enlarge low-resolution images without losing quality. Super useful when working with old photos or when you need high-resolution assets. The results are dramatically better than traditional interpolation-based upscaling.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://upscayl.org" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask upscayl
+```
+
+## Video
+
+### DaVinci Resolve
+
+<Image src={davinciResolve} alt="DaVinci Resolve" />
+
+A professional video editor from Blackmagic Design, and the free version is already incredibly capable. Its color grading tools are industry-standard level, and editing, effects, and audio processing are all fully featured. If you don't want to pay Adobe Premiere's subscription fee, DaVinci Resolve is the best alternative out there.
+
+<span class="pricing-tag freemium">Free to use, Studio version requires payment</span>
+<a href="https://www.blackmagicdesign.com/tw/products/davinciresolve" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask davinci-resolve
+```
+
+### Screen Studio
+
+<Image src={screenStudio} alt="Screen Studio" />
+
+A tool specifically built for recording product demo videos. After you record, it automatically adds zoom effects, cursor tracking, and other motion touches to make the footage look polished and professional. It's incredibly handy for product demos or tutorial videos — it cuts out a lot of post-production work.
+
+<span class="pricing-tag paid">Paid (one-time purchase)</span>
+<a href="https://www.screen.studio" target="_blank" class="official-link">Official Website</a>
+
+### Recordly
+
+<Image src={recordly} alt="Recordly" />
+
+A lightweight screen recorder that's simple to use and exports quickly. Great when you just need to capture a quick walkthrough without dealing with the complex setup OBS requires.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://recordly.co" target="_blank" class="official-link">Official Website</a>
+
+### OBS
+
+<Image src={obs} alt="OBS" />
+
+An open-source live streaming and recording tool with a ton of functionality. I mainly use it for screen recording — the scene management and source settings are flexible enough to record from multiple inputs at once.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://obsproject.com" target="_blank" class="official-link">Official Website</a>
+
+<p class="or-divider">— or —</p>
+
+```bash
+brew install --cask obs
+```
+
+### ArcTime Pro
+
+<Image src={arctimePro} alt="ArcTime Pro" />
+
+A subtitle creation tool for quickly adding captions to video. It supports timeline alignment and batch editing, making the whole subtitling process significantly faster than using the built-in caption tools inside a video editor.
+
+<span class="pricing-tag freemium">Free to use, advanced features require payment</span>
+<a href="https://arctime.org" target="_blank" class="official-link">Official Website</a>

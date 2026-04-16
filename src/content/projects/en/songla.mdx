@@ -1,0 +1,431 @@
+---
+title: Songla - AI Music Creation Assistant
+description: Compose music by humming, making music creation no longer an unreachable dream
+subdescription: "Role: CTO, Product Designer<br>Responsibilities: Software architecture design, product interface design, UX optimization, presentation design"
+startDate: 2022-01-01
+endDate: 2023-09-30
+status: closed
+theme: green
+cover: imgs/projects/songla/cover.png
+pin: true
+skillTypes: [design]
+tags: [Interface Design, Product Planning, UX Optimization]
+links:
+  - content: Company Website (Archived)
+    href: https://tony13382.github.io/Songla-OfficialWeb/
+    icon: Buildings
+    openInTab: true
+  - content: Figma Prototype Link
+    href: https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=321-262&t=BiEbxhMaInIN0bkG-1&starting-point-node-id=321:262
+    icon: FigmaLogoIcon
+    openInTab: true
+scores:
+  - title: Passed Ministry of Education Youth Affairs U-start Innovation Entrepreneurship Phase 1 Program
+    award: Received NT$500,000 in Funding
+  - title: 2021 National University Smart Innovation and Cross-Domain Integration Creative Competition
+    award: Honorable Mention
+  - title: 2021 Taoyuan Startup Star Competition
+    award: Honorable Mention
+tools:
+  - name: Figma
+    description: UI design and product prototype design
+  - name: PowerPoint
+    description: Information design and presentation content editing
+  - name: Notion
+    description: Corporate schedule management, file management, multi-team collaboration system
+seo:
+  metaDescription: Compose music by humming, making music creation no longer an unreachable dream
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import { TabsBlock } from '@/components/react/TabsBlock'
+import songlaSystemFrame2 from '@/assets/imgs/projects/songla/systemFrame2.png'
+import songlaSystemFrame from '@/assets/imgs/projects/songla/systemFrame.png'
+import songlaUi01 from '@/assets/imgs/projects/songla/UI01.png'
+import songlaUi02 from '@/assets/imgs/projects/songla/UI02.png'
+import songlaUi03 from '@/assets/imgs/projects/songla/UI03.png'
+import songlaUi04 from '@/assets/imgs/projects/songla/UI04.png'
+import songlaNavbar from '@/assets/imgs/projects/songla/ux/Navbar.png'
+import songlaLaCoin from '@/assets/imgs/projects/songla/laCoin.png'
+import songlaMusicWider from '@/assets/imgs/projects/songla/ux/Music Wider.png'
+import songlaMusicList from '@/assets/imgs/projects/songla/ux/Music List.png'
+import songlaMusicThin from '@/assets/imgs/projects/songla/ux/Music Thin.png'
+import songlaColorTheme from '@/assets/imgs/projects/songla/ux/colortheme.png'
+import songlaColorBg from '@/assets/imgs/projects/songla/ux/colorBG.png'
+import songlaIconPack from '@/assets/imgs/projects/songla/ux/iconpack.png'
+
+
+<Card>
+  <CardHeader>
+    <Youtube
+      embedUrl="https://www.youtube.com/embed/QMBos6hJSsg"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent>
+    <p>
+      Song la — the AI Music Creation Assistant — is a `mobile music creation app with integrated social features`. By humming a melody, the system intelligently arranges music based on that melody, converts it into any of 275 different timbres, generates sheet music, and allows users to record and upload their compositions to a sharing platform. This brings music creation to life — intuitive, diverse in sound, automated in notation, and digital in distribution. Song la makes music creation no longer an unreachable dream, helping more people step into the world of musical expression and turn the ideas in their minds into something real.
+    </p>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Product Architecture (Public Version)</CardTitle>
+  <CardContent className="pt-6 px-2">
+    <div className="space-y-4 mt-4">
+      <ImageWithLightbox
+        src={songlaSystemFrame2}
+        allowPop={true}
+        client:load
+      />
+
+      <div className='px-4'>
+        <hr className="my-4" />
+      </div>
+
+      <ImageWithLightbox
+        src={songlaSystemFrame}
+        allowPop={true}
+        client:load
+      />
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <UiImageCarousel
+      images={[
+        songlaUi01,
+        songlaUi02,
+        songlaUi03,
+        songlaUi04,
+      ]}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="pt-6 gap-4">
+    <h2>Figma Prototype Link</h2>
+
+    <IconBlock
+      title="Figma Prototype Link"
+      subtitle="Figma"
+      href="https://www.figma.com/proto/4oTSzb5vE1VzRp7nYXCYiy/202112---SL--%E8%BB%9F%E9%AB%94%E5%88%9D%E7%A8%BF%E5%9C%96?node-id=306-8&t=BiEbxhMaInIN0bkG-1"
+      icon="FigmaLogoIcon"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>
+    Navigation Design
+  </CardTitle>
+  <CardContent className="gap-4">
+    <ImageWithLightbox
+      src={songlaNavbar}
+      allowPop={false}
+      client:load
+    />
+    <hr/>
+    <TabsBlock
+      tabs={[
+        {
+          value: "nav-explorer",
+          label: "Explore",
+          embed: [
+            {
+              type: "div",
+              className:"",
+              elements: [{
+                type: "html",
+                content: `
+                <div class="py-8 space-y-4 text-center">
+                  <p class="text-lg">According to user interviews,</p>
+                  <p class="text-2xl">as many as
+                    <span class="px-1 text-5xl font-bold text-[var(--theme-primary)]"> 89 </span>
+                    <span class="font-bold text-[var(--theme-primary)] pe-1">%</span> of users
+                  </p>
+                  <p class="text-lg">said lack of inspiration was holding them back from creating</p>
+                </div>`
+              },]
+            },
+            {type: "hr"},
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className: "text-2xl",
+                  content: "In `Explore` you can"
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "Browse music filtered by style to find inspiration through others' work",
+                    icon: "BroadcastIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Discover curated trending music relevant to you and stay on top of the latest creative movements",
+                    icon: "FireIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Browse the community and listen to friends' work for creative ideas",
+                    icon: "ShareNetworkIcon"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-dynamic",
+          label: "Feed",
+          embed: [
+            {
+              type: "div",
+              className:"",
+              elements: [{
+                type: "html",
+                content: `
+                <div class="py-8 space-y-4 text-center">
+                  <p class="text-lg">According to user interviews,</p>
+                  <p class="text-2xl">
+                    <span class="ps-1 text-5xl font-bold text-[var(--theme-primary)]">2/3</span>
+                    <span class="font-bold text-[var(--theme-primary)] pe-1"> or more</span> of users
+                  </p>
+                  <p class="text-lg">expressed support for <span class="mx-1 font-bold">social + music</span> integration</p>
+                </div>`
+              },]
+            },
+            {type: "hr"},
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className:"text-xl",
+                  content: "So in `Feed` we provide social-oriented features"
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "Music Creation Challenges",
+                    subtitle:"Start a challenge with a custom theme or style, or join someone else's — exchange ideas through your creations!",
+                    icon: "FlagIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Share Music Works",
+                    subtitle:"Share the music you love so your followers can hear the sounds that move you",
+                    icon: "HeadphonesIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Life Photo Journal",
+                    subtitle:"Share moments from your life with followers, or post event announcements to deepen your connection",
+                    icon: "ImageIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Articles",
+                    subtitle:"Share your thoughts, activities, or anything you can put into words",
+                    icon: "PencilIcon"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-studio",
+          label: "Studio",
+          embed: [
+            {
+              type: "text",
+              content:"Songla `combines music creation and social` features. Users don't need any instrument skills or music theory knowledge — just hum a melody and the product's `smart arrangement` feature will complete a piece of music that's entirely your own. You can then upload it to the Songla sharing platform or save it to your phone, `dramatically lowering the barrier to creating music`."
+            },
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "Music Creation",
+                    subtitle: "Open the Songla Studio, press record, and start humming your melody",
+                    icon: "MicrophoneIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Smart Arrangement",
+                    subtitle: "Hand it over to Songla and let AI compose a one-of-a-kind piece for you",
+                    icon: "SparkleIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Choose a Timbre",
+                    subtitle: "Pick your favorite from 275 timbres to perform your creation",
+                    icon: "PianoKeysIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "View Sheet Music",
+                    subtitle: "Songla writes the score for you — who says you need music theory to be a musician?",
+                    icon: "PlaylistIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Share with the World",
+                    subtitle: "Hit share and let your music reach friends from every corner of the world!",
+                    icon: "ExportIcon"
+                  },
+                ]
+              },]
+            },
+          ]
+        },
+        {
+          value: "nav-coins",
+          label: "Credits",
+          embed: [
+            {
+              type: "image",
+              src: songlaLaCoin,
+              allowPop: true,
+              className: "rounded-2xl overflow-hidden"
+            },
+            {
+              type: "div",
+              className:"grid gap-3",
+              elements: [
+                {
+                  type: "text",
+                  className: "text-2xl",
+                  content: "In `Credits` you can",
+                },
+                {
+                type: "div",
+                className:"grid gap-3",
+                elements:[
+                  {
+                    type: "IconBlock",
+                    title: "Collect La Coins",
+                    icon: "HandCoinsIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Convert La Coins",
+                    icon: "CoinVerticalIcon"
+                  },
+                  {
+                    type: "IconBlock",
+                    title: "Spend La Coins",
+                    icon: "CardholderIcon"
+                  }
+                ]
+              },]
+            },
+          ]
+        },
+      ]}
+      defaultValue="nav-explorer"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+
+{/* <Card>
+  <CardContent className="pt-6">
+    <h2>Music Cover Art</h2>
+
+    <hr className="my-4" />
+
+    <div className="space-y-6">
+      <div>
+        <h3>Wide Music Cover</h3>
+        <ImageWithLightbox
+          src={songlaMusicWider}
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">Used in scenarios that require more information, such as the Studio and search results.</p>
+        <hr className="my-4" />
+        <p>`Content includes:`<br />Music title, cover photo, music description, music category, duration, play count, license type.</p>
+      </div>
+
+      <div>
+        <h3>Standard Music Cover</h3>
+        <ImageWithLightbox
+          src={songlaMusicList}
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">Used in default contexts, such as homepage featured music, category charts, and search previews.</p>
+        <hr className="my-4" />
+        <p>`Content includes:`<br />Music title, cover photo, music category, duration, play count, license type.</p>
+      </div>
+
+      <div>
+        <h3>Narrow Music Cover</h3>
+        <ImageWithLightbox
+          src={songlaMusicThin}
+          allowPop={false}
+          client:load
+        />
+        <p className="mt-3">Used in contexts where information density is less important, such as social music attachments and playback history.</p>
+        <hr className="my-4" />
+        <p>`Content includes:`<br />Music title, duration, play count.</p>
+      </div>
+    </div>
+  </CardContent>
+</Card> */}
+
+<Card>
+  <CardTitle>Design Thinking</CardTitle>
+  <CardContent className='px-0'>
+    <UiImageCarousel 
+      images={[
+        {
+          image: songlaColorTheme,
+          title:"Color",
+          desc:"A vibrant multi-color palette to create a lively, energetic feel"
+        },
+        {
+          image: songlaColorBg,
+          title:"Masked Gradient Background Design",
+          desc:"Gradients used to convey depth and dimensionality"
+        },
+        {
+          image: songlaIconPack,
+          title:"Icon Design",
+          desc:`Icons designed by blending gradient color styles with the primary palette to create unique, branded visuals\nThe icons referenced above are derived from the open-source IconPark icon library, official Material Icons, and original designs by Liang-Jin Lu`
+        }
+      ]}
+      allowPop={false}
+      alignBody="center"
+      client:visible
+    />
+  </CardContent>
+</Card>

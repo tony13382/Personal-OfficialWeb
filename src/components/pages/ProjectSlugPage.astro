@@ -1,0 +1,296 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Badge } from "@/components/ui/badge";
+import { themes } from "@/lib/themes";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Icon from "@/components/Icon.astro";
+import { buttonVariants } from "@/components/ui/button";
+import { ProfileCardModal, profileData } from "@/components/data/profile";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import { useTranslations, type Locale } from "@/i18n";
+import { resolveImage } from "@/lib/resolve-image";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  Content: any;
+  locale?: Locale;
+}
+
+const { project, Content, locale = "zh-Hant" } = Astro.props;
+const t = useTranslations(locale);
+const dateLocale = locale === "en" ? "en-US" : "zh-TW";
+const coverImage = resolveImage(project.data.cover);
+
+// SEO
+const seo = {
+  title:
+    project.data.seo?.metaTitle || `${project.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
+  description: project.data.seo?.metaDescription || project.data.description,
+  ogImage: coverImage.src,
+};
+
+// JSON-LD
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+
+const projectJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.data.title,
+  description: project.data.description,
+  url: `${siteUrl}${locale === "en" ? "/en" : ""}/projects/${project.slug}/`,
+  image: coverImage.src,
+  dateCreated: project.data.startDate.toISOString(),
+  ...(project.data.endDate && { dateModified: project.data.endDate.toISOString() }),
+  inLanguage: locale === "en" ? "en" : "zh-Hant-TW",
+  author: {
+    "@type": "Person",
+    name: locale === "en" ? "Liang-Chin Lu" : "呂亮進",
+    url: siteUrl,
+  },
+  keywords: project.data.tags,
+};
+
+// 主題顏色
+const themeColors = themes[project.data.theme];
+
+// Status badge
+const getStatusBadge = (statusStr: string) => {
+  switch (statusStr) {
+    case "active":
+      return { text: t.project.statusActive, class: "bg-green-600 hover:bg-green-700" };
+    case "closed":
+      return { text: t.project.statusClosed, class: "bg-stone-600 hover:bg-stone-700" };
+    case "switch":
+      return { text: t.project.statusSwitch, class: "bg-teal-600 hover:bg-teal-700" };
+    case "paused":
+      return { text: t.project.statusPaused, class: "bg-amber-600 hover:bg-amber-700" };
+    default:
+      return { text: t.project.statusUnknown, class: "" };
+  }
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  headerType="project"
+  themeColor={themeColors.primary}
+  themeColorDark={themeColors.darkPrimary}
+  locale={locale}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(projectJsonLd)} />
+  </Fragment>
+
+  <div
+    data-pagefind-body
+    data-pagefind-meta={`type:${locale === "en" ? "Project" : "專案"}, title:${project.data.title}`}
+  >
+    <!-- Header Section -->
+    <div
+      class="relative py-20 w-full"
+      style={`background:url(${coverImage.src}); background-repeat:no-repeat; background-size:cover; background-attachment:local;`}
+    >
+      <div
+        class="absolute top-0 start-0 w-full h-full"
+        style="background: linear-gradient(0deg, var(--theme-primary-90), var(--theme-secondary-50)); backdrop-filter: blur(40px);"
+      >
+      </div>
+      <div class="relative flex items-center pb-2 w-full min-h-60">
+        <div class="container grid grid-cols-1 mx-auto">
+          <div class="flex flex-col gap-4">
+            <h1 class="px-3 text-4xl text-center font-bold text-background/80">
+              {project.data.title}
+            </h1>
+            <p class="text-center text-background/80">
+              {
+                project.data.startDate.toLocaleDateString(dateLocale, {
+                  year: "numeric",
+                  month: "2-digit",
+                })
+              }
+              {
+                project.data.endDate
+                  ? ` ~ ${project.data.endDate.toLocaleDateString(dateLocale, { year: "numeric", month: "2-digit" })}`
+                  : ` ~ ${t.common.now}`
+              }
+            </p>
+            {
+              project.data.tags.length > 0 && (
+                <div class="flex gap-2 pb-2 justify-center">
+                  {project.data.tags.map((tag: string) => (
+                    <Badge
+                      variant="outline"
+                      className="text-sm bg-background/10 text-background"
+                      client:load
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="container mx-auto -mt-40 pb-20 min-h-screen max-w-5xl">
+      <div class="row grid grid-cols-12 align-items-start gap-8 px-4">
+        <div class="relative lg:col-span-4 col-span-12 z-10 min-w-0">
+          <div class="sticky top-0 pt-23">
+            <Card>
+              <CardContent className="space-y-4">
+                <div class="flex items-center justify-between gap-2">
+                  <Badge className={getStatusBadge(project.data.status).class}
+                    >{getStatusBadge(project.data.status).text}</Badge
+                  >
+                  {
+                    project.data.pin && (
+                      <Badge variant="outline">
+                        <Icon name="star" class="size-3 me-2" />
+                        {t.project.featured}
+                      </Badge>
+                    )
+                  }
+                </div>
+                <p class="notoFont msf-info-s">
+                  {project.data.description}
+                </p>
+                {
+                  project.data.links && project.data.links.length > 0 && (
+                    <div class="flex flex-col flex-wrap gap-3 mt-4">
+                      {project.data.links.map((link: any) => (
+                        <a
+                          href={link.href}
+                          target={link.openInTab ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          class={buttonVariants({ variant: "outline" })}
+                        >
+                          {link.icon && (
+                            <Icon name={link.icon} class="size-4" />
+                          )}
+                          {link.content}
+                        </a>
+                      ))}
+                    </div>
+                  )
+                }
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div class="grid col-span-12 lg:col-span-8 pb-5 gap-8 z-10 min-w-0">
+          <div class="hidden lg:block h-[calc(var(--spacing)*(23-8))]"></div>
+          <Card>
+            <CardHeader>
+              <Image
+                src={coverImage}
+                alt={project.data.title}
+                class="img-fluid"
+              />
+            </CardHeader>
+          </Card>
+          {
+            project.data.scores && project.data.scores.length > 0 && (
+              <Card>
+                <CardTitle>{t.project.awards}</CardTitle>
+                <CardContent className="pt-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {project.data.scores.map((score: any) => (
+                      <div class="pt-2 pb-0 space-y-2">
+                        <h3>{score.title}</h3>
+                        <p
+                          class="font-bold text-xl flex items-center"
+                          style="color: var(--theme-primary)"
+                        >
+                          {score.award}
+                          {score.category && (
+                            <>
+                              <span class="mx-1">。</span>
+                              {score.category}
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          }
+          {
+            project.data.tools && project.data.tools.length > 0 && (
+              <Card>
+                <CardTitle>{t.project.tools}</CardTitle>
+                <CardContent className="pt-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {project.data.tools.map((tool: any) => (
+                      <div>
+                        <p class="font-bold">{tool.name}</p>
+                        <p class="text-muted-foreground">{tool.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          }
+          <article class="flex flex-col gap-8 min-w-0">
+            <Content />
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    id="profile-modal-btn"
+    class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-(--theme-primary) text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-(--theme-secondary) hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+    title={profileData.name}
+  >
+    <Image
+      src={profileImg}
+      alt={`${profileData.name}${locale === "en" ? "'s avatar" : "的頭像"}`}
+      class="size-16 rounded-full overflow-hidden"
+      width={128}
+      height={128}
+    />
+  </button>
+
+  <ProfileCardModal client:load />
+
+  <style>
+    article > :global(*) {
+      min-width: 0;
+    }
+
+    article :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    article :global(th) {
+      text-align: left;
+      padding: 0.625rem 0.75rem;
+      border-bottom: 2px solid var(--color-border);
+      font-weight: 600;
+      color: var(--color-foreground);
+    }
+
+    article :global(td) {
+      padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-foreground);
+    }
+
+    article :global(tr:last-child td) {
+      border-bottom: none;
+    }
+  </style>
+</BaseLayout>

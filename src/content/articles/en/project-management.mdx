@@ -1,0 +1,180 @@
+---
+title: "How I Manage Personal Projects and Daily Tasks: My Method and Tool Stack"
+description: Sharing my task management approach, decision frameworks, and tool choices for personal projects and daily work
+date: 2026-03-27
+category: Workflow
+tags: [Project Management, Productivity, Notion]
+cover: /og/articles/project-management.png
+seo:
+  ogImage: /og/articles/project-management.png
+---
+
+import { Image } from 'astro:assets'
+
+import meetingSchedule from '@/assets/imgs/articles/project-management/meeting-schedule.png'
+import notionLifeos from '@/assets/imgs/articles/project-management/notion-lifeos.png'
+import calendarList from '@/assets/imgs/articles/project-management/calendar-list.png'
+import when2meetImg from '@/assets/imgs/articles/project-management/when2meet.png'
+import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
+
+This article covers the task management approaches and tools I use across different contexts. Rather than cramming everything into a single system, I pick different tools depending on the scale and nature of the task.
+
+## Personal Task Management
+
+### Guiding Principles
+**Act immediately on short tasks, plan thoroughly before acting on large ones.** Small things shouldn't sit around — handle them as soon as you think of them. Big things shouldn't be rushed — break them down clearly before starting, so you don't end up mid-project realizing you're headed the wrong direction.
+
+When estimating how long a task takes, there's one important rule: **estimate high, not low**. Better to give yourself more time than to cut it too tight, because almost every task runs into something unexpected along the way.
+
+I also track the actual time spent on each task as a reference point. After each Sprint wraps up, I look back and analyze — gradually building a feel for how long different types of work actually take. This isn't something you can nail right away; it's something you calibrate over time through consistent tracking and adjustment.
+
+### Time Blocks
+
+The time block is the unit I use most for time management, with each block being **1 hour**. After accounting for sleep, there are about 16 hours in a day — but I don't schedule all of them. Meals take up roughly 3+ hours (lunch and dinner combined), and I keep another 2–3 hours as buffer. That leaves about 10 usable time blocks per day.
+
+On the calendar, I use different colored calendars to distinguish different types of events:
+
+**Daily Life**, **Social**, **Project Development**, **Meetings**, **Self-Learning**, and so on.
+
+<Image src={calendarList} alt="Notion Calendar categories" />
+
+The color coding makes it easy to see at a glance whether the day's time is balanced, so no single category quietly takes over. Each calendar type also has its own default notification settings, so I don't have to manually adjust reminders every time I create an event — I just pick the right calendar and it's set.
+
+With the time block framework in place, here's how I match different tools to different task sizes:
+
+#### Tasks under 5 minutes
+
+I use Siri to quickly create an Apple Reminder. These are usually spontaneous to-dos that pop into my head — "reply to that email," "pick up that thing" — and I don't need to open any app. I just say it out loud, and if I specify a time ("remind me tomorrow at 3pm to reply to that email"), Siri sets it up automatically. Combined with the iPhone home screen widget, today's to-dos are always visible without even unlocking the phone.
+
+#### Tasks around 1 hour
+
+I block out an hour directly on the calendar, slotting it into today's or the near-future's buffer time. These tasks have enough weight that they need dedicated time, but they don't need to be broken down into multiple steps — things like "research a technical approach" or "clean up a document." The calendar entry makes sure that time actually gets set aside.
+
+#### Tasks over 2 hours
+
+Larger tasks go into the LifeOS system I've built in Notion.
+
+### Notion LifeOS
+
+<Image src={notionLifeos} alt="Notion LifeOS — Projects and Task List" />
+
+This is the personal management system I've set up in Notion to handle tasks over 2 hours and longer-term goals.
+
+#### Database View Configuration
+
+In Notion, I set up Views based on what I need to see:
+
+**Projects**
+- Uses **Gallery View**, displaying each project as a card with a cover and summary.
+- Sorted by current project status (State), so I can quickly tell what's in progress and what's on hold.
+
+**Actions**
+- Uses **Table View**, grouped by Sprint via a Relation field, so I can see which action items belong to each iteration. Items not yet assigned to a Sprint show up separately.
+
+**Master Lists**
+- **Active Overview**: Filtered to show only stages that require my attention — focused on what I actually need to deal with right now.
+- **Full Overview**: No filters — a complete history of all projects and actions for reference.
+
+The core structure looks like this:
+
+```
+Vision
+└── Project
+    ├── Action Plan A → linked to Sprint 1
+    │   ├── Sub Plan
+    │   └── Sub Plan
+    ├── Action Plan B → linked to Sprint 1
+    ├── Action Plan C → linked to Sprint 2
+    └── Action Plan D → (not yet assigned to a Sprint)
+```
+
+Action plans belong directly to their project, and Sprints are connected via optional Notion Relations. The advantage here is that action plans aren't locked into a specific Sprint — if something doesn't get done in one Sprint, you just change the link to the next one without moving data around. Action plans can also be created and queued up before a Sprint slot is ready for them.
+
+#### Visions and Projects
+
+Each project maps to an overarching vision, making sure what I'm doing stays aligned with long-term direction. For example, "improve technical skills" is a vision; "learn Rust" or "refactor personal site" are projects underneath it.
+
+I set at most three visions per year to avoid spreading my focus too thin. Projects have five states:
+
+- **Planning**: Still in the thinking and breakdown phase, not yet started.
+- **In Progress**: Currently being worked on.
+- **On Hold**: When a project clearly can't meet its goals in the near term, or the difficulty exceeds current capacity, I archive it and wait for the right conditions to restart.
+- **Completed**: Goals achieved and deliverables produced.
+- **Abandoned**: Officially decided not to continue after evaluation.
+
+#### Action Plans
+
+Projects are broken down into specific action plans. A few principles when creating them:
+
+- **Must be a concrete action**: Each action plan needs to map to a real, specific behavior — not a vague goal. "Optimize performance" is too abstract; "get homepage load time under 2 seconds" is a concrete action.
+- **Break it down to 1–2 hours**: If an action plan is expected to take more than 2 hours, break it down further into sub-plans until each task is roughly 1–2 hours of work.
+- **Every action has a verifiable outcome**: Completion must produce something concrete that proves the work is actually done — not just a feeling that it's "about done."
+
+#### Scrum Sprints
+
+Each project is advanced through multiple Sprints, typically 1–2 weeks each. Each Sprint picks a set of action plans or sub-plans from the project. Sprints aren't just units of task management — they're also regular checkpoints for reflection:
+
+- **Task completion review**: How many planned tasks finished on time? How many got stuck? Use this to adjust the next Sprint's scope and priorities.
+- **Blockers and resource assessment**: For tasks that stalled, figure out why — not enough breakdown, missing prerequisites, or insufficient resources — to make sure the project can keep moving forward.
+- **Efficiency improvement thinking**: Review isn't just about diagnosing failures. It's also about asking where you could go faster and better. Are there repetitive tasks that could be automated? Are there better tools or processes worth adopting? Process improvements don't always pay off immediately — researching and building automation takes time upfront. But in the long run, it's a strategic investment. A simple rule: if a process runs more than 3 times, it's worth exploring automation.
+
+## Meeting Management
+
+### Notion Calendar + Google Calendar
+
+<Image src={meetingSchedule} alt="Meeting scheduling flow" />
+
+My calendar management is centered on Notion Calendar, synced with Google Calendar. All my events — whether work-related or personal — are viewed and managed in Notion Calendar.
+
+When I need to schedule a meeting with someone, I can generate a meeting link directly through Notion Calendar and share available time slots. Once they pick a time, the event is created automatically — no back-and-forth needed.
+
+---
+
+### Meeting Scheduling Tool Comparison
+
+Besides Notion Calendar, there are a few dedicated scheduling tools worth knowing:
+
+<div style="overflow-x: auto;">
+<table style="min-width: 628px;">
+<colgroup>
+<col style="width: 88px;" />
+<col style="width: 180px;" />
+<col style="width: 180px;" />
+<col style="width: 180px;" />
+</colgroup>
+<thead>
+<tr><th></th><th>Notion Calendar</th><th>Calendly</th><th>SimplyMeet.me</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Calendars you can connect</strong></td><td>Unlimited</td><td>1</td><td>2</td></tr>
+<tr><td><strong>Custom page appearance</strong></td><td>Standard page, no customization</td><td>Paid plans can customize brand color, logo, banner</td><td>Supports custom color schemes</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Free</td><td>Free to use, advanced features require subscription</td><td>Free to use, advanced features require subscription</td></tr>
+</tbody>
+</table>
+</div>
+
+Why I personally chose Notion Calendar:
+
+- **Unlimited Google Calendar connections**: I have a work Google Calendar and a personal Google Calendar — I need both connected and visible at once, which the free tier of other tools can't do.
+- **Completely free**: Core features don't cost anything, which is more than enough for personal use.
+- **Easy to use**: Clean, intuitive interface that integrates with the Notion ecosystem — no extra learning curve.
+
+### Group Availability Coordination
+
+The scheduling tools above solve a one-on-one scenario: someone else wants to find a time with you. But there's another common situation: a group of people needs to find a time that works for everyone — a club meeting, a friends' dinner, a team activity. Asking "when are you free?" back and forth in a group chat is inefficient. You need a tool where everyone marks their availability and it auto-compares.
+
+I recommend two tools for this, each with its own strengths:
+
+<Image src={when2meetImg} alt="When2meet" />
+
+**When2meet** is the most widely known option. The flow is simple — create an event, pick candidate dates and time ranges, drop the link in the group chat, and everyone drags to mark when they're free. The system then shows overlap intensity with color gradients, so it's immediately clear which time slot works for the most people. The biggest advantage: no sign-up required. Open the link, enter your name, and you're in. Lowest barrier for people who aren't familiar with tools.
+
+<span class="pricing-tag">Free</span>
+<a href="https://www.when2meet.com" target="_blank" class="official-link">When2meet</a>
+
+<Image src={timefulImg} alt="Timeful" />
+
+**Timeful** (formerly Schej) is the more modern alternative. It connects with Google Calendar and Outlook — when participants log in, it automatically pulls their busy times from their calendars, so no manual entry needed. Once a time is confirmed, you can create the calendar event directly inside Timeful without switching to another app. If your team is already on Google Calendar, Timeful makes the whole process much smoother.
+
+<span class="pricing-tag">Free</span>
+<a href="https://timeful.app" target="_blank" class="official-link">Timeful</a>

@@ -5,7 +5,7 @@ import { filterByLocale } from "@/i18n";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("articles");
-  const posts = filterByLocale(allPosts, "zh-Hant");
+  const posts = filterByLocale(allPosts, "en");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -16,4 +16,4 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-<ArticleSlugPage post={post} Content={Content} headings={headings} locale="zh-Hant" />
+<ArticleSlugPage post={post} Content={Content} headings={headings} locale="en" />

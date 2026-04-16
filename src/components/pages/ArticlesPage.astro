@@ -1,0 +1,236 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import {
+  ProfileCardModal,
+  profileData,
+} from "@/components/data/profile";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import Icon from "@/components/Icon.astro";
+import ArticleCard from "@/components/articles/ArticleCard.astro";
+import { useTranslations, filterByLocale, type Locale } from "@/i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "zh-Hant" } = Astro.props;
+const t = useTranslations(locale);
+
+const allPosts = await getCollection("articles");
+const localePosts = filterByLocale(allPosts, locale);
+const sortedPosts = localePosts.sort((a, b) => {
+  if (a.data.pin && !b.data.pin) return -1;
+  if (!a.data.pin && b.data.pin) return 1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
+---
+
+<BaseLayout
+  title={t.articles.title}
+  description={t.articles.description}
+  headerType="main"
+  locale={locale}
+>
+  <div class="min-h-screen pt-20">
+    <section class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-[var(--theme-primary-5)] via-transparent to-transparent"
+      >
+      </div>
+      <div
+        class="container mx-auto px-4 pt-24 pb-20 md:pt-40 md:pb-32 relative"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <p
+            class="text-sm font-medium tracking-widest uppercase text-[var(--theme-primary)] mb-6"
+          >
+            Articles
+          </p>
+          <h1
+            class="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-400 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.3] md:leading-[1.2]"
+          >
+            {t.articles.heading}
+          </h1>
+          <p
+            class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            {t.articles.subtitle}
+          </p>
+          <div class="fade-in flex flex-wrap justify-center gap-2 mt-8">
+            {
+              categories.map((category) => (
+                <a
+                  href={`#${category}`}
+                  class="px-4 py-1.5 text-sm font-medium text-muted-foreground bg-card border border-border rounded-full no-underline transition-all hover:border-[var(--theme-primary)] hover:text-[var(--theme-primary)] hover:shadow-sm"
+                  data-category-link
+                >
+                  {category}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
+      >
+      </div>
+    </section>
+
+    <section class="relative">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-primary-5)] to-transparent"
+      >
+      </div>
+      <div class="container mx-auto px-4 py-20 md:py-32 relative">
+        <div class="max-w-6xl mx-auto">
+          <div class="fade-in space-y-4">
+            {
+              categories.map((category) => {
+                const categoryPosts = sortedPosts.filter(
+                  (p) => p.data.category === category,
+                );
+                return (
+                  <div class="mb-12 scroll-mt-24" id={category}>
+                    <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-0">
+                      {category}
+                    </h2>
+                    <div
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                      data-category-grid
+                    >
+                      {categoryPosts.map((post, index) => (
+                        <ArticleCard
+                          post={post}
+                          locale={locale}
+                          class={index >= 6 ? "hidden" : ""}
+                          data-card-index={index}
+                        />
+                      ))}
+                    </div>
+                    {categoryPosts.length > 6 && (
+                      <button
+                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-full transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
+                        data-expand-btn
+                      >
+                        {t.articles.showMoreCount.replace('{count}', String(categoryPosts.length))}
+                      </button>
+                    )}
+                  </div>
+                );
+              })
+            }
+          </div>
+
+          {
+            sortedPosts.length === 0 && (
+              <div class="text-center py-12">
+                <Icon
+                  name="toolbox"
+                  class="size-16 mx-auto mb-4 text-muted-foreground/50"
+                />
+                <p class="text-muted-foreground">{t.articles.noArticles}</p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .fade-in {
+      opacity: 0.5;
+      transform: translateY(24px);
+      transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <button
+    id="profile-modal-btn"
+    class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+    title={profileData.name}
+  >
+    <Image
+      src={profileImg}
+      alt={profileData.name}
+      class="size-16 rounded-full overflow-hidden"
+      width={128}
+      height={128}
+    />
+  </button>
+
+  <ProfileCardModal client:load />
+
+  <script is:inline>
+    function initFadeIn() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
+      );
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("visible");
+        } else {
+          observer.observe(el);
+        }
+      });
+    }
+
+    initFadeIn();
+
+    window.addEventListener("pageshow", (e) => {
+      if (e.persisted) {
+        document.querySelectorAll(".fade-in:not(.visible)").forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add("visible");
+          }
+        });
+        initFadeIn();
+      }
+    });
+  </script>
+
+  <script>
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-category-link]")
+      .forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = link.getAttribute("href")!.slice(1);
+          const target = document.getElementById(id);
+          target?.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+    document.querySelectorAll("[data-expand-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const grid = btn.previousElementSibling;
+        grid?.querySelectorAll("[data-card-index]").forEach((card) => {
+          card.classList.remove("hidden");
+        });
+        btn.remove();
+      });
+    });
+  </script>
+</BaseLayout>

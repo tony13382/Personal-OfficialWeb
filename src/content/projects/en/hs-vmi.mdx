@@ -1,0 +1,252 @@
+---
+title: Huaxin VMI Supply Chain Management Simulation Game
+description: "[ Industry-Academia Collaboration ] A supply chain management educational simulation game developed in collaboration with Walsin Lihwa. Players take on the role of a VMI project manager, managing inventory strategies for wire products across three distributors. The system automatically simulates daily operations based on historical sales data, settling monthly profit/loss and annual dividends to teach Vendor Managed Inventory (VMI) decision logic."
+startDate: 2020-10-01
+endDate: 2020-12-31
+status: switch
+theme: blue
+cover: imgs/projects/hsVmi/cover.png
+pin: false
+skillTypes: [dev]
+tags: [Full-Stack Development]
+links:
+  - content: GitHub Code
+    href: https://github.com/tony13382/CycuSA-VMI
+    icon: GithubLogoIcon
+    openInTab: true
+tools:
+  - name: Apache Tomcat (JSP)
+    description: Backend simulation engine and data processing
+  - name: MySQL
+    description: SQL database design and integration
+  - name: Bootstrap V4.3
+    description: Frontend component library
+seo:
+  metaDescription: "[ Industry-Academia Collaboration ] A supply chain management educational simulation game developed in collaboration with Walsin Lihwa. Players manage VMI inventory strategies for wire products across three distributors, learning Vendor Managed Inventory decision logic."
+---
+
+import { TabsBlock } from '@/components/react/TabsBlock'
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { IconBlock } from '@/components/react/IconBlock'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+import hsVmiErModal from '@/assets/imgs/projects/hsVmi/ErModal.png'
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Background
+    Walsin Lihwa has invested in smart manufacturing for many years and planned to install a new fully automated wire production line in Xinzhuang, requiring large-scale standard product orders to recoup the investment. To achieve this, the company decided to implement `Vendor Managed Inventory (VMI)` for three major domestic distributors (Beigai, Zhongtong, Nansheng) across three commonly used construction wire products (IV, VV, CVV).
+
+    This project was developed in collaboration with Walsin Lihwa as an industry-academia partnership, creating an educational simulation game where students play the role of a VMI project manager. By setting replenishment strategies and observing simulation results, students learn the decision-making logic of supply chain management.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Game Flow</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**1. Login**</p>
+        Enter student ID and name; the system creates a dedicated game record.
+      </div>
+      <div className="space-y-1.5">
+        <p>**2. Strategy Setup**</p>
+        Configure "number of leased slots" and "replenishment frequency (days between restocks)" for each of the 3 distributors x 3 wire products (9 combinations total).
+      </div>
+      <div className="space-y-1.5">
+        <p>**3. Daily Simulation**</p>
+        Based on historical sales data, the system automatically advances one day every 5 seconds, displaying real-time sales volume, replenishment status, and emergency restocking status for each product.
+      </div>
+      <div className="space-y-1.5">
+        <p>**4. Monthly Settlement**</p>
+        At the end of each month, the system automatically tallies service revenue, slot rental fees, replenishment costs, and emergency shipping costs for each distributor's products, and allows strategy adjustments for the following month.
+      </div>
+      <div className="space-y-1.5">
+        <p>**5. Annual Summary**</p>
+        After 12 months, the system calculates total annual revenue, total expenses, and dividend bonuses as the final performance evaluation.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Core Features</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**9 Strategy Combinations**</p>
+        3 distributors (Beigai, Zhongtong, Nansheng) x 3 wire types (IV, VV, CVV), each combination independently configured with leased slots and replenishment interval.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Automatic Replenishment Logic**</p>
+        Based on the player's configured replenishment interval, the system automatically calculates the shortfall on restock days and fills the slot inventory.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Emergency Replenishment Mechanism**</p>
+        When daily sales exceed current inventory, emergency replenishment is automatically triggered, incurring higher additional shipping costs.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Profit/Loss Settlement System**</p>
+        Monthly and annual automatic settlement of service revenue, slot rental fees, replenishment costs, and emergency shipping costs, with final dividend bonus calculation.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+export const dbItems = [
+  {
+    value: "consult-db",
+    trigger: "Reference Database (consult): 5 Tables",
+    contentClassName: "p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">comparedate</td>
+                <td class="border-y px-4 py-2">Date-to-month mapping table</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">parameter</td>
+                <td class="border-y px-4 py-2">System parameters (service revenue, rental fees, replenishment costs, emergency shipping costs, dividend rate)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">producer</td>
+                <td class="border-y px-4 py-2">Distributor records (Beigai, Zhongtong, Nansheng)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">product</td>
+                <td class="border-y px-4 py-2">Product records (IV, VV, CVV)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">sellrecord</td>
+                <td class="border-y px-4 py-2">Historical sales records (daily sales per product)</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "transaction-db",
+    trigger: "Transaction Database (transaction): 4 Tables",
+    contentClassName: "p-0 pb-4",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">Table</th>
+                <th class="border-y text-left font-bold px-4 py-2">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">gamelogin</td>
+                <td class="border-y px-4 py-2">Player game records (student ID, name, annual totals)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">monthparameter</td>
+                <td class="border-y px-4 py-2">Monthly replenishment parameters (leased slot count, replenishment interval)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">dayrunning</td>
+                <td class="border-y px-4 py-2">Daily operations data (opening inventory, sales, closing inventory, replenishment quantity, emergency replenishment quantity)</td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2 font-mono">monthresult</td>
+                <td class="border-y px-4 py-2">Monthly settlement (revenue, rental fees, replenishment costs, emergency shipping costs)</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={hsVmiErModal}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardTitle>Database Design</CardTitle>
+  <CardContent className="gap-3 pt-4">
+    <p>Uses a `dual-database architecture` that separates static reference data from dynamic transaction data, totaling 9 tables.</p>
+    <AccordionBlock
+      items={dbItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Technical Documents</CardTitle>
+  <CardContent>
+    <TabsBlock
+      tabs={[
+        {
+          value: "System Specification",
+          label: "System Specification",
+          embed: [
+            { 
+              type: 'IconBlock', 
+              title: "System Specification (1)", 
+              subtitle: "PDF",
+              href: "/assets/file/hsVmi/供應商庫存管理系統規格.pdf",
+              icon: "FilePdfIcon",
+            },
+            { 
+              type: 'IconBlock', 
+              title: "System Specification (2)", 
+              subtitle: "DOCX",
+              href: "/assets/file/hsVmi/VMI個案遊戲.docx",
+              icon: "MicrosoftWordLogoIcon"
+            },
+          ]
+        },
+        {
+          value: "Default Dataset",
+          label: "Default Dataset",
+          embed: [
+            { 
+              type: 'IconBlock', 
+              title: "Default Dataset (1)", 
+              subtitle: "XLSX",
+              href: "/assets/file/hsVmi/VMI起始資料.xlsx",
+              icon: "MicrosoftExcelLogoIcon",
+            },
+            { 
+              type: 'IconBlock', 
+              title: "Default Dataset (2)", 
+              subtitle: "XLSX",
+              href: "/assets/file/hsVmi/VMIDATA2020.xlsx",
+              icon: "MicrosoftExcelLogoIcon"
+            },
+          ]
+        },
+      ]}
+      defaultValue="System Specification"
+      client:visible
+    />
+  </CardContent>
+</Card>

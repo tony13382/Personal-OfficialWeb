@@ -1,0 +1,264 @@
+---
+title: Trello Knowledge Assistant 2.0
+description: "[ Project & Thesis ] Integrating large language models into the Trello platform to assist students with self-directed learning resource search and interaction."
+subdescription: "Role: Educational System RD Engineer<br>Responsibilities: Software architecture design, API design, database design, software development"
+startDate: 2023-07-01
+endDate: 2024-07-31
+status: switch
+theme: blue
+cover: imgs/projects/trelloFinder/cover.png
+pin: true
+skillTypes: ["dev"]
+tags: [Text Mining, Search Algorithms, LLM, Vector Data Management, Backend, Queue System]
+links:
+  - content: Project URL
+    href: https://github.com/tony13382/Tools-TrelloFinderV2
+    icon: GithubLogoIcon
+    openInTab: true
+scores:
+  - title: TWELF 2024 19th Taiwan E-Learning and Educational Technology Conference
+    award: Best Paper Award
+    category: AIES Division
+tools:
+  - name: Flask
+    description: Webhook API development and setup
+  - name: RabbitMQ
+    description: Task queue processing system to prevent service blocking under heavy user load
+  - name: MongoDB
+    description: Primary system database recording all student interaction data
+  - name: Milvus
+    description: System knowledge vector database for building and managing RAG knowledge search
+  - name: Sentence-BERT
+    description: Text vectorization technology, model training and fine-tuning
+seo:
+  metaDescription: "[Project & Thesis] Integrating large language models into the Trello platform to assist students with self-directed learning resource search and interaction."
+---
+
+import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Canva } from '@/components/react/Canva'
+import workflowPrepareData from '@/assets/imgs/projects/trelloFinder/workflowPerpareData.png'
+import workflowModule from '@/assets/imgs/projects/trelloFinder/workflowModule.png'
+import workflowTrello from '@/assets/imgs/projects/trelloFinder/workflowTrello.png'
+import workflowPrepareChat from '@/assets/imgs/projects/trelloFinder/workflowPrepareChat.png'
+import workflowPrepareKnow from '@/assets/imgs/projects/trelloFinder/workflowPrepareKnow.png'
+
+
+<Card>
+  <CardTitle className="pb-4 border-b">System User Guide</CardTitle>
+  <CardHeader>
+    <Canva
+      src="https://www.canva.com/design/DAGKAc57KAs/XCcrwiCGLdZ5_E4Wz3-Reg/view?embed"
+      title="System User Guide"
+      client:visible
+    />
+  </CardHeader>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={workflowPrepareData}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    ## Knowledge Text Pre-processing
+    After retrieving each article's title, body, and URL, the content is stored as plain text in a MongoDB article database. To support RAG-based article retrieval, the title and body are merged into an index text, which is then converted into a fixed-length vector using Sentence-BERT's paraphrase-multilingual-mpnet-base-v2 multilingual model and stored in the article vector database.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={workflowModule} 
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    ## Module Construction
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Search Architecture**</p>
+        A resource recommendation algorithm combining `BM25 (term frequency)`, TF-IDF, co-occurrence analysis, and SBERT `embedding technology` to search science education resources based on user-entered keywords.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Response Architecture**</p>
+        Built on `RAG` and `chain-of-thought prompt design`, using a large language model (GPT-4 Turbo) to generate appropriate responses and follow-up questions.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <ImageWithLightbox
+      src={workflowTrello}
+      allowPop={true}
+      client:load
+    />
+  </CardHeader>
+  <CardContent className="gap-4 pt-4">
+    <h2>Trello Data Creation Flow</h2>
+  </CardContent>
+</Card>
+
+export const accordionItems = [
+  {
+    value: "item-1",
+    trigger: "Extraction Prompt - Based on GPT 3.5, temperature set to 0",
+    contentClassName: "p-0",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">role</th>
+                <th class="border-y text-left font-bold px-4 py-2">prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2">system</td>
+                <td class="border-y px-4 py-2">
+                  #zh_tw You are a natural science middle school teacher who uses Traditional Chinese and is speaking with a student who is new to research. The student is researching
+                  <span class="text-theme font-bold">Research Topic</span>. You need to help the student understand related knowledge, so you should generate a response and ask the student a follow-up question to promote deeper thinking about the
+                  <span class="text-theme font-bold">Research Topic</span>. The output text must be based on Markdown syntax.
+                </td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2">user</td>
+                <td class="border-y px-4 py-2">*chat text (oldest to newest)*</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  },
+  {
+    value: "item-2",
+    trigger: "Response Prompt - Based on GPT 4 Turbo, temperature set to 0.1",
+    contentClassName: "p-0",
+    embed: [
+      {
+        type: "html",
+        content: `
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border-y text-left font-bold px-4 py-2">role</th>
+                <th class="border-y text-left font-bold px-4 py-2">prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-y px-4 py-2">system</td>
+                <td class="border-y px-4 py-2">
+                  #zh_tw You are a natural science middle school teacher who uses Traditional Chinese and is speaking with a student who is new to research. The student is researching
+                      <span className="text-theme font-bold">Research Topic</span>.
+                      You need to help the student understand related knowledge. Therefore you must: 1. Attempt to answer the student's question based on the reference materials, and mandatorily cite [article number] in your answer. 2.
+                      If the reference materials cannot answer the question, only inform that the available data cannot answer it. 3. Generate a response based on the conversation history. The output text must be based on Markdown syntax.
+                </td>
+              </tr>
+              <tr>
+                <td class="border-y px-4 py-2">user</td>
+                <td class="border-y px-4 py-2">*chat text (oldest to newest)*</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        className: "overflow-x-auto"
+      }
+    ]
+  }
+]
+
+<Card>
+  <CardTitle>
+    Prompt List
+  </CardTitle>
+  <CardContent>
+    <AccordionBlock
+      items={accordionItems}
+      type="single"
+      firstActive={true}
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent className="gap-4 pt-4">
+    ## Response Module Data Pre-processing
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Chat Text Processing**</p>
+        <ImageWithLightbox
+          src={workflowPrepareChat}
+          allowPop={true}
+          client:load
+        />
+      </div>
+      <hr className="my-6" />
+      <div className="space-y-1.5">
+        <p>**Knowledge Text Processing**</p>
+        <ImageWithLightbox
+          src={workflowPrepareKnow}
+          allowPop={true}
+          client:load
+        />
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <Canva
+      src="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view?embed"
+      title="Building a Self-Directed Learning Resource Recommendation System Using Natural Language Processing"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent className="gap-4">
+    <div><Badge variant="outline" className="text-base">Search Module</Badge></div>
+    <div className="flex flex-col gap-2">
+      ## Building a Self-Directed Learning Resource Recommendation System Using Natural Language Processing
+      A resource recommendation algorithm combining BM25 (term frequency), TF-IDF, and SBERT embedding technology to search science education resources based on user-entered keywords.
+    </div>
+    <div className="flex flex-col gap-2">
+      <IconBlock
+        title="Research Conference Slides"
+        subtitle="Canva"
+        href="https://www.canva.com/design/DAF27I-RV30/bVeemVpl-SsdQANIouLtIg/view"
+        icon="FilePptIcon"
+        client:visible
+      />
+      <IconBlock
+        title="Conference Paper Document"
+        subtitle="PDF"
+        href="https://drive.google.com/file/d/10Oz-daozOXayrbwCAk7b9xX1EqEm5nYF/view?usp=drivesdk"
+        icon="FilePdfIcon"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>

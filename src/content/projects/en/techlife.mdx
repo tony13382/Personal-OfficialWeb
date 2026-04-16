@@ -1,0 +1,130 @@
+---
+title: TechLife - Photopea Instructor
+description: In response to the internet age, educating children with information literacy and technology application skills builds a solid foundation for future development.
+startDate: 2021-10-01
+endDate: 2021-12-31
+status: closed
+theme: green
+cover: imgs/projects/techlife/cover.png
+pin: true
+skillTypes: [plan]
+tags: [Lesson Plan Design, PowerPoint Design]
+links:
+  - content: Business Plan URL
+    href: https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view
+    icon: FileArrowDown
+    openInTab: true
+scores:
+  - title: 1092 Chung Yuan Christian University MIS Department Information Management Competition
+    award: 1st Place
+tools:
+  - name: Photopea
+    description: Photo editing
+  - name: Powerpoint
+    description: Lesson plan design
+seo:
+  metaDescription: In response to the internet age, educating children with information literacy and technology application skills builds a solid foundation for future development.
+---
+
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+
+<Card>
+  <CardContent className="pt-6 gap-4">
+    <div className="grid gap-2">
+      <p>`Program Name`: TechLife — Let Technology Fill Your Life</p>
+      <p>`Team Name`: CYCU MIS All-In</p>
+      <p>`Service Date`: June 11–12, 2021</p>
+      <p>`Planned Service Location and Audience`: Taoyuan Elementary School, Yanping Township, Taitung County (15–20 children)</p>
+    </div>
+
+    <IconBlock
+      title="Lesson Plan Document"
+      subtitle="PDF (Google Drive)"
+      href="https://drive.google.com/file/d/1eniB4QHWWV2XpCchNALeQpDLl1XQkiVT/view?usp=sharing"
+      icon="FilePdfIcon"
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <Youtube
+        embedUrl="https://www.youtube.com/embed/mOWnXJHIqIY"
+        client:visible
+      />
+  </CardHeader>
+  <CardContent className="gap-4">
+    ## Lesson Plan: Unlimited Image Creation
+    <IconBlock
+      title="Unlimited Image Creation"
+      subtitle="PPT Lesson Plan"
+      href="https://docs.google.com/presentation/d/1dCqidx20eRnYCjTZqa0tZ0-m0BvxnJFC/edit#slide=id.p1"
+      icon="FilePptIcon"
+      client:visible
+    />
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "Unlimited Image Creation (Slide Preview)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG35mSwP18/DR5c7o5yWyfYZ3jgg3RnGg/view?embed",
+              title: "Unlimited Image Creation Slides"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+    <Youtube
+        embedUrl="https://www.youtube.com/embed/R_vsL1NFWN8"
+        client:visible
+      />
+  </CardHeader>
+  <CardContent className="gap-4">
+    ## Lesson Plan: Build a Linebot in 10 Minutes
+    <IconBlock
+      title="Lesson Plan: Build a Linebot in 10 Minutes"
+      subtitle="PPT Lesson Plan"
+      href="https://docs.google.com/presentation/d/1caNefhQInRqCu8LZLcUChf4yaCZgMC41/edit#slide=id.p1"
+      icon="FilePptIcon"
+      client:visible
+    />
+    <AccordionBlock
+      items={[
+        {
+          value: "item-1",
+          trigger: "Lesson Plan: Build a Linebot in 10 Minutes (Slide Preview)",
+          contentClassName: "p-0",
+          embed: [
+            {
+              type: "Canva",
+              src: "https://www.canva.com/design/DAG3_U2O5UM/7BineOJpAOxa4MRyZv8opA/view?embed",
+              title: "Lesson Plan: Build a Linebot in 10 Minutes Slides"
+            },
+          ]
+        },
+        
+      ]}
+      type="single"
+      collapsible
+      client:visible
+    />
+  </CardContent>
+</Card>

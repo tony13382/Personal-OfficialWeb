@@ -1,0 +1,184 @@
+---
+title: NexTags - Self-Hosted Music Database Management System
+description: A self-hosted music library management tool based on FastAPI + React, supporting batch metadata editing, smart playlists, AI lyrics processing, and automated import workflows
+subdescription: "Role: Full-Stack Developer<br>Responsibilities: Software architecture design, database design, frontend and backend development, Docker deployment"
+startDate: 2024-10-01
+status: active
+theme: natural
+cover: imgs/projects/nexTags/cover.png
+pin: false
+skillTypes: [dev, design]
+tags: [Full-Stack Development, Database Design, Docker, AI Integration]
+links:
+  - content: GitHub Project
+    href: https://github.com/tony13382/NexTags
+    icon: GithubLogoIcon
+    openInTab: true
+tools:
+  - name: FastAPI
+    description: Python async API framework handling backend logic and audio file operations
+  - name: React 19
+    description: Frontend UI framework built with Vite
+  - name: PostgreSQL
+    description: Relational database storing playlists and music metadata indices
+  - name: Redis
+    description: Tag caching layer to accelerate queries for large music libraries
+  - name: Docker Compose
+    description: Containerized deployment with one-command full stack startup
+  - name: Mutagen
+    description: Python audio metadata read/write supporting ID3v2, Vorbis, and FLAC tags
+  - name: Claude API
+    description: AI lyrics processing with automatic format correction, translation, and timestamp alignment
+  - name: shadcn/ui
+    description: Component library based on Radix UI with Tailwind CSS
+seo:
+  metaDescription: A self-hosted music library management tool based on FastAPI + React, supporting batch metadata editing, smart playlists, AI lyrics processing, and automated import workflows
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import nextTagsSonglist from '@/components/apps/nextags/assets/nextags-songlist.png'
+import nextTagsTagEditor from '@/components/apps/nextags/assets/nextags-tageditor.png'
+import nextTagsPlaylist from '@/components/apps/nextags/assets/nextags-playlist.png'
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Overview
+    NexTags is a `self-hosted music database management system` designed for users with large digital music collections. The core problem it solves is the fragmented nature of music file metadata management — previously requiring multiple apps just to organize a library.
+
+    With NexTags, all operations are done in the `browser`: browsing the library, editing tags, building playlists, and handling lyrics — deployed on your own server via `Docker Compose` for complete data ownership.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader className="p-6 pb-0">
+    <ImageWithLightbox
+      src={nextTagsSonglist}
+      allowPop={true}
+      rounded={true}
+      className="border-1"
+      client:load
+    />
+  </CardHeader>
+  <CardTitle>Song Management</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    The main library view supports multi-condition filtering and real-time search, letting you quickly locate songs by `folder`, `language`, `favorites`, and more. Supports MP3, FLAC, M4A, OGG, WAV, and other major formats — paginated browsing keeps large libraries responsive.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader className="p-6 pb-0">
+    <ImageWithLightbox
+      src={nextTagsTagEditor}
+      allowPop={true}
+      rounded={true}
+      className="border-1"
+      client:load
+    />
+  </CardHeader>
+  <CardTitle>Inline Tag Editor</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    Open a side panel directly from the song list to edit `20+` metadata fields. Supports ID3v2, Vorbis Comment, and FLAC tag formats — changes are written back to the original file immediately.
+
+    Fields include Title, Artist, Album and their corresponding Sort fields, multi-tag Genre selection, Language, Favorite, and other custom fields. `pypinyin` automatically generates pinyin sort values, so you never need to fill in Sort fields by hand.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader className="p-6 pb-0">
+    <ImageWithLightbox
+      src={nextTagsPlaylist}
+      allowPop={true}
+      rounded={true}
+      className="border-1"
+      client:load
+    />
+  </CardHeader>
+  <CardTitle>Smart Playlists</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    Build playlists from dynamic filter conditions — filter by `tag include/exclude`, `language`, `favorites`, and more, with multiple sort options (title, created time, album, artist).
+
+    Export single or batch `M3U` files for direct use with Navidrome, Jellyfin, and other media servers. Playlist configurations also support JSON export/import for easy backup and migration.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Music Import Workflow</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    A 7-step guided import flow chains all the operations needed to add new music to the library into one streamlined process:
+
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p>**Step 1 - Upload**</p>
+        Upload audio files to a staging area, with support for batch drag-and-drop.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 2 - Auto Convert**</p>
+        M4A files are automatically converted to FLAC via `FFmpeg`, preserving all original tags during conversion.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 3 - Extract Metadata**</p>
+        Uses `Mutagen` to automatically read existing tag information from audio files.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 4 - Tag Editing**</p>
+        Review and fill in metadata before import to confirm song information is correct.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 5 - Artist Management**</p>
+        Detects artists not yet in the database, with the option to upload artist images.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 6 - Archive**</p>
+        Automatically moves files to the correct folder path based on configured rules.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Step 7 - ReplayGain**</p>
+        Uses `r128gain` to batch-analyze loudness and write ReplayGain tags, ensuring consistent playback volume across all songs.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>AI Lyrics Processing</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    Integrated with `Claude API`, a one-click AI lyrics action in the tag editor supports three operations:
+
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p>**Format Normalization**</p>
+        Automatically cleans LRC lyrics format and standardizes timestamp notation.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Simplified/Traditional Conversion**</p>
+        Converts Simplified Chinese lyrics to Traditional Chinese while preserving the original LRC timeline.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Lyrics Translation**</p>
+        Supports inline Chinese translation of English, Korean, and other language lyrics.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Technical Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Backend**</p>
+        `FastAPI` handles API logic, `Mutagen` manages audio metadata read/write, `FFmpeg` handles format conversion, and `r128gain` performs ReplayGain analysis. `Psycopg2` connects to PostgreSQL, with `Redis` as a tag cache layer to speed up queries.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Frontend**</p>
+        Built with `React 19` and `Vite`, using the `shadcn/ui` component library and `Tailwind CSS` for the interface. `dnd-kit` handles drag-and-drop sorting on settings pages, and `Sonner` provides action notifications.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Deployment**</p>
+        `Docker Compose` orchestrates four services: FastAPI backend, Nginx frontend, PostgreSQL database, and Redis cache. Supports both development mode (Hot Reload) and production deployment configurations.
+      </div>
+    </div>
+  </CardContent>
+</Card>

@@ -1,0 +1,151 @@
+---
+title: WellyGeo - AI Brand Visibility Tracking Platform
+description: Track brand visibility performance in AI search engines such as ChatGPT, Google Gemini, and Google AI Overview, providing competitor analysis and trend reports
+subdescription: "Role: Frontend Developer & Crawler Developer @ Solwen AI<br>Responsibilities: Full frontend development, crawler system development support"
+startDate: 2025-11-26
+status: active
+theme: orange
+cover: imgs/projects/wellyGeo/cover.png
+pin: true
+skillTypes: [dev]
+tags: [Frontend Development, Crawler System, AI, SaaS, Data Visualization]
+tools:
+  # — Frontend —
+  - name: React 19
+    description: Frontend framework with Vite for building SPA data analytics dashboard
+  - name: TypeScript
+    description: Unified type system for frontend and backend ensuring code quality
+  - name: shadcn/ui + Tailwind CSS
+    description: Frontend component library and styling framework for building data visualization interfaces
+  - name: Recharts
+    description: Chart visualization for presenting brand visibility trends and analytics
+  - name: i18next
+    description: Internationalization framework supporting Traditional Chinese and English
+  # — Crawler —
+  - name: Playwright
+    description: Browser automation engine for crawling ChatGPT and Gemini AI responses
+  - name: Express.js
+    description: Crawler backend API server handling crawler task queues
+  - name: SerpAPI
+    description: Google AI Overview search result data source
+  - name: Docker
+    description: Containerized deployment integrating Playwright browser environment
+  - name: AWS Batch / Fargate
+    description: Serverless container execution environment for scalable crawler tasks
+  - name: AWS S3
+    description: Cloud storage for crawled results (JSONL format)
+  - name: AWS CDK
+    description: Infrastructure as Code for managing cloud infrastructure
+seo:
+  metaDescription: Track brand visibility performance in AI search engines such as ChatGPT, Google Gemini, and Google AI Overview, providing competitor analysis and trend reports
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { AccordionBlock } from '@/components/react/AccordionBlock'
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Overview
+    WellyGeo is an `AI Brand Visibility Tracking Platform` (GEO, Generative Engine Optimization) developed by `Solwen AI`, helping brands monitor their exposure performance in AI search engines.
+
+    The system automatically sends queries to `ChatGPT, Google Gemini, and Google AI Overview`, captures AI response content and analyzes how frequently brands are mentioned, citation sources, and competitor comparisons. It produces visual trend reports to help marketing teams optimize their brand visibility strategy within the AI ecosystem.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>System Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>WellyGeo consists of two major subsystems forming a complete data collection and analysis pipeline:</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Frontend — Data Analytics Dashboard**</p>
+        An SPA application built with `React 19 + TypeScript + Vite`, integrated with the `shadcn/ui` component library and `Recharts` chart visualization. Includes feature modules for project management, brand visibility trend charts, AI response analysis, citation source tracking, and competitor comparison, with `i18next` bilingual support for Traditional Chinese and English.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Crawler — AI Response Crawling Engine**</p>
+        A crawler service built with `Playwright + Express.js` that simulates user interactions through browser automation to capture responses from ChatGPT and Google Gemini. Google AI Overview data is obtained via SerpAPI. Crawled results are uploaded to `AWS S3` in JSONL format, with support for large-scale distributed execution on `AWS Batch/Fargate` and Webhook callback notifications.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Core Features</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Brand Visibility Analysis**</p>
+        Tracks trends in how frequently a brand is mentioned across different AI platform responses, presenting visibility distribution through line charts, pie charts, and bar charts, along with detailed data tables.
+      </div>
+      <div className="space-y-1.5">
+        <p>**AI Response Content Analysis**</p>
+        Analyzes the context in which a brand appears in AI responses, sentiment orientation, and recommendation ranking, revealing how AI describes and recommends the brand.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Citation Source Tracking**</p>
+        Analyzes the web sources and type distribution cited in AI responses, identifying which content AI uses as the basis for brand information.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Competitor Comparison**</p>
+        Automatically detects or manually configures competitors to compare brand and competitor AI visibility differences across the same query dimensions.
+      </div>
+      <div className="space-y-1.5">
+        <p>**AI Keyword Generation**</p>
+        Integrates AI to automatically generate brand-related search topics and query phrases, with CSV batch import support to accelerate project setup.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Multi-Platform Crawler Scheduling**</p>
+        Supports three major platforms — ChatGPT, Google Gemini, and Google AI Overview — with flexible platform combination selection via the `AI_PLATFORMS` parameter.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>My Role & Contributions</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Full Frontend Development**</p>
+        Independently responsible for the complete development of the Frontend dashboard, including project management workflows, brand visibility charts (line, pie, and bar charts), AI response analysis pages, citation source tracking, competitor comparison configuration, and i18next bilingual switching between Traditional Chinese and English.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Crawler System Development Support**</p>
+        Participated in Crawler backend development, helping build Playwright browser automation crawlers, fixing Gemini error handling, and maintaining documentation and logging systems.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Development Workflow Setup**</p>
+        Introduced Husky + lint-staged for automated pre-commit checks, configured ESLint + Prettier to enforce consistent code style, and established team development standards.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Code Review**</p>
+        Responsible for reviewing team members' Pull Requests to ensure code quality and architectural consistency.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Technical Highlights</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Anti-Detection Browser Automation**</p>
+        The Crawler integrates Puppeteer-Extra Stealth Plugin with custom browser fingerprinting to bypass bot detection mechanisms on AI platforms, ensuring stable crawling.
+      </div>
+      <div className="space-y-1.5">
+        <p>**ChatGPT 2FA Automated Login**</p>
+        Implements TOTP (Time-based One-Time Password) automatic generation to support fully automated login with ChatGPT two-factor authentication.
+      </div>
+      <div className="space-y-1.5">
+        <p>**AWS CDK Infrastructure as Code**</p>
+        Uses AWS CDK (TypeScript) to define the complete cloud infrastructure, including Batch compute environments, Fargate task definitions, IAM roles, and ECR container image repositories.
+      </div>
+      <div className="space-y-1.5">
+        <p>**CI/CD Automated Deployment**</p>
+        The Frontend is automatically deployed via AWS Amplify; the Crawler uses GitHub Actions to automatically build Docker images and push to ECR on Git Tag events, triggering AWS Batch updates.
+      </div>
+    </div>
+  </CardContent>
+</Card>

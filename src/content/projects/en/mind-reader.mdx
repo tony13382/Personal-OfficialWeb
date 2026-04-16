@@ -1,0 +1,173 @@
+---
+title: MindReader - Bridging Hearts Through Words
+description: Using text analysis technology to fine-tune user input text, precisely expressing the emotions and meaning contained in messages to reduce misunderstandings in daily life.
+subdescription: "Role: CTO, Product Designer<br>Responsibilities: Software architecture design, product interface design, database design, software development, technical management"
+startDate: 2019-11-01
+endDate: 2020-12-31
+status: closed
+theme: orange
+cover: imgs/projects/mindReader/cover.png
+pin: true
+skillTypes: [dev, design]
+tags: [UI/UX, API Development, NLP, Azure]
+links:
+  - content: Project URL
+    href: https://github.com/tony13382/MindReader-MVP
+    icon: GithubLogoIcon
+    openInTab: true
+scores:
+  - title: 2021 National University Information Application Service Innovation Competition
+    award: 3rd Place
+    category: Azure Cloud Division
+  - title: 2021 National University Information Application Service Innovation Competition
+    award: Honorable Mention
+    category: Information Application Division
+  - title: Chung Yuan Christian University MIS Department AY110 Information Management Graduation Project Competition
+    award: 1st Place
+  - title: AY109 Chung Yuan Christian University MIS Department Information Management Project Preliminary Competition
+    award: 2nd Place
+  - title: AY110 Chung Yuan Christian University Higher Education Deep Cultivation Student Enterprise Problem-Solving Research Team Program
+    award: Honorable Mention
+tools:
+  - name: Figma
+    description: UI design and product prototype design
+  - name: Bootstrap V5.0
+    description: Frontend component library
+  - name: Azure LUIS
+    description: NLP natural language processing and text intent analysis
+  - name: Firebase
+    description: NoSQL database design and integration
+  - name: Flask
+    description: API server development
+  - name: Django
+    description: LineBot server development
+  - name: Jieba
+    description: NLP Chinese word segmentation and dictionary training
+  - name: OpenCC
+    description: Simplified/Traditional Chinese text conversion
+seo:
+  metaDescription: An intelligent chat assistant system built with NLP technology, winner of Honorable Mention at the 2021 National University Information Application Service Innovation Competition
+---
+
+import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Youtube } from '@/components/react/Youtube'
+import { IconBlock } from '@/components/react/IconBlock'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import mindReaderSystemFrame from '@/assets/imgs/projects/mindReader/systemFrame.png'
+import mindReaderKeyboard01 from '@/assets/imgs/projects/mindReader/keybroad01.png'
+import mindReaderKeyboard02 from '@/assets/imgs/projects/mindReader/keybroad02.png'
+import mindReaderKeyboard03 from '@/assets/imgs/projects/mindReader/keybroad03.png'
+import mindReaderKeyboard04 from '@/assets/imgs/projects/mindReader/keybroad04.png'
+import mindReaderApiFlow from '@/assets/imgs/projects/mindReader/apiFlow (1).jpg'
+
+
+<Card>
+  <CardHeader>
+    <Youtube
+      embedUrl="https://www.youtube.com/embed/VzLFWFRzGh8"
+      client:visible
+    />
+  </CardHeader>
+  <CardContent>
+    Anyone who has used a messaging app has likely run into these problems: saying something that comes out wrong, or misreading the other person's mood and causing a misunderstanding. This happens because everyone interprets written messages differently — and in serious cases, it can even damage relationships. To address these issues, we created a chat assistant application. It helps people precisely convey the emotions and meaning in their words, reducing misunderstandings and adding warmth to text — so that even through a screen, conversations feel like they are happening face to face.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardContent>
+    <h2>Product Advantages</h2>
+    <div className="flex flex-col gap-4 mt-5">
+      <div className="space-y-1">
+        <Badge variant="outline" className="text-base -ms-1.5">Customized Conversation Context</Badge>
+        <p className="text-gray-700 leading-relaxed">
+          Set a role profile for each chat partner and create a personalized conversation context tailored to you. The goal is to provide a comfortable chat experience for both parties — free from misunderstandings or conflicts caused by text-only communication — solving the problem of emotions not being accurately conveyed through written messages.
+        </p>
+      </div>
+      <hr/>
+      <div className="space-y-1">
+        <Badge variant="outline" className="text-base -ms-1.5">Keep the Conversation Going</Badge>
+        <p className="text-gray-700 leading-relaxed">
+          To help users sustain conversations, the system analyzes past chat history to identify topics that resonated between users, then combines them with current trending news to suggest relevant topics. Beyond shared interests, the system also recommends popular topics across various fields, complete with an opening line, so you always have something engaging to talk about.
+        </p>
+      </div>
+      <hr/>
+      <div className="space-y-1">
+        <Badge variant="outline" className="text-base -ms-1.5">Personalized Smart Reminders</Badge>
+        <p className="text-gray-700 leading-relaxed">
+          People often have to manually re-enter scheduled events into their phone calendar — time-consuming and tedious. With the system's one-tap add feature, it's fast and convenient. Smart reminders push personalized information at the most timely and appropriate moments, such as today's schedule, weather updates, and stock market movements. Let MindReader handle it for you, so you can stay organized and stress-free — your own personal intelligent assistant.
+        </p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardTitle>System Architecture Diagram</CardTitle>
+  <CardContent className="pt-6">
+    <ImageWithLightbox
+      src={mindReaderSystemFrame}
+      allowPop={true}
+      client:load
+    />
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardHeader>
+  <UiImageCarousel
+    images={[
+        mindReaderKeyboard01,
+        mindReaderKeyboard02,
+        mindReaderKeyboard03,
+        mindReaderKeyboard04,
+      ]}
+      client:load
+  />
+  </CardHeader>
+  <CardContent className="pt-6">
+    ## Design Philosophy
+    <p>The interface is designed to feel like a native keyboard experience — the only thing you need to remember is to `type`</p>
+
+    <div className="grid grid-cols-1 gap-4 mt-6">
+      <IconBlock
+        title="Figma Prototype Link"
+        subtitle="Figma"
+        href="https://www.figma.com/proto/Tk1mSaUpLrBxUdHbHQvtQd/%5B2021-MR%5D-APP-Design?page-id=0%3A1&node-id=58%3A3277&viewport=241%2C48%2C0.14&scaling=scale-down&starting-point-node-id=58%3A3277&show-proto-sidebar=1"
+        icon="FigmaLogoIcon"
+        client:visible
+      />
+      <IconBlock
+        title="MVP Web Page"
+        subtitle="GitHub"
+        href="https://github.com/tony13382/MindReader-MVP/"
+        icon="LaptopIcon"
+        client:visible
+      />
+    </div>
+  </CardContent>
+</Card>
+
+
+<Card>
+  <CardContent>
+    ## Input Text Transformation Flow
+    <ImageWithLightbox
+      src={mindReaderApiFlow}
+      allowPop={true}
+      client:load
+    />
+    <div className="space-y-4">
+      <IconBlock title="User Input (Keyboard Intercept)" icon="KeyboardIcon" />
+      <IconBlock title="Keyboard sends text to `MindReader Core` via Web APIs" icon="WebhooksLogoIcon" />
+      <IconBlock title="`Line Bot` retrieves user ID" icon="IdentificationBadgeIcon" />
+      <IconBlock title="Text transformation based on ID and input" icon="SparkleIcon" />
+      <IconBlock title="Transformed text is sent" icon="TextboxIcon" />
+      <IconBlock title="Receives feedback text from the other user" icon="ChatTeardropTextIcon" />
+      <IconBlock title="`Data logged` for scoring" icon="DatabaseIcon" />
+    </div>
+  </CardContent>
+</Card>

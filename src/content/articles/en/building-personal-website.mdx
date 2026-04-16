@@ -1,0 +1,198 @@
+---
+title: "It Took Three Rewrites to Figure It Out: Choosing a Stack and Managing a Personal Website"
+description: From hand-coded Bootstrap to Python templates to Astro — sharing the framework choices, deployment setup, domain naming logic, and day-to-day management flow I landed on after rebuilding my personal site three times
+date: 2026-04-13
+category: Workflow
+tags: [Personal Website, Astro, Cloudflare, Static Site]
+cover: /og/articles/building-personal-website.png
+seo:
+  ogImage: /og/articles/building-personal-website.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import cloudflareSetup1 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-1-git.png'
+import cloudflareSetup2 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-2-repo.png'
+import cloudflareSetup3 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-3-config.png'
+import cloudflareBuildSettings from '@/assets/imgs/articles/building-personal-website/cloudflare-build-settings.png'
+import cloudflareCustomDomain from '@/assets/imgs/articles/building-personal-website/cloudflare-custom-domain.png'
+
+I've built my personal website three times. The first was hand-coded in Bootstrap from scratch. The second, I wrote Python scripts to generate HTML. The third finally settled on Astro. Each rewrite wasn't because the previous version broke — it was because my understanding of "how a website should be managed" had changed. From thinking of it as a portfolio to treating it as a content platform, the requirements are completely different.
+
+This post isn't a tech stack checklist. It's the workflow and mindset that emerged after three rewrites, along with the framework and platform choices that support it. Let me walk through how each version evolved first.
+
+**Version 1: Bootstrap single-page static site.** All I wanted was a link I could put in my resume. Updating content meant copy-pasting HTML; changing the layout meant touching every card. Content and structure were tangled together, and it got harder to maintain the more I added.
+
+**Version 2: Python scripts generating HTML.** I wrapped each section into class objects and rendered them out — which introduced me to the concept of "separating data from rendering." But editing templates was painful, and adding interactive components was even more of a pain. All the infrastructure (image compression, routing, SEO, RSS) had to be written from scratch, and eventually I was spending more time maintaining the generator than writing content.
+
+**Version 3: Astro + React — the current site.** This shift wasn't just a tool change. I repositioned the website from "a single-page card to display projects" to "a platform that continuously accumulates content." The focus became — **how do I make writing content as friction-free as possible**.
+
+## The Framework and Deployment: Astro + Cloudflare
+
+### Why Astro
+
+I chose Astro primarily because it sits right at the intersection of "content-driven" and "component-based" — content written in MDX, static parts compiled to pure HTML, and truly interactive pieces wrapped in React islands and embedded where needed.
+
+When I was picking a framework, my four hard requirements were:
+
+- Easy to deploy to a static platform (especially Cloudflare, since my domain and DNS are already there)
+- No SSR needed, no API server needed
+- Ability to mix in React interactive components
+- Content writable in MDX
+
+I compared Next.js (too full-featured, SSR-heavy, didn't want to be tied to Vercel), Hugo (no MDX support, custom components require Shortcodes), and Nuxt (I'm not familiar with Vue). Only Astro checked all four boxes.
+
+The thing I appreciate most in practice is **Content Collections**. Each collection has a Zod schema, so if I forget a field or get the format wrong when writing MDX, the IDE shows a red underline before the build even runs. Here's an example using the articles collection:
+
+<p class="code-title">src/content/config.ts</p>
+
+```ts
+const articlesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    pin: z.boolean().default(false),
+    cover: z.string().optional(),
+  })
+})
+```
+
+Type `2024-13-40` for a date or leave `category` blank, and `astro dev` immediately throws an error. With the old Python generator from version 2, I had to wait until the whole script finished to find out a field was wrong. Now it catches it while I'm writing.
+
+Plus, MDX itself is an "interactive content container" — individual posts can import React components, and across articles you can use `getCollection('articles')` to treat all frontmatter as an array. Pinning, categories, and tags are all driven by fields. The cost of publishing a new post is reduced to just "write one MDX file," and the listing page and tag pages update automatically.
+
+### Deploying on Cloudflare Too
+
+The first two versions ran on GitHub Pages. Both are fine for personal sites, but I switched to Cloudflare mainly for these reasons:
+
+- **The Workers ecosystem** (D1, KV, R2, Durable Objects) means resources are ready when I want to add dynamic features later
+- **My domain is already on Cloudflare**, so binding a Pages project to the domain is a one-click operation in the same dashboard, with HTTPS issued automatically
+- More edge nodes — latency is noticeably better than Vercel or Netlify for Taiwan
+
+The initial setup takes about three steps:
+
+**1. Connect Git source**: Select "Continue with GitHub" to authorize Cloudflare to read your repo list.
+
+<Image src={cloudflareSetup1} alt="Cloudflare Workers & Pages creation page, selecting Continue with GitHub" />
+
+**2. Pick the repo**: Select your account from the dropdown, choose the repo for your site, and click next.
+
+<Image src={cloudflareSetup2} alt="Cloudflare selecting a GitHub repository" />
+
+**3. Fill in the build commands**: Build command is `npm run build`, deploy command is `npx wrangler deploy` (following the Workers unified flow), then click "Deploy" to trigger the first build.
+
+<Image src={cloudflareSetup3} alt="Cloudflare app creation screen for configuring build and deploy commands" />
+
+Once that's set up, the build settings in the dashboard look like this — you'll come back here to adjust the Node version, output directory, or branch name:
+
+- **Framework preset**: Astro (selecting this auto-fills the build command and output directory)
+- **Build command**: `npm run build`
+- **Build output directory**: `dist`
+- **Node version**: Pin it with the `NODE_VERSION=20` environment variable
+
+<Image src={cloudflareBuildSettings} alt="Cloudflare Pages dashboard build settings" />
+
+After this, pushing to the main branch auto-builds and auto-deploys to the edge — the whole process takes 1–2 minutes. Adding a custom domain is just clicking "Set up a custom domain," typing the name, and the CNAME and HTTPS certificate are handled automatically.
+
+<Image src={cloudflareCustomDomain} alt="Cloudflare Pages custom domain setup" />
+
+### Domain on the Same Platform
+
+I registered my domain through Cloudflare Registrar because of its "at-cost" model — you pay exactly what it costs, with no "cheap first year, expensive renewal" trap. WHOIS privacy is included free. Other registrars (GoDaddy, Namecheap) lose points for renewal price hikes, cluttered UIs, and upsell prompts.
+
+A few naming principles: easy to say and spell, don't embed your job title or field (`xxx-designer.com` gets awkward if you change careers), choose clean TLDs (`.com` / `.me` / `.dev`), keep it short and avoid hyphens. Experimental side projects get subdomains (`app.lumakes.com`, `lab.lumakes.com`) — **the main domain is your identity, subdomains are experiments**. Maintain one brand tree and that's enough.
+
+## The Current Management Flow: Claude Code for Styling, MDX for Content
+
+### Division of Responsibilities
+
+Over time with this version, I've settled into a workflow that feels most natural for me — **styling and structure managed by Claude Code, content written by me in MDX**.
+
+| Type | Tool | Why the split |
+|---|---|---|
+| Layout, components, styles | Claude Code + Tailwind | Technical decisions that require understanding the whole project — Claude is more efficient |
+| Articles, project pages, experience text | Written myself in MDX | Creative work requiring a personal perspective and voice — AI can't substitute |
+
+Separating these two things means I'm not interrupted by styling questions when I'm writing, and I don't need to switch into "writing mode" when adjusting styles.
+
+### The Styling Track: Handed Off to Claude Code
+
+Layout, components, CSS — this is where Claude Code really shines. It can read the entire project context in one go, understand that I'm using Tailwind v4 not v3, know where the shadcn/ui components live and how the theme variables are defined, and make changes with more consistency than I would doing it by hand.
+
+The key is writing a solid `CLAUDE.md`. I keep one in the project root covering the tech stack, folder structure, style rules, and common pitfalls. Every time I open a new session, Claude immediately knows what this project is about without needing to be re-explained. I wrote about this in detail in [Claude Code Tuning Notes](/articles/claude-code-setup).
+
+### The Content Track: From Idea to Published
+
+My article writing flow has four steps: idea collection, plan first, then write, then Skill-ify.
+
+**Idea Collection: Speed Over Precision**
+
+The first step is idea collection, where I prioritize **speed**, not precision — if I have an idea, I need to capture it immediately. Messy format, typos — none of that matters. What matters is not letting the thought slip away. The tools I choose are all lightweight note-taking apps where you **open and write**, without forcing me to categorize or add tags:
+
+- [Apple Notes](https://support.apple.com/guide/notes/welcome/mac): Built into macOS and iOS, iCloud syncs automatically, zero setup required <span class="pricing-tag">Free</span>
+- [Bear](https://bear.app/): Clean interface, native Markdown support, handles everything from quick jots to long outlines <span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+- [SimpleNote](https://simplenote.com/): Ultra-lightweight plain text notes, opens fast, cross-platform sync <span class="pricing-tag">Free</span>
+
+What these three have in common: **zero friction**. The biggest enemy of idea collection is feeling like you have to "organize." The moment you need to decide "which folder does this note go in," you stall, and the idea cools down with it.
+
+**Plan First, Then Write**
+
+Every time I start a new article, I discuss three things with Claude first — the topic, the slug, and the H2 structure. Once those are settled, the skeleton of the whole piece is set, and all that's left is filling in the flesh. This planning step is genuinely important: it forces me to turn a vague idea into a concrete paragraph breakdown, preventing me from discovering mid-write that the structure is wrong and needing to reorganize everything.
+
+**Skill-ify It**
+
+I've wrapped the above flow into a custom Skill called `new-article`. The instruction file pre-defines the three article types (tool recommendation, methodology, experience sharing), how each type should be structured, what special components are available (pricing tag, callout, code title) and what they look like, and tone guidelines. After that, all I type is `/new-article` and Claude enters "article writing mode," running through this SOP from start to finish.
+
+The section I think matters most in the Skill is the "Writing Style Guide" — it hardcodes the tone rules I want Claude to maintain:
+
+<p class="code-title">~/.claude/skills/new-article/skill.md</p>
+
+```md
+## Writing Style Guide
+
+- Conversational, like sharing your own experience with a friend
+- First-person: "I personally," "I mainly use," "I usually"
+- Explain the choice context: "because I'm using A and B at the same time, so..."
+- Use natural language, not formal constructions
+- No emojis
+- Natural endings: "sorted," "much more convenient," "works really smoothly"
+```
+
+There's also an article type reference table defining what "tool recommendation / methodology / experience sharing" each focus on. Before Claude starts, it asks me which type this article is, then picks the matching skeleton. If I had to re-explain these rules at the start of every new conversation it would be exhausting — packaging them into a Skill means `/new-article` loads the entire ruleset automatically.
+
+Once I Skill-ified this flow, **my output format is consistent every time and my tone is stable**, without needing to re-sync the rules with Claude for each article. The consistent style across the articles section of this site is what that Skill makes possible.
+
+**Write Directly in MDX, No CMS**
+
+I'm not using any headless CMS. Articles are just individual `.mdx` files living under `src/content/articles/`, versioned with Git. The advantages are straightforward:
+
+- Writing and code live in the same editor, the same Git workflow
+- No extra backend service to maintain, no worrying about a CMS provider going under or raising prices
+- Article content is plain text — easy to migrate to any platform in the future
+
+For a personal site with just me writing, MDX is lighter than any CMS, and it can already embed React components and Astro's `<Image>` — plenty of expressive power for what I need.
+
+### Publishing Cadence: Let Git Push It Along
+
+The last piece of the flow is publishing. My approach: **Cloudflare Pages watches the main branch — push to it, it auto-builds and goes live**. No staging, no preview flow, because this is my own site. If something's wrong, I fix it and push again. No need for a complex deployment pipeline.
+
+## What Three Rewrites Taught Me
+
+Distilling everything from three rewrites into a few principles I'd share with anyone thinking of building a personal site:
+
+**One: Positioning decides everything — not tools.** Version 1 was a resume. Version 2 was a portfolio. Version 3 is a content platform. Each "rebuild" wasn't because the old tool failed — it was because the positioning changed. Figure out what this site is for you first, then pick tools.
+
+**Two: Content and structure need to be separable.** Version 1 was hand-coded HTML. Version 2 had styles baked into Python classes. Both versions fell apart because "changing the layout meant touching every single post." Now content runs on MDX, styles on Tailwind + components — they can evolve independently.
+
+**Three: Don't reinvent infrastructure.** In version 2 I burned a lot of time writing image processing, routing, and SEO — all of which Astro ships built in. Building your own tooling looks like freedom; in practice every piece of it drains energy that could go into writing content.
+
+**Four: Skill-ify the repetitive things.** The reason my publishing cadence stays consistent isn't discipline — it's the `new-article` Skill locking in the rules. If you want to keep doing something, first reduce the friction of starting it each time.
+
+**Five: Small sites should have small-site rhythms.** No staging, no preview flow, push to main and it's live. Over-engineering the pipeline will make you not want to write — this site exists to accumulate content, not to show off architectural sophistication.
+
+I think I'll be on this version for a long time — because the thing that was blocking me wasn't the technology. It was my understanding of how a website should exist.

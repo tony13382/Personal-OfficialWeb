@@ -1,0 +1,216 @@
+---
+title: "VS Code Extensions for Full-Stack Development: Formatting, Debugging, and Daily Workflow"
+description: A breakdown of the VS Code extensions I use for full-stack development — covering different languages, formatting, debugging, and day-to-day workflow tools
+date: 2026-03-26
+category: Dev Environment
+tags: [VS Code, Extensions, Development]
+cover: /og/articles/vscode-extensions.png
+seo:
+  ogImage: /og/articles/vscode-extensions.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import materialIconTheme from '@/assets/imgs/articles/vscode-extensions/material-icon-theme.png'
+import oneDarkPro from '@/assets/imgs/articles/vscode-extensions/one-dark-pro.png'
+import zhHant from '@/assets/imgs/articles/vscode-extensions/zh-hant.png'
+import gitlens from '@/assets/imgs/articles/vscode-extensions/gitlens.png'
+import gitGraph from '@/assets/imgs/articles/vscode-extensions/git-graph.png'
+import pathIntellisense from '@/assets/imgs/articles/vscode-extensions/path-intellisense.png'
+import todoTree from '@/assets/imgs/articles/vscode-extensions/todo-tree.png'
+import indentRainbow from '@/assets/imgs/articles/vscode-extensions/indent-rainbow.png'
+import bookmarks from '@/assets/imgs/articles/vscode-extensions/bookmarks.png'
+import filesize from '@/assets/imgs/articles/vscode-extensions/filesize.png'
+import claudeCode from '@/assets/imgs/articles/vscode-extensions/claude-code.png'
+import remoteSsh from '@/assets/imgs/articles/vscode-extensions/remote-ssh.png'
+import drawio from '@/assets/imgs/articles/vscode-extensions/drawio.png'
+import rooCode from '@/assets/imgs/articles/vscode-extensions/roo-code.png'
+import codex from '@/assets/imgs/articles/vscode-extensions/codex.png'
+import coderabbit from '@/assets/imgs/articles/vscode-extensions/coderabbit.png'
+import markdownPdf from '@/assets/imgs/articles/vscode-extensions/markdown-pdf.png'
+
+Here's a rundown of the extensions I have installed in VS Code, organized by category. Together they make up my complete dev environment — from appearance and general utilities to language-specific tooling.
+
+## Appearance and Interface
+
+These are the first things you see when VS Code opens — themes, icons, and interface enhancements that make long coding sessions more comfortable.
+
+### Material Icon Theme
+
+<Image src={materialIconTheme} alt="Material Icon Theme" style="max-width: 96px;" />
+
+Makes file icons in VS Code much more recognizable. Different file types and folders get corresponding Material Design icons, which makes it easier to navigate complex project structures at a glance.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### One Dark Pro
+
+<Image src={oneDarkPro} alt="One Dark Pro" style="max-width: 96px;" />
+
+The theme I use — comfortable colors, balanced contrast, easy on the eyes over long sessions. It's ported from the classic One Dark theme from the Atom editor. I pair it with Roboto Mono, which I settled on after testing various monospace fonts across different sites. If you want to find the right font for yourself, try <a href="https://devfonts.gafi.dev/" target="_blank">Dev Fonts</a> and <a href="https://www.codingfont.com/" target="_blank">Coding Font</a> for side-by-side comparisons.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Chinese (Traditional) Language Pack
+
+<Image src={zhHant} alt="Traditional Chinese Language Pack" style="max-width: 96px;" />
+
+Translates the VS Code interface to Traditional Chinese, lowering the language barrier for navigation.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hant" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Indent Rainbow
+
+<Image src={indentRainbow} alt="Indent Rainbow" style="max-width: 96px;" />
+
+Colors each indentation level differently, making it much easier to track where you are in deeply nested structures and catch indentation mistakes.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## General Purpose
+
+Extensions that are useful regardless of language — covering Git management, file operations, API testing, and remote development.
+
+### GitLens
+
+<Image src={gitlens} alt="GitLens" style="max-width: 96px;" />
+
+A Git enhancement extension that shows inline blame annotations — who changed each line and when — directly alongside your code. Also great for quickly browsing a file's full change history, which is really handy when tracking down the source of a bug.
+
+<span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Git Graph
+
+<Image src={gitGraph} alt="Git Graph" style="max-width: 96px;" />
+
+A visual representation of your Git branch history — merges, forks, and commit logs laid out as a graph. Much more intuitive than the command line when dealing with complex branching workflows.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Path Intellisense
+
+<Image src={pathIntellisense} alt="Path Intellisense" style="max-width: 96px;" />
+
+Auto-completes file paths as you type — no need to memorize the full path or dig through the folder structure manually. Especially convenient when writing imports.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Todo Tree
+
+<Image src={todoTree} alt="Todo Tree" style="max-width: 96px;" />
+
+Scans the project for all TODO, FIXME, and similar markers, then organizes them in a tree view in the sidebar. Makes it easy to track unfinished work without things slipping through the cracks.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Bookmarks
+
+<Image src={bookmarks} alt="Bookmarks" style="max-width: 96px;" />
+
+Lets you place bookmarks in code and jump back to them instantly. Very useful when reading through large codebases or needing to frequently switch between different sections.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.bookmarks" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### filesize
+
+<Image src={filesize} alt="filesize" style="max-width: 96px;" />
+
+Shows the current file's size in the status bar. Useful when you need to keep an eye on file weight — images, bundled output files, etc.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Remote - SSH
+
+<Image src={remoteSsh} alt="Remote - SSH" style="max-width: 96px;" />
+
+Connect to remote servers over SSH and edit files directly inside VS Code — the experience feels almost identical to working locally.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Draw.io Integration
+
+<Image src={drawio} alt="Draw.io Integration" style="max-width: 96px;" />
+
+Open and edit Draw.io diagrams directly in VS Code without switching to the browser. Keeps flowcharts and architecture diagrams right alongside the code they describe.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Markdown PDF
+
+<Image src={markdownPdf} alt="Markdown PDF" style="max-width: 96px;" />
+
+Converts Markdown files to PDF directly inside VS Code — currently the best extension I've found for this task. Layout and formatting fidelity is high, which is great when you need to produce polished documents.
+
+<span class="pricing-tag">Free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## AI Dev Tools
+
+I use several AI tools in combination — Claude Code for primary development, Codex for a secondary review pass, and Roo Code and CodeRabbit as supporting tools. For the full strategy behind this setup, see the AI Tools Usage Strategy article.
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" style="max-width: 96px;" />
+
+Anthropic's AI development tool, usable directly inside VS Code for writing, refactoring, and debugging code. This is my primary AI dev tool right now.
+
+<span class="pricing-tag freemium">Subscription or pay-per-use</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Codex
+
+<Image src={codex} alt="Codex" style="max-width: 96px;" />
+
+OpenAI's AI development tool, available directly in VS Code. I primarily use it for code review — paired with Claude Code for cross-model checking to catch more issues.
+
+<span class="pricing-tag freemium">Subscription or pay-per-use</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=openai.chatgpt" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### Roo Code
+
+<Image src={rooCode} alt="Roo Code" style="max-width: 96px;" />
+
+An open-source AI coding assistant that supports multiple AI models — code generation, editing, and chat inside VS Code. Highly flexible; you choose which model and API to use.
+
+<span class="pricing-tag">Open source, free</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=rooveterinaryinc.roo-cline" target="_blank" class="official-link">VS Code Marketplace</a>
+
+### CodeRabbit
+
+<Image src={coderabbit} alt="CodeRabbit" style="max-width: 96px;" />
+
+An AI-powered code review tool that automatically reviews pull requests and provides suggestions on code quality, security, and performance.
+
+<span class="pricing-tag freemium">Free to use, advanced features require subscription</span>
+<a href="https://marketplace.visualstudio.com/items?itemName=coderabbit.coderabbit-vscode" target="_blank" class="official-link">VS Code Marketplace</a>
+
+## Python
+
+Python-related VS Code extensions are covered in the Dev Environment: Python article — including Python, Black Formatter, Ruff, Jupyter, Postman, REST Client, and more.
+
+<a href="/articles/dev-env-python#vs-code-擴充功能">
+  <img src="/og/articles/dev-env-python.png" alt="Dev Environment: Python" style="border-radius: 0.75rem;" />
+</a>
+<a href="/articles/dev-env-python#vs-code-擴充功能" class="official-link">Dev Environment: Python — VS Code Extensions</a>
+
+## React Frontend / Astro
+
+React frontend and Astro-related VS Code extensions are covered in the Dev Environment: Frontend article — including Prettier, ESLint, Tailwind CSS, PostCSS, Figma, Pencil, Astro, MDX, and more.
+
+<a href="/articles/dev-env-frontend#vs-code-擴充功能">
+  <img src="/og/articles/dev-env-frontend.png" alt="Dev Environment: Frontend" style="border-radius: 0.75rem;" />
+</a>
+<a href="/articles/dev-env-frontend#vs-code-擴充功能" class="official-link">Dev Environment: Frontend — VS Code Extensions</a>

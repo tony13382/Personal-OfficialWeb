@@ -1,0 +1,217 @@
+---
+title: "How I Combine Different AI Tools for My Daily Workflow: Knowledge, Development, and Everyday Tasks"
+description: "My AI workflow strategy — how I combine different AI tools across knowledge gathering, software development, and everyday work to automate my processes"
+date: 2026-03-28
+category: Workflow
+tags: [AI, Tools, Development]
+cover: /og/articles/ai-tools-strategy.png
+seo:
+  ogImage: /og/articles/ai-tools-strategy.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import grok from '@/assets/imgs/articles/ai-tools-strategy/grok.png'
+import notebookLM from '@/assets/imgs/articles/ai-tools-strategy/notebooklm.png'
+import claudeCode from '@/assets/imgs/articles/ai-tools-strategy/claude-code.png'
+import codex from '@/assets/imgs/articles/ai-tools-strategy/codex.png'
+import gemini from '@/assets/imgs/articles/ai-tools-strategy/gemini.png'
+
+This post covers the strategy and combinations I currently use when picking AI tools for different situations. Different AI tools each have their strengths — rather than sticking to just one, I choose the right tool based on what I need.
+
+## Knowledge Gathering
+
+For keeping up with new things and staying on top of the latest developments, I mainly combine Grok and NotebookLM.
+
+### Grok
+
+<Image src={grok} alt="Grok" />
+
+<a href="https://grok.com" target="_blank" class="official-link">Grok</a>
+
+Grok's biggest advantage is that it can directly read real-time information from X (Twitter) and summarize it. The AI space moves incredibly fast, and a lot of first-hand information and discussions get posted on X first. Grok lets me quickly catch up on what's happening.
+
+When I use it, I like to pair it with the **Axios Smart Brevity** narrative style in my prompts — it makes the AI's output more concise and easier to absorb. The core principles of Smart Brevity are:
+
+- **What's new**: Lead with the key point
+- **Why it matters**: Explain why this is important
+- **The big picture**: Put it in a broader context
+- **What's next**: What's likely to happen next
+
+Here's a prompt example I use regularly:
+
+```
+Using the Axios Smart Brevity format, summarize the 5 most important AI developments from the past week:
+
+1. What's new: One sentence on what happened
+2. Why it matters: Why this is important
+3. The big picture: The broader industry context
+4. What's next: Possible directions going forward
+```
+
+### NotebookLM
+
+<Image src={notebookLM} alt="NotebookLM" />
+
+<a href="https://notebooklm.google.com" target="_blank" class="official-link">NotebookLM</a>
+
+Google's AI knowledge tool that lets you upload documents, web pages, videos, and other sources so the AI can analyze and answer questions based on those materials. Unlike general AI chat, NotebookLM's responses are strictly grounded in the sources you provide — no hallucinations.
+
+I mainly use it to organize and digest longer technical documents or research reports, distilling large amounts of information into key points and accelerating how quickly I can absorb knowledge.
+
+## Software Development
+
+For development work, I use a hybrid strategy: Claude Code as my primary tool and Codex for supplementary code review.
+
+### Claude Code
+
+<Image src={claudeCode} alt="Claude Code" />
+
+<a href="https://claude.ai/code" target="_blank" class="official-link">Claude Code</a>
+
+This is my primary AI development tool right now. In terms of code output, Claude strikes the best balance of speed and accuracy available today. My main use cases include:
+
+- **Writing code**: Day-to-day feature development, refactoring, and debugging — all done inside Claude Code.
+- **Architecture discussions**: Before starting a new feature, I discuss the architecture and implementation direction with Claude first.
+- **Documentation generation**: I let Claude automatically generate technical docs and API documentation from the code.
+
+### Codex
+
+<Image src={codex} alt="Codex" />
+
+<a href="https://chatgpt.com/codex" target="_blank" class="official-link">Codex</a>
+
+OpenAI's AI development tool, which I mainly use for code review. The workflow goes like this:
+
+1. Once Claude Code finishes development, I have Codex review all the changes on the branch.
+2. I crank Codex up to its highest thinking level so it can thoroughly review the diff and produce a review report.
+3. I feed that report back into Claude Code for fixes.
+4. We go back and forth until Codex's review comes back clean, then I push to remote.
+
+Having two different AIs check each other's work produces noticeably better code quality than relying on a single model.
+
+### Making This Combination Actually Work
+
+The tool pairing is only half the equation — the other half is prompt quality. The same request, written well versus written sloppily, produces wildly different results, and the time spent debugging and reworking afterward is completely different. From "enter Plan Mode before you start typing" to "how to write an effective CLAUDE.md," I've written up those principles in another post — [My Claude Code Tuning Notes — Everyday Prompt Techniques](/articles/claude-code-setup#prompting-tips). The principles apply to Codex and Cursor too.
+
+## Everyday Use
+
+For day-to-day life, I reach for Gemini most often, mainly because of its deep integration with the Google ecosystem.
+
+### Gemini
+
+<Image src={gemini} alt="Gemini" />
+
+<a href="https://gemini.google.com" target="_blank" class="official-link">Gemini</a>
+
+#### Speech-to-Text (STT)
+
+Gemini can process audio recordings and convert speech directly into text with a structured summary. This is something Claude and ChatGPT still can't quite do. After meetings or when I finish a voice memo, I hand the recording to Gemini to organize into structured notes.
+
+#### Google Ecosystem Operations
+
+Since my calendar, email, and cloud storage all live in the Google ecosystem, Gemini can operate these services directly — creating events, checking schedules, searching cloud documents — without needing to switch between different apps.
+
+## Design and Presentations
+
+### Gemini Image Generation
+
+Gemini's image generation is solid, and I use it for image-based creative work. My technique for generating images:
+
+- **Use AI to analyze image structure first**: Before generating, let the AI analyze a reference image's composition, tone, and layout to produce a text description.
+- **Describe visual effects in text**: Backgrounds, styles, atmosphere — describe these in words rather than supplying an image directly. Text communicates your intended direction more precisely, preventing the AI from misreading the intent of a reference image. You can also provide a reference image first, let the AI analyze it and produce an optimized text description, then use that description to generate.
+- **Only provide images when you need realistic reproduction**: Things like logos or product photos that must be faithfully preserved — attach the original image for those. Everything else, leave it to the text description.
+
+This approach gives the AI enough creative room while keeping the critical visual elements consistent.
+
+### Upscayl Image Upscaling
+
+If a generated image doesn't have enough resolution, I pair it with Upscayl for AI-powered upscaling — boosting resolution without losing quality. For more detail, check out the Mac Software — Design section.
+
+<a href="/articles/mactools-design#upscayl" class="official-link">Mac Software — Design — Upscayl</a>
+
+### AI Presentations
+
+When making presentations with AI, I currently use three different approaches depending on what I need:
+
+#### 1. Canva — Template-Based Design
+
+The most traditional and editable approach. I first use AI to organize the content outline for each section, then head into Canva to apply a template and finish the design. Best for situations where I need to produce something quickly and know I'll be editing it repeatedly.
+
+#### 2. AI Image Generation — Custom Visual Style
+
+Using AI image generation tools like Gemini to produce each slide as an image directly. This approach can achieve a highly custom visual style — much better-looking than templates — but the downside is that since the output is images, making text or content changes afterward is difficult.
+
+#### 3. AI Presentation Webpage — Beautiful and Editable
+
+Ask the AI to generate a 16:9 presentation as a webpage. Just like image generation, you get a custom visual style, but because it's a webpage, editing text, content, and styling becomes much simpler and more controllable. The only extra step is converting the webpage to PDF if you need to deliver a document.
+
+#### Comparing the Three Approaches
+
+| | Canva | AI Image Generation | AI Presentation Webpage |
+|------|------|-----------|-----------|
+| **Editability** | High, change anytime | Low, hard to edit images | High, edit HTML directly |
+| **Visual style** | Limited by templates | Highly customizable | Highly customizable |
+| **Animation** | Basic animations | None | Rich, supports CSS animations and interactions |
+| **Output format** | PPT / PDF | Images | Webpage / PDF (requires conversion) |
+| **Best for** | Quick output, frequent edits | Prioritizing visual style, no edits needed | Live presentations, demos |
+
+My process usually runs in two steps: first have AI analyze the document and organize an outline, then use the outline to generate the presentation (defining the style at the same time). Here are prompt examples:
+
+**Step 1: Analyze the document and organize a presentation outline**
+
+```
+Analyze the following document and organize it into a presentation outline.
+For each slide, list:
+1. Slide title
+2. Core message (one sentence)
+3. Key points to present (3-5)
+4. Suggested visual elements (charts, images, icons, etc.)
+
+Document content:
+(paste document here)
+```
+
+**Step 2 — Canva: Use the outline to apply a template in Canva**
+
+Take the outline and head into Canva to apply a template for each slide's content.
+
+**Step 2 — AI Image Generation: Convert outline to slide images**
+
+```
+Based on the following outline, generate 16:9 slide images one page at a time:
+- Visual style: minimal, dark background, white text, rounded card layout
+- Typography: modern sans-serif
+- Color scheme: use ___ as the primary color
+
+Outline:
+(paste Step 1 result here)
+```
+
+**Step 2 — AI Presentation Webpage: Convert outline to an interactive webpage**
+
+```
+Based on the following outline, generate a 16:9 presentation webpage (HTML):
+- Use fullscreen transitions between slides
+- Support left/right arrow key navigation
+- Visual style: ___
+
+Outline:
+(paste Step 1 result here)
+```
+
+<div class="callout info">If the presentation is for a live audience rather than a deliverable document, a presentation webpage outperforms traditional formats in both animation and visual quality. If you need to deliver a PDF, the webpage can be converted via browser print.</div>
+
+## Tool Overview
+
+| Scenario | Tool | Use |
+|------|------|------|
+| **Knowledge gathering** | Grok | Real-time X feed summaries, AI news tracking |
+| **Knowledge gathering** | NotebookLM | Document analysis, knowledge distillation |
+| **Development** | Claude Code | Primary development, architecture discussions, documentation |
+| **Development** | Codex | Code review, quality checks |
+| **Everyday** | Gemini | Speech-to-text, Google ecosystem operations |
+| **Design** | Gemini | Image generation, creative iteration |
+| **Design** | Upscayl | AI image upscaling |
+| **Design** | AI presentation webpage | 16:9 animated presentations, replacing traditional PPT |

@@ -1,0 +1,251 @@
+---
+title: CloudBio · Bio Link Management Tool
+description: A self-hosted Bio Link management solution based on Cloudflare, supporting visual editing, multiple block types, and appearance customization
+subdescription: "Role: Full-Stack Developer<br>Responsibilities: Software architecture design, database design, frontend and backend development, deployment"
+startDate: 2026-04-05
+status: active
+theme: pink
+cover: imgs/projects/cloudBio/cover.png
+pin: true
+skillTypes: [dev, design]
+tags: [Full-Stack Development, Database Design, Serverless, Cloudflare]
+links:
+  - content: Project Introduction
+    href: https://bio.lumakes.com/
+    icon: LinkIcon
+    openInTab: true
+  - content: Example Page
+    href: https://bio.lumakes.com/liang
+    icon: LinkIcon
+    openInTab: true
+  - content: GitHub Project
+    href: https://github.com/tony13382/CloudBio
+    icon: GithubLogoIcon
+    openInTab: true
+tools:
+  - name: Hono
+    description: Lightweight and efficient web framework running on Cloudflare Workers
+  - name: React 19
+    description: Frontend UI framework with SWR for data synchronization
+  - name: Cloudflare Workers
+    description: Serverless edge computing platform
+  - name: Cloudflare D1
+    description: Serverless SQLite database
+  - name: Cloudflare R2
+    description: Object storage for image uploads and access
+  - name: Cloudflare KV
+    description: Key-value cache for accelerating page rendering
+  - name: Drizzle ORM
+    description: Type-safe database operations and migration management
+  - name: shadcn/ui
+    description: High-quality component library based on Radix UI
+  - name: Tailwind CSS
+    description: Utility-first CSS framework
+  - name: dnd-kit
+    description: Drag-and-drop sorting implementation
+seo:
+  metaDescription: A self-hosted Bio Link management solution based on Cloudflare, supporting visual editing, multiple block types, and appearance customization
+---
+
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import { UiImageCarousel } from '@/components/react/UiImageCarousel'
+import cloudBioDragSort from '@/assets/imgs/projects/cloudBio/drag-sort.png'
+import cloudBioLivePreview from '@/assets/imgs/projects/cloudBio/live-preview.png'
+import cloudBioImageCompress from '@/assets/imgs/projects/cloudBio/image-compress.png'
+
+
+<Card>
+  <CardContent className="gap-4">
+    ## Project Overview
+    CloudBio is a `self-hosted Bio Link management tool`, an open-source alternative similar to Linktree / Portaly. Users can freely combine text buttons, carousel banners, video players, and other block types through a visual drag-and-drop editor to create personalized Bio Link pages.
+
+    The full-stack architecture is built on `Hono` running on `Cloudflare Workers`, paired with `D1 SQLite` database, `R2` object storage, and `KV` cache, delivering a complete Bio Link service with zero server maintenance cost.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Core Features</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Seven Block Types**</p>
+        Supports text buttons (with subtitles, images, and animation effects), carousel banners, square panels, two-column grids, video players (YouTube), dividers, and rich text blocks — covering a wide range of content display needs.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Drag-and-Drop Editor**</p>
+        Implements Notion-style block drag-and-drop sorting using `@dnd-kit`, paired with a mobile simulation preview frame for real-time editing feedback.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Appearance Customization System**</p>
+        Supports solid color, gradient, and image background modes, with customizable button styles, fonts, and text colors, and two profile layout options: integrated and card-style. Advanced users can apply custom CSS for further adjustments.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Multi-Page Management**</p>
+        Supports creating multiple sub-pages under a single account, each with its own independent block configuration. Button blocks can link directly to other sub-pages, allowing users to organize more complex content structures in a tabbed manner while keeping the experience simple and intuitive.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Social Platform Integration**</p>
+        Built-in icons for 13 social platforms (Instagram, GitHub, LinkedIn, X, Threads, etc.) for one-click social link setup.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Image Management**</p>
+        Handles image uploads via `Cloudflare R2`, with client-side WebP compression and cropping tools to reduce bandwidth consumption and storage costs.
+      </div>
+    </div>
+  </CardContent>
+  <CardHeader className="py-4">
+    <UiImageCarousel
+      images={[
+        {
+          image: cloudBioDragSort,
+          title: "Drag-and-Drop Sorting Experience",
+          desc: "Drag-and-drop sorting implemented with @dnd-kit: a quick click (within 300ms) opens the editor, while a long press enters drag mode. Mouse movement beyond 8px triggers dragging, preventing accidental interactions. Intuitive on both mobile and desktop without needing extra drag handles or mode switches."
+        },
+        {
+          image: cloudBioLivePreview,
+          title: "Live Preview",
+          desc: "The editor features a built-in mobile simulation preview frame where all changes are reflected in real time. What you see in the dashboard matches exactly what visitors see on the public page — no back-and-forth switching required."
+        },
+        {
+          image: cloudBioImageCompress,
+          title: "Image Compression",
+          desc: "Images are WebP-compressed and cropped on the client side before upload, reducing transfer size and R2 storage usage. After upload, long-term cache headers are applied for access, minimizing bandwidth from repeated requests."
+        }
+      ]}
+      autoplaySpeed={5000}
+      allowPop={false}
+      client:visible
+    />
+  </CardHeader>
+</Card>
+
+<Card>
+  <CardTitle>Technical Architecture</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Frontend**</p>
+        Built with `React 19` alongside the `shadcn/ui` component library and `Tailwind CSS v4` for a modern interface. Uses `SWR` for data synchronization, `@dnd-kit` for drag-and-drop interactions, and `react-easy-crop` for image cropping.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Backend**</p>
+        Uses `Hono` as the web framework, running on `Cloudflare Workers` edge computing. `Cloudflare D1 (SQLite)` serves as the database, `R2` stores image assets, and `KV` caches rendered page HTML. `Drizzle ORM` is used for type-safe data operations.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Authentication**</p>
+        Custom-built JWT authentication with passwords hashed using `PBKDF2-SHA256` (100,000 iterations). Sessions are managed with HttpOnly + Secure + SameSite cookies, with email whitelist-based invitation registration.
+      </div>
+      <div className="space-y-1.5">
+        <p>**SSR Rendering**</p>
+        Public Bio pages use server-side rendering with results cached to `KV`, avoiding repeated database queries and improving load speed for visitors.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Tool Selection</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>The entire project is built on the Cloudflare ecosystem, and tool choices were made with that foundation in mind.</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Why Hono instead of Express**</p>
+        Express is designed for Node.js environments and requires an additional compatibility layer to run on Cloudflare Workers, which compromises both performance and compatibility. `Hono` was built from the ground up for edge computing environments, natively supporting the Workers Request / Response API without any conversion overhead. Its routing system and middleware design are intuitive — the developer experience is similar to Express, but without any compatibility concerns.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Why D1 instead of other databases**</p>
+        For the same reason as choosing Hono — since the entire architecture runs on Cloudflare, `D1` is the most natural database pairing. D1 is Cloudflare's native SQLite service with zero-latency connections to Workers, eliminating the need to manage connection pools or cold start issues typical of external databases. Combined with `Drizzle ORM` for type-safe data operations and migration management, the development workflow is smooth and efficient.
+      </div>
+      <div className="space-y-1.5">
+        <p>**R2 + KV Division of Responsibility**</p>
+        `R2` handles persistent storage of static assets like images, while `KV` caches rendered page HTML. Each serves a distinct role: R2 handles large files, KV handles small data with high read frequency. Both are native Cloudflare services requiring no additional setup or maintenance.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Database Design</CardTitle>
+  <CardContent className="gap-3 pt-4">
+    <p>Uses `Cloudflare D1 (SQLite)` with `Drizzle ORM`, covering users, pages, block content, and appearance settings across four tables. Blocks use a JSON config field to store type-specific configuration data, enabling a flexible polymorphic block architecture.</p>
+
+    | Table | Description | Key Fields |
+    |--------|------|----------|
+    | `users` | User accounts and personal information | id, email, username, password_hash, display_name, bio, avatar_url, social_links |
+    | `pages` | Multi-page management supporting home and sub-pages | id, user_id, slug, title, sort_order, is_default |
+    | `blocks` | Bio page content blocks (seven types) | id, user_id, type, config (JSON), is_active, sort_order |
+    | `appearances` | User appearance and theme settings | id, user_id, background, button_style, font_family, text_color, custom_css |
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Database Design Details</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**JSON Config Polymorphic Design**</p>
+        Different block types require very different attributes: buttons need links, subtitles, and animation effects; carousel banners need multiple images and label settings; videos only need a YouTube URL. Creating a separate table or adding numerous nullable columns for each type would make the database difficult to maintain. Instead, the blocks table only retains common fields (type, is_active, sort_order), with all type-specific configuration stored in a single `config` JSON field. Adding a new block type only requires defining a new Config interface and default values — no database schema changes needed.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Fractional Sort Order**</p>
+        Drag-and-drop sorting uses a floating-point `sortOrder` rather than integer indices. When moving a block from position A to between B and C, the new sortOrder is `(B + C) / 2`. This means each reordering only requires updating a single record, without renumbering the entire list. Even after many sorting operations, floating-point precision is more than sufficient for real-world usage.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Multi-Page Support**</p>
+        The pages table uses the `slug` field to distinguish the home page (empty string) from sub-pages, with a unique index on `(userId, slug)` to ensure no duplicate page paths exist for the same user. Blocks are associated with their page via `pageId`, and deleting a page cascades to delete all blocks beneath it.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>Caching Strategy</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>Public Bio pages are SSR-rendered and cached to `Cloudflare KV`, avoiding repeated database queries on every visit.</p>
+    <div className="space-y-4">
+      <div className="space-y-1.5">
+        <p>**Cache Policy**</p>
+        Page HTML TTL is set to 5 minutes. Visits within the cache window require no database access at all. Key formats are `page:{username}` and `page:{username}:{slug}` for home pages and sub-pages respectively.
+      </div>
+      <div className="space-y-1.5">
+        <p>**Index Tracking and Precise Invalidation**</p>
+        To correctly invalidate the cache when a user updates content, the system maintains a `pages-idx:{username}` index that records all cached sub-page slugs for that user. This allows all keys to be found and cleared at once via the index when a full invalidation is needed, without guessing or scanning. Modifying a single block only invalidates the cache for that block's associated page, avoiding unnecessary full invalidations.
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+<Card>
+  <CardTitle>API Design</CardTitle>
+  <CardContent className="gap-4 pt-4">
+    <p>RESTful API designed with Hono routing, with all authenticated endpoints protected by JWT Middleware:</p>
+    <div className="space-y-3">
+      <div className="space-y-1.5">
+        <p>**Authentication** `/api/auth`</p>
+        User registration and login, JWT token issuance and verification
+      </div>
+      <div className="space-y-1.5">
+        <p>**Profile** `/api/profile`</p>
+        Update and manage display name, bio, avatar, and social links
+      </div>
+      <div className="space-y-1.5">
+        <p>**Block Management** `/api/blocks`</p>
+        CRUD operations for all seven block types and drag-and-drop sort order updates
+      </div>
+      <div className="space-y-1.5">
+        <p>**Appearance Settings** `/api/appearance`</p>
+        Save and retrieve background, button, font, color, and custom CSS settings
+      </div>
+      <div className="space-y-1.5">
+        <p>**Image Upload** `/api/upload`</p>
+        Upload images to R2, served via `/api/img/*` with long-term cache headers
+      </div>
+      <div className="space-y-1.5">
+        <p>**Public Page** `/api/bio/:username`</p>
+        Unauthenticated public endpoint for visitors to retrieve a user's Bio page data
+      </div>
+    </div>
+  </CardContent>
+</Card>
