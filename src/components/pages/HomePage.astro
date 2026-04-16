@@ -31,7 +31,7 @@ const sortedProjects = allProjects.sort((a, b) => {
 });
 
 const allPosts = await getCollection("articles");
-const sortedPosts = allPosts
+const sortedPosts = filterByLocale(allPosts, locale)
   .sort((a, b) => {
     if (a.data.pin && !b.data.pin) return -1;
     if (!a.data.pin && b.data.pin) return 1;
