@@ -17,10 +17,15 @@ interface JobProjectCardProps {
     imageAlt?: string;
 }
 
-const formatDateValue = (value?: string | Date | null) => {
+function detectLocale(): 'en' | 'zh-Hant' {
+    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/en/')) return 'en';
+    return 'zh-Hant';
+}
+
+const formatDateValue = (value?: string | Date | null, dateLocale = 'zh-TW') => {
     if (!value) return null;
     if (typeof value === "string") return value;
-    return value.toLocaleDateString("zh-TW", {
+    return value.toLocaleDateString(dateLocale, {
         year: "numeric",
         month: "2-digit",
     });
@@ -28,13 +33,15 @@ const formatDateValue = (value?: string | Date | null) => {
 
 const formatDateRange = (
     startDate?: string | Date | null,
-    endDate?: string | Date | null
+    endDate?: string | Date | null,
+    locale: 'en' | 'zh-Hant' = 'zh-Hant',
 ) => {
-    const startLabel = formatDateValue(startDate);
-    let endLabel = formatDateValue(endDate);
+    const dateLocale = locale === 'en' ? 'en-US' : 'zh-TW';
+    const startLabel = formatDateValue(startDate, dateLocale);
+    let endLabel = formatDateValue(endDate, dateLocale);
 
     if (!endLabel && startLabel && endDate == null) {
-        endLabel = "現在";
+        endLabel = locale === 'en' ? "Present" : "現在";
     }
 
     if (startLabel && endLabel) return `${startLabel} ~ ${endLabel}`;
@@ -51,7 +58,9 @@ export const JobProjectCard = ({
     imageSrc,
     imageAlt,
 }: JobProjectCardProps) => {
-    const timeStr = formatDateRange(startDate, endDate);
+    const locale = detectLocale();
+    const timeStr = formatDateRange(startDate, endDate, locale);
+    const viewProjectLabel = locale === 'en' ? 'View Project' : '查看專案';
 
     return (
         <Card>
@@ -106,7 +115,7 @@ export const JobProjectCard = ({
                     <Button variant="outline" asChild>
                         <a href={link} className="flex items-center gap-1.5 mt-3">
                             <ArrowUpRightIcon className="size-4" />
-                            查看專案
+                            {viewProjectLabel}
                         </a>
                     </Button>
                 )}

@@ -5,6 +5,7 @@ import Header from "@/components/header/Header.astro";
 import { themes } from "@/lib/themes";
 import Footer from "@/components/footer/Footer.astro";
 import Icon from "@/components/Icon.astro";
+import { getLangFromUrl, getHtmlLang, useTranslations, type Locale } from "@/i18n";
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
   headerType?: "main" | "project";
   themeColor?: string;
   themeColorDark?: string;
+  locale?: Locale;
 }
 
 const {
@@ -22,7 +24,12 @@ const {
   headerType = "main",
   themeColor,
   themeColorDark,
+  locale,
 } = Astro.props;
+
+const lang = locale ?? getLangFromUrl(Astro.url);
+const htmlLang = getHtmlLang(lang);
+const t = useTranslations(lang);
 
 // 設置默認主題為 natural
 const themeColors: {
@@ -52,15 +59,15 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.co
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "亮點創研 LuMakes",
+  name: lang === 'en' ? "LuMakes" : "亮點創研 LuMakes",
   url: siteUrl,
-  description: "呂亮進的個人官方網站",
-  inLanguage: "zh-Hant-TW",
+  description: lang === 'en' ? "Liang-Chin Lu's personal website" : "呂亮進的個人官方網站",
+  inLanguage: htmlLang,
   author: {
     "@type": "Person",
-    name: "呂亮進",
+    name: lang === 'en' ? "Liang-Chin Lu" : "呂亮進",
     url: siteUrl,
-    jobTitle: "AI 工程師、產品設計師、全端開發者",
+    jobTitle: lang === 'en' ? "AI Engineer, Product Designer, Full-Stack Developer" : "AI 工程師、產品設計師、全端開發者",
     sameAs: [
       "https://www.linkedin.com/in/liang-chin-lu/",
       "https://www.instagram.com/liang_chin_ml/",
@@ -72,7 +79,7 @@ const websiteJsonLd = {
 ---
 
 <!doctype html>
-<html lang="zh-Hant-TW" class="bg-background">
+<html lang={htmlLang} class="bg-background">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,6 +96,23 @@ const websiteJsonLd = {
             stored === "dark" ||
             ((stored === null || stored === "system") && prefersDark);
           if (isDark) document.documentElement.classList.add("dark");
+        } catch (_) {}
+      })();
+    </script>
+
+    <!-- Language detection: redirect to preferred locale on first visit -->
+    <script is:inline>
+      (function () {
+        try {
+          var path = location.pathname;
+          // Only auto-redirect on root path
+          if (path !== "/") return;
+          var saved = localStorage.getItem("lang");
+          if (saved === "en") {
+            location.replace("/en/");
+          } else if (!saved && navigator.language && navigator.language.startsWith("en")) {
+            location.replace("/en/");
+          }
         } catch (_) {}
       })();
     </script>
@@ -113,8 +137,8 @@ const websiteJsonLd = {
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="zh_TW" />
-    <meta property="og:site_name" content="亮點創研 LuMakes" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_TW'} />
+    <meta property="og:site_name" content={lang === 'en' ? 'LuMakes' : '亮點創研 LuMakes'} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -295,16 +319,16 @@ const websiteJsonLd = {
   <body
     class="font-sans bg-[var(--theme-primary-5)] dark:bg-gradient-to-b dark:from-[#23262A] dark:to-[#1E2023]"
   >
-    <Header type={headerType} themeColor={themeColors.primary} />
+    <Header type={headerType} themeColor={themeColors.primary} locale={lang} />
     <slot />
-    <Footer />
+    <Footer locale={lang} />
 
     <!-- Back to Top Button -->
     <button
       id="back-to-top"
       class="floatbtn fixed bottom-8 right-6 w-16 h-16 md:bottom-8 md:right-8 rounded-full bg-background text-foreground border border-border flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-muted hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.12)] active:-translate-y-0.5"
-      aria-label="回到顶部"
-      title="回到顶部"
+      aria-label={t.common.backToTop}
+      title={t.common.backToTop}
     >
       <Icon name="caret-up" class="size-8" />
     </button>

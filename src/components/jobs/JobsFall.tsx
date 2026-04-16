@@ -5,20 +5,27 @@ import { getImageSrc } from "../react/image-source";
 
 type JobData = CollectionEntry<"jobs">;
 
+type SupportedLocale = 'zh-Hant' | 'en'
+
 interface JobsFallProps {
   jobs: JobData[];
   themes: Record<string, { primary: string; secondary: string }>;
+  pathPrefix?: string;
+  locale?: SupportedLocale;
 }
 
-const formatDate = (date: Date | null | undefined) => {
-  if (!date) return null;
-  return date.toLocaleDateString("zh-TW", {
-    year: "numeric",
-    month: "2-digit",
-  });
-};
+export function JobsFall({ jobs, themes, pathPrefix = '', locale = 'zh-Hant' }: JobsFallProps) {
+  const dateLocale = locale === 'en' ? 'en-US' : 'zh-TW';
+  const nowLabel = locale === 'en' ? 'Present' : '現在';
 
-export function JobsFall({ jobs, themes }: JobsFallProps) {
+  const formatDate = (date: Date | null | undefined) => {
+    if (!date) return null;
+    return date.toLocaleDateString(dateLocale, {
+      year: "numeric",
+      month: "2-digit",
+    });
+  };
+
   return (
     <div className="grid grid-cols-1 gap-4">
       {jobs.map((job) => {
@@ -26,7 +33,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
         const startDateStr = formatDate(job.data.startDate);
         const endDateStr = job.data.endDate
           ? formatDate(job.data.endDate)
-          : "現在";
+          : nowLabel;
         const timeStr =
           startDateStr && endDateStr
             ? `${startDateStr} ~ ${endDateStr}`
@@ -35,7 +42,7 @@ export function JobsFall({ jobs, themes }: JobsFallProps) {
         return (
           <a
             key={job.slug}
-            href={`/jobs/${job.slug}/`}
+            href={`${pathPrefix}/jobs/${job.slug}/`}
             className="group flex bg-card dark:bg-transparent rounded-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
             <div className="flex-3 flex flex-col p-5 pb-3 gap-4">

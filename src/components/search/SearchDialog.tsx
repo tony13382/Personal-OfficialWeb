@@ -14,18 +14,53 @@ interface Pagefind {
   ) => Promise<{ results: { data: () => Promise<SearchResult> }[] } | null>;
 }
 
-const TYPE_ORDER = ["文章", "專案", "經歷"];
+type SupportedLocale = 'zh-Hant' | 'en'
 
-function resolveType(result: SearchResult): string {
-  const url = result.url || "";
-  if (url.startsWith("/articles/")) return "文章";
-  if (url.startsWith("/projects/")) return "專案";
-  if (url.startsWith("/jobs/")) return "經歷";
-  if (url.startsWith("/apps/")) return "APP";
-  return "其他";
+const i18n = {
+  'zh-Hant': {
+    typeOrder: ["文章", "專案", "經歷"],
+    types: { articles: "文章", projects: "專案", jobs: "經歷", apps: "APP", other: "其他" },
+    search: "搜尋",
+    placeholder: "搜尋全站內容...",
+    hint: "輸入關鍵字搜尋全站內容",
+    searching: "搜尋中...",
+    noResults: "找不到相關結果",
+    noTitle: "無標題",
+    close: "關閉",
+    select: "選擇",
+    open: "開啟",
+  },
+  'en': {
+    typeOrder: ["Articles", "Projects", "Experience"],
+    types: { articles: "Articles", projects: "Projects", jobs: "Experience", apps: "Apps", other: "Other" },
+    search: "Search",
+    placeholder: "Search all content...",
+    hint: "Type keywords to search",
+    searching: "Searching...",
+    noResults: "No results found",
+    noTitle: "Untitled",
+    close: "Close",
+    select: "Select",
+    open: "Open",
+  },
+} as const
+
+interface SearchDialogProps {
+  locale?: SupportedLocale
 }
 
-export function SearchDialog() {
+export function SearchDialog({ locale = 'zh-Hant' }: SearchDialogProps) {
+  const t = i18n[locale]
+
+  function resolveType(result: SearchResult): string {
+    const url = result.url || "";
+    if (url.startsWith("/articles/") || url.startsWith("/en/articles/")) return t.types.articles;
+    if (url.startsWith("/projects/") || url.startsWith("/en/projects/")) return t.types.projects;
+    if (url.startsWith("/jobs/") || url.startsWith("/en/jobs/")) return t.types.jobs;
+    if (url.startsWith("/apps/") || url.startsWith("/en/apps/")) return t.types.apps;
+    return t.types.other;
+  }
+
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -48,8 +83,8 @@ export function SearchDialog() {
 
     // Sort by defined order
     const sorted = [...map.entries()].sort(([a], [b]) => {
-      const ia = TYPE_ORDER.indexOf(a);
-      const ib = TYPE_ORDER.indexOf(b);
+      const ia = t.typeOrder.indexOf(a);
+      const ib = t.typeOrder.indexOf(b);
       return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
@@ -148,11 +183,11 @@ export function SearchDialog() {
       <Dialog.Trigger asChild>
         <button
           className="flex items-center gap-2 px-3 py-2 text-muted-foreground rounded-full transition-all hover:bg-muted cursor-pointer bg-transparent border-0"
-          aria-label="搜尋"
-          title="搜尋"
+          aria-label={t.search}
+          title={t.search}
         >
           <MagnifyingGlass className="size-5" />
-          <span className="hidden md:inline text-sm">搜尋</span>
+          <span className="hidden md:inline text-sm">{t.search}</span>
           <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground bg-muted border border-border rounded-full">
             ⌘ K
           </kbd>
@@ -162,7 +197,7 @@ export function SearchDialog() {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-[fade-in_150ms]" />
         <Dialog.Content className="fixed z-50 top-[15vh] inset-x-0 mx-auto w-[calc(100%-2rem)] max-w-lg bg-background rounded-2xl shadow-2xl overflow-hidden animate-[slide-up_200ms_ease-out]">
-          <Dialog.Title className="sr-only">搜尋</Dialog.Title>
+          <Dialog.Title className="sr-only">{t.search}</Dialog.Title>
 
           {/* Search Input */}
           <div className="flex items-center gap-3 px-4 border-b">
@@ -189,7 +224,7 @@ export function SearchDialog() {
                   window.location.href = flatResults[activeIndex].url;
                 }
               }}
-              placeholder="搜尋全站內容..."
+              placeholder={t.placeholder}
               className="flex-1 py-4 text-base bg-transparent border-0 outline-none placeholder:text-muted-foreground"
               autoFocus
             />
@@ -210,19 +245,19 @@ export function SearchDialog() {
           <div className="max-h-[50vh] overflow-y-auto">
             {!query.trim() && (
               <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-                輸入關鍵字搜尋全站內容
+                {t.hint}
               </div>
             )}
 
             {query.trim() && loading && (
               <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-                搜尋中...
+                {t.searching}
               </div>
             )}
 
             {query.trim() && !loading && results.length === 0 && (
               <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-                找不到相關結果
+                {t.noResults}
               </div>
             )}
 
@@ -249,7 +284,7 @@ export function SearchDialog() {
                           >
                             <div className="flex-1 min-w-0">
                               <p className="font-medium text-sm truncate">
-                                {result.meta?.title || "無標題"}
+                                {result.meta?.title || t.noTitle}
                               </p>
                               {result.excerpt && (
                                 <p
@@ -278,19 +313,19 @@ export function SearchDialog() {
                 <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ESC
                 </kbd>{" "}
-                關閉
+                {t.close}
               </span>
               <span>
                 <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ↑↓
                 </kbd>{" "}
-                選擇
+                {t.select}
               </span>
               <span>
                 <kbd className="px-1 py-0.5 bg-muted border border-border rounded text-[10px] font-mono">
                   ↵
                 </kbd>{" "}
-                開啟
+                {t.open}
               </span>
             </span>
             <span>Pagefind</span>

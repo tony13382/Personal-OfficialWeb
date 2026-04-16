@@ -1,0 +1,66 @@
+---
+title: 行銷部組長／CRM 組幹部
+company: TIIC 臺灣實習影響力社群
+location: 臺北
+startDate: 2023-03-01
+endDate: 2024-02-28
+theme: green
+cover: imgs/jobs/2023_Tiic/cover.png
+logo: imgs/jobs/2023_Tiic/logo.png
+description:
+  - 擔任`行銷部組長`，帶領 3 位夥伴執行社群策略`吸引 280 人加入`，管理 `13 位學員`培訓進度，並負責 Discord 社群經營與用戶體驗優化以提升留存率。
+tags: ["行銷企劃","團隊領導"]
+seo:
+  metaDescription: 擔任行銷部組長，負責團隊與行銷策略管理，協助團隊進行內部培訓。
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import { Card, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import tiic1 from '@/assets/imgs/jobs/2023_Tiic/tiic1.webp'
+import tiic2 from '@/assets/imgs/jobs/2023_Tiic/tiic2.webp'
+import tiic3 from '@/assets/imgs/jobs/2023_Tiic/tiic3.webp'
+import tiic4 from '@/assets/imgs/jobs/2023_Tiic/tiic4.webp'
+
+<JobProjectCard
+  imageSrc={tiic3}
+  imageAlt="行銷部組長"
+  name="行銷部組長"
+  startDate="2023/03"
+  endDate="2024/02"
+  descriptions={[
+    "## 組長職務 - 團隊與行銷策略管理",
+    "建立團隊社群策略，帶領 3 位夥伴執行企劃，`吸引 280 人加入社群`，擴大團隊影響力。",
+    "管理 `13 位學員`的培訓進度，帶領學員進行內部培訓。",
+  ]}
+  tags={["領導力", "教育培訓"]}
+/>
+
+<JobProjectCard
+  imageSrc={tiic1}
+  imageAlt="行銷部組長"
+  name="行銷部組長"
+  startDate="2023/03"
+  endDate="2024/02"
+  descriptions={[
+    "## DC 社群管理與用戶體驗優化",
+    "蒐集 Discord 社群成員的需求、偏好與痛點回饋，據此優化社群體驗。",
+    "分析前代 Discord 用戶旅程，找出可優化環節並落地執行改善方案。",
+    "跨部門協作，針對內部需求客製化 Discord 功能。",
+    "擔任 Discord 社群管理者，負責招募、培訓與指導社群志願者，確保社群運營順利高效。",
+    "## 提升用戶留存",
+    "制定並執行社群策略，涵蓋新用戶吸引、既有用戶留存與參與促進。",
+    "設計用戶激勵機制，提升社群參與度與忠誠度。",
+  ]}
+  tags={["社群經營", "行銷"]}
+/>
+
+<Card>
+  <CardContent className="space-y-4">
+    ## 證書
+    <div className="space-y-4">
+      <ImageWithLightbox src={tiic4} alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
+      <ImageWithLightbox src={tiic2} alt='證書' allowPop={true} className='rounded-2xl overflow-hidden'/>
+    </div>
+  </CardContent>
+</Card>

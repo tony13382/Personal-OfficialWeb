@@ -1,0 +1,99 @@
+---
+title: AI 工程師
+company: Solwen AI
+location: 臺北（遠端）
+startDate: 2024-08-01
+endDate: null
+theme: green
+cover: imgs/jobs/2024_SolwenAi/cover.png
+logo: imgs/jobs/2024_SolwenAi/logo.png
+description:
+  - 開發與整合 `AI 解決方案`，涵蓋`多模態模型`（語音識別、NLP、計算機視覺）、`RAG 知識庫`及`語音合成`系統，以 FastAPI 建構 API 服務並結合 `Docker Compose` 與 CI/CD 自動部署於 Linode 伺服器。
+tags: ["AI 應用","網頁全端","API 開發"]
+seo:
+  metaDescription: 專注於開發與整合 AI 解決方案，提升企業的運營效率與競爭力。
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import wellyGeoCover from '@/assets/imgs/projects/wellyGeo/cover.png'
+import soeasyeduSpeakCover from '@/assets/imgs/projects/soeasyeduSpeak/cover.png'
+import longtengInvoiceCover from '@/assets/imgs/projects/longtengInvoice/cover.png'
+import pandaChineseCover from '@/assets/imgs/projects/pandaChinese/cover.png'
+import enterpriseKnowledgeBaseCover from '@/assets/imgs/projects/enterpriseKnowledgeBase/cover.png'
+
+<JobProjectCard
+  imageSrc={wellyGeoCover}
+  imageAlt="WellyGeo - AI 品牌能見度追蹤平台"
+  name="WellyGeo - AI 品牌能見度追蹤平台"
+  startDate="2025/11"
+  endDate="Now"
+  link="/projects/welly-geo"
+  descriptions={[
+    "獨立負責`前端全程建置`，以 React 19 + TypeScript + Vite 開發 SPA 數據分析儀表板，整合 shadcn/ui 元件庫與 Recharts 圖表視覺化。",
+    "開發品牌能見度趨勢圖、`AI 回應分析`、引用來源追蹤、`競品比較`配置等功能模組，並整合 i18next 繁中/英文雙語介面。",
+    "協助開發後端`爬蟲系統`，使用 Playwright 瀏覽器自動化擷取 ChatGPT、Google Gemini 與 Google AI Overview 的回應內容。",
+    "導入 `Husky + lint-staged` 自動化 pre-commit 檢查，配置 ESLint + Prettier 統一程式碼風格，建立團隊開發規範。",
+  ]}
+  tags={["React 19", "Playwright", "資料視覺化", "AWS"]}
+/>
+
+<JobProjectCard
+  imageSrc={soeasyeduSpeakCover}
+  imageAlt="巨匠英語口說 AI 學習系統"
+  name="巨匠英語口說 AI 學習系統"
+  startDate="2024/11"
+  endDate="Now"
+  link="/projects/soeasyeduspeak"
+  descriptions={[
+    "開發專注於英語學習的 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。",
+    "整合`火山雲`語音合成技術，產出接近真人的自然語音，提升學習沉浸感。",
+    "系統根據對話紀錄動態調整難度，提升評估精準度。",
+    "結合 `Azure 語音評分工具`，產出詳細的發音分析與綜合報告，幫助用戶掌握口說表現。",
+  ]}
+  tags={["語音系統", "API 開發", "Azure", "React SPA"]}
+/>
+
+<JobProjectCard
+  imageSrc={longtengInvoiceCover}
+  imageAlt="龍騰發票視覺處理系統"
+  name="龍騰發票視覺處理系統"
+  startDate="2025/02"
+  endDate="2026/03"
+  descriptions={[
+    "運用`多模態模型`結合 `OCR 與 LLM` 技術，自動識別發票上的文字、數字與圖像，轉換為結構化數據，實現發票資料的自動化處理。",
+    "使用 `Streamlit` 開發前端介面，提供即時的數據可視化與編輯功能。",
+  ]}
+  tags={["LLM 視覺多模態", "Streamlit", "OpenAI", "Anthropic"]}
+/>
+
+<JobProjectCard
+  imageSrc={pandaChineseCover}
+  imageAlt="Panda Chinese・中文口說 AI 學習系統"
+  name="Panda Chinese・中文口說 AI 學習系統"
+  startDate="2024/11"
+  endDate="2025/03"
+  descriptions={[
+    "開發中文主題式 AI 對話系統，具有`自動對話`、`偏題偵測`等功能。",
+    "整合`火山雲`語音合成技術，支援中文多語調輸出，提升對話自然度。",
+    "根據對話內容產出詳細口說報告，幫助用戶掌握學習進度。",
+    "基於 `FastAPI` 框架開發，透過併發測試持續優化 API 效能。",
+    "建立自動化 CI/CD 流程，結合 Docker Compose 部署與 alembic 資料庫版本控制，確保系統穩定性與一致性。",
+  ]}
+  tags={["API 開發", "OpenAI Whisper", "火山雲語音合成"]}
+/>
+
+<JobProjectCard
+  imageSrc={enterpriseKnowledgeBaseCover}
+  imageAlt="企業 RAG 對話知識庫"
+  name="企業 RAG 對話知識庫"
+  startDate="2024/08"
+  endDate="2024/11"
+  descriptions={[
+    "基於 FastAPI 框架規劃並`開發企業 AI 知識庫問答系統`，設計 RESTful API 架構。",
+    "與 AI 工程師緊密合作，`整合 LangChain` 工作流至系統中。",
+    "使用 PGVector 進行文本向量化管理，結合 `PostgreSQL` 實現高效語意檢索。",
+    "搭配 alembic 進行`資料庫版本控制`，確保資料庫結構的穩定性與一致性。",
+    "使用 `Docker` 容器化部署，提升系統的可擴展性與部署效率。",
+  ]}
+  tags={["API 開發", "自動化部署", "PGVector 整合"]}
+/>

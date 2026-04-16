@@ -1,0 +1,37 @@
+---
+title: M.S. in Learning Sciences / R&D Engineer
+company: National Tsing Hua University (Institute of Learning Sciences and Technologies)
+location: Hsinchu
+startDate: 2022-07-01
+endDate: 2024-07-31
+theme: purple
+cover: imgs/jobs/2022_NthuOu/cover.png
+logo: imgs/jobs/2022_NthuOu/logo.png
+description:
+  - "Published two papers (including `Best Paper Award`), researching LLM prompting strategies and self-directed learning resource recommendation systems, utilizing web scraping, Milvus vector database, Flask API, and RabbitMQ to achieve efficient data retrieval and concurrent processing, optimizing system response time from `1 minute to 50 milliseconds`."
+tags: ["Text Search Algorithms","Webhook API Development","AI Applications"]
+seo:
+  metaDescription: Built a self-directed learning resource recommendation system using NLP techniques, awarded Best Paper.
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import trelloFinderCover from '@/assets/imgs/projects/trelloFinder/cover.png'
+
+<JobProjectCard
+  imageSrc={trelloFinderCover}
+  imageAlt="Trello Knowledge Assistant 2.0"
+  name="Trello Knowledge Assistant 2.0"
+  link="/projects/trello-finder"
+  descriptions={[
+    "Used SBERT (Sentence-BERT) for text vectorization combined with Milvus vector database, `reducing resource recommendation computation time (1 min → 3 sec)` while maintaining search accuracy.",
+    "Built WebAPIs with Flask and integrated Trello Webhook, `reducing system response time from 1 minute to 50 milliseconds` after restructuring the data flow.",
+    "## Fuzzy Text Search Algorithm",
+    "Converted text into dense vector representations via SBERT for precise semantic similarity computation and text matching.",
+    "Maintained and optimized the Milvus vector database to ensure stability and performance of large-scale vector retrieval.",
+    "Combined NLP techniques with search algorithms to improve search result accuracy and system user experience.",
+    "## Flask API Development",
+    "Designed RESTful APIs based on the Flask framework, providing stable and flexible backend services.",
+    "Optimized code architecture following best practices to ensure API scalability and maintainability.",
+    "Wrote unit tests and technical documentation to ensure proper system handover.",
+  ]}
+/>

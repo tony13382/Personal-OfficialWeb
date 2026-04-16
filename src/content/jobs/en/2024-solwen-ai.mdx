@@ -1,0 +1,90 @@
+---
+title: AI Engineer
+company: Solwen AI
+location: Taipei (Remote)
+startDate: 2024-08-01
+endDate: null
+theme: green
+cover: imgs/jobs/2024_SolwenAi/cover.png
+logo: imgs/jobs/2024_SolwenAi/logo.png
+description:
+  - Developed and integrated `AI solutions` spanning `multimodal models` (speech recognition, NLP, computer vision), `RAG knowledge bases`, and `speech synthesis` systems, building API services with FastAPI and deploying via `Docker Compose` with CI/CD automation on Linode servers.
+tags: ["AI Applications","Full-Stack Web","API Development"]
+seo:
+  metaDescription: Focused on developing and integrating AI solutions to enhance business operational efficiency and competitiveness.
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import wellyGeoCover from '@/assets/imgs/projects/wellyGeo/cover.png'
+import soeasyeduSpeakCover from '@/assets/imgs/projects/soeasyeduSpeak/cover.png'
+import longtengInvoiceCover from '@/assets/imgs/projects/longtengInvoice/cover.png'
+import pandaChineseCover from '@/assets/imgs/projects/pandaChinese/cover.png'
+import enterpriseKnowledgeBaseCover from '@/assets/imgs/projects/enterpriseKnowledgeBase/cover.png'
+
+<JobProjectCard
+  imageSrc={wellyGeoCover}
+  imageAlt="WellyGeo - AI Brand Visibility Tracking Platform"
+  name="WellyGeo - AI Brand Visibility Tracking Platform"
+  startDate="2025/11"
+  endDate="Now"
+  link="/projects/welly-geo"
+  descriptions={[
+    "Developed `brand visibility tracking` features using LLM-powered analysis of search engine results.",
+    "Built `data pipeline` for automated collection and processing of geo-specific search data.",
+    "Implemented `interactive dashboards` for visualizing brand presence across locations.",
+  ]}
+/>
+
+<JobProjectCard
+  imageSrc={soeasyeduSpeakCover}
+  imageAlt="SoEasyEdu Speak - AI Speaking Practice System"
+  name="SoEasyEdu Speak - AI Speaking Practice System"
+  startDate="2025/02"
+  endDate="Now"
+  link="/projects/soeasyedu-speak"
+  descriptions={[
+    "Developed an AI-powered `speech practice system` combining speech recognition and synthesis.",
+    "Integrated `multimodal AI models` for real-time pronunciation assessment and feedback.",
+    "Built RESTful APIs with `FastAPI` for seamless frontend-backend communication.",
+  ]}
+/>
+
+<JobProjectCard
+  imageSrc={longtengInvoiceCover}
+  imageAlt="Longteng Invoice - AI Invoice Processing"
+  name="Longteng Invoice - AI Invoice Processing"
+  startDate="2025/01"
+  endDate="2025/02"
+  link="/projects/longteng-invoice"
+  descriptions={[
+    "Built an `AI-powered invoice processing` system using computer vision and OCR.",
+    "Implemented `automated data extraction` pipeline for structured invoice parsing.",
+  ]}
+/>
+
+<JobProjectCard
+  imageSrc={pandaChineseCover}
+  imageAlt="Panda Chinese - AI Chinese Learning Platform"
+  name="Panda Chinese - AI Chinese Learning Platform"
+  startDate="2024/12"
+  endDate="2025/03"
+  link="/projects/panda-chinese"
+  descriptions={[
+    "Developed an AI-assisted `Chinese language learning platform` with speech recognition.",
+    "Built `RAG-based knowledge retrieval` for contextual learning content generation.",
+  ]}
+/>
+
+<JobProjectCard
+  imageSrc={enterpriseKnowledgeBaseCover}
+  imageAlt="Enterprise Knowledge Base - RAG System"
+  name="Enterprise Knowledge Base - RAG System"
+  startDate="2024/08"
+  endDate="2024/12"
+  link="/projects/enterprise-knowledge-base"
+  descriptions={[
+    "Architected and deployed an enterprise `RAG knowledge base` system.",
+    "Integrated `vector databases` for efficient semantic search across corporate documents.",
+    "Implemented `Docker Compose` deployment with CI/CD automation.",
+  ]}
+/>

@@ -27,8 +27,9 @@ export function ImageWithLightbox({
   const imageSrc = getImageSrc(src)
 
   if (allowPop) {
+    const isEn = typeof window !== 'undefined' && window.location.pathname.startsWith('/en/');
     return (
-      <a href={imageSrc} data-fancybox="gallery" aria-label={alt || '檢視大圖'} className={`mx-auto block ${roundedClass} ${className}`}>
+      <a href={imageSrc} data-fancybox="gallery" aria-label={alt || (isEn ? 'View full image' : '檢視大圖')} className={`mx-auto block ${roundedClass} ${className}`}>
         <img
           src={imageSrc}
           className="img-fluid mx-auto"

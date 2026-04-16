@@ -113,7 +113,7 @@ export function UiImageCarousel({
               return (
                 <div key={index} className="flex-[0_0_80%] min-w-0 px-8">
                   {allowPop ? (
-                    <a href={imageUrl} data-fancybox={fancyboxGalleryId} aria-label={imageDesc || `檢視第 ${index + 1} 張大圖`} className='my-auto'>
+                    <a href={imageUrl} data-fancybox={fancyboxGalleryId} aria-label={imageDesc || (typeof window !== 'undefined' && window.location.pathname.startsWith('/en/') ? `View image ${index + 1}` : `檢視第 ${index + 1} 張大圖`)} className='my-auto'>
                       {content}
                     </a>
                   ) : (

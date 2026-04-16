@@ -1,0 +1,78 @@
+---
+title: Freelance Experience
+company: AI System Development / Full-Stack Web Development
+location: Remote
+startDate: 2021-07-20
+endDate: null
+theme: natural
+cover: imgs/jobs/0000_Developer/cover.png
+logo: imgs/jobs/0000_Developer/logo.png
+description:
+  - Capable of `full-stack development`, proficient in React SPA and responsive web on the frontend, utilizing FastAPI, Flask, and Node.js frameworks on the backend, integrated with PostgreSQL, MySQL, and MongoDB databases for system development.
+tags: ["AI Applications","Full-Stack Web"]
+seo:
+  metaDescription: Full-stack web development and AI system development experience, covering frontend, backend, and database technologies.
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import tycgFileTaggerCover from '@/assets/imgs/projects/tycgFileTaggerWeb/cover.png'
+import chenmkoCover from '@/assets/imgs/projects/chenmko/cover.png'
+import hsCloudMeetingManageCover from '@/assets/imgs/projects/hsCloudMeetingManage/cover.png'
+import hsVmiCover from '@/assets/imgs/projects/hsVmi/cover.png'
+
+<JobProjectCard
+  imageSrc={tycgFileTaggerCover}
+  imageAlt="Project Document Management System"
+  name="Project Document Management System"
+  link="/projects/tycg-file-tagger"
+  descriptions={[
+    "PostgreSQL as the core database for storing all tag data, with `Alembic for database management`.",
+    "Frontend built with Jinja2 templating language and Bootstrap for `responsive web design`.",
+    "Backend powered by `FastAPI` ensuring safe multi-concurrent execution.",
+    "Docker Compose deployment, eliminating environment interference.",
+  ]}
+  tags={["Docker","Full-Stack","Python"]}
+/>
+
+<JobProjectCard
+  imageSrc={chenmkoCover}
+  imageAlt="Chenmko Full-Stack Web Development"
+  name="Chenmko Full-Stack Web Development"
+  link="/projects/chenmko"
+  descriptions={[
+    "Built a management system with PHP and PostgreSQL covering products, announcements, and corporate information.",
+    "Special data table design for `dynamically adjusting product field display`.",
+    "Responsive web design using Bootstrap.",
+  ]}
+  tags={["Full-Stack","PHP"]}
+/>
+
+<JobProjectCard
+  imageSrc={hsCloudMeetingManageCover}
+  imageAlt="Cloud Meeting Management System"
+  name="Cloud Meeting Management System"
+  link="/projects/hs-cloud-meeting-manage"
+  descriptions={[
+    "## Frontend Design & Integration",
+    "Designed responsive web pages in `Figma` based on `Bootstrap` UI library.",
+    "Frontend built with `Handlebars templating` and Bootstrap for responsive design.",
+    "Adopted `MVC layered architecture`, fully separating routing, business logic, and data access.",
+    "## Backend Design",
+    "Core backend built with `Node.js + MongoDB` for the meeting management system.",
+    "`Integrated Gmail` as automated email notification system.",
+    "Jitsi Meet as the core online meeting system.",
+  ]}
+  tags={["Figma","Node.js","Bootstrap","UI Design"]}
+/>
+
+<JobProjectCard
+  imageSrc={hsVmiCover}
+  imageAlt="VMI Supply Chain Management Simulation Game"
+  name="VMI Supply Chain Management Simulation Game"
+  descriptions={[
+    "Developed a supply chain management simulation game using `Tomcat (JSP)` and `MySQL`.",
+    "Designed `dual database architecture`, automatically simulating daily inventory changes and settling monthly and annual profit/loss.",
+  ]}
+  link="/projects/hs-vmi"
+  tags={["Java Page","MySQL"]}
+/>

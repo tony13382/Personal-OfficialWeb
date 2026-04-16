@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import JobSlugPage from "@/components/pages/JobSlugPage.astro";
+import { filterByLocale } from "@/i18n";
+
+export async function getStaticPaths() {
+  const allJobs = await getCollection("jobs");
+  const jobs = filterByLocale(allJobs, "en");
+  return jobs.map((j) => ({
+    params: { slug: j.slug },
+    props: { job: j },
+  }));
+}
+
+const { job } = Astro.props;
+const { Content } = await job.render();
+---
+
+<JobSlugPage job={job} Content={Content} locale="en" />

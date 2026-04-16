@@ -1,0 +1,326 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { themes } from "@/lib/themes";
+import Icon from "@/components/Icon.astro";
+import { JobsFall } from "@/components/jobs/JobsFall";
+import { ProjectsFall } from "@/components/projects/ProjectsFall";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { SocialLinksLite } from "@/components/data/social";
+import { ActionBtnLinks } from "@/components/data/actionBtn";
+import { profileData, profileDataZh, profileDataEn, ProfileCardModal } from "@/components/data/profile";
+import { Image } from "astro:assets";
+import myHeadImg from "@/assets/imgs/index/myHead.webp";
+import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import { useTranslations, filterByLocale, type Locale } from "@/i18n";
+import { resolveCollectionImages } from "@/lib/resolve-image";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "zh-Hant" } = Astro.props;
+const t = useTranslations(locale);
+const prefix = locale === "en" ? "/en" : "";
+const dateLocale = locale === "en" ? "en-US" : "zh-TW";
+const profile = locale === "en" ? profileDataEn : profileDataZh;
+
+const rawJobs = await getCollection("jobs");
+const allJobs = resolveCollectionImages(filterByLocale(rawJobs, locale));
+const sortedJobs = allJobs.sort((a, b) => {
+  const aIsActive = !a.data.endDate;
+  const bIsActive = !b.data.endDate;
+
+  if (aIsActive && !bIsActive) return -1;
+  if (!aIsActive && bIsActive) return 1;
+
+  const aDate = a.data.startDate?.getTime() || 0;
+  const bDate = b.data.startDate?.getTime() || 0;
+  return bDate - aDate;
+});
+
+const rawProjects = await getCollection("projects");
+const allProjects = resolveCollectionImages(filterByLocale(rawProjects, locale));
+const sortedProjects = allProjects.sort((a, b) => {
+  if (a.data.pin && !b.data.pin) return -1;
+  if (!a.data.pin && b.data.pin) return 1;
+  return b.data.startDate.getTime() - a.data.startDate.getTime();
+});
+const awardProjects = allProjects
+  .filter((project) => project.data.scores && project.data.scores.length > 0)
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+---
+
+<BaseLayout
+  title={t.about.title}
+  description={t.about.description}
+  ogImage="/assets/MetaTagCover.png"
+  headerType="main"
+  locale={locale}
+>
+  <div
+    class="min-h-screen bg-linear-to-b from-gray-50 to-transparent dark:from-transparent pt-20"
+  >
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 pt-16 md:pt-24">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="grid items-center">
+          <p
+            class="text-sm font-medium tracking-widest uppercase text-(--theme-primary) mb-4"
+          >
+            {locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}
+          </p>
+          <h1
+            class="text-5xl md:text-6xl font-bold mb-6 bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent tracking-wider leading-normal"
+          >
+            {t.about.heroTitle}
+          </h1>
+          <div class="overflow-hidden">
+            <div class="overflow-hidden">
+              <Card
+                className="max-w-80 mt-12 hover:mt-9 pb-4 hover:pb-7 inline-flex rounded-b-none transition-all duration-300 dark:border dark:border-border dark:bg-transparent"
+              >
+                <CardContent className="gap-6 items-center pt-3 pb-4">
+                  <div
+                    class="h-4 w-10 my-2 border rounded-full bg-(--theme-primary-10) inset-shadow-sm"
+                  >
+                  </div>
+                  <Image
+                    src={myHeadImg}
+                    alt={`${profile.name}${locale === "en" ? "'s avatar" : "的頭像"}`}
+                    class="size-32 rounded-full overflow-hidden"
+                    width={128}
+                    height={128}
+                    loading="eager"
+                  />
+                  <div class="px-4">
+                    <p
+                      class="text-xl md:text-2xl text-foreground font-bold mb-3"
+                    >
+                      {profile.name}
+                    </p>
+                    <p class="text-muted-foreground mb-3">
+                      {profile.jobTitle}
+                    </p>
+                  </div>
+                  <ActionBtnLinks client:load />
+                  <div>
+                    <div class="flex px-1">
+                      <SocialLinksLite client:load />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            <div class="h-1 border-t"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工作經歷 -->
+      <section class="container mx-auto px-4 py-12">
+        <div class="max-w-6xl mx-auto space-y-12">
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold">{t.about.workExperience}</h2>
+            <JobsFall jobs={sortedJobs.slice(0, 3)} themes={themes} pathPrefix={prefix} locale={locale} />
+            {
+              sortedJobs.length > 3 && (
+                <div data-expand-section>
+                  <div class="hidden" data-expand-content>
+                    <JobsFall jobs={sortedJobs.slice(3)} themes={themes} pathPrefix={prefix} locale={locale} />
+                  </div>
+                  <Button variant="outline" data-expand-btn>
+                    {t.common.showMoreCount.replace('{count}', String(sortedJobs.length))}
+                  </Button>
+                </div>
+              )
+            }
+          </div>
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold mb-8">{t.about.projectWorks}</h2>
+            <div class="max-w-6xl mx-auto">
+              <ProjectsFall
+                projects={sortedProjects}
+                themes={themes}
+                pathPrefix={prefix}
+                locale={locale}
+                client:load
+              />
+            </div>
+          </div>
+
+          <!-- 得獎紀錄 -->
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold">{t.about.awards}</h2>
+            {
+              awardProjects.length === 0 ? (
+                <div class="text-center py-12">
+                  <Icon
+                    name="trophy"
+                    class="size-16 mx-auto mb-4 text-muted-foreground/50"
+                  />
+                  <p class="text-muted-foreground">{t.about.noAwards}</p>
+                </div>
+              ) : (
+                <Fragment>
+                  <div class="space-y-6">
+                    {awardProjects.slice(0, 3).map((project) => {
+                      const themeColors = themes[project.data.theme];
+                      return (
+                        <Card
+                          className="shadow-none border"
+                          data-card-theme
+                          style={{
+                            "--card-primary-light": themeColors.primary,
+                            "--card-primary-dark": themeColors.darkPrimary,
+                          } as React.CSSProperties}
+                        >
+                          <CardContent className="gap-4">
+                            <div class="flex">
+                              <div class="flex-1 grid">
+                                <h3
+                                  class="text-xl font-bold mb-2"
+                                  style="color: var(--card-primary)"
+                                >
+                                  {project.data.title}
+                                </h3>
+                                <p class="text-sm text-muted-foreground">
+                                  {project.data.startDate.toLocaleDateString(
+                                    dateLocale,
+                                    { year: "numeric", month: "long" },
+                                  )}
+                                  {project.data.endDate
+                                    ? ` - ${project.data.endDate.toLocaleDateString(dateLocale, { year: "numeric", month: "long" })}`
+                                    : ` - ${t.common.now}`}
+                                </p>
+                              </div>
+                              <a href={`${prefix}/projects/${project.slug}/`}>
+                                <Button variant="outline">{t.common.viewProject}</Button>
+                              </a>
+                            </div>
+                            <hr />
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {project.data.scores.map((score) => (
+                                <div class="flex items-start gap-3">
+                                  <div class="flex-1">
+                                    <div class="flex items-baseline gap-2 flex-wrap">
+                                      <span class="text-xl font-semibold text-foreground">
+                                        {score.award}
+                                      </span>
+                                      {score.category && (
+                                        <span class="text-sm text-muted-foreground">
+                                          ({score.category})
+                                        </span>
+                                      )}
+                                    </div>
+                                    <p class="text-sm text-muted-foreground mt-1">
+                                      {score.title}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                  {awardProjects.length > 3 && (
+                    <div data-expand-section>
+                      <div class="hidden space-y-6 mt-6" data-expand-content>
+                        {awardProjects.slice(3).map((project) => {
+                          const themeColors = themes[project.data.theme];
+                          return (
+                            <Card className="shadow-none border">
+                              <CardContent className="gap-4">
+                                <div class="flex">
+                                  <div class="flex-1 grid">
+                                    <h3
+                                      class="text-xl font-bold mb-2"
+                                      style={`color: ${themeColors.primary}`}
+                                    >
+                                      {project.data.title}
+                                    </h3>
+                                    <p class="text-sm text-muted-foreground">
+                                      {project.data.startDate.toLocaleDateString(
+                                        dateLocale,
+                                        { year: "numeric", month: "long" },
+                                      )}
+                                      {project.data.endDate
+                                        ? ` - ${project.data.endDate.toLocaleDateString(dateLocale, { year: "numeric", month: "long" })}`
+                                        : ` - ${t.common.now}`}
+                                    </p>
+                                  </div>
+                                  <a href={`${prefix}/projects/${project.slug}/`}>
+                                    <Button variant="outline">{t.common.viewProject}</Button>
+                                  </a>
+                                </div>
+                                <hr />
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {project.data.scores.map((score) => (
+                                    <div class="flex items-start gap-3">
+                                      <div class="flex-1">
+                                        <div class="flex items-baseline gap-2 flex-wrap">
+                                          <span class="text-xl font-semibold text-foreground">
+                                            {score.award}
+                                          </span>
+                                          {score.category && (
+                                            <span class="text-sm text-muted-foreground">
+                                              ({score.category})
+                                            </span>
+                                          )}
+                                        </div>
+                                        <p class="text-sm text-muted-foreground mt-1">
+                                          {score.title}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                      <Button variant="outline" data-expand-btn>
+                        {t.common.showMoreCount.replace('{count}', String(awardProjects.length))}
+                      </Button>
+                    </div>
+                  )}
+                </Fragment>
+              )
+            }
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <button
+      id="profile-modal-btn"
+      class="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-(--theme-primary) text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-(--theme-secondary) hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+      title={profile.name}
+    >
+      <Image
+        src={profileImg}
+        alt={`${profile.name}${locale === "en" ? "'s avatar" : "的頭像"}`}
+        class="size-16 rounded-full overflow-hidden"
+        width={128}
+        height={128}
+      />
+    </button>
+
+    <ProfileCardModal client:load />
+  </div>
+
+  <script>
+    document.querySelectorAll("[data-expand-section]").forEach((section) => {
+      const btn = section.querySelector("[data-expand-btn]");
+      const content = section.querySelector("[data-expand-content]");
+      btn?.addEventListener("click", () => {
+        content?.classList.remove("hidden");
+        btn.remove();
+      });
+    });
+  </script>
+</BaseLayout>

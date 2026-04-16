@@ -1,19 +1,24 @@
 ---
 import { Card } from "@/components/ui/card";
 import type { CollectionEntry } from "astro:content";
+import type { Locale } from "@/i18n";
 
 type ArticlePost = CollectionEntry<"articles">;
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   post: ArticlePost;
   class?: string;
+  locale?: Locale;
 }
 
-const { post, class: className, ...rest } = Astro.props;
+const { post, class: className, locale = "zh-Hant", ...rest } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+const dateLocale = locale === "en" ? "en-US" : "zh-TW";
+const updatedLabel = locale === "en" ? "(Updated)" : "（已更新）";
 ---
 
 <a
-  href={`/articles/${post.slug}/`}
+  href={`${prefix}/articles/${post.slug}/`}
   class:list={["group block no-underline", className]}
   {...rest}
 >
@@ -37,7 +42,7 @@ const { post, class: className, ...rest } = Astro.props;
       <div class="flex items-center gap-2">
         <time class="text-sm text-muted-foreground">
           {
-            post.data.date.toLocaleDateString("zh-TW", {
+            post.data.date.toLocaleDateString(dateLocale, {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -46,7 +51,7 @@ const { post, class: className, ...rest } = Astro.props;
         </time>
         {
           post.data.updatedDate && (
-            <span class="text-xs text-muted-foreground">（已更新）</span>
+            <span class="text-xs text-muted-foreground">{updatedLabel}</span>
           )
         }
       </div>

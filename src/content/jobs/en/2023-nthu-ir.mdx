@@ -1,0 +1,33 @@
+---
+title: Research Intern
+company: NTHU Institutional Research Center
+location: Hsinchu
+startDate: 2022-09-01
+endDate: 2023-01-31
+theme: purple
+cover: imgs/jobs/2023_NthuIr/cover.png
+logo: imgs/jobs/2023_NthuIr/logo.png
+description:
+  - Cleaned and integrated `approximately 3,000` composite data records, used `SBERT models` for text vectorization analysis, and built `course knowledge graphs` with Gephi, Excel, and Python to visualize relationships between courses and departments.
+tags: ["Data Cleaning","Data Visualization"]
+seo:
+  metaDescription: Used SBERT models for text vectorization, processed approximately 3,000 data records with Gephi, Excel, and Python to build course knowledge graphs.
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import gephiAll from '@/assets/imgs/jobs/2023_NthuIr/gephi_all.png'
+
+<JobProjectCard
+  imageSrc={gephiAll}
+  imageAlt="Research Intern"
+  name="Research Intern"
+  startDate="2022/09"
+  endDate="2023/01"
+  descriptions={[
+    "Extracted, cleaned, and integrated `approximately 3,000` composite data records from various campus data sources to ensure data quality for subsequent analysis.",
+    "Used SBERT (Sentence-BERT) to vectorize course information into numerical representations for semantic similarity analysis.",
+    "Applied `clustering analysis techniques` to group similar courses and departments, revealing relationships across different academic fields.",
+    "Visualized analysis results as course knowledge graphs using `Gephi`, helping the Institutional Research Center understand and communicate research findings.",
+  ]}
+  tags={["Data Collection/Preprocessing", "Text Mining", "Text Analysis"]}
+/>

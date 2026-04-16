@@ -13,6 +13,14 @@ export default defineConfig({
   site: 'https://lumakes.com',
   integrations: [react(), mdx(), sitemap(), pagefind()],
 
+  i18n: {
+    defaultLocale: 'zh-Hant',
+    locales: ['zh-Hant', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
     build: {

@@ -1,10 +1,23 @@
 ---
 import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
-import ThemeToggle from "@/components/ThemeToggle";
+import ThemeToggle from "@/components/footer/ThemeToggle";
+import LanguageSwitcher from "@/components/footer/LanguageSwitcher.astro";
+import brandFlatLogoImg from "@/assets/imgs/index/brandFlatLogoImg.svg?url";
 import brandSignUrl from "@/assets/imgs/index/brand-sign.svg?url";
 import signUrl from "@/assets/imgs/index/sign.svg?url";
-import { apps } from "@/data/apps";
+import { apps, getAppName } from "@/data/apps";
+import { useTranslations, type Locale } from "@/i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "zh-Hant" } = Astro.props;
+const t = useTranslations(locale);
+
+// Encode single quotes in SVG data URIs to prevent breaking CSS url()
+const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
 ---
 
 <footer class="rounded-t-3xl bg-background border-t border-0">
@@ -18,12 +31,12 @@ import { apps } from "@/data/apps";
       >
         <div class="col-span-1">
           <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">
-            產品 APPs
+            {t.footer.products}
           </h4>
           {
             apps.map((app) => (
               <a
-                href={`/apps/${app.slug}/`}
+                href={`${locale === 'en' ? '/en' : ''}/apps/${app.slug}/`}
                 rel="noopener noreferrer"
                 class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
               >
@@ -31,14 +44,14 @@ import { apps } from "@/data/apps";
                   name={app.footerIcon}
                   class="size-5 group-hover:scale-110 transition-transform"
                 />
-                <span>{app.name}</span>
+                <span>{getAppName(app, locale)}</span>
               </a>
             ))
           }
         </div>
         <div class="col-span-1">
           <h4 class="text-xl text-muted-foreground font-semibold mb-2 px-4">
-            連結 Links
+            {t.footer.links}
           </h4>
           <a
             href="https://go.lumakes.com/learn"
@@ -49,7 +62,7 @@ import { apps } from "@/data/apps";
               name="graduation-cap"
               class="size-5 group-hover:scale-110 transition-transform"
             />
-            <span>知識推薦獲取來源</span>
+            <span>{t.footer.knowledgeResources}</span>
           </a>
           <a
             href="https://go.lumakes.com/bm"
@@ -60,7 +73,7 @@ import { apps } from "@/data/apps";
               name="bookmark-simple"
               class="size-5 group-hover:scale-110 transition-transform"
             />
-            <span>推薦工作書籤</span>
+            <span>{t.footer.bookmarks}</span>
           </a>
           <a
             href="https://meowlu.notion.site/ML-12e7c67f7f2d47249f0111882d932663"
@@ -72,7 +85,7 @@ import { apps } from "@/data/apps";
               name="archive"
               class="size-5 group-hover:scale-110 transition-transform"
             />
-            <span>學習資源庫</span>
+            <span>{t.footer.learningLibrary}</span>
           </a>
         </div>
       </div>
@@ -83,7 +96,7 @@ import { apps } from "@/data/apps";
           <h4
             class="col-span-1 lg:col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
           >
-            贊助 Donate
+            {t.footer.donate}
           </h4>
           <a
             href="https://portaly.cc/liang_chin_ml/support"
@@ -95,7 +108,7 @@ import { apps } from "@/data/apps";
               name="wallet"
               class="size-5 group-hover:scale-110 transition-transform"
             />
-            <span>Portaly 贊助</span>
+            <span>{t.footer.portalyDonate}</span>
           </a>
           <a
             href="https://www.buymeacoffee.com/liangchinml"
@@ -116,7 +129,7 @@ import { apps } from "@/data/apps";
           <h4
             class="text-xl text-muted-foreground font-semibold mt-8 mb-2 px-4"
           >
-            聯絡 Connections
+            {t.footer.connections}
           </h4>
           <div class="flex flex-wrap px-1">
             <SocialLinksLite client:load />
@@ -127,10 +140,11 @@ import { apps } from "@/data/apps";
           <h4
             class="text-xl text-muted-foreground font-semibold mt-8 mb-2 px-4"
           >
-            閱讀設定 Config
+            {t.footer.config}
           </h4>
-          <div class="flex flex-wrap px-4 pt-1">
+          <div class="flex flex-wrap gap-4 px-4 pt-1 pb-6">
             <ThemeToggle client:load />
+            <LanguageSwitcher locale={locale} />
           </div>
         </div>
       </div>
@@ -141,35 +155,44 @@ import { apps } from "@/data/apps";
       class="py-4 mt-6 bg-muted rounded-md text-muted-foreground text-center text-xs"
     >
       <div class="flex items-center justify-center gap-4 pt-4">
-        <div class="flex items-center justify-center gap-2">
+        <div class="w-50 flex items-center justify-end gap-1">
+          <span
+            role="img"
+            aria-label="LuMakes signature"
+            class="block h-10 opacity-75 rounded-full bg-foreground"
+            style={`width: calc(10 * 100 / 100 * 0.25rem); -webkit-mask: url(${cssUrl(brandFlatLogoImg)}) no-repeat center / contain; mask: url(${cssUrl(brandFlatLogoImg)}) no-repeat center / contain;`}
+          ></span>
           <span
             role="img"
             aria-label="LuMakes signature"
             class="block h-9 opacity-75 bg-foreground"
-            style={`width: calc(7 * 7208 / 3200 * 0.25rem); -webkit-mask: url(${brandSignUrl}) no-repeat center / contain; mask: url(${brandSignUrl}) no-repeat center / contain;`}
+            style={`width: calc(7 * 7208 / 3200 * 0.25rem); -webkit-mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain; mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain;`}
           ></span>
         </div>
         <Icon
           name="x"
           class="size-5 group-hover:scale-110 transition-transform"
         />
-        <span
-          role="img"
-          aria-label="Liang Chin Lu signature"
-          class="block h-7 opacity-75 mt-2 bg-foreground"
-          style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
-        ></span>
+        <div class="w-50 flex items-center justify-start">
+            <span
+              role="img"
+              aria-label="Liang Chin Lu signature"
+              class="mr-auto block h-7 opacity-75 mt-2 bg-foreground"
+              style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${cssUrl(signUrl)}) no-repeat center / contain; mask: url(${cssUrl(signUrl)}) no-repeat center / contain;`}
+            ></span>
+        </div>
       </div>
 
       <p class="mt-6">
-        Copyright © 2026 亮點創研 LuMakes・Liang-Chin Lu 版權所有
-      </p>
-      <p class="mt-2">
         <a
-          href="/privacy/"
+          href={locale === 'en' ? '/en/privacy/' : '/privacy/'}
           class="hover:text-foreground underline-offset-4 hover:underline"
-          >隱私權政策</a
+          >{t.footer.privacyPolicy}</a
         >
+      </p>
+
+      <p class="mt-4">
+        {t.footer.copyright}
       </p>
     </div>
   </div>

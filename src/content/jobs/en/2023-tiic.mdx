@@ -1,0 +1,66 @@
+---
+title: Marketing Lead / CRM Team Member
+company: TIIC Taiwan Internship Impact Community
+location: Taipei
+startDate: 2023-03-01
+endDate: 2024-02-28
+theme: green
+cover: imgs/jobs/2023_Tiic/cover.png
+logo: imgs/jobs/2023_Tiic/logo.png
+description:
+  - Served as `Marketing Lead`, leading 3 team members to execute community strategies that `attracted 280 new members`, managed training progress for `13 trainees`, and oversaw Discord community management and UX optimization to improve retention rates.
+tags: ["Marketing","Team Leadership"]
+seo:
+  metaDescription: Served as Marketing Lead, responsible for team and marketing strategy management, facilitating internal team training.
+---
+
+import { JobProjectCard } from '@/components/jobs/JobProjectCard'
+import { Card, CardContent } from '@/components/ui/card'
+import { ImageWithLightbox } from '@/components/react/ImageWithLightbox'
+import tiic1 from '@/assets/imgs/jobs/2023_Tiic/tiic1.webp'
+import tiic2 from '@/assets/imgs/jobs/2023_Tiic/tiic2.webp'
+import tiic3 from '@/assets/imgs/jobs/2023_Tiic/tiic3.webp'
+import tiic4 from '@/assets/imgs/jobs/2023_Tiic/tiic4.webp'
+
+<JobProjectCard
+  imageSrc={tiic3}
+  imageAlt="Marketing Lead"
+  name="Marketing Lead"
+  startDate="2023/03"
+  endDate="2024/02"
+  descriptions={[
+    "## Leadership - Team & Marketing Strategy Management",
+    "Built team community strategies, leading 3 members to execute campaigns that `attracted 280 people to join the community`, expanding team influence.",
+    "Managed training progress for `13 trainees`, leading internal training sessions.",
+  ]}
+  tags={["Leadership", "Education & Training"]}
+/>
+
+<JobProjectCard
+  imageSrc={tiic1}
+  imageAlt="Marketing Lead"
+  name="Marketing Lead"
+  startDate="2023/03"
+  endDate="2024/02"
+  descriptions={[
+    "## Discord Community Management & UX Optimization",
+    "Collected Discord community member needs, preferences, and pain point feedback to optimize community experience.",
+    "Analyzed previous Discord user journeys, identifying optimization opportunities and implementing improvement plans.",
+    "Cross-department collaboration to customize Discord features for internal needs.",
+    "Served as Discord community manager, responsible for recruiting, training, and mentoring community volunteers to ensure smooth and efficient operations.",
+    "## Improving User Retention",
+    "Developed and executed community strategies covering new user acquisition, existing user retention, and engagement promotion.",
+    "Designed user incentive mechanisms to boost community engagement and loyalty.",
+  ]}
+  tags={["Community Management", "Marketing"]}
+/>
+
+<Card>
+  <CardContent className="space-y-4">
+    ## Certificates
+    <div className="space-y-4">
+      <ImageWithLightbox src={tiic4} alt='Certificate' allowPop={true} className='rounded-2xl overflow-hidden'/>
+      <ImageWithLightbox src={tiic2} alt='Certificate' allowPop={true} className='rounded-2xl overflow-hidden'/>
+    </div>
+  </CardContent>
+</Card>

@@ -1,57 +1,56 @@
 import { EnvelopeIcon, LinkedinLogoIcon, InfoIcon, InstagramLogoIcon, CalendarPlusIcon } from '@phosphor-icons/react'
 import { type NavLink } from "@/components/header/index"
 
-export const socialLinks: NavLink[] = [
-  {
-    href: 'mailto:liangchinlu@gmail.com',
-    label: '信箱',
-    icon: <EnvelopeIcon className="size-5" />,
-    external: true,
-  },
-  {
-    href: 'https://www.linkedin.com/in/liang-chin-lu/',
-    label: 'LinkedIn',
-    icon: <LinkedinLogoIcon className="size-5" />,
-    external: true,
-  },
-  // {
-  //     href: 'https://github.com/tony13382',
-  //     label: 'Github',
-  //     icon: <GithubLogoIcon className="size-5" />,
-  //     external: true,
-  // },
-  {
-    href: 'https://www.instagram.com/liang_chin_ml/',
-    label: 'Instagram',
-    icon: <InstagramLogoIcon className="size-5" />,
-    external: true,
-  },
-  {
-    href: 'https://calendar.notion.so/meet/liangchin/short',
-    label: '預約會議',
-    icon: <CalendarPlusIcon className="size-5" />,
-    external: true,
-  },
-  // {
-  //     href: 'https://www.facebook.com/tony13382/',
-  //     label: 'Facebook',
-  //     icon: <MessengerLogoIcon className="size-5" />,
-  //     external: true,
-  // },
-  {
-    href: 'https://bio.lumakes.com/liang',
-    label: '更多資料',
-    icon: <InfoIcon className="size-5" />,
-    external: true,
-  },
-]
+function isEn() {
+  return typeof window !== 'undefined' && window.location.pathname.startsWith('/en/')
+}
+
+export function getSocialLinks(): NavLink[] {
+  const en = isEn()
+  return [
+    {
+      href: 'mailto:liangchinlu@gmail.com',
+      label: en ? 'Email' : '信箱',
+      icon: <EnvelopeIcon className="size-5" />,
+      external: true,
+    },
+    {
+      href: 'https://www.linkedin.com/in/liang-chin-lu/',
+      label: 'LinkedIn',
+      icon: <LinkedinLogoIcon className="size-5" />,
+      external: true,
+    },
+    {
+      href: 'https://www.instagram.com/liang_chin_ml/',
+      label: 'Instagram',
+      icon: <InstagramLogoIcon className="size-5" />,
+      external: true,
+    },
+    {
+      href: 'https://calendar.notion.so/meet/liangchin/short',
+      label: en ? 'Book a Meeting' : '預約會議',
+      icon: <CalendarPlusIcon className="size-5" />,
+      external: true,
+    },
+    {
+      href: 'https://bio.lumakes.com/liang',
+      label: en ? 'More Info' : '更多資料',
+      icon: <InfoIcon className="size-5" />,
+      external: true,
+    },
+  ]
+}
+
+/** @deprecated Use getSocialLinks() */
+export const socialLinks = getSocialLinks()
 
 
 
 export function HeaderSocialLinks() {
+  const links = getSocialLinks()
   return (
     <>
-      {socialLinks.map((link) => (
+      {links.map((link) => (
         <a
           key={link.href}
           href={link.href}
@@ -70,9 +69,10 @@ export function HeaderSocialLinks() {
 
 
 export function SocialLinksLite() {
+  const links = getSocialLinks()
   return (
     <>
-      {socialLinks.map((link) => (
+      {links.map((link) => (
         <a
           key={link.href}
           href={link.href}

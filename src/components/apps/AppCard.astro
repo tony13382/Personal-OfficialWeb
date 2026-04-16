@@ -1,16 +1,21 @@
 ---
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/Icon.astro";
-import type { AppInfo } from "@/data/apps";
+import { getAppName, getAppDescription, type AppInfo } from "@/data/apps";
+import type { Locale } from "@/i18n";
 
 interface Props {
   app: AppInfo;
+  locale?: Locale;
 }
 
-const { app } = Astro.props;
+const { app, locale = "zh-Hant" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+const appName = getAppName(app, locale);
+const appDesc = getAppDescription(app, locale);
 ---
 
-<a href={`/apps/${app.slug}/`} class="group block no-underline">
+<a href={`${prefix}/apps/${app.slug}/`} class="group block no-underline">
   <Card
     className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full bg-background/80 backdrop-blur-sm"
   >
@@ -23,7 +28,7 @@ const { app } = Astro.props;
           app.cover ? (
             <img
               src={app.cover.src}
-              alt={app.name}
+              alt={appName}
               class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
               decoding="async"
@@ -43,7 +48,7 @@ const { app } = Astro.props;
           app.icon && (
             <img
               src={app.icon.src}
-              alt={`${app.name} icon`}
+              alt={`${appName} icon`}
               class="size-12 rounded-xl mt-2 mb-1 shadow-md"
               loading="lazy"
               decoding="async"
@@ -53,10 +58,10 @@ const { app } = Astro.props;
         <h3
           class="font-bold leading-snug group-hover:text-[var(--theme-primary)] transition-colors"
         >
-          {app.name}
+          {appName}
         </h3>
         <p class="text-xs text-muted-foreground leading-relaxed">
-          {app.description}
+          {appDesc}
         </p>
       </div>
     </div>
@@ -68,7 +73,7 @@ const { app } = Astro.props;
           app.cover ? (
             <img
               src={app.cover.src}
-              alt={app.name}
+              alt={appName}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
               decoding="async"
@@ -93,7 +98,7 @@ const { app } = Astro.props;
           app.icon && (
             <img
               src={app.icon.src}
-              alt={`${app.name} icon`}
+              alt={`${appName} icon`}
               class="size-14 rounded-2xl"
               loading="lazy"
               decoding="async"
@@ -103,10 +108,10 @@ const { app } = Astro.props;
         <h3
           class="text-xl font-bold leading-snug group-hover:text-[var(--theme-primary)] transition-colors"
         >
-          {app.name}
+          {appName}
         </h3>
         <p class="text-sm text-muted-foreground leading-relaxed">
-          {app.description}
+          {appDesc}
         </p>
       </div>
     </div>

@@ -1,66 +1,177 @@
-import { useEffect, useState, useRef } from 'react'
-import type { ImageMetadata } from "astro"
-import type { CollectionEntry } from "astro:content"
-import { Badge } from '@/components/ui/badge'
-import { ArrowDownIcon, AtomIcon, CaretDoubleRightIcon, CaretDownIcon, CaretUpIcon, ChartLineUpIcon, ClockIcon, DatabaseIcon, FigmaLogoIcon, GlobeHemisphereEastIcon, ListMagnifyingGlassIcon, PlugsIcon, RocketLaunchIcon, SquaresFourIcon, StarIcon, WechatLogoIcon } from '@phosphor-icons/react'
-import { Card, CardContent, CardHeader } from '../ui/card'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
-import { Button } from '../ui/button'
-import { getImageSrc, type ImageSource } from '../react/image-source'
+import { useEffect, useState, useRef } from "react";
+import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowDownIcon,
+  AtomIcon,
+  CaretDoubleRightIcon,
+  CaretDownIcon,
+  CaretUpIcon,
+  ChartLineUpIcon,
+  ClockIcon,
+  DatabaseIcon,
+  FigmaLogoIcon,
+  GlobeHemisphereEastIcon,
+  ListMagnifyingGlassIcon,
+  PlugsIcon,
+  RocketLaunchIcon,
+  SquaresFourIcon,
+  StarIcon,
+  WechatLogoIcon,
+} from "@phosphor-icons/react";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import { Button } from "../ui/button";
+import { getImageSrc, type ImageSource } from "../react/image-source";
 
-type SkillType = 'dev' | 'design' | 'plan'
-type ProjectData = CollectionEntry<"projects">
+type SkillType = "dev" | "design" | "plan";
+type ProjectData = CollectionEntry<"projects">;
+
+type SupportedLocale = "zh-Hant" | "en";
 
 interface ProjectsFallProps {
-  projects: ProjectData[]
-  themes: Record<string, { primary: string; secondary: string; darkPrimary: string; darkSecondary: string }>
-  compact?: boolean
+  projects: ProjectData[];
+  themes: Record<
+    string,
+    {
+      primary: string;
+      secondary: string;
+      darkPrimary: string;
+      darkSecondary: string;
+    }
+  >;
+  compact?: boolean;
+  pathPrefix?: string;
+  locale?: SupportedLocale;
 }
 
-const filterLabels = {
-  dev: '開發',
-  design: '設計',
-  plan: '企劃'
-}
+const i18nLabels = {
+  "zh-Hant": {
+    filterLabels: { dev: "開發", design: "設計", plan: "企劃" },
+    collapse: "收起",
+    viewMore: (n: number) => `查看更多 (${n} 個專案)`,
+    noProjects: "目前沒有相關專案",
+    // filterDescriptions - design section
+    designTitle: "UX / UI 設計",
+    designSubtitle: "從抽象洞察到極致完美的體驗",
+    designInsight: "洞見與訪談",
+    designInsightDesc: "用戶研究、Personas",
+    designFlow: "流程與作業流程",
+    designFlowDesc: "用戶旅程、使用者流程分析",
+    designAtomic: "原子設計",
+    designAtomicDesc: "線框圖、元件、設計系統",
+    designFigmaDesc: "介面繪製、原型設計",
+    // filterDescriptions - plan section
+    planReportTitle: "報告",
+    planReportSubtitle: "聚焦新創與 AI 科技產業發展",
+    planMarket: "市場分析",
+    planProductivity: "生產力管理",
+    planTools: "工具教學",
+    planData: "資料洞察",
+    planShareTitle: "知識共享",
+    planShareSubtitle: "開放資料教學與資源共享",
+    planResource: "資源共享",
+    planOutput: "知識輸出",
+    devCoreTitle: "Core System & Data Flow",
+    devCoreSubtitle: "有豐富的 API 開發經驗，熟悉各類資料庫",
+    devFrontendSubtitle: "有大量靜態與 React SPA 的開發經驗",
+    devDeploySubtitle: "具 Docker Compose 封装、Cloudflare Worker 部屬經驗",
+    devDataVizTitle: "資料視覺化",
+    devDataVizSubtitle: "將原始數據轉化為引人入勝的故事",
+    devDataPrep: "資料整理與前處理",
+    devPresentation: "簡報",
+    devDashboard: "儀表板",
+    now: "現在",
+  },
+  en: {
+    filterLabels: { dev: "Development", design: "Design", plan: "Planning" },
+    collapse: "Collapse",
+    viewMore: (n: number) => `View more (${n} projects)`,
+    noProjects: "No related projects yet",
+    designTitle: "UX / UI Design",
+    designSubtitle: "From abstract insights to polished experiences",
+    designInsight: "Insights & Interviews",
+    designInsightDesc: "User Research, Personas",
+    designFlow: "Process & Workflow",
+    designFlowDesc: "User Journey, User Flow Analysis",
+    designAtomic: "Atomic Design",
+    designAtomicDesc: "Wireframes, Components, Design Systems",
+    designFigmaDesc: "Interface Design, Prototyping",
+    planReportTitle: "Reports",
+    planReportSubtitle: "Focused on startups & AI tech industry",
+    planMarket: "Market Analysis",
+    planProductivity: "Productivity",
+    planTools: "Tool Tutorials",
+    planData: "Data Insights",
+    planShareTitle: "Knowledge Sharing",
+    planShareSubtitle: "Open data tutorials & resource sharing",
+    planResource: "Resources",
+    planOutput: "Knowledge Output",
+    devCoreTitle: "Core System & Data Flow",
+    devCoreSubtitle: "Rich API development experience with various databases",
+    devFrontendSubtitle:
+      "Extensive experience with static sites & React SPA development",
+    devDeploySubtitle:
+      "Experienced with Docker Compose packaging & Cloudflare Worker deployment",
+    devDataVizTitle: "Data Visualization",
+    devDataVizSubtitle: "Transforming raw data into compelling stories",
+    devDataPrep: "Data Cleaning & Preprocessing",
+    devPresentation: "Presentations",
+    devDashboard: "Dashboards",
+    now: "Present",
+  },
+} as const;
 
-type AppIconModule = ImageSource | { default: ImageSource }
+type AppIconModule = ImageSource | { default: ImageSource };
 
-const appIconModules = import.meta.glob('/src/assets/imgs/appIcons/*.{png,svg,webp}', {
-  eager: true
-}) as Record<string, AppIconModule>
+const appIconModules = import.meta.glob(
+  "/src/assets/imgs/appIcons/*.{png,svg,webp}",
+  {
+    eager: true,
+  },
+) as Record<string, AppIconModule>;
 
 const resolveAppIconSrc = (module: AppIconModule) => {
-  if (typeof module === 'object' && module !== null && 'default' in module) {
-    return getImageSrc(module.default)
+  if (typeof module === "object" && module !== null && "default" in module) {
+    return getImageSrc(module.default);
   }
 
-  return getImageSrc(module as string | ImageMetadata)
-}
+  return getImageSrc(module as string | ImageMetadata);
+};
 
 const appIcons = Object.fromEntries(
   Object.entries(appIconModules).map(([path, module]) => {
-    const fileName = path.split('/').pop() ?? path
-    return [fileName.replace(/\.(png|svg|webp)$/, ''), resolveAppIconSrc(module)]
-  })
-) as Record<string, string>
+    const fileName = path.split("/").pop() ?? path;
+    return [
+      fileName.replace(/\.(png|svg|webp)$/, ""),
+      resolveAppIconSrc(module),
+    ];
+  }),
+) as Record<string, string>;
 
 function AppIcon({
   name,
   alt = name,
-  className = 'size-14',
+  className = "size-14",
   width = 56,
-  height = 56
+  height = 56,
 }: {
-  name: string
-  alt?: string
-  className?: string
-  width?: number
-  height?: number
+  name: string;
+  alt?: string;
+  className?: string;
+  width?: number;
+  height?: number;
 }) {
-  const src = appIcons[name]
+  const src = appIcons[name];
 
   if (!src) {
-    return null
+    return null;
   }
 
   return (
@@ -73,25 +184,33 @@ function AppIcon({
       width={width}
       height={height}
     />
-  )
+  );
 }
 
-const filterDescriptions: Record<string, React.ReactNode> = {
+const getFilterDescriptions = (
+  t: (typeof i18nLabels)["zh-Hant"],
+): Record<string, React.ReactNode> => ({
   dev: (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4'>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75'>
-        <CardHeader className='p-6 pb-0'>
-          <p className='text-center text-foreground text-xl font-bold'>Core System & Data Flow</p>
-          <p className='text-center text-muted-foreground text-md'>有豐富的 API 開發經驗，熟悉各類資料庫</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
+        <CardHeader className="p-6 pb-0">
+          <p className="text-center text-foreground text-xl font-bold">
+            Core System & Data Flow
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.devCoreSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 items-center justify-center'>
-          <div className='relative'>
+        <CardContent className="flex-1 items-center justify-center">
+          <div className="relative">
             {/* Backend & Logic Section */}
-            <div className='flex-1 flex items-end relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Backend & Logic</p>
+            <div className="flex-1 flex items-end relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">
+                  Backend & Logic
+                </p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="Python" />
@@ -154,24 +273,24 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             </div>
 
             {/* Center Icon with Connecting Lines */}
-            <div className='flex items-center justify-center relative my-4'>
+            <div className="flex items-center justify-center relative my-4">
               {/* Outer Circle Border with Continuous Animation */}
-              <div className='absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
               </div>
 
               {/* Inner Circle with Icon */}
-              <div className='mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-cyan-600 md:bg-foreground/70 text-muted z-10'>
-                <PlugsIcon className='size-6' /> API Server
+              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-cyan-600 md:bg-foreground/70 text-muted z-10">
+                <PlugsIcon className="size-6" /> API Server
               </div>
             </div>
 
             {/* Data Store Section */}
-            <div className='flex-1 flex items-start relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Data Store</p>
+            <div className="flex-1 flex items-start relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">Data Store</p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="PostgreSQL" />
@@ -227,19 +346,23 @@ const filterDescriptions: Record<string, React.ReactNode> = {
           </div>
         </CardContent>
       </Card>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-pink-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75'>
-        <CardHeader className='p-6 pb-0'>
-          <p className='text-center text-foreground text-xl font-bold'>Frontend</p>
-          <p className='text-center text-muted-foreground text-md'>有大量靜態與 React SPA 的開發經驗</p>
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-pink-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
+        <CardHeader className="p-6 pb-0">
+          <p className="text-center text-foreground text-xl font-bold">
+            Frontend
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.devFrontendSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 items-center justify-center'>
-          <div className='relative flex flex-col h-full'>
+        <CardContent className="flex-1 items-center justify-center">
+          <div className="relative flex flex-col h-full">
             {/* Backend & Logic Section */}
-            <div className='flex-1 flex items-end relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Framework</p>
+            <div className="flex-1 flex items-end relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">Framework</p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="React" />
@@ -294,24 +417,24 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             </div>
 
             {/* Center Icon with Connecting Lines */}
-            <div className='flex items-center justify-center relative my-4'>
+            <div className="flex items-center justify-center relative my-4">
               {/* Outer Circle Border with Continuous Animation */}
-              <div className='animate-circle absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
+              <div className="animate-circle absolute inset-0 flex items-center justify-center">
+                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
               </div>
 
               {/* Inner Circle with Icon */}
-              <div className='mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-pink-600 md:bg-foreground/70 text-muted z-10'>
-                <GlobeHemisphereEastIcon className='size-6' /> Web UI
+              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-pink-600 md:bg-foreground/70 text-muted z-10">
+                <GlobeHemisphereEastIcon className="size-6" /> Web UI
               </div>
             </div>
 
             {/* Data Store Section */}
-            <div className='flex-1 flex items-start relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Tools</p>
+            <div className="flex-1 flex items-start relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">Tools</p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="Vite" />
@@ -375,19 +498,23 @@ const filterDescriptions: Record<string, React.ReactNode> = {
           </div>
         </CardContent>
       </Card>
-      <Card className='flex flex-col col-span-1 md:col-span-2 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-indigo-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75'>
-        <CardHeader className='p-6 pb-0'>
-          <p className='text-center text-foreground text-xl font-bold'>Deploy</p>
-          <p className='text-center text-muted-foreground text-md'>具 Docker Compose 封装、Cloudflare Worker 部屬經驗</p>
+      <Card className="flex flex-col col-span-1 md:col-span-2 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-indigo-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
+        <CardHeader className="p-6 pb-0">
+          <p className="text-center text-foreground text-xl font-bold">
+            Deploy
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.devDeploySubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 items-center justify-center'>
-          <div className='relative flex flex-col md:flex-row md:gap-8'>
+        <CardContent className="flex-1 items-center justify-center">
+          <div className="relative flex flex-col md:flex-row md:gap-8">
             {/* Backend & Logic Section */}
-            <div className='flex-1 flex items-end relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Platform</p>
+            <div className="flex-1 flex items-end relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">Platform</p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="Cloudflare" />
@@ -418,24 +545,24 @@ const filterDescriptions: Record<string, React.ReactNode> = {
             </div>
 
             {/* Center Icon with Connecting Lines */}
-            <div className='flex items-center justify-center relative my-4'>
+            <div className="flex items-center justify-center relative my-4">
               {/* Outer Circle Border with Continuous Animation */}
-              <div className='absolute inset-0 flex items-center justify-center'>
-                <div className='animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0'></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
               </div>
 
               {/* Inner Circle with Icon */}
-              <div className='mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-indigo-600 md:bg-foreground/70 text-muted z-10'>
-                <RocketLaunchIcon className='size-6' /> Deploy
+              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-indigo-600 md:bg-foreground/70 text-muted z-10">
+                <RocketLaunchIcon className="size-6" /> Deploy
               </div>
             </div>
 
             {/* Data Store Section */}
-            <div className='flex-1 flex items-start relative z-10'>
-              <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>Tools</p>
+            <div className="flex-1 flex items-start relative z-10">
+              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">Tools</p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="Docker" />
@@ -470,18 +597,24 @@ const filterDescriptions: Record<string, React.ReactNode> = {
     </div>
   ),
   design: (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4'>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75'>
-        <CardHeader className='p-6 pb-0'>
-          <p className='text-center text-foreground text-xl font-bold'>資料視覺化</p>
-          <p className='text-center text-muted-foreground text-md'>將原始數據轉化為引人入勝的故事</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
+        <CardHeader className="p-6 pb-0">
+          <p className="text-center text-foreground text-xl font-bold">
+            {t.devDataVizTitle}
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.devDataVizSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1'>
-          <div className='flex flex-col items-center justify-center'>
-            <div className='inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted'>
-              <p className='text-center text-muted-foreground'>資料整理與前處理</p>
+        <CardContent className="flex-1">
+          <div className="flex flex-col items-center justify-center">
+            <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
+              <p className="text-center text-muted-foreground">
+                {t.devDataPrep}
+              </p>
               <TooltipProvider>
-                <div className='flex flex-wrap justify-center gap-4'>
+                <div className="flex flex-wrap justify-center gap-4">
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <AppIcon name="Python" />
@@ -517,12 +650,14 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                 </div>
               </TooltipProvider>
             </div>
-            <ArrowDownIcon className='size-8 text-muted-foreground' />
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mt-4'>
-              <div className='inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>簡報</p>
+            <ArrowDownIcon className="size-8 text-muted-foreground" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mt-4">
+              <div className="inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">
+                  {t.devPresentation}
+                </p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="Canva" />
@@ -558,10 +693,12 @@ const filterDescriptions: Record<string, React.ReactNode> = {
                   </div>
                 </TooltipProvider>
               </div>
-              <div className='inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted'>
-                <p className='text-center text-muted-foreground'>儀表板</p>
+              <div className="inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted">
+                <p className="text-center text-muted-foreground">
+                  {t.devDashboard}
+                </p>
                 <TooltipProvider>
-                  <div className='flex flex-wrap justify-center gap-4'>
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <AppIcon name="PoewrBI" />
@@ -609,47 +746,51 @@ const filterDescriptions: Record<string, React.ReactNode> = {
           </div>
         </CardContent>
       </Card>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0'>
-        <CardHeader className='p-6 pb-0'>
-          <p className='text-center text-foreground text-xl font-bold'>UX / UI 設計</p>
-          <p className='text-center text-muted-foreground text-md'>從抽象洞察到極致完美的體驗</p>
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0">
+        <CardHeader className="p-6 pb-0">
+          <p className="text-center text-foreground text-xl font-bold">
+            {t.designTitle}
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.designSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 items-center justify-center'>
-          <div className='grid gap-6'>
-            <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-orange-50 text-orange-600 dark:bg-orange-950/40 dark:text-orange-300'>
-                <WechatLogoIcon className='size-8' />
+        <CardContent className="flex-1 items-center justify-center">
+          <div className="grid gap-6">
+            <div className="flex items-center justify-center gap-4">
+              <div className="p-4 rounded-full bg-orange-50 text-orange-600 dark:bg-orange-950/40 dark:text-orange-300">
+                <WechatLogoIcon className="size-8" />
               </div>
-              <div className='flex-1'>
-                <p className='font-bold'>洞見與訪談</p>
-                <p className='text-muted-foreground'>用戶研究、Personas</p>
-              </div>
-            </div>
-            <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-sky-50 text-sky-600 dark:bg-sky-950/40 dark:text-sky-300'>
-                <ListMagnifyingGlassIcon className='size-8' />
-              </div>
-              <div className='flex-1'>
-                <p className='font-bold'>流程與作業流程</p>
-                <p className='text-muted-foreground'>用戶旅程、使用者流程分析</p>
+              <div className="flex-1">
+                <p className="font-bold">{t.designInsight}</p>
+                <p className="text-muted-foreground">{t.designInsightDesc}</p>
               </div>
             </div>
-            <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-300'>
-                <AtomIcon className='size-8' />
+            <div className="flex items-center justify-center gap-4">
+              <div className="p-4 rounded-full bg-sky-50 text-sky-600 dark:bg-sky-950/40 dark:text-sky-300">
+                <ListMagnifyingGlassIcon className="size-8" />
               </div>
-              <div className='flex-1'>
-                <p className='font-bold'>原子設計</p>
-                <p className='text-muted-foreground'>線框圖、元件、設計系統</p>
+              <div className="flex-1">
+                <p className="font-bold">{t.designFlow}</p>
+                <p className="text-muted-foreground">{t.designFlowDesc}</p>
               </div>
             </div>
-            <div className='flex items-center justify-center gap-4'>
-              <div className='p-4 rounded-full bg-rose-50 text-rose-500 dark:bg-rose-950/40 dark:text-rose-300'>
-                <FigmaLogoIcon className='size-8' />
+            <div className="flex items-center justify-center gap-4">
+              <div className="p-4 rounded-full bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-300">
+                <AtomIcon className="size-8" />
               </div>
-              <div className='flex-1'>
-                <p className='font-bold'>Figma</p>
-                <p className='text-muted-foreground'>介面繪製、原型設計</p>
+              <div className="flex-1">
+                <p className="font-bold">{t.designAtomic}</p>
+                <p className="text-muted-foreground">{t.designAtomicDesc}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <div className="p-4 rounded-full bg-rose-50 text-rose-500 dark:bg-rose-950/40 dark:text-rose-300">
+                <FigmaLogoIcon className="size-8" />
+              </div>
+              <div className="flex-1">
+                <p className="font-bold">Figma</p>
+                <p className="text-muted-foreground">{t.designFigmaDesc}</p>
               </div>
             </div>
           </div>
@@ -658,115 +799,134 @@ const filterDescriptions: Record<string, React.ReactNode> = {
     </div>
   ),
   plan: (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4'>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75'>
-        <CardHeader className='p-6 border-b'>
-          <p className='text-center text-foreground text-xl font-bold'>報告</p>
-          <p className='text-center text-muted-foreground text-md'>聚焦新創與 AI 科技產業發展</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
+        <CardHeader className="p-6 border-b">
+          <p className="text-center text-foreground text-xl font-bold">
+            {t.planReportTitle}
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.planReportSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 justify-center pb-0'>
-          <div className='relative'>
+        <CardContent className="flex-1 justify-center pb-0">
+          <div className="relative">
             {/* 四个类别 */}
-            <div className='grid grid-cols-4 gap-6 pt-1'>
-              <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-orange-500 border border-transparent dark:border-orange-500 dark:bg-transparent text-background dark:text-orange-500'>
-                  <ChartLineUpIcon className='size-8' />
+            <div className="grid grid-cols-4 gap-6 pt-1">
+              <div className="flex flex-col items-center gap-3">
+                <div className="p-4 rounded-full bg-orange-500 border border-transparent dark:border-orange-500 dark:bg-transparent text-background dark:text-orange-500">
+                  <ChartLineUpIcon className="size-8" />
                 </div>
-                <p className='text-sm text-muted-foreground text-center'>市場分析</p>
+                <p className="text-sm text-muted-foreground text-center">
+                  {t.planMarket}
+                </p>
               </div>
-              <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-green-600 border border-transparent dark:border-green-600 dark:bg-transparent text-background dark:text-green-600'>
-                  <ClockIcon className='size-8' />
+              <div className="flex flex-col items-center gap-3">
+                <div className="p-4 rounded-full bg-green-600 border border-transparent dark:border-green-600 dark:bg-transparent text-background dark:text-green-600">
+                  <ClockIcon className="size-8" />
                 </div>
-                <p className='text-sm text-muted-foreground text-center'>生產力管理</p>
+                <p className="text-sm text-muted-foreground text-center">
+                  {t.planProductivity}
+                </p>
               </div>
-              <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-pink-400 border border-transparent dark:border-pink-400 dark:bg-transparent text-background dark:text-pink-400'>
-                  <SquaresFourIcon className='size-8' />
+              <div className="flex flex-col items-center gap-3">
+                <div className="p-4 rounded-full bg-pink-400 border border-transparent dark:border-pink-400 dark:bg-transparent text-background dark:text-pink-400">
+                  <SquaresFourIcon className="size-8" />
                 </div>
-                <p className='text-sm text-muted-foreground text-center'>工具教學</p>
+                <p className="text-sm text-muted-foreground text-center">
+                  {t.planTools}
+                </p>
               </div>
-              <div className='flex flex-col items-center gap-3'>
-                <div className='p-4 rounded-full bg-cyan-600 border border-transparent dark:border-cyan-600 dark:bg-transparent text-background dark:text-cyan-600'>
-                  <DatabaseIcon className='size-8' />
+              <div className="flex flex-col items-center gap-3">
+                <div className="p-4 rounded-full bg-cyan-600 border border-transparent dark:border-cyan-600 dark:bg-transparent text-background dark:text-cyan-600">
+                  <DatabaseIcon className="size-8" />
                 </div>
-                <p className='text-sm text-muted-foreground text-center'>資料洞察</p>
+                <p className="text-sm text-muted-foreground text-center">
+                  {t.planData}
+                </p>
               </div>
             </div>
 
             {/* 连接线条 - SVG 弧形 */}
-            <div className='relative h-24 mt-6'>
-              <svg className='absolute inset-0 w-full h-full' viewBox='0 0 400 96' preserveAspectRatio='none'>
+            <div className="relative h-24 mt-6">
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 400 96"
+                preserveAspectRatio="none"
+              >
                 {/* 左边第一条：垂直线 + 弧形转角向右 + 横线到中心 */}
                 <path
-                  d='M 50 0 L 50 24 Q 50 40, 66 40 L 184 40'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 50 0 L 50 24 Q 50 40, 66 40 L 184 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
 
                 {/* 左中第二条：垂直线 + 弧形转角向右 + 横线汇入中心 */}
                 <path
-                  d='M 150 0 L 150 24 Q 150 40, 166 40 L 184 40'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 150 0 L 150 24 Q 150 40, 166 40 L 184 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
 
                 {/* 右中第三条：垂直线 + 弧形转角向左 + 横线汇入中心 */}
                 <path
-                  d='M 250 0 L 250 24 Q 250 40, 234 40 L 216 40'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 250 0 L 250 24 Q 250 40, 234 40 L 216 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
 
                 {/* 右边第四条：垂直线 + 弧形转角向左 + 横线到中心 */}
                 <path
-                  d='M 350 0 L 350 24 Q 350 40, 334 40 L 216 40'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 350 0 L 350 24 Q 350 40, 334 40 L 216 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
 
                 {/* 中心横线连接左右 */}
                 <path
-                  d='M 184 40 L 216 40'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 184 40 L 216 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
 
                 {/* 中心向下的弧形转角 + 垂直线 */}
                 <path
-                  d='M 200 40 Q 200 56, 200 56 L 200 96'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  className='text-border'
+                  d="M 200 40 Q 200 56, 200 56 L 200 96"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-border"
                 />
               </svg>
 
               {/* 中心焦点 - 使用HTML元素保持正圆 */}
-              <div className='absolute left-1/2 -translate-x-1/2' style={{ top: 'calc(40 / 96 * 100%)' }}>
+              <div
+                className="absolute left-1/2 -translate-x-1/2"
+                style={{ top: "calc(40 / 96 * 100%)" }}
+              >
                 {/* 扩散动画圆 */}
-                <div className='absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-border opacity-75 animate-ping'></div>
+                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-border opacity-75 animate-ping"></div>
                 {/* 实心圆 */}
-                <div className='absolute -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-border'></div>
+                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-border"></div>
               </div>
             </div>
 
             {/* 底部内容框 */}
-            <div className='relative rounded-t-2xl border-1 border-b-0 border-border bg-background p-6'>
-              <div className='flex items-center justify-center gap-4'>
-                <div className='p-3 rounded-xl bg-muted'>
+            <div className="relative rounded-t-2xl border border-b-0 border-border bg-background p-6">
+              <div className="flex items-center justify-center gap-4">
+                <div className="p-3 rounded-xl bg-muted">
                   <TooltipProvider>
-                    <div className='flex flex-wrap justify-center gap-4'>
+                    <div className="flex flex-wrap justify-center gap-4">
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <AppIcon name="GoogleDocs" />
@@ -807,45 +967,60 @@ const filterDescriptions: Record<string, React.ReactNode> = {
           </div>
         </CardContent>
       </Card>
-      <Card className='flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 md:hover:[&>div>div>.browser-frame]:shadow-xl'>
-        <CardHeader className='p-6'>
-          <p className='text-center text-foreground text-xl font-bold'>知識共享</p>
-          <p className='text-center text-muted-foreground text-md'>開放資料教學與資源共享</p>
+      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 md:hover:[&>div>div>.browser-frame]:shadow-xl">
+        <CardHeader className="p-6">
+          <p className="text-center text-foreground text-xl font-bold">
+            {t.planShareTitle}
+          </p>
+          <p className="text-center text-muted-foreground text-md">
+            {t.planShareSubtitle}
+          </p>
         </CardHeader>
-        <CardContent className='flex-1 justify-center p-0'>
+        <CardContent className="flex-1 justify-center p-0">
           {/* Browser Window with Grid Background */}
-          <div className='relative w-full h-full min-h-80 overflow-hidden border border-border bg-muted'
+          <div
+            className="relative w-full h-full min-h-80 overflow-hidden border border-border bg-muted"
             style={{
               backgroundImage: `
                 repeating-linear-gradient(0deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px),
                 repeating-linear-gradient(90deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px)
               `,
-            }}>
+            }}
+          >
             {/* Browser Window */}
-            <div className='browser-frame shadow-xl md:shadow-none absolute inset-4 bg-background rounded-lg overflow-hidden'>
+            <div className="browser-frame shadow-xl md:shadow-none absolute inset-4 bg-background rounded-lg overflow-hidden">
               {/* Browser Title Bar */}
-              <div className='flex items-center gap-2 px-4 py-3 bg-muted border-b border-border'>
-                <div className='flex gap-2'>
-                  <div className='w-3 h-3 rounded-full bg-red-500'></div>
-                  <div className='w-3 h-3 rounded-full bg-yellow-500'></div>
-                  <div className='w-3 h-3 rounded-full bg-green-500'></div>
+              <div className="flex items-center gap-2 px-4 py-3 bg-muted border-b border-border">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
               </div>
 
               {/* Browser Content */}
-              <div className='p-2 flex items-center justify-center gap-6 h-[calc(100%-56px)]'>
-                <div className='inline-flex flex-col items-center gap-2'>
-                  <div className='p-2 border rounded-xl'>
+              <div className="p-2 flex items-center justify-center gap-6 h-[calc(100%-56px)]">
+                <div className="inline-flex flex-col items-center gap-2">
+                  <div className="p-2 border rounded-xl">
                     <AppIcon name="Notion" />
                   </div>
-                  <p className='text-muted-foreground text-center'>資源共享</p>
+                  <p className="text-muted-foreground text-center">
+                    {t.planResource}
+                  </p>
                 </div>
-                <CaretDoubleRightIcon className='size-12 text-border animate-pulse' />
-                <div className='inline-flex flex-col items-center gap-2'>
-                  <div className='p-1 border rounded-xl'>
-                    <AppIcon name="Instagram" className='size-16' width={64} height={64} />
+                <CaretDoubleRightIcon className="size-12 text-border animate-pulse" />
+                <div className="inline-flex flex-col items-center gap-2">
+                  <div className="p-1 border rounded-xl">
+                    <AppIcon
+                      name="Instagram"
+                      className="size-16"
+                      width={64}
+                      height={64}
+                    />
                   </div>
-                  <p className='text-muted-foreground text-center'>知識輸出</p>
+                  <p className="text-muted-foreground text-center">
+                    {t.planOutput}
+                  </p>
                 </div>
               </div>
             </div>
@@ -853,97 +1028,114 @@ const filterDescriptions: Record<string, React.ReactNode> = {
         </CardContent>
       </Card>
     </div>
-  )
-}
+  ),
+});
 
-export function ProjectsFall({ projects, themes, compact = false }: ProjectsFallProps) {
-  const [activeSection, setActiveSection] = useState<SkillType>('dev')
-  const [expandedSections, setExpandedSections] = useState<Record<SkillType, boolean>>({
+export function ProjectsFall({
+  projects,
+  themes,
+  compact = false,
+  pathPrefix = "",
+  locale = "zh-Hant",
+}: ProjectsFallProps) {
+  const t = i18nLabels[locale];
+  const filterLabels = t.filterLabels;
+  const [activeSection, setActiveSection] = useState<SkillType>("dev");
+  const [expandedSections, setExpandedSections] = useState<
+    Record<SkillType, boolean>
+  >({
     dev: false,
     design: false,
-    plan: false
-  })
+    plan: false,
+  });
   const sectionRefs = useRef<Record<SkillType, HTMLElement | null>>({
     dev: null,
     design: null,
-    plan: null
-  })
+    plan: null,
+  });
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
-    }
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
+    };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const sectionId = entry.target.getAttribute('data-section') as SkillType
+          const sectionId = entry.target.getAttribute(
+            "data-section",
+          ) as SkillType;
           if (sectionId) {
-            setActiveSection(sectionId)
+            setActiveSection(sectionId);
           }
         }
-      })
-    }
+      });
+    };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     Object.values(sectionRefs.current).forEach((section) => {
-      if (section) observer.observe(section)
-    })
+      if (section) observer.observe(section);
+    });
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToSection = (filter: SkillType) => {
-    const section = sectionRefs.current[filter]
+    const section = sectionRefs.current[filter];
     if (section) {
-      const offset = 100
-      const elementPosition = section.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
+      const offset = 100;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
-      })
+        behavior: "smooth",
+      });
     }
-  }
+  };
 
   const toggleSection = (filter: SkillType) => {
-    setExpandedSections(prev => ({
+    setExpandedSections((prev) => ({
       ...prev,
-      [filter]: !prev[filter]
-    }))
-  }
+      [filter]: !prev[filter],
+    }));
+  };
 
   const filterProjects = (filter: SkillType) => {
-    return projects.filter(project =>
-      project.data.skillTypes.includes(filter)
-    )
-  }
+    return projects.filter((project) =>
+      project.data.skillTypes.includes(filter),
+    );
+  };
 
   const getDisplayProjects = (filter: SkillType) => {
-    const filtered = filterProjects(filter)
-    const isExpanded = expandedSections[filter]
-    return isExpanded ? filtered : filtered.slice(0, 6)
-  }
+    const filtered = filterProjects(filter);
+    const isExpanded = expandedSections[filter];
+    return isExpanded ? filtered : filtered.slice(0, 6);
+  };
 
   const renderProjectCard = (project: ProjectData) => {
-    const themeColors = themes[project.data.theme]
+    const themeColors = themes[project.data.theme];
 
     return (
       <a
         key={project.slug}
-        href={`/projects/${project.slug}/`}
+        href={`${pathPrefix}/projects/${project.slug}/`}
         data-card-theme
         className="group flex flex-col bg-card rounded-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-        style={{
-          '--card-primary-light': themeColors.primary,
-          '--card-primary-dark': themeColors.darkPrimary,
-          '--card-secondary-light': themeColors.secondary,
-          '--card-secondary-dark': themeColors.darkSecondary,
-        } as React.CSSProperties}
+        style={
+          {
+            "--card-primary-light": themeColors.primary,
+            "--card-primary-dark": themeColors.darkPrimary,
+            "--card-secondary-light": themeColors.secondary,
+            "--card-secondary-dark": themeColors.darkSecondary,
+          } as React.CSSProperties
+        }
       >
         {/* Cover Image */}
         <div className="relative h-auto overflow-hidden bg-muted">
@@ -957,14 +1149,14 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
           {project.data.pin && (
             <div
               className="absolute top-3 right-3"
-              style={{ color: 'var(--card-secondary)' }}
+              style={{ color: "var(--card-secondary)" }}
             >
               <StarIcon className="size-4" weight="fill" />
             </div>
           )}
           <div
             className="absolute bottom-0 left-0 right-0 h-1"
-            style={{ backgroundColor: 'var(--card-primary)' }}
+            style={{ backgroundColor: "var(--card-primary)" }}
           />
         </div>
 
@@ -972,17 +1164,20 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
         <div className="flex-1 flex flex-col p-5 pb-3">
           {/* Date */}
           <p className="text-xs text-muted-foreground mb-2">
-            {project.data.startDate.toLocaleDateString('zh-TW', {
-              year: 'numeric',
-              month: '2-digit',
-            })}
+            {project.data.startDate.toLocaleDateString(
+              locale === "en" ? "en-US" : "zh-TW",
+              {
+                year: "numeric",
+                month: "2-digit",
+              },
+            )}
             {project.data.endDate
-              ? ` - ${project.data.endDate.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit' })}`
-              : ' - 現在'}
+              ? ` - ${project.data.endDate.toLocaleDateString(locale === "en" ? "en-US" : "zh-TW", { year: "numeric", month: "2-digit" })}`
+              : ` - ${t.now}`}
           </p>
           <h3
             className="text-xl font-bold mb-2 group-hover:text-opacity-80 transition-colors line-clamp-2"
-            style={{ color: 'var(--card-primary)' }}
+            style={{ color: "var(--card-primary)" }}
           >
             {project.data.title}
           </h3>
@@ -1001,90 +1196,97 @@ export function ProjectsFall({ projects, themes, compact = false }: ProjectsFall
           </div>
         </div>
       </a>
-    )
-  }
+    );
+  };
 
   return (
     <div className="w-full">
       {/* Sticky Navigation */}
       <nav className="sticky top-20 z-20 bg-background/80 backdrop-blur-sm rounded-full mb-8 -mx-2 px-8">
         <div className="flex gap-6 py-4">
-          {(Object.entries(filterLabels) as [SkillType, string][]).map(([filter, label]) => (
-            <button
-              key={filter}
-              onClick={() => scrollToSection(filter)}
-              className={`text-lg font-medium transition-colors relative pb-1 ${activeSection === filter
-                ? 'text-foreground'
-                : 'text-muted-foreground hover:text-foreground'
+          {(Object.entries(filterLabels) as [SkillType, string][]).map(
+            ([filter, label]) => (
+              <button
+                key={filter}
+                onClick={() => scrollToSection(filter)}
+                className={`text-lg font-medium transition-colors relative pb-1 ${
+                  activeSection === filter
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
-            >
-              {label}
-              {activeSection === filter && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
-              )}
-            </button>
-          ))}
+              >
+                {label}
+                {activeSection === filter && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
+                )}
+              </button>
+            ),
+          )}
         </div>
       </nav>
 
       {/* Sections */}
       <div className="space-y-12">
-        {(Object.entries(filterLabels) as [SkillType, string][]).map(([filter, label]) => {
-          const filteredProjects = filterProjects(filter)
-          const displayProjects = getDisplayProjects(filter)
-          const hasMore = filteredProjects.length > 6
-          const isExpanded = expandedSections[filter]
+        {(Object.entries(filterLabels) as [SkillType, string][]).map(
+          ([filter, label]) => {
+            const filteredProjects = filterProjects(filter);
+            const displayProjects = getDisplayProjects(filter);
+            const hasMore = filteredProjects.length > 6;
+            const isExpanded = expandedSections[filter];
 
-          return (
-            <section
-              key={filter}
-              ref={(el) => { sectionRefs.current[filter] = el }}
-              data-section={filter}
-              className="space-y-6 scroll-mt-32"
-            >
-              {/* Section Title */}
-              <h3 className="text-2xl font-bold text-foreground">{label}</h3>
+            return (
+              <section
+                key={filter}
+                ref={(el) => {
+                  sectionRefs.current[filter] = el;
+                }}
+                data-section={filter}
+                className="space-y-6 scroll-mt-32"
+              >
+                {/* Section Title */}
+                <h3 className="text-2xl font-bold text-foreground">{label}</h3>
 
-              {/* Description */}
-              {!compact && filterDescriptions[filter]}
+                {/* Description */}
+                {!compact && getFilterDescriptions(t)[filter]}
 
-              {/* Projects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {displayProjects.map(renderProjectCard)}
-              </div>
-
-              {/* View More Button */}
-              {hasMore && (
-                <div className="flex justify-center pt-4">
-                  <Button
-                    onClick={() => toggleSection(filter)}
-                    variant="outline"
-                  >
-                    {isExpanded ? (
-                      <>
-                        收起
-                        <CaretUpIcon className='size-6' />
-                      </>
-                    ) : (
-                      <>
-                        查看更多 ({filteredProjects.length - 6} 個專案)
-                        <CaretDownIcon className='size-6' />
-                      </>
-                    )}
-                  </Button>
+                {/* Projects Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {displayProjects.map(renderProjectCard)}
                 </div>
-              )}
 
-              {/* Empty State */}
-              {filteredProjects.length === 0 && (
-                <div className="text-center py-12 text-muted-foreground">
-                  目前沒有相關專案
-                </div>
-              )}
-            </section>
-          )
-        })}
+                {/* View More Button */}
+                {hasMore && (
+                  <div className="flex justify-center pt-4">
+                    <Button
+                      onClick={() => toggleSection(filter)}
+                      variant="outline"
+                    >
+                      {isExpanded ? (
+                        <>
+                          {t.collapse}
+                          <CaretUpIcon className="size-6" />
+                        </>
+                      ) : (
+                        <>
+                          {t.viewMore(filteredProjects.length - 6)}
+                          <CaretDownIcon className="size-6" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
+
+                {/* Empty State */}
+                {filteredProjects.length === 0 && (
+                  <div className="text-center py-12 text-muted-foreground">
+                    {t.noProjects}
+                  </div>
+                )}
+              </section>
+            );
+          },
+        )}
       </div>
     </div>
-  )
+  );
 }

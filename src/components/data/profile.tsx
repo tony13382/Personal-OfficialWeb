@@ -1,35 +1,43 @@
-import { useState, useEffect } from "react"
-import { SocialLinksLite } from "../data/social"
-import { Card, CardContent } from "../ui/card"
-import { ActionBtnLinks } from "./actionBtn"
-import myHeadImg from "@/assets/imgs/index/myHead.webp"
-import { getImageSrc } from "../react/image-source"
+import { useState, useEffect } from "react";
+import { SocialLinksLite } from "../data/social";
+import { Card, CardContent } from "../ui/card";
+import { ActionBtnLinks } from "./actionBtn";
+import myHeadImg from "@/assets/imgs/index/myHead.webp";
+import { getImageSrc } from "../react/image-source";
 
 interface ProfileData {
-  name: string
-  jobTitle: string
+  name: string;
+  jobTitle: string;
 }
 
+function isEnLocale() {
+  return (
+    typeof window !== "undefined" && window.location.pathname.startsWith("/en/")
+  );
+}
 
-export const profileData: ProfileData = {
+export const profileDataZh: ProfileData = {
   name: "呂亮進",
-  jobTitle: "AI 工程師、產品設計師、全端開發者"
-}
+  jobTitle: "AI 工程師、產品設計師、全端開發者",
+};
 
+export const profileDataEn: ProfileData = {
+  name: "Liang-Chin Lu",
+  jobTitle: "AI Engineer, Product Designer, Full-Stack Developer",
+};
+
+export const profileData = profileDataZh;
 
 export function ProfileCard() {
+  const data = isEnLocale() ? profileDataEn : profileDataZh;
+  const altText = isEnLocale() ? `${data.name}'s avatar` : `${data.name}的頭像`;
   return (
-    <Card
-      className="mt-8 transition-all duration-300 pb-4 hidden lg:flex justify-center dark:border dark:border-border"
-    >
+    <Card className="max-w-80 mt-8 transition-all duration-300 pb-4 hidden lg:flex justify-center dark:border dark:border-border">
       <CardContent className="gap-6 items-center pt-3 pb-2">
-        <div
-          className="h-4 w-10 my-2 border rounded-full bg-[var(--theme-primary-10)] inset-shadow-sm"
-        >
-        </div>
+        <div className="h-4 w-10 my-2 border rounded-full `bg-[var(--theme-primary-10)] inset-shadow-sm"></div>
         <img
           src={getImageSrc(myHeadImg)}
-          alt={`${profileData.name}的頭像`}
+          alt={altText}
           className="size-32 rounded-full overflow-hidden"
           width={128}
           height={128}
@@ -37,14 +45,10 @@ export function ProfileCard() {
           decoding="async"
         />
         <div className="grid gap-3">
-          <p
-            className="text-xl md:text-2xl text-center text-foreground font-bold"
-          >
-            {profileData.name}
+          <p className="text-xl md:text-2xl text-center text-foreground font-bold">
+            {data.name}
           </p>
-          <p className="text-muted-foreground text-center">
-            {profileData.jobTitle}
-          </p>
+          <p className="text-muted-foreground text-center">{data.jobTitle}</p>
         </div>
         <ActionBtnLinks />
         <div>
@@ -54,19 +58,20 @@ export function ProfileCard() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 export function ProfileCardTigger() {
+  const data = isEnLocale() ? profileDataEn : profileDataZh;
   return (
     <button
       id="profile-modal-btn"
-      className="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-[var(--theme-primary)] text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-[var(--theme-secondary)] hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
-      title="通知我"
+      className="floatbtn fixed bottom-28 right-6 size-16 md:bottom-30 md:right-8 rounded-full bg-(--theme-primary) text-background flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:bg-(--theme-secondary) hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.2)] active:-translate-y-0.5"
+      title={data.name}
     >
       <img
         src={getImageSrc(myHeadImg)}
-        alt={`${profileData.name}的頭像`}
+        alt={data.name}
         className="size-16 rounded-full overflow-hidden"
         width={128}
         height={128}
@@ -74,50 +79,50 @@ export function ProfileCardTigger() {
         decoding="async"
       />
     </button>
-  )
+  );
 }
 
-
-
-
 export function ProfileCardModal() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const data = isEnLocale() ? profileDataEn : profileDataZh;
+  const altText = isEnLocale() ? `${data.name}'s avatar` : `${data.name}的頭像`;
+  const closeLabel = isEnLocale() ? "Close" : "關閉";
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
-        setIsOpen(false)
+        setIsOpen(false);
       }
-    }
+    };
 
     if (isOpen) {
-      document.body.style.overflow = "hidden"
-      document.addEventListener("keydown", handleEscape)
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handleEscape);
     } else {
-      document.body.style.overflow = ""
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.removeEventListener("keydown", handleEscape)
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   useEffect(() => {
-    const openBtn = document.getElementById("profile-modal-btn")
+    const openBtn = document.getElementById("profile-modal-btn");
 
     const handleOpen = () => {
-      setIsOpen(true)
-    }
+      setIsOpen(true);
+    };
 
-    openBtn?.addEventListener("click", handleOpen)
+    openBtn?.addEventListener("click", handleOpen);
 
     return () => {
-      openBtn?.removeEventListener("click", handleOpen)
-    }
-  }, [])
+      openBtn?.removeEventListener("click", handleOpen);
+    };
+  }, []);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div
@@ -130,20 +135,20 @@ export function ProfileCardModal() {
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ animation: "profileSlideUp 0.3s ease-out" }}>
-          <Card className="mt-8 transition-all duration-300 pb-4 inline-flex dark:border dark:border-border">
+          <Card className="max-w-80 mt-8 transition-all duration-300 pb-4 inline-flex dark:border dark:border-border">
             <CardContent className="gap-6 items-center pt-3 pb-2">
               <div className="h-4 w-10 my-2 border rounded-full bg-black/50" />
               <img
                 src={getImageSrc(myHeadImg)}
-                alt={`${profileData.name}的頭像`}
+                alt={altText}
                 className="size-32 rounded-full overflow-hidden"
               />
               <div className="">
                 <p className="text-xl md:text-2xl text-center text-foreground font-bold mb-3">
-                  {profileData.name}
+                  {data.name}
                 </p>
                 <p className="text-muted-foreground text-center mb-3">
-                  {profileData.jobTitle}
+                  {data.jobTitle}
                 </p>
               </div>
               <ActionBtnLinks />
@@ -159,8 +164,8 @@ export function ProfileCardModal() {
         <button
           onClick={() => setIsOpen(false)}
           className="w-14 h-14 rounded-full bg-white text-gray-800 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-110 active:scale-95"
-          aria-label="關閉"
-          title="關閉"
+          aria-label={closeLabel}
+          title={closeLabel}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -179,5 +184,5 @@ export function ProfileCardModal() {
         </button>
       </div>
     </div>
-  )
+  );
 }

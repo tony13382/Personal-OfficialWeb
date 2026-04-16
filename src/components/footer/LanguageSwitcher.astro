@@ -1,0 +1,70 @@
+---
+import Icon from "@/components/Icon.astro";
+import type { Locale } from "@/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<div class="flex items-center gap-2" data-lang-switcher>
+  <!-- <Icon name="translate" class="size-5 text-muted-foreground" /> -->
+  <div class="flex gap-0.5 p-0.5 bg-muted rounded-full border border-border overflow-hidden text-sm">
+    <button
+      data-lang="zh-Hant"
+      class:list={[
+        "px-3 py-1.5 transition-colors cursor-pointer border-0 rounded-full",
+        locale === "zh-Hant"
+          ? "bg-foreground text-background font-medium"
+          : "opacity-50 hover:opacity-100 bg-transparent text-foreground",
+      ]}
+    >
+      中文
+    </button>
+    <button
+      data-lang="en"
+      class:list={[
+        "px-3 py-1.5 transition-colors cursor-pointer border-0 rounded-full",
+        locale === "en"
+          ? "bg-foreground text-background font-medium"
+          : "opacity-50 hover:opacity-100 bg-transparent text-foreground",
+      ]}
+    >
+      EN
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll("[data-lang-switcher] button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetLang = btn.getAttribute("data-lang");
+      const currentPath = window.location.pathname;
+
+      localStorage.setItem("lang", targetLang);
+
+      let newPath;
+      if (targetLang === "en") {
+        // Add /en/ prefix if not already present
+        if (!currentPath.startsWith("/en/") && currentPath !== "/en") {
+          newPath = "/en" + (currentPath === "/" ? "/" : currentPath);
+        } else {
+          return; // Already on English version
+        }
+      } else {
+        // Remove /en/ prefix
+        if (currentPath.startsWith("/en/")) {
+          newPath = currentPath.replace(/^\/en/, "") || "/";
+        } else if (currentPath === "/en") {
+          newPath = "/";
+        } else {
+          return; // Already on Chinese version
+        }
+      }
+
+      window.location.href = newPath;
+    });
+  });
+</script>

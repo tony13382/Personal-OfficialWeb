@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import Icon from "@/components/Icon.astro";
 import { MobileNav } from "@/components/header/MobileNav";
-import { mainLinks } from "@/components/header/index";
+import { getMainLinks } from "@/components/header/index";
 import { SearchDialog } from "@/components/search/SearchDialog";
-import profileImg from "@/assets/imgs/index/profileAnimate.png";
+import brandLogoImg from "@/assets/imgs/index/brandLogoImg.svg";
 import brandSignUrl from "@/assets/imgs/index/brand-sign.svg?url";
+import { useTranslations, type Locale } from "@/i18n";
 
 
 interface Props {
@@ -14,9 +15,14 @@ interface Props {
   appName?: string;
   projectHref?: string;
   appUrl?: string;
+  locale?: Locale;
 }
 
-const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
+const { type = "main", themeColor, appName, projectHref, appUrl, locale = "zh-Hant" } = Astro.props;
+const t = useTranslations(locale);
+const navLinks = getMainLinks(locale);
+const homeHref = locale === 'en' ? '/en/' : '/';
+const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
 ---
 
 
@@ -29,23 +35,23 @@ const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
       {
         type === "main" ? (
           <a
-            href="/"
+            href={homeHref}
             class="flex items-center gap-3 py-3 text-foreground font-semibold no-underline transition-opacity hover:opacity-100 hover:[&>#headerLogo]:ring-2"
           >
             <Image
               id="headerLogo"
-              src={profileImg}
-              alt="Logo"
-              width={80}
-              height={80}
+              src={brandLogoImg}
+              alt="LuMakes Logo"
+              width={40}
+              height={40}
               loading="eager"
-              class="flex-shrink-0 size-10 rounded-full"
+              class="shrink-0 size-9 ms-2 rounded-full dark:bg-white"
             />
             <span
               role="img"
               aria-label="LuMakes brand sign"
               class="block h-8 bg-foreground"
-              style={`width: calc(7 * 968 / 376 * 0.25rem); -webkit-mask: url(${brandSignUrl}) no-repeat center / contain; mask: url(${brandSignUrl}) no-repeat center / contain;`}
+              style={`width: calc(7 * 968 / 376 * 0.25rem); -webkit-mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain; mask: url(${cssUrl(brandSignUrl)}) no-repeat center / contain;`}
             />
           </a>
         ) : type === "app" ? (
@@ -79,7 +85,7 @@ const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
               class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-base rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
             >
               <Icon name="projector-screen-chart" class="size-5" />
-              介紹
+              {t.header.intro}
             </a>
           )}
           {appUrl && (
@@ -90,14 +96,14 @@ const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
               class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-base rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
             >
               <Icon name="arrow-square-out" class="size-5" />
-              開啟
+              {t.header.open}
             </a>
           )}
         </div>
       ) : (
         <>
           <div class="hidden lg:flex items-center gap-0">
-            {mainLinks.map((link) => (
+            {navLinks.map((link) => (
               <a
                 href={link.href}
                 class="flex items-center gap-2 px-4 py-2 text-muted-foreground no-underline text-lg rounded-full transition-all hover:text-primary hover:bg-muted whitespace-nowrap"
@@ -106,11 +112,11 @@ const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
               </a>
             ))}
             <span class="text-muted-foreground px-2">｜</span>
-            <SearchDialog client:load />
+            <SearchDialog locale={locale} client:load />
           </div>
 
           <!-- Mobile Navigation (Sheet) -->
-          <MobileNav client:load type={type} themeColor={themeColor} />
+          <MobileNav client:load type={type} themeColor={themeColor} locale={locale} />
         </>
       )}
     </div>

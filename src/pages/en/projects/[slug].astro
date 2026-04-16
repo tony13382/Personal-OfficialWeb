@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import ProjectSlugPage from "@/components/pages/ProjectSlugPage.astro";
+import { filterByLocale } from "@/i18n";
+
+export async function getStaticPaths() {
+  const allProjects = await getCollection("projects");
+  const projects = filterByLocale(allProjects, "en");
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<ProjectSlugPage project={project} Content={Content} locale="en" />
