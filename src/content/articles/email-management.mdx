@@ -1,0 +1,276 @@
+---
+title: 信箱管理新法：用 Gmail 自動規則、Spark、分流帳號打造不會爆滿的收件匣
+description: 把信箱當成資訊流水線：用 Gmail 多帳號分流、Filter 自動歸檔、Spark 分層閱讀跟 Mailtrack 閉環追蹤，讓收件匣永遠保持乾淨
+date: 2026-04-16
+category: 工作流程
+tags: [信箱管理, Gmail, Spark Mail, 生產力]
+cover: /og/articles/email-management.png
+seo:
+  ogImage: /og/articles/email-management.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import sparkMail from '@/assets/imgs/articles/email-management/spark-mail.png'
+import mailtrackStore from '@/assets/imgs/articles/email-management/mailtrack-store.png'
+import mailtrackGmailPopup from '@/assets/imgs/articles/email-management/mailtrack-gmail-popup.png'
+import mailtrackSignin from '@/assets/imgs/articles/email-management/mailtrack-signin.png'
+import mailtrackCompose from '@/assets/imgs/articles/email-management/mailtrack-compose.png'
+import mailtrackTrackerSelect from '@/assets/imgs/articles/email-management/mailtrack-tracker-select.png'
+import mailtrackSignature from '@/assets/imgs/articles/email-management/mailtrack-signature.png'
+import gmailFilterSearch from '@/assets/imgs/articles/email-management/gmail-filter-search.png'
+import gmailFilterCondition from '@/assets/imgs/articles/email-management/gmail-filter-condition.png'
+import gmailFilterAction from '@/assets/imgs/articles/email-management/gmail-filter-action.png'
+
+我身邊有非常多人抱怨信箱爆滿。點開來上萬封未讀、重要信件混在一堆電商通知裡找不到、想找的舊信翻了十分鐘還找不到——這些困擾聽起來都不一樣，但我覺得它們其實是同一個問題：**大家把所有信件塞進同一個管線，然後用人腦當路由器**。
+
+這篇想分享我自己的信箱管理系統。核心觀念是把信箱當成一條「資訊流水線」，而不是一個「收件匣」。流水線要做的四件事是：**分流 → 自動歸檔 → 降噪 → 分層閱讀**，最後再加上一個很多人會忽略的 **閉環追蹤**。這篇會帶你走過整套流程，搭配的工具主要是 Gmail、Spark Mail 跟一個免費的 Chrome 擴充 Mailtrack。
+
+## 信箱管理的底層邏輯
+
+在進入工具之前，我想先把整套系統背後的心智模型講清楚，不然後面看每個工具都會覺得是各自獨立的技巧，串不起來。
+
+**信箱真正的問題不在「信太多」，而在「沒有流水線」。** 好的信箱系統應該像工廠的輸送帶，從信進來、被分類、被閱讀、被處理、被追蹤，每一步都有明確的節點跟規則，而不是全部堆在同一個箱子裡等你有空處理。
+
+這套流水線由六個動作組成，前面四個是**管控輸入**的事，後面兩個是**查找跟追蹤**的事：
+
+1. **分流**：信件進來之前就決定它要走哪條管線（用多個 Gmail 帳號）
+2. **自動歸檔**：信件進來之後讓 Gmail 規則自動整理（用 Filter 跟 Label）
+3. **降噪**：主動砍掉不該進來的訂閱（用 unsubscribe 搜尋 + 工具）
+4. **分層閱讀**：用專門的 App 讓重要信件一眼可見（用 Spark Mail）
+5. **搜尋**：找特定信件時的出口（用 Gmail 搜尋 operator）
+6. **追蹤**：寄出去的信也要閉環（用 Mailtrack）
+
+這裡有一個很多人會誤解的點——**搜尋不能取代歸檔**。有些極簡派會主張「反正 Gmail 搜尋這麼強，為什麼還要分類」，但實際用下來會發現，歸檔跟搜尋解決的是不同問題：歸檔負責「平常的秩序」，讓你打開信箱就知道什麼該看什麼不該看；搜尋負責「突發的尋找」，當你需要找一封三個月前的特定信件時才用得到。兩者是互補的，不是互取代的。
+
+## 分流：用 Gmail 多帳號切分信件性質
+
+信箱爆滿最根本的原因是**所有信都進到同一個收件匣**。很多人會想用 Gmail 內建的標籤或資料夾來分類，但這只是事後整理——信件還是會先進到主收件匣，你還是得逐封判斷。
+
+我的做法是從源頭就把信件分開：**開四個 Gmail 帳號，依照信件性質分流**。
+
+<div style="overflow-x: auto;">
+  <table>
+    <colgroup>
+      <col style="min-width: 120px;" />
+      <col style="min-width: 140px;" />
+      <col style="min-width: 200px;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>信箱</th>
+        <th>用途</th>
+        <th>典型內容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>銀行</td>
+        <td>財務相關</td>
+        <td>刷卡通知、對帳單、信用卡帳單、銀行驗證碼</td>
+      </tr>
+      <tr>
+        <td>消費與社群</td>
+        <td>註冊用雜訊</td>
+        <td>電商優惠、會員通知、社群訊息、平台登入</td>
+      </tr>
+      <tr>
+        <td>知識電子報</td>
+        <td>主動訂閱的閱讀流</td>
+        <td>Newsletter、Substack、Medium、專欄訂閱</td>
+      </tr>
+      <tr>
+        <td>洽公</td>
+        <td>工作跟正式聯絡</td>
+        <td>合作提案、面試通知、專業往來、文件往返</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+這四個的骨架是：**財務風險要獨立、雜訊要隔離、閱讀要專區、正事要乾淨**。重點不是「用寄件人分」也不是「用主題分」，而是用**信件的性質**來分——同一個平台的信可能同時落在不同帳號（例如 Google 會發驗證碼進銀行帳號、發行銷進消費帳號）。
+
+其中我最推薦的一點是**把知識電子報獨立成一個信箱**。很多人會把電子報跟其他註冊用的信丟在一起，結果就是電子報被淹沒，訂了卻沒讀。獨立出來之後，打開那個帳號就是純粹的閱讀時間，心智負擔低很多。
+
+註冊新服務的時候我也會依照性質選對應的信箱註冊，一開始多花 30 秒選信箱，之後省下的時間遠遠超過這個成本。
+
+### 進階技巧：用 `+` 標記信件來源
+
+Gmail 有一個很多人不知道的功能：在 `@` 前面加上 `+任意文字`，信件還是會寄到同一個信箱，但你可以用這個標記來追蹤信件來源。例如：
+
+- `myemail+shopee@gmail.com` — 註冊蝦皮用
+- `myemail+netflix@gmail.com` — 註冊 Netflix 用
+- `myemail+newsletter@gmail.com` — 訂閱電子報用
+
+這個做法有兩個好處。第一，**你可以知道是誰洩漏了你的信箱**——如果某天 `myemail+shopee@gmail.com` 開始收到不明廣告，你就知道是從蝦皮那邊流出去的。第二，**搭配 Gmail Filter 可以自動分類**——建一條規則：收件人包含 `+newsletter`，自動貼標籤、跳過收件匣，不用逐個寄件人設定。
+
+這個技巧跟前面的多帳號分流可以搭配使用：帳號層級做大分類（財務 / 消費 / 電子報 / 洽公），`+` 標記在同一個帳號內做細分類。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://mail.google.com" target="_blank" class="official-link">Gmail</a>
+
+## 自動歸檔：讓 Gmail 規則接管整理
+
+分完流之後，每一個信箱裡面還是會有雜訊需要整理。這時候我完全不手動拖信件，全部交給 **Gmail 的 Filter 跟 Label**。
+
+Gmail 的標籤跟傳統資料夾不一樣，**一封信可以有多個標籤**。這個特性很關鍵——它代表你不用煩惱「這封信應該歸在 A 還是 B」，兩個都貼上去就好，搜尋跟瀏覽的時候兩邊都找得到。
+
+我最常用的三種 Filter 規則：
+
+**1. 電子報自動標籤 + 跳過收件匣**
+
+條件：寄件人包含 `newsletter@` 或主旨含 `週報` / `Weekly` 等關鍵字。
+動作：貼上「電子報」標籤、Skip Inbox、Mark as Read。
+
+這個組合意思是「信進來之後直接歸檔到電子報資料夾，不打擾我」。等我想讀的時候再點進標籤頁看，收件匣保持乾淨。
+
+**2. 特定寄件人自動加星**
+
+條件：寄件人是老闆、客戶、或特定合作方。
+動作：Star、貼上對應的專案標籤。
+
+這個是反向操作——不是把雜訊拿走，而是把**高優先信件標記出來**，避免它被埋沒。
+
+**3. 關鍵字自動歸到專案標籤**
+
+條件：主旨或內文含特定專案名稱、發票字樣、系統通知關鍵字。
+動作：貼上對應標籤、歸檔或維持收件匣。
+
+我有幾個長期的專案關鍵字是固定規則，新的專案開始時也會花兩分鐘建一條 Filter，之後相關信件都會自動歸位。
+
+**設定的位置**：Gmail 網頁版搜尋列旁邊的篩選圖示，點下去就能設定條件。
+
+<Image src={gmailFilterSearch} alt="Gmail 搜尋列與篩選圖示" />
+
+這裡有一個很重要的技巧：**建立 Filter 之前，先用搜尋測試條件**。在篩選面板裡填完條件後，不要直接按「建立篩選器」，先按「搜尋」——Gmail 會列出所有符合條件的信件讓你預覽。確認搜尋結果跟預期一致，再回來建立 Filter，就不會發生「設了規則才發現條件太寬或太窄」的狀況。
+
+<Image src={gmailFilterCondition} alt="Gmail Filter 條件設定與搜尋驗證" />
+
+確認條件正確之後，再設定這條 Filter 要執行的動作——跳過收件匣、標記已讀、套用標籤等等，依照你的需求勾選。
+
+<Image src={gmailFilterAction} alt="Gmail Filter 動作設定" />
+
+### 搜尋是歸檔之外的第二道出口
+
+講到這裡要回來補一個重點——**歸檔做好不代表可以不學搜尋**。Gmail 的搜尋 operator 非常強，幾個最常用的：
+
+- `from:name@example.com` — 特定寄件人
+- `has:attachment` — 有附件
+- `older_than:6m` / `newer_than:7d` — 時間範圍
+- `label:電子報` — 特定標籤
+- `subject:發票` — 主旨關鍵字
+- 組合使用：`from:boss has:attachment newer_than:30d`
+
+自動歸檔負責的是**平常的秩序感**，搜尋負責的是**突發的精準尋找**。兩個能力都要有，信箱才算真的掌握。
+
+## 降噪：主動砍訂閱減少源頭
+
+自動歸檔可以把雜訊藏起來，但藏起來的信還是存在。真正一勞永逸的做法是**主動砍掉源頭**——定期清理訂閱。
+
+我會每個月抓一個固定時段（通常是月初）做這件事。做法很簡單：
+
+**方法一：Gmail 的 `unsubscribe:` 搜尋**
+
+在搜尋列打 `unsubscribe`，Gmail 會自動篩出所有含退訂連結的信件（也就是大部分的電子報跟行銷郵件）。接下來逐一檢視：這個訂閱最近一個月有讀過嗎？還有需要嗎？沒有就直接退訂。
+
+Gmail 的退訂其實有一個隱藏功能——很多信件上方會出現「Unsubscribe」按鈕（寄件人旁邊），點下去就直接退訂，不用進到信件內頁找小小的連結。批次處理的時候這個按鈕非常省時間。
+
+**方法二：Leave Me Alone 之類的退訂工具**
+
+如果懶得自己一封封清，有一些第三方工具專門做退訂——像 Leave Me Alone、Unroll.Me，會幫你掃描信箱並列出所有訂閱，然後提供一鍵退訂或 Roll Up（把電子報打包成每日摘要）。
+
+我自己實際用下來覺得這類工具的價值比較有限——Gmail 的原生 `unsubscribe:` 搜尋其實已經夠好用，而且第三方工具需要授權讀取信箱，資料隱私要多考慮一層。偶爾用一次可以，長期還是推薦原生方法。
+
+**降噪的關鍵心態**：一個訂閱如果三個月沒讀，大概率之後也不會讀。看到喜歡的主題很容易手滑就訂，但訂閱是一種持續佔用注意力的成本，不是零成本的事。**主動砍訂閱不是損失，是把注意力還給自己。**
+
+## 分層閱讀：一個介面統一多帳號
+
+前面把信件分流到四個 Gmail 帳號之後，會遇到一個新問題——**讀信的時候要在多個帳號之間頻繁切換**。Gmail 官方 App 雖然支援多帳號，但每次切換都要點頭像選一個，等於把「分流」變成了「分心」。
+
+這時候我會用 **Spark Mail** 當統一的閱讀介面。
+
+<Image src={sparkMail} alt="Spark Mail" />
+
+Spark 的價值在三個地方：
+
+**1. Unified Inbox：多帳號一個視圖**
+
+Spark 把四個 Gmail 的信件併成同一個閱讀流，每封信仍會標示來自哪個帳號。讀信的時候不用切換帳號，需要專注看單一信箱再切過去就好。這樣**分流的邏輯保留在後端（四個獨立帳號）、讀信的動線統一在前端（一個 App）**，兩邊都不犧牲。
+
+**2. 大量快捷鍵支援，跨平台一致**
+
+Gmail 原生快捷鍵需要進設定開啟，而且侷限在瀏覽器。Spark 的快捷鍵覆蓋更完整——Archive、Snooze、Pin、Move 都有專屬快捷鍵，而且 Mac 版跟 iPhone 的滑動手勢、iPad 的鍵盤操作都對得起來，**肌肉記憶一套可以用在所有裝置上**。
+
+**3. Smart Inbox + Pin + Snooze 的分層組合**
+
+Spark 的 Smart Inbox 會自動把信件分成 Personal、Notifications、Newsletters 三層，視覺上一眼就能看出什麼是真人寄來的、什麼是系統通知、什麼是電子報。搭配 Pin（把重要信件釘在最上面）跟 Snooze（稍後提醒我處理），你讀信的時候就有三個動作：「現在處理」「釘起來等等」「丟到三天後再看」，不用每封信都當場決定要怎麼辦。
+
+我平常工作的習慣是早上打開 Spark 掃過 Unified Inbox，快速 Snooze 掉今天不需要處理的、Pin 住當天要回的，剩下的 Archive。整個過程通常 10 分鐘以內搞定，剩下的時間才是真正專心工作。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://sparkmailapp.com" target="_blank" class="official-link">Spark Mail</a>
+
+## 閉環追蹤：寄出之後才是開始
+
+前面講的都是「進來的信」怎麼處理，但信箱管理還有一個很常被忽略的環節——**寄出去的信**。
+
+很多人的信寄出去之後就進入黑洞，不知道對方有沒有看、什麼時候看的、需不需要催。這個資訊對合作、求職、業務往來都很關鍵。
+
+市面上的追蹤工具幾乎都是付費服務，但其實有免費方案可以解決。我用的是 **Mailtrack**，從 Google Workspace Marketplace 安裝，裝上去之後 Gmail 就有郵件追蹤功能。
+
+### 安裝流程
+
+安裝很簡單，從 Google Workspace Marketplace 搜尋「Mail Tracker for Gmail」，點安裝。
+
+<Image src={mailtrackStore} alt="Google Workspace Marketplace 的 Mailtrack 頁面" />
+
+安裝完成後回到 Gmail，右上角會跳出 Mailtrack 的提示，點「Sign in」登入。
+
+<Image src={mailtrackGmailPopup} alt="Gmail 中 Mailtrack 的登入提示" />
+
+用 Google 帳號直接登入就好，不用另外註冊。
+
+<Image src={mailtrackSignin} alt="Mailtrack 的 Google 登入頁面" />
+
+登入完成後，寫新信時會看到寄送按鈕旁邊多了一個綠色雙勾圖示，代表追蹤已經啟用。
+
+<Image src={mailtrackCompose} alt="Gmail 撰寫信件時的 Mailtrack 追蹤圖示" />
+
+點那個圖示可以選擇追蹤模式——免費版是 Visible tracker（收件人看得到），付費版可以用 Invisible tracker（收件人看不到）。
+
+<Image src={mailtrackTrackerSelect} alt="Mailtrack 追蹤模式選擇" />
+
+免費版的唯一缺點：信件底部會多一行「Sender notified by Mail Track for Gmail」的簽名。對私人信件來說無所謂，洽公場景如果介意可以考慮升級 Mailtrack 付費版去掉簽名。
+
+<Image src={mailtrackSignature} alt="Mailtrack 免費版的簽名檔" />
+
+### Mailtrack 我實際在用的功能
+
+- **郵件追蹤**：寄出的信件會在信頭顯示「已讀 / 未讀」狀態跟時間，不洩漏給收件人。
+- **跨平台可見**：Mailtrack 會在 Gmail 信箱裡建立對應的追蹤標籤，所以追蹤狀態不只在 Chrome 擴充裡看得到——手機上開 Spark 或 Gmail App，點進那個標籤也能看到哪些信已讀、哪些還沒。不會被綁死在電腦前。
+- **多帳號支援**：跟我前面的四帳號分流天然契合，一個擴充管全部。
+
+追蹤功能的使用情境主要是：**寄出重要信件後 48 小時沒被讀，就主動追一次**。這個簡單的規則能避免很多「對方沒回訊息是因為沒看到」的誤會。
+
+<span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
+<a href="https://workspace.google.com/marketplace/app/mail_tracker_for_gmail/888949007475" target="_blank" class="official-link">Mailtrack</a>
+
+## 乾淨信箱的心智模型
+
+整套流水線走完之後，我對「乾淨信箱」的定義其實很簡單——
+
+**每封進來的信都有自己的位置，每封寄出的信都有追蹤的方式**。
+
+工具只是載體，Gmail 也好、Spark 也好、Mailtrack 也好，換成其他功能相近的工具其實都做得到。真正決定你的信箱會不會爆滿的，是這個心智模型：**信箱不是用來讀的，是用來過濾的**。大部分的信根本不需要你讀，它們只需要被分類、被歸檔、被忽略。
+
+如果你覺得自己的信箱已經失控，可以從這幾個問題開始檢查：
+
+- **分流**：不同性質的信是不是混在同一個信箱？有沒有辦法從源頭分開？
+- **自動歸檔**：Filter 有沒有建起來？還是每封信都在手動處理？
+- **降噪**：上次退訂是什麼時候？還在接收哪些三個月沒讀的訂閱？
+- **分層閱讀**：讀信的時候需要切換帳號嗎？重要信件容易被雜訊淹沒嗎？
+- **搜尋**：會不會用 Gmail operator 找特定信件？
+- **追蹤**：寄出的信知不知道對方讀了沒？
+
+任何一題答「沒做」或「不清楚」，都是可以改善的切點。不用一次全上，挑最困擾你的那一個先解決，剩下的慢慢加進來。信箱管理從來不是一次到位的事，而是**持續優化的系統**——你的信件會變、訂閱會變、工作會變，系統也要跟著調整才能一直好用。
