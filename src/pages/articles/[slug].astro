@@ -26,6 +26,31 @@ const seo = {
   description: post.data.seo?.metaDescription || post.data.description,
   ogImage: post.data.seo?.ogImage || post.data.cover,
 };
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  url: `${siteUrl}/articles/${post.slug}/`,
+  datePublished: post.data.date.toISOString(),
+  ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+  ...(seo.ogImage && { image: seo.ogImage }),
+  inLanguage: "zh-Hant-TW",
+  author: {
+    "@type": "Person",
+    name: "呂亮進",
+    url: siteUrl,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "亮點創研 LuMakes",
+    url: siteUrl,
+  },
+  keywords: post.data.tags,
+};
 ---
 
 <BaseLayout
@@ -34,6 +59,10 @@ const seo = {
   ogImage={seo.ogImage}
   headerType="project"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  </Fragment>
+
   <!-- Hero Section -->
   <div
     class="relative pt-20 pb-8 w-full bg-[linear-gradient(135deg,_#e5e7eb_0%,_#d1d5db_50%,_#9ca3af_100%)] dark:bg-[linear-gradient(135deg,_#27272a_0%,_#18181b_50%,_#0a0a0a_100%)]"

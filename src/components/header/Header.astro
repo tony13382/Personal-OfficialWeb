@@ -5,7 +5,7 @@ import { MobileNav } from "@/components/header/MobileNav";
 import { mainLinks } from "@/components/header/index";
 import { SearchDialog } from "@/components/search/SearchDialog";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
-import signUrl from "@/assets/imgs/index/sign.svg?url";
+import brandSignUrl from "@/assets/imgs/index/brand-sign.svg?url";
 
 
 interface Props {
@@ -43,9 +43,9 @@ const { type = "main", themeColor, appName, projectHref, appUrl } = Astro.props;
             />
             <span
               role="img"
-              aria-label="Liang Chin Lu signature"
-              class="block h-7 mt-2 bg-foreground"
-              style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
+              aria-label="LuMakes brand sign"
+              class="block h-8 bg-foreground"
+              style={`width: calc(7 * 968 / 376 * 0.25rem); -webkit-mask: url(${brandSignUrl}) no-repeat center / contain; mask: url(${brandSignUrl}) no-repeat center / contain;`}
             />
           </a>
         ) : type === "app" ? (

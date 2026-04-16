@@ -46,6 +46,29 @@ const canonicalURL = new URL(
   Astro.url.pathname,
   Astro.site || "http://localhost:4321",
 );
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "亮點創研 LuMakes",
+  url: siteUrl,
+  description: "呂亮進的個人官方網站",
+  inLanguage: "zh-Hant-TW",
+  author: {
+    "@type": "Person",
+    name: "呂亮進",
+    url: siteUrl,
+    jobTitle: "AI 工程師、產品設計師、全端開發者",
+    sameAs: [
+      "https://www.linkedin.com/in/liang-chin-lu/",
+      "https://www.instagram.com/liang_chin_ml/",
+      "https://github.com/tony13382",
+      "https://bio.lumakes.com/liang",
+    ],
+  },
+};
 ---
 
 <!doctype html>
@@ -76,6 +99,7 @@ const canonicalURL = new URL(
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
 
@@ -110,6 +134,10 @@ const canonicalURL = new URL(
 
       gtag("config", "G-165132NHTH");
     </script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <slot name="head" />
 
     <!-- 動態 CSS 變量 -->
     <style

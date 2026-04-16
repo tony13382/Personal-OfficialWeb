@@ -29,6 +29,27 @@ const seo = {
   ogImage: project.data.cover.src,
 };
 
+// JSON-LD
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+
+const projectJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.data.title,
+  description: project.data.description,
+  url: `${siteUrl}/projects/${project.slug}/`,
+  image: project.data.cover.src,
+  dateCreated: project.data.startDate.toISOString(),
+  ...(project.data.endDate && { dateModified: project.data.endDate.toISOString() }),
+  inLanguage: "zh-Hant-TW",
+  author: {
+    "@type": "Person",
+    name: "呂亮進",
+    url: siteUrl,
+  },
+  keywords: project.data.tags,
+};
+
 // 主題顏色
 const themeColors = themes[project.data.theme];
 
@@ -57,6 +78,10 @@ const getStatusBadge = (statusStr: string) => {
   themeColor={themeColors.primary}
   themeColorDark={themeColors.darkPrimary}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(projectJsonLd)} />
+  </Fragment>
+
   <div
     data-pagefind-body
     data-pagefind-meta={`type:專案, title:${project.data.title}`}

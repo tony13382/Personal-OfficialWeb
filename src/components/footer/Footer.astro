@@ -2,6 +2,7 @@
 import Icon from "@/components/Icon.astro";
 import { SocialLinksLite } from "../data/social";
 import ThemeToggle from "@/components/ThemeToggle";
+import brandSignUrl from "@/assets/imgs/index/brand-sign.svg?url";
 import signUrl from "@/assets/imgs/index/sign.svg?url";
 import { apps } from "@/data/apps";
 ---
@@ -74,17 +75,6 @@ import { apps } from "@/data/apps";
             <span>學習資源庫</span>
           </a>
         </div>
-        <!-- <a
-          href="https://www.instagram.com/digi.ocean/?hl=zh-tw"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
-        >
-          <InstagramLogoIcon
-            className="size-5 group-hover:scale-110 transition-transform"
-          />
-          <span>知識帳號（DigiOcean）</span>
-        </a> -->
       </div>
 
       <div>
@@ -150,12 +140,26 @@ import { apps } from "@/data/apps";
     <div
       class="py-4 mt-6 bg-muted rounded-md text-muted-foreground text-center text-xs"
     >
-      <span
-        role="img"
-        aria-label="Liang Chin Lu signature"
-        class="block h-7 opacity-75 mx-auto my-4 bg-foreground"
-        style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
-      ></span>
+      <div class="flex items-center justify-center gap-4 pt-4">
+        <div class="flex items-center justify-center gap-2">
+          <span
+            role="img"
+            aria-label="LuMakes signature"
+            class="block h-9 opacity-75 bg-foreground"
+            style={`width: calc(7 * 7208 / 3200 * 0.25rem); -webkit-mask: url(${brandSignUrl}) no-repeat center / contain; mask: url(${brandSignUrl}) no-repeat center / contain;`}
+          ></span>
+        </div>
+        <Icon
+          name="x"
+          class="size-5 group-hover:scale-110 transition-transform"
+        />
+        <span
+          role="img"
+          aria-label="Liang Chin Lu signature"
+          class="block h-7 opacity-75 mt-2 bg-foreground"
+          style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${signUrl}) no-repeat center / contain; mask: url(${signUrl}) no-repeat center / contain;`}
+        ></span>
+      </div>
 
       <p class="mt-6">
         Copyright © 2026 亮點創研 LuMakes・Liang-Chin Lu 版權所有
