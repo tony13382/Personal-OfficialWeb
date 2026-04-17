@@ -15,6 +15,7 @@ interface Props {
   themeColor?: string;
   themeColorDark?: string;
   locale?: Locale;
+  pageJsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   themeColor,
   themeColorDark,
   locale,
+  pageJsonLd,
 } = Astro.props;
 
 const lang = locale ?? getLangFromUrl(Astro.url);
@@ -56,25 +58,72 @@ const canonicalURL = new URL(
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
 
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: lang === 'en' ? "LuMakes" : "亮點創研 LuMakes",
+// Derive language-alternate paths for hreflang so bilingual pages aren't
+// treated as duplicate content.
+const currentPath = Astro.url.pathname;
+const isEnPath = currentPath === "/en" || currentPath.startsWith("/en/");
+const zhPath = isEnPath
+  ? currentPath.replace(/^\/en(\/|$)/, "/")
+  : currentPath;
+const enPath = isEnPath
+  ? currentPath
+  : currentPath === "/"
+    ? "/en/"
+    : `/en${currentPath}`;
+const zhAlternate = `${siteUrl}${zhPath}`;
+const enAlternate = `${siteUrl}${enPath}`;
+
+// OG/Twitter image must be absolute per spec; scrapers often fail on relative.
+const ogImageUrl = /^https?:\/\//.test(ogImage)
+  ? ogImage
+  : `${siteUrl}${ogImage.startsWith("/") ? ogImage : `/${ogImage}`}`;
+
+// Stable IDs for the knowledge graph so page-level schemas (ItemList,
+// BlogPosting, etc.) can reference the site and person via @id.
+const websiteId = `${siteUrl}/#website`;
+const personId = `${siteUrl}/#person`;
+
+const personNode = {
+  "@type": "Person",
+  "@id": personId,
+  name: lang === "en" ? "Liang-Chin Lu" : "呂亮進",
   url: siteUrl,
-  description: lang === 'en' ? "Liang-Chin Lu's personal website" : "呂亮進的個人官方網站",
+  jobTitle:
+    lang === "en"
+      ? "AI Engineer, Product Designer, Full-Stack Developer"
+      : "AI 工程師、產品設計師、全端開發者",
+  sameAs: [
+    "https://www.linkedin.com/in/liang-chin-lu/",
+    "https://www.instagram.com/liang_chin_ml/",
+    "https://github.com/tony13382",
+    "https://x.com/liang_chin_ml",
+    "https://bio.lumakes.com/liang",
+  ],
+};
+
+const websiteNode = {
+  "@type": "WebSite",
+  "@id": websiteId,
+  name: lang === "en" ? "LuMakes" : "亮點創研 LuMakes",
+  url: siteUrl,
+  description:
+    lang === "en"
+      ? "Liang-Chin Lu's personal website"
+      : "呂亮進的個人官方網站",
   inLanguage: htmlLang,
-  author: {
-    "@type": "Person",
-    name: lang === 'en' ? "Liang-Chin Lu" : "呂亮進",
-    url: siteUrl,
-    jobTitle: lang === 'en' ? "AI Engineer, Product Designer, Full-Stack Developer" : "AI 工程師、產品設計師、全端開發者",
-    sameAs: [
-      "https://www.linkedin.com/in/liang-chin-lu/",
-      "https://www.instagram.com/liang_chin_ml/",
-      "https://github.com/tony13382",
-      "https://bio.lumakes.com/liang",
-    ],
-  },
+  publisher: { "@id": personId },
+  author: { "@id": personId },
+};
+
+const extraGraphNodes = pageJsonLd
+  ? Array.isArray(pageJsonLd)
+    ? pageJsonLd
+    : [pageJsonLd]
+  : [];
+
+const knowledgeGraph = {
+  "@context": "https://schema.org",
+  "@graph": [websiteNode, personNode, ...extraGraphNodes],
 };
 ---
 
@@ -122,6 +171,23 @@ const websiteJsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- hreflang alternates for bilingual pages -->
+    <link rel="alternate" hreflang="zh-Hant" href={zhAlternate} />
+    <link rel="alternate" hreflang="en" href={enAlternate} />
+    <link rel="alternate" hreflang="x-default" href={zhAlternate} />
+
+    <!-- Theme color (mobile browser chrome) -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content={themeColors.primary}
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content={themeColors.darkPrimary}
+    />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -132,19 +198,23 @@ const websiteJsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
     <meta property="og:image:alt" content={title} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_TW'} />
+    <meta property="og:locale:alternate" content={lang === 'en' ? 'zh_TW' : 'en_US'} />
     <meta property="og:site_name" content={lang === 'en' ? 'LuMakes' : '亮點創研 LuMakes'} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@liang_chin_ml" />
+    <meta name="twitter:creator" content="@liang_chin_ml" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-165132NHTH"
@@ -159,8 +229,11 @@ const websiteJsonLd = {
       gtag("config", "G-165132NHTH");
     </script>
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <!-- JSON-LD (single @graph so pages can reference site/person by @id) -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(knowledgeGraph)}
+    />
     <slot name="head" />
 
     <!-- 動態 CSS 變量 -->

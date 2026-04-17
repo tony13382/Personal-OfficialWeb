@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 import { resolveCollectionImages } from "@/lib/resolve-image";
+import { absolutize, buildItemListJsonLd } from "@/lib/structured-data";
 
 interface Props {
   locale?: Locale;
@@ -23,6 +24,33 @@ const sortedProjects = allProjects.sort((a, b) => {
   if (!a.data.pin && b.data.pin) return 1;
   return b.data.startDate.getTime() - a.data.startDate.getTime();
 });
+
+const siteUrl =
+  Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+const listUrl = `${siteUrl}${locale === "en" ? "/en" : ""}/projects/`;
+
+const projectsItemList = buildItemListJsonLd({
+  name: t.index.projectsSectionTitle,
+  description: t.index.projectsSectionDescription,
+  url: listUrl,
+  locale,
+  siteId: `${siteUrl}/#website`,
+  authorId: `${siteUrl}/#person`,
+  items: sortedProjects.map((project) => {
+    const cover =
+      typeof project.data.cover === "string"
+        ? project.data.cover
+        : (project.data.cover as { src?: string } | undefined)?.src;
+    return {
+      type: "CreativeWork" as const,
+      url: `${siteUrl}${locale === "en" ? "/en" : ""}/projects/${project.slug}/`,
+      name: project.data.title,
+      description: project.data.description,
+      ...(cover ? { image: absolutize(siteUrl, cover) } : {}),
+      dateCreated: project.data.startDate.toISOString(),
+    };
+  }),
+});
 ---
 
 <BaseLayout
@@ -31,6 +59,7 @@ const sortedProjects = allProjects.sort((a, b) => {
   ogImage="/assets/MetaTagCover.png"
   headerType="main"
   locale={locale}
+  pageJsonLd={projectsItemList}
 >
   <div class="min-h-screen pt-20">
     <section class="relative overflow-hidden">

@@ -1,27 +1,27 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection, z } from "astro:content";
 
 // 通用 Schema
 const LinkButtonSchema = z.object({
   content: z.string(),
   href: z.string(),
   icon: z.string().optional(),
-  openInTab: z.boolean().default(true)
-})
+  openInTab: z.boolean().default(true),
+});
 
 const ToolSchema = z.object({
   name: z.string(),
-  description: z.string()
-})
+  description: z.string(),
+});
 
 const ScoreSchema = z.object({
   title: z.string(),
   award: z.string(),
-  category: z.string().optional()
-})
+  category: z.string().optional(),
+});
 
 // Projects Collection
 const projectsCollection = defineCollection({
-  type: 'content',  // MDX 內容
+  type: "content", // MDX 內容
   schema: z.object({
     // 基本資訊
     title: z.string(),
@@ -31,16 +31,27 @@ const projectsCollection = defineCollection({
     // 時間與狀態
     startDate: z.coerce.date(),
     endDate: z.coerce.date().optional().nullable(),
-    status: z.enum(['active', 'closed', 'paused', 'switch']).default('active'),
+    status: z.enum(["active", "closed", "paused", "switch"]).default("active"),
 
     // 視覺與分類
-    theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
+    theme: z.enum([
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "natural",
+      "home",
+    ]),
     cover: z.string(),
     icon: z.string().optional(),
     pin: z.boolean().default(false),
 
     // 分類與標籤
-    skillTypes: z.array(z.enum(['dev', 'design', 'plan'])).default([]),
+    // skillTypes: z.array(z.enum(['dev', 'design', 'plan'])).default([]),
+    skillTypes: z.array(z.enum(["dev", "design"])).default([]),
     tags: z.array(z.string()).default([]),
 
     // 關聯資料
@@ -49,16 +60,18 @@ const projectsCollection = defineCollection({
     scores: z.array(ScoreSchema).default([]),
 
     // SEO
-    seo: z.object({
-      metaTitle: z.string().optional(),
-      metaDescription: z.string().optional()
-    }).optional()
-  })
-})
+    seo: z
+      .object({
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
 
 // Jobs Collection
 const jobsCollection = defineCollection({
-  type: 'content',  // MDX 內容
+  type: "content", // MDX 內容
   schema: z.object({
     // 基本資訊
     title: z.string(),
@@ -71,7 +84,17 @@ const jobsCollection = defineCollection({
     endDate: z.coerce.date().optional().nullable(),
 
     // 視覺
-    theme: z.enum(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'natural', 'home']),
+    theme: z.enum([
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "natural",
+      "home",
+    ]),
     cover: z.string(),
     logo: z.string().optional(),
 
@@ -79,16 +102,18 @@ const jobsCollection = defineCollection({
     description: z.array(z.string()).default([]),
 
     // SEO
-    seo: z.object({
-      metaTitle: z.string().optional(),
-      metaDescription: z.string().optional()
-    }).optional()
-  })
-})
+    seo: z
+      .object({
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
 
 // Articles Collection
 const articlesCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     // 基本資訊
     title: z.string(),
@@ -107,16 +132,18 @@ const articlesCollection = defineCollection({
     cover: z.string().optional(),
 
     // SEO
-    seo: z.object({
-      metaTitle: z.string().optional(),
-      metaDescription: z.string().optional(),
-      ogImage: z.string().optional()
-    }).optional()
-  })
-})
+    seo: z
+      .object({
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+        ogImage: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
 
 export const collections = {
   projects: projectsCollection,
   jobs: jobsCollection,
   articles: articlesCollection,
-}
+};

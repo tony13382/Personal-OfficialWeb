@@ -10,6 +10,7 @@ import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import Icon from "@/components/Icon.astro";
 import ArticleCard from "@/components/articles/ArticleCard.astro";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
+import { absolutize, buildItemListJsonLd } from "@/lib/structured-data";
 
 interface Props {
   locale?: Locale;
@@ -27,6 +28,32 @@ const sortedPosts = localePosts.sort((a, b) => {
 });
 
 const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
+
+const siteUrl =
+  Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+const listUrl = `${siteUrl}${locale === "en" ? "/en" : ""}/articles/`;
+
+const articlesItemList = buildItemListJsonLd({
+  name: t.articles.heading,
+  description: t.articles.subtitle,
+  url: listUrl,
+  locale,
+  siteId: `${siteUrl}/#website`,
+  authorId: `${siteUrl}/#person`,
+  items: sortedPosts.map((post) => ({
+    type: "BlogPosting" as const,
+    url: `${siteUrl}${locale === "en" ? "/en" : ""}/articles/${post.slug}/`,
+    name: post.data.title,
+    description: post.data.description,
+    ...(post.data.cover
+      ? { image: absolutize(siteUrl, post.data.cover) }
+      : {}),
+    datePublished: post.data.date.toISOString(),
+    ...(post.data.updatedDate
+      ? { dateModified: post.data.updatedDate.toISOString() }
+      : {}),
+  })),
+});
 ---
 
 <BaseLayout
@@ -34,6 +61,7 @@ const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
   description={t.articles.description}
   headerType="main"
   locale={locale}
+  pageJsonLd={articlesItemList}
 >
   <div class="min-h-screen pt-20">
     <section class="relative overflow-hidden">

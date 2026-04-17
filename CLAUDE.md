@@ -27,7 +27,9 @@ npm run preview  # 預覽建構結果
 ```
 src/
 ├── content/          # MDX 內容
-│   ├── toolbox/      # 分享專欄文章
+│   ├── articles/     # 文章（雙語）
+│   │   ├── zh-Hant/  # 中文版
+│   │   └── en/       # 英文版
 │   ├── projects/     # 專案頁面
 │   └── jobs/         # 經歷頁面
 ├── pages/            # Astro 頁面路由
@@ -38,6 +40,16 @@ src/
 public/
 └── og/               # OG Cover 圖片（不經過 Astro Image 處理）
 ```
+
+## 文章創作流程（雙語）
+
+文章內容放在 `src/content/articles/zh-Hant/` 跟 `src/content/articles/en/`，採用「中文先行」的三階段流程：
+
+1. **方向確認與大綱討論** — 決定主題、文章類型、H2 結構、slug 命名
+2. **中文內容撰寫與打磨** — 只處理 `zh-Hant/` 版本，反覆修改到滿意為止
+3. **英文版本翻譯** — 中文定稿後，才建立 `en/` 版本
+
+原則：在中文版本尚未定稿前，不建立英文版本。這樣迭代時只需修改一份檔案，避免雙語同步維護的負擔。
 
 ## 分享專欄（Toolbox）寫作指引
 

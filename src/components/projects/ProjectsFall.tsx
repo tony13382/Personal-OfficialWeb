@@ -3,22 +3,16 @@ import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowDownIcon,
-  AtomIcon,
   CaretDoubleRightIcon,
   CaretDownIcon,
   CaretUpIcon,
   ChartLineUpIcon,
   ClockIcon,
   DatabaseIcon,
-  FigmaLogoIcon,
-  GlobeHemisphereEastIcon,
-  ListMagnifyingGlassIcon,
-  PlugsIcon,
-  RocketLaunchIcon,
+  PauseIcon,
+  PlayIcon,
   SquaresFourIcon,
   StarIcon,
-  WechatLogoIcon,
 } from "@phosphor-icons/react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import {
@@ -29,8 +23,15 @@ import {
 } from "../ui/tooltip";
 import { Button } from "../ui/button";
 import { getImageSrc, type ImageSource } from "../react/image-source";
+import backendSkillImg from "@/assets/imgs/projects/_skills/backend-skill.png";
+import frontendSkillImg from "@/assets/imgs/projects/_skills/frontend-skill.png";
+import deploySkillImg from "@/assets/imgs/projects/_skills/deploy-skill.png";
+import datadesignSkillImg from "@/assets/imgs/projects/_skills/datadesign-skill.png";
+import uxSkillImg from "@/assets/imgs/projects/_skills/ux-skill.png";
+import figmaSkillImg from "@/assets/imgs/projects/_skills/figma-skill.png";
 
-type SkillType = "dev" | "design" | "plan";
+// type SkillType = "dev" | "design" | "plan";
+type SkillType = "dev" | "design";
 type ProjectData = CollectionEntry<"projects">;
 
 type SupportedLocale = "zh-Hant" | "en";
@@ -53,21 +54,156 @@ interface ProjectsFallProps {
 
 const i18nLabels = {
   "zh-Hant": {
-    filterLabels: { dev: "開發", design: "設計", plan: "企劃" },
+    // filterLabels: { dev: "開發", design: "設計", plan: "企劃" },
+    filterLabels: { dev: "開發", design: "設計" },
     collapse: "收起",
     viewMore: (n: number) => `查看更多 (${n} 個專案)`,
     noProjects: "目前沒有相關專案",
-    // filterDescriptions - design section
-    designTitle: "UX / UI 設計",
-    designSubtitle: "從抽象洞察到極致完美的體驗",
-    designInsight: "洞見與訪談",
-    designInsightDesc: "用戶研究、Personas",
-    designFlow: "流程與作業流程",
-    designFlowDesc: "用戶旅程、使用者流程分析",
-    designAtomic: "原子設計",
-    designAtomicDesc: "線框圖、元件、設計系統",
-    designFigmaDesc: "介面繪製、原型設計",
-    // filterDescriptions - plan section
+    carouselPause: "暫停輪播",
+    carouselPlay: "繼續輪播",
+    devTabs: [
+      {
+        key: "backend",
+        label: "後端 API",
+        title: "有豐富的 API 開發經驗，具各類資料庫架構設計技能",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "後端框架包含：",
+              tags: ["FastAPI · Python", "Go", "Express · NodeJS"],
+            },
+            {
+              label: "資料庫涵蓋：",
+              tags: [
+                "PostgreSQL",
+                "Cloudflare D1",
+                "Supabase",
+                "Firebase",
+                "MongoDB",
+                "Redis",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        key: "frontend",
+        label: "前端 SPA",
+        title: "開發大量 React SPA 的應用經驗",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "前端框架包含：",
+              tags: ["React Router · Remix", "NextJS", "Astro"],
+            },
+            {
+              label: "偏好工具庫：",
+              tags: [
+                "Vite",
+                "Streamlit · Python",
+                "TailwindCSS",
+                "shadcn UI",
+                "Recharts",
+                "Flutter · 跨平台應用",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        key: "deploy",
+        label: "自動部署",
+        title: "自動部署管理、自動化工作",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "平台:",
+              tags: ["Cloudflare Worker", "Linode", "AWS"],
+            },
+            {
+              label: "偏好工具庫：",
+              tags: ["Docker Compose", "Github Action", "n8n", "APP Script"],
+            },
+          ],
+        },
+      },
+    ],
+    designTabs: [
+      {
+        key: "info-design",
+        label: "資訊設計",
+        title: "理解問題透過數據分析並結合平面設計傳達資訊",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "資料整理與前處理：",
+              tags: ["Excel", "Google Sheet", "Pandas · PY"],
+            },
+            {
+              label: "儀表板：",
+              tags: ["Looker Studio", "PowerBI", "IBM Cognos", "ggplot2 · PY"],
+            },
+            {
+              label: "簡報：",
+              tags: ["Canva", "Powerpoint · 精通母片"],
+            },
+          ],
+        },
+      },
+      {
+        key: "ux-flow",
+        label: "UX 流程",
+        title: "結合量化與質化數據，探索最佳服務體驗",
+        body: {
+          kind: "comparison",
+          columns: [
+            {
+              label: "質化・深入觀察",
+              method: "用戶訪談",
+              detail: "分析用戶意圖與想達成的目標",
+            },
+            {
+              label: "量化・整體趨勢",
+              method: "問卷表單",
+              detail: "大批量蒐集行為與偏好資料",
+            },
+          ],
+          summary: "整合質化深入觀察與量化整體趨勢，做服務體驗的通盤規劃",
+        },
+      },
+      {
+        key: "ui-proto",
+        label: "UI 原型製作",
+        title: "從介面規劃到高互動原型的完整設計能力",
+        body: {
+          kind: "features",
+          items: [
+            {
+              index: "01",
+              title: "介面規劃",
+              description:
+                "根據使用者流程（User Flow）及商業目標，規劃出最舒適的使用者介面，讓用戶能快速上手。",
+            },
+            {
+              index: "02",
+              title: "Figma 專業應用",
+              description:
+                "熟悉企業大量使用的 Figma，特別針對原子元件（Atomic Design）與企業色彩系統進行配置。",
+            },
+            {
+              index: "03",
+              title: "高互動性 MVP 製作",
+              description:
+                "憑藉 Figma 原型製作能力與開發經驗，不論用 Figma 或開發方式，都能快速做出高互動性的 MVP 原型。",
+            },
+          ],
+        },
+      },
+    ],
     planReportTitle: "報告",
     planReportSubtitle: "聚焦新創與 AI 科技產業發展",
     planMarket: "市場分析",
@@ -78,31 +214,163 @@ const i18nLabels = {
     planShareSubtitle: "開放資料教學與資源共享",
     planResource: "資源共享",
     planOutput: "知識輸出",
-    devCoreTitle: "Core System & Data Flow",
-    devCoreSubtitle: "有豐富的 API 開發經驗，熟悉各類資料庫",
-    devFrontendSubtitle: "有大量靜態與 React SPA 的開發經驗",
-    devDeploySubtitle: "具 Docker Compose 封装、Cloudflare Worker 部屬經驗",
-    devDataVizTitle: "資料視覺化",
-    devDataVizSubtitle: "將原始數據轉化為引人入勝的故事",
-    devDataPrep: "資料整理與前處理",
-    devPresentation: "簡報",
-    devDashboard: "儀表板",
     now: "現在",
   },
   en: {
-    filterLabels: { dev: "Development", design: "Design", plan: "Planning" },
+    filterLabels: { dev: "Development", design: "Design" },
     collapse: "Collapse",
     viewMore: (n: number) => `View more (${n} projects)`,
     noProjects: "No related projects yet",
-    designTitle: "UX / UI Design",
-    designSubtitle: "From abstract insights to polished experiences",
-    designInsight: "Insights & Interviews",
-    designInsightDesc: "User Research, Personas",
-    designFlow: "Process & Workflow",
-    designFlowDesc: "User Journey, User Flow Analysis",
-    designAtomic: "Atomic Design",
-    designAtomicDesc: "Wireframes, Components, Design Systems",
-    designFigmaDesc: "Interface Design, Prototyping",
+    carouselPause: "Pause carousel",
+    carouselPlay: "Resume carousel",
+    devTabs: [
+      {
+        key: "backend",
+        label: "Backend API",
+        title:
+          "Extensive API development experience across diverse database architectures",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "Backend frameworks:",
+              tags: ["FastAPI · Python", "Go", "Express · NodeJS"],
+            },
+            {
+              label: "Databases:",
+              tags: [
+                "PostgreSQL",
+                "Cloudflare D1",
+                "Supabase",
+                "Firebase",
+                "MongoDB",
+                "Redis",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        key: "frontend",
+        label: "Frontend SPA",
+        title: "Extensive experience building React SPA applications",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "Frontend frameworks:",
+              tags: ["React Router · Remix", "NextJS", "Astro"],
+            },
+            {
+              label: "Preferred toolkit:",
+              tags: [
+                "Vite",
+                "Streamlit · Python",
+                "TailwindCSS",
+                "shadcn UI",
+                "Recharts",
+                "Flutter · Cross-platform",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        key: "deploy",
+        label: "Auto Deploy",
+        title: "Automated deployment & workflow automation",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "Platforms:",
+              tags: ["Cloudflare Worker", "Linode", "AWS"],
+            },
+            {
+              label: "Preferred toolkit:",
+              tags: ["Docker Compose", "Github Action", "n8n", "APP Script"],
+            },
+          ],
+        },
+      },
+    ],
+    designTabs: [
+      {
+        key: "info-design",
+        label: "Information Design",
+        title:
+          "Understanding problems through data analysis and communicating insights through visual design",
+        body: {
+          kind: "tags",
+          groups: [
+            {
+              label: "Data preparation:",
+              tags: ["Excel", "Google Sheet", "Pandas · PY"],
+            },
+            {
+              label: "Dashboards:",
+              tags: ["Looker Studio", "PowerBI", "IBM Cognos", "ggplot2 · PY"],
+            },
+            {
+              label: "Presentations:",
+              tags: ["Canva", "Powerpoint · Template mastery"],
+            },
+          ],
+        },
+      },
+      {
+        key: "ux-flow",
+        label: "UX Flow",
+        title:
+          "Blending qualitative and quantitative data to explore the best service experience",
+        body: {
+          kind: "comparison",
+          columns: [
+            {
+              label: "Qualitative · Depth",
+              method: "User Interviews",
+              detail: "Uncover user intent and goals",
+            },
+            {
+              label: "Quantitative · Trends",
+              method: "Surveys",
+              detail: "Collect broad behavioral and preference data",
+            },
+          ],
+          summary:
+            "Combining qualitative depth with quantitative trends to plan the full service experience",
+        },
+      },
+      {
+        key: "ui-proto",
+        label: "UI Prototyping",
+        title:
+          "From interface planning to high-fidelity interactive prototypes",
+        body: {
+          kind: "features",
+          items: [
+            {
+              index: "01",
+              title: "Interface Planning",
+              description:
+                "Shape intuitive UIs grounded in user flows and business goals so users can get up to speed quickly.",
+            },
+            {
+              index: "02",
+              title: "Figma Expertise",
+              description:
+                "Fluent in Figma as used across enterprises, with a focus on atomic components and enterprise color systems.",
+            },
+            {
+              index: "03",
+              title: "High-interactivity MVPs",
+              description:
+                "Combining Figma prototyping with development experience to quickly build highly interactive MVP prototypes.",
+            },
+          ],
+        },
+      },
+    ],
     planReportTitle: "Reports",
     planReportSubtitle: "Focused on startups & AI tech industry",
     planMarket: "Market Analysis",
@@ -113,17 +381,6 @@ const i18nLabels = {
     planShareSubtitle: "Open data tutorials & resource sharing",
     planResource: "Resources",
     planOutput: "Knowledge Output",
-    devCoreTitle: "Core System & Data Flow",
-    devCoreSubtitle: "Rich API development experience with various databases",
-    devFrontendSubtitle:
-      "Extensive experience with static sites & React SPA development",
-    devDeploySubtitle:
-      "Experienced with Docker Compose packaging & Cloudflare Worker deployment",
-    devDataVizTitle: "Data Visualization",
-    devDataVizSubtitle: "Transforming raw data into compelling stories",
-    devDataPrep: "Data Cleaning & Preprocessing",
-    devPresentation: "Presentations",
-    devDashboard: "Dashboards",
     now: "Present",
   },
 } as const;
@@ -187,615 +444,242 @@ function AppIcon({
   );
 }
 
+const skillTabImages: Record<string, ImageSource> = {
+  backend: backendSkillImg,
+  frontend: frontendSkillImg,
+  deploy: deploySkillImg,
+  "info-design": datadesignSkillImg,
+  "ux-flow": uxSkillImg,
+  "ui-proto": figmaSkillImg,
+};
+
+type SkillTabData =
+  | (typeof i18nLabels)["zh-Hant"]["devTabs"][number]
+  | (typeof i18nLabels)["zh-Hant"]["designTabs"][number];
+
+type SkillTabBody = SkillTabData["body"];
+
+const SKILL_CAROUSEL_ROTATION_MS = 5000;
+const SKILL_CAROUSEL_TICK_MS = 50;
+
+function SkillTabBodyRenderer({ body }: { body: SkillTabBody }) {
+  if (body.kind === "tags") {
+    return (
+      <div className="space-y-5">
+        {body.groups.map((group, gi) => (
+          <div key={gi}>
+            <p className="text-sm text-foreground mb-3">{group.label}</p>
+            <div className="flex flex-wrap gap-2">
+              {group.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-full bg-muted text-sm text-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (body.kind === "comparison") {
+    return (
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {body.columns.map((col, ci) => (
+            <div
+              key={ci}
+              className="rounded-xl border border-border p-4 space-y-2"
+            >
+              <p className="text-xs font-semibold text-muted-foreground tracking-wide uppercase">
+                {col.label}
+              </p>
+              <p className="text-base font-bold text-foreground">
+                {col.method}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {col.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-xl bg-muted px-4 py-3 text-sm text-foreground leading-relaxed">
+          {body.summary}
+        </div>
+      </div>
+    );
+  }
+
+  if (body.kind === "features") {
+    return (
+      <div className="space-y-5">
+        {body.items.map((item) => (
+          <div key={item.index} className="flex gap-4">
+            <div className="shrink-0 w-8 text-muted-foreground/60 font-bold text-lg leading-tight">
+              {item.index}
+            </div>
+            <div className="flex-1 space-y-1">
+              <p className="font-bold text-foreground">{item.title}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function SkillCarousel({
+  tabs,
+  pauseLabel,
+  playLabel,
+}: {
+  tabs: readonly SkillTabData[];
+  pauseLabel: string;
+  playLabel: string;
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const rotationSuspended = isPaused || isHovered;
+
+  useEffect(() => {
+    if (rotationSuspended) return;
+    let elapsed = 0;
+    const interval = setInterval(() => {
+      elapsed += SKILL_CAROUSEL_TICK_MS;
+      if (elapsed >= SKILL_CAROUSEL_ROTATION_MS) {
+        setActiveIndex((i) => (i + 1) % tabs.length);
+        elapsed = 0;
+      }
+      setProgress((elapsed / SKILL_CAROUSEL_ROTATION_MS) * 100);
+    }, SKILL_CAROUSEL_TICK_MS);
+    return () => clearInterval(interval);
+  }, [rotationSuspended, tabs.length, activeIndex]);
+
+  const handleTabClick = (i: number) => {
+    setActiveIndex(i);
+    setProgress(0);
+  };
+
+  const togglePause = () => setIsPaused((p) => !p);
+
+  const toggleAriaLabel = isPaused ? playLabel : pauseLabel;
+
+  return (
+    <Card
+      className="shadow-none overflow-hidden gap-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
+      onTouchCancel={() => setIsHovered(false)}
+    >
+      <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-4">
+        <div className="flex gap-6 md:gap-8 flex-wrap">
+          {tabs.map((tab, i) => (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => handleTabClick(i)}
+              className={`text-xl font-bold transition-colors cursor-pointer ${i === activeIndex
+                ? "text-foreground"
+                : "text-muted-foreground/60 hover:text-muted-foreground"
+                }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={togglePause}
+          aria-label={toggleAriaLabel}
+          title={toggleAriaLabel}
+          className="-mt-1 p-2 shrink-0 text-foreground border rounded-full transition-opacity opacity-50 hover:opacity-60 cursor-pointer"
+        >
+          {isPaused ? (
+            <PlayIcon className="size-4" weight="fill" />
+          ) : (
+            <PauseIcon className="size-4" weight="fill" />
+          )}
+        </button>
+      </div>
+
+      <button
+        type="button"
+        onClick={togglePause}
+        aria-label={toggleAriaLabel}
+        className="block relative h-0.5 w-full bg-border cursor-pointer focus:outline-none"
+      >
+        <div
+          className="absolute left-0 top-0 h-full bg-foreground"
+          style={{ width: `${progress}%` }}
+        />
+      </button>
+
+      <div className="overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {tabs.map((tab, i) => (
+            <div
+              key={tab.key}
+              aria-hidden={i !== activeIndex}
+              className="w-full shrink-0 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 p-6 md:p-8"
+            >
+              <div className="flex items-center justify-center order-1 md:order-none">
+                <img
+                  src={getImageSrc(skillTabImages[tab.key])}
+                  alt={tab.label}
+                  width={512}
+                  height={512}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full max-w-80 h-auto"
+                />
+              </div>
+              <div className="flex flex-col justify-center gap-5 order-2 md:order-none">
+                <p className="text-xl font-bold leading-snug">{tab.title}</p>
+                <SkillTabBodyRenderer body={tab.body} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Card>
+  );
+}
+
 const getFilterDescriptions = (
   t: (typeof i18nLabels)["zh-Hant"],
 ): Record<string, React.ReactNode> => ({
   dev: (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
-        <CardHeader className="p-6 pb-0">
-          <p className="text-center text-foreground text-xl font-bold">
-            Core System & Data Flow
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.devCoreSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 items-center justify-center">
-          <div className="relative">
-            {/* Backend & Logic Section */}
-            <div className="flex-1 flex items-end relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">
-                  Backend & Logic
-                </p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Python" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Python</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="FastAPI" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>FastAPI</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Supabase" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Supabase</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="NodeJs" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>NodeJs</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Golang" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Golang</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Php" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Php</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="RubyOnrRils" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Ruby On Rils</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-
-            {/* Center Icon with Connecting Lines */}
-            <div className="flex items-center justify-center relative my-4">
-              {/* Outer Circle Border with Continuous Animation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
-              </div>
-
-              {/* Inner Circle with Icon */}
-              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-cyan-600 md:bg-foreground/70 text-muted z-10">
-                <PlugsIcon className="size-6" /> API Server
-              </div>
-            </div>
-
-            {/* Data Store Section */}
-            <div className="flex-1 flex items-start relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">Data Store</p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="PostgreSQL" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>PostgreSQL</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="MongoDB" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>MongoDB</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Firebase" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Firebase</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="SQLite" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>SQLite</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Redis" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Redis</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Cloudflare" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Cloudflare</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-pink-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
-        <CardHeader className="p-6 pb-0">
-          <p className="text-center text-foreground text-xl font-bold">
-            Frontend
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.devFrontendSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 items-center justify-center">
-          <div className="relative flex flex-col h-full">
-            {/* Backend & Logic Section */}
-            <div className="flex-1 flex items-end relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">Framework</p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="React" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>React</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="ReactRouter" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>React Router</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="NextJs" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>NextJs</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="JavaServerPage" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Java Page (Tomcat)</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Astro" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Astro</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Remix" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Remix</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-
-            {/* Center Icon with Connecting Lines */}
-            <div className="flex items-center justify-center relative my-4">
-              {/* Outer Circle Border with Continuous Animation */}
-              <div className="animate-circle absolute inset-0 flex items-center justify-center">
-                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
-              </div>
-
-              {/* Inner Circle with Icon */}
-              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-pink-600 md:bg-foreground/70 text-muted z-10">
-                <GlobeHemisphereEastIcon className="size-6" /> Web UI
-              </div>
-            </div>
-
-            {/* Data Store Section */}
-            <div className="flex-1 flex items-start relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">Tools</p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Vite" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Vite</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Tailwind" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Tailwind CSS</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="ShadcnUi" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Shadcn UI Kit</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Bootstrap" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Bootstrap</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Streamlit" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Streamlit</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Java" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Java</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Flutter" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Flutter</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="flex flex-col col-span-1 md:col-span-2 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-indigo-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
-        <CardHeader className="p-6 pb-0">
-          <p className="text-center text-foreground text-xl font-bold">
-            Deploy
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.devDeploySubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 items-center justify-center">
-          <div className="relative flex flex-col md:flex-row md:gap-8">
-            {/* Backend & Logic Section */}
-            <div className="flex-1 flex items-end relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">Platform</p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Cloudflare" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Cloudflare Worker</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Linode" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Linode</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="AWS" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>AWS</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-
-            {/* Center Icon with Connecting Lines */}
-            <div className="flex items-center justify-center relative my-4">
-              {/* Outer Circle Border with Continuous Animation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="animate-circle w-40 h-40 shrink-0 rounded-full border-2 border-muted-foreground/20 animate-ping opacity-75 md:opacity-0 z-0"></div>
-              </div>
-
-              {/* Inner Circle with Icon */}
-              <div className="mid-btn relative inline-flex items-center gap-2 p-4 rounded-full bg-indigo-600 md:bg-foreground/70 text-muted z-10">
-                <RocketLaunchIcon className="size-6" /> Deploy
-              </div>
-            </div>
-
-            {/* Data Store Section */}
-            <div className="flex-1 flex items-start relative z-10">
-              <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">Tools</p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Docker" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Docker</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="GithubAction" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github Action</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="AppScript" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>AppScript</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+    <div className="pb-4 border-b mb-4">
+      <SkillCarousel
+        tabs={t.devTabs}
+        pauseLabel={t.carouselPause}
+        playLabel={t.carouselPlay}
+      />
     </div>
   ),
   design: (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
-        <CardHeader className="p-6 pb-0">
-          <p className="text-center text-foreground text-xl font-bold">
-            {t.devDataVizTitle}
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.devDataVizSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1">
-          <div className="flex flex-col items-center justify-center">
-            <div className="inline-flex flex-col p-4 pt-3 my-4 mx-auto space-y-4 rounded-xl bg-muted">
-              <p className="text-center text-muted-foreground">
-                {t.devDataPrep}
-              </p>
-              <TooltipProvider>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <AppIcon name="Python" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Python</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <AppIcon name="R" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>R</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <AppIcon name="Excel" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Excel</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <AppIcon name="GoogleSheet" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Google Sheet</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              </TooltipProvider>
-            </div>
-            <ArrowDownIcon className="size-8 text-muted-foreground" />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mt-4">
-              <div className="inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">
-                  {t.devPresentation}
-                </p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Canva" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Canva</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Powerpoint" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Powerpoint</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="GoogleSlide" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Google Slides</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Figma" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Figma Slides</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-              <div className="inline-flex flex-col p-4 pt-3 mx-auto space-y-4 rounded-xl bg-muted">
-                <p className="text-center text-muted-foreground">
-                  {t.devDashboard}
-                </p>
-                <TooltipProvider>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="PoewrBI" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>PoewrBI</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="GoogleLookerStudio" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Looker Studio</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Excel" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>IBM Cognos</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="IbmCognos" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>IBM Cognos</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <AppIcon name="Ggplot2" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>GGPlot 2</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0">
-        <CardHeader className="p-6 pb-0">
-          <p className="text-center text-foreground text-xl font-bold">
-            {t.designTitle}
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.designSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 items-center justify-center">
-          <div className="grid gap-6">
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-4 rounded-full bg-orange-50 text-orange-600 dark:bg-orange-950/40 dark:text-orange-300">
-                <WechatLogoIcon className="size-8" />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold">{t.designInsight}</p>
-                <p className="text-muted-foreground">{t.designInsightDesc}</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-4 rounded-full bg-sky-50 text-sky-600 dark:bg-sky-950/40 dark:text-sky-300">
-                <ListMagnifyingGlassIcon className="size-8" />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold">{t.designFlow}</p>
-                <p className="text-muted-foreground">{t.designFlowDesc}</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-4 rounded-full bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-300">
-                <AtomIcon className="size-8" />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold">{t.designAtomic}</p>
-                <p className="text-muted-foreground">{t.designAtomicDesc}</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <div className="p-4 rounded-full bg-rose-50 text-rose-500 dark:bg-rose-950/40 dark:text-rose-300">
-                <FigmaLogoIcon className="size-8" />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold">Figma</p>
-                <p className="text-muted-foreground">{t.designFigmaDesc}</p>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+    <div className="pb-4 border-b mb-4">
+      <SkillCarousel
+        tabs={t.designTabs}
+        pauseLabel={t.carouselPause}
+        playLabel={t.carouselPlay}
+      />
     </div>
   ),
   plan: (
@@ -1209,11 +1093,10 @@ export function ProjectsFall({
               <button
                 key={filter}
                 onClick={() => scrollToSection(filter)}
-                className={`text-lg font-medium transition-colors relative pb-1 ${
-                  activeSection === filter
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`text-lg font-medium transition-colors relative pb-1 ${activeSection === filter
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {label}
                 {activeSection === filter && (

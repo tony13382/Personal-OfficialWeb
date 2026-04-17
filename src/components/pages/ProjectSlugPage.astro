@@ -26,13 +26,15 @@ const coverImage = resolveImage(project.data.cover);
 // SEO
 const seo = {
   title:
-    project.data.seo?.metaTitle || `${project.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
+    project.data.seo?.metaTitle ||
+    `${project.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
   description: project.data.seo?.metaDescription || project.data.description,
   ogImage: coverImage.src,
 };
 
 // JSON-LD
-const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+const siteUrl =
+  Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
 
 const projectJsonLd = {
   "@context": "https://schema.org",
@@ -42,7 +44,9 @@ const projectJsonLd = {
   url: `${siteUrl}${locale === "en" ? "/en" : ""}/projects/${project.slug}/`,
   image: coverImage.src,
   dateCreated: project.data.startDate.toISOString(),
-  ...(project.data.endDate && { dateModified: project.data.endDate.toISOString() }),
+  ...(project.data.endDate && {
+    dateModified: project.data.endDate.toISOString(),
+  }),
   inLanguage: locale === "en" ? "en" : "zh-Hant-TW",
   author: {
     "@type": "Person",
@@ -59,13 +63,29 @@ const themeColors = themes[project.data.theme];
 const getStatusBadge = (statusStr: string) => {
   switch (statusStr) {
     case "active":
-      return { text: t.project.statusActive, class: "bg-green-600 hover:bg-green-700" };
+      return {
+        text: t.project.statusActive,
+        class:
+          "bg-green-600 dark:border-green-600 dark:bg-transparent dark:text-green-600",
+      };
     case "closed":
-      return { text: t.project.statusClosed, class: "bg-stone-600 hover:bg-stone-700" };
+      return {
+        text: t.project.statusClosed,
+        class:
+          "bg-stone-600 dark:border-stone-400 dark:bg-transparent dark:text-stone-400",
+      };
     case "switch":
-      return { text: t.project.statusSwitch, class: "bg-teal-600 hover:bg-teal-700" };
+      return {
+        text: t.project.statusSwitch,
+        class:
+          "bg-teal-600 dark:border-teal-600 dark:bg-transparent dark:text-teal-600",
+      };
     case "paused":
-      return { text: t.project.statusPaused, class: "bg-amber-600 hover:bg-amber-700" };
+      return {
+        text: t.project.statusPaused,
+        class:
+          "bg-amber-600 dark:border-amber-600 dark:bg-transparent dark:text-amber-600",
+      };
     default:
       return { text: t.project.statusUnknown, class: "" };
   }
@@ -82,7 +102,10 @@ const getStatusBadge = (statusStr: string) => {
   locale={locale}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(projectJsonLd)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(projectJsonLd)}
+    />
   </Fragment>
 
   <div
