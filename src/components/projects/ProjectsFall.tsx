@@ -564,8 +564,8 @@ function SkillCarousel({
               key={tab.key}
               type="button"
               onClick={() => handleTabClick(i)}
-              className={`text-xl font-bold transition-colors cursor-pointer ${i === activeIndex
-                ? "text-foreground"
+              className={`font-bold transition-colors cursor-pointer ${i === activeIndex
+                ? "text-xl text-foreground"
                 : "text-muted-foreground/60 hover:text-muted-foreground"
                 }`}
             >
