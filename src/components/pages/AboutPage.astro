@@ -9,7 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SocialLinksLite } from "@/components/data/social";
 import { ActionBtnLinks } from "@/components/data/actionBtn";
-import { profileData, profileDataZh, profileDataEn, ProfileCardModal } from "@/components/data/profile";
+import {
+  profileData,
+  profileDataZh,
+  profileDataEn,
+  ProfileCardModal,
+} from "@/components/data/profile";
 import { Image } from "astro:assets";
 import myHeadImg from "@/assets/imgs/index/myHead.webp";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
@@ -41,7 +46,9 @@ const sortedJobs = allJobs.sort((a, b) => {
 });
 
 const rawProjects = await getCollection("projects");
-const allProjects = resolveCollectionImages(filterByLocale(rawProjects, locale));
+const allProjects = resolveCollectionImages(
+  filterByLocale(rawProjects, locale),
+);
 const sortedProjects = allProjects.sort((a, b) => {
   if (a.data.pin && !b.data.pin) return -1;
   if (!a.data.pin && b.data.pin) return 1;
@@ -63,9 +70,9 @@ const awardProjects = allProjects
     class="min-h-screen bg-linear-to-b from-gray-50 to-transparent dark:from-transparent pt-20"
   >
     <!-- Hero Section -->
-    <section class="container mx-auto px-4 pt-16 md:pt-24">
+    <section class="container mx-auto px-1 md:px-4 pt-16 md:pt-24">
       <div class="max-w-6xl mx-auto text-center">
-        <div class="grid items-center">
+        <div class="grid items-center px-2">
           <p
             class="text-sm font-medium tracking-widest uppercase text-(--theme-primary) mb-4"
           >
@@ -123,15 +130,28 @@ const awardProjects = allProjects
         <div class="max-w-6xl mx-auto space-y-12">
           <div class="grid gap-4">
             <h2 class="text-3xl font-bold">{t.about.workExperience}</h2>
-            <JobsFall jobs={sortedJobs.slice(0, 3)} themes={themes} pathPrefix={prefix} locale={locale} />
+            <JobsFall
+              jobs={sortedJobs.slice(0, 3)}
+              themes={themes}
+              pathPrefix={prefix}
+              locale={locale}
+            />
             {
               sortedJobs.length > 3 && (
                 <div data-expand-section>
                   <div class="hidden" data-expand-content>
-                    <JobsFall jobs={sortedJobs.slice(3)} themes={themes} pathPrefix={prefix} locale={locale} />
+                    <JobsFall
+                      jobs={sortedJobs.slice(3)}
+                      themes={themes}
+                      pathPrefix={prefix}
+                      locale={locale}
+                    />
                   </div>
                   <Button variant="outline" data-expand-btn>
-                    {t.common.showMoreCount.replace('{count}', String(sortedJobs.length))}
+                    {t.common.showMoreCount.replace(
+                      "{count}",
+                      String(sortedJobs.length),
+                    )}
                   </Button>
                 </div>
               )
@@ -171,10 +191,12 @@ const awardProjects = allProjects
                         <Card
                           className="shadow-none border"
                           data-card-theme
-                          style={{
-                            "--card-primary-light": themeColors.primary,
-                            "--card-primary-dark": themeColors.darkPrimary,
-                          } as React.CSSProperties}
+                          style={
+                            {
+                              "--card-primary-light": themeColors.primary,
+                              "--card-primary-dark": themeColors.darkPrimary,
+                            } as React.CSSProperties
+                          }
                         >
                           <CardContent className="gap-4">
                             <div class="flex">
@@ -196,7 +218,9 @@ const awardProjects = allProjects
                                 </p>
                               </div>
                               <a href={`${prefix}/projects/${project.slug}/`}>
-                                <Button variant="outline">{t.common.viewProject}</Button>
+                                <Button variant="outline">
+                                  {t.common.viewProject}
+                                </Button>
                               </a>
                             </div>
                             <hr />
@@ -252,8 +276,12 @@ const awardProjects = allProjects
                                         : ` - ${t.common.now}`}
                                     </p>
                                   </div>
-                                  <a href={`${prefix}/projects/${project.slug}/`}>
-                                    <Button variant="outline">{t.common.viewProject}</Button>
+                                  <a
+                                    href={`${prefix}/projects/${project.slug}/`}
+                                  >
+                                    <Button variant="outline">
+                                      {t.common.viewProject}
+                                    </Button>
                                   </a>
                                 </div>
                                 <hr />
@@ -284,7 +312,10 @@ const awardProjects = allProjects
                         })}
                       </div>
                       <Button variant="outline" data-expand-btn>
-                        {t.common.showMoreCount.replace('{count}', String(awardProjects.length))}
+                        {t.common.showMoreCount.replace(
+                          "{count}",
+                          String(awardProjects.length),
+                        )}
                       </Button>
                     </div>
                   )}

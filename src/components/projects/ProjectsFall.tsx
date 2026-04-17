@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -8,14 +7,9 @@ import {
   PauseIcon,
   PlayIcon,
   StarIcon,
+  ArrowRightIcon,
 } from "@phosphor-icons/react";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
+import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { getImageSrc, type ImageSource } from "../react/image-source";
 import backendSkillImg from "@/assets/imgs/projects/_skills/backend-skill.png";
@@ -54,6 +48,7 @@ const i18nLabels = {
     noProjects: "目前沒有相關專案",
     carouselPause: "暫停輪播",
     carouselPlay: "繼續輪播",
+    carouselNext: "下一項",
     devTabs: [
       {
         key: "backend",
@@ -149,7 +144,7 @@ const i18nLabels = {
       },
       {
         key: "ux-flow",
-        label: "UX 流程",
+        label: "UX 規劃",
         title: "結合量化與質化數據，探索最佳服務體驗",
         body: {
           kind: "comparison",
@@ -206,6 +201,7 @@ const i18nLabels = {
     noProjects: "No related projects yet",
     carouselPause: "Pause carousel",
     carouselPlay: "Resume carousel",
+    carouselNext: "Next tab",
     devTabs: [
       {
         key: "backend",
@@ -303,7 +299,7 @@ const i18nLabels = {
       },
       {
         key: "ux-flow",
-        label: "UX Flow",
+        label: "UX Planning",
         title:
           "Blending qualitative and quantitative data to explore the best service experience",
         body: {
@@ -358,65 +354,6 @@ const i18nLabels = {
   },
 } as const;
 
-type AppIconModule = ImageSource | { default: ImageSource };
-
-const appIconModules = import.meta.glob(
-  "/src/assets/imgs/appIcons/*.{png,svg,webp}",
-  {
-    eager: true,
-  },
-) as Record<string, AppIconModule>;
-
-const resolveAppIconSrc = (module: AppIconModule) => {
-  if (typeof module === "object" && module !== null && "default" in module) {
-    return getImageSrc(module.default);
-  }
-
-  return getImageSrc(module as string | ImageMetadata);
-};
-
-const appIcons = Object.fromEntries(
-  Object.entries(appIconModules).map(([path, module]) => {
-    const fileName = path.split("/").pop() ?? path;
-    return [
-      fileName.replace(/\.(png|svg|webp)$/, ""),
-      resolveAppIconSrc(module),
-    ];
-  }),
-) as Record<string, string>;
-
-function AppIcon({
-  name,
-  alt = name,
-  className = "size-14",
-  width = 56,
-  height = 56,
-}: {
-  name: string;
-  alt?: string;
-  className?: string;
-  width?: number;
-  height?: number;
-}) {
-  const src = appIcons[name];
-
-  if (!src) {
-    return null;
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      className={className}
-      loading="lazy"
-      decoding="async"
-      width={width}
-      height={height}
-    />
-  );
-}
-
 const skillTabImages: Record<string, ImageSource> = {
   backend: backendSkillImg,
   frontend: frontendSkillImg,
@@ -427,8 +364,8 @@ const skillTabImages: Record<string, ImageSource> = {
 };
 
 type SkillTabData =
-  | (typeof i18nLabels)["zh-Hant"]["devTabs"][number]
-  | (typeof i18nLabels)["zh-Hant"]["designTabs"][number];
+  | (typeof i18nLabels)[SupportedLocale]["devTabs"][number]
+  | (typeof i18nLabels)[SupportedLocale]["designTabs"][number];
 
 type SkillTabBody = SkillTabData["body"];
 
@@ -446,7 +383,7 @@ function SkillTabBodyRenderer({ body }: { body: SkillTabBody }) {
               {group.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full bg-muted text-sm text-foreground"
+                  className="px-3 py-1 rounded-full bg-muted border-foreground text-sm text-foreground"
                 >
                   {tag}
                 </span>
@@ -513,15 +450,18 @@ function SkillCarousel({
   tabs,
   pauseLabel,
   playLabel,
+  nextLabel,
 }: {
   tabs: readonly SkillTabData[];
   pauseLabel: string;
   playLabel: string;
+  nextLabel: string;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [progress, setProgress] = useState(0);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const rotationSuspended = isPaused || isHovered;
 
@@ -544,48 +484,95 @@ function SkillCarousel({
     setProgress(0);
   };
 
+  const handleNext = () => {
+    setActiveIndex((i) => (i + 1) % tabs.length);
+    setProgress(0);
+  };
+
   const togglePause = () => setIsPaused((p) => !p);
+
+  // Horizontal swipe beyond this much (px) triggers a tab switch. Vertical
+  // dominance short-circuits so page scroll gestures aren't hijacked.
+  const SWIPE_THRESHOLD_PX = 48;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY };
+    setIsHovered(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    setIsHovered(false);
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) <= SWIPE_THRESHOLD_PX) return;
+    if (Math.abs(dy) >= Math.abs(dx)) return;
+    setActiveIndex((i) =>
+      dx < 0 ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length,
+    );
+    setProgress(0);
+  };
+
+  const handleTouchCancel = () => {
+    touchStartRef.current = null;
+    setIsHovered(false);
+  };
 
   const toggleAriaLabel = isPaused ? playLabel : pauseLabel;
 
   return (
     <Card
-      className="shadow-none overflow-hidden gap-0"
+      className="shadow-none overflow-hidden gap-0 touch-pan-y"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
-      onTouchCancel={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchCancel}
     >
       <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-4">
-        <div className="flex gap-6 md:gap-8 flex-wrap">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8 flex-wrap">
           {tabs.map((tab, i) => (
             <button
               key={tab.key}
               type="button"
               onClick={() => handleTabClick(i)}
-              className={`font-bold transition-colors cursor-pointer ${i === activeIndex
-                ? "text-xl text-foreground"
-                : "text-muted-foreground/60 hover:text-muted-foreground"
+              className={`sm:text-xl font-bold transition-colors cursor-pointer ${i === activeIndex
+                ? "text-foreground"
+                : "hidden md:block text-muted-foreground/60 hover:text-muted-foreground"
                 }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={togglePause}
-          aria-label={toggleAriaLabel}
-          title={toggleAriaLabel}
-          className="-mt-1 p-2 shrink-0 text-foreground border rounded-full transition-opacity opacity-50 hover:opacity-60 cursor-pointer"
-        >
-          {isPaused ? (
-            <PlayIcon className="size-4" weight="fill" />
-          ) : (
-            <PauseIcon className="size-4" weight="fill" />
-          )}
-        </button>
+        <div className="flex -mt-1 gap-3">
+          <button
+            type="button"
+            onClick={togglePause}
+            aria-label={toggleAriaLabel}
+            title={toggleAriaLabel}
+            className="p-2 shrink-0 text-foreground border rounded-full transition-opacity opacity-50 hover:opacity-60 cursor-pointer"
+          >
+            {isPaused ? (
+              <PlayIcon className="size-4" weight="fill" />
+            ) : (
+              <PauseIcon className="size-4" weight="fill" />
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label={nextLabel}
+            title={nextLabel}
+            className="md:hidden p-2 shrink-0 text-foreground border rounded-full transition-opacity opacity-50 hover:opacity-60 cursor-pointer"
+          >
+            <ArrowRightIcon className="size-4" />
+          </button>
+        </div>
       </div>
 
       <button
@@ -635,7 +622,7 @@ function SkillCarousel({
 }
 
 const getFilterDescriptions = (
-  t: (typeof i18nLabels)["zh-Hant"],
+  t: (typeof i18nLabels)[SupportedLocale],
 ): Record<string, React.ReactNode> => ({
   dev: (
     <div className="pb-4 border-b mb-4">
@@ -643,6 +630,7 @@ const getFilterDescriptions = (
         tabs={t.devTabs}
         pauseLabel={t.carouselPause}
         playLabel={t.carouselPlay}
+        nextLabel={t.carouselNext}
       />
     </div>
   ),
@@ -652,6 +640,7 @@ const getFilterDescriptions = (
         tabs={t.designTabs}
         pauseLabel={t.carouselPause}
         playLabel={t.carouselPlay}
+        nextLabel={t.carouselNext}
       />
     </div>
   ),
@@ -826,7 +815,7 @@ export function ProjectsFall({
   return (
     <div className="w-full">
       {/* Sticky Navigation */}
-      <nav className="sticky top-20 z-20 bg-background/80 backdrop-blur-sm rounded-full mb-8 -mx-2 px-8">
+      <nav className="sticky top-18 z-20 bg-background/80 backdrop-blur-sm rounded-xl mb-8 -mx-4 px-8">
         <div className="flex gap-6 py-4">
           {(Object.entries(filterLabels) as [SkillType, string][]).map(
             ([filter, label]) => (
