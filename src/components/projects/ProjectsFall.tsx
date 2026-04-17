@@ -3,15 +3,10 @@ import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { Badge } from "@/components/ui/badge";
 import {
-  CaretDoubleRightIcon,
   CaretDownIcon,
   CaretUpIcon,
-  ChartLineUpIcon,
-  ClockIcon,
-  DatabaseIcon,
   PauseIcon,
   PlayIcon,
-  SquaresFourIcon,
   StarIcon,
 } from "@phosphor-icons/react";
 import { Card, CardContent, CardHeader } from "../ui/card";
@@ -30,7 +25,6 @@ import datadesignSkillImg from "@/assets/imgs/projects/_skills/datadesign-skill.
 import uxSkillImg from "@/assets/imgs/projects/_skills/ux-skill.png";
 import figmaSkillImg from "@/assets/imgs/projects/_skills/figma-skill.png";
 
-// type SkillType = "dev" | "design" | "plan";
 type SkillType = "dev" | "design";
 type ProjectData = CollectionEntry<"projects">;
 
@@ -54,7 +48,6 @@ interface ProjectsFallProps {
 
 const i18nLabels = {
   "zh-Hant": {
-    // filterLabels: { dev: "開發", design: "設計", plan: "企劃" },
     filterLabels: { dev: "開發", design: "設計" },
     collapse: "收起",
     viewMore: (n: number) => `查看更多 (${n} 個專案)`,
@@ -204,16 +197,6 @@ const i18nLabels = {
         },
       },
     ],
-    planReportTitle: "報告",
-    planReportSubtitle: "聚焦新創與 AI 科技產業發展",
-    planMarket: "市場分析",
-    planProductivity: "生產力管理",
-    planTools: "工具教學",
-    planData: "資料洞察",
-    planShareTitle: "知識共享",
-    planShareSubtitle: "開放資料教學與資源共享",
-    planResource: "資源共享",
-    planOutput: "知識輸出",
     now: "現在",
   },
   en: {
@@ -371,16 +354,6 @@ const i18nLabels = {
         },
       },
     ],
-    planReportTitle: "Reports",
-    planReportSubtitle: "Focused on startups & AI tech industry",
-    planMarket: "Market Analysis",
-    planProductivity: "Productivity",
-    planTools: "Tool Tutorials",
-    planData: "Data Insights",
-    planShareTitle: "Knowledge Sharing",
-    planShareSubtitle: "Open data tutorials & resource sharing",
-    planResource: "Resources",
-    planOutput: "Knowledge Output",
     now: "Present",
   },
 } as const;
@@ -682,237 +655,6 @@ const getFilterDescriptions = (
       />
     </div>
   ),
-  plan: (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b mb-4">
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 hover:[&>div>div>div>.mid-btn]:bg-cyan-600 hover:[&>div>div>div>div>.animate-circle]:opacity-75">
-        <CardHeader className="p-6 border-b">
-          <p className="text-center text-foreground text-xl font-bold">
-            {t.planReportTitle}
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.planReportSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 justify-center pb-0">
-          <div className="relative">
-            {/* 四个类别 */}
-            <div className="grid grid-cols-4 gap-6 pt-1">
-              <div className="flex flex-col items-center gap-3">
-                <div className="p-4 rounded-full bg-orange-500 border border-transparent dark:border-orange-500 dark:bg-transparent text-background dark:text-orange-500">
-                  <ChartLineUpIcon className="size-8" />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">
-                  {t.planMarket}
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="p-4 rounded-full bg-green-600 border border-transparent dark:border-green-600 dark:bg-transparent text-background dark:text-green-600">
-                  <ClockIcon className="size-8" />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">
-                  {t.planProductivity}
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="p-4 rounded-full bg-pink-400 border border-transparent dark:border-pink-400 dark:bg-transparent text-background dark:text-pink-400">
-                  <SquaresFourIcon className="size-8" />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">
-                  {t.planTools}
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="p-4 rounded-full bg-cyan-600 border border-transparent dark:border-cyan-600 dark:bg-transparent text-background dark:text-cyan-600">
-                  <DatabaseIcon className="size-8" />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">
-                  {t.planData}
-                </p>
-              </div>
-            </div>
-
-            {/* 连接线条 - SVG 弧形 */}
-            <div className="relative h-24 mt-6">
-              <svg
-                className="absolute inset-0 w-full h-full"
-                viewBox="0 0 400 96"
-                preserveAspectRatio="none"
-              >
-                {/* 左边第一条：垂直线 + 弧形转角向右 + 横线到中心 */}
-                <path
-                  d="M 50 0 L 50 24 Q 50 40, 66 40 L 184 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-
-                {/* 左中第二条：垂直线 + 弧形转角向右 + 横线汇入中心 */}
-                <path
-                  d="M 150 0 L 150 24 Q 150 40, 166 40 L 184 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-
-                {/* 右中第三条：垂直线 + 弧形转角向左 + 横线汇入中心 */}
-                <path
-                  d="M 250 0 L 250 24 Q 250 40, 234 40 L 216 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-
-                {/* 右边第四条：垂直线 + 弧形转角向左 + 横线到中心 */}
-                <path
-                  d="M 350 0 L 350 24 Q 350 40, 334 40 L 216 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-
-                {/* 中心横线连接左右 */}
-                <path
-                  d="M 184 40 L 216 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-
-                {/* 中心向下的弧形转角 + 垂直线 */}
-                <path
-                  d="M 200 40 Q 200 56, 200 56 L 200 96"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-border"
-                />
-              </svg>
-
-              {/* 中心焦点 - 使用HTML元素保持正圆 */}
-              <div
-                className="absolute left-1/2 -translate-x-1/2"
-                style={{ top: "calc(40 / 96 * 100%)" }}
-              >
-                {/* 扩散动画圆 */}
-                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-border opacity-75 animate-ping"></div>
-                {/* 实心圆 */}
-                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-border"></div>
-              </div>
-            </div>
-
-            {/* 底部内容框 */}
-            <div className="relative rounded-t-2xl border border-b-0 border-border bg-background p-6">
-              <div className="flex items-center justify-center gap-4">
-                <div className="p-3 rounded-xl bg-muted">
-                  <TooltipProvider>
-                    <div className="flex flex-wrap justify-center gap-4">
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <AppIcon name="GoogleDocs" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Google Docs</p>
-                        </TooltipContent>
-                      </Tooltip>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <AppIcon name="Notion" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Notion</p>
-                        </TooltipContent>
-                      </Tooltip>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <AppIcon name="Wordpress" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Wordpress</p>
-                        </TooltipContent>
-                      </Tooltip>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <AppIcon name="GoogleAnalytics" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Google Analytics</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </TooltipProvider>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="flex flex-col col-span-1 shadow-none md:grayscale hover:grayscale-0 md:hover:[&>div>div>.browser-frame]:shadow-xl">
-        <CardHeader className="p-6">
-          <p className="text-center text-foreground text-xl font-bold">
-            {t.planShareTitle}
-          </p>
-          <p className="text-center text-muted-foreground text-md">
-            {t.planShareSubtitle}
-          </p>
-        </CardHeader>
-        <CardContent className="flex-1 justify-center p-0">
-          {/* Browser Window with Grid Background */}
-          <div
-            className="relative w-full h-full min-h-80 overflow-hidden border border-border bg-muted"
-            style={{
-              backgroundImage: `
-                repeating-linear-gradient(0deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px),
-                repeating-linear-gradient(90deg, transparent, transparent 19px, var(--border) 19px, var(--border) 20px)
-              `,
-            }}
-          >
-            {/* Browser Window */}
-            <div className="browser-frame shadow-xl md:shadow-none absolute inset-4 bg-background rounded-lg overflow-hidden">
-              {/* Browser Title Bar */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted border-b border-border">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-              </div>
-
-              {/* Browser Content */}
-              <div className="p-2 flex items-center justify-center gap-6 h-[calc(100%-56px)]">
-                <div className="inline-flex flex-col items-center gap-2">
-                  <div className="p-2 border rounded-xl">
-                    <AppIcon name="Notion" />
-                  </div>
-                  <p className="text-muted-foreground text-center">
-                    {t.planResource}
-                  </p>
-                </div>
-                <CaretDoubleRightIcon className="size-12 text-border animate-pulse" />
-                <div className="inline-flex flex-col items-center gap-2">
-                  <div className="p-1 border rounded-xl">
-                    <AppIcon
-                      name="Instagram"
-                      className="size-16"
-                      width={64}
-                      height={64}
-                    />
-                  </div>
-                  <p className="text-muted-foreground text-center">
-                    {t.planOutput}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  ),
 });
 
 export function ProjectsFall({
@@ -930,12 +672,10 @@ export function ProjectsFall({
   >({
     dev: false,
     design: false,
-    plan: false,
   });
   const sectionRefs = useRef<Record<SkillType, HTMLElement | null>>({
     dev: null,
     design: null,
-    plan: null,
   });
 
   useEffect(() => {

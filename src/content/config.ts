@@ -50,7 +50,6 @@ const projectsCollection = defineCollection({
     pin: z.boolean().default(false),
 
     // 分類與標籤
-    // skillTypes: z.array(z.enum(['dev', 'design', 'plan'])).default([]),
     skillTypes: z.array(z.enum(["dev", "design"])).default([]),
     tags: z.array(z.string()).default([]),
 
