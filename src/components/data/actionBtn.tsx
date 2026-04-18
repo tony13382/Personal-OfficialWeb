@@ -7,6 +7,7 @@ interface ActionLink {
     href: string
     label: string
     icon?: React.ReactNode
+    external?: boolean
 }
 
 
@@ -16,12 +17,13 @@ function getActionLinks(): ActionLink[] {
         {
             href: "https://github.com/tony13382",
             label: "Github",
-            icon: <GithubLogoIcon className="size-12" />
+            icon: <GithubLogoIcon className="size-12" />,
+            external: true,
         },
         {
-            href: "https://drive.google.com/file/d/1vN6BVqPXcnAzDVIDNJvWqHbNMjirxx0D/view?usp=sharing",
+            href: en ? "/en/down-resume" : "/down-resume",
             label: en ? "Resume" : "下載履歷",
-            icon: <DownloadSimpleIcon className="size-12" />
+            icon: <DownloadSimpleIcon className="size-12" />,
         },
     ]
 }
@@ -35,8 +37,7 @@ export function ActionBtnLinks() {
                 <Button key={link.href} asChild>
                     <a
                         href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
+                        {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
                     >
                         {link.icon} {link.label}
                     </a>

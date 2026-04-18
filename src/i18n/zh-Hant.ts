@@ -80,7 +80,8 @@ export default {
   // Articles listing page
   articles: {
     title: "分享專欄・工作流心法、數位生產力、全端開發筆記・亮點創研 LuMakes",
-    description: "分享我在工作流自動化、數位生產力、個人知識管理跟全端開發的工具推薦、方法論跟實戰筆記。按用途分類，把「工具 + 方法」一次帶走。",
+    description:
+      "分享我在工作流自動化、數位生產力、個人知識管理跟全端開發的工具推薦、方法論跟實戰筆記。按用途分類，把「工具 + 方法」一次帶走。",
     heading: "分享專欄",
     subtitle: "按用途分類的工具推薦與使用心得",
     showMoreCount: "顯示更多（共 {count} 篇）",
@@ -166,5 +167,26 @@ export default {
     section9Title: "九、聯絡方式",
     section9Content:
       "如果你對本政策有任何疑問，或想行使前述使用者權利，可以透過頁面 footer 提供的聯絡方式（社群連結）與本人聯繫。",
+  },
+
+  // Down Resume page
+  downResume: {
+    title: "下載履歷・呂亮進・亮點創研 LuMakes",
+    description: "提供通用、開發、設計三個版本的履歷預覽跟下載。",
+    heading: "下載履歷",
+    subheading: "呂亮進・亮點創研 LuMakes",
+    tabs: {
+      general: "通用",
+      dev: "開發",
+      design: "設計",
+    },
+    descriptions: {
+      general: "綜合呈現工作經歷、專案作品跟核心能力。",
+      dev: "聚焦在全端開發、AI 工程跟技術專案。",
+      design: "聚焦在產品設計、視覺系統跟設計工作流。",
+    },
+    openInNewTab: "在新分頁開啟",
+    download: "下載 PDF",
+    mobileHint: "手機瀏覽建議直接點「下載 PDF」獲得最佳閱讀體驗。",
   },
 } as const;
