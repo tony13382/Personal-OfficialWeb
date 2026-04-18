@@ -68,7 +68,7 @@ This is routing at its most granular. Most browser pickers only resolve "which b
 
 ## Apps: Skip the Browser, Go Straight to the Desktop App
 
-<Image src={apps} alt="Velja's Apps panel routing Figma, Apple Music, Discord and other web services directly to their desktop counterparts" />
+<Image src={apps} alt="Velja's Apps panel routing Figma, App Store, Discord and other web services directly to their desktop counterparts" />
 
 This is the mechanism that makes Velja most distinctive — **some links shouldn't open in a browser at all**. The Apps panel maps common web app links directly to desktop apps, bypassing the browser entirely and letting the desktop app handle the link.
 
@@ -80,14 +80,14 @@ Design file links (`figma.com/file/*`, `figma.com/design/*`) all get routed dire
 
 The old path was "browser loads the page → prompts to open in desktop app → desktop app launches → actually start editing" — four stages. Velja skips the first two entirely, so clicking a link lands me in editing mode almost immediately.
 
-### Apple Music: Desktop Does the Same Thing Smoother
+### App Store: The Web Is a Shop Window, the Desktop App Is the Entry Point
 
-Apple Music share links (`music.apple.com/*`) open as a web player in the browser — the experience is jarring. Playback takes time to load, skipping tracks doesn't integrate with system background playback, and the web playlist lives completely separately from whatever I was already listening to.
+App Store links (`apps.apple.com/*`) all get routed straight to App Store.app. The web version is essentially just a "product page" — you can read the description, browse screenshots, check reviews, but **you can't actually download or install an app from the browser**. To fulfill what the link is really for, you have to jump into App Store.app.
 
-Routing these links straight into Music.app means clicking one just adds a song to the existing playback flow — **playback state stays continuous**. A share link doesn't interrupt my queue, and the whole path feels much smoother.
+With Velja routing these directly, the whole "browser opens the page → see 'Open in Mac App Store' button → click it → App Store launches" detour just disappears. Clicking the link takes you straight into App Store.app.
 
 ### Why Some Links Should Skip the Browser
 
-These two examples happen to illustrate two different reasons: **Figma is "desktop can do more," Apple Music is "desktop does the same thing better."** Similar pairings: App Store links routing to App Store.app, Discord invite links routing to Discord.app — same logic throughout. If the desktop app experience is better than the web version, let Velja route it through and save the repeated manual switching.
+These two examples illustrate two different angles: **Figma is "the desktop version does more"** (a feature gap), while **App Store is "the web version can't do the thing at all"** (the web is just a preview, the desktop app is the real destination). Similar cases: Discord invite links routing to Discord.app, Zoom meeting links routing to Zoom.app — the logic holds. If the desktop app is where these links actually get resolved, let Velja route them through and skip the repeated manual switching.
 
 This is also the biggest gap between Velja and every other browser picker tool — it doesn't confine itself to "routing between browsers," it extends the **destination to the entire macOS ecosystem**. That bigger design scope is the real reason Velja has earned a permanent slot on my machine.

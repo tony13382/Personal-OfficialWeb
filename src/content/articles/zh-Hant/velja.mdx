@@ -68,7 +68,7 @@ Velja 的規則支援兩種匹配：**host-based**（整個網域）跟 **patter
 
 ## Apps：跳過瀏覽器，直接進桌面 App
 
-<Image src={apps} alt="Velja 的 Apps 面板，可以把 Figma、Apple Music、Discord 等 Web 服務直接路由到對應的桌面 App" />
+<Image src={apps} alt="Velja 的 Apps 面板，可以把 Figma、App Store、Discord 等 Web 服務直接路由到對應的桌面 App" />
 
 這是我覺得 Velja 最特別的一個機制——**有些連結根本不該打開瀏覽器**。Apps 面板可以把常見的 web app 連結直接對應到桌面 App，連結進來的時候跳過瀏覽器那一層，直接由桌面 App 處理。
 
@@ -80,14 +80,14 @@ Velja 的規則支援兩種匹配：**host-based**（整個網域）跟 **patter
 
 以前點連結要經歷「瀏覽器載入網頁 → 提示開啟桌面 App → 桌面 App 啟動 → 真正開始編輯」四個階段，現在 Velja 直接把前兩段跳過，點連結幾乎是一步到位。
 
-### Apple Music：桌面版做同一件事更順
+### App Store：網頁版是櫥窗，桌面 App 才是入口
 
-Apple Music 的分享連結（`music.apple.com/*`）用瀏覽器打開是網頁播放器，體驗很斷——按播放要等載入、切歌不跟系統背景播放串接、播放列表跟我本來在聽的東西完全分開。
+App Store 連結（`apps.apple.com/*`）我都讓 Velja 直接送進 App Store.app。網頁版本質上只是一個「商品頁」——你可以看介紹、看截圖、看評論，但**你沒辦法真的在瀏覽器裡下載或安裝 App**。要完成這個連結的意圖，一定得跳到 App Store.app 才行。
 
-讓 Velja 把這類連結直接送進 Music.app 之後，點連結就等於在原本的播放流裡接上一首歌，**播放狀態是連續的**——不會因為點了一個分享連結就把正在聽的 queue 打斷，整個路徑順很多。
+讓 Velja 直接路由，就等於把「瀏覽器開網頁 → 看到『在 Mac 上打開』按鈕 → 按按鈕 → App Store 打開」這串多餘的步驟全部省掉，點連結就直接在 App Store.app 裡。
 
 ### 為什麼連結應該跳出瀏覽器
 
-這兩個例子剛好展現了兩種不同的理由：**Figma 是 App 版做得到更多事，Apple Music 是 App 版做同一件事更順**。其他類似的組合還有 App Store 連結走 App Store.app、Discord 邀請連結走 Discord.app 等等，邏輯都一樣——只要桌面 App 體驗比 web 版好，就讓 Velja 幫你 routing 過去，省下一次次手動切換的麻煩。
+這兩個例子剛好展現了兩種不同的角度：**Figma 是桌面版做得到更多事**（功能差異），**App Store 是網頁版根本做不到那件事**（網頁只是 preview，桌面 App 才是真正的目的地）。其他還有 Discord 邀請連結走 Discord.app、Zoom 會議連結走 Zoom.app 等等，邏輯類似——只要桌面 App 是真正處理這類連結的地方，就讓 Velja 幫你直接 routing 過去，省下一次次手動切換的麻煩。
 
 這也是 Velja 跟其他 browser picker 工具最大的差別——它不把自己限縮在「瀏覽器之間的路由」，而是把**目的地擴展到整個 macOS**。這個設計格局才是 Velja 真正值得留下來的理由。
