@@ -36,7 +36,7 @@ const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
           {
             apps.map((app) => (
               <a
-                href={`${locale === 'en' ? '/en' : ''}/apps/${app.slug}/`}
+                href={`${locale === "en" ? "/en" : ""}/apps/${app.slug}/`}
                 rel="noopener noreferrer"
                 class="flex items-center px-4 py-2 gap-3 text-muted-foreground hover:bg-muted transition-colors no-underline group rounded-full"
               >
@@ -92,9 +92,9 @@ const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
 
       <div>
         <!-- Donate Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="grid grid-cols-1 xl:grid-cols-2">
           <h4
-            class="col-span-1 lg:col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
+            class="col-span-1 xl:col-span-2 text-xl text-muted-foreground font-semibold mb-2 px-4"
           >
             {t.footer.donate}
           </h4>
@@ -174,18 +174,18 @@ const cssUrl = (raw: string) => raw.replaceAll("'", "%27");
           class="size-5 group-hover:scale-110 transition-transform"
         />
         <div class="w-50 flex items-center justify-start">
-            <span
-              role="img"
-              aria-label="Liang Chin Lu signature"
-              class="mr-auto block h-7 opacity-75 mt-2 bg-foreground"
-              style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${cssUrl(signUrl)}) no-repeat center / contain; mask: url(${cssUrl(signUrl)}) no-repeat center / contain;`}
-            ></span>
+          <span
+            role="img"
+            aria-label="Liang Chin Lu signature"
+            class="mr-auto block h-7 opacity-75 mt-2 bg-foreground"
+            style={`width: calc(7 * 2286 / 457 * 0.25rem); -webkit-mask: url(${cssUrl(signUrl)}) no-repeat center / contain; mask: url(${cssUrl(signUrl)}) no-repeat center / contain;`}
+          ></span>
         </div>
       </div>
 
       <p class="mt-6">
         <a
-          href={locale === 'en' ? '/en/privacy/' : '/privacy/'}
+          href={locale === "en" ? "/en/privacy/" : "/privacy/"}
           class="hover:text-foreground underline-offset-4 hover:underline"
           >{t.footer.privacyPolicy}</a
         >
