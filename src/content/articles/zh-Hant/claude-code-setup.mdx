@@ -15,6 +15,7 @@ import { Image } from 'astro:assets'
 import statuslineResult from '@/assets/imgs/articles/claude-code-setup/statusline-result.png'
 import awesomeDesignMd from '@/assets/imgs/articles/claude-code-setup/awesome-design-md.png'
 import codeckIntro from '@/assets/imgs/articles/claude-code-setup/codeck-intro.png'
+import amphetamine from '@/assets/imgs/articles/claude-code-setup/amphetamine.png'
 
 Claude Code 是我目前主要的開發工具，用了一段時間之後發現，預設的狀態其實只發揮了它一半的能力。透過 Status Line、CLAUDE.md 專案指令跟自訂 Skill，可以把整個開發體驗拉到完全不同的層次。這篇會是一個長期更新的筆記，把我覺得值得分享的設定跟技巧陸續整理進來。
 
@@ -432,3 +433,16 @@ npx skills add hiyeshu/codeck
 | [Claude Code Plugins Marketplace](https://claudemarketplaces.com/) | 社群市集，有評分跟安裝數，方便挑選 |
 
 大部分社群 Skill 的安裝方式就是把檔案複製到 `~/.claude/skills/` 底下，結構跟前面介紹的一樣。挑選的時候建議先看一下 SKILL.md 的內容，確認指令邏輯符合你的需求再裝。
+
+## Amphetamine：放著跑也不會中斷
+
+嚴格來說這不是 Claude Code 的功能，但它補上了一個很容易被忽略的環節——電腦休眠。
+
+Claude Code 有時候會跑一些非常耗時的任務，像是大範圍重構、整個 codebase 的批次修改、跑完整的測試跟建構，動輒十幾二十分鐘起跳。你可能會趁這個空檔去開會、吃飯，甚至先去睡一下，但 Mac 一旦進入休眠，Claude Code 也會跟著停下來，回來只能從斷點接著跑，任務的連續性就斷掉了。
+
+<Image src={amphetamine} alt="Amphetamine 防休眠工具" />
+
+Amphetamine 就是解決這件事的小工具。點一下讓 Mac 保持喚醒、再點一下就關閉防休眠，開跟關都很穩定，我用了好一陣子沒遇過失靈的狀況。它也支援 Raycast 的插件整合，我自己習慣綁一個 hotkey，要開始跑長任務前一秒切開、任務跑完順手切回，完全不用打開 App 介面。
+
+<span class="pricing-tag">免費</span>
+<a href="https://apps.apple.com/app/amphetamine/id937984704" target="_blank" class="official-link">App Store</a>
