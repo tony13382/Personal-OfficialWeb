@@ -5,7 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { ProfileCardModal, profileData } from "@/components/data/profile";
 import { Image } from "astro:assets";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
-import { useTranslations, type Locale } from "@/i18n";
+import ArticleCard from "@/components/articles/ArticleCard.astro";
+import { getCollection } from "astro:content";
+import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 
 interface Props {
   post: any;
@@ -19,6 +21,23 @@ const t = useTranslations(locale);
 const dateLocale = locale === "en" ? "en-US" : "zh-TW";
 
 const tocHeadings = headings.filter((h: any) => h.depth >= 2 && h.depth <= 3);
+
+const allArticles = await getCollection("articles");
+const localeArticles = filterByLocale(allArticles, locale);
+const currentTags = new Set<string>(post.data.tags ?? []);
+const relatedArticles = localeArticles
+  .filter((a) => a.slug !== post.slug)
+  .map((a) => ({
+    article: a,
+    overlap: (a.data.tags ?? []).filter((tag: string) => currentTags.has(tag)).length,
+  }))
+  .filter((entry) => entry.overlap > 0)
+  .sort((a, b) => {
+    if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+    return b.article.data.date.getTime() - a.article.data.date.getTime();
+  })
+  .slice(0, 3)
+  .map((entry) => entry.article);
 
 const seo = {
   title: post.data.seo?.metaTitle || `${post.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
@@ -194,6 +213,21 @@ const articleJsonLd = {
             </div>
           </div>
         </div>
+
+        {
+          relatedArticles.length > 0 && (
+            <div class="mt-12 grid gap-6">
+              <h2 class="text-2xl font-bold text-foreground">
+                {t.articles.youMightLike}
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {relatedArticles.map((related: any) => (
+                  <ArticleCard post={related} locale={locale} />
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
     </section>
   </div>

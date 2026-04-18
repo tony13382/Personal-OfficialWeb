@@ -89,6 +89,7 @@ export default {
     publishedOn: "發佈於",
     updatedOn: "更新於",
     tableOfContents: "目錄",
+    youMightLike: "你可能會喜歡",
   },
 
   // Project detail page

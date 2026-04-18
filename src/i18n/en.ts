@@ -96,6 +96,7 @@ const en: typeof zhHant = {
     publishedOn: "Published on",
     updatedOn: "Updated on",
     tableOfContents: "Table of Contents",
+    youMightLike: "You might also like",
   },
 
   // Project detail page
