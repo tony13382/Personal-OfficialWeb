@@ -16,6 +16,11 @@ import notionLifeos from '@/assets/imgs/articles/project-management/notion-lifeo
 import calendarList from '@/assets/imgs/articles/project-management/calendar-list.png'
 import when2meetImg from '@/assets/imgs/articles/project-management/when2meet.png'
 import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
+import notionManageDataSources from '@/assets/imgs/articles/project-management/notion-manage-data-sources.png'
+import notionCopyDataSourceId from '@/assets/imgs/articles/project-management/notion-copy-data-source-id.png'
+import notionAddConnection from '@/assets/imgs/articles/project-management/notion-add-connection.png'
+import shortcutResultNotion from '@/assets/imgs/articles/project-management/shortcut-result-notion.png'
+import shortcutResultReminders from '@/assets/imgs/articles/project-management/shortcut-result-reminders.png'
 
 這篇整理了我在不同場景下的任務管理方式跟工具選擇。我會根據任務的規模跟性質，搭配不同的工具來處理，而不是把所有事情都塞進同一個系統裡。
 
@@ -54,13 +59,13 @@ import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
 
 大型任務會進入我在 Notion 上建立的 LifeOS 系統來管理。
 
-### Notion LifeOS
+## Notion LifeOS
 
 <Image src={notionLifeos} alt="Notion LifeOS 專案與任務清單" />
 
 這是我自己在 Notion 上規劃的一套個人管理系統，用來處理超過 2 小時的大型任務跟長期目標。
 
-#### Database View 配置
+### Database View 配置
 
 在 Notion 裡，我會根據不同的檢視需求來設定 View：
 
@@ -90,7 +95,7 @@ import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
 
 行動計畫直接隸屬於專案，Sprint 則透過可選連結（Notion Relation）來關聯。這樣的好處是行動計畫不會被綁死在特定的 Sprint 裡，如果某個任務這個 Sprint 沒做完，可以直接改連結到下一個 Sprint，不需要搬移資料。尚未排入 Sprint 的行動計畫也能先建立好等待排程。
 
-#### 願景與專案
+### 願景與專案
 
 每個專案會對應一個上層的願景目標，確保做的事情跟長期方向一致。例如「提升技術能力」是願景，底下可能有「學習 Rust」、「重構個人網站」等專案。
 
@@ -102,7 +107,7 @@ import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
 - **已完成**：達成目標並交付成果。
 - **放棄**：經評估後確認不再繼續的專案。
 
-#### 行動計畫
+### 行動計畫
 
 專案底下會拆成具體的行動計畫，建立行動計畫時有幾個原則：
 
@@ -110,13 +115,68 @@ import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
 - **拆分到 1-2 小時可完成**：如果一個行動計畫預估超過 2 小時，就繼續往下拆成子計畫，直到每個任務大約是 1-2 小時可以完成的粒度。
 - **每個行動都有可驗證的結果**：完成後必須能產出一個具體的結果來驗證，確保做完就是真的做完，而不是「感覺差不多了」。
 
-#### Scrum 迭代
+### Scrum 迭代
 
 每個專案會搭配多個 Sprint 來推進，週期通常是 1-2 週。每個 Sprint 會從專案底下挑選數個行動計畫或子計畫來執行。Sprint 不只是管理行動的單位，也是一個定期回顧的節點：
 
 - **任務完成率檢視**：回顧這次安排的任務裡有多少個如期完成、有多少個卡住了，藉此調整下一個 Sprint 的任務量跟優先級。
 - **困難點與資源評估**：針對卡住的任務，評估是拆解不夠細、前置條件沒到位、還是手頭資源不足，確保專案在現有條件下可以繼續推進。
 - **效率提升思考**：回顧不只是檢討失敗，也要思考哪些地方可以做得更快更好。例如有沒有可以自動化的重複工作、有沒有更好的工具或流程可以導入，持續優化整體的執行效率。流程優化不一定能短期見效，自動化流程的研究與建構本身也會花費不少時間，但長期來看可視為一種戰略投資。一個簡單的判斷標準是：如果某個流程會執行 3 次以上，就應該考慮研究自動化的可能性。
+
+### Reminder to Notion 捷徑
+
+LifeOS 最容易卡住的環節不是 Notion 裡面怎麼規劃，而是「怎麼把快閃的念頭倒進去」。坐在電腦前還行，但走路、通勤、洗澡後想到的東西，要拿出手機解鎖、打開 Notion、切到對的 database、把欄位填好才能儲存，這幾秒的阻力就會讓大部分念頭直接消失。
+
+相比之下，Apple Reminders 用 Siri 一句話就能建立，新增速度絕對比手動打開 Notion App 來得快。所以我的做法是把 Reminders 當成 LifeOS 的前置暫存，再透過捷徑把它一筆一筆同步進 Notion。
+
+同步流程分四步：
+
+1. 在 Reminders 建立一個叫做 **Notion Catch** 的清單，所有要進 LifeOS 的快閃念頭都先丟進去
+2. 捷徑執行時會掃描「Notion Catch」清單中尚未完成的項目
+3. 透過 Notion API 把這些項目建立成 LifeOS 資料庫裡的新頁面
+4. 建立成功後捷徑會把 Notion 頁面連結寫回那筆 Reminder，並把它標記為已完成
+
+這樣設計的好處是每次執行同步，Reminders 裡只剩下「還沒進 Notion 的」，已同步的會帶著 Notion 連結被標記完成——既不會重複上傳、也能在 Reminders 回頭查到對應的 Notion 頁面。
+
+舉個實際例子：我在 Notion Catch 清單先丟了「研究敏捷開發的方法論」跟「研究 Monday.com 軟體用法」兩筆，執行捷徑後——
+
+<Image src={shortcutResultNotion} alt="Notion LifeOS 所有任務視圖，新增的兩筆進到 No Sprint 分組" />
+
+Notion 那邊會自動把兩筆寫進 LifeOS，進「所有任務」的 No Sprint 分組，等後續排入 Sprint。
+
+<Image src={shortcutResultReminders} alt="Reminders 的 Notion Catch 清單，兩筆已完成並附上 notion.so 連結" />
+
+Reminders 這邊則會把原本的兩筆標成已完成並附上對應的 Notion 連結，之後要回頭對照原本的想法進了哪個頁面，直接點連結就到。
+
+<a href="https://www.icloud.com/shortcuts/77198d4f7d824524a4033a809b7d50c1" target="_blank" class="official-link">下載捷徑</a>
+
+#### 安裝步驟
+
+下載捷徑之後還需要設定 Notion 這端，捷徑才能寫進你的 DB。整個流程分四步。
+
+**1. 建立 Notion 內部整合，拿到 API Token**
+
+到 [Notion Integrations 頁面](https://www.notion.so/profile/integrations/internal) 建立一個 Internal Integration，把「內容」權限打開就夠用。如果之後想自己延伸更多功能，可以把讀取、更新跟插入一起開起來。建立完會拿到一組 Internal Integration Token，先複製保留。
+
+**2. 取得任務 DB 的 Data Source ID**
+
+<Image src={notionManageDataSources} alt="從檢視設定開啟 Manage data sources" />
+
+打開你要同步的任務 DB View，點右上角的檢視設定圖示，拉到最下面選 **Manage data sources**。
+
+<Image src={notionCopyDataSourceId} alt="複製 data source ID" />
+
+在對應的 data source 旁邊點「...」，選 **Copy data source ID**。這組 ID 是捷徑寫入的目標位置。
+
+**3. 把整合加到 DB**
+
+<Image src={notionAddConnection} alt="在任務 DB 加上整合" />
+
+回到 DB 的頁面（含這個 DB 的整頁，不是 inline view），點右上角「...」選單，拉到 **Connections**，搜尋剛剛建立的整合把它加進來。沒加這一步的話，就算 Token 跟 ID 都對，API 也會因為沒權限而寫不進去。
+
+**4. 把 Token 跟 Data Source ID 填進捷徑**
+
+第一次執行捷徑時會跳出匯入問題，依序貼上 Notion Token 跟 Data Source ID 就完成設定。之後每次執行都會自動把「Notion Catch」清單裡未完成的項目同步進 LifeOS。
 
 ## 會議管理
 

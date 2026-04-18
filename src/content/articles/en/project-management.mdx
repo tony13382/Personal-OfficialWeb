@@ -16,6 +16,11 @@ import notionLifeos from '@/assets/imgs/articles/project-management/notion-lifeo
 import calendarList from '@/assets/imgs/articles/project-management/calendar-list.png'
 import when2meetImg from '@/assets/imgs/articles/project-management/when2meet.png'
 import timefulImg from '@/assets/imgs/articles/project-management/timeful.png'
+import notionManageDataSources from '@/assets/imgs/articles/project-management/notion-manage-data-sources.png'
+import notionCopyDataSourceId from '@/assets/imgs/articles/project-management/notion-copy-data-source-id.png'
+import notionAddConnection from '@/assets/imgs/articles/project-management/notion-add-connection.png'
+import shortcutResultNotion from '@/assets/imgs/articles/project-management/shortcut-result-notion.png'
+import shortcutResultReminders from '@/assets/imgs/articles/project-management/shortcut-result-reminders.png'
 
 This article covers the task management approaches and tools I use across different contexts. Rather than cramming everything into a single system, I pick different tools depending on the scale and nature of the task.
 
@@ -54,13 +59,13 @@ I block out an hour directly on the calendar, slotting it into today's or the ne
 
 Larger tasks go into the LifeOS system I've built in Notion.
 
-### Notion LifeOS
+## Notion LifeOS
 
 <Image src={notionLifeos} alt="Notion LifeOS — Projects and Task List" />
 
 This is the personal management system I've set up in Notion to handle tasks over 2 hours and longer-term goals.
 
-#### Database View Configuration
+### Database View Configuration
 
 In Notion, I set up Views based on what I need to see:
 
@@ -90,7 +95,7 @@ Vision
 
 Action plans belong directly to their project, and Sprints are connected via optional Notion Relations. The advantage here is that action plans aren't locked into a specific Sprint — if something doesn't get done in one Sprint, you just change the link to the next one without moving data around. Action plans can also be created and queued up before a Sprint slot is ready for them.
 
-#### Visions and Projects
+### Visions and Projects
 
 Each project maps to an overarching vision, making sure what I'm doing stays aligned with long-term direction. For example, "improve technical skills" is a vision; "learn Rust" or "refactor personal site" are projects underneath it.
 
@@ -102,7 +107,7 @@ I set at most three visions per year to avoid spreading my focus too thin. Proje
 - **Completed**: Goals achieved and deliverables produced.
 - **Abandoned**: Officially decided not to continue after evaluation.
 
-#### Action Plans
+### Action Plans
 
 Projects are broken down into specific action plans. A few principles when creating them:
 
@@ -110,13 +115,68 @@ Projects are broken down into specific action plans. A few principles when creat
 - **Break it down to 1–2 hours**: If an action plan is expected to take more than 2 hours, break it down further into sub-plans until each task is roughly 1–2 hours of work.
 - **Every action has a verifiable outcome**: Completion must produce something concrete that proves the work is actually done — not just a feeling that it's "about done."
 
-#### Scrum Sprints
+### Scrum Sprints
 
 Each project is advanced through multiple Sprints, typically 1–2 weeks each. Each Sprint picks a set of action plans or sub-plans from the project. Sprints aren't just units of task management — they're also regular checkpoints for reflection:
 
 - **Task completion review**: How many planned tasks finished on time? How many got stuck? Use this to adjust the next Sprint's scope and priorities.
 - **Blockers and resource assessment**: For tasks that stalled, figure out why — not enough breakdown, missing prerequisites, or insufficient resources — to make sure the project can keep moving forward.
 - **Efficiency improvement thinking**: Review isn't just about diagnosing failures. It's also about asking where you could go faster and better. Are there repetitive tasks that could be automated? Are there better tools or processes worth adopting? Process improvements don't always pay off immediately — researching and building automation takes time upfront. But in the long run, it's a strategic investment. A simple rule: if a process runs more than 3 times, it's worth exploring automation.
+
+### Reminder to Notion Shortcut
+
+The hardest part of LifeOS isn't planning inside Notion — it's getting the flash-of-insight idea *into* Notion in the first place. At a computer, no problem. But when something hits you while walking, commuting, or fresh out of the shower, pulling out your phone, unlocking it, opening Notion, switching to the right database, and filling in the fields — that few seconds of friction is enough for most ideas to slip away.
+
+By contrast, Apple Reminders lets you capture something with a single line to Siri — there's no way opening the Notion app manually beats that for speed. So my approach is to treat Reminders as the pre-stage buffer for LifeOS, then use a shortcut to sync items into Notion one by one.
+
+The sync flow has four steps:
+
+1. Create a Reminders list called **Notion Catch**. Everything destined for LifeOS goes there first
+2. When the shortcut runs, it scans the incomplete items in the "Notion Catch" list
+3. It uses the Notion API to create each item as a new page in the LifeOS database
+4. On success, the shortcut writes the Notion page URL back to the original reminder and marks it complete
+
+The nice thing about this setup is that every sync leaves only the "not-yet-in-Notion" items in Reminders. Synced items get marked done with a Notion link attached — no duplicate uploads, and you can always trace a reminder back to its Notion page.
+
+Here's what it looks like in practice. I dropped two items into Notion Catch — "Research agile development methodology" and "Research how to use Monday.com" — and after running the shortcut:
+
+<Image src={shortcutResultNotion} alt="Notion LifeOS all-tasks view with the two items landing in the No Sprint group" />
+
+On the Notion side, both items get written into LifeOS under the "No Sprint" group of the all-tasks view, waiting to be assigned to a Sprint.
+
+<Image src={shortcutResultReminders} alt="Reminders' Notion Catch list with both items marked done and notion.so links attached" />
+
+On the Reminders side, both entries are now marked complete with the matching Notion URL — so when you want to trace which page an idea ended up on, the link takes you straight there.
+
+<a href="https://www.icloud.com/shortcuts/77198d4f7d824524a4033a809b7d50c1" target="_blank" class="official-link">Download Shortcut</a>
+
+#### Installation Steps
+
+After downloading, you still need to set things up on the Notion side so the shortcut can write into your database. The whole process takes four steps.
+
+**1. Create a Notion Internal Integration and grab the API Token**
+
+Head to the [Notion Integrations page](https://www.notion.so/profile/integrations/internal) and create a new Internal Integration. Turning on the "Content" permission group is enough for this shortcut. If you plan to extend the integration later, flip Read / Update / Insert on while you're there. Once created, you'll get an Internal Integration Token — copy it and keep it handy.
+
+**2. Get the task database's Data Source ID**
+
+<Image src={notionManageDataSources} alt="Open Manage data sources from the view settings" />
+
+Open the view of the task database you want to sync to, click the view settings icon in the top right, scroll to the bottom, and pick **Manage data sources**.
+
+<Image src={notionCopyDataSourceId} alt="Copy data source ID" />
+
+Click the "..." next to the relevant data source and choose **Copy data source ID**. This ID is the destination where the shortcut will write new pages.
+
+**3. Add the integration to the database**
+
+<Image src={notionAddConnection} alt="Adding the integration to the task DB" />
+
+Go to the full database page (the page that contains the DB, not an inline view), open the "..." menu in the top right, scroll down to **Connections**, search for the integration you just created, and add it. Skip this step and even with the right Token and ID, the API call will fail for lack of permission.
+
+**4. Paste the Token and Data Source ID into the shortcut**
+
+The first time you run the shortcut, it'll prompt you for the import values — paste in the Notion Token and Data Source ID. From then on, every run will automatically sync the incomplete items in Notion Catch into LifeOS.
 
 ## Meeting Management
 
