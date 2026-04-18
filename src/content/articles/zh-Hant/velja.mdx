@@ -1,0 +1,93 @@
+---
+title: Velja：macOS 上的網址路由器，每個連結都有自己的目的地
+description: 預設瀏覽器是一對一的笨設計，但連結有很多種身分——用 Velja 的 Picker、Rules、Apps 三個機制，把每個連結自動送到對的瀏覽器、對的 profile、甚至對的桌面 App
+date: 2026-04-19
+category: 工具推薦
+tags: [瀏覽器, macOS, Velja]
+cover: /og/articles/velja.png
+seo:
+  ogImage: /og/articles/velja.png
+---
+
+import { Image } from 'astro:assets'
+
+import browsersSettings from '@/assets/imgs/articles/velja/browsers-settings.png'
+import shownBrowsers from '@/assets/imgs/articles/velja/shown-browsers.png'
+import apps from '@/assets/imgs/articles/velja/apps.png'
+
+點一個 Figma 連結，結果在瀏覽器裡卡 loading 半天才跳桌面 App；點一個 Notion 連結，結果開在個人瀏覽器裡、還要手動換帳號。這些麻煩都指向同一件事——**macOS 的預設瀏覽器是一對一的笨設計**：系統只能有一個預設，但連結其實有很多種身分，工作的、個人的、該去桌面 App 的、該進特定 profile 的全都混在一起。
+
+這篇要介紹的 [Velja](https://sindresorhus.com/velja) 就是在解決這件事。它把「連結 → 目的地」的決策從固定對映變成**可路由的**，讓每個連結依規則自動找到對的地方。底下先講 Velja 的定位，再拆開三個核心機制：Browser Picker、Rules、Apps。
+
+## Velja 是什麼
+
+Velja 是 [Sindre Sorhus](https://sindresorhus.com) 做的網址路由器，免費、macOS 專屬。它在 OS 跟目的地之間插一層 routing——macOS 本來會把所有連結直接送給預設瀏覽器，裝了 Velja 之後，**預設瀏覽器變成 Velja**，由 Velja 接手決定這個連結該往哪送。
+
+心智模型就是路由器。像網路封包會被 router 根據規則送到對的網段一樣，Velja 把每個連結當成一個 routing 決策：**這個 URL 該走哪個瀏覽器？該送哪個 profile？該不該直接跳桌面 App？**
+
+試過的替代方案有 [Choosy](https://www.choosyosx.com/)（付費、規則語法比較陡）跟 [Browserosaurus](https://browserosaurus.com/)（免費開源，但只做 Browser Picker）。最後選 Velja 最關鍵的理由是——**它是唯一把「Apps 路由」也做進來的那個**。後面會專門講，但簡單說就是：Velja 不只幫你挑瀏覽器，還能把連結直接送進桌面 App，這是另外兩款都沒做的事。
+
+下面三節就分別講 Velja 的三個機制：**Browser Picker**（即時挑目的地）、**Rules**（規則命中的連結自動送走）、**Apps**（跳過瀏覽器，直接進桌面 App）。
+
+<span class="pricing-tag">免費</span>
+<a href="https://sindresorhus.com/velja" target="_blank" class="official-link">官方網站</a>
+
+## Browser Picker：當下挑目的地
+
+<Image src={browsersSettings} alt="Velja 的 Browsers 設定面板，預設瀏覽器設為 Prompt" />
+
+把預設瀏覽器設成「Prompt」後，每個連結點下去不會立刻打開，而是先跳出一個選單，讓我選這次要用哪個瀏覽器。
+
+<Image src={shownBrowsers} alt="Velja 的 Shown browsers 面板，可以勾選要顯示的瀏覽器並設定單鍵熱鍵" />
+
+選單裡要顯示哪幾個瀏覽器可以在 Shown browsers 面板自訂，同時幫每個瀏覽器綁一個**單鍵熱鍵**。我目前的設定是 Zen=z、Arc=a、Firefox=f、Safari=s、Chrome=c，選單跳出來按一個字母就直送，手完全不用離開鍵盤。
+
+還有一個細節叫 **Alternative browser**——按住 Fn 再點連結，不會跳選單，會直接開事先設好的備用瀏覽器。這個在你已經很確定某個連結想用特定 browser 時很順手，不用選也不用記規則，一個 Fn 就走備用通道。
+
+Rules 規則可以涵蓋日常 80% 的情境，但剩下那 20%——「這個連結我每次都想自己決定」——Picker 就是那個 catch-all 的安全網。不用為了一個偶發情境硬寫一條規則，保留一個可以手動選的入口反而更乾淨。
+
+## Rules：讓大部分連結自動到位
+
+Picker 雖然方便，但每個連結都自己選還是累。Rules 的作用就是讓**規則命中的連結直接略過 Picker**，自動送到對的瀏覽器。
+
+### 基本寫法：Host 跟 Pattern
+
+Velja 的規則支援兩種匹配：**host-based**（整個網域）跟 **pattern-based**（URL 片段符合某個 pattern）。我目前的幾條主規則大概長這樣：
+
+- `*.notion.so` → Zen 的工作 workspace
+- 公司 Gmail 帳號（`mail.google.com` 搭配帳號 ID） → Firefox 的 work profile
+- 個人 Gmail 帳號 → Zen 的個人 workspace
+
+規則寫得好，每天有大半的連結會自己跑到對的地方，不用停下來想。
+
+### Profile：規則細到工作區 / Profile 層
+
+特別要提的是 **Profile 支援**。Firefox 跟 Zen 可以同時登多個 profile（我就有工作跟個人兩組），Velja 的規則可以細到「這個連結不只要進 Firefox，還要進 Firefox 的 work profile」。
+
+這是把 routing 做到底層最具體的那一段。一般的 browser picker 通常只做到「哪個瀏覽器」，做不到「哪個 profile」。但工作帳號跟個人帳號分離在多帳號工作流裡超關鍵——打開公司 Gmail 連結卻跑到個人 profile，然後要手動切帳號這種事，一天發生三次就很煩。Velja 把 profile 也變成 routing 的一個維度，這件事就自動消失了。
+
+## Apps：跳過瀏覽器，直接進桌面 App
+
+<Image src={apps} alt="Velja 的 Apps 面板，可以把 Figma、Apple Music、Discord 等 Web 服務直接路由到對應的桌面 App" />
+
+這是我覺得 Velja 最特別的一個機制——**有些連結根本不該打開瀏覽器**。Apps 面板可以把常見的 web app 連結直接對應到桌面 App，連結進來的時候跳過瀏覽器那一層，直接由桌面 App 處理。
+
+我最常用的兩個例子：
+
+### Figma：桌面版做得到更多事
+
+設計檔連結（`figma.com/file/*`、`figma.com/design/*`）我都讓 Velja 直接送進 Figma 桌面 App。桌面版有些 web 版做不到的進階功能——像本地字體、GPU 加速、離線編輯——而且開啟速度比 web 版快很多。
+
+以前點連結要經歷「瀏覽器載入網頁 → 提示開啟桌面 App → 桌面 App 啟動 → 真正開始編輯」四個階段，現在 Velja 直接把前兩段跳過，點連結幾乎是一步到位。
+
+### Apple Music：桌面版做同一件事更順
+
+Apple Music 的分享連結（`music.apple.com/*`）用瀏覽器打開是網頁播放器，體驗很斷——按播放要等載入、切歌不跟系統背景播放串接、播放列表跟我本來在聽的東西完全分開。
+
+讓 Velja 把這類連結直接送進 Music.app 之後，點連結就等於在原本的播放流裡接上一首歌，**播放狀態是連續的**——不會因為點了一個分享連結就把正在聽的 queue 打斷，整個路徑順很多。
+
+### 為什麼連結應該跳出瀏覽器
+
+這兩個例子剛好展現了兩種不同的理由：**Figma 是 App 版做得到更多事，Apple Music 是 App 版做同一件事更順**。其他類似的組合還有 App Store 連結走 App Store.app、Discord 邀請連結走 Discord.app 等等，邏輯都一樣——只要桌面 App 體驗比 web 版好，就讓 Velja 幫你 routing 過去，省下一次次手動切換的麻煩。
+
+這也是 Velja 跟其他 browser picker 工具最大的差別——它不把自己限縮在「瀏覽器之間的路由」，而是把**目的地擴展到整個 macOS**。這個設計格局才是 Velja 真正值得留下來的理由。
