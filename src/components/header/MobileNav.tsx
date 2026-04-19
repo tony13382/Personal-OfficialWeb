@@ -10,7 +10,7 @@ import { ListIcon } from "@phosphor-icons/react";
 import { getMainLinks } from "@/components/header/index";
 import { socialLinks } from "@/components/data/social";
 import { SearchDialog } from "@/components/search/SearchDialog";
-import signUrl from "@/assets/imgs/index/sign.svg?url";
+// import signUrl from "@/assets/imgs/index/sign.svg?url";
 import type { Locale } from "@/i18n";
 
 const menuLabels = {
@@ -69,7 +69,7 @@ export function MobileNav({
                 <span>{link.label}</span>
               </a>
             ))}
-            <span
+            {/* <span
               role="img"
               aria-label="Liang Chin Lu signature"
               className="absolute bottom-0 right-4 opacity-25 block h-7 mt-2 bg-foreground"
@@ -78,7 +78,7 @@ export function MobileNav({
                 WebkitMask: `url(${signUrl}) no-repeat center / contain`,
                 mask: `url(${signUrl}) no-repeat center / contain`,
               }}
-            />
+            /> */}
           </div>
 
           {/* Divider */}
