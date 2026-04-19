@@ -1,0 +1,165 @@
+---
+title: OrbStack：Apple Silicon 原生的 Docker Desktop 替代方案
+description: Docker Desktop 在 Mac 上又卡又燙還特別耗電——換成用 Virtualization.framework 跟 Rosetta 寫的 OrbStack，全端開發的容器終於可以跑得像原生應用一樣輕
+date: 2026-04-19
+category: 工具推薦
+tags: [Docker, OrbStack, macOS, 開發環境]
+cover: /og/articles/orbstack.png
+seo:
+  ogImage: /og/articles/orbstack.png
+---
+
+import { Image } from 'astro:assets'
+
+import infoPanel from '@/assets/imgs/articles/orbstack/info.png'
+import logsPanel from '@/assets/imgs/articles/orbstack/logs.png'
+import terminalPanel from '@/assets/imgs/articles/orbstack/terminal.png'
+import filesPanel from '@/assets/imgs/articles/orbstack/files.png'
+
+開全端專案時常會遇到一個景象——打開 Docker Desktop 跑起 nginx、postgres、Vite 的 frontend 跟 FastAPI 的 backend，還沒開始寫 code 風扇就已經在轉、電量肉眼可見地在掉，build 一次 FastAPI 的 image 要等到可以去沖一杯咖啡回來。這些狀況都指向同一件事——**在 Mac 上跑容器會卡、會燙、會耗電、build 還特別慢，不是容器的問題，是 Docker Desktop 不夠 Mac 原生**。
+
+這篇要介紹的 [OrbStack](https://orbstack.dev/) 就是為 Apple Silicon 重寫的 Docker Desktop 替代方案。底下會先講它為什麼能做到更快更輕（底層架構），再拆開實際換過來的感受（啟動速度、UI、pricing），最後交代安裝跟解除安裝的完整流程——因為 OrbStack 會動到系統的幾個參數，隨便刪 app 會留殘留，這個番外比想像中重要。
+
+## OrbStack 為什麼會更快更輕
+
+OrbStack 不是「調教得比較好」的 Docker Desktop，是**架構上就不一樣**。Docker Desktop 是跨平台產品，Mac 只是它的其中一個目標——虛擬化底層現在雖然也支援 Apple 的 **Virtualization.framework**，但外層的 filesystem 共享、網路堆疊、排程對接都是通用設計。OrbStack 是為 Apple Silicon **從頭寫的**，整套鏈路都針對 Mac 手工優化。
+
+下面三個具體的架構決策，剛好各自對應開場列的一個痛點。
+
+### 為 Mac 原生重寫：解決卡、燙
+
+OrbStack 底層也是用 Virtualization.framework，但關鍵在**圍繞這個框架重寫的所有東西**——檔案系統共享、網路堆疊、跟 macOS 排程器的對接都是針對 Mac 手工寫的，而不是跨平台通用實作。表現在使用者端就是 container 跑起來時 CPU 占用低、context switch 開銷小，整台機器不會因為 container 在跑就常態燙手。
+
+### 記憶體動態配置：解決耗電
+
+Docker Desktop 要你在設定裡預先配 RAM（例如 8GB），**不管 container 有沒有用到，那 8GB 就是鎖走的**。OrbStack 改成動態配置——container 用多少它吃多少，閒置時系統可以回收。這件事對電池壽命差異很大，因為沒在跑容器的時候背景不會一直掛著一塊 memory pressure。
+
+根據 [OrbStack 官方 benchmark](https://docs.orbstack.dev/benchmarks)（2023 年 8 月在 M1 Max MacBook Pro 上測的，版本有點舊但架構差異到今天還在），跑同樣的工作負載耗電差異很誇張：Sentry 自架堆疊從 Docker Desktop 的 726 mW 降到 180 mW（省 75%）、K8s 約只耗 Docker Desktop 的 1/5、Supabase 約 1/2。這不是小數字，是「同樣插著充電線工作，筆電風扇不會響」等級的差異。
+
+### Rosetta 跑 x86 image：解決 build 慢
+
+Apple Silicon 是 ARM 架構，但大部分 Docker image 還是 x86。Docker Desktop 用 QEMU 模擬 x86，效能很差——像 FastAPI 的 `pip install` 碰到需要 native compile 的套件（psycopg2、cryptography、pillow 這些），build 一次可以等到懷疑人生。OrbStack 改用 **Rosetta** 來跑 x86 binary，速度跟原生 ARM 接近，同一個 Dockerfile build 起來快非常多。
+
+官方 benchmark 比較過幾個大型 image 的 build 時間：Open edX 從 Docker Desktop 的 45 分鐘縮到 17 分鐘（快 62%），PostHog 也有類似等級的差距。日常的小 image 感受不一定這麼戲劇化，但複雜專案或 full rebuild 會差到一杯咖啡的時間。
+
+## 從 Docker Desktop 換過來能帶走什麼
+
+CLI 完全相容，`docker`、`docker compose` 指令照用，Dockerfile 跟 compose 檔一字都不用改——這是換過來幾乎零成本的前提。實際換過來，差異主要出現在三個地方：**啟動速度、UI、pricing**。
+
+### 啟動跟待命都幾乎無感
+
+Docker Desktop 從點開到能用要等十幾秒、有時候還會卡在那顆鯨魚 icon 轉圈圈。OrbStack 幾乎是開即用，點一下 menu bar 差不多馬上就能下 `docker ps`。一天開開關關幾次的累積差距很明顯。
+
+### Pricing
+
+個人用免費，商用需要 Pro license。我個人用沒遇到限制，少數付費限定功能（像後面會提到的 Debug Shell）一般也用不到。
+
+<span class="pricing-tag freemium">免費使用，商用需訂閱</span>
+<a href="https://orbstack.dev/" target="_blank" class="official-link">官方網站</a>
+
+### UI：container 的四個分頁
+
+這一塊是我換過去之後最有感的部分。OrbStack 的 container 詳情頁有四個分頁——**Info、Logs、Terminal、Files**——把日常除錯最需要的操作全都直接做成 UI，省掉大量 `docker exec`、`docker logs` 的手敲跟 context switch。底下一個一個講。
+
+### Info 分頁：port forwards 一眼看光
+
+<Image src={infoPanel} alt="OrbStack 的 Info 分頁顯示 container 基本資料、Port Forwards 跟 Mounts" />
+
+Container 的基本資料（ID、image、status）、**Port Forwards 列表**、Mounts 全列在一頁。以前要確認「這個 container 開在哪個 port、對到 host 哪個 port」要去翻 compose 檔或下 `docker port`，現在直接看這張表，host port 還是可點的連結，點下去直接開瀏覽器送到對應的 localhost。
+
+對全端工作流特別有用——nginx 開 80/443、backend 開 8080、pgweb 開某個 debug port，一眼就知道現在這些服務的入口在哪。
+
+### Logs 分頁：多服務 log 不打架
+
+<Image src={logsPanel} alt="OrbStack 的 Logs 分頁顯示多個 container 的日誌合併視圖" />
+
+Logs 分頁直接看，不用手敲 `docker logs -f`。但真正有用的是——**選到 container group 的層級時，它會把底下所有 service 的 log 合併顯示，而且每個 service 的名字會自動上色**（截圖裡那個藍色的 `backend_container` prefix）。
+
+開全端專案 debug 最煩的就是 nginx、backend、frontend 的 log 各自一個 terminal 視窗開著切來切去。OrbStack 把所有 service log 合在同一個流裡、靠顏色辨識來源，一眼就能看到「frontend 發了什麼請求 → nginx 收到後 → backend 怎麼回」的完整鏈。
+
+### Terminal 分頁：一鍵進 container shell
+
+<Image src={terminalPanel} alt="OrbStack 的 Terminal 分頁內建 Debug Shell 功能" />
+
+點一下就開 container 的 shell，不用 `docker exec -it ... sh` 手敲。
+
+還有一個叫 **Debug Shell** 的進階功能——點右上角開關，它會幫你進一個內建工具的 debug 環境（可裝超過 8 萬個套件），連 distroless / minimal image 也能進去除錯（這類 image 本身沒有 shell，正常情況連不進去）。Debug Shell 需要 Pro license，平常用的 terminal 是免費的。
+
+### Files 分頁：像 Finder 一樣逛 container
+
+<Image src={filesPanel} alt="OrbStack 的 Files 分頁可以像 Finder 一樣瀏覽 container 檔案系統" />
+
+直接用 Finder 風格的介面瀏覽 container 的 filesystem。**除錯「我 mount 的 config 到底有沒有進去」、「環境變數檔案路徑對不對」這類問題特別方便**——以前要 `docker exec` 進去 `cat` 一下，現在點開 Files 分頁直接看，甚至可以在 host 端直接開啟編輯。
+
+## 安裝方法
+
+### 步驟一：停掉並解除安裝 Docker Desktop
+
+OrbStack 跟 Docker Desktop 都會搶 `/var/run/docker.sock` 這個 socket，**同時跑一定會衝突**。所以要換過去之前第一件事是先把 Docker Desktop 完全移除——不是只關閉，是 uninstall。
+
+打開 Docker Desktop → 右上角的蟲蟲圖示（Troubleshoot）→ Uninstall。或直接把 `/Applications/Docker.app` 拖到垃圾桶也可以，但建議用內建的 uninstaller 會清得比較乾淨。
+
+### 步驟二：安裝 OrbStack
+
+推薦用 Homebrew 裝：
+
+```bash
+brew install --cask orbstack
+```
+
+或者到官網下載 `.dmg` 手動安裝也行，效果一樣。
+
+### 步驟三：第一次啟動，遷移舊資料
+
+打開 OrbStack 後，它會偵測到系統裡有 Docker Desktop 的殘留資料，自動跳出 **Migrate from Docker Desktop** 的選項。按下去之後 image、container、volume 會全部搬過來，不用自己重 pull 或重建。
+
+如果錯過了自動跳出的遷移視窗，可以直接在 terminal 下 CLI 指令觸發同一個流程：
+
+```bash
+orb migrate docker
+```
+
+遷移完成後下 `docker ps`，看到的應該就是原本 Docker Desktop 裡那些 container，只是現在跑在 OrbStack 的 engine 上。原本的 `docker-compose.yml` 開起來繼續用，一樣的指令、一樣的輸出，但啟動更快、機器更安靜。
+
+<a href="https://orbstack.dev/download" target="_blank" class="official-link">下載 OrbStack</a>
+
+## 番外：OrbStack 的解除安裝方法
+
+這個小節會單獨寫，是因為 **OrbStack 安裝時會動到系統的幾個地方**——不是單純丟在 Applications 就算了。如果只是把 `/Applications/OrbStack.app` 拖到垃圾桶，殘留的東西會讓你之後想回裝 Docker Desktop 或換別的容器引擎時撞到各種 socket 衝突跟 PATH 找不到的問題。
+
+OrbStack 動了哪些東西：
+
+- 在 `/usr/local/bin/` 塞了一組 shim，讓 `docker`、`docker-compose`、`kubectl`、`orb` 等指令導向 OrbStack 自己的 binary
+- 註冊了自己的 Docker context
+- 資料放在 `~/.orbstack` 跟 `~/Library/Group Containers/HUAQ24HBR6.dev.orbstack`
+
+### 步驟一：切換 Docker context 回原本
+
+如果之後要裝回 Docker Desktop 或換別的引擎，先把 Docker context 切回去，不然敲 `docker` 還是會找 OrbStack 的 socket：
+
+```bash
+docker context use default
+docker context rm orbstack
+```
+
+### 步驟二：移除 OrbStack 應用跟資料
+
+這是 [OrbStack 官方文件](https://docs.orbstack.dev/install) 給的完整移除步驟——把 app 從 Applications 移到垃圾桶，然後：
+
+```bash
+rm -rf ~/.orbstack
+rm -rf ~/Library/Group\ Containers/HUAQ24HBR6.dev.orbstack
+```
+
+### 步驟三：清 /usr/local/bin 的 symlinks
+
+這步不在官方文件裡，但 OrbStack 會在 `/usr/local/bin` 塞一組 shim，app 移除後這些連結會指向不存在的路徑：
+
+```bash
+rm /usr/local/bin/docker /usr/local/bin/docker-compose /usr/local/bin/kubectl
+rm /usr/local/bin/orb /usr/local/bin/orbctl /usr/local/bin/docker-credential-osxkeychain
+```
+
+如果打算裝 Docker Desktop，它會自己再建一組 symlink，可以先不清；但要換到 [colima](https://github.com/abiosoft/colima) 或 Apple Containers 之類的其他引擎，這步最好做。最後重開 terminal，下 `which docker` 確認沒指到 OrbStack 路徑就算乾淨了。
+
+<div class="callout info">OrbStack 官方的移除步驟只有「刪 app、刪兩個資料夾」三行，看起來很乾淨——但因為 Docker 生態的 PATH shim 是共用的，實務上還是得手動補一下 symlinks。建議換回去或換到別的引擎前一次做完這三步，少任何一步日後都容易遇到莫名的 socket 衝突或指令錯亂。</div>
