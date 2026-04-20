@@ -20,6 +20,13 @@ const { post, Content, headings, locale = "zh-Hant" } = Astro.props;
 const t = useTranslations(locale);
 const dateLocale = locale === "en" ? "en-US" : "zh-TW";
 
+const RECENT_UPDATE_DAYS = 60;
+const isRecentlyUpdated = post.data.updatedDate
+  ? (Date.now() - post.data.updatedDate.getTime()) / 86400000 <=
+    RECENT_UPDATE_DAYS
+  : false;
+const updatedBadgeLabel = locale === "en" ? "Updated" : "已更新";
+
 const tocHeadings = headings.filter((h: any) => h.depth >= 2 && h.depth <= 3);
 
 const allArticles = await getCollection("articles");
@@ -29,7 +36,8 @@ const relatedArticles = localeArticles
   .filter((a) => a.slug !== post.slug)
   .map((a) => ({
     article: a,
-    overlap: (a.data.tags ?? []).filter((tag: string) => currentTags.has(tag)).length,
+    overlap: (a.data.tags ?? []).filter((tag: string) => currentTags.has(tag))
+      .length,
   }))
   .filter((entry) => entry.overlap > 0)
   .sort((a, b) => {
@@ -40,12 +48,15 @@ const relatedArticles = localeArticles
   .map((entry) => entry.article);
 
 const seo = {
-  title: post.data.seo?.metaTitle || `${post.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
+  title:
+    post.data.seo?.metaTitle ||
+    `${post.data.title}・${locale === "en" ? "LuMakes" : "亮點創研 LuMakes"}`,
   description: post.data.seo?.metaDescription || post.data.description,
   ogImage: post.data.seo?.ogImage || post.data.cover,
 };
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
+const siteUrl =
+  Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -54,7 +65,9 @@ const articleJsonLd = {
   description: post.data.description,
   url: `${siteUrl}${locale === "en" ? "/en" : ""}/articles/${post.slug}/`,
   datePublished: post.data.date.toISOString(),
-  ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+  ...(post.data.updatedDate && {
+    dateModified: post.data.updatedDate.toISOString(),
+  }),
   ...(seo.ogImage && { image: seo.ogImage }),
   inLanguage: locale === "en" ? "en" : "zh-Hant-TW",
   author: {
@@ -79,30 +92,87 @@ const articleJsonLd = {
   locale={locale}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(articleJsonLd)}
+    />
   </Fragment>
 
   <div
-    class="relative pt-20 pb-8 w-full bg-[linear-gradient(135deg,_#e5e7eb_0%,_#d1d5db_50%,_#9ca3af_100%)] dark:bg-[linear-gradient(135deg,_#27272a_0%,_#18181b_50%,_#0a0a0a_100%)]"
+    class="relative pt-24 pb-4 w-full bg-[linear-gradient(135deg,_#e5e7eb_0%,_#d1d5db_50%,_#9ca3af_100%)] dark:bg-[linear-gradient(135deg,_#27272a_0%,_#18181b_50%,_#0a0a0a_100%)]"
   >
     <div class="relative flex items-center py-8 w-full min-h-24">
       <div class="container grid grid-cols-1 mx-auto">
         <div class="flex flex-col gap-3">
-          <div class="flex justify-center">
+          <div class="flex justify-center items-center gap-2 flex-wrap">
             <Badge
               variant="outline"
               className="bg-black/10 text-gray-900 border-gray-900/20 dark:bg-white/10 dark:text-gray-100 dark:border-white/20"
               >{post.data.category}</Badge
             >
+            {
+              isRecentlyUpdated && (
+                <Badge className="bg-[var(--theme-primary)] text-background border-transparent">
+                  {updatedBadgeLabel}
+                </Badge>
+              )
+            }
           </div>
           <h1
-            class="px-3 text-4xl text-center font-bold text-gray-900 dark:text-gray-100"
+            class="px-3 pt-3 text-4xl text-center font-bold text-gray-900 dark:text-gray-100"
           >
             {post.data.title}
           </h1>
           <p class="px-3 text-center text-gray-700 dark:text-gray-300">
             {post.data.description}
           </p>
+          <div>
+            <hr class="w-10 mx-auto mt-4 mb-1" />
+          </div>
+          {
+            post.data.tags.length > 0 && (
+              <div class="flex justify-center items-center gap-1.5 flex-wrap px-3">
+                {post.data.tags.map((tag: string) => (
+                  <Badge
+                    variant="outline"
+                    className="text-xs bg-muted text-foreground opacity-50"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )
+          }
+
+          <div
+            class="flex justify-center items-center gap-2 flex-wrap text-xs text-gray-600 dark:text-gray-400"
+          >
+            <span>
+              {t.articles.publishedOn}{" "}
+              {
+                post.data.date.toLocaleDateString(dateLocale, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              }
+            </span>
+            {
+              post.data.updatedDate && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    {t.articles.updatedOn}{" "}
+                    {post.data.updatedDate.toLocaleDateString(dateLocale, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                </>
+              )
+            }
+          </div>
         </div>
       </div>
     </div>
@@ -147,7 +217,9 @@ const articleJsonLd = {
             <div class="sticky top-24">
               <Card>
                 <CardContent className="space-y-3">
-                  <p class="text-sm font-bold text-foreground">{t.articles.tableOfContents}</p>
+                  <p class="text-sm font-bold text-foreground">
+                    {t.articles.tableOfContents}
+                  </p>
                   <nav
                     id="toc-nav"
                     class="grid gap-0.5 max-h-[60vh] overflow-y-auto"
@@ -169,45 +241,6 @@ const articleJsonLd = {
                       ))
                     }
                   </nav>
-
-                  <hr />
-
-                  {
-                    post.data.tags.length > 0 && (
-                      <div class="flex flex-wrap gap-1.5">
-                        {post.data.tags.map((tag: string) => (
-                          <Badge variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    )
-                  }
-
-                  <div class="mt-4 text-xs text-muted-foreground space-y-1">
-                    <p>
-                      {t.articles.publishedOn}{" "}
-                      {
-                        post.data.date.toLocaleDateString(dateLocale, {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      }
-                    </p>
-                    {
-                      post.data.updatedDate && (
-                        <p>
-                          {t.articles.updatedOn}{" "}
-                          {post.data.updatedDate.toLocaleDateString(dateLocale, {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </p>
-                      )
-                    }
-                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -237,19 +270,38 @@ const articleJsonLd = {
     class="floatbtn fixed bottom-8 left-6 size-16 md:bottom-8 md:left-8 rounded-full bg-background text-foreground border border-border hover:bg-muted flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] opacity-0 invisible transition-all duration-300 ease-in-out z-40 cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.12)] active:-translate-y-0.5 lg:hidden"
     title={t.articles.tableOfContents}
   >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="size-7">
-      <path d="M228,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H220A8,8,0,0,1,228,128ZM40,72H220a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM220,184H40a8,8,0,0,0,0,16H220a8,8,0,0,0,0-16Z"></path>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+      fill="currentColor"
+      class="size-7"
+    >
+      <path
+        d="M228,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H220A8,8,0,0,1,228,128ZM40,72H220a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM220,184H40a8,8,0,0,0,0,16H220a8,8,0,0,0,0-16Z"
+      ></path>
     </svg>
   </button>
 
   <div id="mobile-toc-modal" class="fixed inset-0 z-50 hidden lg:hidden">
     <div id="mobile-toc-overlay" class="absolute inset-0 bg-black/50"></div>
-    <div class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-background rounded-t-2xl overflow-hidden animate-slide-up">
+    <div
+      class="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-background rounded-t-2xl overflow-hidden animate-slide-up"
+    >
       <div class="flex items-center justify-between p-4 border-b">
         <p class="text-sm font-bold">{t.articles.tableOfContents}</p>
-        <button id="mobile-toc-close" class="text-muted-foreground hover:text-foreground cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="size-5">
-            <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+        <button
+          id="mobile-toc-close"
+          class="text-muted-foreground hover:text-foreground cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            fill="currentColor"
+            class="size-5"
+          >
+            <path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -293,53 +345,87 @@ const articleJsonLd = {
   <script>
     // ... all the same scripts from the original [slug].astro
     function initScrollspy() {
-      const tocLinks = document.querySelectorAll<HTMLAnchorElement>(".toc-link");
+      const tocLinks =
+        document.querySelectorAll<HTMLAnchorElement>(".toc-link");
       if (tocLinks.length === 0) return;
       const headingEls: HTMLElement[] = [];
       tocLinks.forEach((link) => {
         const slug = link.dataset.slug;
-        if (slug) { const el = document.getElementById(slug); if (el) headingEls.push(el); }
+        if (slug) {
+          const el = document.getElementById(slug);
+          if (el) headingEls.push(el);
+        }
       });
       if (headingEls.length === 0) return;
       const ACTIVE_CLASS = "toc-active";
       function setActive(slug: string) {
         tocLinks.forEach((link) => {
-          if (link.dataset.slug === slug) { link.classList.add(ACTIVE_CLASS); link.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
-          else { link.classList.remove(ACTIVE_CLASS); }
+          if (link.dataset.slug === slug) {
+            link.classList.add(ACTIVE_CLASS);
+            link.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          } else {
+            link.classList.remove(ACTIVE_CLASS);
+          }
         });
       }
-      const observer = new IntersectionObserver((entries) => {
-        for (const entry of entries) { if (entry.isIntersecting) { setActive(entry.target.id); return; } }
-      }, { rootMargin: "-80px 0px -60% 0px", threshold: 0 });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+              return;
+            }
+          }
+        },
+        { rootMargin: "-80px 0px -60% 0px", threshold: 0 },
+      );
       headingEls.forEach((el) => observer.observe(el));
       const scrollY = window.scrollY + 100;
       let currentSlug = headingEls[0]?.id;
-      for (const el of headingEls) { if (el.offsetTop <= scrollY) { currentSlug = el.id; } }
+      for (const el of headingEls) {
+        if (el.offsetTop <= scrollY) {
+          currentSlug = el.id;
+        }
+      }
       if (currentSlug) setActive(currentSlug);
     }
     initScrollspy();
 
-    document.querySelectorAll<HTMLAnchorElement>(".toc-link, .mobile-toc-link").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const slug = link.dataset.slug;
-        if (!slug) return;
-        const target = document.getElementById(slug);
-        if (target) { target.scrollIntoView({ behavior: "smooth" }); history.replaceState(null, "", `#${slug}`); }
+    document
+      .querySelectorAll<HTMLAnchorElement>(".toc-link, .mobile-toc-link")
+      .forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const slug = link.dataset.slug;
+          if (!slug) return;
+          const target = document.getElementById(slug);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+            history.replaceState(null, "", `#${slug}`);
+          }
+        });
       });
-    });
 
     const tocBtn = document.getElementById("mobile-toc-btn");
     const tocModal = document.getElementById("mobile-toc-modal");
     const tocOverlay = document.getElementById("mobile-toc-overlay");
     const tocClose = document.getElementById("mobile-toc-close");
-    const mobileTocLinks = document.querySelectorAll<HTMLAnchorElement>(".mobile-toc-link");
-    function openTocModal() { tocModal?.classList.remove("hidden"); document.body.style.overflow = "hidden"; }
-    function closeTocModal() { tocModal?.classList.add("hidden"); document.body.style.overflow = ""; }
+    const mobileTocLinks =
+      document.querySelectorAll<HTMLAnchorElement>(".mobile-toc-link");
+    function openTocModal() {
+      tocModal?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function closeTocModal() {
+      tocModal?.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
     tocBtn?.addEventListener("click", openTocModal);
     tocOverlay?.addEventListener("click", closeTocModal);
     tocClose?.addEventListener("click", closeTocModal);
-    mobileTocLinks.forEach((link) => { link.addEventListener("click", closeTocModal); });
+    mobileTocLinks.forEach((link) => {
+      link.addEventListener("click", closeTocModal);
+    });
 
     const article = document.getElementById("article-content");
     if (article) {
@@ -347,20 +433,34 @@ const articleJsonLd = {
       const sections: Node[][] = [];
       let current: Node[] = [];
       children.forEach((node) => {
-        if (node instanceof HTMLElement && node.tagName === "H2") { if (current.length > 0) { sections.push(current); } current = [node]; }
-        else { current.push(node); }
+        if (node instanceof HTMLElement && node.tagName === "H2") {
+          if (current.length > 0) {
+            sections.push(current);
+          }
+          current = [node];
+        } else {
+          current.push(node);
+        }
       });
-      if (current.length > 0) { sections.push(current); }
+      if (current.length > 0) {
+        sections.push(current);
+      }
       article.innerHTML = "";
       article.classList.remove("gap-2");
       article.classList.add("gap-8");
       sections.forEach((nodes) => {
-        const hasContent = nodes.some((node) => node instanceof HTMLElement || (node.textContent && node.textContent.trim() !== ""));
+        const hasContent = nodes.some(
+          (node) =>
+            node instanceof HTMLElement ||
+            (node.textContent && node.textContent.trim() !== ""),
+        );
         if (!hasContent) return;
         const card = document.createElement("div");
-        card.className = "rounded-2xl bg-card text-card-foreground shadow-md overflow-hidden";
+        card.className =
+          "rounded-2xl bg-card text-card-foreground shadow-md overflow-hidden";
         const cardContent = document.createElement("div");
-        cardContent.className = "p-6 flex flex-col gap-2 min-w-0 overflow-hidden";
+        cardContent.className =
+          "p-6 flex flex-col gap-2 min-w-0 overflow-hidden";
         nodes.forEach((node) => cardContent.appendChild(node));
         card.appendChild(cardContent);
         article.appendChild(card);
@@ -379,8 +479,14 @@ const articleJsonLd = {
       btn.className = "code-copy-btn";
       btn.innerHTML = copyIcon;
       btn.addEventListener("click", () => {
-        const code = pre.querySelector("code")?.textContent || pre.textContent || "";
-        navigator.clipboard.writeText(code.trim()).then(() => { btn.innerHTML = checkIcon; setTimeout(() => { btn.innerHTML = copyIcon; }, 2000); });
+        const code =
+          pre.querySelector("code")?.textContent || pre.textContent || "";
+        navigator.clipboard.writeText(code.trim()).then(() => {
+          btn.innerHTML = checkIcon;
+          setTimeout(() => {
+            btn.innerHTML = copyIcon;
+          }, 2000);
+        });
       });
       wrapper.appendChild(btn);
       const codeEl = pre.querySelector("code") || pre;
@@ -390,74 +496,374 @@ const articleJsonLd = {
         const expandBtn = document.createElement("button");
         expandBtn.className = "code-expand-btn";
         expandBtn.textContent = `View all (${lineCount} lines)`;
-        expandBtn.addEventListener("click", () => { wrapper.classList.remove("code-collapsed"); expandBtn.remove(); });
+        expandBtn.addEventListener("click", () => {
+          wrapper.classList.remove("code-collapsed");
+          expandBtn.remove();
+        });
         pre.appendChild(expandBtn);
       }
     });
   </script>
 
   <style>
-    .toc-active { color: var(--theme-primary) !important; background: var(--theme-primary-10); font-weight: 600; }
-    article :global(h2), article :global(h3), article :global(h4) { scroll-margin-top: 6rem; }
-    article :global(h2) { color: var(--foreground); }
-    article :global(h2), article :global(h3), article :global(h4) { display: flex; align-items: center; gap: 0.375rem; }
-    article :global(h2) { margin-top: 0; margin-bottom: 0.75rem; }
-    article :global(h3) { margin-top: 1.75rem; margin-bottom: 0.25rem; }
-    article :global(h2 + h3) { margin-top: 0.25rem; }
-    article :global(h4) { margin-top: 0.5rem; padding-top: 1rem; border-top: 1px rgb(233, 233, 233) solid; font-weight: 700; }
-    article :global(h2 svg) { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
-    article :global(h3 svg) { width: 1.375rem; height: 1.375rem; flex-shrink: 0; }
-    article :global(h4 svg) { width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
-    article :global(p) { margin-top: 0.25rem; margin-bottom: 0.25rem; }
-    article :global(ul) { list-style-type: disc; padding-left: 1.5rem; }
-    article :global(ol) { list-style-type: decimal; padding-left: 1.5rem; }
-    article :global(li) { margin: 0.125rem 0; padding-left: 0.25rem; }
-    article :global(li:not(:last-child)) { padding-bottom: 0.25rem; }
-    article :global(code) { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 0.875em; font-weight: 500; color: #e11d48; margin: 0 2px; padding: 0.125rem 0.375rem; background: #f3f4f6; border-radius: 0.25rem; }
-    :global(.dark) article :global(code) { color: #fb7185; background: #27272a; }
-    article :global(pre code), :global(.dark) article :global(pre code) { font-size: inherit; font-weight: inherit; color: inherit; margin: 0; padding: 0; background: none; border-radius: 0; }
-    article :global(img) { margin-top: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.75rem; }
-    :global(.dark) article :global(img) { filter: brightness(0.9); }
-    article :global(.youtube) { margin-top: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.75rem; }
-    article :global(p a:not(.official-link)) { color: var(--theme-primary); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.2s; }
-    article :global(p a:not(.official-link):hover) { opacity: 0.7; }
-    article :global(a.official-link) { display: flex; align-items: center; align-self: stretch; justify-content: center; gap: 0.25rem; padding: 0.5rem 0.75rem; margin-bottom: 0rem; font-weight: 500; color: #f6f7f9; background: #1e2227; border: 1px solid transparent; border-radius: 9999px; text-decoration: none; transition: all 0.2s; }
-    article :global(a.official-link:hover) { color: #ffffff; background: #1d1f23; }
-    :global(.dark) article :global(a.official-link) { border-color: rgba(255, 255, 255, 0.12); }
-    :global(.dark) article :global(a.official-link:hover) { border-color: rgba(255, 255, 255, 0.2); }
-    article :global(span.pricing-tag) { display: inline-flex; align-items: center; align-self: stretch; justify-content: center; padding: 0.25rem 0.75rem; margin-top: 0.5rem; margin-bottom: 0rem; font-size: 0.75rem; font-weight: 500; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 9999px; }
-    :global(.dark) article :global(span.pricing-tag) { color: #6ee7b7; background: rgba(6, 78, 59, 0.35); border-color: rgba(16, 185, 129, 0.35); }
-    article :global(span.pricing-tag.paid) { color: #d97706; background: #fffbeb; border-color: #fde68a; }
-    :global(.dark) article :global(span.pricing-tag.paid) { color: #fcd34d; background: rgba(120, 53, 15, 0.35); border-color: rgba(217, 119, 6, 0.35); }
-    article :global(span.pricing-tag.freemium) { color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
-    :global(.dark) article :global(span.pricing-tag.freemium) { color: #93c5fd; background: rgba(30, 58, 138, 0.35); border-color: rgba(59, 130, 246, 0.35); }
-    article :global(h3 span.pricing-tag) { font-size: 0.65rem; padding: 0.15rem 0.5rem; vertical-align: middle; margin-top: 0; }
-    article :global(.or-divider) { text-align: center; color: #aaa; font-size: 0.75rem; margin: 0rem 0.25rem 0rem 0.25rem; }
-    article :global(.callout) { position: relative; padding: 0.75rem 1rem 0.75rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; line-height: 1.6; margin: 0.5rem 0; overflow: hidden; }
-    article :global(.callout::before) { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
-    article :global(.callout.info) { background: #eff6ff; color: #1e40af; }
-    :global(.dark) article :global(.callout.info) { background: rgba(30, 58, 138, 0.25); color: #bfdbfe; }
-    article :global(.callout.info::before) { background: #3b82f6; }
-    article :global(.callout.warning) { background: #fff1f2; color: #9f1239; }
-    :global(.dark) article :global(.callout.warning) { background: rgba(136, 19, 55, 0.3); color: #fecdd3; }
-    article :global(.callout.warning::before) { background: #fb7185; }
-    article :global(table) { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.5rem 0; }
-    article :global(th) { text-align: left; padding: 0.625rem 0.75rem; border-bottom: 2px solid var(--color-border); font-weight: 600; color: var(--color-foreground); }
-    article :global(td) { padding: 0.625rem 0.75rem; border-bottom: 1px solid var(--color-border); color: var(--color-foreground); }
-    article :global(tr:last-child td) { border-bottom: none; }
-    article :global(p.code-title) { margin-bottom: -0.75rem; padding: 0.375rem 0.75rem; font-size: 0.75rem; color: #999; background: #282c34; border-radius: 0.75rem 0.75rem 0 0; border-bottom: 1px solid #3a3f4b; }
-    article :global(p.code-title + div.code-block-wrapper pre), article :global(p.code-title + pre) { border-radius: 0 0 0.75rem 0.75rem !important; }
-    :global(.code-block-wrapper) { position: relative; align-self: stretch; min-width: 0; overflow-x: auto; }
-    :global(.code-block-wrapper pre) { margin: 0 !important; padding: 0.75rem 3rem 0.75rem 1rem !important; background: #282c34 !important; color: #d4d4d4 !important; border-radius: 0.75rem !important; font-size: 0.85rem; overflow-x: auto; max-width: 100%; }
-    :global(.code-block-wrapper pre code) { white-space: pre; word-break: normal; overflow-wrap: normal; }
-    :global(.code-copy-btn) { position: absolute; top: 0.5rem; right: 0.75rem; display: flex; align-items: center; justify-content: center; padding: 0.375rem; color: #666; background: none; border: none; border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; }
-    :global(.code-copy-btn:hover) { color: #fff; background: #333; }
-    :global(.code-copy-btn svg) { width: 1rem; height: 1rem; }
-    :global(.code-block-wrapper.code-collapsed pre) { max-height: 16rem; overflow: hidden; }
-    :global(.code-block-wrapper.code-collapsed)::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 5rem; background: linear-gradient(transparent, #282c34); pointer-events: none; border-radius: 0 0 0.75rem 0.75rem; }
-    :global(.code-expand-btn) { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); padding: 0.375rem 1rem; background: #fff; color: #282c34; border: none; border-radius: 9999px; font-size: 0.8rem; font-weight: 500; cursor: pointer; z-index: 1; transition: background 0.2s; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
-    :global(.code-expand-btn:hover) { background: #e5e5e5; }
-    @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .animate-slide-up { animation: slide-up 0.3s ease-out; }
+    .toc-active {
+      color: var(--theme-primary) !important;
+      background: var(--theme-primary-10);
+      font-weight: 600;
+    }
+    article :global(h2),
+    article :global(h3),
+    article :global(h4) {
+      scroll-margin-top: 6rem;
+    }
+    article :global(h2) {
+      color: var(--foreground);
+    }
+    article :global(h2),
+    article :global(h3),
+    article :global(h4) {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    article :global(h2) {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+    article :global(h3) {
+      margin-top: 1.75rem;
+      margin-bottom: 0.25rem;
+    }
+    article :global(h2 + h3) {
+      margin-top: 0.25rem;
+    }
+    article :global(h4) {
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px rgb(233, 233, 233) solid;
+      font-weight: 700;
+    }
+    article :global(h2 svg) {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex-shrink: 0;
+    }
+    article :global(h3 svg) {
+      width: 1.375rem;
+      height: 1.375rem;
+      flex-shrink: 0;
+    }
+    article :global(h4 svg) {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+    article :global(p) {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    article :global(ul) {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    article :global(ol) {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+    }
+    article :global(li) {
+      margin: 0.125rem 0;
+      padding-left: 0.25rem;
+    }
+    article :global(li:not(:last-child)) {
+      padding-bottom: 0.25rem;
+    }
+    article :global(code) {
+      font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875em;
+      font-weight: 500;
+      color: #e11d48;
+      margin: 0 2px;
+      padding: 0.125rem 0.375rem;
+      background: #f3f4f6;
+      border-radius: 0.25rem;
+    }
+    :global(.dark) article :global(code) {
+      color: #fb7185;
+      background: #27272a;
+    }
+    article :global(pre code),
+    :global(.dark) article :global(pre code) {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
+    article :global(img) {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+    }
+    :global(.dark) article :global(img) {
+      filter: brightness(0.9);
+    }
+    article :global(.youtube) {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+    }
+    article :global(p a:not(.official-link)) {
+      color: var(--theme-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: opacity 0.2s;
+    }
+    article :global(p a:not(.official-link):hover) {
+      opacity: 0.7;
+    }
+    article :global(a.official-link) {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0rem;
+      font-weight: 500;
+      color: #f6f7f9;
+      background: #1e2227;
+      border: 1px solid transparent;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    article :global(a.official-link:hover) {
+      color: #ffffff;
+      background: #1d1f23;
+    }
+    :global(.dark) article :global(a.official-link) {
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    :global(.dark) article :global(a.official-link:hover) {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    article :global(span.pricing-tag) {
+      display: inline-flex;
+      align-items: center;
+      align-self: stretch;
+      justify-content: center;
+      padding: 0.25rem 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 9999px;
+    }
+    :global(.dark) article :global(span.pricing-tag) {
+      color: #6ee7b7;
+      background: rgba(6, 78, 59, 0.35);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    article :global(span.pricing-tag.paid) {
+      color: #d97706;
+      background: #fffbeb;
+      border-color: #fde68a;
+    }
+    :global(.dark) article :global(span.pricing-tag.paid) {
+      color: #fcd34d;
+      background: rgba(120, 53, 15, 0.35);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+    article :global(span.pricing-tag.freemium) {
+      color: #2563eb;
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+    :global(.dark) article :global(span.pricing-tag.freemium) {
+      color: #93c5fd;
+      background: rgba(30, 58, 138, 0.35);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+    article :global(h3 span.pricing-tag) {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      vertical-align: middle;
+      margin-top: 0;
+    }
+    article :global(.or-divider) {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.75rem;
+      margin: 0rem 0.25rem 0rem 0.25rem;
+    }
+    article :global(.callout) {
+      position: relative;
+      padding: 0.75rem 1rem 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin: 0.5rem 0;
+      overflow: hidden;
+    }
+    article :global(.callout::before) {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+    }
+    article :global(.callout.info) {
+      background: #eff6ff;
+      color: #1e40af;
+    }
+    :global(.dark) article :global(.callout.info) {
+      background: rgba(30, 58, 138, 0.25);
+      color: #bfdbfe;
+    }
+    article :global(.callout.info::before) {
+      background: #3b82f6;
+    }
+    article :global(.callout.warning) {
+      background: #fff1f2;
+      color: #9f1239;
+    }
+    :global(.dark) article :global(.callout.warning) {
+      background: rgba(136, 19, 55, 0.3);
+      color: #fecdd3;
+    }
+    article :global(.callout.warning::before) {
+      background: #fb7185;
+    }
+    article :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+    article :global(th) {
+      text-align: left;
+      padding: 0.625rem 0.75rem;
+      border-bottom: 2px solid var(--color-border);
+      font-weight: 600;
+      color: var(--color-foreground);
+    }
+    article :global(td) {
+      padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-foreground);
+    }
+    article :global(tr:last-child td) {
+      border-bottom: none;
+    }
+    article :global(p.code-title) {
+      margin-bottom: -0.75rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+      color: #999;
+      background: #282c34;
+      border-radius: 0.75rem 0.75rem 0 0;
+      border-bottom: 1px solid #3a3f4b;
+    }
+    article :global(p.code-title + div.code-block-wrapper pre),
+    article :global(p.code-title + pre) {
+      border-radius: 0 0 0.75rem 0.75rem !important;
+    }
+    :global(.code-block-wrapper) {
+      position: relative;
+      align-self: stretch;
+      min-width: 0;
+      overflow-x: auto;
+    }
+    :global(.code-block-wrapper pre) {
+      margin: 0 !important;
+      padding: 0.75rem 3rem 0.75rem 1rem !important;
+      background: #282c34 !important;
+      color: #d4d4d4 !important;
+      border-radius: 0.75rem !important;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    :global(.code-block-wrapper pre code) {
+      white-space: pre;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+    :global(.code-copy-btn) {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.375rem;
+      color: #666;
+      background: none;
+      border: none;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    :global(.code-copy-btn:hover) {
+      color: #fff;
+      background: #333;
+    }
+    :global(.code-copy-btn svg) {
+      width: 1rem;
+      height: 1rem;
+    }
+    :global(.code-block-wrapper.code-collapsed pre) {
+      max-height: 16rem;
+      overflow: hidden;
+    }
+    :global(.code-block-wrapper.code-collapsed)::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5rem;
+      background: linear-gradient(transparent, #282c34);
+      pointer-events: none;
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+    :global(.code-expand-btn) {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.375rem 1rem;
+      background: #fff;
+      color: #282c34;
+      border: none;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1;
+      transition: background 0.2s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    :global(.code-expand-btn:hover) {
+      background: #e5e5e5;
+    }
+    @keyframes slide-up {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-up {
+      animation: slide-up 0.3s ease-out;
+    }
   </style>
 </BaseLayout>
