@@ -10,16 +10,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SocialLinksLite } from "@/components/data/social";
 import { ActionBtnLinks } from "@/components/data/actionBtn";
 import {
-  profileData,
   profileDataZh,
   profileDataEn,
   ProfileCardModal,
 } from "@/components/data/profile";
+import {
+  certifications,
+  issuerLabels,
+  issuerOrder,
+  type IssuerKey,
+} from "@/components/data/certifications";
 import { Image } from "astro:assets";
 import myHeadImg from "@/assets/imgs/index/myHead.webp";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 import { resolveCollectionImages } from "@/lib/resolve-image";
+import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
 
 interface Props {
   locale?: Locale;
@@ -57,6 +63,26 @@ const sortedProjects = allProjects.sort((a, b) => {
 const awardProjects = allProjects
   .filter((project) => project.data.scores && project.data.scores.length > 0)
   .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+
+const ANTHROPIC_PREVIEW_COUNT = 6;
+
+const certGroups = issuerOrder
+  .map((issuer) => ({
+    issuer,
+    items: certifications
+      .filter((c) => c.issuer === issuer)
+      .sort((a, b) => b.issuedDate.localeCompare(a.issuedDate)),
+  }))
+  .filter((group) => group.items.length > 0);
+
+function formatIssuedDate(isoYearMonth: string, loc: Locale): string {
+  const [y, m] = isoYearMonth.split("-").map(Number);
+  const date = new Date(y, (m || 1) - 1);
+  return date.toLocaleDateString(loc === "en" ? "en-US" : "zh-TW", {
+    year: "numeric",
+    month: "long",
+  });
+}
 ---
 
 <BaseLayout
@@ -319,12 +345,126 @@ const awardProjects = allProjects
                           "{count}",
                           String(awardProjects.length),
                         )}
+                        <CaretDownIcon className="size-4" />
                       </Button>
                     </div>
                   )}
                 </Fragment>
               )
             }
+          </div>
+
+          <!-- 資格認證 -->
+          <div class="grid gap-4">
+            <h2 class="text-3xl font-bold">{t.about.certifications}</h2>
+            <div class="space-y-10">
+              {
+                certGroups.map((group) => {
+                  const label = issuerLabels[group.issuer as IssuerKey][locale];
+                  const total = group.items.length;
+                  const needsExpand =
+                    group.issuer === "anthropic" &&
+                    total > ANTHROPIC_PREVIEW_COUNT;
+                  const preview = needsExpand
+                    ? group.items.slice(0, ANTHROPIC_PREVIEW_COUNT)
+                    : group.items;
+                  const hidden = needsExpand
+                    ? group.items.slice(ANTHROPIC_PREVIEW_COUNT)
+                    : [];
+                  return (
+                    <div>
+                      <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
+                        <h3 class="text-xl font-bold">{label}</h3>
+                        <span class="text-sm text-muted-foreground">
+                          {t.about.certificationsCount.replace(
+                            "{count}",
+                            String(total),
+                          )}
+                        </span>
+                      </div>
+                      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {preview.map((cert) => (
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group block h-full"
+                          >
+                            <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary) hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                              <CardContent className="flex flex-col h-full gap-3 p-4">
+                                <p class="text-sm text-muted-foreground">
+                                  {formatIssuedDate(cert.issuedDate, locale)}
+                                </p>
+                                <p class="font-bold text-foreground transition-colors group-hover:text-(--theme-primary)">
+                                  {cert.name}
+                                </p>
+                                {cert.skills[locale].length > 0 && (
+                                  <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
+                                    {cert.skills[locale].map((skill) => (
+                                      <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                                        {skill}
+                                      </span>
+                                    ))}
+                                  </div>
+                                )}
+                              </CardContent>
+                            </Card>
+                          </a>
+                        ))}
+                      </div>
+                      {needsExpand && (
+                        <div data-expand-section class="mt-4">
+                          <div class="hidden" data-expand-content>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                              {hidden.map((cert) => (
+                                <a
+                                  href={cert.credentialUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  class="group block h-full"
+                                >
+                                  <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary)">
+                                    <CardContent className="flex flex-col h-full gap-3 p-4">
+                                      <p class="text-sm text-muted-foreground">
+                                        {formatIssuedDate(
+                                          cert.issuedDate,
+                                          locale,
+                                        )}
+                                      </p>
+                                      <p class="font-bold text-foreground transition-colors group-hover:text-(--theme-primary)">
+                                        {cert.name}
+                                      </p>
+                                      {cert.skills[locale].length > 0 && (
+                                        <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
+                                          {cert.skills[locale].map((skill) => (
+                                            <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                                              {skill}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </CardContent>
+                                  </Card>
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                          <div class="mt-4 flex justify-center">
+                            <Button variant="outline" data-expand-btn>
+                              {t.about.showAllCertifications.replace(
+                                "{count}",
+                                String(total),
+                              )}
+                              <CaretDownIcon className="size-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })
+              }
+            </div>
           </div>
         </div>
       </section>

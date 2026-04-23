@@ -81,6 +81,9 @@ const en: typeof zhHant = {
     projectWorks: "Projects",
     awards: "Awards",
     noAwards: "No awards recorded yet",
+    certifications: "Certifications",
+    certificationsCount: "{count} certifications",
+    showAllCertifications: "Show all {count}",
   },
 
   // Articles listing page

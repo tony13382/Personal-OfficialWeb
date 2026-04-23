@@ -75,6 +75,9 @@ export default {
     projectWorks: "專案作品",
     awards: "得獎紀錄",
     noAwards: "目前沒有得獎紀錄",
+    certifications: "資格認證",
+    certificationsCount: "{count} 張認證",
+    showAllCertifications: "展開全部 {count} 張",
   },
 
   // Articles listing page
