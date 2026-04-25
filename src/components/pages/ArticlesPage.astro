@@ -6,6 +6,14 @@ import { ProfileCardModal, profileData } from "@/components/data/profile";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import Icon from "@/components/Icon.astro";
 import ArticleCard from "@/components/articles/ArticleCard.astro";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 import { absolutize, buildItemListJsonLd } from "@/lib/structured-data";
 import { themes } from "@/lib/themes";
@@ -17,6 +25,8 @@ interface Props {
 const { locale = "zh-Hant" } = Astro.props;
 const t = useTranslations(locale);
 
+const PAGE_SIZE = 12;
+
 const allPosts = await getCollection("articles");
 const localePosts = filterByLocale(allPosts, locale);
 const sortedPosts = localePosts.sort((a, b) => {
@@ -25,17 +35,21 @@ const sortedPosts = localePosts.sort((a, b) => {
   return b.data.date.getTime() - a.data.date.getTime();
 });
 
+const totalPages = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
+const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
 const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
 const tabs = [
   { key: "all", label: t.articles.allLabel },
   ...categories.map((c) => ({ key: c, label: c })),
 ];
 
-const INITIAL_LIMIT = 12;
+const localePrefix = locale === "en" ? "/en" : "";
+const pageQuery = (page: number) => `?p=${page}`;
 
 const siteUrl =
   Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
-const listUrl = `${siteUrl}${locale === "en" ? "/en" : ""}/articles/`;
+const listUrl = `${siteUrl}${localePrefix}/articles/`;
 
 const articlesItemList = buildItemListJsonLd({
   name: t.articles.heading,
@@ -46,7 +60,7 @@ const articlesItemList = buildItemListJsonLd({
   authorId: `${siteUrl}/#person`,
   items: sortedPosts.map((post) => ({
     type: "BlogPosting" as const,
-    url: `${siteUrl}${locale === "en" ? "/en" : ""}/articles/${post.slug}/`,
+    url: `${siteUrl}${localePrefix}/articles/${post.slug}/`,
     name: post.data.title,
     description: post.data.description,
     ...(post.data.cover ? { image: absolutize(siteUrl, post.data.cover) } : {}),
@@ -100,7 +114,7 @@ const articlesItemList = buildItemListJsonLd({
       </div>
     </section>
 
-    <section class="relative">
+    <section class="relative" data-articles-section>
       <div
         class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-primary-5)] to-transparent"
       >
@@ -131,32 +145,21 @@ const articlesItemList = buildItemListJsonLd({
               data-card-grid
             >
               {
-                sortedPosts.map((post, index) => (
-                  <ArticleCard
-                    post={post}
-                    locale={locale}
-                    data-card
-                    data-category={post.data.category}
-                    data-index={index}
-                  />
-                ))
+                sortedPosts.map((post, index) => {
+                  const cardPage = Math.floor(index / PAGE_SIZE) + 1;
+                  return (
+                    <ArticleCard
+                      post={post}
+                      locale={locale}
+                      data-card
+                      data-category={post.data.category}
+                      data-page={cardPage}
+                      class={cardPage === 1 ? "" : "hidden"}
+                    />
+                  );
+                })
               }
             </div>
-
-            {
-              sortedPosts.length > INITIAL_LIMIT && (
-                <button
-                  type="button"
-                  class="mt-6 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-full transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
-                  data-expand-btn
-                >
-                  {t.articles.showMoreCount.replace(
-                    "{count}",
-                    String(sortedPosts.length),
-                  )}
-                </button>
-              )
-            }
 
             <div class="hidden text-center py-12" data-empty-state>
               <Icon
@@ -167,6 +170,55 @@ const articlesItemList = buildItemListJsonLd({
                 {t.articles.noArticlesInCategory}
               </p>
             </div>
+
+            {
+              totalPages > 1 && (
+                <Pagination className="mt-10" data-pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href={pageQuery(1)}
+                        data-pagination-prev
+                        data-disabled="true"
+                        aria-label={t.articles.prevPage}
+                        aria-disabled="true"
+                      >
+                        <span>{t.articles.prevPage}</span>
+                      </PaginationPrevious>
+                    </PaginationItem>
+
+                    {pageNumbers.map((p) => (
+                      <PaginationItem>
+                        <PaginationLink
+                          href={pageQuery(p)}
+                          data-pagination-link
+                          data-page={p}
+                          data-active={String(p === 1)}
+                          aria-current={p === 1 ? "page" : undefined}
+                          aria-label={t.articles.pageLabel.replace(
+                            "{page}",
+                            String(p),
+                          )}
+                        >
+                          {p}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+
+                    <PaginationItem>
+                      <PaginationNext
+                        href={pageQuery(2)}
+                        data-pagination-next
+                        data-disabled={String(totalPages <= 1)}
+                        aria-label={t.articles.nextPage}
+                      >
+                        <span>{t.articles.nextPage}</span>
+                      </PaginationNext>
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              )
+            }
           </div>
 
           {
@@ -196,6 +248,16 @@ const articlesItemList = buildItemListJsonLd({
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    [data-pagination-link][data-active="true"] {
+      border-width: 1px;
+      border-color: hsl(var(--input));
+      background-color: hsl(var(--background));
+    }
+    [data-pagination-prev][data-disabled="true"],
+    [data-pagination-next][data-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.4;
     }
   </style>
 
@@ -254,47 +316,91 @@ const articlesItemList = buildItemListJsonLd({
     });
   </script>
 
-  <script is:inline define:vars={{ INITIAL_LIMIT }}>
+  <script is:inline define:vars={{ totalPages: totalPages }}>
     (function () {
       const buttons = Array.from(
         document.querySelectorAll("[data-filter-btn]"),
       );
       const cards = Array.from(document.querySelectorAll("[data-card]"));
-      const expandBtn = document.querySelector("[data-expand-btn]");
+      const pagination = document.querySelector("[data-pagination]");
+      const pageLinks = Array.from(
+        document.querySelectorAll("[data-pagination-link]"),
+      );
+      const prevLink = document.querySelector("[data-pagination-prev]");
+      const nextLink = document.querySelector("[data-pagination-next]");
       const emptyState = document.querySelector("[data-empty-state]");
       const grid = document.querySelector("[data-card-grid]");
+      const section = document.querySelector("[data-articles-section]");
 
       let activeCategory = "all";
-      let expanded = false;
+      let activePage = readPageFromURL();
 
-      function applyFilter() {
-        let visibleCount = 0;
+      function readPageFromURL() {
+        const raw = new URLSearchParams(window.location.search).get("p");
+        const num = Number(raw);
+        if (Number.isInteger(num) && num >= 1 && num <= totalPages) return num;
+        return 1;
+      }
+
+      function buildHref(page) {
+        const url = new URL(window.location.href);
+        if (page === 1) url.searchParams.delete("p");
+        else url.searchParams.set("p", String(page));
+        return url.pathname + (url.search || "") + url.hash;
+      }
+
+      function render() {
         let matchCount = 0;
 
         cards.forEach((card) => {
           const cat = card.getAttribute("data-category");
+          const cardPage = Number(card.getAttribute("data-page"));
           const matches = activeCategory === "all" || cat === activeCategory;
           if (!matches) {
             card.classList.add("hidden");
             return;
           }
           matchCount++;
-          const overLimit =
-            activeCategory === "all" &&
-            !expanded &&
-            visibleCount >= INITIAL_LIMIT;
-          if (overLimit) {
+          if (activeCategory === "all" && cardPage !== activePage) {
             card.classList.add("hidden");
           } else {
             card.classList.remove("hidden");
-            visibleCount++;
           }
         });
 
-        if (expandBtn) {
-          const showExpand =
-            activeCategory === "all" && !expanded && matchCount > INITIAL_LIMIT;
-          expandBtn.classList.toggle("hidden", !showExpand);
+        if (pagination) {
+          pagination.classList.toggle("hidden", activeCategory !== "all");
+        }
+
+        pageLinks.forEach((link) => {
+          const page = Number(link.getAttribute("data-page"));
+          const isActive = page === activePage;
+          link.setAttribute("data-active", String(isActive));
+          if (isActive) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+          link.setAttribute("href", buildHref(page));
+        });
+
+        if (prevLink) {
+          const disabled = activePage <= 1;
+          prevLink.setAttribute("data-disabled", String(disabled));
+          prevLink.setAttribute(
+            "href",
+            buildHref(Math.max(1, activePage - 1)),
+          );
+          if (disabled) prevLink.setAttribute("aria-disabled", "true");
+          else prevLink.removeAttribute("aria-disabled");
+        }
+
+        if (nextLink) {
+          const disabled = activePage >= totalPages;
+          nextLink.setAttribute("data-disabled", String(disabled));
+          nextLink.setAttribute(
+            "href",
+            buildHref(Math.min(totalPages, activePage + 1)),
+          );
+          if (disabled) nextLink.setAttribute("aria-disabled", "true");
+          else nextLink.removeAttribute("aria-disabled");
         }
 
         if (emptyState && grid) {
@@ -304,10 +410,28 @@ const articlesItemList = buildItemListJsonLd({
         }
       }
 
-      buttons.forEach((btn) => {
-        const isActive = btn.getAttribute("data-category") === activeCategory;
-        btn.setAttribute("data-active", String(isActive));
+      function goToPage(page, options) {
+        const opts = options || {};
+        const next = Math.min(Math.max(1, page), totalPages);
+        if (next === activePage && !opts.force) return;
+        activePage = next;
+        if (opts.updateHistory !== false) {
+          const href = buildHref(next);
+          window.history.pushState({ p: next }, "", href);
+        }
+        render();
+        if (opts.scroll && section) {
+          const top =
+            section.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }
 
+      buttons.forEach((btn) => {
+        btn.setAttribute(
+          "data-active",
+          String(btn.getAttribute("data-category") === activeCategory),
+        );
         btn.addEventListener("click", () => {
           const next = btn.getAttribute("data-category");
           if (next === activeCategory) return;
@@ -318,18 +442,40 @@ const articlesItemList = buildItemListJsonLd({
               String(b.getAttribute("data-category") === activeCategory),
             );
           });
-          applyFilter();
+          render();
         });
       });
 
-      if (expandBtn) {
-        expandBtn.addEventListener("click", () => {
-          expanded = true;
-          applyFilter();
+      pageLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const page = Number(link.getAttribute("data-page"));
+          goToPage(page, { scroll: true });
+        });
+      });
+
+      if (prevLink) {
+        prevLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (prevLink.getAttribute("data-disabled") === "true") return;
+          goToPage(activePage - 1, { scroll: true });
         });
       }
 
-      applyFilter();
+      if (nextLink) {
+        nextLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (nextLink.getAttribute("data-disabled") === "true") return;
+          goToPage(activePage + 1, { scroll: true });
+        });
+      }
+
+      window.addEventListener("popstate", () => {
+        activePage = readPageFromURL();
+        render();
+      });
+
+      render();
     })();
   </script>
 </BaseLayout>

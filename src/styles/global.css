@@ -182,16 +182,18 @@
   @apply max-w-full h-auto;
 }
 
-h2 {
-  @apply text-2xl font-bold
-}
+@layer base {
+  h2 {
+    @apply text-2xl font-bold;
+  }
 
-h3 {
-  @apply text-lg font-bold
-}
+  h3 {
+    @apply text-lg font-bold;
+  }
 
-ul {
-  @apply list-disc ps-5 space-y-1.5
+  ul {
+    @apply list-disc ps-5 space-y-1.5;
+  }
 }
 /* Sheet Animations */
 
