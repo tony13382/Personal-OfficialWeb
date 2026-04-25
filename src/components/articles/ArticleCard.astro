@@ -59,14 +59,14 @@ const isRecentlyUpdated = post.data.updatedDate
       >
         {post.data.description}
       </p>
-      <div class="flex items-center gap-2 flex-wrap mt-auto pt-2 border-t">
-        <div class="flex-1">
+      <div class="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t">
+        <div class="flex-1 flex items-center gap-2">
           <span class="text-sm text-[var(--theme-primary)]">
             {post.data.category}
           </span>
           {
             isRecentlyUpdated && (
-              <Badge variant="secondary" className="text-[10px] px-2 py-0">
+              <Badge variant="outline" className="text-[10px] px-2 py-0">
                 {updatedLabel}
               </Badge>
             )
