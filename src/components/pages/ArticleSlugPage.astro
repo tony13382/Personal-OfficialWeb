@@ -250,10 +250,10 @@ const articleJsonLd = {
         {
           relatedArticles.length > 0 && (
             <div class="mt-12 grid gap-6">
-              <h2 class="text-2xl font-bold text-foreground">
-                {t.articles.youMightLike}
+              <h2 class="text-center text-2xl font-bold text-foreground">
+                ♡ {t.articles.youMightLike} ♡
               </h2>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 ">
                 {relatedArticles.map((related: any) => (
                   <ArticleCard post={related} locale={locale} />
                 ))}

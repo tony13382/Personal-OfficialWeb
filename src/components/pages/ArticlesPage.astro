@@ -2,15 +2,13 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import {
-  ProfileCardModal,
-  profileData,
-} from "@/components/data/profile";
+import { ProfileCardModal, profileData } from "@/components/data/profile";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import Icon from "@/components/Icon.astro";
 import ArticleCard from "@/components/articles/ArticleCard.astro";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 import { absolutize, buildItemListJsonLd } from "@/lib/structured-data";
+import { themes } from "@/lib/themes";
 
 interface Props {
   locale?: Locale;
@@ -28,6 +26,12 @@ const sortedPosts = localePosts.sort((a, b) => {
 });
 
 const categories = [...new Set(sortedPosts.map((p) => p.data.category))];
+const tabs = [
+  { key: "all", label: t.articles.allLabel },
+  ...categories.map((c) => ({ key: c, label: c })),
+];
+
+const INITIAL_LIMIT = 12;
 
 const siteUrl =
   Astro.site?.toString().replace(/\/$/, "") || "https://lumakes.com";
@@ -45,9 +49,7 @@ const articlesItemList = buildItemListJsonLd({
     url: `${siteUrl}${locale === "en" ? "/en" : ""}/articles/${post.slug}/`,
     name: post.data.title,
     description: post.data.description,
-    ...(post.data.cover
-      ? { image: absolutize(siteUrl, post.data.cover) }
-      : {}),
+    ...(post.data.cover ? { image: absolutize(siteUrl, post.data.cover) } : {}),
     datePublished: post.data.date.toISOString(),
     ...(post.data.updatedDate
       ? { dateModified: post.data.updatedDate.toISOString() }
@@ -61,6 +63,8 @@ const articlesItemList = buildItemListJsonLd({
   description={t.articles.description}
   headerType="main"
   locale={locale}
+  themeColor={themes.pink.primary}
+  themeColorDark={themes.pink.darkPrimary}
   pageJsonLd={articlesItemList}
 >
   <div class="min-h-screen pt-20">
@@ -88,19 +92,6 @@ const articlesItemList = buildItemListJsonLd({
           >
             {t.articles.subtitle}
           </p>
-          <div class="fade-in flex flex-wrap justify-center gap-2 mt-8">
-            {
-              categories.map((category) => (
-                <a
-                  href={`#${category}`}
-                  class="px-4 py-1.5 text-sm font-medium text-muted-foreground bg-card border border-border rounded-full no-underline transition-all hover:border-[var(--theme-primary)] hover:text-[var(--theme-primary)] hover:shadow-sm"
-                  data-category-link
-                >
-                  {category}
-                </a>
-              ))
-            }
-          </div>
         </div>
       </div>
       <div
@@ -116,42 +107,66 @@ const articlesItemList = buildItemListJsonLd({
       </div>
       <div class="container mx-auto px-4 py-20 md:py-32 relative">
         <div class="max-w-6xl mx-auto">
-          <div class="fade-in space-y-4">
+          <div
+            class="fade-in flex flex-wrap justify-center gap-2 mb-10"
+            data-filter-bar
+          >
             {
-              categories.map((category) => {
-                const categoryPosts = sortedPosts.filter(
-                  (p) => p.data.category === category,
-                );
-                return (
-                  <div class="mb-12 scroll-mt-24" id={category}>
-                    <h2 class="text-lg font-bold text-muted-foreground mb-3 mt-0">
-                      {category}
-                    </h2>
-                    <div
-                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-                      data-category-grid
-                    >
-                      {categoryPosts.map((post, index) => (
-                        <ArticleCard
-                          post={post}
-                          locale={locale}
-                          class={index >= 6 ? "hidden" : ""}
-                          data-card-index={index}
-                        />
-                      ))}
-                    </div>
-                    {categoryPosts.length > 6 && (
-                      <button
-                        class="mt-4 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-full transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
-                        data-expand-btn
-                      >
-                        {t.articles.showMoreCount.replace('{count}', String(categoryPosts.length))}
-                      </button>
-                    )}
-                  </div>
-                );
-              })
+              tabs.map((tab) => (
+                <button
+                  type="button"
+                  data-filter-btn
+                  data-category={tab.key}
+                  class="px-4 py-1.5 text-sm font-medium rounded-full border transition-all cursor-pointer data-[active=true]:bg-[var(--theme-primary)] data-[active=true]:text-white data-[active=true]:border-[var(--theme-primary)] data-[active=false]:text-muted-foreground data-[active=false]:bg-card data-[active=false]:border-border data-[active=false]:hover:border-[var(--theme-primary)] data-[active=false]:hover:text-[var(--theme-primary)] data-[active=false]:hover:shadow-sm"
+                >
+                  {tab.label}
+                </button>
+              ))
             }
+          </div>
+
+          <div class="fade-in">
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              data-card-grid
+            >
+              {
+                sortedPosts.map((post, index) => (
+                  <ArticleCard
+                    post={post}
+                    locale={locale}
+                    data-card
+                    data-category={post.data.category}
+                    data-index={index}
+                  />
+                ))
+              }
+            </div>
+
+            {
+              sortedPosts.length > INITIAL_LIMIT && (
+                <button
+                  type="button"
+                  class="mt-6 w-full py-2.5 text-sm text-muted-foreground hover:text-foreground bg-card border border-border rounded-full transition-all cursor-pointer hover:shadow-sm hover:border-foreground/20"
+                  data-expand-btn
+                >
+                  {t.articles.showMoreCount.replace(
+                    "{count}",
+                    String(sortedPosts.length),
+                  )}
+                </button>
+              )
+            }
+
+            <div class="hidden text-center py-12" data-empty-state>
+              <Icon
+                name="toolbox"
+                class="size-16 mx-auto mb-4 text-muted-foreground/50"
+              />
+              <p class="text-muted-foreground">
+                {t.articles.noArticlesInCategory}
+              </p>
+            </div>
           </div>
 
           {
@@ -239,26 +254,82 @@ const articlesItemList = buildItemListJsonLd({
     });
   </script>
 
-  <script>
-    document
-      .querySelectorAll<HTMLAnchorElement>("[data-category-link]")
-      .forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const id = link.getAttribute("href")!.slice(1);
-          const target = document.getElementById(id);
-          target?.scrollIntoView({ behavior: "smooth" });
+  <script is:inline define:vars={{ INITIAL_LIMIT }}>
+    (function () {
+      const buttons = Array.from(
+        document.querySelectorAll("[data-filter-btn]"),
+      );
+      const cards = Array.from(document.querySelectorAll("[data-card]"));
+      const expandBtn = document.querySelector("[data-expand-btn]");
+      const emptyState = document.querySelector("[data-empty-state]");
+      const grid = document.querySelector("[data-card-grid]");
+
+      let activeCategory = "all";
+      let expanded = false;
+
+      function applyFilter() {
+        let visibleCount = 0;
+        let matchCount = 0;
+
+        cards.forEach((card) => {
+          const cat = card.getAttribute("data-category");
+          const matches = activeCategory === "all" || cat === activeCategory;
+          if (!matches) {
+            card.classList.add("hidden");
+            return;
+          }
+          matchCount++;
+          const overLimit =
+            activeCategory === "all" &&
+            !expanded &&
+            visibleCount >= INITIAL_LIMIT;
+          if (overLimit) {
+            card.classList.add("hidden");
+          } else {
+            card.classList.remove("hidden");
+            visibleCount++;
+          }
+        });
+
+        if (expandBtn) {
+          const showExpand =
+            activeCategory === "all" && !expanded && matchCount > INITIAL_LIMIT;
+          expandBtn.classList.toggle("hidden", !showExpand);
+        }
+
+        if (emptyState && grid) {
+          const isEmpty = matchCount === 0;
+          emptyState.classList.toggle("hidden", !isEmpty);
+          grid.classList.toggle("hidden", isEmpty);
+        }
+      }
+
+      buttons.forEach((btn) => {
+        const isActive = btn.getAttribute("data-category") === activeCategory;
+        btn.setAttribute("data-active", String(isActive));
+
+        btn.addEventListener("click", () => {
+          const next = btn.getAttribute("data-category");
+          if (next === activeCategory) return;
+          activeCategory = next;
+          buttons.forEach((b) => {
+            b.setAttribute(
+              "data-active",
+              String(b.getAttribute("data-category") === activeCategory),
+            );
+          });
+          applyFilter();
         });
       });
 
-    document.querySelectorAll("[data-expand-btn]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const grid = btn.previousElementSibling;
-        grid?.querySelectorAll("[data-card-index]").forEach((card) => {
-          card.classList.remove("hidden");
+      if (expandBtn) {
+        expandBtn.addEventListener("click", () => {
+          expanded = true;
+          applyFilter();
         });
-        btn.remove();
-      });
-    });
+      }
+
+      applyFilter();
+    })();
   </script>
 </BaseLayout>

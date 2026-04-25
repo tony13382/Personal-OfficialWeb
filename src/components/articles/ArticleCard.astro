@@ -14,8 +14,11 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 
 const { post, class: className, locale = "zh-Hant", ...rest } = Astro.props;
 const prefix = locale === "en" ? "/en" : "";
-const dateLocale = locale === "en" ? "en-US" : "zh-TW";
 const updatedLabel = locale === "en" ? "Updated" : "已更新";
+
+const pad = (n: number) => String(n).padStart(2, "0");
+const formatDateCompact = (d: Date) =>
+  `${pad(d.getFullYear() % 100)}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
 
 const RECENT_UPDATE_DAYS = 60;
 const isRecentlyUpdated = post.data.updatedDate
@@ -30,7 +33,7 @@ const isRecentlyUpdated = post.data.updatedDate
   {...rest}
 >
   <Card
-    className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full bg-background/80 backdrop-blur-sm"
+    className="shadow-none border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full flex flex-col bg-background/80 backdrop-blur-sm"
   >
     {
       post.data.cover && (
@@ -45,35 +48,37 @@ const isRecentlyUpdated = post.data.updatedDate
         </div>
       )
     }
-    <div class="grid gap-1.5 p-5">
-      <div class="flex items-center gap-2">
-        <time class="text-sm text-muted-foreground">
-          {
-            post.data.date.toLocaleDateString(dateLocale, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
-        </time>
-        {
-          isRecentlyUpdated && (
-            <Badge variant="secondary" className="text-[10px] px-2 py-0">
-              {updatedLabel}
-            </Badge>
-          )
-        }
-      </div>
+    <div class="flex flex-col gap-1.5 p-5 flex-1">
       <h3
         class="text-lg font-bold group-hover:text-[var(--theme-primary)] transition-colors leading-snug"
       >
         {post.data.title}
       </h3>
       <p
-        class="text-sm text-muted-foreground line-clamp-2 leading-relaxed"
+        class="mb-3 text-sm text-muted-foreground line-clamp-2 leading-relaxed"
       >
         {post.data.description}
       </p>
+      <div class="flex items-center gap-2 flex-wrap mt-auto pt-2 border-t">
+        <div class="flex-1">
+          <span class="text-sm text-[var(--theme-primary)]">
+            {post.data.category}
+          </span>
+          {
+            isRecentlyUpdated && (
+              <Badge variant="secondary" className="text-[10px] px-2 py-0">
+                {updatedLabel}
+              </Badge>
+            )
+          }
+        </div>
+        <time
+          class="text-sm text-muted-foreground tabular-nums"
+          datetime={post.data.date.toISOString()}
+        >
+          {formatDateCompact(post.data.date)}
+        </time>
+      </div>
     </div>
   </Card>
 </a>
