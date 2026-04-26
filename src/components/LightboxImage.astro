@@ -9,12 +9,13 @@ interface Props {
   class?: string;
 }
 
-const { src, alt, galleryId = "gallery", class: className = "" } = Astro.props;
+const { src, alt, galleryId, class: className = "" } = Astro.props;
+const fancyboxId = galleryId ?? `single-${crypto.randomUUID()}`;
 ---
 
 <a
   href={src.src}
-  data-fancybox={galleryId}
+  data-fancybox={fancyboxId}
   aria-label={alt}
   class:list={["block mx-auto cursor-zoom-in", className]}
 >
