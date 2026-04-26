@@ -1,7 +1,8 @@
 ---
-title: 三次重寫才搞懂：個人網站的選型跟管理流程
-description: 從 Bootstrap 手刻、Python 模板到 Astro，分享我個人網站重建三次之後定下來的框架選擇、部署方式、網域命名邏輯跟日常管理流程
+title: 三次重寫才搞懂：個人網站從建站到雙語管理的完整流程
+description: 從 Bootstrap 手刻、Python 模板到 Astro，分享我個人網站第三次重建後定下來的完整流程——選型、自動化部署、網域、Claude Code 管樣式、雙語內容流程，以及把口吻規則固化成 BRAND_VOICE 跟 skill 的方法
 date: 2026-04-13
+updatedDate: 2026-04-26
 category: 工作流程
 tags: [個人網站, Astro, Cloudflare, 靜態網站, 開發環境]
 cover: /og/articles/building-personal-website.png
@@ -12,25 +13,26 @@ seo:
 import { Image } from 'astro:assets'
 
 {/* Images */}
-import cloudflareSetup1 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-1-git.png'
-import cloudflareSetup2 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-2-repo.png'
-import cloudflareSetup3 from '@/assets/imgs/articles/building-personal-website/cloudflare-setup-3-config.png'
-import cloudflareBuildSettings from '@/assets/imgs/articles/building-personal-website/cloudflare-build-settings.png'
-import cloudflareCustomDomain from '@/assets/imgs/articles/building-personal-website/cloudflare-custom-domain.png'
+import cloudflareWorker1 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-1-dashboard.png'
+import cloudflareWorker2 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-2-method.png'
+import cloudflareWorker3 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-3-repo.png'
+import cloudflareWorker4 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-4-deploy.png'
+import cloudflareDomain1 from '@/assets/imgs/articles/building-personal-website/cloudflare-domain-1-list.png'
+import cloudflareDomain2 from '@/assets/imgs/articles/building-personal-website/cloudflare-domain-2-form.png'
+import githubCreate1 from '@/assets/imgs/articles/building-personal-website/github-create-1.png'
+import githubCreate2 from '@/assets/imgs/articles/building-personal-website/github-create-2.png'
 
-個人網站這件事我前後搞了三次。第一次用 Bootstrap 從頭刻，第二次自己寫 Python 腳本生成 HTML，第三次才終於停在 Astro 上。每一次重寫都不是因為前一版壞了，而是因為我對「網站該怎麼管」的理解變了——從最早把它當成作品集，到後來當成內容平台，需求完全不一樣。
+個人網站這件事我前後搞了三次。每一版都不是因為前一版壞了，是因為我對「網站該怎麼存在」的理解變了。三次走下來才搞懂：選工具不難，難的是建立一套讓寫內容變輕的流程。
 
-這篇重點不是技術選型清單，而是三次重寫之後定下來的一套流程跟心法，以及支撐它的框架跟平台選擇。先從三個版本一路怎麼演進講起。
+| 版本 | 技術 | 定位 | 卡在哪 |
+|---|---|---|---|
+| v1 | Bootstrap 一頁式靜態站 | 履歷連結 | 內容跟結構綁死，改版型要動每張卡片 |
+| v2 | Python 腳本生 HTML | 作品集 | 模板難改，圖片壓縮、路由、SEO 都得自己寫 |
+| v3 | Astro + React（現役） | 持續累積的內容平台 | — |
 
-**第一版：Bootstrap 一頁式靜態站**。當時只想要一個能放進履歷的連結，改內容靠複製貼上 HTML，換版型要動每張卡片——內容跟結構綁在一起，越疊越難維護。
+第三版的核心轉變不是換工具，是把網站定位從「放作品的單頁名片」改成「持續累積內容的平台」。重點變成——**怎麼讓寫內容這件事變得夠輕**。這篇就把這套流程從建站、部署、網域、到日常內容管理整個拆給你看，重點放在「我怎麼用 Claude Code 把日常維護壓到最低」。
 
-**第二版：Python 腳本自己生 HTML**。把每個區塊包成 class 物件再 render 出來，開始摸到「資料跟渲染分離」的概念，但模板改起來超硬，加互動元件更麻煩。所有基礎建設（圖片壓縮、路由、SEO、RSS）都得自己寫，後來花在維護生成器的時間比寫內容還多。
-
-**第三版：Astro + React，就是現在這個站**。這次的轉變不只是換工具，是把網站定位從「放作品的單頁名片」改成「持續累積內容的平台」。重點變成——**怎麼讓寫內容這件事變得夠輕**。
-
-## 框架跟部署都選在 Astro + Cloudflare
-
-### 為什麼選 Astro
+## 前置處理：選型、建 repo、初始化專案
 
 選 Astro 主要是因為它剛好踩在「內容驅動」跟「元件化」的交會點——內容用 MDX 寫，靜態部分編譯成純 HTML，真正需要互動的地方再用 React 元件包成 island 嵌進去。
 
@@ -41,9 +43,61 @@ import cloudflareCustomDomain from '@/assets/imgs/articles/building-personal-web
 - 能混合 React 互動元件
 - 內容能用 MDX 寫
 
-比較過 Next.js（功能太全、重心在 SSR、不想綁 Vercel）、Hugo（不支援 MDX，自訂元件要用 Shortcodes）、Nuxt（我 Vue 不熟），只有 Astro 四點全中。
+比較過 Next.js（功能太全、重心在 SSR、不想綁 Vercel）、Hugo（不支援 MDX，自訂元件要用 Shortcodes）、Nuxt（我 Vue 不熟），只有 Astro 四點全中。選定之後就照下面三步走，把專案的「家」先架好，後面才開始講部署。
 
-用下來真正最有感的是 **Content Collections**。每個 collection 都有 Zod schema，寫 MDX 時欄位漏填或格式錯，build 前 IDE 就紅線提醒。以 articles collection 為例：
+### 在 GitHub 建立新 repo
+
+我習慣先在 GitHub 開一個空 repo，給專案一個遠端家，後面所有自動化部署都靠這個 repo 串。到 GitHub 個人頁面，右上角點 ① **New** 開新 repo：
+
+<Image src={githubCreate1} alt="GitHub 個人頁面右上角的 New 按鈕" />
+
+接著填表單：
+
+- ② **Repository name**：直接照網站定位走，這個站就叫 `Personal-OfficialWeb`，不用再花時間想代號
+- ③ **Choose visibility**：Public 跟 Private 都行，看你想不想公開原始碼。我自己選 Public 是想順便讓原始碼當履歷一部分；如果你只把這個 repo 當部署用、不打算讓別人看，選 Private 完全沒問題
+- README、`.gitignore`、license 都先不要勾，等 Astro 初始化會自己生
+- ④ 確認沒問題，按 **Create repository**
+
+<Image src={githubCreate2} alt="GitHub Create repository 表單" />
+
+### Clone 到本地
+
+repo 建好之後 clone 到本地，這份本地副本就是後面所有開發的工作目錄：
+
+```bash
+git clone git@github.com:你的帳號/你的-repo.git
+cd 你的-repo
+```
+
+{/* TODO: Image — 本地 clone 流程 */}
+
+### Astro 初始化
+
+在 clone 下來的目錄裡跑 Astro 的官方精靈：
+
+```bash
+npm create astro@latest .
+```
+
+精靈會一路問你要不要 TypeScript、要不要裝範例模板、要不要 git init 等等，按需求挑。我選的是 TypeScript Strict、空白模板（之後自己拼）、git init 跳過（因為已經 clone 過 repo）。跑完之後目錄結構就有了，`npm run dev` 可以馬上開來看。
+
+{/* TODO: Image — Astro init CLI */}
+
+### 跟 Claude Code 討論頁面跟資料格式
+
+初始化跑完之後我不會急著手寫 schema，會先把 Claude Code 開起來討論這個站要長什麼樣。對話的重點放在三件事：
+
+- **要有哪些頁面**：首頁、文章、專案、經歷、關於——把資訊架構先列出來
+- **每個頁面要做什麼**：列表？詳情頁？篩選？互動元件？
+- **內容大致長什麼樣**：頻繁更新還是穩定？是否雙語？有沒有特殊欄位（`pin`、`updatedDate`、`cover`）？
+
+把這幾件事先講清楚，schema 才能設計得合身。直接動手寫 schema 的話常常會少欄位，後來才發現「啊我忘了 `pin` 跟 `updatedDate`」，然後又要回頭改一輪——浪費時間。
+
+跟 Claude Code 討論的好處是它會主動問「這個欄位要不要選填？」「需要支援雙語嗎？」「列表頁要怎麼排序？」這類我自己會漏掉的問題，等於免費請了一個 reviewer 幫你把資訊架構釐清。
+
+### 設定 Content Collections schema
+
+頁面跟資料格式釐清之後，就可以動手寫 schema 了。Astro 的 **Content Collections** 是它讓我留下來的功能之一——每個 collection 都有 Zod schema，寫 MDX 時欄位漏填或格式錯，build 前 IDE 就紅線提醒。以 articles collection 為例：
 
 <p class="code-title">src/content/config.ts</p>
 
@@ -62,137 +116,150 @@ const articlesCollection = defineCollection({
 })
 ```
 
-`date` 打成 `2024-13-40` 這種非法日期、或漏填 `category`，`astro dev` 當場就噴錯。以前第二版的 Python 生成器要等跑完才知道欄位錯了，現在寫的時候就擋下來。
+`date` 打成 `2024-13-40` 這種非法日期、或漏填 `category`，`astro dev` 當場就噴錯。以前 v2 的 Python 生成器要等跑完才知道欄位錯了，現在寫的時候就擋下來。
 
-加上 MDX 本身就是「可互動的內容容器」——單篇可以 import React 元件，跨文章可以用 `getCollection('articles')` 把所有 frontmatter 當陣列操作，置頂、分類、標籤全部靠欄位驅動。發新文章的成本被壓到只剩「寫一個 MDX 檔」，列表頁、標籤頁會自動更新。
+樣式這邊我搭 Tailwind CSS v4 + shadcn/ui，元件靠 React island 寫——這層日常維護後面交給 Claude Code 管，有專門一節談。
 
-### 部署也走 Cloudflare
+## 自動化部署：Cloudflare Workers 串 GitHub
 
-前兩版都跑在 GitHub Pages。兩邊對個人站都很夠用，我選遷過去主要是這幾點：
+前兩版都跑在 GitHub Pages，這版改用 Cloudflare 主要是這幾點：
 
 - **Workers 生態**（D1、KV、R2、Durable Objects）讓未來要加動態功能時資源都現成
-- **網域本來就在 Cloudflare**，Pages 綁網域同一個儀表板點一下，HTTPS 自動發
+- **網域本來就在 Cloudflare**，綁網域同一個儀表板點一下，HTTPS 自動發
 - 邊緣節點多，台灣延遲比 Vercel、Netlify 更順
 
-遷移時的第一次設定大概是三步：
+Cloudflare 已經把 Pages 收進「Workers 和 Pages」這個統一介面，新建一個應用程式四步搞定：
 
-**1. 連 Git 來源**：選「Continue with GitHub」授權 Cloudflare 讀 repo 列表。
+**1. 進 Workers 和 Pages 建立應用程式**：左側選單進「運算 → Workers 和 Pages」，右上角 ① 點 **建立應用程式**。
 
-<Image src={cloudflareSetup1} alt="Cloudflare Workers & Pages 建立頁面，選 Continue with GitHub" />
+<Image src={cloudflareWorker1} alt="Cloudflare Workers 和 Pages 儀表板，右上角的建立應用程式按鈕" />
 
-**2. 挑 repo**：下拉選擇帳號之後挑網站對應的 repo，按下一步。
+**2. 選方法**：在「Ship something new」面板挑 ② **Continue with GitHub**，授權 Cloudflare 讀你 GitHub 的 repo 列表。
 
-<Image src={cloudflareSetup2} alt="Cloudflare 選擇 GitHub repository 的畫面" />
+<Image src={cloudflareWorker2} alt="Cloudflare 選擇部署方法的面板，包含 Continue with GitHub" />
 
-**3. 填建置指令**：組建命令輸入 `npm run build`，部署命令填 `npx wrangler deploy`（走 Workers 統一流程），按「部署」就會跑第一次 build。
+**3. 挑 repo**：下拉選擇帳號之後，③ 從清單挑剛才建好的 repo（`Personal-OfficialWeb`），④ 按「下一步」。
 
-<Image src={cloudflareSetup3} alt="Cloudflare 建立應用程式時設定組建跟部署命令的畫面" />
+<Image src={cloudflareWorker3} alt="Cloudflare 從 GitHub 帳號挑 repo 的畫面" />
 
-設定好之後，後台的建置頁面長這樣——之後要調 Node 版本、輸出目錄、分支名稱都在這邊：
+**4. 填組建跟部署指令**：⑤ 組建命令輸入 `npm run build`，部署命令填 `npx wrangler deploy`（走 Workers 統一流程）。⑥ 按 **部署** 就會跑第一次 build，幾秒鐘就好。
 
-- **Framework preset**：Astro（選下去 build command 跟 output 會自動帶好）
-- **Build command**：`npm run build`
-- **Build output directory**：`dist`
-- **Node version**：用 `NODE_VERSION=20` 環境變數鎖版本
+<Image src={cloudflareWorker4} alt="Cloudflare 建立應用程式時設定組建跟部署命令的畫面" />
 
-<Image src={cloudflareBuildSettings} alt="Cloudflare Pages 後台的建置設定畫面" />
+綁完之後推 main 分支自動 build、自動部署到 edge，整個流程 1–2 分鐘。沒有 staging、沒有 preview flow，因為這就是我自己的站，有錯就改完再推一次。
 
-綁完之後推 main 分支自動 build、自動部署到 edge，整個流程 1–2 分鐘。自訂網域點一下「設定自訂網域」輸入名稱就好，CNAME 跟 HTTPS 憑證自動處理。
-
-<Image src={cloudflareCustomDomain} alt="Cloudflare Pages 自訂網域設定畫面" />
-
-### 網域也在同一個平台
+## 網域：在同一個平台買、命名走長期主義
 
 網域我走 Cloudflare Registrar 註冊，理由是「成本價」模式——多少錢就收多少錢，不會有第一年便宜、續費翻倍的陷阱，WHOIS 隱私也免費內建。其他註冊商（GoDaddy、Namecheap）比較下來都有續費漲價、介面雜亂、加購推銷這些扣分項。
 
-命名幾個原則：好念好拼、不要塞職業或領域（`xxx-designer.com` 換跑道會尷尬）、TLD 選單純的（`.com` / `.me` / `.dev`）、長度壓短避免連字號。實驗性的 side project 走子網域（`app.lumakes.com`、`lab.lumakes.com`）——**主站是身份，子站是實驗**，維護一個品牌樹就夠。
+命名幾個原則：
 
-## 現在的管理流程：Claude Code 管樣式，MDX 寫內容
+- 好念好拼，避免讓人猶豫怎麼拼
+- **不要塞職業或領域**：`xxx-designer.com` 換跑道會尷尬
+- TLD 選單純的（`.com` / `.me` / `.dev`），別追新潮 TLD
+- 長度壓短，避免連字號
 
-### 職責分離
+實驗性的 side project 走子網域（`app.lumakes.com`、`lab.lumakes.com`）——**主站是身份，子站是實驗**，維護一個品牌樹就夠。
 
-到了這一版，我慢慢摸出一個對自己最順的工作分工——**樣式跟結構用 Claude Code 管、內容用 MDX 自己寫**。
+回到部署，網域買好之後綁回 Workers Platform。在剛才那個專案的「自訂網域」分頁，① 點右上角的 **設定自訂網域**：
 
-| 類型 | 工具 | 為什麼這樣分 |
-|---|---|---|
-| 版型、元件、樣式 | Claude Code + Tailwind | 技術決策，需要對整個專案有認知，Claude 效率更高 |
-| 文章、專案、經歷的文字 | 自己用 MDX 寫 | 創作，需要個人視角跟語氣，AI 沒辦法代勞 |
+<Image src={cloudflareDomain1} alt="Cloudflare Workers 專案的自訂網域分頁，右上角設定自訂網域按鈕" />
 
-把這兩件事分開之後，我寫文章的時候不用被樣式打斷，調樣式的時候也不用切換到「寫作模式」。
+接著 ② 把網域填進去（`example.com`、`www.example.com`、`shop.example.com` 都可以），③ 按「繼續」就好。如果這個網域本來就在 Cloudflare 名下，DNS 紀錄會自動寫入；不在的話 Cloudflare 會給你一筆 CNAME 去外部 DNS 設定。HTTPS 憑證 Cloudflare 自己處理，不用碰 Let's Encrypt。
 
-### 樣式這條線：交給 Claude Code
+<Image src={cloudflareDomain2} alt="Cloudflare 新增自訂網域的表單，輸入網域並按繼續" />
 
-版型、元件、CSS 這類工作是 Claude Code 最擅長的地方。它能一次讀完整個專案的上下文，理解我用的是 Tailwind v4 不是 v3、shadcn/ui 的元件放在哪、主題變數怎麼定，改起來的一致性比我自己動手還穩。
+## 樣式管理：交給 Claude Code
 
-關鍵是要寫好 `CLAUDE.md`。我在專案根目錄放了一份，涵蓋技術棧、資料夾結構、樣式規則、常見地雷。每次開新 session，Claude 一啟動就知道這個專案在幹嘛，不用重複解釋。之前寫過一篇 [Claude Code 調教筆記](/articles/claude-code-setup)，細節都在那邊。
+到了這一版我摸出最舒服的工作分工是——**樣式跟結構用 Claude Code 管、內容自己寫**。
 
-### 內容這條線：從靈感到發佈
+樣式這條線是 Claude Code 最擅長的地方。它能一次讀完整個專案的上下文，理解我用的是 Tailwind v4 不是 v3、shadcn/ui 的元件放在哪、主題變數怎麼定，改起來的一致性比我自己動手還穩。
 
-寫文章的流程我切成四步：靈感蒐集 → 先規劃 → 再動筆 → Skill 化。
+關鍵是要寫好 `CLAUDE.md`。我在專案根目錄放了一份，涵蓋技術棧、資料夾結構、樣式規則、常見地雷、雙語創作流程。每次開新 session，Claude 一啟動就知道這個專案在幹嘛，不用重複解釋。細節我之前寫過一篇 [Claude Code 調教筆記](/articles/claude-code-setup)，這邊不重複講。
 
-**靈感蒐集：求快不求精**
+## 內容流程：從靈感到雙語上線
 
-第一步是靈感蒐集，這個階段我講求的是**快**，不是精準——有想法就要馬上記下來，格式亂、錯字多都無所謂，重點是不要讓思緒流走。我挑的工具都是那種**打開就能寫**的輕量速記軟體，不會硬逼我分類或下 tag：
+樣式外包之後，剩下的事——「寫什麼」「怎麼寫」「寫得對不對」——只能自己處理。但這不代表每篇都要從零開始重新跟 Claude 解釋規則。我把這條線拆成五步，每一步都把可重複的部分固化下來：
 
-- [Apple 備忘錄](https://support.apple.com/zh-tw/guide/notes/welcome/mac)：macOS 跟 iOS 內建，iCloud 自動同步，完全不用設定 <span class="pricing-tag">免費</span>
-- [Bear](https://bear.app/)：介面乾淨、原生支援 Markdown，從短訊速記到長文大綱都能接 <span class="pricing-tag freemium">免費使用，進階功能需訂閱</span>
-- [SimpleNote](https://simplenote.com/)：超輕量的純文字筆記，開啟速度很快，跨平台同步 <span class="pricing-tag">免費</span>
+### ① 內容發掘：求快不求精
 
-這三個共通點都一樣——**無摩擦**。靈感蒐集最怕的就是「整理感」太重，一旦要決定「這筆記該放哪個資料夾」就會卡住，想法也就跟著冷掉。
+第一步是把想法抓住。這個階段我講求的是**快**，不是精準——有念頭就要馬上記下來，格式亂、錯字多都無所謂。我挑的工具都是那種**打開就能寫**的輕量速記軟體：
 
-**先規劃、再動筆**
+- [Apple 備忘錄](https://support.apple.com/zh-tw/guide/notes/welcome/mac)：macOS 跟 iOS 內建，iCloud 自動同步（免費）
+- [Bear](https://bear.app/)：介面乾淨、原生支援 Markdown，從速記到長文大綱都能接（免費使用，進階功能需訂閱）
+- [SimpleNote](https://simplenote.com/)：超輕量純文字筆記，開啟速度快、跨平台同步（免費）
 
-每次要寫新文章，我會先跟 Claude 討論三件事——主題、slug、H2 結構。這三個確定之後，整篇的骨架就定了，剩下就是填肉。討論這一步其實很重要，它幫我把模糊的想法逼成具體的段落劃分，避免動筆之後才發現結構不對要整篇重組。
+這三個共通點都是**無摩擦**——靈感蒐集最怕的就是「整理感」太重，一旦要決定「這筆記放哪個資料夾」就會卡住，想法也跟著冷掉。
 
-**用 Skill 包起來**
+### ② 大綱規劃：先跟 Claude 對骨架
 
-我把上面的流程包成一個叫 `new-article` 的自訂 Skill。指令裡面預先寫好文章的三種類型（工具推薦型、方法論型、經驗分享型）、每種類型該怎麼結構化、可用的特殊元件（pricing tag、callout、code title）長什麼樣、口吻規範。之後我只要打 `/new-article`，Claude 就會進入「文章撰寫模式」，按照這套 SOP 走一遍。
+每次要寫新文章，我會先跟 Claude 討論三件事——主題、slug、H2 結構。這三個確定之後，整篇骨架就定了，剩下就是填肉。
 
-Skill 裡我覺得最關鍵的是「Writing Style Guide」這一節，直接把我希望 Claude 維持的口吻規則寫死：
+這步看起來瑣碎但很重要——它幫我把模糊的想法逼成具體段落劃分，避免動筆之後才發現結構不對要整篇重組。對話過程通常會碰幾次「這樣切會不會太碎？」「這個 H2 跟那個 H2 有沒有重複？」這類修正。
 
-<p class="code-title">~/.claude/skills/new-article/skill.md</p>
+### ③ 撰寫跟素材：MDX + new-article Skill
+
+骨架定下來之後就直接開 `.mdx` 檔寫。文章就是放在 `src/content/articles/zh-Hant/` 底下的單一檔案，用 Git 管版本，不接 headless CMS——對只有我一個人寫的個人站來說，CMS 是 overhead，MDX 反而最輕。
+
+我把「動筆寫」這件事包成一個自訂 Skill 叫 `new-article`。指令裡面預先寫好文章的三種類型（工具推薦型、方法論型、經驗分享型）、每種類型該怎麼結構化、可用的特殊元件（pricing tag、callout、code title）長什麼樣、SOP 順序怎麼走。之後我只要打 `/new-article`，Claude 就會進入「文章撰寫模式」，按這套規則走一遍。
+
+把這層 SOP 化之後，**我每次的產出格式都一致**，不用每篇都重新跟 Claude 溝通規則。
+
+### ④ 內容確認跟品牌意向 MD
+
+寫完之後不是直接發，會先跟 Claude 來回打磨——文字節奏、段落順序、用詞精準度。但「打磨」這件事如果每次的標準都不一樣，文章口吻就會飄。
+
+所以我額外做了一件事：**把寫作口吻、用詞偏好、開場結構模式寫成一份獨立檔案，叫 `BRAND_VOICE.md`，放在專案根目錄**。CLAUDE.md 跟所有 skill（包含 `new-article` 跟下面要講的 `translate-article`）都引用這份檔案，讓「我希望文章長什麼樣」這件事有一個唯一的真相來源。
+
+裡面大概是這種結構：
+
+<p class="code-title">BRAND_VOICE.md（節選）</p>
 
 ```md
-## Writing Style Guide
-
-- 口語化、像在跟朋友分享自己的經驗
-- 第一人稱帶入：「我自己」「我主要用」「我平常」
-- 交代選擇脈絡：「因為我同時在用 A 跟 B，所以...」
+## 寫作口吻
+- 第一人稱、口語化、像在跟朋友分享經驗
+- 不用 emoji
 - 用「跟」不用「與」
-- 不要用 emoji
 - 語尾自然收：「搞定」「方便很多」「用起來很順」
+
+## 用詞偏好
+- 避開過時口語：「最殺」改用「最精妙」「最值得留下的」
+- 帶選擇脈絡：「因為我同時在用 A 跟 B，所以...」
+
+## 文章開場模式
+- 開場列的痛點要對齊維度，能被同一個共同根源解釋
+- 第一個 H2 必為底層邏輯
+- 原則命名化（例如「先規劃、再動筆」），讀者好記
 ```
 
-另外還有一張文章類型對照表，定義「工具推薦型 / 方法論型 / 經驗分享型」各自的重點，Claude 開工前會先問我這篇是哪一種，再挑對應的骨架走。這些規則如果每次開新對話都要重講一遍太耗神，包進 Skill 之後 `/new-article` 一打進去整套規則就自動 loaded。
+確認文章的時候，我會請 Claude 對照這份檔案 review，挑出不符合的地方建議修。**規則固化在檔案裡，每次討論的標準就一致**，不用每次都重新解釋「我比較喜歡這樣寫」。
 
-把這套流程 Skill 化之後，**我每次的產出格式都一致、口吻都穩定**，不用每篇文章都重新跟 Claude 溝通規則。整個站的文章區風格能維持一致，靠的就是這個 Skill。
+### ⑤ 雙語翻譯：translate-article Skill
 
-**MDX 直接寫，不走 CMS**
+中文版定稿之後才進英文版。這個原則很重要——在中文還在反覆改的階段就建英文版，等於要兩邊同步維護，迭代會變慢。
 
-我沒有接任何 headless CMS。文章就是一個個 `.mdx` 檔案，放在 `src/content/articles/` 底下，用 Git 管版本。好處是很單純：
+中文定稿後，我用 `translate-article` skill 處理英文版。這個 skill 包含：
 
-- 寫作跟程式碼在同一個編輯器、同一個 Git 工作流裡面
-- 不用維護額外的後台服務，也不用擔心 CMS 供應商倒掉或漲價
-- 文章內容是純文字，未來要遷移到任何平台都很容易
+- 找對應的中文 mdx，建相同 slug 的英文檔
+- frontmatter 翻譯（含 category 跟 tags 的固定對照表）
+- 保留 imports、images、內部連結路徑（中英共用）
+- pricing tag、official-link、callout 等特殊元件的中英對照表
+- 翻譯時要對齊 `BRAND_VOICE.md` 的口吻——避免翻譯腔、保留第一人稱、用 em dash 對應「——」
 
-對只有我一個人寫的個人站來說，MDX 比任何 CMS 都輕，而且本身就能混進 React 元件、Astro 的 `<Image>`，需要的表達力完全夠。
+整個流程我只要打 `/translate-article` 並指定 slug，Claude 就會跑完整套流程，最後跑 build 確認頁數 +1。少數需要我介入的是「這個詞中英差異大、做了取捨」的段落，skill 結尾會主動列給我 confirm。
 
-### 發佈節奏：讓 Git 推著跑
-
-流程的最後一環是發佈。我的做法就是——**Cloudflare Pages 盯著 main 分支，推上去就自動 build 跟上線**。沒有 staging、沒有 preview flow，因為這就是我自己的站，有錯就改完再推一次，不需要複雜的部署流程。
+包成 skill 之前，我每次翻譯都要重新交代規則（不要翻譯腔、保留 class variant、內部連結別動）；包完之後，這些規則對 Claude 來說是預設行為。**這就是 skill 真正的價值——把可重複的判斷固化下來**。
 
 ## 三次重寫學到的心法
 
-三次重寫下來，我把這些經驗濃縮成幾條會推給想做個人站朋友的心法：
+把上面這套流程沉澱下來，可以濃縮成幾條：
 
-**一、定位決定一切，不是工具**。第一版當履歷、第二版當作品集、第三版當內容平台——每次「重建」不是因為舊工具壞了，是因為定位變了。先想清楚這個站對自己是什麼，再選工具。
+**一、定位決定一切，不是工具**。三次重寫的轉折點都不是「舊工具壞了」，是「我對這個站的定位變了」。先想清楚這個站對自己是什麼，再選工具。
 
-**二、內容跟結構要能分離**。第一版 HTML 手刻、第二版把樣式寫死在 Python class 裡，兩次都是敗在「換版型要動每一篇」。現在內容走 MDX、樣式走 Tailwind + 元件，兩邊可以各自演進。
+**二、把規則固化下來才能可重複**。`BRAND_VOICE.md`、`new-article` skill、`translate-article` skill——這三個都是同一個邏輯：把每次討論都會用到的判斷寫成檔案，讓下一次的起點不是零。
 
-**三、別自己重造基礎建設**。第二版我花了一堆時間寫圖片處理、路由、SEO——這些 Astro 都內建了。自造工具看起來自由，其實每一樣都在消耗寫內容的力氣。
+**三、別自己重造基礎建設**。v2 那版我花了一堆時間寫圖片處理、路由、SEO——這些 Astro 都內建了。自造工具看起來自由，每一樣都在消耗寫內容的力氣。
 
-**四、把重複的事 Skill 化**。發文章的節奏之所以能穩定，不是靠紀律，是靠 `new-article` Skill 把規則固化下來。想讓一件事持續做，要先降低它每次開始的摩擦。
+**四、小站該有小站的節奏**。沒有 staging、沒有 preview flow、push main 就上線。過度工程化反而會讓自己不想寫東西——這個站是為了累積內容存在，不是為了展示架構能力。
 
-**五、小站就該有小站的節奏**。沒有 staging、沒有 preview flow、push main 就上線。過度工程化反而會讓自己不想寫東西——這個站是為了累積內容存在，不是為了展示架構能力。
-
-這一版我大概能用很久了——因為卡住的部分不是技術，是我對「網站該怎麼存在」的理解。
+這一版我大概能用很久了。卡住的部分不是技術，是我對「網站該怎麼存在」的理解；現在這個架構已經足夠承接「持續寫」這件事，剩下的就是規律地寫下去。
