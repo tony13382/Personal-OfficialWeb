@@ -10,7 +10,7 @@ seo:
   ogImage: /og/articles/building-personal-website.png
 ---
 
-import { Image } from 'astro:assets'
+import LightboxImage from '@/components/LightboxImage.astro'
 
 {/* Images */}
 import cloudflareWorker1 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-1-dashboard.png'
@@ -51,7 +51,7 @@ With the framework decided, the next three steps set up the project's "home" bef
 
 I always start by opening an empty repo on GitHub — it gives the project a remote home, and every piece of automation downstream hangs off of it. From your GitHub profile, click ① **New** in the top-right corner:
 
-<Image src={githubCreate1} alt="The New button in the top-right of the GitHub profile page" />
+<LightboxImage src={githubCreate1} alt="The New button in the top-right of the GitHub profile page" />
 
 Then fill out the form:
 
@@ -60,7 +60,7 @@ Then fill out the form:
 - Leave README, `.gitignore`, and license unchecked — Astro's initializer will generate them
 - ④ When everything looks right, click **Create repository**
 
-<Image src={githubCreate2} alt="The GitHub Create repository form" />
+<LightboxImage src={githubCreate2} alt="The GitHub Create repository form" />
 
 ### Clone to Local
 
@@ -134,19 +134,19 @@ Cloudflare has folded Pages into a unified "Workers & Pages" surface. Creating a
 
 **1. Go to Workers & Pages and create a new application**: From the left nav, go to "Compute → Workers & Pages", and click ① **Create application** in the top-right.
 
-<Image src={cloudflareWorker1} alt="The Cloudflare Workers and Pages dashboard with the Create application button highlighted" />
+<LightboxImage src={cloudflareWorker1} alt="The Cloudflare Workers and Pages dashboard with the Create application button highlighted" />
 
 **2. Pick a method**: From the "Ship something new" panel, choose ② **Continue with GitHub** and authorize Cloudflare to read your repo list.
 
-<Image src={cloudflareWorker2} alt="The Cloudflare deployment method panel including Continue with GitHub" />
+<LightboxImage src={cloudflareWorker2} alt="The Cloudflare deployment method panel including Continue with GitHub" />
 
 **3. Pick a repo**: Choose your GitHub account from the dropdown, ③ select the repo you just created (`Personal-OfficialWeb`), and ④ click **Next**.
 
-<Image src={cloudflareWorker3} alt="Cloudflare picking a repo from a GitHub account" />
+<LightboxImage src={cloudflareWorker3} alt="Cloudflare picking a repo from a GitHub account" />
 
 **4. Fill in build and deploy commands**: ⑤ Set the build command to `npm run build` and the deploy command to `npx wrangler deploy` (the unified Workers flow). ⑥ Click **Deploy** and the first build runs in seconds.
 
-<Image src={cloudflareWorker4} alt="Cloudflare's create application screen with build and deploy commands filled in" />
+<LightboxImage src={cloudflareWorker4} alt="Cloudflare's create application screen with build and deploy commands filled in" />
 
 Once it's wired up, pushing to `main` triggers a build and an edge deploy automatically — the whole thing takes one to two minutes. No staging, no preview flow, because this is just my own site. If something's broken I just fix it and push again.
 
@@ -165,11 +165,11 @@ Experimental side projects go on subdomains (`app.lumakes.com`, `lab.lumakes.com
 
 Back to deployment — once you have the domain, bind it back to the Workers Platform. In your project's "Custom domains" tab, ① click **Set up a custom domain** in the top-right:
 
-<Image src={cloudflareDomain1} alt="A Cloudflare Workers project's Custom domains tab with the Set up a custom domain button" />
+<LightboxImage src={cloudflareDomain1} alt="A Cloudflare Workers project's Custom domains tab with the Set up a custom domain button" />
 
 Then ② enter the domain (`example.com`, `www.example.com`, `shop.example.com` — anything works) and ③ click "Continue". If the domain is already on Cloudflare, the DNS record gets written automatically; if not, Cloudflare hands you a CNAME to add to your external DNS. HTTPS certificates are handled by Cloudflare — no need to touch Let's Encrypt.
 
-<Image src={cloudflareDomain2} alt="The Cloudflare Add a custom domain form with a domain input and a Continue button" />
+<LightboxImage src={cloudflareDomain2} alt="The Cloudflare Add a custom domain form with a domain input and a Continue button" />
 
 ## Styling: Outsourced to Claude Code
 

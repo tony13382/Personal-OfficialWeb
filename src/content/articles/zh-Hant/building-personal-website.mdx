@@ -10,7 +10,7 @@ seo:
   ogImage: /og/articles/building-personal-website.png
 ---
 
-import { Image } from 'astro:assets'
+import LightboxImage from '@/components/LightboxImage.astro'
 
 {/* Images */}
 import cloudflareWorker1 from '@/assets/imgs/articles/building-personal-website/cloudflare-worker-1-dashboard.png'
@@ -49,7 +49,7 @@ import githubCreate2 from '@/assets/imgs/articles/building-personal-website/gith
 
 我習慣先在 GitHub 開一個空 repo，給專案一個遠端家，後面所有自動化部署都靠這個 repo 串。到 GitHub 個人頁面，右上角點 ① **New** 開新 repo：
 
-<Image src={githubCreate1} alt="GitHub 個人頁面右上角的 New 按鈕" />
+<LightboxImage src={githubCreate1} alt="GitHub 個人頁面右上角的 New 按鈕" />
 
 接著填表單：
 
@@ -58,7 +58,7 @@ import githubCreate2 from '@/assets/imgs/articles/building-personal-website/gith
 - README、`.gitignore`、license 都先不要勾，等 Astro 初始化會自己生
 - ④ 確認沒問題，按 **Create repository**
 
-<Image src={githubCreate2} alt="GitHub Create repository 表單" />
+<LightboxImage src={githubCreate2} alt="GitHub Create repository 表單" />
 
 ### Clone 到本地
 
@@ -132,19 +132,19 @@ Cloudflare 已經把 Pages 收進「Workers 和 Pages」這個統一介面，新
 
 **1. 進 Workers 和 Pages 建立應用程式**：左側選單進「運算 → Workers 和 Pages」，右上角 ① 點 **建立應用程式**。
 
-<Image src={cloudflareWorker1} alt="Cloudflare Workers 和 Pages 儀表板，右上角的建立應用程式按鈕" />
+<LightboxImage src={cloudflareWorker1} alt="Cloudflare Workers 和 Pages 儀表板，右上角的建立應用程式按鈕" />
 
 **2. 選方法**：在「Ship something new」面板挑 ② **Continue with GitHub**，授權 Cloudflare 讀你 GitHub 的 repo 列表。
 
-<Image src={cloudflareWorker2} alt="Cloudflare 選擇部署方法的面板，包含 Continue with GitHub" />
+<LightboxImage src={cloudflareWorker2} alt="Cloudflare 選擇部署方法的面板，包含 Continue with GitHub" />
 
 **3. 挑 repo**：下拉選擇帳號之後，③ 從清單挑剛才建好的 repo（`Personal-OfficialWeb`），④ 按「下一步」。
 
-<Image src={cloudflareWorker3} alt="Cloudflare 從 GitHub 帳號挑 repo 的畫面" />
+<LightboxImage src={cloudflareWorker3} alt="Cloudflare 從 GitHub 帳號挑 repo 的畫面" />
 
 **4. 填組建跟部署指令**：⑤ 組建命令輸入 `npm run build`，部署命令填 `npx wrangler deploy`（走 Workers 統一流程）。⑥ 按 **部署** 就會跑第一次 build，幾秒鐘就好。
 
-<Image src={cloudflareWorker4} alt="Cloudflare 建立應用程式時設定組建跟部署命令的畫面" />
+<LightboxImage src={cloudflareWorker4} alt="Cloudflare 建立應用程式時設定組建跟部署命令的畫面" />
 
 綁完之後推 main 分支自動 build、自動部署到 edge，整個流程 1–2 分鐘。沒有 staging、沒有 preview flow，因為這就是我自己的站，有錯就改完再推一次。
 
@@ -163,11 +163,11 @@ Cloudflare 已經把 Pages 收進「Workers 和 Pages」這個統一介面，新
 
 回到部署，網域買好之後綁回 Workers Platform。在剛才那個專案的「自訂網域」分頁，① 點右上角的 **設定自訂網域**：
 
-<Image src={cloudflareDomain1} alt="Cloudflare Workers 專案的自訂網域分頁，右上角設定自訂網域按鈕" />
+<LightboxImage src={cloudflareDomain1} alt="Cloudflare Workers 專案的自訂網域分頁，右上角設定自訂網域按鈕" />
 
 接著 ② 把網域填進去（`example.com`、`www.example.com`、`shop.example.com` 都可以），③ 按「繼續」就好。如果這個網域本來就在 Cloudflare 名下，DNS 紀錄會自動寫入；不在的話 Cloudflare 會給你一筆 CNAME 去外部 DNS 設定。HTTPS 憑證 Cloudflare 自己處理，不用碰 Let's Encrypt。
 
-<Image src={cloudflareDomain2} alt="Cloudflare 新增自訂網域的表單，輸入網域並按繼續" />
+<LightboxImage src={cloudflareDomain2} alt="Cloudflare 新增自訂網域的表單，輸入網域並按繼續" />
 
 ## 樣式管理：交給 Claude Code
 
