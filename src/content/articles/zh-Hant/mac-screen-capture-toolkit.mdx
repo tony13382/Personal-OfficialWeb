@@ -1,0 +1,120 @@
+---
+title: Mac 螢幕擷圖、錄影該裝什麼：Shottr、Bob、Recordly 把畫面玩到美觀又強大
+description: 分享我在 Mac 上處理螢幕擷圖跟錄影的工具組合：Shottr 取代系統內建擷圖更美觀強大、Bob 補強 OCR 跟翻譯、Recordly 錄製有後製感的教學影片，三個工具一條龍把日常擷圖錄影需求全部包起來
+date: 2026-04-26
+category: 工具推薦
+tags: [Mac, 工具推薦, 螢幕擷圖, 螢幕錄影]
+cover: /og/articles/mac-screen-capture-toolkit.png
+seo:
+  ogImage: /og/articles/mac-screen-capture-toolkit.png
+---
+
+import { Image } from 'astro:assets'
+
+{/* Images */}
+import shottrMenu from '@/assets/imgs/articles/mac-screen-capture-toolkit/shottr-menu.png'
+import shottrColor from '@/assets/imgs/articles/mac-screen-capture-toolkit/shottr-color.png'
+import shottrBlur from '@/assets/imgs/articles/mac-screen-capture-toolkit/shottr-blur.png'
+import shottrPin from '@/assets/imgs/articles/mac-screen-capture-toolkit/shottr-pin.png'
+import bobOcr from '@/assets/imgs/articles/mac-screen-capture-toolkit/bob-ocr.png'
+import recordly from '@/assets/imgs/articles/mac-screen-capture-toolkit/recordly.png'
+
+Mac 內建的 Cmd+Shift+4、Cmd+Shift+5 對日常截圖跟簡單錄影夠用，但只要工作一進階就會撞牆——想截整頁滾動內容、想量設計稿的像素、想把教學影片做得有後製感，內建工具全部辦不到。
+
+這篇分享我在 Mac 上把擷圖跟錄影一整套包起來的工具組合：靜態畫面用 Shottr，OCR 效果不理想就交給 Bob 補強；動態錄製用 Recordly（如果你跟我一樣覺得 Screen Studio 太貴）。三個工具各司其職，畫面從此美觀又強大。
+
+## 靜態擷圖：Shottr 跟 Bob
+
+日常截圖、量測、馬賽克、釘選都交給 Shottr 處理；只有當需要做 OCR 或翻譯，而 Shottr 內建的辨識又跑得不夠準時，才切到 Bob。兩個工具不是競爭關係，而是分工。
+
+### Shottr
+
+<Image src={shottrMenu} alt="Shottr 選單" />
+
+我用來取代 macOS 內建截圖工具的主力。原生 Swift 開發、啟動極快、記憶體佔用極低，截了不會卡。Shottr 從選單列點下去就能直接挑擷取模式，下面這四個是日常會輪流用到的：
+
+#### 四種擷取模式：覆蓋所有日常情境
+
+- **全螢幕截圖**：擷取整個螢幕，預設快捷鍵 `Shift+Cmd+1`。需要把整個工作畫面交代清楚的時候用。
+- **手動區域選擇**：拖曳框選任意範圍，預設快捷鍵 `Shift+Cmd+2`，邏輯跟 macOS 內建一致但反應更即時、邊界吸附更聰明。
+- **App 視窗截圖**：自動框出指定應用程式的視窗，邊界、陰影、圓角都自動處理乾淨，截出來直接拿去寫文章或做素材。
+- **滾動式截圖**：Shottr 最值得留下的功能。長網頁、長對話視窗、長 PDF 一鍵就能擷取整頁，按下快捷鍵後它會自動往下捲動並拼接成一張完整圖，邊界處理乾淨、看不出拼接痕跡。這是 macOS 內建截圖工具完全做不到的。
+
+#### 像素量測跟吸色
+
+<Image src={shottrColor} alt="Shottr 像素量測跟吸色" />
+
+我做前端切版、看設計稿、跟設計師對焦的時候會狂用。截下一張畫面後可以直接在上面量元素的距離、量間距、吸顏色——對 hex code、量 padding 不用再開 Figma 或開 DevTools，截一張圖就解決。
+
+#### 馬賽克：保護敏感資訊不用開修圖軟體
+
+<Image src={shottrBlur} alt="Shottr 馬賽克遮蔽工具" />
+
+一鍵框選範圍就能模糊或打碼，截 SaaS 後台、截 email、截聊天紀錄要分享的時候很常用。除了一般的模糊跟打碼，還支援「Blur Text」「Erase Text」這種針對文字的精準遮蔽，不會把版面整片糊成一塊。比起開 Photoshop 或 Preview 慢慢處理，這個操作快非常多。
+
+#### 截圖釘選：當參考視窗
+
+<Image src={shottrPin} alt="Shottr 截圖釘選在桌面" />
+
+可以把截圖直接釘成永遠最上層的小視窗，做設計稿對照、抄一段內容、邊看邊做的場景很實用。不用一直 Cmd+Tab 切視窗，把參考圖丟在桌面角落就能一直看。
+
+<span class="pricing-tag freemium">大部分功能免費，付費可去廣告</span>
+<a href="https://shottr.cc" target="_blank" class="official-link">Shottr 官方網站</a>
+
+### OCR 效果不理想？試試 Bob 更加精準
+
+Shottr 內建的 OCR 辨識英數字大致夠用，但只要碰到中文（特別是繁體）或排版稍微複雜的截圖，準確度就會明顯下滑。我自己的解法是把 OCR 這件事交給 Bob，做為 Shottr 的補位工具。
+
+#### 截圖 OCR 更準
+
+<Image src={bobOcr} alt="Bob 對 Shottr 選單做 OCR 辨識的結果" />
+
+Bob 的截圖辨識引擎在中英混排、小字、低對比度的畫面上都比 Shottr 內建的準很多。截一張中文文件、截一張螢幕上不能複製的對話框，文字幾乎都能完整還原。即使是上面這種圖文混排、有圖示干擾的選單，Bob 也能把每一行的文字穩穩抓出來。
+
+#### 截圖即翻譯
+
+Bob 真正強的是辨識完直接翻譯。看影片字幕、看不能複製文字的圖片、看外文文件，截下去就能直接「文字 → 翻譯」一條龍。對處理外文資料的場景特別省事。
+
+#### 多翻譯引擎並列比對
+
+支援 Google、DeepL、OpenAI 等多種翻譯引擎，可以同時跑出來、左右並排比對，挑最自然的版本。某些技術詞彙不同引擎譯出來差異很大，並排比對是我選擇的關鍵。
+
+#### 我的工作流：Shottr 主力、Bob 補位
+
+日常截圖、量測、釘選、馬賽克都用 Shottr；遇到要 OCR 或翻譯就直接切到 Bob 的快捷鍵。兩個工具的快捷鍵不衝突，分工清楚，不會互相干擾。
+
+<span class="pricing-tag freemium">免費使用，付費買斷解鎖進階功能</span>
+<a href="https://bobtranslate.com" target="_blank" class="official-link">Bob 官方網站</a>
+
+## 動態錄製：Recordly（Screen Studio 的開源替代）
+
+如果你看過那種「滑鼠移到哪畫面就自動 zoom 過去、操作之間有平滑轉場、整體看起來像是後製過」的教學影片——那十之八九是用 Screen Studio 做的。Screen Studio 確實漂亮，但定價也是真的不便宜，對於偶爾才需要錄一支教學影片的人來說，那個訂閱有點下不了手。
+
+我自己用的是 Recordly，把 Screen Studio 那套核心體驗——錄製當下記錄滑鼠位置，後製階段自動產生 zoom 跟強調動效——用開源的方式重做了一遍，免費、能在本機跑、也沒有訂閱壓力。
+
+### Recordly
+
+<Image src={recordly} alt="Recordly 編輯介面，右側有 Zoom Level、Playback Speed、Video Effects 等後製選項" />
+
+打開 Recordly 的編輯介面就可以看出它對標的就是 Screen Studio——右側面板把 zoom 倍率、播放速度、滑鼠動效、背景樣式全部分門別類整理好，時間軸下方還能直接拖曳調整 zoom 區段，整體操作邏輯非常熟悉。
+
+#### 自動 zoom 跟滑鼠強調
+
+錄製時 Recordly 會記錄滑鼠軌跡跟點擊位置，後製階段可以自動或手動加上「zoom 到滑鼠所在區域」的動效。教學影片最怕的就是「我現在到底在點哪裡」，自動 zoom 直接解決一半。滑鼠點擊還可以加上波紋強調，閱聽者一眼看到操作落點。
+
+#### 平滑轉場跟剪輯
+
+錄完之後不用再開另一套剪輯軟體做後製。Recordly 內建剪輯時間軸，可以剪掉中間的廢段、加轉場、調整速度，輸出就是已經有設計感的教學影片。一站到位，省下另外裝 Final Cut 或 DaVinci 的開銷。
+
+#### 為什麼選 Recordly 不選 Screen Studio
+
+直白講就是價格。Screen Studio 的成品質感確實是業界天花板，但對於我每年只會錄個幾次教學影片的使用頻率來說，那個價格完全不划算。Recordly 的成品大概有 Screen Studio 七、八成的水準，但代價是免費。
+
+如果你錄影是吃飯工具（內容創作者、產品經理、工程師做產品 demo），預算夠就直接上 Screen Studio；如果是偶爾需要拍個操作說明，Recordly 完全夠用。
+
+<div class="callout info">
+這篇先以 Recordly 為主介紹。如果你的需求是商業級成品、後製細節要求很高，可以參考 [Screen Studio 官方網站](https://screen.studio)。
+</div>
+
+<span class="pricing-tag">開源免費</span>
+<a href="https://recordly.dev" target="_blank" class="official-link">Recordly 官方網站</a>
