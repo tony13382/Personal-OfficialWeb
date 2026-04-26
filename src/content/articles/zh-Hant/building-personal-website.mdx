@@ -21,6 +21,7 @@ import cloudflareDomain1 from '@/assets/imgs/articles/building-personal-website/
 import cloudflareDomain2 from '@/assets/imgs/articles/building-personal-website/cloudflare-domain-2-form.png'
 import githubCreate1 from '@/assets/imgs/articles/building-personal-website/github-create-1.png'
 import githubCreate2 from '@/assets/imgs/articles/building-personal-website/github-create-2.png'
+import workspaceSpaces from '@/assets/imgs/articles/building-personal-website/workspace-spaces.png'
 
 個人網站這件事我前後搞了三次。每一版都不是因為前一版壞了，是因為我對「網站該怎麼存在」的理解變了。三次走下來才搞懂：選工具不難，難的是建立一套讓寫內容變輕的流程。
 
@@ -168,6 +169,21 @@ Cloudflare 已經把 Pages 收進「Workers 和 Pages」這個統一介面，新
 接著 ② 把網域填進去（`example.com`、`www.example.com`、`shop.example.com` 都可以），③ 按「繼續」就好。如果這個網域本來就在 Cloudflare 名下，DNS 紀錄會自動寫入；不在的話 Cloudflare 會給你一筆 CNAME 去外部 DNS 設定。HTTPS 憑證 Cloudflare 自己處理，不用碰 Let's Encrypt。
 
 <LightboxImage src={cloudflareDomain2} alt="Cloudflare 新增自訂網域的表單，輸入網域並按繼續" />
+
+## 工作環境：四個 Space 各管一件事
+
+站建好之後，剩下的就是反覆「寫、預覽、改、再預覽」。這四個動作如果擠在同一個畫面，視窗會疊得到處都是，每次找東西都要先花幾秒挑視窗。第三版開站之後我把工具拆到四個 macOS Space，每個 Space 只放一個應用程式、按全螢幕，三指左右滑切換。
+
+<LightboxImage src={workspaceSpaces} alt="四個 macOS Space 各放一個應用程式：Zen Browser、VS Code、Figma、Claude Code" />
+
+四個 Space 各對應一個動作：
+
+- **Zen Browser：** (Preview) 專門開 `localhost:4321` 看本地預覽。Zen 比 Chrome / Safari 多了 Workspace 跟側邊欄分頁分組，順便查資料時不會把預覽分頁洗掉
+- **VS Code：** (Writing & Coding) MDX 文章跟 Astro / React 程式碼都在這寫。MDX 預覽、Tailwind hint、Git 都在同一個視窗
+- **Figma：** (Design Image) 文章首圖、APP cover、社群圖都用 Figma 排，同一份檔案放所有素材，要哪張就匯出哪張
+- **Claude Code：** (Chat for dev & write) 獨立一個 Space 開 Claude Code 終端機，問問題、改樣式、跑 `/new-article`、`/translate-article` 都在這
+
+分開放的好處不只是看起來整齊——是**一個 Space 對應一個動作**。要看效果就滑去 Preview、要寫東西就滑去 VS Code，腦袋不用先決定「我要打開哪個視窗」。三指滑動的成本比 Cmd-Tab 在十幾個視窗裡找目標低很多，寫一寫想看效果幾乎是反射動作。
 
 ## 樣式管理：交給 Claude Code
 

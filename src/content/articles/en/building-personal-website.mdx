@@ -21,6 +21,7 @@ import cloudflareDomain1 from '@/assets/imgs/articles/building-personal-website/
 import cloudflareDomain2 from '@/assets/imgs/articles/building-personal-website/cloudflare-domain-2-form.png'
 import githubCreate1 from '@/assets/imgs/articles/building-personal-website/github-create-1.png'
 import githubCreate2 from '@/assets/imgs/articles/building-personal-website/github-create-2.png'
+import workspaceSpaces from '@/assets/imgs/articles/building-personal-website/workspace-spaces.png'
 
 I've built my personal website three times. Each rewrite wasn't because the previous version broke — it was because my understanding of "how a website should exist" had shifted. Three rounds in, the lesson is clear: picking tools is the easy part. The hard part is building a workflow that makes writing content feel light.
 
@@ -170,6 +171,21 @@ Back to deployment — once you have the domain, bind it back to the Workers Pla
 Then ② enter the domain (`example.com`, `www.example.com`, `shop.example.com` — anything works) and ③ click "Continue". If the domain is already on Cloudflare, the DNS record gets written automatically; if not, Cloudflare hands you a CNAME to add to your external DNS. HTTPS certificates are handled by Cloudflare — no need to touch Let's Encrypt.
 
 <LightboxImage src={cloudflareDomain2} alt="The Cloudflare Add a custom domain form with a domain input and a Continue button" />
+
+## Workspace: Four Spaces, One App Each
+
+Once the site is up, the rest is just looping "write, preview, edit, preview again." If those four actions live in the same window stack, things pile up — every time I need to find something I lose a few seconds picking the right window. After v3 launched, I split my tools across four macOS Spaces. Each Space holds exactly one app in full-screen, and I swipe between them with a three-finger gesture.
+
+<LightboxImage src={workspaceSpaces} alt="Four macOS Spaces each holding one app: Zen Browser, VS Code, Figma, Claude Code" />
+
+Each Space maps to one action:
+
+- **Zen Browser:** (Preview) Dedicated to `localhost:4321` for the local preview. Zen has Workspaces and sidebar tab groups that Chrome and Safari don't — so when I duck out to look something up, the preview tab doesn't get buried
+- **VS Code:** (Writing & Coding) MDX articles and Astro / React code both live here. MDX preview, Tailwind hints, and Git are all in the same window
+- **Figma:** (Design Image) Article hero images, app covers, and social graphics all get laid out in Figma. One file holds all the assets — I just export whichever frame I need
+- **Claude Code:** (Chat for dev & write) A dedicated Space for the Claude Code terminal — questions, style tweaks, running `/new-article` or `/translate-article`, all here
+
+The benefit isn't just visual tidiness — it's that **one Space maps to one action**. Want to see the result? Swipe to Preview. Want to write? Swipe to VS Code. My brain never has to decide "which window do I open." A three-finger swipe is cheaper than scanning a Cmd-Tab list of a dozen windows — checking the result while writing becomes almost reflexive.
 
 ## Styling: Outsourced to Claude Code
 
