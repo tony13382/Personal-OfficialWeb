@@ -25,7 +25,11 @@ import myHeadImg from "@/assets/imgs/index/myHead.webp";
 import profileImg from "@/assets/imgs/index/profileAnimate.png";
 import { useTranslations, filterByLocale, type Locale } from "@/i18n";
 import { resolveCollectionImages } from "@/lib/resolve-image";
-import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
 interface Props {
   locale?: Locale;
@@ -362,15 +366,42 @@ function formatIssuedDate(isoYearMonth: string, loc: Locale): string {
                 certGroups.map((group) => {
                   const label = issuerLabels[group.issuer as IssuerKey][locale];
                   const total = group.items.length;
-                  const needsExpand =
-                    group.issuer === "anthropic" &&
-                    total > ANTHROPIC_PREVIEW_COUNT;
-                  const preview = needsExpand
-                    ? group.items.slice(0, ANTHROPIC_PREVIEW_COUNT)
-                    : group.items;
-                  const hidden = needsExpand
-                    ? group.items.slice(ANTHROPIC_PREVIEW_COUNT)
-                    : [];
+                  const pageSize = ANTHROPIC_PREVIEW_COUNT;
+                  const totalPages = Math.ceil(total / pageSize);
+                  const useSlider = total > pageSize;
+                  const pages = Array.from({ length: totalPages }, (_, i) =>
+                    group.items.slice(i * pageSize, (i + 1) * pageSize),
+                  );
+                  const renderCard = (
+                    cert: (typeof group.items)[number],
+                  ) => (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group block h-full"
+                    >
+                      <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary) hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <CardContent className="flex flex-col h-full gap-3 p-4">
+                          <p class="text-sm text-muted-foreground">
+                            {formatIssuedDate(cert.issuedDate, locale)}
+                          </p>
+                          <p class="font-bold text-foreground transition-colors group-hover:text-(--theme-primary)">
+                            {cert.name}
+                          </p>
+                          {cert.skills[locale].length > 0 && (
+                            <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
+                              {cert.skills[locale].map((skill) => (
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </a>
+                  );
                   return (
                     <div>
                       <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
@@ -382,82 +413,71 @@ function formatIssuedDate(isoYearMonth: string, loc: Locale): string {
                           )}
                         </span>
                       </div>
-                      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {preview.map((cert) => (
-                          <a
-                            href={cert.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group block h-full"
-                          >
-                            <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary) hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                              <CardContent className="flex flex-col h-full gap-3 p-4">
-                                <p class="text-sm text-muted-foreground">
-                                  {formatIssuedDate(cert.issuedDate, locale)}
-                                </p>
-                                <p class="font-bold text-foreground transition-colors group-hover:text-(--theme-primary)">
-                                  {cert.name}
-                                </p>
-                                {cert.skills[locale].length > 0 && (
-                                  <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
-                                    {cert.skills[locale].map((skill) => (
-                                      <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                                        {skill}
-                                      </span>
-                                    ))}
-                                  </div>
+                      {useSlider ? (
+                        <Fragment>
+                          <div class="md:hidden" data-expand-section>
+                            <div class="grid grid-cols-1 gap-4 [grid-auto-rows:1fr]">
+                              {group.items
+                                .slice(0, pageSize)
+                                .map((cert) => renderCard(cert))}
+                            </div>
+                            <div class="hidden mt-4" data-expand-content>
+                              <div class="grid grid-cols-1 gap-4 [grid-auto-rows:1fr]">
+                                {group.items
+                                  .slice(pageSize)
+                                  .map((cert) => renderCard(cert))}
+                              </div>
+                            </div>
+                            <div class="mt-4 flex justify-center">
+                              <Button variant="outline" data-expand-btn>
+                                {t.about.showAllCertifications.replace(
+                                  "{count}",
+                                  String(total),
                                 )}
-                              </CardContent>
-                            </Card>
-                          </a>
-                        ))}
-                      </div>
-                      {needsExpand && (
-                        <div data-expand-section class="mt-4">
-                          <div class="hidden" data-expand-content>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                              {hidden.map((cert) => (
-                                <a
-                                  href={cert.credentialUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  class="group block h-full"
-                                >
-                                  <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary)">
-                                    <CardContent className="flex flex-col h-full gap-3 p-4">
-                                      <p class="text-sm text-muted-foreground">
-                                        {formatIssuedDate(
-                                          cert.issuedDate,
-                                          locale,
-                                        )}
-                                      </p>
-                                      <p class="font-bold text-foreground transition-colors group-hover:text-(--theme-primary)">
-                                        {cert.name}
-                                      </p>
-                                      {cert.skills[locale].length > 0 && (
-                                        <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
-                                          {cert.skills[locale].map((skill) => (
-                                            <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                                              {skill}
-                                            </span>
-                                          ))}
-                                        </div>
-                                      )}
-                                    </CardContent>
-                                  </Card>
-                                </a>
-                              ))}
+                                <CaretDownIcon className="size-4" />
+                              </Button>
                             </div>
                           </div>
-                          <div class="mt-4 flex justify-center">
-                            <Button variant="outline" data-expand-btn>
-                              {t.about.showAllCertifications.replace(
-                                "{count}",
-                                String(total),
-                              )}
-                              <CaretDownIcon className="size-4" />
-                            </Button>
+                          <div class="hidden md:block" data-cert-slider>
+                            <div class="overflow-hidden">
+                              <div
+                                class="flex items-stretch transition-transform duration-300 ease-out"
+                                data-cert-track
+                              >
+                                {pages.map((items) => (
+                                  <div class="shrink-0 w-full grid grid-cols-2 lg:grid-cols-3 gap-4 [grid-auto-rows:1fr]">
+                                    {items.map((cert) => renderCard(cert))}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div class="flex items-center justify-between gap-3 mt-4">
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                data-cert-prev
+                                disabled
+                                aria-label={t.articles.prevPage}
+                              >
+                                <CaretLeftIcon className="size-4" />
+                              </Button>
+                              <span class="text-sm text-muted-foreground tabular-nums">
+                                <span data-cert-current>1</span> / {totalPages}
+                              </span>
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                data-cert-next
+                                aria-label={t.articles.nextPage}
+                              >
+                                <CaretRightIcon className="size-4" />
+                              </Button>
+                            </div>
                           </div>
+                        </Fragment>
+                      ) : (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 [grid-auto-rows:1fr]">
+                          {group.items.map((cert) => renderCard(cert))}
                         </div>
                       )}
                     </div>
@@ -495,6 +515,38 @@ function formatIssuedDate(isoYearMonth: string, loc: Locale): string {
         content?.classList.remove("hidden");
         btn.remove();
       });
+    });
+
+    document.querySelectorAll("[data-cert-slider]").forEach((slider) => {
+      const track = slider.querySelector<HTMLElement>("[data-cert-track]");
+      const prev = slider.querySelector<HTMLButtonElement>("[data-cert-prev]");
+      const next = slider.querySelector<HTMLButtonElement>("[data-cert-next]");
+      const current = slider.querySelector<HTMLElement>("[data-cert-current]");
+      if (!track || !prev || !next || !current) return;
+      const totalPages = track.children.length;
+      let index = 0;
+
+      const update = () => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        current.textContent = String(index + 1);
+        prev.disabled = index === 0;
+        next.disabled = index >= totalPages - 1;
+      };
+
+      prev.addEventListener("click", () => {
+        if (index > 0) {
+          index -= 1;
+          update();
+        }
+      });
+      next.addEventListener("click", () => {
+        if (index < totalPages - 1) {
+          index += 1;
+          update();
+        }
+      });
+
+      update();
     });
   </script>
 </BaseLayout>
