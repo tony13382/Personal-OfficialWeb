@@ -172,20 +172,20 @@ Then ② enter the domain (`example.com`, `www.example.com`, `shop.example.com` 
 
 <LightboxImage src={cloudflareDomain2} alt="The Cloudflare Add a custom domain form with a domain input and a Continue button" />
 
-## Workspace: Four Spaces, One App Each
+## Workspace: Four Corners, One App Each
 
-Once the site is up, the rest is just looping "write, preview, edit, preview again." If those four actions live in the same window stack, things pile up — every time I need to find something I lose a few seconds picking the right window. After v3 launched, I split my tools across four macOS Spaces. Each Space holds exactly one app in full-screen, and I swipe between them with a three-finger gesture.
+Once the site is up, the rest is just looping "write, preview, edit, preview again." If those four actions live in the same window stack, things pile up — every time I need to find something I lose a few seconds picking the right window. After v3 launched, I tiled my screen into a 2×2 grid and pinned one app to each corner. A glance gets me there — no switching, no hunting.
 
-<LightboxImage src={workspaceSpaces} alt="Four macOS Spaces each holding one app: Zen Browser, VS Code, Figma, Claude Code" />
+<LightboxImage src={workspaceSpaces} alt="Screen tiled into a 2×2 grid with Zen Browser, VS Code, Figma, and Claude Code pinned to the four corners" />
 
-Each Space maps to one action:
+Each corner maps to one action:
 
-- **Zen Browser:** (Preview) Dedicated to `localhost:4321` for the local preview. Zen has Workspaces and sidebar tab groups that Chrome and Safari don't — so when I duck out to look something up, the preview tab doesn't get buried
-- **VS Code:** (Writing & Coding) MDX articles and Astro / React code both live here. MDX preview, Tailwind hints, and Git are all in the same window
-- **Figma:** (Design Image) Article hero images, app covers, and social graphics all get laid out in Figma. One file holds all the assets — I just export whichever frame I need
-- **Claude Code:** (Chat for dev & write) A dedicated Space for the Claude Code terminal — questions, style tweaks, running `/new-article` or `/translate-article`, all here
+- **Top-left · Zen Browser:** (Preview) Dedicated to `localhost:4321` for the local preview. Zen has Workspaces and sidebar tab groups that Chrome and Safari don't — so when I duck out to look something up, the preview tab doesn't get buried
+- **Top-right · VS Code:** (Writing & Coding) MDX articles and Astro / React code both live here. MDX preview, Tailwind hints, and Git are all in the same window
+- **Bottom-left · Figma:** (Design Image) Article hero images, app covers, and social graphics all get laid out in Figma. One file holds all the assets — I just export whichever frame I need
+- **Bottom-right · Claude Code:** (Chat for dev & write) A standalone terminal running Claude Code — questions, style tweaks, `/new-article`, `/translate-article`, all here. I use [Ghostty](https://ghostty.org/), but any terminal works; I keep it out of VS Code's built-in terminal because that one has rendering glitches under heavy output — Chinese characters in particular often come out as mojibake
 
-The benefit isn't just visual tidiness — it's that **one Space maps to one action**. Want to see the result? Swipe to Preview. Want to write? Swipe to VS Code. My brain never has to decide "which window do I open." A three-finger swipe is cheaper than scanning a Cmd-Tab list of a dozen windows — checking the result while writing becomes almost reflexive.
+The benefit isn't just visual tidiness — it's that **a glance gets me there**. Write a line of code, look up at the top-left preview, look back to the top-right and keep editing — my brain never has to decide "which window do I open," and my hands don't have to switch. Writing and watching live in the same view, so the reflex loop closes immediately.
 
 ## Styling: Outsourced to Claude Code
 

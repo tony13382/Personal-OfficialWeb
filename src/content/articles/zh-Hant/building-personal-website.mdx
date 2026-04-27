@@ -170,20 +170,20 @@ Cloudflare 已經把 Pages 收進「Workers 和 Pages」這個統一介面，新
 
 <LightboxImage src={cloudflareDomain2} alt="Cloudflare 新增自訂網域的表單，輸入網域並按繼續" />
 
-## 工作環境：四個 Space 各管一件事
+## 工作環境：四個角落各管一件事
 
-站建好之後，剩下的就是反覆「寫、預覽、改、再預覽」。這四個動作如果擠在同一個畫面，視窗會疊得到處都是，每次找東西都要先花幾秒挑視窗。第三版開站之後我把工具拆到四個 macOS Space，每個 Space 只放一個應用程式、按全螢幕，三指左右滑切換。
+站建好之後，剩下的就是反覆「寫、預覽、改、再預覽」。這四個動作如果擠在同一個畫面，視窗會疊得到處都是，每次找東西都要先花幾秒挑視窗。第三版開站之後我把螢幕切成田字四格，四個常用視窗各佔一個角落、固定不動，眼睛瞥一下就到，根本不用切換。
 
-<LightboxImage src={workspaceSpaces} alt="四個 macOS Space 各放一個應用程式：Zen Browser、VS Code、Figma、Claude Code" />
+<LightboxImage src={workspaceSpaces} alt="螢幕排成田字四格，四個角落分別放 Zen Browser、VS Code、Figma、Claude Code" />
 
-四個 Space 各對應一個動作：
+四個角落各對應一個動作：
 
-- **Zen Browser：** (Preview) 專門開 `localhost:4321` 看本地預覽。Zen 比 Chrome / Safari 多了 Workspace 跟側邊欄分頁分組，順便查資料時不會把預覽分頁洗掉
-- **VS Code：** (Writing & Coding) MDX 文章跟 Astro / React 程式碼都在這寫。MDX 預覽、Tailwind hint、Git 都在同一個視窗
-- **Figma：** (Design Image) 文章首圖、APP cover、社群圖都用 Figma 排，同一份檔案放所有素材，要哪張就匯出哪張
-- **Claude Code：** (Chat for dev & write) 獨立一個 Space 開 Claude Code 終端機，問問題、改樣式、跑 `/new-article`、`/translate-article` 都在這
+- **左上・Zen Browser：** (Preview) 專門開 `localhost:4321` 看本地預覽。Zen 比 Chrome / Safari 多了 Workspace 跟側邊欄分頁分組，順便查資料時不會把預覽分頁洗掉
+- **右上・VS Code：** (Writing & Coding) MDX 文章跟 Astro / React 程式碼都在這寫。MDX 預覽、Tailwind hint、Git 都在同一個視窗
+- **左下・Figma：** (Design Image) 文章首圖、APP cover、社群圖都用 Figma 排，同一份檔案放所有素材，要哪張就匯出哪張
+- **右下・Claude Code：** (Chat for dev & write) 開獨立 Terminal 跑 Claude Code——問問題、改樣式、跑 `/new-article`、`/translate-article` 都在這。我自己用 [Ghostty](https://ghostty.org/)，其實任何 Terminal 都行，會特別獨立出來是因為 VS Code 內建的 Terminal 在大量文字渲染時會出狀況，尤其中文字常常直接變亂碼
 
-分開放的好處不只是看起來整齊——是**一個 Space 對應一個動作**。要看效果就滑去 Preview、要寫東西就滑去 VS Code，腦袋不用先決定「我要打開哪個視窗」。三指滑動的成本比 Cmd-Tab 在十幾個視窗裡找目標低很多，寫一寫想看效果幾乎是反射動作。
+分開放的好處不只是看起來整齊——是**眼睛瞥一下就到**。寫一行 code 就抬頭看左上預覽、改一張圖就瞥左下 Figma，腦袋不用先決定「我要打開哪個視窗」、手也不用滑切換。寫跟看是同一個畫面的事，反射動作直接接起來。
 
 ## 樣式管理：交給 Claude Code
 
