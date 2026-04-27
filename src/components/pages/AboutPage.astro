@@ -372,16 +372,14 @@ function formatIssuedDate(isoYearMonth: string, loc: Locale): string {
                   const pages = Array.from({ length: totalPages }, (_, i) =>
                     group.items.slice(i * pageSize, (i + 1) * pageSize),
                   );
-                  const renderCard = (
-                    cert: (typeof group.items)[number],
-                  ) => (
+                  const renderCard = (cert: (typeof group.items)[number]) => (
                     <a
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="group block h-full"
                     >
-                      <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary) hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      <Card className="shadow-none border h-full transition-colors group-hover:border-(--theme-primary) transition-all duration-300">
                         <CardContent className="flex flex-col h-full gap-3 p-4">
                           <p class="text-sm text-muted-foreground">
                             {formatIssuedDate(cert.issuedDate, locale)}
