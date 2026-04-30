@@ -2,6 +2,7 @@
 title: "How to Configure Claude Code: Status Line, CLAUDE.md, and Custom Skills"
 description: A living notes document on Claude Code configuration — from Status Line and CLAUDE.md to custom Skills — your starting point for building an AI workflow that works for you
 date: 2026-04-07
+updatedDate: 2026-04-30
 category: Dev Environment
 tags: [Claude Code, AI, Terminal, Dev Environment]
 cover: /og/articles/claude-code-setup.png
@@ -15,6 +16,8 @@ import { Image } from 'astro:assets'
 import statuslineResult from '@/assets/imgs/articles/claude-code-setup/statusline-result.png'
 import awesomeDesignMd from '@/assets/imgs/articles/claude-code-setup/awesome-design-md.png'
 import codeckIntro from '@/assets/imgs/articles/claude-code-setup/codeck-intro.png'
+import amphetamine from '@/assets/imgs/articles/claude-code-setup/amphetamine.png'
+import ccSwitch from '@/assets/imgs/articles/claude-code-setup/cc-switch.png'
 
 Claude Code is my primary development tool right now, and after using it for a while I realized the default setup only gets you about half of what it's capable of. With a Status Line, CLAUDE.md project instructions, and custom Skills, the entire development experience lifts to a completely different level. This will be a living document where I keep adding settings and techniques I think are worth sharing.
 
@@ -432,3 +435,41 @@ What I've covered here is just the surface. The community has been building and 
 | [Claude Code Plugins Marketplace](https://claudemarketplaces.com/) | Community marketplace with ratings and install counts to help you evaluate options |
 
 Most community Skills install by copying the file to `~/.claude/skills/` — same structure as what I described above. When picking one, I'd recommend reading the SKILL.md content first to confirm the instruction logic fits your needs before installing.
+
+## CC Switch: One-Click Switching Between Two Subscription Accounts
+
+If, like me, you have two Claude subscriptions — one main, one backup, ready to step in when the weekly limit runs out — the original switching flow is annoying: log out and back in, or manually edit `~/.claude/settings.json`. One typo and Claude Code won't start.
+
+<Image src={ccSwitch} alt="CC Switch UI showing main and backup Claude accounts side by side with usage stats" />
+
+[CC Switch](https://github.com/farion1231/cc-switch) is a desktop app that visualizes all your provider configurations. Each entry shows 5-hour and 7-day usage remaining and how much time until reset, so when your main account is about to cap out you can tell at a glance whether to switch to the backup. One click on the tray icon swaps the config — much less hassle than editing `settings.json` by hand.
+
+<div class="callout warning">All CC Switch does is rewrite settings.json for you, so an already-running Claude Code session needs `/exit` followed by `claude --resume` (or just close and reopen the terminal) before the new account takes effect. The "hot switching" the official README mentions actually means "no manual config editing," not "no session restart."</div>
+
+A few additional perks:
+
+- **Manage relay services too**: If you also use AWS Bedrock or community relay providers, the 50+ built-in presets let them all share the same switching flow — no need to add another tool just for different endpoints
+- **Unified cross-tool management**: Claude Code, Codex, and Gemini CLI can all be managed in the same interface, with shared MCP Server config — no more configuring each CLI separately
+- **Atomic writes**: Switching won't risk a half-written JSON breaking your config the way manual edits can
+
+Supports Mac / Windows / Linux, MIT-licensed, free. Mac users can install via Homebrew:
+
+```bash
+brew install --cask cc-switch
+```
+
+<span class="pricing-tag">Free</span>
+<a href="https://github.com/farion1231/cc-switch/releases" target="_blank" class="official-link">Download CC Switch</a>
+
+## Amphetamine: Keep It Running When You Step Away
+
+Strictly speaking this isn't a Claude Code feature, but it fills in a gap that's easy to overlook — your computer going to sleep.
+
+Claude Code sometimes runs really long tasks: large refactors, batch edits across the entire codebase, full test and build cycles — easily 10–20 minutes at a time. You might step away for a meeting, lunch, or even a quick nap during that window, but the moment your Mac goes to sleep, Claude Code stops with it. When you come back, it can only pick up from a checkpoint and the continuity of the task is broken.
+
+<Image src={amphetamine} alt="Amphetamine sleep prevention tool" />
+
+Amphetamine is the little utility that solves this. One click keeps your Mac awake, another click turns prevention off — both reliable, I've used it for a while without it ever flaking out. It also has Raycast integration, and I personally bind a hotkey: flip it on right before kicking off a long task, flip it off when the task finishes, never have to open the app UI.
+
+<span class="pricing-tag">Free</span>
+<a href="https://apps.apple.com/app/amphetamine/id937984704" target="_blank" class="official-link">App Store</a>

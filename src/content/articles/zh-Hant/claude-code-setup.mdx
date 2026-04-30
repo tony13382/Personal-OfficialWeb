@@ -2,6 +2,7 @@
 title: 如何調教 Claude Code：Status Line、CLAUDE.md、自訂 Skill 配置筆記
 description: 長期更新的 Claude Code 調教筆記，從 Status Line、CLAUDE.md 到自訂 Skill——摸索屬於你的 AI 工作流自動化起點
 date: 2026-04-07
+updatedDate: 2026-04-30
 category: 開發環境
 tags: [Claude Code, AI, 終端機, 開發環境]
 cover: /og/articles/claude-code-setup.png
@@ -16,6 +17,7 @@ import statuslineResult from '@/assets/imgs/articles/claude-code-setup/statuslin
 import awesomeDesignMd from '@/assets/imgs/articles/claude-code-setup/awesome-design-md.png'
 import codeckIntro from '@/assets/imgs/articles/claude-code-setup/codeck-intro.png'
 import amphetamine from '@/assets/imgs/articles/claude-code-setup/amphetamine.png'
+import ccSwitch from '@/assets/imgs/articles/claude-code-setup/cc-switch.png'
 
 Claude Code 是我目前主要的開發工具，用了一段時間之後發現，預設的狀態其實只發揮了它一半的能力。透過 Status Line、CLAUDE.md 專案指令跟自訂 Skill，可以把整個開發體驗拉到完全不同的層次。這篇會是一個長期更新的筆記，把我覺得值得分享的設定跟技巧陸續整理進來。
 
@@ -433,6 +435,31 @@ npx skills add hiyeshu/codeck
 | [Claude Code Plugins Marketplace](https://claudemarketplaces.com/) | 社群市集，有評分跟安裝數，方便挑選 |
 
 大部分社群 Skill 的安裝方式就是把檔案複製到 `~/.claude/skills/` 底下，結構跟前面介紹的一樣。挑選的時候建議先看一下 SKILL.md 的內容，確認指令邏輯符合你的需求再裝。
+
+## CC Switch：兩組訂閱帳號之間一鍵切換
+
+如果你跟我一樣訂了兩組 Claude 帳號——主力一個、備用一個，週用量爆掉的時候要無縫接上——原本的切換流程其實很麻煩：登出再登入、或是手改 `~/.claude/settings.json`，改錯一個字元 Claude Code 就直接跑不起來。
+
+<Image src={ccSwitch} alt="CC Switch 介面，並排顯示主力跟備用兩組 Claude 帳號的剩餘用量" />
+
+[CC Switch](https://github.com/farion1231/cc-switch) 是一個桌面 App，把多組帳號設定全部視覺化，每組都看得到 5 小時跟 7 天的剩餘用量、還剩幾小時重置，主力快爆的時候一眼就能判斷該不該切到備用。點一下托盤圖示就完成配置切換，比起手改 `settings.json` 省事很多。
+
+<div class="callout warning">CC Switch 做的事情是「幫你把 settings.json 改好」，所以已經開著的 Claude Code session 要 `/exit` 再 `claude --resume`（或直接關掉 terminal 重開）才會載入新帳號。官方 README 寫的「熱切換」實際上指的是「不用手改設定檔」，不是「session 不用重啟」。</div>
+
+幾個額外的好處：
+
+- **中轉服務也能一起管**：如果你還會走 AWS Bedrock 或社群中轉服務，內建 50+ 預設供應商可以塞進同一組切換邏輯，不用為了不同端點再開另一個工具
+- **跨工具統一管理**：Claude Code、Codex、Gemini CLI 都能在同一個介面管，MCP Server 設定共用一份，不用每個 CLI 各自配一遍
+- **原子寫入**：切換時不會像手改 JSON 那樣有寫到一半噴掉的風險
+
+支援 Mac / Windows / Linux，MIT 開源免費。Mac 用戶可以直接用 Homebrew 裝：
+
+```bash
+brew install --cask cc-switch
+```
+
+<span class="pricing-tag">免費</span>
+<a href="https://github.com/farion1231/cc-switch/releases" target="_blank" class="official-link">下載 CC Switch</a>
 
 ## Amphetamine：放著跑也不會中斷
 
