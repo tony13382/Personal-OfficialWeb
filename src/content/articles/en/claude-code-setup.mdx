@@ -2,7 +2,7 @@
 title: "How to Configure Claude Code: Status Line, CLAUDE.md, and Custom Skills"
 description: A living notes document on Claude Code configuration — from Status Line and CLAUDE.md to custom Skills — your starting point for building an AI workflow that works for you
 date: 2026-04-07
-updatedDate: 2026-04-30
+updatedDate: 2026-05-02
 category: Dev Environment
 tags: [Claude Code, AI, Terminal, Dev Environment]
 cover: /og/articles/claude-code-setup.png
@@ -17,7 +17,6 @@ import statuslineResult from '@/assets/imgs/articles/claude-code-setup/statuslin
 import awesomeDesignMd from '@/assets/imgs/articles/claude-code-setup/awesome-design-md.png'
 import codeckIntro from '@/assets/imgs/articles/claude-code-setup/codeck-intro.png'
 import amphetamine from '@/assets/imgs/articles/claude-code-setup/amphetamine.png'
-import ccSwitch from '@/assets/imgs/articles/claude-code-setup/cc-switch.png'
 
 Claude Code is my primary development tool right now, and after using it for a while I realized the default setup only gets you about half of what it's capable of. With a Status Line, CLAUDE.md project instructions, and custom Skills, the entire development experience lifts to a completely different level. This will be a living document where I keep adding settings and techniques I think are worth sharing.
 
@@ -436,30 +435,53 @@ What I've covered here is just the surface. The community has been building and 
 
 Most community Skills install by copying the file to `~/.claude/skills/` — same structure as what I described above. When picking one, I'd recommend reading the SKILL.md content first to confirm the instruction logic fits your needs before installing.
 
-## CC Switch: One-Click Switching Between Two Subscription Accounts
+## Official Multi-Account Switching: Use CLAUDE_CONFIG_DIR
 
-If, like me, you have two Claude subscriptions — one main, one backup, ready to step in when the weekly limit runs out — the original switching flow is annoying: log out and back in, or manually edit `~/.claude/settings.json`. One typo and Claude Code won't start.
+If, like me, you have two Claude subscriptions — one main, one backup, ready to step in when the weekly limit runs out — I now recommend using the officially supported `CLAUDE_CONFIG_DIR` instead of only switching `settings.json`.
 
-<Image src={ccSwitch} alt="CC Switch UI showing main and backup Claude accounts side by side with usage stats" />
+`CLAUDE_CONFIG_DIR` tells Claude Code which configuration directory to read. The default is `~/.claude`, but you can create a separate directory for your backup account, such as `~/.claude-back`. That keeps settings, login state, session history, and plugins separate from your main account. No logging out of the main account, no manual JSON edits.
 
-[CC Switch](https://github.com/farion1231/cc-switch) is a desktop app that visualizes all your provider configurations. Each entry shows 5-hour and 7-day usage remaining and how much time until reset, so when your main account is about to cap out you can tell at a glance whether to switch to the backup. One click on the tray icon swaps the config — much less hassle than editing `settings.json` by hand.
+The simplest setup is to add an alias function to `~/.zshrc`:
 
-<div class="callout warning">All CC Switch does is rewrite settings.json for you, so an already-running Claude Code session needs `/exit` followed by `claude --resume` (or just close and reopen the terminal) before the new account takes effect. The "hot switching" the official README mentions actually means "no manual config editing," not "no session restart."</div>
+<p class="code-title">~/.zshrc</p>
 
-A few additional perks:
-
-- **Manage relay services too**: If you also use AWS Bedrock or community relay providers, the 50+ built-in presets let them all share the same switching flow — no need to add another tool just for different endpoints
-- **Unified cross-tool management**: Claude Code, Codex, and Gemini CLI can all be managed in the same interface, with shared MCP Server config — no more configuring each CLI separately
-- **Atomic writes**: Switching won't risk a half-written JSON breaking your config the way manual edits can
-
-Supports Mac / Windows / Linux, MIT-licensed, free. Mac users can install via Homebrew:
-
-```bash
-brew install --cask cc-switch
+```zsh
+claude-back() {
+  mkdir -p "$HOME/.claude-back"
+  CLAUDE_CONFIG_DIR="$HOME/.claude-back" claude "$@"
+}
 ```
 
-<span class="pricing-tag">Free</span>
-<a href="https://github.com/farion1231/cc-switch/releases" target="_blank" class="official-link">Download CC Switch</a>
+Then reload your shell:
+
+```zsh
+source ~/.zshrc
+```
+
+After that, launch the backup account with:
+
+```zsh
+claude-back
+```
+
+The first time you enter this config space, run `/login` inside Claude Code and sign in with the backup account. After that, `claude` still uses the original `~/.claude`, while `claude-back` always uses `~/.claude-back`.
+
+If you prefer naming both accounts explicitly, use this instead:
+
+```zsh
+claude-main() {
+  CLAUDE_CONFIG_DIR="$HOME/.claude" claude "$@"
+}
+
+claude-back() {
+  mkdir -p "$HOME/.claude-back"
+  CLAUDE_CONFIG_DIR="$HOME/.claude-back" claude "$@"
+}
+```
+
+<div class="callout info">If you configured the Status Line earlier, the backup account's `~/.claude-back/settings.json` can point to the same script, for example `"command": "bash ~/.claude/statusline.sh"`. That lets one script serve both accounts while each account keeps its own settings and login state.</div>
+
+<a href="https://code.claude.com/docs/en/env-vars" target="_blank" class="official-link">Claude Code Environment Variables</a>
 
 ## Amphetamine: Keep It Running When You Step Away
 
